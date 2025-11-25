@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GaiaLabs.community | Regenerative DAO Platform</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ledger&family=Pridi:wght@200;300;400;500;600;700&family=Stack+Sans+Headline:wght@200..700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Stack Sans Headline', 'sans-serif'],
+                        serif: ['Pridi', 'serif'],
+                    },
+                    colors: {
+                        gaia: {
+                            base: '#fbfbf9',   // Warm Stone/Paper
+                            text: '#1c1917',   // Stone 900
+                            primary: '#059669', // Emerald 600
+                            dark: '#064e3b',    // Emerald 900
+                            accent: '#d97706',  // Amber 600
+                            light: '#a7f3d0',   // Emerald 200
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fbfbf9; /* gaia-base */
+            color: #1c1917; /* gaia-text */
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0fdf4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 4px;
+        }
+
+        /* Organic Glassmorphism (Light) */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(5, 150, 105, 0.1);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(5, 150, 105, 0.1);
+            box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(5, 150, 105, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(5, 150, 105, 0.2);
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Button Micro-interactions */
+        button {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Card hover float effect */
+        .glass-card,
+        article {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Improved Focus Styles for Accessibility */
+        *:focus-visible {
+            outline: 2px solid #059669;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid #059669;
+            outline-offset: 3px;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+        }
+
+        .blueprint-card:focus-visible {
+            outline: 3px solid #059669;
+            outline-offset: 4px;
+            box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.15);
+        }
+
+        /* Skip focus styles for mouse users */
+        *:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        /* Initial state for blueprint cards (will be animated by GSAP) */
+        .blueprint-card {
+            opacity: 0;
+        }
+
+        /* Organic Text Gradient */
+        .text-gradient {
+            background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Canvas Positioning */
+        #network-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* Image Masks for Organic Feel */
+        .organic-shape {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            overflow: hidden;
+            transition: border-radius 1s ease;
+        }
+        .organic-shape:hover {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        }
+
+        /* Subtle Leaf Float Animation */
+        .floating-leaf {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-leaf-delay-2000 {
+            animation-delay: 2000ms;
+        }
+        .floating-leaf-delay-1000 {
+            animation-delay: 1000ms;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gaia-primary selection:text-white">
+
+    <!-- Background Animation (Canvas) -->
+    <canvas id="network-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <img src="/src/lib/assets/Logo.svg" alt="GaiaLabs" class="h-8 w-8 invert-0 dark:invert-100" />
+                    <span class="font-serif font-bold text-2xl tracking-tight text-gaia-dark">Gaia<span class="text-gaia-primary">Labs</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8 font-sans font-medium text-sm text-gray-600">
+                        <a href="#" class="hover:text-gaia-primary transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-green-400 rounded px-2 py-1" aria-label="Home">Home</a>
+                        <a href="#why" class="hover:text-gaia-primary transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-green-400 rounded px-2 py-1" aria-label="Why GaiaLabs?">Why GaiaLabs?</a>
+                        <a href="#vision" class="hover:text-gaia-primary transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-green-400 rounded px-2 py-1" aria-label="Vision">Vision</a>
+                        <a href="#blueprint" class="hover:text-gaia-primary transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-green-400 rounded px-2 py-1" aria-label="Blueprint">Blueprint</a>
+                        <a href="#ecotoken" class="hover:text-gaia-primary transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-green-400 rounded px-2 py-1" aria-label="EcoToken">EcoToken</a>
+                        <a href="#join" class="hover:text-gaia-primary transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-green-400 rounded px-2 py-1" aria-label="Join">Join</a>
+                    </div>
+                </div>
+                <div>
+                    <button class="hidden md:flex items-center gap-2 bg-gaia-dark text-white px-6 py-2.5 rounded-full font-sans text-sm font-medium transition-all duration-300 hover:bg-gaia-primary hover:shadow-lg hover:shadow-emerald-900/20 transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-green-400" aria-label="Join Community">
+                        <span>Join Community</span>
+                        <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i>
+                    </button>
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden text-gaia-dark hover:text-gaia-primary focus-visible:ring-2 focus-visible:ring-green-400 rounded p-1" aria-label="Open mobile menu">
+                        <i data-lucide="menu" class="h-8 w-8" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="z-10 order-2 lg:order-1">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-6 animate-fade-in-down">
+                        <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                        <span class="text-xs font-bold text-blue-600 tracking-widest uppercase">Regenerative Web3</span>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-[1.1] mb-6 hero-text text-gaia-dark">
+                        A Regenerative Future
+                        <span class="text-gradient">Designed Together</span>
+                    </h1>
+                    
+                    <p class="mt-4 text-xl text-gray-600 font-light leading-relaxed max-w-lg hero-sub">
+                        We are co-creating the world's first open-source blueprint for regenerative communities — where technology supports life, and people live in harmony with nature.
+                    </p>
+                    
+                    <div class="mt-10 flex flex-col sm:flex-row gap-4 hero-cta">
+                        <button class="px-8 py-4 bg-gaia-primary text-white font-medium rounded-xl hover:bg-gaia-dark transition-all shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 hover:scale-105 hover:rotate-1 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400" aria-label="Join the First 1000 Pioneers">
+                            Join the First 1000 Pioneers
+                            <i data-lucide="users" class="h-4 w-4" aria-hidden="true"></i>
+                        </button>
+                        <button class="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-gaia-primary hover:text-gaia-primary hover:scale-105 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400" aria-label="See the Blueprint Vision">
+                            See the Blueprint Vision
+                        </button>
+                    </div>
+
+                    <div class="mt-12 flex items-start gap-4">
+                        <div class="flex -space-x-3">
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-md">
+                                <i data-lucide="sprout" class="h-5 w-5 text-white"></i>
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-md">
+                                <i data-lucide="users" class="h-5 w-5 text-white"></i>
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center shadow-md">
+                                <i data-lucide="leaf" class="h-5 w-5 text-white"></i>
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center shadow-md">
+                                <i data-lucide="heart" class="h-5 w-5 text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-gray-700 leading-relaxed">A growing movement of people designing regenerative communities.</p>
+                            <p class="text-xs text-gray-500 mt-1">Join the pioneers shaping the first 1000-member co-creation network.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual -->
+                <div class="order-1 lg:order-2 relative hero-visual">
+                    <!-- Blob Background -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-emerald-100/50 to-orange-100/50 rounded-full blur-3xl -z-10"></div>
+                    
+                    <!-- Main Image -->
+                    <div class="relative w-full aspect-4/5 md:aspect-square">
+                        <img src="/src/lib/assets/hero.webp" 
+                             alt="Nature and Technology" 
+                             class="w-full h-full object-cover organic-shape shadow-2xl shadow-emerald-900/10">
+                             
+                        <!-- Floating Badges -->
+                        <div class="absolute bottom-2 left-0 flex flex-col gap-2 floating-leaf">
+                            <div class="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-emerald-100">
+                                <div class="text-xs font-bold text-emerald-600 flex items-center gap-2">
+                                  <div class="bg-green-100 p-2 rounded-lg text-green-600">
+                                    <i data-lucide="git-branch" class="h-5 w-5"></i>
+                                  </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-gray-400 uppercase">Actively create the future</div>
+                                        <div class="text-lg font-serif text-gray-900">Blueprint in Co-Creation</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-[45%] -right-3 flex flex-col gap-2 floating-leaf floating-leaf-delay-2000 ">
+                            <div class="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-blue-100">
+                                <div class="text-xs font-bold text-blue-600 flex items-center gap-2">
+                                    <div class="bg-blue-100 p-2 rounded-lg text-blue-600">
+                                        <i data-lucide="vote" class="h-5 w-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-gray-400 uppercase">Collaborate with the community</div>
+                                        <div class="text-lg font-serif text-gray-900">DAO Governance Enabled</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-14 flex flex-col gap-2 floating-leaf floating-leaf-delay-1000">
+                            <div class="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-teal-100">
+                                <div class="text-xs font-bold text-teal-600 flex items-center gap-2">
+                                    <div class="bg-teal-100 p-2 rounded-lg text-teal-600">
+                                        <i data-lucide="flower-2" class="h-5 w-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-gray-400 uppercase">Build for the long-term</div>
+                                        <div class="text-lg font-serif text-gray-900">Nature-Inspired Systems</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. The Why - "Why We Need New Models for Living" -->
+    <section id="why" class="py-24 md:py-32 relative bg-white/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">Why We Need New Models</h2>
+                <p class="text-gray-600 text-lg">Modern society faces disconnection, ecological crisis, and fragmentation. We are redesigning how we live together to restore trust and wholeness.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article role="article" tabindex="0">
+                    <div  class="glass-card p-8 rounded-2xl text-center hover:bg-white/90 transition-all reveal-card">
+                        <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6 text-red-500">
+                            <i data-lucide="unlink" class="w-8 h-8" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Loneliness Crisis in a Connected World</h3>
+                        <p class="text-gray-500 leading-relaxed mb-3 max-w-prose">We are more connected than ever, yet feel more alone. Traditional community bonds have eroded.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl hover:bg-white/90 transition-all reveal-card mt-4 flex gap-4">
+                        <i data-lucide="check" class="h-16 w-16 text-green-500"></i>
+                        <p class="text-md font-medium text-gaia-primary max-w-prose mx-auto">GaiaLabs designs intentional communities where belonging is built-in, not an afterthought.</p>
+                    </div>
+                </article>
+                
+                <article role="article" tabindex="0">
+                    <div  class="glass-card p-8 rounded-2xl text-center hover:bg-white/90 transition-all reveal-card">
+                        <div class="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-6 text-orange-500">
+                            <i data-lucide="alert-triangle" class="w-8 h-8" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">We Are Exceeding Earth's Boundaries</h3>
+                        <p class="text-gray-500 leading-relaxed mb-3 max-w-prose mx-auto">Extractive systems are depleting our planet. We need regenerative models that give back more than they take.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl hover:bg-white/90 transition-all reveal-card mt-4 flex gap-4">
+                        <i data-lucide="check" class="h-16 w-16 text-green-500"></i>
+                        <p class="text-md font-medium text-gaia-primary max-w-prose mx-auto">Our blueprint shows how communities can become net-positive for ecosystems.</p>
+                    </div>
+                </article>
+
+                <article role="article" tabindex="0">
+                    <div  class="glass-card p-8 rounded-2xl text-center hover:bg-white/90 transition-all reveal-card">
+                        <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-500">
+                            <i data-lucide="lock" class="w-8 h-8" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Trust Has Been Centralized for Too Long</h3>
+                        <p class="text-gray-500 leading-relaxed mb-3 max-w-prose mx-auto">Opaque governance leaves people feeling powerless. We build systems where every voice matters.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl hover:bg-white/90 transition-all reveal-card mt-4 flex gap-4">
+                        <i data-lucide="check" class="h-16 w-16 text-green-500"></i>
+                        <p class="text-md font-medium text-gaia-primary max-w-prose mx-auto">DAO governance returns power to communities through transparent, auditable systems.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. The Vision - "A Living Blueprint for Regenerative Life" -->
+    <section id="vision" class="py-24 md:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <!-- Image Grid -->
+                <div class="relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-2xl mt-8 shadow-lg reveal-img" alt="Community Hands">
+                        <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-2xl shadow-lg reveal-img" alt="Plants">
+                    </div>
+                    <!-- Decorative Circle -->
+                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gaia-primary/20 rounded-full scale-125"></div>
+                </div>
+
+                <!-- Text -->
+                <div>
+                    <h2 class="text-sm font-bold text-gaia-primary tracking-widest uppercase mb-2">The Vision</h2>
+                    <h3 class="text-4xl md:text-5xl font-serif font-bold text-gaia-dark mb-6 leading-tight">
+                        A Living Blueprint for <br> <span class="text-gradient">Regenerative Life</span>
+                    </h3>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        Imagine communities designed like forests—resilient, diverse, and self-sustaining. Our unique blueprint approach combines ecological wisdom with decentralized governance, creating living systems that evolve through real-world practice.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="sprout" class="text-gaia-primary w-5 h-5" aria-hidden="true"></i>
+                            <span>Ecological Design & Permaculture</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="users-2" class="text-gaia-primary w-5 h-5" aria-hidden="true"></i>
+                            <span>Participatory Culture & Governance</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="repeat" class="text-gaia-primary w-5 h-5" aria-hidden="true"></i>
+                            <span>Circular Community Economies</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="heart-handshake" class="text-gaia-primary w-5 h-5" aria-hidden="true"></i>
+                            <span>Strong Social Fabric & Conflict Resolution</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. The GaiaLabs Approach - "Tech + Ecology in Right Relationship" -->
+    <section id="approach" class="py-24 md:py-32 relative bg-emerald-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">Technology That Serves Life</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-4">Technology can be extractive—but it can also unlock solutions that communities struggled with for generations. We use it consciously, choosing digital tools that strengthen transparency, cooperation, and ecological integrity.</p>
+                <p class="text-gaia-primary font-medium max-w-xl mx-auto">Inspired by nature, we apply modern systems without becoming dependent on them. Technology supports life, not the other way around.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="bg-white p-8 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1" role="article" tabindex="0">
+                    <div class="text-gaia-primary mb-4"><i data-lucide="microscope" class="w-10 h-10" aria-hidden="true"></i></div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Community-Led Research</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Our blueprint grows from practice. Every pilot community becomes a living laboratory where solutions are tested, refined, and shared.</p>
+                </article>
+                <article class="bg-white p-8 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1" role="article" tabindex="0">
+                    <div class="text-gaia-primary mb-4"><i data-lucide="network" class="w-10 h-10" aria-hidden="true"></i></div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Collaborative Evolution</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Like a mycelial network, our intelligence expands through connection. The blueprint is open-source, shaped by everyone who contributes.</p>
+                </article>
+                <article class="bg-white p-8 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1" role="article" tabindex="0">
+                    <div class="text-gaia-primary mb-4"><i data-lucide="flower-2" class="w-10 h-10" aria-hidden="true"></i></div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Systems Thinking</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">We design communities as whole systems—where housing, food, water, energy, and culture work together as a resilient living ecosystem.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Decentralized Governance - "Power to the Community" -->
+    <section id="governance" class="py-24 md:py-32 relative bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">Power to the Community</h2>
+                <p class="text-gray-600">Blockchain technology enables trust without hierarchy. Our DAO ecosystem ensures transparency and collective agency.</p>
+            </div>
+
+            <!-- Feature Reveal Layout: 2 Column -->
+            <div class="flex flex-col lg:flex-row gap-12 items-start relative pt-20" id="governance-container">
+              
+              <!-- Left Column: Scrolling List of Feature Triggers -->
+              <div class="w-full lg:w-1/2 pl-4" id="governance-triggers">
+              
+                <!-- Feature 1 Trigger -->
+                <div class="governance-feature opacity-30 transition-opacity duration-500 py-6" data-index="0">
+                  <div class="flex items-center gap-4 mb-2">
+                    <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
+                        <i data-lucide="vote" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">DAO Voting</h3>
+                  </div>
+                  <p class="text-gray-500 text-lg mb-2">Every member has a voice. We use Snapshot for gasless, on-chain voting.</p>
+                  <p class="text-sm text-gaia-primary font-medium">What this means for you: Your vote shapes the community's future, without barriers.</p>
+                  
+                  <!-- Mobile Detail Content -->
+                  <div class="lg:hidden mt-6 gov-detail-mobile opacity-0 max-h-0 overflow-hidden transition-all duration-500" id="gov-detail-mobile-0">
+                    <div class="bg-gray-50 rounded-2xl p-6">
+                      <div class="mb-4 relative rounded-xl overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="Voting">
+                        <div class="absolute inset-0 bg-blue-900/20 mix-blend-multiply"></div>
+                      </div>
+                      <h4 class="text-xl font-serif font-bold text-gray-900 mb-3">Your Voice, Your Vote</h4>
+                      <p class="text-gray-600 leading-relaxed text-sm mb-4">
+                        Traditional organizations are top-down. GaiaLabs is bottom-up. We use Snapshot to allow token holders to vote on proposals without paying gas fees. Whether it's approving a new budget or changing a community rule, the power rests with the people.
+                      </p>
+                      <button class="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center gap-2 text-sm">
+                        See Live Proposals <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Feature 2 Trigger -->
+                <div class="governance-feature opacity-30 transition-opacity duration-500 py-6" data-index="1">
+                  <div class="flex items-center gap-4 mb-2">
+                    <div class="w-10 h-10 bg-amber-50 rounded-full flex items-center justify-center text-amber-600">
+                        <i data-lucide="wallet-2" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Transparent Treasury</h3>
+                  </div>
+                  <p class="text-gray-500 text-lg mb-2">Funds are managed openly via Gnosis Safe multi-sig wallets.</p>
+                  <p class="text-sm text-gaia-primary font-medium">What this means for you: See exactly where resources go, always.</p>
+                  
+                  <!-- Mobile Detail Content -->
+                  <div class="lg:hidden mt-6 gov-detail-mobile opacity-0 max-h-0 overflow-hidden transition-all duration-500" id="gov-detail-mobile-1">
+                    <div class="bg-gray-50 rounded-2xl p-6">
+                      <div class="mb-4 relative rounded-xl overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1611974765270-ca12586343bb?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="Treasury">
+                        <div class="absolute inset-0 bg-amber-900/20 mix-blend-multiply"></div>
+                      </div>
+                      <h4 class="text-xl font-serif font-bold text-gray-900 mb-3">Funds Managed in the Open</h4>
+                      <p class="text-gray-600 leading-relaxed text-sm mb-4">
+                        No hidden bank accounts. Our treasury is managed by a Gnosis Safe multi-signature wallet. Every transaction is recorded on the blockchain, viewable by anyone, anytime. This radical transparency ensures resources go exactly where the community decides.
+                      </p>
+                      <button class="px-6 py-3 bg-amber-600 text-white rounded-lg font-medium hover:bg-amber-700 transition-colors flex items-center gap-2 text-sm">
+                        View Treasury <i data-lucide="eye" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Feature 3 Trigger -->
+                <div class="governance-feature opacity-30 transition-opacity duration-500 py-6" data-index="2">
+                    <div class="flex items-center gap-4 mb-2">
+                        <div class="w-10 h-10 bg-purple-50 rounded-full flex items-center justify-center text-purple-600">
+                            <i data-lucide="users" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Collective Decisions</h3>
+                    </div>
+                    <p class="text-gray-500 text-lg mb-2">Proposals are debated in the forum and ratified by consensus.</p>
+                    <p class="text-sm text-gaia-primary font-medium">What this means for you: Your ideas can become community reality.</p>
+                    
+                    <!-- Mobile Detail Content -->
+                    <div class="lg:hidden mt-6 gov-detail-mobile opacity-0 max-h-0 overflow-hidden transition-all duration-500" id="gov-detail-mobile-2">
+                      <div class="bg-gray-50 rounded-2xl p-6">
+                        <div class="mb-4 relative rounded-xl overflow-hidden h-48">
+                          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="Discussion">
+                          <div class="absolute inset-0 bg-purple-900/20 mix-blend-multiply"></div>
+                        </div>
+                        <h4 class="text-xl font-serif font-bold text-gray-900 mb-3">Wisdom of the Crowd</h4>
+                        <p class="text-gray-600 leading-relaxed text-sm mb-4">
+                          Good governance isn't just voting; it's discussing. Our forum allows members to debate ideas, refine proposals, and build consensus before a vote ever happens. We value deliberation and the synthesis of diverse perspectives.
+                        </p>
+                        <button class="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors flex items-center gap-2 text-sm">
+                          Join the Forum <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        </button>
+                      </div>
+                    </div>
+                </div>
+
+                <!-- Feature 4 Trigger -->
+                <div class="governance-feature opacity-30 transition-opacity duration-500 py-6" data-index="3">
+                  <div class="flex items-center gap-4 mb-2">
+                    <div class="w-10 h-10 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Auditable Trust</h3>
+                  </div>
+                  <p class="text-gray-500 text-lg mb-2">Immutable records build long-term trust without bureaucracy.</p>
+                  <p class="text-sm text-gaia-primary font-medium">What this means for you: Trust is encoded, not just promised.</p>
+                  
+                  <!-- Mobile Detail Content -->
+                  <div class="lg:hidden mt-6 gov-detail-mobile opacity-0 max-h-0 overflow-hidden transition-all duration-500" id="gov-detail-mobile-3">
+                    <div class="bg-gray-50 rounded-2xl p-6">
+                      <div class="mb-4 relative rounded-xl overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="Blockchain">
+                        <div class="absolute inset-0 bg-emerald-900/20 mix-blend-multiply"></div>
+                      </div>
+                      <h4 class="text-xl font-serif font-bold text-gray-900 mb-3">Trust Code, Not Just People</h4>
+                      <p class="text-gray-600 leading-relaxed text-sm mb-4">
+                        In a world of broken promises, code offers certainty. Our governance rules are encoded in smart contracts. This creates a trustless environment where you don't have to know someone to cooperate with them effectively and securely.
+                      </p>
+                      <button class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2 text-sm">
+                        Verify Contracts <i data-lucide="code-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Sticky Details Panel -->
+              <div class="hidden lg:block w-1/2 sticky top-24 h-auto">
+                <div class="relative w-full aspect-4/3 rounded-3xl overflow-hidden p-1 h-[500px]">
+                  <!-- Dynamic Content Container -->
+                  <div id="gov-detail-container" class="w-full h-full bg-gray-50 rounded-2xl relative overflow-hidden">
+                      
+                    <!-- Content 0: DAO Voting -->
+                    <div class="gov-detail absolute inset-0 flex flex-col justify-between p-8 opacity-0 transition-opacity duration-500" id="gov-detail-0">
+                        <div>
+                            <div class="mb-6 relative rounded-xl overflow-hidden h-48">
+                                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="Voting">
+                                <div class="absolute inset-0 bg-blue-900/20 mix-blend-multiply"></div>
+                            </div>
+                            <h4 class="text-2xl font-serif font-bold text-gray-900 mb-3">Your Voice, Your Vote</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Traditional organizations are top-down. GaiaLabs is bottom-up. We use Snapshot to allow token holders to vote on proposals without paying gas fees. Whether it's approving a new budget or changing a community rule, the power rests with the people.
+                            </p>
+                        </div>
+                        <div class="mt-6">
+                            <button class="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center gap-2">
+                                See Live Proposals <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Content 1: Treasury -->
+                    <div class="gov-detail absolute inset-0 flex flex-col justify-between p-8 opacity-0 transition-opacity duration-500" id="gov-detail-1">
+                        <div>
+                            <div class="mb-6 relative rounded-xl overflow-hidden h-48">
+                                <img src="https://images.unsplash.com/photo-1611974765270-ca12586343bb?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="Treasury">
+                                <div class="absolute inset-0 bg-amber-900/20 mix-blend-multiply"></div>
+                            </div>
+                            <h4 class="text-2xl font-serif font-bold text-gray-900 mb-3">Funds Managed in the Open</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                No hidden bank accounts. Our treasury is managed by a Gnosis Safe multi-signature wallet. Every transaction is recorded on the blockchain, viewable by anyone, anytime. This radical transparency ensures resources go exactly where the community decides.
+                            </p>
+                        </div>
+                        <div class="mt-6">
+                            <button class="px-6 py-3 bg-amber-600 text-white rounded-lg font-medium hover:bg-amber-700 transition-colors flex items-center gap-2">
+                                View Treasury <i data-lucide="eye" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Content 2: Collective Decisions -->
+                    <div class="gov-detail absolute inset-0 flex flex-col justify-between p-8 opacity-0 transition-opacity duration-500" id="gov-detail-2">
+                        <div>
+                            <div class="mb-6 relative rounded-xl overflow-hidden h-48">
+                                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="Discussion">
+                                <div class="absolute inset-0 bg-purple-900/20 mix-blend-multiply"></div>
+                            </div>
+                            <h4 class="text-2xl font-serif font-bold text-gray-900 mb-3">Wisdom of the Crowd</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Good governance isn't just voting; it's discussing. Our forum allows members to debate ideas, refine proposals, and build consensus before a vote ever happens. We value deliberation and the synthesis of diverse perspectives.
+                            </p>
+                        </div>
+                        <div class="mt-6">
+                            <button class="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors flex items-center gap-2">
+                                Join the Forum <i data-lucide="message-circle" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Content 3: Auditable Trust -->
+                    <div class="gov-detail absolute inset-0 flex flex-col justify-between p-8 opacity-0 transition-opacity duration-500" id="gov-detail-3">
+                        <div>
+                            <div class="mb-6 relative rounded-xl overflow-hidden h-48">
+                                <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="Blockchain">
+                                <div class="absolute inset-0 bg-emerald-900/20 mix-blend-multiply"></div>
+                            </div>
+                            <h4 class="text-2xl font-serif font-bold text-gray-900 mb-3">Trust Code, Not Just People</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                In a world of broken promises, code offers certainty. Our governance rules are encoded in smart contracts. This creates a trustless environment where you don't have to know someone to cooperate with them effectively and securely.
+                            </p>
+                        </div>
+                        <div class="mt-6">
+                            <button class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2">
+                                Verify Contracts <i data-lucide="code-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. EcoToken - "A Contribution Economy That Rewards Real Work" -->
+    <section id="ecotoken" class="py-24 md:py-32 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <h2 class="text-4xl font-serif font-bold text-gaia-dark mb-6">A Contribution Economy That <span class="text-gaia-accent">Rewards Real Work</span></h2>
+                    <p class="text-gray-600 mb-8 text-lg">
+                        EcoToken rewards those who grow food, build infrastructure, care for others, teach workshops, or regenerate land.
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <!-- Infographic Item 1 -->
+                        <div class="flex gap-4 group">
+                            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+                                <i data-lucide="shovel" class="w-8 h-8" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900">Earn by Contributing</h4>
+                                <p class="text-gray-500 text-sm mt-1 leading-relaxed">Log hours in the community garden or help build housing to mint tokens. Real value, no speculation.</p>
+                            </div>
+                        </div>
+
+                        <!-- Infographic Item 2 -->
+                        <div class="flex gap-4 group">
+                            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+                                <i data-lucide="shopping-basket" class="w-8 h-8" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900">Spend Locally</h4>
+                                <p class="text-gray-500 text-sm mt-1 leading-relaxed">Exchange tokens for fresh produce, tool rentals, expert workshops, childcare services, or community meals within the network.</p>
+                            </div>
+                        </div>
+
+                        <!-- Infographic Item 3 -->
+                        <div class="flex gap-4 group">
+                            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+                                <i data-lucide="shield-check" class="w-8 h-8" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900">Non-Speculative Design</h4>
+                                <p class="text-gray-500 text-sm mt-1 leading-relaxed">EcoToken is not for trading or speculation. It's a community utility token focused on real contributions and local exchange.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2">
+                    <img src="https://images.unsplash.com/photo-1660836815332-3f38535964d1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGJsb2NrY2hhaW4lMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww" class="rounded-3xl shadow-2xl organic-shape hover:rotate-1 transition-transform duration-700 object-cover h-96 w-full" alt="Green Growth">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. The Blueprint - "Building the Future Together" -->
+    <section id="blueprint" class="py-24 md:py-32 relative" role="region" aria-labelledby="blueprint-heading">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 id="blueprint-heading" class="text-4xl font-serif font-bold text-gaia-dark mb-4">Building the Future Together</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our blueprint is an open-source, living document. It covers every aspect of regenerative community life.</p>
+            </div>
+
+            <!-- Masonry Layout -->
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6" role="list" aria-label="Blueprint modules">
+                
+                <!-- Ecology Card -->
+                <article class="blueprint-card break-inside-avoid rounded-xl bg-white/5 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-white/10 hover:border-white/20 hover:-translate-y-1 group" role="listitem" tabindex="0" aria-labelledby="ecology-heading">
+                  <div class="relative h-48 overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1440342359743-84fcb8c21f21?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Ecology">
+                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/60 to-transparent"></div>
+                    <div class="absolute top-4 left-4 w-12 h-12 bg-emerald-500/90 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                      <i data-lucide="leaf" class="w-6 h-6 text-white"></i>
+                    </div>
+                  </div>
+                  <div class="pt-6">
+                    <h4 id="ecology-heading" class="text-xl font-serif font-bold text-gray-900 mb-2">Ecology</h4>
+                    <h5 class="text-lg font-serif  text-gray-900 mb-2">Regenerative Agriculture & Soil Health</h5>
+                    <p class="text-gray-600 text-sm leading-relaxed">From compost biology to agroforestry guilds, our blueprint provides methods for transforming degraded land into thriving regenerative ecosystems that nourish people and biodiversity.</p>
+                  </div>
+                </article>
+
+                <!-- Governance Card -->
+                <article class="blueprint-card break-inside-avoid rounded-xl bg-white/5 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-white/10 hover:border-white/20 hover:-translate-y-1 group" role="listitem" tabindex="0" aria-labelledby="governance-heading">
+                  <div class="relative h-48 overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Governance">
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent"></div>
+                    <div class="absolute top-4 left-4 w-12 h-12 bg-blue-500/90 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                      <i data-lucide="scale" class="w-6 h-6 text-white"></i>
+                    </div>
+                  </div>
+                  <div class="pt-6">
+                    <h4 id="governance-heading" class="text-xl font-serif font-bold text-gray-900 mb-2">Governance</h4>
+                    <h5 class="text-lg font-serif text-gray-900 mb-2">Governance & Self-Determination</h5>
+                    <p class="text-gray-600 text-sm leading-relaxed">DAO structures, consensus models, conflict resolution, and transparent decision-making. Power flows from the community, not from hierarchy.</p>
+                  </div>
+                </article>
+
+                <!-- Renewable Energy Card -->
+                <article class="blueprint-card break-inside-avoid rounded-xl bg-white/5 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-white/10 hover:border-white/20 hover:-translate-y-1 group" role="listitem" tabindex="0" aria-labelledby="energy-heading">
+                  <div class="relative h-48 overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1662078907809-b9e486757a0a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Energy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/60 to-transparent"></div>
+                    <div class="absolute top-4 left-4 w-12 h-12 bg-indigo-500/90 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                      <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+                    </div>
+                  </div>
+                  <div class="pt-6">
+                    <h4 id="energy-heading" class="text-xl font-serif font-bold text-gray-900 mb-2">Energy</h4>
+                    <h5 class="text-lg font-serif text-gray-900 mb-2">Renewable Energy & Circular Systems</h5>
+                    <p class="text-gray-600 text-sm leading-relaxed">Solar, micro-hydropower, biogas, and energy-sharing models designed for communities that want to live lightly, independently, and in harmony with ecological rhythms.</p>
+                  </div>
+                </article>
+
+                <!-- Resource Card -->
+                <article class="blueprint-card break-inside-avoid rounded-xl bg-white/5 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-white/10 hover:border-white/20 hover:-translate-y-1 group" role="listitem" tabindex="0" aria-labelledby="resources-heading">
+                  <div class="relative h-48 overflow-hidden rounded-xl">
+                    <img src="https://plus.unsplash.com/premium_photo-1683288081743-5161d099f16e?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Resources">
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent"></div>
+                    <div class="absolute top-4 left-4 w-12 h-12 bg-blue-500/90 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                      <i data-lucide="droplets" class="w-6 h-6 text-white"></i>
+                    </div>
+                  </div>
+                  <div class="pt-6">
+                    <h4 id="resources-heading" class="text-xl font-serif font-bold text-gray-900 mb-2">Resources</h4>
+                    <h5 class="text-lg font-serif text-gray-900 mb-2">Water, Waste & Resource Cycles</h5>
+                    <p class="text-gray-600 text-sm leading-relaxed">Greywater wetlands, composting systems, rain capture, and circular waste flows that turn "waste" into life-giving inputs for gardens, ecosystems, and soil.</p>
+                  </div>
+                </article>
+
+
+                <!-- Housing Card -->
+                <article class="blueprint-card break-inside-avoid rounded-xl bg-white/5 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-white/10 hover:border-white/20 hover:-translate-y-1 group" role="listitem" tabindex="0" aria-labelledby="housing-heading">
+                  <div class="relative h-48 overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Housing">
+                    <div class="absolute inset-0 bg-gradient-to-t from-amber-900/60 to-transparent"></div>
+                    <div class="absolute top-4 left-4 w-12 h-12 bg-amber-500/90 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                        <i data-lucide="home" class="w-6 h-6 text-white"></i>
+                    </div>
+                  </div>
+                  <div class="pt-6">
+                    <h4 id="housing-heading" class="text-xl font-serif font-bold text-gray-900 mb-2">Housing</h4>
+                    <h5 class="text-lg font-serif text-gray-900 mb-2">Community Housing & Eco-Construction</h5>
+                    <p class="text-gray-600 text-sm leading-relaxed">We explore earthen building, bamboo structures, passive cooling, thermal mass, shared spaces, and resilient community layouts rooted in nature's geometry.</p>
+                  </div>
+                </article>
+
+                <!-- Culture Card -->
+                <article class="blueprint-card break-inside-avoid rounded-xl bg-white/5 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-white/10 hover:border-white/20 hover:-translate-y-1 group" role="listitem" tabindex="0" aria-labelledby="culture-heading">
+                  <div class="relative h-48 overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Culture">
+                    <div class="absolute inset-0 bg-gradient-to-t from-purple-900/60 to-transparent"></div>
+                    <div class="absolute top-4 left-4 w-12 h-12 bg-purple-500/90 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                      <i data-lucide="heart-handshake" class="w-6 h-6 text-white"></i>
+                    </div>
+                  </div>
+                  <div class="pt-6">
+                    <h4 id="culture-heading" class="text-xl font-serif font-bold text-gray-900 mb-2">Culture</h4>
+                    <h5 class="text-lg font-serif text-gray-900 mb-2">Social Fabric & Culture Building</h5>
+                    <p class="text-gray-600 text-sm leading-relaxed">We focus on communication frameworks, conflict resolution, rituals, celebrations, and the deep social architecture that turns a group of people into a living community.</p>
+                  </div>
+                </article>
+
+                <!-- Education Card -->
+                <article class="blueprint-card break-inside-avoid rounded-xl bg-white/5 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-white/10 hover:border-white/20 hover:-translate-y-1 group" role="listitem" tabindex="0" aria-labelledby="education-heading">
+                  <div class="relative h-48 overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Education">
+                    <div class="absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent"></div>
+                    <div class="absolute top-4 left-4 w-12 h-12 bg-teal-500/90 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                      <i data-lucide="book-open" class="w-6 h-6 text-white"></i>
+                    </div>
+                  </div>
+                  <div class="pt-6">
+                    <h4 id="education-heading" class="text-xl font-serif font-bold text-gray-900 mb-2">Education</h4>
+                    <h5 class="text-lg font-serif text-gray-900 mb-2">Learning, Education & Skill Sharing</h5>
+                    <p class="text-gray-600 text-sm leading-relaxed">A blueprint for intergenerational learning — nature-based education, mentorship circles, regenerative skills, and shared knowledge as community wealth. We are understanding community as a living school.</p>
+                  </div>
+                </article>
+
+                <!-- View Blueprint Card (Highlighted) -->
+                <article class="blueprint-card break-inside-avoid bg-gradient-to-br from-gaia-primary to-gaia-dark rounded-2xl shadow-lg border-2 border-gaia-primary/20 overflow-hidden hover:shadow-xl transition-all duration-300 group" role="listitem" tabindex="0" aria-labelledby="view-blueprint-heading">
+                    <div class="relative h-48 overflow-hidden">
+                      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500" alt="Blueprint">
+                      <div class="absolute inset-0 bg-gradient-to-t from-gaia-dark/80 to-transparent"></div>
+                      <div class="absolute top-4 left-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30">
+                        <i data-lucide="file-text" class="w-6 h-6 text-white"></i>
+                      </div>
+                    </div>
+                    <div class="p-6 text-white">
+                      <h4 id="view-blueprint-heading" class="text-xl font-serif font-bold mb-2">View the Blueprint</h4>
+                      <p class="text-emerald-50 text-sm leading-relaxed mb-6">Explore our complete open-source blueprint. Every module, every detail, every lesson learned—all available for you to adapt and improve.</p>
+                      <button class="w-full px-6 py-3 bg-white text-gaia-primary rounded-xl font-medium hover:bg-emerald-50 hover:scale-105 hover:rotate-1 transition-all flex items-center justify-center gap-2 shadow-lg">
+                          Explore Blueprint <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Community Hubs - "From Vision to Reality" -->
+    <section id="hubs" class="py-24 md:py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-serif font-bold text-gaia-dark mb-6">From Vision to Reality</h2>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        GaiaLabs is not just a theory. We are establishing pilot hubs, to test and refine these models in the real world.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="map-pin" class="text-gaia-accent w-5 h-5" aria-hidden="true"></i>
+                            <span>Pilot Sites</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="share-2" class="text-gaia-accent w-5 h-5" aria-hidden="true"></i>
+                            <span>Shared Tools & Methods</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="copy" class="text-gaia-accent w-5 h-5" aria-hidden="true"></i>
+                            <span>Scalable, Replicable Designs</span>
+                        </li>
+                    </ul>
+                    <button class="px-6 py-3 bg-gaia-primary text-white rounded-xl font-medium hover:bg-gaia-dark hover:scale-105 transition-all flex items-center gap-2 shadow-lg focus-visible:ring-2 focus-visible:ring-green-400" aria-label="Apply to Join Pilot Community">
+                        Apply to Join Pilot Community <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <img src="https://images.unsplash.com/photo-1598335624163-443742ac9e6d?w=500&auto=format&fit=crop&q=60" class="rounded-2xl shadow-lg w-full h-48 object-cover transform translate-y-4" alt="Hub 1">
+                  <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&auto=format&fit=crop&q=60" class="rounded-2xl shadow-lg w-full h-48 object-cover transform -translate-y-4" alt="Hub 2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Who Is This For -->
+    <section id="who-for" class="py-24 md:py-32 relative bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">Are You Ready to Co-Create the Future?</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">GaiaLabs is for people who feel the old models no longer work, and who want to co-create regenerative communities rooted in ecology, cooperation, and transparent governance.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 who-for-cards">
+                <article class="glass-card p-6 rounded-2xl hover:bg-white/90 transition-all" role="article" tabindex="0">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-4 text-emerald-600">
+                        <i data-lucide="sprout" class="w-6 h-6" aria-hidden="true"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Regenerative Thinkers</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Permaculturists, ecologists, and land stewards seeking community models that honor nature's patterns.</p>
+                </article>
+                
+                <article class="glass-card p-6 rounded-2xl hover:bg-white/90 transition-all" role="article" tabindex="0">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 text-blue-600">
+                        <i data-lucide="users" class="w-6 h-6" aria-hidden="true"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Community Builders</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Those who've dreamed of intentional communities but lacked the tools and blueprint to make it real.</p>
+                </article>
+                
+                <article class="glass-card p-6 rounded-2xl hover:bg-white/90 transition-all" role="article" tabindex="0">
+                    <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-4 text-purple-600">
+                        <i data-lucide="code" class="w-6 h-6" aria-hidden="true"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Web3 Contributors</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Builders interested in using blockchain for governance, transparency, and regenerative impact.</p>
+                </article>
+                
+                <article class="glass-card p-6 rounded-2xl hover:bg-white/90 transition-all" role="article" tabindex="0">
+                    <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center mb-4 text-amber-600">
+                        <i data-lucide="lightbulb" class="w-6 h-6" aria-hidden="true"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Climate Innovators</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Those seeking systemic solutions beyond individual actions—community-scale regeneration.</p>
+                </article>
+                
+                <article class="glass-card p-6 rounded-2xl hover:bg-white/90 transition-all" role="article" tabindex="0">
+                    <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center mb-4 text-teal-600">
+                        <i data-lucide="heart" class="w-6 h-6" aria-hidden="true"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Cultural Pioneers</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Early believers in new models for living—collaborative, open-minded, visionary.</p>
+                </article>
+                
+                <article class="glass-card p-6 rounded-2xl hover:bg-white/90 transition-all" role="article" tabindex="0">
+                    <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 text-orange-600">
+                        <i data-lucide="compass" class="w-6 h-6" aria-hidden="true"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Seekers of Meaning</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Those ready to trade isolation for belonging, extraction for regeneration, hierarchy for collaboration.</p>
+                </article>
+            </div>
+
+            <!-- CTA Block -->
+            <div class="mt-20 text-center who-for-cta">
+                <div class="max-w-2xl mx-auto">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <button class="px-8 py-4 bg-gaia-primary text-white font-bold rounded-xl hover:bg-gaia-dark transition-all transform hover:-translate-y-1 hover:scale-105 shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400" aria-label="Apply to Join the First 1000">
+                            Apply to Join the First 1000
+                            <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+                        </button>
+                        <button class="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-gaia-primary hover:text-gaia-primary hover:scale-105 transition-all flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400" aria-label="Read the Blueprint Overview">
+                            Read the Blueprint Overview
+                            <i data-lucide="book-open" class="w-4 h-4" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Who We Are / Founder Story -->
+    <section id="about" class="py-24 md:py-32 relative bg-emerald-50/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-sm font-bold text-gaia-primary tracking-widest uppercase mb-2">Who We Are</h2>
+                    <h3 class="text-4xl font-serif font-bold text-gaia-dark mb-6">People Follow Visionaries</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+GaiaLabs was founded by Stefan Lessle, a developer and systems thinker with 16 years of experience building digital platforms and decentralized tools. After a long journey through Europe and Latin America studying regenerative communities, he saw how many struggled with transparent governance and shared responsibility.
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Now based in Ecuador, Stefan is dedicated to bridging ecology and technology—researching land, community dynamics, and regenerative practices while developing tools that help people live together with more trust, clarity, and cooperation. GaiaLabs is not a hobby for him, but a lifelong commitment to designing healthier, human-scale ways of living.                    </p>
+                    </p>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" class="rounded-2xl shadow-xl w-full h-96 object-cover organic-shape" alt="Founder">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
+                        <p class="text-sm font-bold text-gray-400 uppercase mb-1">Founder</p>
+                        <p class="text-lg font-serif font-bold text-gray-900">Stefan Lessle</p>
+                        <p class="text-xs text-gray-500 mt-1">Software Engineer & Community Designer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. What Makes GaiaLabs Different -->
+    <section id="different" class="py-24 md:py-32 relative bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">What Makes GaiaLabs Different</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We're not just another DAO or ecovillage project. Here's what sets us apart.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <article class="p-8 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl border border-emerald-100" role="article" tabindex="0">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center text-white">
+                            <i data-lucide="file-code" class="w-6 h-6" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900">Open-Source Blueprint</h4>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">Unlike proprietary models, our blueprint is fully open-source. Anyone can use, adapt, and improve it. No gatekeeping.</p>
+                </article>
+                
+                <article class="p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100" role="article" tabindex="0">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center text-white">
+                            <i data-lucide="network" class="w-6 h-6" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900">Tech + Ecology Fusion</h4>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">We don't choose between nature and technology. We use blockchain for transparency and trust, while staying grounded in ecological principles.</p>
+                </article>
+                
+                <article class="p-8 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl border border-purple-100" role="article" tabindex="0">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center text-white">
+                            <i data-lucide="flask-conical" class="w-6 h-6" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900">Real-World Testing</h4>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">We're not just theorizing. Pilot hubs will test and refine every aspect of the blueprint before scaling globally.</p>
+                </article>
+                
+                <article class="p-8 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-100" role="article" tabindex="0">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center text-white">
+                            <i data-lucide="users-round" class="w-6 h-6" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900">Community-Led Evolution</h4>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">The blueprint evolves through community practice, not top-down planning. Every member shapes what comes next.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. Roadmap to First Community -->
+    <section id="roadmap" class="py-24 md:py-32 relative bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">Roadmap to First Community</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">A clear path from vision to reality. Here's where we're heading.</p>
+            </div>
+            
+            <div class="relative max-w-2xl mx-auto">
+                <!-- Timeline Line -->
+                <div class="absolute left-8 top-0 bottom-24 w-0.5 bg-gradient-to-b from-gaia-primary to-gaia-dark hidden md:block"></div>
+                
+                <div class="space-y-12">
+                    <!-- Phase 1 -->
+                    <div class="relative flex gap-8 items-start">
+                        <div class="flex-shrink-0 w-16 h-16 bg-gaia-dark rounded-full flex items-center justify-center text-white font-bold shadow-lg relative z-10">
+                            1
+                        </div>
+                        <div class="flex-1 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Community Formation & Vision Alignment</h4>
+                            <p class="text-gray-600 text-sm">Gather the first 1000 aligned members, establish shared values, and co-create the foundation of the GaiaLabs blueprint.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Phase 2 -->
+                    <div class="relative flex gap-8 items-start">
+                        <div class="flex-shrink-0 w-16 h-16 bg-gaia-primary rounded-full flex items-center justify-center text-white font-bold shadow-lg relative z-10">
+                            2
+                        </div>
+                        <div class="flex-1 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Blueprint Development & DAO Governance</h4>
+                            <p class="text-gray-600 text-sm">Design and refine the open-source blueprint together—covering ecology, governance, architecture, education, and culture—while launching the DAO and governance framework.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Phase 3 -->
+                    <div class="relative flex gap-8 items-start">
+                        <div class="flex-shrink-0 w-16 h-16 bg-gaia-primary rounded-full flex items-center justify-center text-white font-bold shadow-lg relative z-10">
+                            3
+                        </div>
+                        <div class="flex-1 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">EcoToken Contribution Economy</h4>
+                            <p class="text-gray-600 text-sm">Introduce a transparent, non-speculative token system that recognizes meaningful work and supports a cooperative internal economy.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Phase 4 -->
+                    <div class="relative flex gap-8 items-start">
+                        <div class="flex-shrink-0 w-16 h-16 bg-gaia-primary rounded-full flex items-center justify-center text-white font-bold shadow-lg relative z-10">
+                            4
+                        </div>
+                        <div class="flex-1 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Pilot Community Hubs</h4>
+                            <p class="text-gray-600 text-sm">Launch the first regenerative community hubs, test the blueprint in real conditions, refine it together, and document everything openly for global replication.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Join the Movement - "Become a Founding Member" -->
+    <section id="join" class="py-24 md:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gaia-dark"></div>
+        <!-- Organic texture overlay -->
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Become a Founding Member</h2>
+            <p class="text-emerald-100 text-lg mb-4 max-w-2xl mx-auto">
+                Help us shape the blueprint. Join a curated group of regenerative thinkers, builders, and creators.
+            </p>
+            <p class="text-emerald-200 text-sm mb-2">Already 120 applied</p>
+            <p class="text-emerald-50 text-sm mb-10 max-w-xl mx-auto">
+                We're looking for permaculturists, community builders, Web3 contributors, regenerative designers, and anyone committed to co-creating a better way to live together.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="px-8 py-4 bg-gaia-accent text-white font-bold rounded-xl hover:bg-white hover:text-gaia-dark transition-all transform hover:-translate-y-1 hover:scale-105 hover:rotate-1 shadow-xl shadow-orange-900/20 hover:shadow-orange-900/40 focus-visible:ring-2 focus-visible:ring-orange-400" aria-label="Apply for Membership">
+                    Apply for Membership
+                </button>
+                <button class="px-8 py-4 bg-transparent border-2 border-emerald-400 text-emerald-100 font-medium rounded-xl hover:bg-emerald-800 hover:scale-105 transition-all focus-visible:ring-2 focus-visible:ring-emerald-400" aria-label="Read the Manifesto">
+                    Read the Manifesto
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Footer - "Stay Connected" -->
+    <footer class="bg-gray-50 border-t border-gray-200 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                    <i data-lucide="sprout" class="text-gaia-primary h-6 w-6"></i>
+                    <span class="font-serif font-bold text-xl text-gray-900">GaiaLabs</span>
+                </div>
+                    <p class="text-gray-500 mb-6 max-w-sm">
+                        We are co-creating the blueprint for regenerative living. Join us to design communities that thrive in harmony with nature.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gaia-primary hover:border-gaia-primary transition-all focus-visible:ring-2 focus-visible:ring-green-400" aria-label="Follow us on Twitter"><i data-lucide="twitter" class="w-5 h-5" aria-hidden="true"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gaia-primary hover:border-gaia-primary transition-all focus-visible:ring-2 focus-visible:ring-green-400" aria-label="View our GitHub"><i data-lucide="github" class="w-5 h-5" aria-hidden="true"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gaia-primary hover:border-gaia-primary transition-all focus-visible:ring-2 focus-visible:ring-green-400" aria-label="Join our Discord"><i data-lucide="disc" class="w-5 h-5" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Ecosystem</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#blueprint" class="hover:text-gaia-primary transition-colors focus-visible:ring-2 focus-visible:ring-green-400 rounded px-1 py-0.5">Blueprint</a></li>
+                        <li><a href="#governance" class="hover:text-gaia-primary transition-colors focus-visible:ring-2 focus-visible:ring-green-400 rounded px-1 py-0.5">Governance</a></li>
+                        <li><a href="#ecotoken" class="hover:text-gaia-primary transition-colors focus-visible:ring-2 focus-visible:ring-green-400 rounded px-1 py-0.5">EcoToken</a></li>
+                        <li><a href="#hubs" class="hover:text-gaia-primary transition-colors focus-visible:ring-2 focus-visible:ring-green-400 rounded px-1 py-0.5">Community Hubs</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Stay Updated</h4>
+                    <p class="text-xs text-gray-400 mb-3">Subscribe to our newsletter for updates.</p>
+                    <form class="flex gap-2" aria-label="Newsletter subscription">
+                        <input type="email" placeholder="Email address" class="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:border-gaia-primary focus-visible:ring-2 focus-visible:ring-green-400" aria-label="Email address" required>
+                        <button type="submit" class="bg-gaia-primary text-white p-2 rounded-lg hover:bg-gaia-dark transition-colors focus-visible:ring-2 focus-visible:ring-green-400" aria-label="Subscribe to newsletter"><i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                <div class="mb-4 md:mb-0">
+                &copy; 2025 GaiaLabs DAO. Built with Regenerative Principles.
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-gaia-primary">Privacy Policy</a>
+                    <a href="#" class="hover:text-gaia-primary">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // --- 1. Navbar Glass Effect on Scroll ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-panel');
+            } else {
+                navbar.classList.remove('glass-panel');
+            }
+        });
+
+        // --- 2. GSAP Animations ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Check for reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Hero Reveal
+        if (!prefersReducedMotion) {
+            const tl = gsap.timeline();
+            tl.from('.hero-text', { y: 50, opacity: 0, duration: 1, ease: "power3.out" })
+              .from('.hero-sub', { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.6")
+              .from('.hero-cta', { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+              .from('.hero-visual', { x: 50, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.8");
+        } else {
+            // Instant show for reduced motion
+            gsap.set(['.hero-text', '.hero-sub', '.hero-cta', '.hero-visual'], { opacity: 1 });
+        }
+
+        // Reveal Cards in "Why" section
+        if (!prefersReducedMotion) {
+            gsap.utils.toArray('.reveal-card').forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: { trigger: card, start: "top 85%" },
+                    y: 50, opacity: 0, duration: 0.8, delay: i * 0.2, ease: "power2.out"
+                });
+            });
+        }
+
+        // Image Stagger in Vision
+        if (!prefersReducedMotion) {
+            gsap.utils.toArray('.reveal-img').forEach((img, i) => {
+                gsap.from(img, {
+                    scrollTrigger: { trigger: img, start: "top 85%" },
+                    y: 50, opacity: 0, duration: 1, delay: i * 0.2, ease: "power2.out"
+                });
+            });
+        }
+
+        // "Who Is This For?" cards stagger
+        if (!prefersReducedMotion) {
+            gsap.utils.toArray('.who-for-cards article').forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: { 
+                        trigger: card, 
+                        start: "top 90%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 40, 
+                    opacity: 0, 
+                    duration: 0.8, 
+                    delay: i * 0.1, 
+                    ease: "power2.out"
+                });
+            });
+
+            // Set initial state for CTA
+            gsap.set('.who-for-cta', { y: 60, opacity: 0 });
+
+            // Animate CTA from below
+            gsap.to('.who-for-cta', {
+                scrollTrigger: { 
+                    trigger: '.who-for-cta', 
+                    start: "top 90%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out"
+            });
+        } else {
+            // Show immediately for reduced motion
+            gsap.set('.who-for-cta', { opacity: 1 });
+        }
+
+        // "What Makes GaiaLabs Different" section cards stagger
+        if (!prefersReducedMotion) {
+            gsap.utils.toArray('#different article').forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: { 
+                        trigger: card, 
+                        start: "top 90%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 40, 
+                    opacity: 0, 
+                    duration: 0.8, 
+                    delay: i * 0.15, 
+                    ease: "power2.out"
+                });
+            });
+        }
+
+        // "Approach" section cards stagger
+        if (!prefersReducedMotion) {
+            gsap.utils.toArray('#approach article').forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: { 
+                        trigger: card, 
+                        start: "top 90%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 40, 
+                    opacity: 0, 
+                    duration: 0.8, 
+                    delay: i * 0.15, 
+                    ease: "power2.out"
+                });
+            });
+        }
+
+        // Blueprint Cards Animation
+        if (!prefersReducedMotion) {
+            // First, set all cards to be invisible initially
+            const blueprintCards = document.querySelectorAll(".blueprint-card");
+            blueprintCards.forEach(card => {
+                gsap.set(card, {
+                    opacity: 0,
+                    y: 40
+                });
+            });
+
+            // Then animate them when scrolled into view
+            gsap.to(".blueprint-card", {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "power3.out",
+                stagger: 0.15,
+                scrollTrigger: {
+                    trigger: "#blueprint",
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        } else {
+            // Show immediately for reduced motion
+            gsap.set(".blueprint-card", { opacity: 1, y: 0 });
+        }
+
+        // --- New Governance Scroll Logic ---
+        const govTriggers = document.querySelectorAll('.governance-feature');
+        const govDetails = document.querySelectorAll('.gov-detail');
+        const govDetailsMobile = document.querySelectorAll('.gov-detail-mobile');
+        const governanceContainer = document.getElementById('governance-container');
+        
+        // Set initial state
+        if(govTriggers.length > 0) {
+          if (govDetails.length > 0) {
+            gsap.set(govDetails[0], { opacity: 1, zIndex: 2 });
+          }
+          gsap.set(govTriggers[0], { opacity: 1, paddingLeft: "1rem" }); // Highlight first item
+          
+          // Mobile: Show first detail
+          if (govDetailsMobile.length > 0) {
+            const firstMobile = govDetailsMobile[0];
+            gsap.set(firstMobile, { opacity: 1, maxHeight: "1000px" });
+          }
+        }
+
+        function updateGovernance(index) {
+          // Animate Desktop Details
+          govDetails.forEach((detail, i) => {
+            if (i === index) {
+              gsap.to(detail, { opacity: 1, duration: 0.5, zIndex: 2 });
+            } else {
+              gsap.to(detail, { opacity: 0, duration: 0.5, zIndex: 1 });
+            }
+          });
+
+          // Animate Mobile Details
+          govDetailsMobile.forEach((detail, i) => {
+            if (i === index) {
+              gsap.to(detail, { opacity: 1, maxHeight: "1000px", duration: 0.5 });
+            } else {
+              gsap.to(detail, { opacity: 0, maxHeight: "0px", duration: 0.5 });
+            }
+          });
+
+          // Animate Triggers (Active State)
+          govTriggers.forEach((trigger, i) => {
+            if (i === index) {
+              gsap.to(trigger, { opacity: 1, duration: 0.3, paddingLeft: "1rem" });
+            } else {
+              gsap.to(trigger, { opacity: 0.3, duration: 0.3, paddingLeft: "0" });
+            }
+          });
+        }
+
+        // Setup scroll triggers - wait for page load
+        window.addEventListener('load', () => {
+          ScrollTrigger.refresh();
+          
+          const isDesktop = window.innerWidth >= 1024;
+          
+          if (isDesktop && governanceContainer && govTriggers.length > 0) {
+            // Increase scroll distance for smoother, slower experience
+            // 2 full viewport heights allows comfortable time for each of the 2 items
+            const scrollDistance = window.innerHeight * 2;
+            
+            // Create one master timeline for the pinning
+            // Start pinning when container reaches 80px from top (accounting for navbar)
+            ScrollTrigger.create({
+              trigger: governanceContainer,
+              start: "top 80px",
+              end: `+=${scrollDistance}`,
+              pin: true,
+              pinSpacing: true,
+              anticipatePin: 1,
+              scrub: 0.5, // Smooth scrubbing
+              onUpdate: (self) => {
+                // Calculate active index based on overall progress
+                // Map 0-1 progress to 0-(length-1) index
+                const progress = self.progress;
+                // Use a slightly eased mapping or direct linear
+                const rawIndex = progress * (govTriggers.length - 0.1); // -0.1 ensures we don't hit length exactly
+                const activeIndex = Math.floor(rawIndex);
+                const clampedIndex = Math.min(Math.max(0, activeIndex), govTriggers.length - 1);
+                
+                updateGovernance(clampedIndex);
+              }
+            });
+          } else {
+            // Mobile: Individual trigger detection
+            govTriggers.forEach((trigger, index) => {
+              ScrollTrigger.create({
+                trigger: trigger,
+                start: "top center", 
+                end: "bottom center",
+                onEnter: () => updateGovernance(index),
+                onEnterBack: () => updateGovernance(index)
+              });
+            });
+          }
+        });
+        
+        // Fallback: if load event already fired, set up immediately
+        if (document.readyState === 'complete') {
+          window.dispatchEvent(new Event('load'));
+        }
+
+        // Reinitialize icons for mobile detail buttons
+        if (govDetailsMobile.length > 0) {
+          setTimeout(() => lucide.createIcons(), 100);
+        }
+        
+        // Handle window resize to reinitialize scroll triggers
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            ScrollTrigger.refresh();
+          }, 250);
+        });
+
+
+        // --- 3. Calmer Mycelium Network Canvas Animation ---
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        let particles = [];
+        
+        // Configuration - Calmer settings
+        const particleCount = window.innerWidth < 768 ? 30 : 50; // Fewer particles
+        const connectionDistance = 180;
+        const mouseDistance = 250;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        const mouse = { x: null, y: null };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                // Much slower velocity for "calm" effect
+                this.vx = (Math.random() - 0.5) * 0.2; 
+                this.vy = (Math.random() - 0.5) * 0.2;
+                this.size = Math.random() * 2 + 1;
+                // Darker green/gray color for visibility on light bg
+                this.color = 'rgba(5, 150, 105, '; 
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0) this.x = width;
+                if (this.x > width) this.x = 0;
+                if (this.y < 0) this.y = height;
+                if (this.y > height) this.y = 0;
+
+                if (mouse.x != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouseDistance) {
+                        const forceDirectionX = dx / distance;
+                        const forceDirectionY = dy / distance;
+                        const force = (mouseDistance - distance) / mouseDistance;
+                        // Gentle push
+                        const directionX = forceDirectionX * force * 0.5; 
+                        const directionY = forceDirectionY * force * 0.5;
+                        this.vx -= directionX * 0.1;
+                        this.vy -= directionY * 0.1;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color + '0.3)';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let distance = Math.sqrt(dx*dx + dy*dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        let opacity = 1 - (distance / connectionDistance);
+                        // Very subtle line color
+                        ctx.strokeStyle = 'rgba(5, 150, 105,' + (opacity * 0.1) + ')';
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        initParticles();
+        animate();
+
+        // Floating CTA Button (Mobile)
+        const floatingCTA = document.getElementById('floating-cta');
+        if (floatingCTA) {
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 300) {
+                    floatingCTA.classList.remove('translate-y-20');
+                    floatingCTA.classList.add('translate-y-0');
+                } else {
+                    floatingCTA.classList.add('translate-y-20');
+                    floatingCTA.classList.remove('translate-y-0');
+                }
+                lastScroll = currentScroll;
+            });
+        }
+
+    </script>
+
+    <!-- Floating CTA Button (Mobile) -->
+    <a href="#join" id="floating-cta" class="fixed bottom-6 right-6 z-50 md:hidden bg-gaia-accent text-white px-6 py-4 rounded-full shadow-2xl font-bold flex items-center gap-2 transition-all duration-300 translate-y-20 hover:scale-110 hover:rotate-2 hover:shadow-orange-900/40 focus-visible:ring-2 focus-visible:ring-orange-400" aria-label="Apply Now">
+        <span>Apply Now</span>
+        <i data-lucide="arrow-up" class="w-5 h-5" aria-hidden="true"></i>
+    </a>
+</body>
+</html>
