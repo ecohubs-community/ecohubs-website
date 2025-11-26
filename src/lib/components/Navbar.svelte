@@ -2,6 +2,7 @@
 	import { Sprout, Menu, X, ArrowRight } from 'lucide-svelte';
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
+	import Logo from '$lib/components/Logo.svelte';
 
 	let scrolled = $state(false);
 	let mobileMenuOpen = $state(false);
@@ -35,11 +36,8 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex items-center justify-between h-20">
 			<!-- Logo -->
-			<a href="/" class="flex-shrink-0 flex items-center gap-2 group" data-sveltekit-preload-data="hover">
-				<Sprout class="h-8 w-8 text-ecohubs-primary group-hover:rotate-12 transition-transform duration-300" aria-hidden="true" />
-				<span class="font-serif font-bold text-2xl tracking-tight text-ecohubs-dark">
-					Eco<span class="text-ecohubs-primary">Hubs</span>
-				</span>
+			<a href="/" class="flex-shrink-0 flex items-center gap-2 group mt-3" data-sveltekit-preload-data="hover">
+				<Logo />
 			</a>
 
 			<!-- Desktop Navigation -->
@@ -66,7 +64,8 @@
 					aria-label="Join Community"
 					data-sveltekit-preload-data="hover"
 				>
-					<span>Join Community</span>
+					<span class="hidden lg:block">Join Community</span>
+					<span class="block lg:hidden">Join</span>
 					<ArrowRight class="h-4 w-4" aria-hidden="true" />
 				</a>
 

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Sprout, Twitter, Github, Disc, ArrowRight } from 'lucide-svelte';
-
+	import Logo from '$lib/components/Logo.svelte';
+	
 	const currentYear = new Date().getFullYear();
 
 	const ecosystemLinks = [
@@ -21,16 +22,14 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
 			<div class="col-span-1 md:col-span-2">
-				<div class="flex items-center gap-2 mb-4">
-					<Sprout class="text-ecohubs-primary h-6 w-6" aria-hidden="true" />
-					<span class="font-serif font-bold text-xl text-gray-900">EcoHubs</span>
-				</div>
+				<Logo />
 				<p class="text-gray-500 mb-6 max-w-sm">
 					We are co-creating the blueprint for regenerative living. Join us to design communities
 					that thrive in harmony with nature.
 				</p>
 				<div class="flex gap-4">
 					{#each socialLinks as link (link.label)}
+						{@const Icon = link.icon}
 						<a
 							href={link.href}
 							class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-ecohubs-primary hover:border-ecohubs-primary transition-all focus-visible:ring-2 focus-visible:ring-green-400"
@@ -38,7 +37,7 @@
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<svelte:component this={link.icon} class="w-5 h-5" aria-hidden="true" />
+							<Icon class="w-5 h-5" aria-hidden="true" />
 						</a>
 					{/each}
 				</div>
