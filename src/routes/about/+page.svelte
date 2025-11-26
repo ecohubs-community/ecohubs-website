@@ -4,8 +4,8 @@
 </script>
 
 <SEO
-	title="About - GaiaLabs.community"
-	description="Learn about GaiaLabs.community, our mission, founder, and team."
+	title="About - EcoHubs.community"
+	description="Learn about EcoHubs.community, our mission, founder, and team."
 />
 
 <Section spacing="xl">
@@ -14,7 +14,7 @@
 		<div class="mt-8">
 			<h2 class="font-serif text-2xl font-semibold text-text-primary mt-8">Mission</h2>
 			<p class="mt-4 text-text-secondary">
-				GaiaLabs.community is dedicated to building sustainable, regenerative intentional
+				EcoHubs.community is dedicated to building sustainable, regenerative intentional
 				communities powered by blockchain technology.
 			</p>
 			<h2 class="font-serif text-2xl font-semibold text-text-primary mt-8">Founder & Team</h2>

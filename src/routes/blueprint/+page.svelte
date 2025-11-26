@@ -4,7 +4,7 @@
 </script>
 
 <SEO
-	title="Living Blueprint - GaiaLabs.community"
+	title="Living Blueprint - EcoHubs.community"
 	description="Explore our evolving blueprint for intentional community development on blockchain."
 />
 

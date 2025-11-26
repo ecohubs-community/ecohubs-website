@@ -75,7 +75,7 @@
 				description: 'We are more connected than ever, yet feel more alone. Traditional community bonds have eroded.'
 			},
 			solution: {
-				text: 'GaiaLabs designs intentional communities where belonging is built-in, not an afterthought.'
+				text: 'EcoHubs designs intentional communities where belonging is built-in, not an afterthought.'
 			}
 		},
 		{
@@ -136,7 +136,7 @@
 			description: 'Every member has a voice. We use Snapshot for gasless, on-chain voting.',
 			detailTitle: 'Your Voice, Your Vote',
 			detailDescription:
-				"Traditional organizations are top-down. GaiaLabs is bottom-up. We use Snapshot to allow token holders to vote on proposals without paying gas fees. Whether it's approving a new budget or changing a community rule, the power rests with the people.",
+				"Traditional organizations are top-down. EcoHubs is bottom-up. We use Snapshot to allow token holders to vote on proposals without paying gas fees. Whether it's approving a new budget or changing a community rule, the power rests with the people.",
 			detailImage:
 				'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800',
 			detailImageAlt: 'Voting',
@@ -383,7 +383,7 @@
 		}
 	];
 
-	// What Makes GaiaLabs Different Data
+	// What Makes EcoHubs Different Data
 	const differentiatorCards = [
 		{
 			icon: FileCode,
@@ -425,7 +425,7 @@
 			phase: 1,
 			title: 'Community Formation & Vision Alignment',
 			description:
-				'Gather the first 1000 aligned members, establish shared values, and co-create the foundation of the GaiaLabs blueprint.'
+				'Gather the first 1000 aligned members, establish shared values, and co-create the foundation of the EcoHubs blueprint.'
 		},
 		{
 			phase: 2,
@@ -449,8 +449,8 @@
 </script>
 
 <SEO
-	title="GaiaLabs.community - A Regenerative Future Designed Together"
-	description="Join GaiaLabs.community in co-creating the world's first open-source blueprint for regenerative communities powered by blockchain technology. Be part of the first 1000."
+	title="EcoHubs.community - A Regenerative Future Designed Together"
+	description="Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities powered by blockchain technology. Be part of the first 1000."
 />
 
 <Hero />
@@ -459,7 +459,7 @@
 <section id="why" class="py-24 md:py-32 relative bg-white/50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16 max-w-3xl mx-auto">
-			<h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">Why We Need New Models</h2>
+			<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-4">Why We Need New Models</h2>
 			<p class="text-gray-600 text-lg">Modern society faces disconnection, ecological crisis, and fragmentation. We are redesigning how we live together to restore trust and wholeness.</p>
 		</div>
 
@@ -482,16 +482,16 @@
 					<img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-2xl shadow-lg" alt="Plants">
 				</div>
 				<!-- Decorative Circle -->
-				<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gaia-primary/20 rounded-[100%] scale-110 animate-pulse"></div>
-				<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gaia-primary/20 rounded-[100%] scale-110 animate-pulse animate-delay-1000 rotate-45"></div>
-				<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gaia-primary/20 rounded-[100%] scale-110 animate-pulse animate-delay-2000 rotate-90"></div>
-        <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gaia-primary/20 rounded-[100%] scale-110 animate-pulse animate-delay-3000 rotate-135"></div>
+				<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-ecohubs-primary/20 rounded-[100%] scale-110 animate-pulse"></div>
+				<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-ecohubs-primary/20 rounded-[100%] scale-110 animate-pulse animate-delay-1000 rotate-45"></div>
+				<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-ecohubs-primary/20 rounded-[100%] scale-110 animate-pulse animate-delay-2000 rotate-90"></div>
+        <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-ecohubs-primary/20 rounded-[100%] scale-110 animate-pulse animate-delay-3000 rotate-135"></div>
 			</div>
 
 			<!-- Text -->
 			<div>
-				<h2 class="text-sm font-bold text-gaia-primary tracking-widest uppercase mb-2">The Vision</h2>
-				<h3 class="text-4xl md:text-5xl font-serif font-bold text-gaia-dark mb-6 leading-tight">
+				<h2 class="text-sm font-bold text-ecohubs-primary tracking-widest uppercase mb-2">The Vision</h2>
+				<h3 class="text-4xl md:text-5xl font-serif font-bold text-ecohubs-dark mb-6 leading-tight">
 					A Living Blueprint for <br> <span class="text-gradient">Regenerative Life</span>
 				</h3>
 				<p class="text-gray-600 text-lg mb-6 leading-relaxed">
@@ -499,19 +499,19 @@
 				</p>
 				<ul class="space-y-4">
 					<li class="flex items-center gap-3 text-gray-700">
-						<Sprout class="text-gaia-primary w-5 h-5" aria-hidden="true" />
+						<Sprout class="text-ecohubs-primary w-5 h-5" aria-hidden="true" />
 						<span>Ecological Design & Permaculture</span>
 					</li>
 					<li class="flex items-center gap-3 text-gray-700">
-						<UsersRound class="text-gaia-primary w-5 h-5" aria-hidden="true" />
+						<UsersRound class="text-ecohubs-primary w-5 h-5" aria-hidden="true" />
 						<span>Participatory Culture & Governance</span>
 					</li>
 					<li class="flex items-center gap-3 text-gray-700">
-						<Repeat class="text-gaia-primary w-5 h-5" aria-hidden="true" />
+						<Repeat class="text-ecohubs-primary w-5 h-5" aria-hidden="true" />
 						<span>Circular Community Economies</span>
 					</li>
 					<li class="flex items-center gap-3 text-gray-700">
-						<HeartHandshake class="text-gaia-primary w-5 h-5" aria-hidden="true" />
+						<HeartHandshake class="text-ecohubs-primary w-5 h-5" aria-hidden="true" />
 						<span>Strong Social Fabric & Conflict Resolution</span>
 					</li>
 				</ul>
@@ -524,15 +524,15 @@
 <section id="approach" class="py-24 md:py-32 relative bg-emerald-50/50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16">
-			<h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">Technology That Serves Life</h2>
+			<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-4">Technology That Serves Life</h2>
 			<p class="text-gray-600 max-w-2xl mx-auto mb-4">Technology can be extractive—but it can also unlock solutions that communities struggled with for generations. We use it consciously, choosing digital tools that strengthen transparency, cooperation, and ecological integrity.</p>
-			<p class="text-gaia-primary font-medium max-w-xl mx-auto">Inspired by nature, we apply modern systems without becoming dependent on them. Technology supports life, not the other way around.</p>
+			<p class="text-ecohubs-primary font-medium max-w-xl mx-auto">Inspired by nature, we apply modern systems without becoming dependent on them. Technology supports life, not the other way around.</p>
 		</div>
 
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 			{#each approachCards as card, index (card.title)}
 				<div class="bg-white p-8 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-					<div class="text-gaia-primary mb-4"><svelte:component this={card.icon} class="w-10 h-10" aria-hidden="true" /></div>
+					<div class="text-ecohubs-primary mb-4"><svelte:component this={card.icon} class="w-10 h-10" aria-hidden="true" /></div>
 					<h4 class="text-xl font-bold text-gray-900 mb-2">{card.title}</h4>
 					<p class="text-gray-500 text-sm leading-relaxed">{card.description}</p>
 				</div>
@@ -545,7 +545,7 @@
 <section id="governance" class="py-24 md:py-32 relative bg-white">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16 max-w-3xl mx-auto">
-			<h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">Power to the Community</h2>
+			<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-4">Power to the Community</h2>
 			<p class="text-gray-600">Blockchain technology enables trust without hierarchy. Our DAO ecosystem ensures transparency and collective agency.</p>
 		</div>
 
@@ -558,8 +558,8 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 			<div class="order-2 lg:order-1">
-				<h2 class="text-4xl font-serif font-bold text-gaia-dark mb-6">
-					A Contribution Economy That <span class="text-gaia-accent">Rewards Real Work</span>
+				<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-6">
+					A Contribution Economy That <span class="text-ecohubs-accent">Rewards Real Work</span>
 				</h2>
 				<p class="text-gray-600 mb-8 text-lg">
 					EcoToken rewards those who grow food, build infrastructure, care for others, teach
@@ -588,7 +588,7 @@
 <section id="blueprint" class="py-24 md:py-32 relative bg-gray-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16">
-			<h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">
+			<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-4">
 				Building the Future Together
 		</h2>
 			<p class="text-gray-600 max-w-2xl mx-auto">
@@ -611,27 +611,27 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 			<div>
-				<h2 class="text-4xl font-serif font-bold text-gaia-dark mb-6">From Vision to Reality</h2>
+				<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-6">From Vision to Reality</h2>
 				<p class="text-gray-600 mb-6 text-lg">
-					GaiaLabs is not just a theory. We are establishing pilot hubs, to test and refine these models in the real world.
+					EcoHubs is not just a theory. We are establishing pilot hubs, to test and refine these models in the real world.
 				</p>
 				<ul class="space-y-4 mb-8">
 					<li class="flex items-center gap-3 text-gray-700">
-						<MapPin class="text-gaia-accent w-5 h-5" aria-hidden="true" />
+						<MapPin class="text-ecohubs-accent w-5 h-5" aria-hidden="true" />
 						<span>Pilot Sites</span>
 					</li>
 					<li class="flex items-center gap-3 text-gray-700">
-						<Share2 class="text-gaia-accent w-5 h-5" aria-hidden="true" />
+						<Share2 class="text-ecohubs-accent w-5 h-5" aria-hidden="true" />
 						<span>Shared Tools & Methods</span>
 					</li>
 					<li class="flex items-center gap-3 text-gray-700">
-						<Copy class="text-gaia-accent w-5 h-5" aria-hidden="true" />
+						<Copy class="text-ecohubs-accent w-5 h-5" aria-hidden="true" />
 						<span>Scalable, Replicable Designs</span>
 					</li>
 				</ul>
 				<a
 					href="/join"
-					class="px-6 py-3 bg-gaia-primary text-white rounded-xl font-medium hover:bg-gaia-dark hover:scale-105 transition-all inline-flex items-center gap-2 shadow-lg focus-visible:ring-2 focus-visible:ring-green-400"
+					class="px-6 py-3 bg-ecohubs-primary text-white rounded-xl font-medium hover:bg-ecohubs-dark hover:scale-105 transition-all inline-flex items-center gap-2 shadow-lg focus-visible:ring-2 focus-visible:ring-green-400"
 					aria-label="Apply to Join Pilot Community"
 			data-sveltekit-preload-data="hover"
 		>
@@ -644,10 +644,10 @@
           <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-2xl shadow-lg w-full h-48 object-cover transform -translate-y-4" alt="Hub 2">
         </div>
         <!-- Decorative Circle -->
-        <div class="absolute z-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gaia-primary/20 rounded-[100%] scale-110 animate-spin-slow-80 animate-pulse"></div>
-        <div class="absolute z-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gaia-primary/20 rounded-[100%] scale-110 animate-spin-slow-80 animate-pulse rotate-45"></div>
-        <div class="absolute z-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gaia-primary/20 rounded-[100%] scale-110 animate-spin-slow-80 animate-pulse rotate-90"></div>
-        <div class="absolute z-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-gaia-primary/20 rounded-[100%] scale-110 animate-spin-slow-80 animate-pulse rotate-135"></div>
+        <div class="absolute z-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-ecohubs-primary/20 rounded-[100%] scale-110 animate-spin-slow-80 animate-pulse"></div>
+        <div class="absolute z-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-ecohubs-primary/20 rounded-[100%] scale-110 animate-spin-slow-80 animate-pulse rotate-45"></div>
+        <div class="absolute z-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-ecohubs-primary/20 rounded-[100%] scale-110 animate-spin-slow-80 animate-pulse rotate-90"></div>
+        <div class="absolute z-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-ecohubs-primary/20 rounded-[100%] scale-110 animate-spin-slow-80 animate-pulse rotate-135"></div>
 			</div>
 		</div>
 	</div>
@@ -657,8 +657,8 @@
 <section id="who-for" class="py-24 md:py-32 relative bg-white">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16">
-			<h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">Are You Ready to Co-Create the Future?</h2>
-			<p class="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">GaiaLabs is for people who feel the old models no longer work, and who want to co-create regenerative communities rooted in ecology, cooperation, and transparent governance.</p>
+			<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-4">Are You Ready to Co-Create the Future?</h2>
+			<p class="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">EcoHubs is for people who feel the old models no longer work, and who want to co-create regenerative communities rooted in ecology, cooperation, and transparent governance.</p>
 		</div>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 who-for-cards">
@@ -679,7 +679,7 @@
 				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
 					<a
 						href="/join"
-						class="px-8 py-4 bg-gaia-primary text-white font-bold rounded-xl hover:bg-gaia-dark transition-all transform hover:-translate-y-1 hover:scale-105 shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
+						class="px-8 py-4 bg-ecohubs-primary text-white font-bold rounded-xl hover:bg-ecohubs-dark transition-all transform hover:-translate-y-1 hover:scale-105 shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
 						aria-label="Apply to Join the First 1000"
 			data-sveltekit-preload-data="hover"
 		>
@@ -688,7 +688,7 @@
 					</a>
 		<a
 			href="/blueprint"
-						class="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-gaia-primary hover:text-gaia-primary hover:scale-105 transition-all flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
+						class="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-ecohubs-primary hover:text-ecohubs-primary hover:scale-105 transition-all flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
 						aria-label="Read the Blueprint Overview"
 			data-sveltekit-preload-data="hover"
 		>
@@ -706,13 +706,13 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 			<div>
-				<h2 class="text-sm font-bold text-gaia-primary tracking-widest uppercase mb-2">Who We Are</h2>
-				<h3 class="text-4xl font-serif font-bold text-gaia-dark mb-6">People Follow Visionaries</h3>
+				<h2 class="text-sm font-bold text-ecohubs-primary tracking-widest uppercase mb-2">Who We Are</h2>
+				<h3 class="text-4xl font-serif font-bold text-ecohubs-dark mb-6">People Follow Visionaries</h3>
 				<p class="text-gray-600 mb-6 leading-relaxed">
-					GaiaLabs was founded by Stefan Lessle, a developer and systems thinker with 16 years of experience building digital platforms and decentralized tools. After a long journey through Europe and Latin America studying regenerative communities, he saw how many struggled with transparent governance and shared responsibility.
+					EcoHubs was founded by Stefan Lessle, a developer and systems thinker with 16 years of experience building digital platforms and decentralized tools. After a long journey through Europe and Latin America studying regenerative communities, he saw how many struggled with transparent governance and shared responsibility.
 				</p>
 				<p class="text-gray-600 mb-6 leading-relaxed">
-					Now based in Ecuador, Stefan is dedicated to bridging ecology and technology—researching land, community dynamics, and regenerative practices while developing tools that help people live together with more trust, clarity, and cooperation. GaiaLabs is not a hobby for him, but a lifelong commitment to designing healthier, human-scale ways of living.
+					Now based in Ecuador, Stefan is dedicated to bridging ecology and technology—researching land, community dynamics, and regenerative practices while developing tools that help people live together with more trust, clarity, and cooperation. EcoHubs is not a hobby for him, but a lifelong commitment to designing healthier, human-scale ways of living.
 				</p>
 			</div>
 			<div class="relative">
@@ -727,11 +727,11 @@
 	</div>
 </section>
 
-<!-- What Makes GaiaLabs Different -->
+<!-- What Makes EcoHubs Different -->
 <section id="different" class="py-24 md:py-32 relative bg-white">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16">
-			<h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">What Makes GaiaLabs Different</h2>
+			<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-4">What Makes EcoHubs Different</h2>
 			<p class="text-gray-600 max-w-2xl mx-auto">We're not just another DAO or ecovillage project. Here's what sets us apart.</p>
 		</div>
 
@@ -756,18 +756,18 @@
 <section id="roadmap" class="py-24 md:py-32 relative bg-gray-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16">
-			<h2 class="text-4xl font-serif font-bold text-gaia-dark mb-4">Roadmap to First Community</h2>
+			<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-4">Roadmap to First Community</h2>
 			<p class="text-gray-600 max-w-2xl mx-auto">A clear path from vision to reality. Here's where we're heading.</p>
 		</div>
 
 		<div class="relative max-w-2xl mx-auto">
 			<!-- Timeline Line -->
-			<div class="absolute left-8 top-0 bottom-24 w-0.5 bg-linear-to-b from-gaia-primary to-gaia-dark hidden md:block"></div>
+			<div class="absolute left-8 top-0 bottom-24 w-0.5 bg-linear-to-b from-ecohubs-primary to-ecohubs-dark hidden md:block"></div>
 
 			<div class="space-y-12">
 				{#each roadmapPhases as phase, index (phase.phase)}
 					<div class="relative flex gap-8 items-start">
-						<div class="shrink-0 w-16 h-16 {index === 0 ? 'bg-gaia-dark' : 'bg-gaia-primary'} rounded-full flex items-center justify-center text-white font-bold shadow-lg relative z-10">
+						<div class="shrink-0 w-16 h-16 {index === 0 ? 'bg-ecohubs-dark' : 'bg-ecohubs-primary'} rounded-full flex items-center justify-center text-white font-bold shadow-lg relative z-10">
 							{phase.phase}
 						</div>
 						<div class="flex-1 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
@@ -783,7 +783,7 @@
 
 <!-- Final CTA Section -->
 <section id="join" class="py-24 md:py-32 relative overflow-hidden">
-	<div class="absolute inset-0 bg-gaia-dark"></div>
+	<div class="absolute inset-0 bg-ecohubs-dark"></div>
 	<!-- Organic texture overlay -->
 	<div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
 
@@ -799,7 +799,7 @@
 		<div class="flex flex-col sm:flex-row justify-center gap-4">
 			<a
 				href="/join"
-				class="px-8 py-4 bg-gaia-accent text-white font-bold rounded-xl hover:bg-white hover:text-gaia-dark transition-all transform hover:-translate-y-1 hover:scale-105 hover:rotate-1 shadow-xl shadow-orange-900/20 hover:shadow-orange-900/40 focus-visible:ring-2 focus-visible:ring-orange-400"
+				class="px-8 py-4 bg-ecohubs-accent text-white font-bold rounded-xl hover:bg-white hover:text-ecohubs-dark transition-all transform hover:-translate-y-1 hover:scale-105 hover:rotate-1 shadow-xl shadow-orange-900/20 hover:shadow-orange-900/40 focus-visible:ring-2 focus-visible:ring-orange-400"
 				aria-label="Apply for Membership"
 				data-sveltekit-preload-data="hover"
 			>

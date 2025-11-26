@@ -11,8 +11,8 @@
 	];
 
 	const socialLinks = [
-		{ href: 'https://twitter.com/gaialabs', label: 'Twitter', icon: Twitter },
-		{ href: 'https://github.com/gaialabs', label: 'GitHub', icon: Github },
+		{ href: 'https://twitter.com/ecohubs', label: 'Twitter', icon: Twitter },
+		{ href: 'https://github.com/ecohubs', label: 'GitHub', icon: Github },
 		{ href: '#', label: 'Discord', icon: Disc }
 	];
 </script>
@@ -22,8 +22,8 @@
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
 			<div class="col-span-1 md:col-span-2">
 				<div class="flex items-center gap-2 mb-4">
-					<Sprout class="text-gaia-primary h-6 w-6" aria-hidden="true" />
-					<span class="font-serif font-bold text-xl text-gray-900">GaiaLabs</span>
+					<Sprout class="text-ecohubs-primary h-6 w-6" aria-hidden="true" />
+					<span class="font-serif font-bold text-xl text-gray-900">EcoHubs</span>
 				</div>
 				<p class="text-gray-500 mb-6 max-w-sm">
 					We are co-creating the blueprint for regenerative living. Join us to design communities
@@ -33,7 +33,7 @@
 					{#each socialLinks as link (link.label)}
 						<a
 							href={link.href}
-							class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gaia-primary hover:border-gaia-primary transition-all focus-visible:ring-2 focus-visible:ring-green-400"
+							class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-ecohubs-primary hover:border-ecohubs-primary transition-all focus-visible:ring-2 focus-visible:ring-green-400"
 							aria-label="Follow us on {link.label}"
 							target="_blank"
 							rel="noopener noreferrer"
@@ -51,7 +51,7 @@
 						<li>
 							<a
 								href={link.href}
-								class="hover:text-gaia-primary transition-colors focus-visible:ring-2 focus-visible:ring-green-400 rounded px-0 py-0.5"
+								class="hover:text-ecohubs-primary transition-colors focus-visible:ring-2 focus-visible:ring-green-400 rounded px-0 py-0.5"
 								data-sveltekit-preload-data="hover"
 							>
 								{link.label}
@@ -68,13 +68,13 @@
 					<input
 						type="email"
 						placeholder="Email address"
-						class="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:border-gaia-primary focus-visible:ring-2 focus-visible:ring-green-400"
+						class="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:border-ecohubs-primary focus-visible:ring-2 focus-visible:ring-green-400"
 						aria-label="Email address"
 						required
 					/>
 					<button
 						type="submit"
-						class="bg-gaia-primary text-white p-2 rounded-lg hover:bg-gaia-dark transition-colors focus-visible:ring-2 focus-visible:ring-green-400"
+						class="bg-ecohubs-primary text-white p-2 rounded-lg hover:bg-ecohubs-dark transition-colors focus-visible:ring-2 focus-visible:ring-green-400"
 						aria-label="Subscribe to newsletter"
 					>
 						<ArrowRight class="w-4 h-4" aria-hidden="true" />
@@ -87,11 +87,11 @@
 			class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400"
 		>
 			<div class="mb-4 md:mb-0">
-				&copy; {currentYear} GaiaLabs DAO. Built with Regenerative Principles.
+				&copy; {currentYear} EcoHubs DAO. Built with Regenerative Principles.
 			</div>
 			<div class="flex gap-6">
-				<a href="/privacy" class="hover:text-gaia-primary">Privacy Policy</a>
-				<a href="/terms" class="hover:text-gaia-primary">Terms of Service</a>
+				<a href="/privacy" class="hover:text-ecohubs-primary">Privacy Policy</a>
+				<a href="/terms" class="hover:text-ecohubs-primary">Terms of Service</a>
 			</div>
 		</div>
 	</div>

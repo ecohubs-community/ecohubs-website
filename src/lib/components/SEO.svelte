@@ -12,8 +12,8 @@
 	}
 
 	let {
-		title = 'GaiaLabs.community - Building Intentional Communities on Blockchain',
-		description = 'Join GaiaLabs.community in creating sustainable, regenerative intentional communities powered by blockchain technology.',
+		title = 'EcoHubs.community - Building Intentional Communities on Blockchain',
+		description = 'Join EcoHubs.community in creating sustainable, regenerative intentional communities powered by blockchain technology.',
 		canonical,
 		ogImage = '/og-image.jpg',
 		twitterCard = 'summary_large_image',
@@ -21,7 +21,7 @@
 		noindex = false
 	}: Props = $props();
 
-	const siteUrl = browser ? window.location.origin : 'https://gaialabs.community';
+	const siteUrl = browser ? window.location.origin : 'https://ecohubs.community';
 	const canonicalUrl = canonical || (browser ? window.location.href : siteUrl);
 	const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
@@ -30,19 +30,19 @@
 		{
 			'@context': 'https://schema.org',
 			'@type': 'Organization',
-			name: 'GaiaLabs.community',
+			name: 'EcoHubs.community',
 			url: siteUrl,
 			logo: `${siteUrl}/logo.png`,
 			description: 'Building intentional communities on blockchain',
 			sameAs: [
-				'https://github.com/gaialabs',
+				'https://github.com/ecohubs',
 				// Add other social media links as needed
 			]
 		},
 		{
 			'@context': 'https://schema.org',
 			'@type': 'WebSite',
-			name: 'GaiaLabs.community',
+			name: 'EcoHubs.community',
 			url: siteUrl,
 			description: description
 		}

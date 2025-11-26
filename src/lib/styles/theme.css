@@ -100,13 +100,13 @@
   --font-serif: 'Pridi', serif;
   --font-sans: 'Stack Sans Headline', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  /* Gaia Colors */
-  --color-gaia-base: #fbfbf9;
-  --color-gaia-text: #1c1917;
-  --color-gaia-primary: #059669;
-  --color-gaia-dark: #064e3b;
-  --color-gaia-accent: #d97706;
-  --color-gaia-light: #a7f3d0;
+  /* EcoHubs Colors */
+  --color-ecohubs-base: #fbfbf9;
+  --color-ecohubs-text: #1c1917;
+  --color-ecohubs-primary: #059669;
+  --color-ecohubs-dark: #064e3b;
+  --color-ecohubs-accent: #d97706;
+  --color-ecohubs-light: #a7f3d0;
 
   /* Spacing Scale */
   --spacing-xs: 0.5rem;

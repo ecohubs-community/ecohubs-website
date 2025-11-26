@@ -4,7 +4,7 @@
 </script>
 
 <SEO
-	title="Blog - GaiaLabs.community"
+	title="Blog - EcoHubs.community"
 	description="Read our latest articles about intentional communities, blockchain technology, and regenerative practices."
 />
 

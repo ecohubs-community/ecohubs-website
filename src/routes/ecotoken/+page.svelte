@@ -4,7 +4,7 @@
 </script>
 
 <SEO
-	title="EcoToken - GaiaLabs.community"
+	title="EcoToken - EcoHubs.community"
 	description="Learn about EcoToken: non-speculative token economics designed for community sustainability and Ecuador compliance."
 />
 

@@ -4,8 +4,8 @@
 </script>
 
 <SEO
-	title="Join Us - GaiaLabs.community"
-	description="Apply to join GaiaLabs.community and be part of the first 1000 founding members."
+	title="Join Us - EcoHubs.community"
+	description="Apply to join EcoHubs.community and be part of the first 1000 founding members."
 />
 
 <Section spacing="xl">

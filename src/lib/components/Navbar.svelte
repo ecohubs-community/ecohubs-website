@@ -36,9 +36,9 @@
 		<div class="flex items-center justify-between h-20">
 			<!-- Logo -->
 			<a href="/" class="flex-shrink-0 flex items-center gap-2 group" data-sveltekit-preload-data="hover">
-				<Sprout class="h-8 w-8 text-gaia-primary group-hover:rotate-12 transition-transform duration-300" aria-hidden="true" />
-				<span class="font-serif font-bold text-2xl tracking-tight text-gaia-dark">
-					Gaia<span class="text-gaia-primary">Labs</span>
+				<Sprout class="h-8 w-8 text-ecohubs-primary group-hover:rotate-12 transition-transform duration-300" aria-hidden="true" />
+				<span class="font-serif font-bold text-2xl tracking-tight text-ecohubs-dark">
+					Eco<span class="text-ecohubs-primary">Hubs</span>
 				</span>
 			</a>
 
@@ -48,7 +48,7 @@
 					{#each navLinks as link (link.href)}
 						<a
 							href={link.href}
-							class="hover:text-gaia-primary transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-green-400 rounded px-2 py-1"
+							class="hover:text-ecohubs-primary transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-green-400 rounded px-2 py-1"
 							aria-label={link.label}
 							data-sveltekit-preload-data="hover"
 						>
@@ -62,7 +62,7 @@
 			<div class="flex items-center gap-4">
 				<a
 					href="/join"
-					class="hidden md:flex items-center gap-2 bg-gaia-dark text-white px-6 py-2.5 rounded-full font-sans text-sm font-medium transition-all duration-300 hover:bg-gaia-primary hover:shadow-lg hover:shadow-emerald-900/20 transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-green-400"
+					class="hidden md:flex items-center gap-2 bg-ecohubs-dark text-white px-6 py-2.5 rounded-full font-sans text-sm font-medium transition-all duration-300 hover:bg-ecohubs-primary hover:shadow-lg hover:shadow-emerald-900/20 transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-green-400"
 					aria-label="Join Community"
 					data-sveltekit-preload-data="hover"
 				>
@@ -72,7 +72,7 @@
 
 				<!-- Mobile menu button -->
 				<button
-					class="md:hidden text-gaia-dark hover:text-gaia-primary focus-visible:ring-2 focus-visible:ring-green-400 rounded p-1"
+					class="md:hidden text-ecohubs-dark hover:text-ecohubs-primary focus-visible:ring-2 focus-visible:ring-green-400 rounded p-1"
 					aria-label={mobileMenuOpen ? 'Close mobile menu' : 'Open mobile menu'}
 					aria-expanded={mobileMenuOpen}
 					onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
@@ -89,12 +89,12 @@
 
 	<!-- Mobile Menu -->
 	{#if mobileMenuOpen}
-		<div class="md:hidden glass-panel border-t border-gaia-primary/10">
+		<div class="md:hidden glass-panel border-t border-ecohubs-primary/10">
 			<div class="px-4 pt-4 pb-6 space-y-3">
 				{#each navLinks as link (link.href)}
 					<a
 						href={link.href}
-						class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-gaia-primary hover:bg-white/50 transition-all focus-visible:ring-2 focus-visible:ring-green-400"
+						class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-ecohubs-primary hover:bg-white/50 transition-all focus-visible:ring-2 focus-visible:ring-green-400"
 						onclick={() => (mobileMenuOpen = false)}
 						data-sveltekit-preload-data="hover"
 					>
@@ -103,7 +103,7 @@
 				{/each}
 				<a
 					href="/join"
-					class="block px-4 py-3 bg-gaia-primary text-white text-center rounded-lg font-medium hover:bg-gaia-dark transition-colors focus-visible:ring-2 focus-visible:ring-green-400"
+					class="block px-4 py-3 bg-ecohubs-primary text-white text-center rounded-lg font-medium hover:bg-ecohubs-dark transition-colors focus-visible:ring-2 focus-visible:ring-green-400"
 					onclick={() => (mobileMenuOpen = false)}
 					data-sveltekit-preload-data="hover"
 				>

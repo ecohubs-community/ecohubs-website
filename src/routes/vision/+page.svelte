@@ -4,7 +4,7 @@
 </script>
 
 <SEO
-	title="Vision - GaiaLabs.community"
+	title="Vision - EcoHubs.community"
 	description="Our vision for building sustainable, regenerative intentional communities powered by blockchain technology."
 />
 
@@ -13,7 +13,7 @@
 		<h1 class="font-serif text-4xl font-bold text-text-primary sm:text-5xl">Our Vision</h1>
 		<div class="mt-8">
 			<p class="text-lg text-text-secondary">
-				GaiaLabs.community envisions a future where intentional communities thrive through
+				EcoHubs.community envisions a future where intentional communities thrive through
 				blockchain technology, creating sustainable, regenerative ecosystems that benefit both
 				people and the planet.
 			</p>

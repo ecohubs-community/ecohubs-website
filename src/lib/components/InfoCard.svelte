@@ -17,7 +17,7 @@
 </script>
 
 <article
-	class="glass-card rounded-2xl p-8 transition-all-smooth hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gaia-primary focus-visible:ring-offset-2"
+	class="glass-card rounded-2xl p-8 transition-all-smooth hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ecohubs-primary focus-visible:ring-offset-2"
 	tabindex="0"
 >
 	<div class="flex items-start gap-4 mb-4">
@@ -28,8 +28,8 @@
 	</div>
 	<p class="text-gray-600 leading-relaxed mb-4">{description}</p>
 	{#if solution}
-		<div class="pt-4 border-t border-gaia-primary/10">
-			<p class="text-gaia-primary font-medium text-sm flex items-center gap-2">
+		<div class="pt-4 border-t border-ecohubs-primary/10">
+			<p class="text-ecohubs-primary font-medium text-sm flex items-center gap-2">
 				<svelte:component this={icon} class="w-4 h-4" aria-hidden="true" />
 				{solution}
 			</p>

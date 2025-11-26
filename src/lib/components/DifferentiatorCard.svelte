@@ -17,7 +17,7 @@
 </script>
 
 <article
-	class="glass-card rounded-2xl p-8 bg-gradient-to-br {gradientFrom} {gradientTo} transition-all-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gaia-primary focus-visible:ring-offset-2"
+	class="glass-card rounded-2xl p-8 bg-gradient-to-br {gradientFrom} {gradientTo} transition-all-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ecohubs-primary focus-visible:ring-offset-2"
 	tabindex="0"
 >
 	<div class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white mb-4">

@@ -47,7 +47,7 @@
 
 				<h1
 					bind:this={heroText}
-					class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-4 text-gaia-dark opacity-0 translate-y-6 transition-all duration-1000"
+					class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-4 text-ecohubs-dark opacity-0 translate-y-6 transition-all duration-1000"
 				>
 					A Regenerative Future
 					<span class="text-gradient">Designed Together</span>
@@ -61,7 +61,7 @@
 				<div bind:this={heroCta} class="mt-12 flex flex-col sm:flex-row gap-4 opacity-0 translate-y-5 transition-all duration-800 delay-600">
 					<a
 						href="/join"
-						class="px-8 py-4 bg-gaia-primary text-white font-medium rounded-xl hover:bg-gaia-dark transition-all shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 hover:scale-105 hover:rotate-1 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
+						class="px-8 py-4 bg-ecohubs-primary text-white font-medium rounded-xl hover:bg-ecohubs-dark transition-all shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 hover:scale-105 hover:rotate-1 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
 						aria-label="Join the First 1000 Pioneers"
 						data-sveltekit-preload-data="hover"
 					>
@@ -70,7 +70,7 @@
 					</a>
 					<a
 						href="/vision"
-						class="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-gaia-primary hover:text-gaia-primary hover:scale-105 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
+						class="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-ecohubs-primary hover:text-ecohubs-primary hover:scale-105 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
 						aria-label="See the Blueprint Vision"
 						data-sveltekit-preload-data="hover"
 					>

@@ -1,6 +1,6 @@
 import type { RequestHandler } from './$types';
 
-const siteUrl = 'https://gaialabs.community';
+const siteUrl = 'https://ecohubs.community';
 
 const routes = [
 	{ path: '', priority: '1.0', changefreq: 'weekly' },

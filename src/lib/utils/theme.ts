@@ -2,7 +2,7 @@ import { browser } from '$app/environment';
 
 export type Theme = 'light' | 'dark' | 'system';
 
-const THEME_STORAGE_KEY = 'gaialabs-theme';
+const THEME_STORAGE_KEY = 'ecohubs-theme';
 
 export function getStoredTheme(): Theme | null {
 	if (!browser) return null;

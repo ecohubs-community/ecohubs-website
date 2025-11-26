@@ -17,7 +17,7 @@
 </script>
 
 <article
-	class="glass-card rounded-2xl p-6 transition-all-smooth text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gaia-primary focus-visible:ring-offset-2"
+	class="glass-card rounded-2xl p-6 transition-all-smooth text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ecohubs-primary focus-visible:ring-offset-2"
 	tabindex="0"
 >
 	<div class="w-16 h-16 rounded-full {iconBg} flex items-center justify-center {iconColor} mx-auto mb-4">

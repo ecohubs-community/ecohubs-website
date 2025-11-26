@@ -1,6 +1,6 @@
-# GaiaLabs.community
+# EcoHubs.community
 
-A SvelteKit static site for GaiaLabs.community - building intentional communities on blockchain.
+A SvelteKit static site for EcoHubs.community - building intentional communities on blockchain.
 
 ## Features
 
@@ -151,4 +151,4 @@ The site is configured for static generation. After building:
 
 ## License
 
-Private - GaiaLabs.community
+Private - EcoHubs.community

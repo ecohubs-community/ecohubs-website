@@ -27,12 +27,12 @@
   <h3 class="text-xl font-bold text-gray-900 mb-3">{title}</h3>
   <p class="text-gray-500 leading-relaxed mb-3 max-w-prose">{description}</p>
 
-  <button onclick={() => solutionOpen = !solutionOpen} class="inline-flex bg-white text-gaia-primary items-center justify-center gap-2 cursor-pointer mt-4">
+  <button onclick={() => solutionOpen = !solutionOpen} class="inline-flex bg-white text-ecohubs-primary items-center justify-center gap-2 cursor-pointer mt-4">
     {solutionOpen ? 'Hide Solution' : 'Our Solution'}
     <ChevronDown class="w-4 h-4 {solutionOpen ? 'rotate-180' : 'rotate-0'} transition-transform duration-300" aria-hidden="true" />
   </button>
-  <div class="flex gap-4 border-t border-gaia-primary/10 pt-4 opacity-0 transition-all duration-200 {solutionOpen ? 'opacity-100 mt-4' : 'opacity-0 h-0'}">
+  <div class="flex gap-4 border-t border-ecohubs-primary/10 pt-4 opacity-0 transition-all duration-200 {solutionOpen ? 'opacity-100 mt-4' : 'opacity-0 h-0'}">
     <Check class="h-16 w-16 text-green-500" />
-    <p class="text-md font-medium text-gaia-primary text-left max-w-prose mx-auto">{solution}</p>
+    <p class="text-md font-medium text-ecohubs-primary text-left max-w-prose mx-auto">{solution}</p>
   </div>
 </div>

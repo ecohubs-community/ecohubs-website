@@ -1,6 +1,6 @@
-# Project Specification: GaiaLabs.community
+# Project Specification: EcoHubs.community
 
-You are an expert full-stack frontend engineer and designer who delivers production-ready Svelte apps with excellent UX, SEO, accessibility, and modern animations. Build a Svelte 5 project (a Runes app) for GaiaLabs.community using SvelteKit (pre-rendered static pages), Tailwind CSS v4, and an architecture ready to deploy on Vercel or a self-hosted Node server. The project must reflect the aesthetic of Ethereum Infinite Garden + Regen.Network: organic, poetic, nature-forward visuals combined with crisp modern UI and Web3 credibility.
+You are an expert full-stack frontend engineer and designer who delivers production-ready Svelte apps with excellent UX, SEO, accessibility, and modern animations. Build a Svelte 5 project (a Runes app) for EcoHubs.community using SvelteKit (pre-rendered static pages), Tailwind CSS v4, and an architecture ready to deploy on Vercel or a self-hosted Node server. The project must reflect the aesthetic of Ethereum Infinite Garden + Regen.Network: organic, poetic, nature-forward visuals combined with crisp modern UI and Web3 credibility.
 
 ## High-level Goals (Must Achieve)
 
@@ -118,27 +118,27 @@ Build reusable, accessible components with Tailwind utility classes and variants
 # Project Identity
 
 ## **Project Name:**  
-GaiaLabs.community
+EcoHubs.community
 
 ## **Tagline (optional):**  
 Co-Creating the Blueprint for Regenerative Living
 
 ## **Core Description:**  
-GaiaLabs.community is a regenerative, DAO-driven ecosystem designed to research, co-create, and prototype the models for future sustainable communities. It blends ecological design, decentralized governance systems, and contribution-based local economies into a living blueprint that can be applied to real-world intentional community hubs around the world.
+EcoHubs.community is a regenerative, DAO-driven ecosystem designed to research, co-create, and prototype the models for future sustainable communities. It blends ecological design, decentralized governance systems, and contribution-based local economies into a living blueprint that can be applied to real-world intentional community hubs around the world.
 
-GaiaLabs is not a single ecovillage — it is a **global community lab**, a collaborative network where innovators, creators, and pioneers work together to design and implement regenerative living systems supported by Web3 governance tools.
+EcoHubs is not a single ecovillage — it is a **global community lab**, a collaborative network where innovators, creators, and pioneers work together to design and implement regenerative living systems supported by Web3 governance tools.
 
 ---
 
 # Vision
 
 ## **High-Level Vision**
-GaiaLabs envisions a world where communities live in harmony with ecosystems, where governance is transparent and participatory, and where human collaboration aligns with nature’s patterns. We aim to design a new model for living — grounded, regenerative, cooperative, and technologically empowered.
+EcoHubs envisions a world where communities live in harmony with ecosystems, where governance is transparent and participatory, and where human collaboration aligns with nature’s patterns. We aim to design a new model for living — grounded, regenerative, cooperative, and technologically empowered.
 
 Our ambition is to become the **leading open-source blueprint** for regenerative community building, enabling millions to live in environments that support emotional wellbeing, ecological regeneration, and collective flourishing.
 
 ## **Long-Term Vision**
-- A global network of **GaiaLabs Hubs** — ecological, self-sustaining community nodes.
+- A global network of **EcoHubs Hubs** — ecological, self-sustaining community nodes.
 - A universal **open-source blueprint** for intentional communities.
 - A DAO-led governance system accessible to all members.
 - A legally compliant **EcoToken** contribution economy for internal value exchange.
@@ -159,11 +159,11 @@ To develop, refine, and empower regenerative communities through:
 - **Community Collaboration**
 - **Ethical Technology**
 
-GaiaLabs aims to become the bridge between **nature-centric living** and **future-centric technology**.
+EcoHubs aims to become the bridge between **nature-centric living** and **future-centric technology**.
 
 ---
 
-# What GaiaLabs Is
+# What EcoHubs Is
 
 - A **living blueprint** for intentional communities.
 - A **DAO-governed research lab** for regenerative living.
@@ -173,7 +173,7 @@ GaiaLabs aims to become the bridge between **nature-centric living** and **futur
 
 ---
 
-# Key Components of the GaiaLabs Ecosystem
+# Key Components of the EcoHubs Ecosystem
 
 ## **1. The DAO**
 - Snapshot-based gasless voting.  
@@ -204,7 +204,7 @@ A modular framework covering:
 
 The blueprint evolves through collaboration, research, and real-world experimentation.
 
-## **4. GaiaLabs Community Hubs**
+## **4. EcoHubs Community Hubs**
 Physical pilot communities implement the blueprint:
 - Starting in Ecuador (Andean + coastal possibilities)
 - Later expanding globally
@@ -237,7 +237,7 @@ Physical pilot communities implement the blueprint:
 - Low ego, collective wisdom forward  
 - Emotionally warm, technically competent  
 
-### Use **"we"** instead of "I" when speaking for GaiaLabs.
+### Use **"we"** instead of "I" when speaking for EcoHubs.
 
 ### Avoid:
 - Overly technical jargon unless needed.
@@ -269,7 +269,7 @@ Physical pilot communities implement the blueprint:
 - regenerative culture
 - open-source
 - experimentation
-- Gaia
+- EcoHubs
 
 ---
 
@@ -284,7 +284,7 @@ Physical pilot communities implement the blueprint:
 # 🧬 Storytelling Anchors  
 Use these repeatedly, in content, descriptions, and onboarding journeys:
 
-1. **Gaia as living metaphor**  
+1. **EcoHubs as living metaphor**  
    The Earth as a self-organizing, intelligent system.
 
 2. **Mycelium networks**  
@@ -331,7 +331,7 @@ Open-minded, visionary, collaborative.
 - Deeply involved in decentralized technologies and blockchain ecosystem.  
 - Lifelong learner with curiosity for ecology, regenerative culture, and community design.  
 - Passionate about building open-source systems that empower people to live in alignment with nature.  
-- Currently developing the GaiaLabs vision while living and working across Ecuador, researching land, community dynamics, and regenerative practices.
+- Currently developing the EcoHubs vision while living and working across Ecuador, researching land, community dynamics, and regenerative practices.
 
 **Founder Tone:**  
 Warm, visionary, humble, practical, technically knowledgeable.
@@ -407,7 +407,7 @@ Warm, visionary, humble, practical, technically knowledgeable.
 
 # Final Notes  
 This file must guide ALL agent-generated content.  
-It defines the **soul** and **shape** of GaiaLabs.community communications.
+It defines the **soul** and **shape** of EcoHubs.community communications.
 
 Any generated content must align with:
 - regenerative values  

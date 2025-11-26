@@ -28,7 +28,7 @@
 	} = $props();
 
 	const cardClasses = variant === 'cta'
-		? 'break-inside-avoid rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 hover:-translate-y-1 group bg-linear-to-br from-gaia-primary to-gaia-dark border-2 border-gaia-primary/20'
+		? 'break-inside-avoid rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 hover:-translate-y-1 group bg-linear-to-br from-ecohubs-primary to-ecohubs-dark border-2 border-ecohubs-primary/20'
 		: 'break-inside-avoid rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 hover:-translate-y-1 group bg-white border border-emerald-100 hover:border-emerald-200';
 </script>
 
@@ -45,7 +45,7 @@
 				class="w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500 rounded-xl "
 				alt={imageAlt}
 			/>
-			<div class="absolute inset-0 bg-gradient-to-t from-gaia-dark/80 to-transparent"></div>
+			<div class="absolute inset-0 bg-gradient-to-t from-ecohubs-dark/80 to-transparent"></div>
 			<div class="absolute top-4 left-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30">
 				<Icon class="w-6 h-6 text-white" aria-hidden="true" />
 			</div>
@@ -60,7 +60,7 @@
 			<p class="text-emerald-50 text-sm leading-relaxed mb-6">{description}</p>
 			<a
 				href={link}
-				class="w-full px-6 py-3 bg-white text-gaia-primary rounded-xl font-medium hover:bg-emerald-50 hover:scale-105 hover:rotate-1 transition-all flex items-center justify-center gap-2 shadow-lg"
+				class="w-full px-6 py-3 bg-white text-ecohubs-primary rounded-xl font-medium hover:bg-emerald-50 hover:scale-105 hover:rotate-1 transition-all flex items-center justify-center gap-2 shadow-lg"
 			>
 				Explore Blueprint
 				<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -85,7 +85,7 @@
 		<div class="pt-6">
 			<h4
 				id="{heading.toLowerCase().replace(/\s+/g, '-')}-heading"
-				class="text-xl font-serif font-bold text-gaia-dark mb-2"
+				class="text-xl font-serif font-bold text-ecohubs-dark mb-2"
 			>
 				{heading}
 			</h4>

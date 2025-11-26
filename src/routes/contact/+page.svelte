@@ -4,8 +4,8 @@
 </script>
 
 <SEO
-	title="Contact - GaiaLabs.community"
-	description="Get in touch with GaiaLabs.community. We'd love to hear from you."
+	title="Contact - EcoHubs.community"
+	description="Get in touch with EcoHubs.community. We'd love to hear from you."
 />
 
 <Section spacing="xl">

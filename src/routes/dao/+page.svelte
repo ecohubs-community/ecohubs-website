@@ -4,7 +4,7 @@
 </script>
 
 <SEO
-	title="DAO Governance - GaiaLabs.community"
+	title="DAO Governance - EcoHubs.community"
 	description="Learn about our decentralized autonomous organization (DAO) structure and governance model."
 />
 
@@ -19,7 +19,7 @@
 			<h2 class="font-serif text-2xl font-semibold text-text-primary mt-8">Governance</h2>
 			<p class="mt-4 text-text-secondary">
 				Community proposals are voted on using Snapshot, a gasless polling platform. All
-				members can participate in shaping the future of GaiaLabs.community.
+				members can participate in shaping the future of EcoHubs.community.
 			</p>
 			<h2 class="font-serif text-2xl font-semibold text-text-primary mt-8">Treasury</h2>
 			<p class="mt-4 text-text-secondary">

@@ -18,7 +18,7 @@
 </script>
 
 <div
-	class="flex items-start gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gaia-primary rounded-lg transition-all-smooth hover:bg-white/50"
+	class="flex items-start gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ecohubs-primary rounded-lg transition-all-smooth hover:bg-white/50"
 	tabindex="0"
 >
 	<div
