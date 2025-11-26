@@ -1,45 +1,57 @@
 <script lang="ts">
+	import { Sprout, Twitter, Github, Disc, ArrowRight } from 'lucide-svelte';
+
 	const currentYear = new Date().getFullYear();
 
-	const navLinks = [
-		{ href: '/vision', label: 'Vision' },
-		{ href: '/dao', label: 'DAO' },
-		{ href: '/ecotoken', label: 'EcoToken' },
+	const ecosystemLinks = [
 		{ href: '/blueprint', label: 'Blueprint' },
-		{ href: '/about', label: 'About' },
-		{ href: '/blog', label: 'Blog' },
-		{ href: '/contact', label: 'Contact' }
+		{ href: '/dao', label: 'Governance' },
+		{ href: '/ecotoken', label: 'EcoToken' },
+		{ href: '/vision', label: 'Community Hubs' }
 	];
 
 	const socialLinks = [
-		{ href: 'https://github.com/gaialabs', label: 'GitHub', icon: 'github' },
-		// Add more social links as needed
+		{ href: 'https://twitter.com/gaialabs', label: 'Twitter', icon: Twitter },
+		{ href: 'https://github.com/gaialabs', label: 'GitHub', icon: Github },
+		{ href: '#', label: 'Discord', icon: Disc }
 	];
 </script>
 
-<footer class="border-t border-border bg-surface">
-	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-		<div class="grid grid-cols-1 gap-8 md:grid-cols-4">
-			<!-- Brand Section -->
+<footer class="bg-gray-50 border-t border-gray-200 pt-16 pb-8">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
 			<div class="col-span-1 md:col-span-2">
-				<h2 class="font-serif text-2xl font-bold text-text-primary">GaiaLabs.community</h2>
-				<p class="mt-4 text-sm text-text-secondary">
-					Building intentional communities on blockchain. Regenerative, sustainable, and
-					community-driven.
+				<div class="flex items-center gap-2 mb-4">
+					<Sprout class="text-gaia-primary h-6 w-6" aria-hidden="true" />
+					<span class="font-serif font-bold text-xl text-gray-900">GaiaLabs</span>
+				</div>
+				<p class="text-gray-500 mb-6 max-w-sm">
+					We are co-creating the blueprint for regenerative living. Join us to design communities
+					that thrive in harmony with nature.
 				</p>
+				<div class="flex gap-4">
+					{#each socialLinks as link (link.label)}
+						<a
+							href={link.href}
+							class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gaia-primary hover:border-gaia-primary transition-all focus-visible:ring-2 focus-visible:ring-green-400"
+							aria-label="Follow us on {link.label}"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<svelte:component this={link.icon} class="w-5 h-5" aria-hidden="true" />
+						</a>
+					{/each}
+				</div>
 			</div>
 
-			<!-- Navigation Links -->
 			<div>
-				<h3 class="font-serif text-sm font-semibold uppercase tracking-wider text-text-primary">
-					Navigation
-				</h3>
-				<ul class="mt-4 space-y-2">
-					{#each navLinks as link (link.href)}
+				<h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Ecosystem</h4>
+				<ul class="space-y-3 text-sm text-gray-500">
+					{#each ecosystemLinks as link (link.href)}
 						<li>
 							<a
 								href={link.href}
-								class="text-sm text-text-secondary transition-colors hover:text-text-primary"
+								class="hover:text-gaia-primary transition-colors focus-visible:ring-2 focus-visible:ring-green-400 rounded px-0 py-0.5"
 								data-sveltekit-preload-data="hover"
 							>
 								{link.label}
@@ -49,46 +61,38 @@
 				</ul>
 			</div>
 
-			<!-- Social Links -->
 			<div>
-				<h3 class="font-serif text-sm font-semibold uppercase tracking-wider text-text-primary">
-					Connect
-				</h3>
-				<ul class="mt-4 space-y-2">
-					{#each socialLinks as link (link.href)}
-						<li>
-							<a
-								href={link.href}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="text-sm text-text-secondary transition-colors hover:text-text-primary"
-							>
-								{link.label}
-							</a>
-						</li>
-					{/each}
-				</ul>
+				<h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Stay Updated</h4>
+				<p class="text-xs text-gray-400 mb-3">Subscribe to our newsletter for updates.</p>
+				<form class="flex gap-2" aria-label="Newsletter subscription">
+					<input
+						type="email"
+						placeholder="Email address"
+						class="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:border-gaia-primary focus-visible:ring-2 focus-visible:ring-green-400"
+						aria-label="Email address"
+						required
+					/>
+					<button
+						type="submit"
+						class="bg-gaia-primary text-white p-2 rounded-lg hover:bg-gaia-dark transition-colors focus-visible:ring-2 focus-visible:ring-green-400"
+						aria-label="Subscribe to newsletter"
+					>
+						<ArrowRight class="w-4 h-4" aria-hidden="true" />
+					</button>
+				</form>
 			</div>
 		</div>
 
-		<!-- Bottom Section -->
-		<div class="mt-12 border-t border-border pt-8">
-			<div class="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
-				<p class="text-sm text-text-tertiary">
-					&copy; {currentYear} GaiaLabs.community. All rights reserved.
-				</p>
-				<div class="flex space-x-6">
-					<a
-						href="/join"
-						class="text-sm text-text-secondary transition-colors hover:text-text-primary"
-						data-sveltekit-preload-data="hover"
-					>
-						Join Us
-					</a>
-					<!-- Add more legal links as needed -->
-				</div>
+		<div
+			class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400"
+		>
+			<div class="mb-4 md:mb-0">
+				&copy; {currentYear} GaiaLabs DAO. Built with Regenerative Principles.
+			</div>
+			<div class="flex gap-6">
+				<a href="/privacy" class="hover:text-gaia-primary">Privacy Policy</a>
+				<a href="/terms" class="hover:text-gaia-primary">Terms of Service</a>
 			</div>
 		</div>
 	</div>
 </footer>
-
