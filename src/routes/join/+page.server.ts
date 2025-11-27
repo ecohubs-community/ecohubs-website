@@ -33,19 +33,71 @@ export const actions: Actions = {
 			const data = form.data as ApplicationFormData;
 
 			const applicationData: ApplicationEmailData = {
+				// PAGE 1
 				fullName: data.fullName,
 				email: data.email,
 				location: data.location,
-				background: data.background,
-				backgroundOther: data.backgroundOther,
+				timeAvailability: data.timeAvailability,
+				languages: data.languages,
+				discovery: data.discovery,
+				
+				// PAGE 2
+				resonance: data.resonance,
+				missingInSociety: data.missingInSociety,
+				attraction: data.attraction,
+				values: data.values,
+				alignmentWithNature: data.alignmentWithNature,
+				
+				// PAGE 3
+				groupWork: data.groupWork,
+				teamworkMoment: data.teamworkMoment,
+				disagreementResponse: data.disagreementResponse,
+				disagreementResponseOther: data.disagreementResponseOther,
+				ideaNotChosen: data.ideaNotChosen,
+				ideaNotChosenOther: data.ideaNotChosenOther,
+				comfortFeedback: data.comfortFeedback,
+				comfortAskingHelp: data.comfortAskingHelp,
+				adaptToChange: data.adaptToChange,
+				decisionMakingValue: data.decisionMakingValue,
+				personalPatternOptional: data.personalPatternOptional,
+				
+				// PAGE 4
 				motivation: data.motivation,
-				skills: data.skills,
-				involvement: data.involvement,
-				timeline: data.timeline,
-				communityExperience: data.communityExperience,
-				communityDetails: data.communityDetails,
-				questions: data.questions,
-				referral: data.referral,
+				contribution: data.contribution,
+				receiveLearn: data.receiveLearn,
+				communityMeaning: data.communityMeaning,
+				joiningReason: data.joiningReason,
+				
+				// PAGE 5
+				experienceAreas: data.experienceAreas,
+				experienceAreasOther: data.experienceAreasOther,
+				proudProject: data.proudProject,
+				bestWorkEnvironments: data.bestWorkEnvironments,
+				
+				// PAGE 6
+				manageCommitments: data.manageCommitments,
+				obstaclesToContribution: data.obstaclesToContribution,
+				stability: data.stability,
+				stabilityComment: data.stabilityComment,
+				commitmentLevel: data.commitmentLevel,
+				
+				// PAGE 7
+				reactToIdeasNotChosen: data.reactToIdeasNotChosen,
+				collaborationChallenges: data.collaborationChallenges,
+				personalPattern: data.personalPattern,
+				howOthersDescribe: data.howOthersDescribe,
+				
+				// PAGE 8
+				whatExcites: data.whatExcites,
+				concernsDoubts: data.concernsDoubts,
+				howStartContributing: data.howStartContributing,
+				anythingElse: data.anythingElse,
+				
+				// PAGE 9
+				lifeMeaning: data.lifeMeaning,
+				responsibilityMeaning: data.responsibilityMeaning,
+				freedomMeaning: data.freedomMeaning,
+				
 				timestamp,
 			};
 
@@ -101,9 +153,12 @@ export const actions: Actions = {
 									{
 										fields: {
 											...data,
-											involvement: Array.isArray(data.involvement) 
-												? data.involvement.join(', ') 
-												: data.involvement,
+											values: Array.isArray(data.values) 
+												? data.values.join(', ') 
+												: data.values,
+											experienceAreas: Array.isArray(data.experienceAreas) 
+												? data.experienceAreas.join(', ') 
+												: data.experienceAreas,
 											submittedAt: timestamp,
 											status: 'New',
 										},
@@ -130,46 +185,109 @@ export const actions: Actions = {
 
 function formatApplicationForGitHub(data: ApplicationEmailData): string {
 	return `
-## Applicant Information
+## Page 1: Basic Information
 
 **Name:** ${data.fullName}
 **Email:** ${data.email}
 **Location:** ${data.location}
+**Time Availability:** ${data.timeAvailability}
+**Languages:** ${data.languages}
+**How Discovered:** ${data.discovery}
 
-## Background
+## Page 2: Values & Alignment
 
-**Field:** ${data.background}
-${data.backgroundOther ? `**Details:** ${data.backgroundOther}
-` : ''}
+**What Resonates:** ${data.resonance}
 
-## Motivation
+**What's Missing in Society:** ${data.missingInSociety}
 
-${data.motivation}
+**What Attracts You:** ${data.attraction}
 
-## Skills & Experience
+**Essential Values:** ${Array.isArray(data.values) ? data.values.join(', ') : data.values}
 
-${data.skills}
+**Living in Alignment:** ${data.alignmentWithNature}
 
-## Involvement Preferences
+## Page 3: Collaboration & Self-Awareness
 
-**Type:** ${Array.isArray(data.involvement) ? data.involvement.join(', ') : data.involvement}
-**Timeline:** ${data.timeline}
+**What Helps Groups Work:** ${data.groupWork}
 
-## Community Experience
+**Teamwork Moment:** ${data.teamworkMoment}
 
-**Previous Experience:** ${data.communityExperience}
-${data.communityDetails ? `
-**Details:** ${data.communityDetails}
-` : ''}
+**Disagreement Response:** ${data.disagreementResponse}
+${data.disagreementResponseOther ? `**Details:** ${data.disagreementResponseOther}\n` : ''}
 
-## Additional Information
+**Idea Not Chosen Response:** ${data.ideaNotChosen}
+${data.ideaNotChosenOther ? `**Details:** ${data.ideaNotChosenOther}\n` : ''}
 
-${data.questions || 'N/A'}
+**Comfort Receiving Feedback:** ${data.comfortFeedback}/10
+**Comfort Asking for Help:** ${data.comfortAskingHelp}/10
+**Adapt to Change:** ${data.adaptToChange}/10
 
-**Referral Source:** ${data.referral || 'Not specified'}
+**Decision-Making Value:** ${data.decisionMakingValue}
+
+${data.personalPatternOptional ? `**Personal Pattern (Optional):** ${data.personalPatternOptional}\n` : ''}
+
+## Page 4: Motivation & Contribution
+
+**Motivation:** ${data.motivation}
+
+**What to Contribute:** ${data.contribution}
+
+**What to Receive/Learn:** ${data.receiveLearn}
+
+**Community Meaning:** ${data.communityMeaning}
+
+**Joining Reason:** ${data.joiningReason}
+
+## Page 5: Experience & Skills
+
+**Experience Areas:** ${Array.isArray(data.experienceAreas) ? data.experienceAreas.join(', ') : data.experienceAreas}
+${data.experienceAreasOther ? `**Other:** ${data.experienceAreasOther}\n` : ''}
+
+**Proud Project:** ${data.proudProject}
+
+**Best Work Environments:** ${data.bestWorkEnvironments}
+
+## Page 6: Commitment & Stability
+
+**Manage Commitments:** ${data.manageCommitments}
+
+**Obstacles to Contribution:** ${data.obstaclesToContribution}
+
+**Stability:** ${data.stability}
+${data.stabilityComment ? `**Comment:** ${data.stabilityComment}\n` : ''}
+
+**Commitment Level:** ${data.commitmentLevel}
+
+## Page 7: Self-Reflection
+
+**React to Ideas Not Chosen:** ${data.reactToIdeasNotChosen}
+
+**Collaboration Challenges:** ${data.collaborationChallenges}
+
+**Personal Pattern:** ${data.personalPattern}
+
+**How Others Describe You:** ${data.howOthersDescribe}
+
+## Page 8: Vision & Concerns
+
+**What Excites:** ${data.whatExcites}
+
+**Concerns/Doubts:** ${data.concernsDoubts}
+
+**How to Start Contributing:** ${data.howStartContributing}
+
+${data.anythingElse ? `**Anything Else:** ${data.anythingElse}\n` : ''}
+
+## Page 9: Consciousness & Meaning
+
+**Life Meaning:** ${data.lifeMeaning}
+
+**Responsibility Meaning:** ${data.responsibilityMeaning}
+
+**Freedom Meaning:** ${data.freedomMeaning}
 
 ---
 
-*Submitted: ${new Date().toLocaleString()}*
+*Submitted: ${new Date(data.timestamp).toLocaleString()}*
 `;
 }

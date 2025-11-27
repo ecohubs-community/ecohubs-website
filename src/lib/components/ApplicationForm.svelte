@@ -14,14 +14,13 @@
 
 	let { data }: Props = $props();
 
-	let currentStep = $state(0);
-	let previousStep = $state(-1);
+	let currentPage = $state(1);
 	let isSubmitting = $state(false);
 	let submitSuccess = $state(false);
 	let submitError = $state('');
 	
-	// Local state for current input (handles both string and array values)
-	let currentInputValue = $state<string | string[]>('');
+	// Local state for all inputs on current page
+	let pageInputValues = $state<Record<string, string | string[] | number>>({});
 
 	// Initialize superForm
 	const superform = superForm(data.form, {
@@ -30,31 +29,41 @@
 		dataType: 'json',
 		resetForm: false,
 		onSubmit: async ({ cancel }) => {
-			// If not on last step, cancel default submission
-			if (currentStep !== visibleQuestions.length - 1) {
+			// If not on last page, cancel default submission and validate page
+			if (currentPage !== totalPages) {
 				cancel();
 				
-				// Validate current question
-				const validationResult = currentQuestion.validationSchema.safeParse(currentInputValue);
-
-				if (validationResult.success) {
-					// Sync current input to form, save, and move to next step
-					syncCurrentToForm();
+				// Validate all questions on current page
+				const validationErrors = validateCurrentPage();
+				
+				if (validationErrors.length === 0) {
+					// Sync all inputs to form, save, and move to next page
+					syncPageToForm();
 					saveToLocalStorage();
-					clearCurrentError();
-					currentStep++;
+					currentPage++;
 				} else {
-					// Show validation error
-					const error = JSON.parse(JSON.stringify(validationResult.error));
-					$errors[currentQuestion.id as keyof typeof $errors] = error.issues;
-					scrollToError();
+					// Show validation errors
+					validationErrors.forEach((error) => {
+						$errors[error.questionId as keyof typeof $errors] = error.issues;
+					});
+					scrollToFirstError();
 				}
 			} else {
-				// On last step, allow form submission
-				isSubmitting = true;
-				submitError = '';
-				syncCurrentToForm();
-				saveToLocalStorage();
+				// On last page, validate before submission
+				const validationErrors = validateCurrentPage();
+				
+				if (validationErrors.length === 0) {
+					syncPageToForm();
+					saveToLocalStorage();
+					isSubmitting = true;
+					submitError = '';
+				} else {
+					cancel();
+					validationErrors.forEach((error) => {
+						$errors[error.questionId as keyof typeof $errors] = error.issues;
+					});
+					scrollToFirstError();
+				}
 			}
 		},
 		onResult: ({ result }) => {
@@ -72,36 +81,109 @@
 	
 	const { form, errors, enhance } = superform;
 
-  onMount(() => {
-   	const saved = localStorage.getItem('ecohubs-application-draft');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        Object.assign($form, parsed);
-      } catch (e) {
-        console.error('Failed to load draft:', e);
-      }
-    }
-  });
+	onMount(() => {
+		const saved = localStorage.getItem('ecohubs-application-draft');
+		if (saved) {
+			try {
+				const parsed = JSON.parse(saved);
+				Object.assign($form, parsed);
+			} catch (e) {
+				console.error('Failed to load draft:', e);
+			}
+		}
+		// Initialize page inputs from form
+		loadPageInputs();
+	});
 
 	// Filter visible questions based on conditionals
 	const visibleQuestions = $derived(
 		applicationQuestions.filter((q) => {
 			if (!q.conditionalOn) return true;
-			return $form[q.conditionalOn.questionId] === q.conditionalOn.value;
+			const formValue = $form[q.conditionalOn.questionId];
+			// Handle checkbox arrays - check if array includes the value
+			if (Array.isArray(formValue)) {
+				return formValue.includes(q.conditionalOn.value);
+			}
+			// Handle single values (radio, select, etc.)
+			return formValue === q.conditionalOn.value;
 		})
 	);
 
-	const currentQuestion = $derived(visibleQuestions[currentStep]);
-	const progress = $derived(((currentStep + 1) / visibleQuestions.length) * 100);
-	const isLastStep = $derived(currentStep === visibleQuestions.length - 1);
-	const currentError = $derived($errors[currentQuestion?.id as keyof typeof $errors]);
+	// Group questions by page
+	const questionsByPage = $derived.by(() => {
+		const grouped: Record<number, typeof visibleQuestions> = {};
+		visibleQuestions.forEach((q) => {
+			const page = q.page || 1;
+			if (!grouped[page]) {
+				grouped[page] = [];
+			}
+			grouped[page].push(q);
+		});
+		return grouped;
+	});
 
-	// Sync current input value to form
-	function syncCurrentToForm() {
-		if (currentQuestion) {
-			$form[currentQuestion.id as keyof typeof $form] = currentInputValue as any;
-		}
+	// Get total number of pages
+	const totalPages = $derived(Math.max(...Object.keys(questionsByPage).map(Number), 1));
+
+	// Get questions for current page
+	const currentPageQuestions = $derived(questionsByPage[currentPage] || []);
+
+	const progress = $derived((currentPage / totalPages) * 100);
+	const isLastPage = $derived(currentPage === totalPages);
+
+	// Load page inputs from form when page changes
+	$effect(() => {
+		// Track currentPage to reload inputs when page changes
+		const page = currentPage;
+		loadPageInputs();
+	});
+
+	// Load inputs for current page from form
+	function loadPageInputs() {
+		const inputs: Record<string, string | string[] | number> = {};
+		currentPageQuestions.forEach((q: typeof visibleQuestions[number]) => {
+			const formValue = $form[q.id];
+			if (q.type === 'scale') {
+				inputs[q.id] = typeof formValue === 'number' ? formValue : (formValue ? Number(formValue) : 0);
+			} else if (Array.isArray(formValue)) {
+				inputs[q.id] = formValue;
+			} else {
+				inputs[q.id] = String(formValue || '');
+			}
+		});
+		pageInputValues = inputs;
+	}
+
+	// Sync all page inputs to form
+	function syncPageToForm() {
+		currentPageQuestions.forEach((q: typeof visibleQuestions[number]) => {
+			const value = pageInputValues[q.id];
+			if (q.type === 'scale') {
+				$form[q.id as keyof typeof $form] = (typeof value === 'number' ? value : Number(value || 0)) as any;
+			} else {
+				$form[q.id as keyof typeof $form] = value as any;
+			}
+		});
+	}
+
+	// Validate all questions on current page
+	function validateCurrentPage(): Array<{ questionId: string; issues: any[] }> {
+		const errors: Array<{ questionId: string; issues: any[] }> = [];
+		
+		currentPageQuestions.forEach((q: typeof visibleQuestions[number]) => {
+			const value = pageInputValues[q.id];
+			const validationResult = q.validationSchema.safeParse(value);
+			
+			if (!validationResult.success) {
+				const error = JSON.parse(JSON.stringify(validationResult.error));
+				errors.push({
+					questionId: q.id,
+					issues: error.issues,
+				});
+			}
+		});
+		
+		return errors;
 	}
 
 	// Save form to localStorage
@@ -111,29 +193,7 @@
 		}
 	}
 
-	// Load value from form to current input ONLY when step actually changes
-	$effect(() => {
-		if (currentStep !== previousStep) {
-			previousStep = currentStep;
-			
-			if (currentQuestion) {
-				const formValue = $form[currentQuestion.id];
-				if (Array.isArray(formValue)) {
-					currentInputValue = formValue;
-				} else {
-					currentInputValue = String(formValue || '');
-				}
-			}
-		}
-	});
-
-	function clearCurrentError() {
-		if (currentQuestion) {
-			delete $errors[currentQuestion.id];
-		}
-	}
-
-	function scrollToError() {
+	function scrollToFirstError() {
 		setTimeout(() => {
 			const errorElement = document.querySelector('[role="alert"]');
 			errorElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -141,29 +201,50 @@
 	}
 
 	function goToPrevious() {
-		if (currentStep > 0) {
-			clearCurrentError();
-			currentStep--;
+		if (currentPage > 1) {
+			syncPageToForm();
+			saveToLocalStorage();
+			// Clear errors for current page
+			currentPageQuestions.forEach((q: typeof visibleQuestions[number]) => {
+				delete $errors[q.id];
+			});
+			currentPage--;
 		}
 	}
 
-	function handleInput(value: string) {
-		currentInputValue = value;
-		if (currentQuestion && $errors[currentQuestion.id]) {
-			delete $errors[currentQuestion.id];
+	function handleInput(questionId: string, value: string | number) {
+		pageInputValues[questionId] = value;
+		// Clear error for this question
+		if ($errors[questionId]) {
+			delete $errors[questionId];
 		}
 	}
 
-	function handleCheckboxChange(option: string, checked: boolean) {
-		const current = Array.isArray(currentInputValue) ? currentInputValue : [];
+	function handleCheckboxChange(questionId: string, option: string, checked: boolean) {
+		const current = Array.isArray(pageInputValues[questionId]) 
+			? (pageInputValues[questionId] as string[]) 
+			: [];
 		if (checked) {
-			currentInputValue = [...current, option];
+			pageInputValues[questionId] = [...current, option];
 		} else {
-			currentInputValue = current.filter((v) => v !== option);
+			pageInputValues[questionId] = current.filter((v) => v !== option);
 		}
-		if (currentQuestion && $errors[currentQuestion.id]) {
-			delete $errors[currentQuestion.id];
+		// Clear error for this question
+		if ($errors[questionId]) {
+			delete $errors[questionId];
 		}
+	}
+
+	function handleScaleChange(questionId: string, value: number) {
+		pageInputValues[questionId] = value;
+		// Clear error for this question
+		if ($errors[questionId]) {
+			delete $errors[questionId];
+		}
+	}
+
+	function getError(questionId: string) {
+		return $errors[questionId as keyof typeof $errors];
 	}
 </script>
 
@@ -196,7 +277,7 @@
 		<div class="mb-8">
 			<div class="flex items-center justify-between mb-2">
 				<span class="text-sm font-medium text-gray-600">
-					Question {currentStep + 1} of {visibleQuestions.length}
+					Page {currentPage} of {totalPages}
 				</span>
 				<span class="text-sm font-medium text-ecohubs-primary">
 					{Math.round(progress)}% Complete
@@ -211,111 +292,157 @@
 		</div>
 
 		<form method="POST" use:enhance class="min-h-[400px]">
-			{#key currentStep}
+			{#key currentPage}
 				<div
 					in:fly={{ x: 50, duration: 300, easing: cubicOut, delay: 300 }}
 					out:fly={{ x: -50, duration: 300, easing: cubicOut }}
-					class="mb-8"
+					class="mb-8 space-y-8"
 				>
-					<!-- Question -->
-					<h2 class="text-2xl md:text-3xl font-serif font-bold text-gray-900 mb-3">
-						{currentQuestion.question}
-					</h2>
-					
-					{#if currentQuestion.description}
-						<p class="text-gray-600 mb-6">{currentQuestion.description}</p>
-					{/if}
-
-					<!-- Input Field -->
-					<div class="mb-4">
-						{#if currentQuestion.type === 'text' || currentQuestion.type === 'email' || currentQuestion.type === 'number'}
-							<input
-								type={currentQuestion.type}
-								name={currentQuestion.id}
-								value={currentInputValue}
-								oninput={(e) => handleInput(e.currentTarget.value)}
-								placeholder={currentQuestion.placeholder}
-								aria-invalid={currentError ? 'true' : 'false'}
-								class="w-full px-4 py-4 text-lg text-gray-900 placeholder:text-gray-400 border-2 rounded-xl transition-all {currentError ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent'}"
-							/>
-						{:else if currentQuestion.type === 'textarea'}
-							<textarea
-								name={currentQuestion.id}
-								value={currentInputValue}
-								oninput={(e) => handleInput(e.currentTarget.value)}
-								placeholder={currentQuestion.placeholder}
-								rows="6"
-								aria-invalid={currentError ? 'true' : 'false'}
-								class="w-full px-4 py-4 text-lg text-gray-900 placeholder:text-gray-400 border-2 rounded-xl transition-all resize-none {currentError ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent'}"
-							></textarea>
-							{#if currentInputValue}
-								<p class="text-sm text-gray-500 mt-2">
-									{String(currentInputValue).length} characters
-								</p>
+					{#each currentPageQuestions as question (question.id)}
+						{@const questionError = getError(question.id)}
+						{@const questionValue = pageInputValues[question.id] || (question.type === 'scale' ? 0 : '')}
+						
+						<div class="question-block">
+							<!-- Question -->
+							<h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2">
+								{question.question}
+							</h3>
+							
+							{#if question.description}
+								<p class="text-gray-600 mb-4">{question.description}</p>
 							{/if}
-						{:else if currentQuestion.type === 'select'}
-							<select
-								name={currentQuestion.id}
-								value={currentInputValue}
-								onchange={(e) => handleInput(e.currentTarget.value)}
-								aria-invalid={currentError ? 'true' : 'false'}
-								class="w-full px-4 py-4 text-lg text-gray-900 border-2 rounded-xl transition-all {currentError ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent'}"
-							>
-								<option value="">Select an option...</option>
-								{#each currentQuestion.options || [] as option}
-									<option value={option}>{option}</option>
-								{/each}
-							</select>
-						{:else if currentQuestion.type === 'radio'}
-							<div class="space-y-3" role="radiogroup" aria-invalid={currentError ? 'true' : 'false'}>
-								{#each currentQuestion.options || [] as option}
-									<label class="flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors {currentInputValue === option ? 'border-ecohubs-primary bg-ecohubs-primary/5' : currentError ? 'border-red-300 hover:border-red-400' : 'border-gray-300 hover:border-ecohubs-primary'}">
-										<input
-											type="radio"
-											name={currentQuestion.id}
-											value={option}
-											checked={currentInputValue === option}
-											onchange={() => handleInput(option)}
-											class="w-5 h-5 text-ecohubs-primary focus:ring-ecohubs-primary"
-										/>
-										<span class="text-lg text-gray-800">{option}</span>
-									</label>
-								{/each}
-							</div>
-						{:else if currentQuestion.type === 'checkbox'}
-							<div class="space-y-3" role="group">
-								{#each currentQuestion.options || [] as option}
-									{@const isChecked = Array.isArray(currentInputValue) && currentInputValue.includes(option)}
-									<label class="flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors {isChecked ? 'border-ecohubs-primary bg-ecohubs-primary/5' : currentError ? 'border-red-300 hover:border-red-400' : 'border-gray-300 hover:border-ecohubs-primary'}">
-										<input
-											type="checkbox"
-											name={`${currentQuestion.id}[]`}
-											value={option}
-											checked={isChecked}
-											onchange={(e) => handleCheckboxChange(option, e.currentTarget.checked)}
-											class="w-5 h-5 text-ecohubs-primary focus:ring-ecohubs-primary rounded"
-										/>
-										<span class="text-lg text-gray-800">{option}</span>
-									</label>
-								{/each}
-							</div>
-						{/if}
-					</div>
 
-					<!-- Error Message -->
-					{#if (currentError as any)?.[0]?.message}
-						<div class="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert" in:fly={{ y: -10, duration: 200 }}>
-							<p class="text-red-700 text-sm font-medium">
-								{(currentError as any)?.[0]?.message}
-							</p>
+							<!-- Input Field -->
+							<div class="mb-4">
+								{#if question.type === 'text' || question.type === 'email' || question.type === 'number'}
+									<input
+										type={question.type}
+										name={question.id}
+										value={String(questionValue)}
+										oninput={(e) => handleInput(question.id, e.currentTarget.value)}
+										placeholder={question.placeholder}
+										aria-invalid={questionError ? 'true' : 'false'}
+										class="w-full px-4 py-4 text-lg text-gray-900 placeholder:text-gray-400 border-2 rounded-xl transition-all {questionError ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent'}"
+									/>
+								{:else if question.type === 'textarea'}
+									<textarea
+										name={question.id}
+										value={String(questionValue)}
+										oninput={(e) => handleInput(question.id, e.currentTarget.value)}
+										placeholder={question.placeholder}
+										rows="6"
+										aria-invalid={questionError ? 'true' : 'false'}
+										class="w-full px-4 py-4 text-lg text-gray-900 placeholder:text-gray-400 border-2 rounded-xl transition-all resize-none {questionError ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent'}"
+									></textarea>
+									{#if questionValue}
+										<p class="text-sm text-gray-500 mt-2">
+											{String(questionValue).length} characters
+										</p>
+									{/if}
+								{:else if question.type === 'select'}
+									<select
+										name={question.id}
+										value={String(questionValue)}
+										onchange={(e) => handleInput(question.id, e.currentTarget.value)}
+										aria-invalid={questionError ? 'true' : 'false'}
+										class="w-full px-4 py-4 text-lg text-gray-900 border-2 rounded-xl transition-all {questionError ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent'}"
+									>
+										<option value="">Select an option...</option>
+										{#each question.options || [] as option}
+											<option value={option}>{option}</option>
+										{/each}
+									</select>
+								{:else if question.type === 'radio'}
+									<div class="space-y-3" role="radiogroup" aria-invalid={questionError ? 'true' : 'false'}>
+										{#each question.options || [] as option}
+											<label class="flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors {String(questionValue) === option ? 'border-ecohubs-primary bg-ecohubs-primary/5' : questionError ? 'border-red-300 hover:border-red-400' : 'border-gray-300 hover:border-ecohubs-primary'}">
+												<input
+													type="radio"
+													name={question.id}
+													value={option}
+													checked={String(questionValue) === option}
+													onchange={() => handleInput(question.id, option)}
+													class="w-5 h-5 text-ecohubs-primary focus:ring-ecohubs-primary"
+												/>
+												<span class="text-lg text-gray-800">{option}</span>
+											</label>
+										{/each}
+									</div>
+								{:else if question.type === 'checkbox'}
+									<div class="space-y-3" role="group">
+										{#each question.options || [] as option}
+											{@const isChecked = Array.isArray(questionValue) && questionValue.includes(option)}
+											<label class="flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors {isChecked ? 'border-ecohubs-primary bg-ecohubs-primary/5' : questionError ? 'border-red-300 hover:border-red-400' : 'border-gray-300 hover:border-ecohubs-primary'}">
+												<input
+													type="checkbox"
+													name={`${question.id}[]`}
+													value={option}
+													checked={isChecked}
+													onchange={(e) => handleCheckboxChange(question.id, option, e.currentTarget.checked)}
+													class="w-5 h-5 text-ecohubs-primary focus:ring-ecohubs-primary rounded"
+												/>
+												<span class="text-lg text-gray-800">{option}</span>
+											</label>
+										{/each}
+									</div>
+								{:else if question.type === 'scale'}
+									{@const scaleValue = typeof questionValue === 'number' ? questionValue : Number(questionValue) || 0}
+									<div class="scale-input">
+										{#if question.scaleLabels?.min || question.scaleLabels?.max}
+											<div class="flex items-center justify-between mb-4">
+												{#if question.scaleLabels?.min}
+													<span class="text-sm text-gray-600 font-medium">{question.scaleLabels.min}</span>
+												{:else}
+													<span></span>
+												{/if}
+												{#if question.scaleLabels?.max}
+													<span class="text-sm text-gray-600 font-medium">{question.scaleLabels.max}</span>
+												{:else}
+													<span></span>
+												{/if}
+											</div>
+										{/if}
+										<div class="grid grid-cols-5 md:grid-cols-10 gap-2" role="radiogroup" aria-invalid={questionError ? 'true' : 'false'}>
+											{#each Array.from({ length: 10 }, (_, i) => i + 1) as num}
+												{@const isSelected = scaleValue === num}
+												<label class="flex flex-col items-center gap-2 p-3 border-2 rounded-xl cursor-pointer transition-colors {isSelected ? 'border-ecohubs-primary bg-ecohubs-primary/10' : questionError ? 'border-red-300 hover:border-red-400' : 'border-gray-300 hover:border-ecohubs-primary'}">
+													<input
+														type="radio"
+														name={question.id}
+														value={num}
+														checked={isSelected}
+														onchange={() => handleScaleChange(question.id, num)}
+														class="w-5 h-5 text-ecohubs-primary focus:ring-ecohubs-primary"
+													/>
+													<span class="text-lg font-semibold text-gray-800">{num}</span>
+												</label>
+											{/each}
+										</div>
+										<input
+											type="hidden"
+											name={question.id}
+											value={scaleValue}
+										/>
+									</div>
+								{/if}
+							</div>
+
+							<!-- Error Message -->
+							{#if (questionError as any)?.[0]?.message}
+								<div class="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert" in:fly={{ y: -10, duration: 200 }}>
+									<p class="text-red-700 text-sm font-medium">
+										{(questionError as any)?.[0]?.message}
+									</p>
+								</div>
+							{/if}
 						</div>
-					{/if}
+					{/each}
 				</div>
 			{/key}
 
 			<!-- Hidden inputs to ensure all values are submitted -->
 			{#each Object.entries($form) as [key, value]}
-				{#if key !== currentQuestion?.id && value !== undefined && value !== ''}
+				{#if value !== undefined && value !== ''}
 					{#if Array.isArray(value)}
 						{#each value as item}
 							<input type="hidden" name={`${key}[]`} value={String(item)} />
@@ -331,14 +458,14 @@
 				<button
 					type="button"
 					onclick={goToPrevious}
-					disabled={currentStep === 0}
+					disabled={currentPage === 1}
 					class="flex items-center gap-2 px-6 py-3 text-gray-700 font-medium rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 				>
 					<ArrowLeft class="w-5 h-5" aria-hidden="true" />
 					<span>Back</span>
 				</button>
 
-				{#if isLastStep}
+				{#if isLastPage}
 					<button
 						type="submit"
 						disabled={isSubmitting}
@@ -376,3 +503,4 @@
 		</p>
 	</div>
 {/if}
+
