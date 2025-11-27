@@ -6,7 +6,7 @@ export interface ApplicationEmailData {
 	backgroundOther?: string;
 	motivation: string;
 	skills: string;
-	involvement: string;
+	involvement: string | string[];
 	timeline: string;
 	communityExperience: string;
 	communityDetails?: string;
@@ -176,7 +176,7 @@ export function getApplicationEmailHTML(data: ApplicationEmailData): string {
 				<div class="section-title">Participation Preferences</div>
 				<div class="field">
 					<div class="field-label">Involvement Type</div>
-					<div class="field-value">${data.involvement}</div>
+					<div class="field-value">${Array.isArray(data.involvement) ? data.involvement.join(', ') : data.involvement}</div>
 				</div>
 				<div class="field">
 					<div class="field-label">Timeline</div>
@@ -256,7 +256,7 @@ ${data.skills}
 
 Participation Preferences
 -------------------------
-Type: ${data.involvement}
+Type: ${Array.isArray(data.involvement) ? data.involvement.join(', ') : data.involvement}
 Timeline: ${data.timeline}
 
 Community Experience

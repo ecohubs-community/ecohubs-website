@@ -12,7 +12,7 @@ export interface Question {
 	options?: string[];
 	conditionalOn?: {
 		questionId: string;
-		value: any;
+		value: string;
 	};
 	validationSchema: z.ZodSchema;
 }
@@ -96,9 +96,9 @@ export const applicationQuestions: Question[] = [
 	},
 	{
 		id: 'involvement',
-		type: 'select',
+		type: 'checkbox',
 		question: 'How would you like to be involved?',
-		description: 'What level of participation interests you most?',
+		description: 'Select all that apply.',
 		required: true,
 		options: [
 			'Actively contribute to blueprint development',
@@ -106,9 +106,8 @@ export const applicationQuestions: Question[] = [
 			'Join a pilot community physically',
 			'Support with specific skills/expertise',
 			'Learn and observe for now',
-			'Multiple of the above',
 		],
-    validationSchema: z.string().min(1, 'Please select your involvement type'),
+    validationSchema: z.array(z.string()).min(1, { message: 'Please select at least one option' }),
 	},
 	{
 		id: 'timeline',
@@ -173,7 +172,7 @@ export const applicationSchema = z.object({
 	backgroundOther: z.string().optional(),
 	motivation: z.string().min(100, { message: 'Please provide at least 100 characters' }).max(2500, { message: 'Please provide at most 2500 characters' }),
 	skills: z.string().min(50, { message: 'Please provide at least 50 characters' }),
-	involvement: z.string().min(1, 'Please select your involvement type'),
+	involvement: z.array(z.string()).min(1, { message: 'Please select at least one option' }),
 	timeline: z.string().min(1, { message: 'Please select your timeline' }),
 	communityExperience: z.string().min(1, { message: 'Please select an option' }),
 	communityDetails: z.string().optional(),

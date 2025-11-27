@@ -1,6 +1,6 @@
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
-import { applicationSchema } from '$lib/config/application-questions';
+import { applicationSchema, type ApplicationFormData } from '$lib/config/application-questions';
 import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { sendEmail } from '$lib/server/email';
@@ -13,12 +13,14 @@ import {
 } from '$lib/email-templates/application';
 
 export const load: PageServerLoad = async () => {
+	// @ts-expect-error - Zod v3 compatibility with sveltekit-superforms
 	const form = await superValidate(zod(applicationSchema));
 	return { form };
 };
 
 export const actions: Actions = {
 	default: async ({ request }) => {
+		// @ts-expect-error - Zod v3 compatibility with sveltekit-superforms
 		const form = await superValidate(request, zod(applicationSchema));
 
 		if (!form.valid) {
@@ -28,25 +30,38 @@ export const actions: Actions = {
 		try {
 			const adminEmail = process.env.ADMIN_EMAIL || 'admin@ecohubs.community';
 			const timestamp = new Date().toISOString();
+			const data = form.data as ApplicationFormData;
 
 			const applicationData: ApplicationEmailData = {
-				...form.data,
+				fullName: data.fullName,
+				email: data.email,
+				location: data.location,
+				background: data.background,
+				backgroundOther: data.backgroundOther,
+				motivation: data.motivation,
+				skills: data.skills,
+				involvement: data.involvement,
+				timeline: data.timeline,
+				communityExperience: data.communityExperience,
+				communityDetails: data.communityDetails,
+				questions: data.questions,
+				referral: data.referral,
 				timestamp,
 			};
 
 			await sendEmail({
 				to: adminEmail,
-				subject: `New Application: ${form.data.fullName}`,
+				subject: `New Application: ${data.fullName}`,
 				html: getApplicationEmailHTML(applicationData),
 				text: getApplicationEmailText(applicationData),
-				replyTo: form.data.email,
+				replyTo: data.email,
 			});
 
 			await sendEmail({
-				to: form.data.email,
+				to: data.email,
 				subject: 'Application Received - EcoHubs Community',
-				html: getApplicationConfirmationHTML(form.data.fullName),
-				text: getApplicationConfirmationText(form.data.fullName),
+				html: getApplicationConfirmationHTML(data.fullName),
+				text: getApplicationConfirmationText(data.fullName),
 			});
 
 			if (process.env.GITHUB_TOKEN && process.env.GITHUB_REPO) {
@@ -60,8 +75,8 @@ export const actions: Actions = {
 							'Accept': 'application/vnd.github.v3+json',
 						},
 						body: JSON.stringify({
-							title: `Application: ${form.data.fullName}`,
-							body: formatApplicationForGitHub(form.data),
+							title: `Application: ${data.fullName}`,
+							body: formatApplicationForGitHub(applicationData),
 							labels: ['application', 'new'],
 						}),
 					});
@@ -85,7 +100,10 @@ export const actions: Actions = {
 								records: [
 									{
 										fields: {
-											...form.data,
+											...data,
+											involvement: Array.isArray(data.involvement) 
+												? data.involvement.join(', ') 
+												: data.involvement,
 											submittedAt: timestamp,
 											status: 'New',
 										},
@@ -110,7 +128,7 @@ export const actions: Actions = {
 	},
 };
 
-function formatApplicationForGitHub(data: any): string {
+function formatApplicationForGitHub(data: ApplicationEmailData): string {
 	return `
 ## Applicant Information
 
@@ -134,7 +152,7 @@ ${data.skills}
 
 ## Involvement Preferences
 
-**Type:** ${data.involvement}
+**Type:** ${Array.isArray(data.involvement) ? data.involvement.join(', ') : data.involvement}
 **Timeline:** ${data.timeline}
 
 ## Community Experience

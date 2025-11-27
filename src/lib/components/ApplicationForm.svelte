@@ -2,10 +2,11 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { applicationQuestions, applicationSchema } from '$lib/config/application-questions';
-	import { ArrowLeft, ArrowRight, Check, Loader2 } from 'lucide-svelte';
+	import { ArrowLeft, ArrowRight, Check, LoaderCircle } from 'lucide-svelte';
 	import { fly, fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import type { PageData } from '../../routes/join/$types';
+	import { onMount } from 'svelte';
 
 	interface Props {
 		data: PageData;
@@ -14,12 +15,13 @@
 	let { data }: Props = $props();
 
 	let currentStep = $state(0);
+	let previousStep = $state(-1);
 	let isSubmitting = $state(false);
 	let submitSuccess = $state(false);
 	let submitError = $state('');
 	
-	// Local state for ONLY the current input to avoid reactivity loop
-	let currentInputValue = $state('');
+	// Local state for current input (handles both string and array values)
+	let currentInputValue = $state<string | string[]>('');
 
 	// Initialize superForm
 	const superform = superForm(data.form, {
@@ -28,37 +30,32 @@
 		dataType: 'json',
 		resetForm: false,
 		onSubmit: async ({ cancel }) => {
-			isSubmitting = true;
-			submitError = '';
+			// If not on last step, cancel default submission
+			if (currentStep !== visibleQuestions.length - 1) {
+				cancel();
+				
+				// Validate current question
+				const validationResult = currentQuestion.validationSchema.safeParse(currentInputValue);
 
-      // If on last step, make a normal request
-			if (currentStep === visibleQuestions.length) {
-        return;
-      } else {
-        cancel();
-      }
-
-			// Manual client-side validation, since we have cancelled submission for multi-step
-			const validationResult = currentQuestion.validationSchema.safeParse(currentInputValue);
-
-			if (validationResult.success) {
-        isSubmitting = false;
-        currentStep = currentStep + 1;
-
-        // Sync current input before submit
-        syncCurrentToForm();
-        goToNext();
-      } else {
-        const error = JSON.parse(JSON.stringify(validationResult.error));
-        console.log('validationResult', error);
-        isSubmitting = false;
-        $errors[currentQuestion.id as keyof typeof $errors] = error.issues;
-        // $errors = Object.fromEntries(errors.issues.map((issue: any) => [issue.path[0], issue.message]));
-        setTimeout(() => {
-          const errorElement = document.querySelector('[role="alert"]');
-          errorElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 100);
-      }
+				if (validationResult.success) {
+					// Sync current input to form, save, and move to next step
+					syncCurrentToForm();
+					saveToLocalStorage();
+					clearCurrentError();
+					currentStep++;
+				} else {
+					// Show validation error
+					const error = JSON.parse(JSON.stringify(validationResult.error));
+					$errors[currentQuestion.id as keyof typeof $errors] = error.issues;
+					scrollToError();
+				}
+			} else {
+				// On last step, allow form submission
+				isSubmitting = true;
+				submitError = '';
+				syncCurrentToForm();
+				saveToLocalStorage();
+			}
 		},
 		onResult: ({ result }) => {
 			isSubmitting = false;
@@ -75,32 +72,17 @@
 	
 	const { form, errors, enhance } = superform;
 
-	// Autosave to localStorage
-	$effect(() => {
-		if (typeof window !== 'undefined' && !submitSuccess) {
-			const timeout = setTimeout(() => {
-				// Sync current input before saving
-				syncCurrentToForm();
-				localStorage.setItem('ecohubs-application-draft', JSON.stringify($form));
-			}, 1000);
-			return () => clearTimeout(timeout);
-		}
-	});
-
-	// Load from localStorage on mount
-	$effect(() => {
-		if (typeof window !== 'undefined') {
-			const saved = localStorage.getItem('ecohubs-application-draft');
-			if (saved) {
-				try {
-					const parsed = JSON.parse(saved);
-					Object.assign($form, parsed);
-				} catch (e) {
-					console.error('Failed to load draft:', e);
-				}
-			}
-		}
-	});
+  onMount(() => {
+   	const saved = localStorage.getItem('ecohubs-application-draft');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        Object.assign($form, parsed);
+      } catch (e) {
+        console.error('Failed to load draft:', e);
+      }
+    }
+  });
 
 	// Filter visible questions based on conditionals
 	const visibleQuestions = $derived(
@@ -113,108 +95,76 @@
 	const currentQuestion = $derived(visibleQuestions[currentStep]);
 	const progress = $derived(((currentStep + 1) / visibleQuestions.length) * 100);
 	const isLastStep = $derived(currentStep === visibleQuestions.length - 1);
-	
-	// Get current error
 	const currentError = $derived($errors[currentQuestion?.id as keyof typeof $errors]);
 
 	// Sync current input value to form
 	function syncCurrentToForm() {
 		if (currentQuestion) {
-			$form[currentQuestion.id as keyof typeof $form] = currentInputValue;
+			$form[currentQuestion.id as keyof typeof $form] = currentInputValue as any;
 		}
 	}
 
-	// Load value from form to current input when step changes
+	// Save form to localStorage
+	function saveToLocalStorage() {
+		if (typeof window !== 'undefined' && !submitSuccess) {
+			localStorage.setItem('ecohubs-application-draft', JSON.stringify($form));
+		}
+	}
+
+	// Load value from form to current input ONLY when step actually changes
 	$effect(() => {
-		if (currentQuestion) {
-			currentInputValue = String($form[currentQuestion.id] || '');
+		if (currentStep !== previousStep) {
+			previousStep = currentStep;
+			
+			if (currentQuestion) {
+				const formValue = $form[currentQuestion.id];
+				if (Array.isArray(formValue)) {
+					currentInputValue = formValue;
+				} else {
+					currentInputValue = String(formValue || '');
+				}
+			}
 		}
 	});
 
-	function goToNext() {
-		if (currentStep < visibleQuestions.length - 1) {
-			// Sync current input to form
-			syncCurrentToForm();
-			// Clear error
-			if (currentQuestion) {
-				delete $errors[currentQuestion.id];
-			}
-			currentStep++;
+	function clearCurrentError() {
+		if (currentQuestion) {
+			delete $errors[currentQuestion.id];
 		}
+	}
+
+	function scrollToError() {
+		setTimeout(() => {
+			const errorElement = document.querySelector('[role="alert"]');
+			errorElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+		}, 100);
 	}
 
 	function goToPrevious() {
 		if (currentStep > 0) {
-			// Sync current input to form
-			syncCurrentToForm();
-			// Clear error
-			if (currentQuestion) {
-				delete $errors[currentQuestion.id];
-			}
+			clearCurrentError();
 			currentStep--;
 		}
 	}
 
 	function handleInput(value: string) {
 		currentInputValue = value;
-		// Clear error when user starts typing
 		if (currentQuestion && $errors[currentQuestion.id]) {
 			delete $errors[currentQuestion.id];
 		}
 	}
 
-	// async function handleNext() {
-	// 	const fieldId = currentQuestion.id;
-	// 	const fieldValue = currentInputValue.trim();
-		
-	// 	// Clear any previous errors first
-	// 	delete $errors[fieldId];
-
-    
-		
-	// 	// // Check if required field is empty
-	// 	// if (currentQuestion.required && !fieldValue) {
-  //   //   console.log('fieldId is required', fieldId);
-	// 	// 	$errors[fieldId as keyof typeof $errors] = 'This field is required';
-	// 	// 	setTimeout(() => {
-	// 	// 		const errorElement = document.querySelector('[role="alert"]');
-	// 	// 		errorElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-	// 	// 	}, 100);
-	// 	// 	return; // Don't proceed
-	// 	// }
-		
-	// 	// // Additional validation for email
-	// 	// if (currentQuestion.type === 'email' && fieldValue) {
-	// 	// 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	// 	// 	if (!emailRegex.test(fieldValue)) {
-	// 	// 		$errors[fieldId] = 'Please enter a valid email address';
-	// 	// 		setTimeout(() => {
-	// 	// 			const errorElement = document.querySelector('[role="alert"]');
-	// 	// 			errorElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-	// 	// 		}, 100);
-	// 	// 		return; // Don't proceed
-	// 	// 	}
-	// 	// }
-		
-	// 	// // Validation for minimum length on textarea fields
-	// 	// if (currentQuestion.type === 'textarea' && fieldValue) {
-	// 	// 	const schema = applicationSchema.shape[fieldId as keyof typeof applicationSchema.shape];
-	// 	// 	if (schema && '_def' in schema && 'checks' in schema._def) {
-	// 	// 		const minCheck = (schema._def.checks as any[]).find(c => c.kind === 'min');
-	// 	// 		if (minCheck && fieldValue.length < minCheck.value) {
-	// 	// 			$errors[fieldId] = `Please provide at least ${minCheck.value} characters`;
-	// 	// 			setTimeout(() => {
-	// 	// 				const errorElement = document.querySelector('[role="alert"]');
-	// 	// 				errorElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-	// 	// 			}, 100);
-	// 	// 			return; // Don't proceed
-	// 	// 		}
-	// 	// 	}
-	// 	// }
-		
-	// 	// If all validations passed, proceed to next
-	// 	goToNext();
-	// }
+	function handleCheckboxChange(option: string, checked: boolean) {
+		const current = Array.isArray(currentInputValue) ? currentInputValue : [];
+		if (checked) {
+			currentInputValue = [...current, option];
+		} else {
+			currentInputValue = current.filter((v) => v !== option);
+		}
+		if (currentQuestion && $errors[currentQuestion.id]) {
+			delete $errors[currentQuestion.id];
+		}
+	}
 </script>
 
 {#if submitSuccess}
@@ -263,7 +213,7 @@
 		<form method="POST" use:enhance class="min-h-[400px]">
 			{#key currentStep}
 				<div
-					in:fly={{ x: 50, duration: 300, easing: cubicOut }}
+					in:fly={{ x: 50, duration: 300, easing: cubicOut, delay: 300 }}
 					out:fly={{ x: -50, duration: 300, easing: cubicOut }}
 					class="mb-8"
 				>
@@ -300,7 +250,7 @@
 							></textarea>
 							{#if currentInputValue}
 								<p class="text-sm text-gray-500 mt-2">
-									{currentInputValue.length} characters
+									{String(currentInputValue).length} characters
 								</p>
 							{/if}
 						{:else if currentQuestion.type === 'select'}
@@ -333,13 +283,16 @@
 								{/each}
 							</div>
 						{:else if currentQuestion.type === 'checkbox'}
-							<div class="space-y-3">
+							<div class="space-y-3" role="group">
 								{#each currentQuestion.options || [] as option}
-									<label class="flex items-center gap-3 p-4 border-2 border-gray-300 rounded-xl cursor-pointer hover:border-ecohubs-primary transition-colors">
+									{@const isChecked = Array.isArray(currentInputValue) && currentInputValue.includes(option)}
+									<label class="flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors {isChecked ? 'border-ecohubs-primary bg-ecohubs-primary/5' : currentError ? 'border-red-300 hover:border-red-400' : 'border-gray-300 hover:border-ecohubs-primary'}">
 										<input
 											type="checkbox"
-											name={currentQuestion.id}
+											name={`${currentQuestion.id}[]`}
 											value={option}
+											checked={isChecked}
+											onchange={(e) => handleCheckboxChange(option, e.currentTarget.checked)}
 											class="w-5 h-5 text-ecohubs-primary focus:ring-ecohubs-primary rounded"
 										/>
 										<span class="text-lg text-gray-800">{option}</span>
@@ -363,7 +316,13 @@
 			<!-- Hidden inputs to ensure all values are submitted -->
 			{#each Object.entries($form) as [key, value]}
 				{#if key !== currentQuestion?.id && value !== undefined && value !== ''}
-					<input type="hidden" name={key} value={String(value)} />
+					{#if Array.isArray(value)}
+						{#each value as item}
+							<input type="hidden" name={`${key}[]`} value={String(item)} />
+						{/each}
+					{:else}
+						<input type="hidden" name={key} value={String(value)} />
+					{/if}
 				{/if}
 			{/each}
 
@@ -386,7 +345,7 @@
 						class="flex items-center gap-2 px-8 py-3 bg-ecohubs-primary text-white font-bold rounded-lg hover:bg-ecohubs-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed"
 					>
 						{#if isSubmitting}
-							<Loader2 class="w-5 h-5 animate-spin" aria-hidden="true" />
+							<LoaderCircle class="w-5 h-5 animate-spin" aria-hidden="true" />
 							<span>Submitting...</span>
 						{:else}
 							<span>Submit Application</span>
