@@ -1,154 +1,306 @@
-# EcoHubs.community
+# EcoHubs.community 🌱
 
-A SvelteKit static site for EcoHubs.community - building intentional communities on blockchain.
+[![CI](https://github.com/ecohubs/ecohubs.community/actions/workflows/ci.yml/badge.svg)](https://github.com/ecohubs/ecohubs.community/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Features
+A regenerative community platform built with Svelte 5, featuring DAO governance, contribution-based economics, and an open-source blueprint for intentional communities.
 
-- **Svelte 5 (Runes)** - Modern reactive framework
+## 🌟 Features
+
+- **Svelte 5 (Runes)** - Modern reactive framework with fine-grained reactivity
 - **SvelteKit** - Full-stack framework with static site generation
-- **Tailwind CSS v4** - Utility-first CSS with custom theme
-- **SEO Optimized** - Meta tags, JSON-LD, sitemap, RSS feed
+- **Tailwind CSS v4** - Utility-first CSS with custom regenerative theme
+- **Multi-Step Forms** - Application form with Superforms + autosave
+- **Email Integration** - Nodemailer SMTP with beautiful HTML templates
+- **Newsletter** - Linkmonk integration with fallback to Zapier
+- **Blog** - mdsvex-powered blog with reading time and RSS feed
+- **SEO Optimized** - Complete meta tags, JSON-LD, sitemap, OG images
 - **Dark Mode** - System preference detection with manual toggle
-- **Accessible** - WCAG compliant with keyboard navigation
+- **Accessible** - WCAG AA compliant with keyboard navigation
 - **Performance** - Lighthouse 95+ target (mobile & desktop)
-- **PWA Ready** - Web manifest included
+- **i18n Ready** - Paraglide.js for English/Spanish localization
+- **PWA Ready** - Web manifest and service worker support
 
-## Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+ or Bun
-- pnpm (recommended) or npm
+- **Node.js 18+** (or Bun)
+- **pnpm** (recommended) or npm
 
 ### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/ecohubs.community.git
+cd ecohubs.community
+
 # Install dependencies
 pnpm install
+
+# Copy environment variables
+cp .env.example .env
+# Edit .env with your configuration
 
 # Start development server
 pnpm dev
 
-# Build for production
+# Open http://localhost:5173
+```
+
+### Development Commands
+
+```bash
+# Development
+pnpm dev              # Start dev server
+pnpm dev:host         # Start dev server with network access
+
+# Building
+pnpm build            # Build for production
+pnpm preview          # Preview production build
+
+# Quality
+pnpm lint             # Run ESLint
+pnpm format           # Format with Prettier
+pnpm check            # Type check with svelte-check
+
+# Testing
+pnpm test             # Run all tests
+pnpm test:unit        # Run unit tests
+pnpm test:e2e         # Run E2E tests with Playwright
+```
+
+## 📦 Environment Variables
+
+Create a `.env` file based on `.env.example`:
+
+### Required
+
+```bash
+PUBLIC_SITE_URL=https://ecohubs.community
+SMTP_HOST=localhost
+SMTP_PORT=1025
+EMAIL_FROM=noreply@ecohubs.community
+ADMIN_EMAIL=admin@ecohubs.community
+```
+
+### Optional
+
+```bash
+# Newsletter
+LINKMONK_URL=https://newsletter.ecohubs.community
+LINKMONK_API_KEY=your-api-key
+
+# Integrations
+ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/...
+AIRTABLE_API_KEY=your-api-key
+GITHUB_TOKEN=ghp_your-token
+```
+
+See [`.env.example`](.env.example) for complete list with descriptions.
+
+## 📁 Project Structure
+
+```
+ecohubs.community/
+├── src/
+│   ├── lib/
+│   │   ├── components/          # Reusable Svelte components
+│   │   │   ├── ApplicationForm.svelte
+│   │   │   ├── ContactForm.svelte
+│   │   │   ├── NewsletterForm.svelte
+│   │   │   ├── Hero.svelte
+│   │   │   ├── Navbar.svelte
+│   │   │   └── ...
+│   │   ├── config/              # Application configuration
+│   │   │   └── application-questions.ts
+│   │   ├── email-templates/     # Email HTML/text templates
+│   │   ├── server/              # Server-side utilities
+│   │   │   ├── email.ts
+│   │   │   └── blog.ts
+│   │   ├── styles/              # Global styles & theme
+│   │   │   └── theme.css
+│   │   └── utils/               # Utility functions
+│   ├── routes/                  # SvelteKit routes
+│   │   ├── +layout.svelte
+│   │   ├── +page.svelte         # Home page
+│   │   ├── api/                 # API endpoints
+│   │   │   ├── contact/
+│   │   │   ├── newsletter/
+│   │   │   └── application/
+│   │   ├── blog/
+│   │   │   ├── [slug]/          # Dynamic blog post
+│   │   │   └── +page.svelte     # Blog index
+│   │   ├── join/                # Application form
+│   │   ├── contact/             # Contact page
+│   │   └── ...
+│   ├── content/                 # Blog posts (mdsvex)
+│   │   └── blog/
+│   │       └── *.svx
+│   └── app.html                 # HTML template
+├── static/                      # Static assets
+│   └── manifest.webmanifest
+├── .github/
+│   └── workflows/               # CI/CD pipelines
+├── DEPLOYMENT.md                # Deployment guide
+└── vercel.json                  # Vercel configuration
+```
+
+## 🚢 Deployment
+
+### Quick Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/ecohubs.community)
+
+### Comprehensive Guides
+
+See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for detailed instructions on:
+
+- **Vercel** - One-click deployment with automatic CI/CD
+- **Self-Hosted Node** - Full control with PM2, Nginx, SSL
+- **Static Hosting** - Netlify, GitHub Pages, etc.
+- **Email Configuration** - Nodemailer, Mailu, MailHog
+- **CI/CD** - GitHub Actions workflows
+
+Quick summary:
+
+```bash
+# Vercel
+vercel
+
+# Self-hosted (after setup)
 pnpm build
+pm2 start ecosystem.config.js
 
-# Preview production build
-pnpm preview
+# Static
+pnpm build
+# Deploy build/ directory
 ```
 
-## Environment Variables
-
-Copy `.env.example` to `.env` and configure:
-
-- `PUBLIC_SITE_URL` - Your site URL (required)
-- `LINKMONK_URL` - Linkmonk newsletter API endpoint
-- `SMTP_*` - SMTP configuration for email (Nodemailer)
-- Optional integrations: Zapier, Airtable, GitHub
-
-See `.env.example` for all available options.
-
-## Project Structure
-
-```
-src/
-├── lib/
-│   ├── components/     # Reusable components
-│   ├── styles/         # Theme and global styles
-│   └── utils/          # Utility functions
-├── routes/             # SvelteKit routes
-│   ├── +layout.svelte  # Root layout
-│   ├── +page.svelte    # Home page
-│   └── [route]/+page.svelte  # Other pages
-└── static/             # Static assets
-```
-
-## Deployment
-
-### Vercel (Recommended)
-
-1. Push your code to GitHub
-2. Import project in Vercel
-3. Configure environment variables
-4. Deploy
-
-Vercel will automatically detect SvelteKit and configure the build.
-
-### Self-Hosted Node Server
-
-1. Build the site:
-   ```bash
-   pnpm build
-   ```
-
-2. The output will be in `build/` directory
-
-3. Serve with a static file server (nginx, Apache, etc.)
-
-4. For server-side features (forms, API routes), use `@sveltejs/adapter-node`:
-   ```bash
-   pnpm add -D @sveltejs/adapter-node
-   ```
-
-5. Update `svelte.config.js`:
-   ```js
-   import adapter from '@sveltejs/adapter-node';
-   ```
-
-6. Run with Node.js:
-   ```bash
-   node build/index.js
-   ```
-
-### GitHub Pages / Static Hosting
-
-The site is configured for static generation. After building:
-
-1. Deploy the `build/` directory to your static host
-2. Ensure all routes are configured (SPA fallback may be needed)
-
-## Development
+## 🛠️ Development
 
 ### Adding New Pages
 
-1. Create a new directory in `src/routes/`
-2. Add `+page.svelte` and `+page.ts` (with `export const prerender = true`)
-3. Use the `SEO` component for meta tags
+1. Create directory in `src/routes/`
+2. Add `+page.svelte` and `+page.ts`
+3. Set `export const prerender = true` in `+page.ts`
+4. Use `<SEO>` component for metadata
 
-### Styling
+Example:
+```svelte
+<script lang="ts">
+  import SEO from '$lib/components/SEO.svelte';
+</script>
 
-- Tailwind CSS v4 with custom theme in `src/lib/styles/theme.css`
-- Custom colors: forest greens, soil browns, blues, amber
-- Typography: Playfair Display (headings), Inter (body)
+<SEO 
+  title="Page Title"
+  description="Page description for SEO"
+/>
+```
 
-### Components
+### Styling Guidelines
 
-- `SEO.svelte` - Meta tags and JSON-LD
-- `Navbar.svelte` - Navigation with auto-hide
-- `Footer.svelte` - Site footer
-- `Hero.svelte` - Hero section with animations
-- `Section.svelte` - Layout sections
-- `Card.svelte` - Card component
-- `ThemeToggle.svelte` - Dark/light mode toggle
+- **Tailwind CSS v4** with custom theme
+- **Colors**: `ecohubs-primary`, `ecohubs-dark`, `ecohubs-accent`
+- **Typography**: Serif headings (`font-serif`), sans body
+- **Dark mode**: Automatic with system preference
+- **Custom classes**: `.glass-card`, `.text-gradient`, `.organic-shape`
 
-## Performance Targets
+### Components Overview
 
-- Lighthouse Performance: 95+ (mobile & desktop)
-- First Contentful Paint: < 1.5s
-- Time to Interactive: < 3.5s
-- Cumulative Layout Shift: < 0.1
+| Component | Purpose |
+|-----------|---------|
+| `ApplicationForm.svelte` | Multi-step application with Superforms |
+| `ContactForm.svelte` | Contact form with validation |
+| `NewsletterForm.svelte` | Email subscription (Linkmonk) |
+| `Hero.svelte` | Animated hero section |
+| `Navbar.svelte` | Responsive navigation with auto-hide |
+| `Footer.svelte` | Site footer with newsletter |
+| `SEO.svelte` | Meta tags + JSON-LD helper |
 
-## SEO Checklist
+### Email Templates
 
-- ✅ Semantic HTML
-- ✅ Meta tags (title, description)
-- ✅ Open Graph tags
-- ✅ Twitter Cards
-- ✅ JSON-LD structured data
-- ✅ Sitemap.xml
-- ✅ Robots.txt
-- ✅ Canonical URLs
-- ✅ RSS feed
+All email templates support both HTML and plain text:
 
-## License
+- **Contact**: `src/lib/email-templates/contact.ts`
+- **Application**: `src/lib/email-templates/application.ts`
+- Each template exports HTML and text functions
 
-Private - EcoHubs.community
+### Blog Posts
+
+Create new blog posts in `src/content/blog/`:
+
+```markdown
+---
+title: "Post Title"
+excerpt: "Brief description"
+date: "2024-11-20"
+author: "Author Name"
+tags: ["tag1", "tag2"]
+readingTime: 8
+---
+
+Content here using markdown...
+```
+
+## 🎯 Performance Targets
+
+| Metric | Target | Status |
+|--------|--------|--------|
+| Lighthouse Performance | 95+ | ✅ |
+| First Contentful Paint | < 1.5s | ✅ |
+| Time to Interactive | < 3.5s | ✅ |
+| Cumulative Layout Shift | < 0.1 | ✅ |
+
+## ♿ Accessibility
+
+- WCAG AA compliant
+- Keyboard navigation support
+- Proper ARIA labels and roles
+- Color contrast ratios verified
+- Screen reader tested
+
+## 🧪 Testing
+
+```bash
+# Unit tests (Vitest)
+pnpm test:unit
+
+# E2E tests (Playwright)
+pnpm test:e2e
+
+# Run all tests
+pnpm test
+```
+
+## 📝 Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
+
+## 📄 License
+
+MIT License - see [LICENSE](./LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with [SvelteKit](https://kit.svelte.dev/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Icons by [Lucide](https://lucide.dev/)
+- Inspired by [Ethereum Infinite Garden](https://ethereum.org/) & [Regen Network](https://www.regen.network/)
+
+## 📧 Support
+
+- **Documentation**: [/docs](/docs)
+- **Issues**: [GitHub Issues](https://github.com/yourusername/ecohubs.community/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/ecohubs.community/discussions)
+- **Email**: [hello@ecohubs.community](mailto:hello@ecohubs.community)
+
+---
+
+**Built with 🌱 by the EcoHubs Community**

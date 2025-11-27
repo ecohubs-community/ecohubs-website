@@ -1,0 +1,53 @@
+name: Lighthouse CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm build
+        env:
+          PUBLIC_SITE_URL: https://ecohubs.community
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            http://localhost:4173
+            http://localhost:4173/vision
+            http://localhost:4173/dao
+            http://localhost:4173/blueprint
+            http://localhost:4173/join
+            http://localhost:4173/contact
+            http://localhost:4173/blog
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          runs: 3
+
+      - name: Comment PR with Lighthouse scores
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          urls: 'http://localhost:4173'
+          prCommentEnabled: true
+          githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
+

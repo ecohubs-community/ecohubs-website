@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Sprout, Twitter, Github, Disc, ArrowRight } from 'lucide-svelte';
 	import Logo from '$lib/components/Logo.svelte';
+	import NewsletterForm from './NewsletterForm.svelte';
 	
 	const currentYear = new Date().getFullYear();
 
@@ -63,22 +64,7 @@
 			<div>
 				<h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Stay Updated</h4>
 				<p class="text-xs text-gray-400 mb-3">Subscribe to our newsletter for updates.</p>
-				<form class="flex gap-2" aria-label="Newsletter subscription">
-					<input
-						type="email"
-						placeholder="Email address"
-						class="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:border-ecohubs-primary focus-visible:ring-2 focus-visible:ring-green-400"
-						aria-label="Email address"
-						required
-					/>
-					<button
-						type="submit"
-						class="bg-ecohubs-primary text-white p-2 rounded-lg hover:bg-ecohubs-dark transition-colors focus-visible:ring-2 focus-visible:ring-green-400"
-						aria-label="Subscribe to newsletter"
-					>
-						<ArrowRight class="w-4 h-4" aria-hidden="true" />
-					</button>
-				</form>
+				<NewsletterForm />
 			</div>
 		</div>
 

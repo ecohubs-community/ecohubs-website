@@ -6,6 +6,9 @@
 				"-y",
 				"@sveltejs/mcp"
 			]
-		}
+		},
+		"inkeepMcp": {
+      "url": "https://mcp.inkeep.com/zod/mcp"
+    }
 	}
 }
