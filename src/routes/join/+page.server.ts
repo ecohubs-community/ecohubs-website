@@ -4,6 +4,7 @@ import { applicationSchema, type ApplicationFormData } from '$lib/config/applica
 import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { sendEmail } from '$lib/server/email';
+import { saveApplication, AirtableError } from '$lib/server/airtable';
 import {
 	getApplicationEmailHTML,
 	getApplicationEmailText,
@@ -137,39 +138,19 @@ export const actions: Actions = {
 				}
 			}
 
-			if (process.env.AIRTABLE_API_KEY && process.env.AIRTABLE_BASE_ID) {
-				try {
-					const tableName = process.env.AIRTABLE_APPLICATIONS_TABLE || 'Applications';
-					await fetch(
-						`https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${tableName}`,
-						{
-							method: 'POST',
-							headers: {
-								'Authorization': `Bearer ${process.env.AIRTABLE_API_KEY}`,
-								'Content-Type': 'application/json',
-							},
-							body: JSON.stringify({
-								records: [
-									{
-										fields: {
-											...data,
-											values: Array.isArray(data.values) 
-												? data.values.join(', ') 
-												: data.values,
-											experienceAreas: Array.isArray(data.experienceAreas) 
-												? data.experienceAreas.join(', ') 
-												: data.experienceAreas,
-											submittedAt: timestamp,
-											status: 'New',
-										},
-									},
-								],
-							}),
-						}
-					);
-				} catch (error) {
+			// Save to Airtable (non-blocking)
+			try {
+				await saveApplication(data, timestamp);
+			} catch (error) {
+				if (error instanceof AirtableError) {
+					console.error('Airtable error:', error.message);
+					if (error.originalError) {
+						console.error('Original error:', error.originalError);
+					}
+				} else {
 					console.error('Failed to save to Airtable:', error);
 				}
+				// Don't fail the form submission if Airtable fails
 			}
 
 			return { form, success: true };
