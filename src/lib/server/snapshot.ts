@@ -27,15 +27,17 @@ export function formatApplicationForSnapshot(data: ApplicationEmailData): string
 **Time Availability:** ${data.timeAvailability}
 **Languages:** ${data.languages}
 
-### Motivation & Alignment
+### Values & Vision
 
-**What Resonates:** ${data.resonance.substring(0, 200)}${data.resonance.length > 200 ? '...' : ''}
+**What Resonates with EcoHubs:** ${data.resonanceCombined.substring(0, 200)}${data.resonanceCombined.length > 200 ? '...' : ''}
 
-**What Attracts Them:** ${data.attraction.substring(0, 200)}${data.attraction.length > 200 ? '...' : ''}
+**Living in Alignment with Nature:** ${data.natureCommunityMeaning.substring(0, 200)}${data.natureCommunityMeaning.length > 200 ? '...' : ''}
 
 **Essential Values:** ${Array.isArray(data.values) ? data.values.join(', ') : data.values}
 
 ### Contribution & Experience
+
+**Motivation:** ${data.motivation.substring(0, 200)}${data.motivation.length > 200 ? '...' : ''}
 
 **What They Want to Contribute:** ${data.contribution.substring(0, 200)}${data.contribution.length > 200 ? '...' : ''}
 
@@ -51,14 +53,11 @@ export function formatApplicationForSnapshot(data: ApplicationEmailData): string
 
 **Decision-Making Value:** ${data.decisionMakingValue}
 
-### Commitment
+### Challenges & Next Steps
 
-**Commitment Level:** ${data.commitmentLevel}
-**Stability:** ${data.stability}
+**Collaboration Challenges:** ${data.collaborationChallengesMerged.substring(0, 200)}${data.collaborationChallengesMerged.length > 200 ? '...' : ''}
 
-### Vision
-
-**What Excites Them:** ${data.whatExcites.substring(0, 200)}${data.whatExcites.length > 200 ? '...' : ''}
+**Concerns/Doubts:** ${data.concernsDoubts.substring(0, 200)}${data.concernsDoubts.length > 200 ? '...' : ''}
 
 **How They Want to Start Contributing:** ${data.howStartContributing.substring(0, 200)}${data.howStartContributing.length > 200 ? '...' : ''}
 

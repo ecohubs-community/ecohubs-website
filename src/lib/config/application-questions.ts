@@ -23,14 +23,14 @@ export interface Question {
 }
 
 export const applicationQuestions: Question[] = [
-	// PAGE 1
+	// PAGE 1 — Basic Information
 	{
 		id: 'fullName',
 		type: 'text',
 		question: "What's your full name?",
 		required: true,
 		page: 1,
-		validationSchema: z.string().min(2, 'Name must be at least 2 characters').max(100, 'Name must be less than 100 characters'),
+		validationSchema: z.string().min(2).max(100),
 	},
 	{
 		id: 'email',
@@ -38,16 +38,16 @@ export const applicationQuestions: Question[] = [
 		question: "What's your email address?",
 		required: true,
 		page: 1,
-		validationSchema: z.string().email({ message: 'Please enter a valid email address' }),
+		validationSchema: z.string().email(),
 	},
 	{
 		id: 'location',
 		type: 'text',
 		question: 'Country / Location',
-		placeholder: 'e.g., Ecuador, Remote, Berlin, Germany',
+		placeholder: 'e.g., Ecuador, Berlin, Germany',
 		required: true,
 		page: 1,
-		validationSchema: z.string().min(2, 'Please enter your location'),
+		validationSchema: z.string().min(2),
 	},
 	{
 		id: 'timeAvailability',
@@ -62,60 +62,52 @@ export const applicationQuestions: Question[] = [
 			'10+ hours',
 			'It varies',
 		],
-		validationSchema: z.string().min(1, 'Please select your time availability'),
+		validationSchema: z.string().min(1),
 	},
 	{
 		id: 'languages',
-		type: 'textarea',
+		type: 'text',
 		question: 'What languages do you speak?',
 		placeholder: 'e.g., English, Spanish, German...',
 		required: true,
 		page: 1,
-		validationSchema: z.string().min(2, 'Please list at least one language'),
+		validationSchema: z.string().min(2),
 	},
 	{
 		id: 'discovery',
-		type: 'textarea',
+		type: 'text',
 		question: 'How did you discover EcoHubs?',
 		placeholder: 'Tell us how you found us...',
 		required: true,
 		page: 1,
-		validationSchema: z.string().min(10, 'Please provide at least 10 characters'),
+		validationSchema: z.string().min(10),
 	},
 
-	// PAGE 2
+	// PAGE 2 — Values & Vision
 	{
-		id: 'resonance',
+		id: 'resonanceCombined',
 		type: 'textarea',
-		question: 'What resonates most with the idea of regenerative, community-based living?',
+		question:
+			'What resonates most with EcoHubs and the idea of regenerative, community-based living? Why?',
 		placeholder: 'Share your thoughts...',
 		required: true,
 		page: 2,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		validationSchema: z.string().min(50),
 	},
 	{
-		id: 'missingInSociety',
+		id: 'natureCommunityMeaning',
 		type: 'textarea',
-		question: 'What do you believe is missing in how society operates today?',
-		placeholder: 'Share your perspective...',
+		question:
+			'In your own words, what does “living well in community and in alignment with nature” mean to you?',
+		placeholder: 'Share your understanding...',
 		required: true,
 		page: 2,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
-	},
-	{
-		id: 'attraction',
-		type: 'textarea',
-		question: 'What attracts you to EcoHubs specifically?',
-		placeholder: 'What draws you to this project?',
-		required: true,
-		page: 2,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		validationSchema: z.string().min(50),
 	},
 	{
 		id: 'values',
 		type: 'checkbox',
-		question: 'Which of these values feels essential to you? (choose up to 3)',
-		description: 'Select up to 3 values that resonate most with you.',
+		question: 'Which values resonate most with you? (choose up to 3)',
 		required: true,
 		page: 2,
 		options: [
@@ -129,19 +121,10 @@ export const applicationQuestions: Question[] = [
 			'Cultural evolution',
 			'Inner growth',
 		],
-		validationSchema: z.array(z.string()).min(1, { message: 'Please select at least one value' }).max(3, { message: 'Please select no more than 3 values' }),
-	},
-	{
-		id: 'alignmentWithNature',
-		type: 'textarea',
-		question: 'In your own words, what does "living in alignment with nature" mean to you?',
-		placeholder: 'Share your understanding...',
-		required: true,
-		page: 2,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		validationSchema: z.array(z.string()).min(1).max(3),
 	},
 
-	// PAGE 3
+	// PAGE 3 — Emotional Maturity & Communication
 	{
 		id: 'groupWork',
 		type: 'textarea',
@@ -149,7 +132,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share your insights...',
 		required: true,
 		page: 3,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		validationSchema: z.string().min(50),
 	},
 	{
 		id: 'teamworkMoment',
@@ -158,12 +141,13 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share a specific example...',
 		required: true,
 		page: 3,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		validationSchema: z.string().min(50),
 	},
 	{
 		id: 'disagreementResponse',
 		type: 'radio',
-		question: "Imagine two people strongly disagree in a group you're part of. What would you naturally do?",
+		question:
+			"Imagine two people strongly disagree in a group you're part of. What would you naturally do?",
 		required: true,
 		page: 3,
 		options: [
@@ -174,7 +158,7 @@ export const applicationQuestions: Question[] = [
 			'Step back from the situation',
 			'Other',
 		],
-		validationSchema: z.string().min(1, 'Please select an option'),
+		validationSchema: z.string().min(1),
 	},
 	{
 		id: 'disagreementResponseOther',
@@ -203,7 +187,7 @@ export const applicationQuestions: Question[] = [
 			'I disengage',
 			'Other',
 		],
-		validationSchema: z.string().min(1, 'Please select an option'),
+		validationSchema: z.string().min(1),
 	},
 	{
 		id: 'ideaNotChosenOther',
@@ -228,7 +212,7 @@ export const applicationQuestions: Question[] = [
 			min: 'Very uncomfortable',
 			max: 'Very comfortable',
 		},
-		validationSchema: z.number().min(1, 'Please select a rating').max(10, 'Rating must be between 1 and 10'),
+		validationSchema: z.number().min(1).max(10),
 	},
 	{
 		id: 'comfortAskingHelp',
@@ -240,7 +224,7 @@ export const applicationQuestions: Question[] = [
 			min: 'Very uncomfortable',
 			max: 'Very comfortable',
 		},
-		validationSchema: z.number().min(1, 'Please select a rating').max(10, 'Rating must be between 1 and 10'),
+		validationSchema: z.number().min(1).max(10),
 	},
 	{
 		id: 'adaptToChange',
@@ -252,7 +236,7 @@ export const applicationQuestions: Question[] = [
 			min: 'Very difficult',
 			max: 'Very easy',
 		},
-		validationSchema: z.number().min(1, 'Please select a rating').max(10, 'Rating must be between 1 and 10'),
+		validationSchema: z.number().min(1).max(10),
 	},
 	{
 		id: 'decisionMakingValue',
@@ -260,26 +244,11 @@ export const applicationQuestions: Question[] = [
 		question: 'Which of these do you value more in group decision-making?',
 		required: true,
 		page: 3,
-		options: [
-			'Harmony',
-			'Truth',
-			'Efficiency',
-			'Inclusion',
-			'Clarity',
-		],
-		validationSchema: z.string().min(1, 'Please select an option'),
-	},
-	{
-		id: 'personalPatternOptional',
-		type: 'textarea',
-		question: "Optional: Is there a personal pattern you're currently working on improving?",
-		placeholder: 'Share if you feel comfortable...',
-		required: false,
-		page: 3,
-		validationSchema: z.string().optional(),
+		options: ['Harmony', 'Truth', 'Efficiency', 'Inclusion', 'Clarity'],
+		validationSchema: z.string().min(1),
 	},
 
-	// PAGE 4
+	// PAGE 4 — Motivation, Contribution, Skills
 	{
 		id: 'motivation',
 		type: 'textarea',
@@ -287,7 +256,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share your motivation...',
 		required: true,
 		page: 4,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		validationSchema: z.string().min(50),
 	},
 	{
 		id: 'contribution',
@@ -296,7 +265,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share what you can bring...',
 		required: true,
 		page: 4,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		validationSchema: z.string().min(50),
 	},
 	{
 		id: 'receiveLearn',
@@ -305,34 +274,14 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share your expectations...',
 		required: true,
 		page: 4,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		validationSchema: z.string().min(50),
 	},
-	{
-		id: 'communityMeaning',
-		type: 'textarea',
-		question: 'What does community mean to you?',
-		placeholder: 'Share your understanding...',
-		required: true,
-		page: 4,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
-	},
-	{
-		id: 'joiningReason',
-		type: 'textarea',
-		question: 'Are you joining out of curiosity, interest, purpose, or seeking a major life shift?',
-		placeholder: 'Share your reason...',
-		required: true,
-		page: 4,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
-	},
-
-	// PAGE 5
 	{
 		id: 'experienceAreas',
 		type: 'checkbox',
 		question: 'Which areas do you have experience in? (choose all that apply)',
 		required: true,
-		page: 5,
+		page: 4,
 		options: [
 			'Ecology / permaculture / regenerative agriculture',
 			'Natural building / architecture',
@@ -347,7 +296,7 @@ export const applicationQuestions: Question[] = [
 			'Art / culture / storytelling',
 			'Other',
 		],
-		validationSchema: z.array(z.string()).min(1, { message: 'Please select at least one area' }),
+		validationSchema: z.array(z.string()).min(1),
 	},
 	{
 		id: 'experienceAreasOther',
@@ -355,7 +304,7 @@ export const applicationQuestions: Question[] = [
 		question: 'Please describe your other experience areas',
 		placeholder: 'Tell us about your experience...',
 		required: false,
-		page: 5,
+		page: 4,
 		conditionalOn: {
 			questionId: 'experienceAreas',
 			value: 'Other',
@@ -365,11 +314,12 @@ export const applicationQuestions: Question[] = [
 	{
 		id: 'proudProject',
 		type: 'textarea',
-		question: "Describe a project you've helped build or contribute to that you're proud of.",
+		question:
+			"Describe a project you've helped build or contribute to that you're proud of.",
 		placeholder: 'Share the project and your role...',
 		required: true,
-		page: 5,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		page: 4,
+		validationSchema: z.string().min(50),
 	},
 	{
 		id: 'bestWorkEnvironments',
@@ -377,123 +327,38 @@ export const applicationQuestions: Question[] = [
 		question: 'What environments help you do your best work?',
 		placeholder: 'Describe the conditions that support you...',
 		required: true,
-		page: 5,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		page: 4,
+		validationSchema: z.string().min(50),
 	},
 
-	// PAGE 6
+	// PAGE 5 — Stability, Challenges, Next Steps
 	{
 		id: 'manageCommitments',
 		type: 'textarea',
 		question: 'How do you manage commitments and follow-through?',
 		placeholder: 'Share your approach...',
 		required: true,
-		page: 6,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		page: 5,
+		validationSchema: z.string().min(50),
 	},
 	{
-		id: 'obstaclesToContribution',
+		id: 'collaborationChallengesMerged',
 		type: 'textarea',
-		question: 'What typically gets in the way of your ability to contribute, and how do you handle it?',
+		question:
+			'What challenges typically arise when collaborating with others, and how do you handle them?',
 		placeholder: 'Share your challenges and strategies...',
 		required: true,
-		page: 6,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
-	},
-	{
-		id: 'stability',
-		type: 'radio',
-		question: 'Are you currently stable in your living situation, finances, and emotional well-being?',
-		required: true,
-		page: 6,
-		options: [
-			'Yes',
-			'No',
-			'Prefer not to say',
-		],
-		validationSchema: z.string().min(1, 'Please select an option'),
-	},
-	{
-		id: 'stabilityComment',
-		type: 'textarea',
-		question: 'Optional comment',
-		placeholder: 'Share any additional context if you wish...',
-		required: false,
-		page: 6,
-		validationSchema: z.string().optional(),
-	},
-	{
-		id: 'commitmentLevel',
-		type: 'radio',
-		question: 'If you join EcoHubs, how committed are you to participating in shaping the blueprint?',
-		required: true,
-		page: 6,
-		options: [
-			'Lightly',
-			'Steadily',
-			'Actively',
-			'Deeply',
-			"I don't know yet",
-		],
-		validationSchema: z.string().min(1, 'Please select an option'),
-	},
-
-	// PAGE 7
-	{
-		id: 'reactToIdeasNotChosen',
-		type: 'textarea',
-		question: 'How do you react when your ideas are not chosen or prioritized?',
-		placeholder: 'Share your typical response...',
-		required: true,
-		page: 7,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
-	},
-	{
-		id: 'collaborationChallenges',
-		type: 'textarea',
-		question: 'What do you find challenging when collaborating with others?',
-		placeholder: 'Share your challenges...',
-		required: true,
-		page: 7,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
-	},
-	{
-		id: 'personalPattern',
-		type: 'textarea',
-		question: "What is one personal pattern you're working on improving?",
-		placeholder: 'Share if you feel comfortable...',
-		required: true,
-		page: 7,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
-	},
-	{
-		id: 'howOthersDescribe',
-		type: 'textarea',
-		question: "How would others describe what it's like to work with you?",
-		placeholder: 'Share your perspective...',
-		required: true,
-		page: 7,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
-	},
-
-	// PAGE 8
-	{
-		id: 'whatExcites',
-		type: 'textarea',
-		question: 'What excites you most about co-creating a regenerative blueprint?',
-		placeholder: 'Share your excitement...',
-		required: true,
-		page: 8,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		page: 5,
+		validationSchema: z.string().min(50),
 	},
 	{
 		id: 'concernsDoubts',
 		type: 'textarea',
-		question: 'What concerns or doubts do you have, if any?',
+		question: 'What concerns or doubts do you have about joining EcoHubs, if any?',
 		placeholder: 'Share openly...',
 		required: true,
-		page: 8,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		page: 5,
+		validationSchema: z.string().min(50),
 	},
 	{
 		id: 'howStartContributing',
@@ -501,52 +366,23 @@ export const applicationQuestions: Question[] = [
 		question: 'If accepted, how would you like to start contributing?',
 		placeholder: 'Share your ideas...',
 		required: true,
-		page: 8,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
+		page: 5,
+		validationSchema: z.string().min(50),
 	},
 	{
 		id: 'anythingElse',
 		type: 'textarea',
 		question: 'Anything else you would like to share with us?',
-		placeholder: 'Share anything additional...',
+		placeholder: 'Optional...',
 		required: false,
-		page: 8,
+		page: 5,
 		validationSchema: z.string().optional(),
-	},
-
-	// PAGE 9
-	{
-		id: 'lifeMeaning',
-		type: 'textarea',
-		question: 'What gives your life meaning right now?',
-		placeholder: 'Share what matters to you...',
-		required: true,
-		page: 9,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
-	},
-	{
-		id: 'responsibilityMeaning',
-		type: 'textarea',
-		question: 'What does responsibility mean to you?',
-		placeholder: 'Share your understanding...',
-		required: true,
-		page: 9,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
-	},
-	{
-		id: 'freedomMeaning',
-		type: 'textarea',
-		question: 'What does "freedom" mean to you in a community context?',
-		placeholder: 'Share your perspective...',
-		required: true,
-		page: 9,
-		validationSchema: z.string().min(50, 'Please provide at least 50 characters'),
 	},
 ];
 
 // Create static Zod schema for Superforms (Zod v4 compatible)
 export const applicationSchema = z.object({
-	// PAGE 1
+	// PAGE 1 — Basic Information
 	fullName: z.string().min(2, 'Name must be at least 2 characters').max(100, 'Name must be less than 100 characters'),
 	email: z.string().email({ message: 'Please enter a valid email address' }),
 	location: z.string().min(2, 'Please enter your location'),
@@ -554,14 +390,12 @@ export const applicationSchema = z.object({
 	languages: z.string().min(2, 'Please list at least one language'),
 	discovery: z.string().min(10, 'Please provide at least 10 characters'),
 
-	// PAGE 2
-	resonance: z.string().min(50, 'Please provide at least 50 characters'),
-	missingInSociety: z.string().min(50, 'Please provide at least 50 characters'),
-	attraction: z.string().min(50, 'Please provide at least 50 characters'),
+	// PAGE 2 — Values & Vision
+	resonanceCombined: z.string().min(50, 'Please provide at least 50 characters'),
+	natureCommunityMeaning: z.string().min(50, 'Please provide at least 50 characters'),
 	values: z.array(z.string()).min(1, { message: 'Please select at least one value' }).max(3, { message: 'Please select no more than 3 values' }),
-	alignmentWithNature: z.string().min(50, 'Please provide at least 50 characters'),
 
-	// PAGE 3
+	// PAGE 3 — Emotional Maturity & Communication
 	groupWork: z.string().min(50, 'Please provide at least 50 characters'),
 	teamworkMoment: z.string().min(50, 'Please provide at least 50 characters'),
 	disagreementResponse: z.string().min(1, 'Please select an option'),
@@ -572,44 +406,22 @@ export const applicationSchema = z.object({
 	comfortAskingHelp: z.number().min(1, 'Please select a rating').max(10, 'Rating must be between 1 and 10'),
 	adaptToChange: z.number().min(1, 'Please select a rating').max(10, 'Rating must be between 1 and 10'),
 	decisionMakingValue: z.string().min(1, 'Please select an option'),
-	personalPatternOptional: z.string().optional(),
 
-	// PAGE 4
+	// PAGE 4 — Motivation, Contribution, Skills
 	motivation: z.string().min(50, 'Please provide at least 50 characters'),
 	contribution: z.string().min(50, 'Please provide at least 50 characters'),
 	receiveLearn: z.string().min(50, 'Please provide at least 50 characters'),
-	communityMeaning: z.string().min(50, 'Please provide at least 50 characters'),
-	joiningReason: z.string().min(50, 'Please provide at least 50 characters'),
-
-	// PAGE 5
 	experienceAreas: z.array(z.string()).min(1, { message: 'Please select at least one area' }),
 	experienceAreasOther: z.string().optional(),
 	proudProject: z.string().min(50, 'Please provide at least 50 characters'),
 	bestWorkEnvironments: z.string().min(50, 'Please provide at least 50 characters'),
 
-	// PAGE 6
+	// PAGE 5 — Stability, Challenges, Next Steps
 	manageCommitments: z.string().min(50, 'Please provide at least 50 characters'),
-	obstaclesToContribution: z.string().min(50, 'Please provide at least 50 characters'),
-	stability: z.string().min(1, 'Please select an option'),
-	stabilityComment: z.string().optional(),
-	commitmentLevel: z.string().min(1, 'Please select an option'),
-
-	// PAGE 7
-	reactToIdeasNotChosen: z.string().min(50, 'Please provide at least 50 characters'),
-	collaborationChallenges: z.string().min(50, 'Please provide at least 50 characters'),
-	personalPattern: z.string().min(50, 'Please provide at least 50 characters'),
-	howOthersDescribe: z.string().min(50, 'Please provide at least 50 characters'),
-
-	// PAGE 8
-	whatExcites: z.string().min(50, 'Please provide at least 50 characters'),
+	collaborationChallengesMerged: z.string().min(50, 'Please provide at least 50 characters'),
 	concernsDoubts: z.string().min(50, 'Please provide at least 50 characters'),
 	howStartContributing: z.string().min(50, 'Please provide at least 50 characters'),
 	anythingElse: z.string().optional(),
-
-	// PAGE 9
-	lifeMeaning: z.string().min(50, 'Please provide at least 50 characters'),
-	responsibilityMeaning: z.string().min(50, 'Please provide at least 50 characters'),
-	freedomMeaning: z.string().min(50, 'Please provide at least 50 characters'),
 });
 
 export type ApplicationFormData = z.infer<typeof applicationSchema>;

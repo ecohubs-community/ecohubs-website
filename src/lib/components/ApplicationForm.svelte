@@ -2,7 +2,7 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { applicationQuestions, applicationSchema } from '$lib/config/application-questions';
-	import { ArrowLeft, ArrowRight, Check, LoaderCircle } from 'lucide-svelte';
+	import { ArrowLeft, ArrowRight, Check, ClockIcon, LoaderCircle } from 'lucide-svelte';
 	import { fly, fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import type { PageData } from '../../routes/join/$types';
@@ -214,6 +214,8 @@
 
 	function handleInput(questionId: string, value: string | number) {
 		pageInputValues[questionId] = value;
+		// Immediately sync to form for conditional field reactivity
+		$form[questionId as keyof typeof $form] = value as any;
 		// Clear error for this question
 		if ($errors[questionId]) {
 			delete $errors[questionId];
@@ -224,11 +226,12 @@
 		const current = Array.isArray(pageInputValues[questionId]) 
 			? (pageInputValues[questionId] as string[]) 
 			: [];
-		if (checked) {
-			pageInputValues[questionId] = [...current, option];
-		} else {
-			pageInputValues[questionId] = current.filter((v) => v !== option);
-		}
+		const newValue = checked 
+			? [...current, option]
+			: current.filter((v) => v !== option);
+		pageInputValues[questionId] = newValue;
+		// Immediately sync to form for conditional field reactivity
+		$form[questionId as keyof typeof $form] = newValue as any;
 		// Clear error for this question
 		if ($errors[questionId]) {
 			delete $errors[questionId];
@@ -237,6 +240,8 @@
 
 	function handleScaleChange(questionId: string, value: number) {
 		pageInputValues[questionId] = value;
+		// Immediately sync to form for conditional field reactivity
+		$form[questionId as keyof typeof $form] = value as any;
 		// Clear error for this question
 		if ($errors[questionId]) {
 			delete $errors[questionId];
@@ -273,6 +278,14 @@
 	</div>
 {:else}
 	<div class="max-w-3xl mx-auto">
+		<!-- Time Estimate Badge -->
+		<div class="mb-6 flex items-center justify-center">
+			<div class="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/10 text-gray-500 rounded-full text-sm font-medium">
+				<ClockIcon class="w-4 h-4" aria-hidden="true" />
+				<span>20-25 min</span>
+			</div>
+		</div>
+
 		<!-- Progress Bar -->
 		<div class="mb-8">
 			<div class="flex items-center justify-between mb-2">
@@ -459,7 +472,7 @@
 					type="button"
 					onclick={goToPrevious}
 					disabled={currentPage === 1}
-					class="flex items-center gap-2 px-6 py-3 text-gray-700 font-medium rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+					class="flex items-center gap-2 px-6 py-3 text-gray-700 font-medium rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
 				>
 					<ArrowLeft class="w-5 h-5" aria-hidden="true" />
 					<span>Back</span>
@@ -469,7 +482,7 @@
 					<button
 						type="submit"
 						disabled={isSubmitting}
-						class="flex items-center gap-2 px-8 py-3 bg-ecohubs-primary text-white font-bold rounded-lg hover:bg-ecohubs-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+						class="flex items-center gap-2 px-8 py-3 bg-ecohubs-primary text-white font-bold rounded-lg hover:bg-ecohubs-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
 					>
 						{#if isSubmitting}
 							<LoaderCircle class="w-5 h-5 animate-spin" aria-hidden="true" />
@@ -482,7 +495,7 @@
 				{:else}
 					<button
 						type="submit"
-						class="flex items-center gap-2 px-8 py-3 bg-ecohubs-primary text-white font-bold rounded-lg hover:bg-ecohubs-dark transition-all"
+						class="flex items-center gap-2 px-8 py-3 bg-ecohubs-primary text-white font-bold rounded-lg hover:bg-ecohubs-dark transition-all cursor-pointer"
 					>
 						<span>Next</span>
 						<ArrowRight class="w-5 h-5" aria-hidden="true" />

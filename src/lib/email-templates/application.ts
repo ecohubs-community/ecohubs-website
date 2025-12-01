@@ -1,5 +1,5 @@
 export interface ApplicationEmailData {
-	// PAGE 1
+	// PAGE 1 — Basic Information
 	fullName: string;
 	email: string;
 	location: string;
@@ -7,14 +7,12 @@ export interface ApplicationEmailData {
 	languages: string;
 	discovery: string;
 	
-	// PAGE 2
-	resonance: string;
-	missingInSociety: string;
-	attraction: string;
+	// PAGE 2 — Values & Vision
+	resonanceCombined: string;
+	natureCommunityMeaning: string;
 	values: string | string[];
-	alignmentWithNature: string;
 	
-	// PAGE 3
+	// PAGE 3 — Emotional Maturity & Communication
 	groupWork: string;
 	teamworkMoment: string;
 	disagreementResponse: string;
@@ -25,44 +23,22 @@ export interface ApplicationEmailData {
 	comfortAskingHelp: number;
 	adaptToChange: number;
 	decisionMakingValue: string;
-	personalPatternOptional?: string;
 	
-	// PAGE 4
+	// PAGE 4 — Motivation, Contribution, Skills
 	motivation: string;
 	contribution: string;
 	receiveLearn: string;
-	communityMeaning: string;
-	joiningReason: string;
-	
-	// PAGE 5
 	experienceAreas: string | string[];
 	experienceAreasOther?: string;
 	proudProject: string;
 	bestWorkEnvironments: string;
 	
-	// PAGE 6
+	// PAGE 5 — Stability, Challenges, Next Steps
 	manageCommitments: string;
-	obstaclesToContribution: string;
-	stability: string;
-	stabilityComment?: string;
-	commitmentLevel: string;
-	
-	// PAGE 7
-	reactToIdeasNotChosen: string;
-	collaborationChallenges: string;
-	personalPattern: string;
-	howOthersDescribe: string;
-	
-	// PAGE 8
-	whatExcites: string;
+	collaborationChallengesMerged: string;
 	concernsDoubts: string;
 	howStartContributing: string;
 	anythingElse?: string;
-	
-	// PAGE 9
-	lifeMeaning: string;
-	responsibilityMeaning: string;
-	freedomMeaning: string;
 	
 	timestamp: string;
 }
@@ -209,31 +185,23 @@ export function getApplicationEmailHTML(data: ApplicationEmailData): string {
 			</div>
 
 			<div class="section">
-				<div class="section-title">Page 2: Values & Alignment</div>
+				<div class="section-title">Page 2: Values & Vision</div>
 				<div class="field">
-					<div class="field-label">What Resonates with Regenerative Living</div>
-					<div class="text-box">${data.resonance.replace(/\n/g, '<br>')}</div>
+					<div class="field-label">What Resonates with EcoHubs</div>
+					<div class="text-box">${data.resonanceCombined.replace(/\n/g, '<br>')}</div>
 				</div>
 				<div class="field">
-					<div class="field-label">What's Missing in Society</div>
-					<div class="text-box">${data.missingInSociety.replace(/\n/g, '<br>')}</div>
-				</div>
-				<div class="field">
-					<div class="field-label">What Attracts to EcoHubs</div>
-					<div class="text-box">${data.attraction.replace(/\n/g, '<br>')}</div>
+					<div class="field-label">Living Well in Community and Alignment with Nature</div>
+					<div class="text-box">${data.natureCommunityMeaning.replace(/\n/g, '<br>')}</div>
 				</div>
 				<div class="field">
 					<div class="field-label">Essential Values (up to 3)</div>
 					<div class="field-value">${Array.isArray(data.values) ? data.values.join(', ') : data.values}</div>
 				</div>
-				<div class="field">
-					<div class="field-label">Living in Alignment with Nature</div>
-					<div class="text-box">${data.alignmentWithNature.replace(/\n/g, '<br>')}</div>
-				</div>
 			</div>
 
 			<div class="section">
-				<div class="section-title">Page 3: Collaboration & Self-Awareness</div>
+				<div class="section-title">Page 3: Emotional Maturity & Communication</div>
 				<div class="field">
 					<div class="field-label">What Helps Groups Work</div>
 					<div class="text-box">${data.groupWork.replace(/\n/g, '<br>')}</div>
@@ -268,16 +236,10 @@ export function getApplicationEmailHTML(data: ApplicationEmailData): string {
 					<div class="field-label">Decision-Making Value</div>
 					<div class="field-value">${data.decisionMakingValue}</div>
 				</div>
-				${data.personalPatternOptional ? `
-				<div class="field">
-					<div class="field-label">Personal Pattern (Optional)</div>
-					<div class="text-box">${data.personalPatternOptional.replace(/\n/g, '<br>')}</div>
-				</div>
-				` : ''}
 			</div>
 
 			<div class="section">
-				<div class="section-title">Page 4: Motivation & Contribution</div>
+				<div class="section-title">Page 4: Motivation, Contribution, Skills</div>
 				<div class="field">
 					<div class="field-label">Motivation</div>
 					<div class="text-box">${data.motivation.replace(/\n/g, '<br>')}</div>
@@ -290,18 +252,6 @@ export function getApplicationEmailHTML(data: ApplicationEmailData): string {
 					<div class="field-label">What to Receive/Learn</div>
 					<div class="text-box">${data.receiveLearn.replace(/\n/g, '<br>')}</div>
 				</div>
-				<div class="field">
-					<div class="field-label">Community Meaning</div>
-					<div class="text-box">${data.communityMeaning.replace(/\n/g, '<br>')}</div>
-				</div>
-				<div class="field">
-					<div class="field-label">Joining Reason</div>
-					<div class="text-box">${data.joiningReason.replace(/\n/g, '<br>')}</div>
-				</div>
-			</div>
-
-			<div class="section">
-				<div class="section-title">Page 5: Experience & Skills</div>
 				<div class="field">
 					<div class="field-label">Experience Areas</div>
 					<div class="field-value">${Array.isArray(data.experienceAreas) ? data.experienceAreas.join(', ') : data.experienceAreas}</div>
@@ -318,81 +268,19 @@ export function getApplicationEmailHTML(data: ApplicationEmailData): string {
 			</div>
 
 			<div class="section">
-				<div class="section-title">Page 6: Commitment & Stability</div>
+				<div class="section-title">Page 5: Stability, Challenges, Next Steps</div>
 				<div class="field">
-					<div class="field-label">Manage Commitments</div>
-					<div class="text-box">${data.manageCommitments.replace(/\n/g, '<br>')}</div>
+					<div class="field-label">Experience Areas</div>
+					<div class="field-value">${Array.isArray(data.experienceAreas) ? data.experienceAreas.join(', ') : data.experienceAreas}</div>
+					${data.experienceAreasOther ? `<div class="text-box" style="margin-top: 8px;">${data.experienceAreasOther.replace(/\n/g, '<br>')}</div>` : ''}
 				</div>
 				<div class="field">
-					<div class="field-label">Obstacles to Contribution</div>
-					<div class="text-box">${data.obstaclesToContribution.replace(/\n/g, '<br>')}</div>
+					<div class="field-label">Proud Project</div>
+					<div class="text-box">${data.proudProject.replace(/\n/g, '<br>')}</div>
 				</div>
 				<div class="field">
-					<div class="field-label">Stability</div>
-					<div class="field-value">${data.stability}</div>
-					${data.stabilityComment ? `<div class="text-box" style="margin-top: 8px;">${data.stabilityComment.replace(/\n/g, '<br>')}</div>` : ''}
-				</div>
-				<div class="field">
-					<div class="field-label">Commitment Level</div>
-					<div class="field-value">${data.commitmentLevel}</div>
-				</div>
-			</div>
-
-			<div class="section">
-				<div class="section-title">Page 7: Self-Reflection</div>
-				<div class="field">
-					<div class="field-label">React to Ideas Not Chosen</div>
-					<div class="text-box">${data.reactToIdeasNotChosen.replace(/\n/g, '<br>')}</div>
-				</div>
-				<div class="field">
-					<div class="field-label">Collaboration Challenges</div>
-					<div class="text-box">${data.collaborationChallenges.replace(/\n/g, '<br>')}</div>
-				</div>
-				<div class="field">
-					<div class="field-label">Personal Pattern</div>
-					<div class="text-box">${data.personalPattern.replace(/\n/g, '<br>')}</div>
-				</div>
-				<div class="field">
-					<div class="field-label">How Others Describe You</div>
-					<div class="text-box">${data.howOthersDescribe.replace(/\n/g, '<br>')}</div>
-				</div>
-			</div>
-
-			<div class="section">
-				<div class="section-title">Page 8: Vision & Concerns</div>
-				<div class="field">
-					<div class="field-label">What Excites</div>
-					<div class="text-box">${data.whatExcites.replace(/\n/g, '<br>')}</div>
-				</div>
-				<div class="field">
-					<div class="field-label">Concerns/Doubts</div>
-					<div class="text-box">${data.concernsDoubts.replace(/\n/g, '<br>')}</div>
-				</div>
-				<div class="field">
-					<div class="field-label">How to Start Contributing</div>
-					<div class="text-box">${data.howStartContributing.replace(/\n/g, '<br>')}</div>
-				</div>
-				${data.anythingElse ? `
-				<div class="field">
-					<div class="field-label">Anything Else</div>
-					<div class="text-box">${data.anythingElse.replace(/\n/g, '<br>')}</div>
-				</div>
-				` : ''}
-			</div>
-
-			<div class="section">
-				<div class="section-title">Page 9: Consciousness & Meaning</div>
-				<div class="field">
-					<div class="field-label">Life Meaning</div>
-					<div class="text-box">${data.lifeMeaning.replace(/\n/g, '<br>')}</div>
-				</div>
-				<div class="field">
-					<div class="field-label">Responsibility Meaning</div>
-					<div class="text-box">${data.responsibilityMeaning.replace(/\n/g, '<br>')}</div>
-				</div>
-				<div class="field">
-					<div class="field-label">Freedom Meaning</div>
-					<div class="text-box">${data.freedomMeaning.replace(/\n/g, '<br>')}</div>
+					<div class="field-label">Best Work Environments</div>
+					<div class="text-box">${data.bestWorkEnvironments.replace(/\n/g, '<br>')}</div>
 				</div>
 			</div>
 
@@ -425,20 +313,16 @@ Languages: ${data.languages}
 How Discovered: ${data.discovery}
 Submitted: ${new Date(data.timestamp).toLocaleString()}
 
-PAGE 2: VALUES & ALIGNMENT
+PAGE 2: VALUES & VISION
 --------------------------
-What Resonates: ${data.resonance}
+What Resonates with EcoHubs: ${data.resonanceCombined}
 
-What's Missing in Society: ${data.missingInSociety}
-
-What Attracts: ${data.attraction}
+Living Well in Community and Alignment with Nature: ${data.natureCommunityMeaning}
 
 Essential Values: ${Array.isArray(data.values) ? data.values.join(', ') : data.values}
 
-Living in Alignment: ${data.alignmentWithNature}
-
-PAGE 3: COLLABORATION & SELF-AWARENESS
---------------------------------------
+PAGE 3: EMOTIONAL MATURITY & COMMUNICATION
+------------------------------------------
 What Helps Groups Work: ${data.groupWork}
 
 Teamwork Moment: ${data.teamworkMoment}
@@ -454,22 +338,15 @@ Comfort Asking for Help: ${data.comfortAskingHelp}/10
 Adapt to Change: ${data.adaptToChange}/10
 
 Decision-Making Value: ${data.decisionMakingValue}
-${data.personalPatternOptional ? `\nPersonal Pattern (Optional): ${data.personalPatternOptional}\n` : ''}
 
-PAGE 4: MOTIVATION & CONTRIBUTION
-----------------------------------
+PAGE 4: MOTIVATION, CONTRIBUTION, SKILLS
+-----------------------------------------
 Motivation: ${data.motivation}
 
 What to Contribute: ${data.contribution}
 
 What to Receive/Learn: ${data.receiveLearn}
 
-Community Meaning: ${data.communityMeaning}
-
-Joining Reason: ${data.joiningReason}
-
-PAGE 5: EXPERIENCE & SKILLS
-----------------------------
 Experience Areas: ${Array.isArray(data.experienceAreas) ? data.experienceAreas.join(', ') : data.experienceAreas}
 ${data.experienceAreasOther ? `Other: ${data.experienceAreasOther}\n` : ''}
 
@@ -477,43 +354,16 @@ Proud Project: ${data.proudProject}
 
 Best Work Environments: ${data.bestWorkEnvironments}
 
-PAGE 6: COMMITMENT & STABILITY
--------------------------------
+PAGE 5: STABILITY, CHALLENGES, NEXT STEPS
+------------------------------------------
 Manage Commitments: ${data.manageCommitments}
 
-Obstacles to Contribution: ${data.obstaclesToContribution}
-
-Stability: ${data.stability}
-${data.stabilityComment ? `Comment: ${data.stabilityComment}\n` : ''}
-
-Commitment Level: ${data.commitmentLevel}
-
-PAGE 7: SELF-REFLECTION
-------------------------
-React to Ideas Not Chosen: ${data.reactToIdeasNotChosen}
-
-Collaboration Challenges: ${data.collaborationChallenges}
-
-Personal Pattern: ${data.personalPattern}
-
-How Others Describe You: ${data.howOthersDescribe}
-
-PAGE 8: VISION & CONCERNS
---------------------------
-What Excites: ${data.whatExcites}
+Collaboration Challenges: ${data.collaborationChallengesMerged}
 
 Concerns/Doubts: ${data.concernsDoubts}
 
 How to Start Contributing: ${data.howStartContributing}
 ${data.anythingElse ? `\nAnything Else: ${data.anythingElse}\n` : ''}
-
-PAGE 9: CONSCIOUSNESS & MEANING
---------------------------------
-Life Meaning: ${data.lifeMeaning}
-
-Responsibility Meaning: ${data.responsibilityMeaning}
-
-Freedom Meaning: ${data.freedomMeaning}
 
 ---
 Reply to: ${data.email}

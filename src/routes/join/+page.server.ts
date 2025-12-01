@@ -35,7 +35,7 @@ export const actions: Actions = {
 			const data = form.data as ApplicationFormData;
 
 			const applicationData: ApplicationEmailData = {
-				// PAGE 1
+				// PAGE 1 — Basic Information
 				fullName: data.fullName,
 				email: data.email,
 				location: data.location,
@@ -43,14 +43,12 @@ export const actions: Actions = {
 				languages: data.languages,
 				discovery: data.discovery,
 				
-				// PAGE 2
-				resonance: data.resonance,
-				missingInSociety: data.missingInSociety,
-				attraction: data.attraction,
+				// PAGE 2 — Values & Vision
+				resonanceCombined: data.resonanceCombined,
+				natureCommunityMeaning: data.natureCommunityMeaning,
 				values: data.values,
-				alignmentWithNature: data.alignmentWithNature,
 				
-				// PAGE 3
+				// PAGE 3 — Emotional Maturity & Communication
 				groupWork: data.groupWork,
 				teamworkMoment: data.teamworkMoment,
 				disagreementResponse: data.disagreementResponse,
@@ -61,44 +59,22 @@ export const actions: Actions = {
 				comfortAskingHelp: data.comfortAskingHelp,
 				adaptToChange: data.adaptToChange,
 				decisionMakingValue: data.decisionMakingValue,
-				personalPatternOptional: data.personalPatternOptional,
 				
-				// PAGE 4
+				// PAGE 4 — Motivation, Contribution, Skills
 				motivation: data.motivation,
 				contribution: data.contribution,
 				receiveLearn: data.receiveLearn,
-				communityMeaning: data.communityMeaning,
-				joiningReason: data.joiningReason,
-				
-				// PAGE 5
 				experienceAreas: data.experienceAreas,
 				experienceAreasOther: data.experienceAreasOther,
 				proudProject: data.proudProject,
 				bestWorkEnvironments: data.bestWorkEnvironments,
 				
-				// PAGE 6
+				// PAGE 5 — Stability, Challenges, Next Steps
 				manageCommitments: data.manageCommitments,
-				obstaclesToContribution: data.obstaclesToContribution,
-				stability: data.stability,
-				stabilityComment: data.stabilityComment,
-				commitmentLevel: data.commitmentLevel,
-				
-				// PAGE 7
-				reactToIdeasNotChosen: data.reactToIdeasNotChosen,
-				collaborationChallenges: data.collaborationChallenges,
-				personalPattern: data.personalPattern,
-				howOthersDescribe: data.howOthersDescribe,
-				
-				// PAGE 8
-				whatExcites: data.whatExcites,
+				collaborationChallengesMerged: data.collaborationChallengesMerged,
 				concernsDoubts: data.concernsDoubts,
 				howStartContributing: data.howStartContributing,
 				anythingElse: data.anythingElse,
-				
-				// PAGE 9
-				lifeMeaning: data.lifeMeaning,
-				responsibilityMeaning: data.responsibilityMeaning,
-				freedomMeaning: data.freedomMeaning,
 				
 				timestamp,
 			};

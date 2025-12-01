@@ -49,14 +49,12 @@ function transformApplicationData(
 		languages: data.languages || '',
 		discovery: data.discovery || '',
 
-		// Page 2: Values & Alignment
-		resonance: data.resonance || '',
-		missingInSociety: data.missingInSociety || '',
-		attraction: data.attraction || '',
+		// Page 2: Values & Vision
+		resonanceCombined: data.resonanceCombined || '',
+		natureCommunityMeaning: data.natureCommunityMeaning || '',
 		values: Array.isArray(data.values) ? data.values.join(', ') : data.values || '',
-		alignmentWithNature: data.alignmentWithNature || '',
 
-		// Page 3: Collaboration & Self-Awareness
+		// Page 3: Emotional Maturity & Communication
 		groupWork: data.groupWork || '',
 		teamworkMoment: data.teamworkMoment || '',
 		disagreementResponse: data.disagreementResponse || '',
@@ -67,16 +65,11 @@ function transformApplicationData(
 		comfortAskingHelp: data.comfortAskingHelp || 0,
 		adaptToChange: data.adaptToChange || 0,
 		decisionMakingValue: data.decisionMakingValue || '',
-		personalPatternOptional: data.personalPatternOptional || '',
 
-		// Page 4: Motivation & Contribution
+		// Page 4: Motivation, Contribution, Skills
 		motivation: data.motivation || '',
 		contribution: data.contribution || '',
 		receiveLearn: data.receiveLearn || '',
-		communityMeaning: data.communityMeaning || '',
-		joiningReason: data.joiningReason || '',
-
-		// Page 5: Experience & Skills
 		experienceAreas: Array.isArray(data.experienceAreas)
 			? data.experienceAreas.join(', ')
 			: data.experienceAreas || '',
@@ -84,29 +77,12 @@ function transformApplicationData(
 		proudProject: data.proudProject || '',
 		bestWorkEnvironments: data.bestWorkEnvironments || '',
 
-		// Page 6: Commitment & Stability
+		// Page 5: Stability, Challenges, Next Steps
 		manageCommitments: data.manageCommitments || '',
-		obstaclesToContribution: data.obstaclesToContribution || '',
-		stability: data.stability || '',
-		stabilityComment: data.stabilityComment || '',
-		commitmentLevel: data.commitmentLevel || '',
-
-		// Page 7: Self-Reflection
-		reactToIdeasNotChosen: data.reactToIdeasNotChosen || '',
-		collaborationChallenges: data.collaborationChallenges || '',
-		personalPattern: data.personalPattern || '',
-		howOthersDescribe: data.howOthersDescribe || '',
-
-		// Page 8: Vision & Concerns
-		whatExcites: data.whatExcites || '',
+		collaborationChallengesMerged: data.collaborationChallengesMerged || '',
 		concernsDoubts: data.concernsDoubts || '',
 		howStartContributing: data.howStartContributing || '',
 		anythingElse: data.anythingElse || '',
-
-		// Page 9: Consciousness & Meaning
-		lifeMeaning: data.lifeMeaning || '',
-		responsibilityMeaning: data.responsibilityMeaning || '',
-		freedomMeaning: data.freedomMeaning || '',
 
 		// Metadata
 		submittedAt: timestamp,
