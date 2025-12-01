@@ -1,5 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import { LINKMONK_API_KEY, LINKMONK_URL, ZAPIER_WEBHOOK_URL } from '$env/static/private';
 
 // Simple in-memory rate limiting (for production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -56,10 +57,6 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			);
 		}
 
-		// Get environment variables
-		const LINKMONK_URL = process.env.LINKMONK_URL;
-		const LINKMONK_API_KEY = process.env.LINKMONK_API_KEY;
-		const ZAPIER_WEBHOOK_URL = process.env.ZAPIER_WEBHOOK_URL;
 
 		// If Linkmonk is configured, use it
 		if (LINKMONK_URL && LINKMONK_API_KEY) {

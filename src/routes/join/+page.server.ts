@@ -13,6 +13,7 @@ import {
 	getApplicationConfirmationText,
 	type ApplicationEmailData
 } from '$lib/email-templates/application';
+import { ADMIN_EMAIL } from '$env/static/private';
 
 export const load: PageServerLoad = async () => {
 	// @ts-expect-error - Zod v3 compatibility with sveltekit-superforms
@@ -30,7 +31,7 @@ export const actions: Actions = {
 		}
 
 		try {
-			const adminEmail = process.env.ADMIN_EMAIL || 'admin@ecohubs.community';
+			const adminEmail = ADMIN_EMAIL || 'admin@ecohubs.community';
 			const timestamp = new Date().toISOString();
 			const data = form.data as ApplicationFormData;
 

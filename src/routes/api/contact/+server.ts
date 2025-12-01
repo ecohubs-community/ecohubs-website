@@ -8,6 +8,7 @@ import {
 	getContactConfirmationText,
 	type ContactEmailData
 } from '$lib/email-templates/contact';
+import { ADMIN_EMAIL, RATE_LIMIT_MAX_REQUESTS, RATE_LIMIT_WINDOW, ZAPIER_WEBHOOK_URL } from '$env/static/private';
 
 // Simple in-memory rate limiting (for production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -16,8 +17,8 @@ function checkRateLimit(identifier: string): boolean {
 	const now = Date.now();
 	const limit = rateLimitMap.get(identifier);
 	
-	const maxRequests = parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '5');
-	const windowMs = parseInt(process.env.RATE_LIMIT_WINDOW || '60000');
+	const maxRequests = parseInt(RATE_LIMIT_MAX_REQUESTS || '5');
+	const windowMs = parseInt(RATE_LIMIT_WINDOW || '60000');
 	
 	if (!limit || now > limit.resetTime) {
 		rateLimitMap.set(identifier, {
@@ -85,8 +86,8 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			);
 		}
 
-		const adminEmail = process.env.ADMIN_EMAIL || 'admin@ecohubs.community';
-		const zapierWebhook = process.env.ZAPIER_WEBHOOK_URL;
+		const adminEmail = ADMIN_EMAIL || 'admin@ecohubs.community';
+		const zapierWebhook = ZAPIER_WEBHOOK_URL || '';
 		const timestamp = new Date().toISOString();
 
 		const contactData: ContactEmailData = {

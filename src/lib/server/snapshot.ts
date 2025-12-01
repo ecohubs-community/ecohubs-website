@@ -1,3 +1,4 @@
+import { SNAPSHOT_NETWORK, SNAPSHOT_SPACE, SNAPSHOT_VOTING_DURATION } from '$env/static/private';
 import type { ApplicationFormData } from '$lib/config/application-questions';
 import type { ApplicationEmailData } from '$lib/email-templates/application';
 
@@ -131,9 +132,9 @@ export async function createApplicationProposal(
 	data: ApplicationFormData,
 	applicationData: ApplicationEmailData
 ): Promise<string | null> {
-	const space = process.env.SNAPSHOT_SPACE;
-	const networkId = parseInt(process.env.SNAPSHOT_NETWORK || '1');
-	const votingDuration = parseInt(process.env.SNAPSHOT_VOTING_DURATION || '604800'); // 7 days default
+	const space = SNAPSHOT_SPACE;
+	const networkId = parseInt(SNAPSHOT_NETWORK || '1');
+	const votingDuration = parseInt(SNAPSHOT_VOTING_DURATION || '604800'); // 7 days default
 
 	if (!space) {
 		console.warn('Snapshot not configured: SNAPSHOT_SPACE missing');
@@ -253,7 +254,7 @@ export async function createApplicationProposal(
  * @returns true if Snapshot is properly configured, false otherwise
  */
 export async function verifySnapshotConnection(): Promise<boolean> {
-	const space = process.env.SNAPSHOT_SPACE;
+	const space = SNAPSHOT_SPACE;
 
 	if (!space) {
 		return false;

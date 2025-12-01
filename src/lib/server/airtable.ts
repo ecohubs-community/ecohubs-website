@@ -1,5 +1,6 @@
 import Airtable from 'airtable';
 import type { ApplicationFormData } from '$lib/config/application-questions';
+import { AIRTABLE_API_KEY, AIRTABLE_APPLICATIONS_TABLE, AIRTABLE_BASE_ID } from '$env/static/private';
 
 let base: Airtable.Base | null = null;
 
@@ -12,8 +13,8 @@ function getAirtableBase(): Airtable.Base | null {
 		return base;
 	}
 
-	const apiKey = process.env.AIRTABLE_API_KEY;
-	const baseId = process.env.AIRTABLE_BASE_ID;
+	const apiKey = AIRTABLE_API_KEY;
+	const baseId = AIRTABLE_BASE_ID;
 
 	if (!apiKey || !baseId) {
 		console.warn('Airtable not configured: AIRTABLE_API_KEY or AIRTABLE_BASE_ID missing');
@@ -121,11 +122,10 @@ export async function saveApplication(
 		return null;
 	}
 
-	const tableName = process.env.AIRTABLE_APPLICATIONS_TABLE || 'Applications';
+	const tableName = AIRTABLE_APPLICATIONS_TABLE || 'Applications';
 	const fields = transformApplicationData(data, timestamp);
 
 	try {
-		// @ts-expect-error - Airtable.js types are complex, but this works correctly at runtime
 		const records = await airtableBase(tableName).create([
 			{
 				fields,
@@ -191,7 +191,7 @@ export async function verifyAirtableConnection(): Promise<boolean> {
 		return false;
 	}
 
-	const tableName = process.env.AIRTABLE_APPLICATIONS_TABLE || 'Applications';
+	const tableName = AIRTABLE_APPLICATIONS_TABLE || 'Applications';
 
 	try {
 		// Try to read the first page (limit 1) to verify connection

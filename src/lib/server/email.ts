@@ -1,3 +1,4 @@
+import { SMTP_HOST, SMTP_PASSWORD, SMTP_USER, SMTP_SECURE, SMTP_PORT, EMAIL_FROM, EMAIL_FROM_NAME } from '$env/static/private';
 import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
 
@@ -8,11 +9,11 @@ export function getEmailTransporter(): Transporter {
 		return transporter;
 	}
 
-	const smtpHost = process.env.SMTP_HOST || 'localhost';
-	const smtpPort = parseInt(process.env.SMTP_PORT || '1025');
-	const smtpSecure = process.env.SMTP_SECURE === 'true';
-	const smtpUser = process.env.SMTP_USER || '';
-	const smtpPassword = process.env.SMTP_PASSWORD || '';
+	const smtpHost = SMTP_HOST || 'localhost';
+	const smtpPort = parseInt(SMTP_PORT || '1025');
+	const smtpSecure = SMTP_SECURE === 'true';
+	const smtpUser = SMTP_USER || '';	
+	const smtpPassword = SMTP_PASSWORD || '';
 
 	transporter = nodemailer.createTransport({
 		host: smtpHost,
@@ -44,8 +45,8 @@ export interface SendEmailOptions {
 export async function sendEmail(options: SendEmailOptions): Promise<void> {
 	const transporter = getEmailTransporter();
 	
-	const emailFrom = process.env.EMAIL_FROM || 'noreply@ecohubs.community';
-	const emailFromName = process.env.EMAIL_FROM_NAME || 'EcoHubs Community';
+	const emailFrom = EMAIL_FROM || 'noreply@ecohubs.community';
+	const emailFromName = EMAIL_FROM_NAME || 'EcoHubs Community';
 
 	await transporter.sendMail({
 		from: `"${emailFromName}" <${emailFrom}>`,
