@@ -5,6 +5,7 @@ import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { sendEmail } from '$lib/server/email';
 import { saveApplication, AirtableError } from '$lib/server/airtable';
+import { createApplicationProposal, SnapshotError } from '$lib/server/snapshot';
 import {
 	getApplicationEmailHTML,
 	getApplicationEmailText,
@@ -117,27 +118,6 @@ export const actions: Actions = {
 				text: getApplicationConfirmationText(data.fullName),
 			});
 
-			if (process.env.GITHUB_TOKEN && process.env.GITHUB_REPO) {
-				try {
-					const [owner, repo] = (process.env.GITHUB_REPO || '').split('/');
-					await fetch(`https://api.github.com/repos/${owner}/${repo}/issues`, {
-						method: 'POST',
-						headers: {
-							'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
-							'Content-Type': 'application/json',
-							'Accept': 'application/vnd.github.v3+json',
-						},
-						body: JSON.stringify({
-							title: `Application: ${data.fullName}`,
-							body: formatApplicationForGitHub(applicationData),
-							labels: ['application', 'new'],
-						}),
-					});
-				} catch (error) {
-					console.error('Failed to create GitHub issue:', error);
-				}
-			}
-
 			// Save to Airtable (non-blocking)
 			try {
 				await saveApplication(data, timestamp);
@@ -153,6 +133,21 @@ export const actions: Actions = {
 				// Don't fail the form submission if Airtable fails
 			}
 
+			// Create Snapshot proposal (non-blocking)
+			try {
+				await createApplicationProposal(data, applicationData);
+			} catch (error) {
+				if (error instanceof SnapshotError) {
+					console.error('Snapshot error:', error.message);
+					if (error.originalError) {
+						console.error('Original error:', error.originalError);
+					}
+				} else {
+					console.error('Failed to create Snapshot proposal:', error);
+				}
+				// Don't fail the form submission if Snapshot fails
+			}
+
 			return { form, success: true };
 		} catch (error) {
 			console.error('Application submission error:', error);
@@ -163,112 +158,3 @@ export const actions: Actions = {
 		}
 	},
 };
-
-function formatApplicationForGitHub(data: ApplicationEmailData): string {
-	return `
-## Page 1: Basic Information
-
-**Name:** ${data.fullName}
-**Email:** ${data.email}
-**Location:** ${data.location}
-**Time Availability:** ${data.timeAvailability}
-**Languages:** ${data.languages}
-**How Discovered:** ${data.discovery}
-
-## Page 2: Values & Alignment
-
-**What Resonates:** ${data.resonance}
-
-**What's Missing in Society:** ${data.missingInSociety}
-
-**What Attracts You:** ${data.attraction}
-
-**Essential Values:** ${Array.isArray(data.values) ? data.values.join(', ') : data.values}
-
-**Living in Alignment:** ${data.alignmentWithNature}
-
-## Page 3: Collaboration & Self-Awareness
-
-**What Helps Groups Work:** ${data.groupWork}
-
-**Teamwork Moment:** ${data.teamworkMoment}
-
-**Disagreement Response:** ${data.disagreementResponse}
-${data.disagreementResponseOther ? `**Details:** ${data.disagreementResponseOther}\n` : ''}
-
-**Idea Not Chosen Response:** ${data.ideaNotChosen}
-${data.ideaNotChosenOther ? `**Details:** ${data.ideaNotChosenOther}\n` : ''}
-
-**Comfort Receiving Feedback:** ${data.comfortFeedback}/10
-**Comfort Asking for Help:** ${data.comfortAskingHelp}/10
-**Adapt to Change:** ${data.adaptToChange}/10
-
-**Decision-Making Value:** ${data.decisionMakingValue}
-
-${data.personalPatternOptional ? `**Personal Pattern (Optional):** ${data.personalPatternOptional}\n` : ''}
-
-## Page 4: Motivation & Contribution
-
-**Motivation:** ${data.motivation}
-
-**What to Contribute:** ${data.contribution}
-
-**What to Receive/Learn:** ${data.receiveLearn}
-
-**Community Meaning:** ${data.communityMeaning}
-
-**Joining Reason:** ${data.joiningReason}
-
-## Page 5: Experience & Skills
-
-**Experience Areas:** ${Array.isArray(data.experienceAreas) ? data.experienceAreas.join(', ') : data.experienceAreas}
-${data.experienceAreasOther ? `**Other:** ${data.experienceAreasOther}\n` : ''}
-
-**Proud Project:** ${data.proudProject}
-
-**Best Work Environments:** ${data.bestWorkEnvironments}
-
-## Page 6: Commitment & Stability
-
-**Manage Commitments:** ${data.manageCommitments}
-
-**Obstacles to Contribution:** ${data.obstaclesToContribution}
-
-**Stability:** ${data.stability}
-${data.stabilityComment ? `**Comment:** ${data.stabilityComment}\n` : ''}
-
-**Commitment Level:** ${data.commitmentLevel}
-
-## Page 7: Self-Reflection
-
-**React to Ideas Not Chosen:** ${data.reactToIdeasNotChosen}
-
-**Collaboration Challenges:** ${data.collaborationChallenges}
-
-**Personal Pattern:** ${data.personalPattern}
-
-**How Others Describe You:** ${data.howOthersDescribe}
-
-## Page 8: Vision & Concerns
-
-**What Excites:** ${data.whatExcites}
-
-**Concerns/Doubts:** ${data.concernsDoubts}
-
-**How to Start Contributing:** ${data.howStartContributing}
-
-${data.anythingElse ? `**Anything Else:** ${data.anythingElse}\n` : ''}
-
-## Page 9: Consciousness & Meaning
-
-**Life Meaning:** ${data.lifeMeaning}
-
-**Responsibility Meaning:** ${data.responsibilityMeaning}
-
-**Freedom Meaning:** ${data.freedomMeaning}
-
----
-
-*Submitted: ${new Date(data.timestamp).toLocaleString()}*
-`;
-}

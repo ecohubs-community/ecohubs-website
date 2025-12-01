@@ -14,7 +14,7 @@ export function getEmailTransporter(): Transporter {
 	const smtpUser = process.env.SMTP_USER || '';
 	const smtpPassword = process.env.SMTP_PASSWORD || '';
 
-	transporter = nodemailer.createTransporter({
+	transporter = nodemailer.createTransport({
 		host: smtpHost,
 		port: smtpPort,
 		secure: smtpSecure,
@@ -67,4 +67,5 @@ export async function verifyEmailConnection(): Promise<boolean> {
 		return false;
 	}
 }
+
 

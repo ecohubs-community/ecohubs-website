@@ -57,10 +57,10 @@ AIRTABLE_API_KEY=your-api-key
 AIRTABLE_BASE_ID=your-base-id
 AIRTABLE_APPLICATIONS_TABLE=Applications
 
-# Application Tracking (GitHub)
-GITHUB_TOKEN=ghp_your-token
-GITHUB_REPO=owner/repo
-GITHUB_OWNER=owner
+# Application Voting (Snapshot)
+SNAPSHOT_SPACE=ecohubs.eth
+SNAPSHOT_NETWORK=1
+SNAPSHOT_VOTING_DURATION=604800
 
 # Rate Limiting
 RATE_LIMIT_WINDOW=60000
