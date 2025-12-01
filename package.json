@@ -52,9 +52,12 @@
 	},
 	"dependencies": {
 		"@motionone/svelte": "^10.16.4",
+		"@safe-global/api-kit": "^4.0.1",
 		"@types/nodemailer": "^7.0.4",
 		"airtable": "^0.12.2",
+		"ethers": "^6.15.0",
 		"formsnap": "^2.0.1",
+		"jose": "^6.1.2",
 		"lucide-svelte": "^0.554.0",
 		"motion": "^12.23.24",
 		"nodemailer": "^7.0.10",

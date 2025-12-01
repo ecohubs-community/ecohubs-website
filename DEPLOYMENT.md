@@ -62,6 +62,15 @@ SNAPSHOT_SPACE=ecohubs.eth
 SNAPSHOT_NETWORK=1
 SNAPSHOT_VOTING_DURATION=604800
 
+# Safe Authentication (Admin Dashboard)
+SAFE_ADDRESS=0x1234567890123456789012345678901234567890
+SAFE_CHAIN_ID=1
+SAFE_API_KEY=your-safe-api-key-here
+AUTH_SECRET=generate_random_32_character_string_here
+
+# Optional: RPC URL for fallback (if needed)
+# RPC_URL=https://eth-mainnet.g.alchemy.com/v2/YOUR-KEY
+
 # Rate Limiting
 RATE_LIMIT_WINDOW=60000
 RATE_LIMIT_MAX_REQUESTS=5
