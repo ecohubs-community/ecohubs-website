@@ -13,110 +13,89 @@ The EcoHubs.community application form automatically saves submissions to Airtab
 1. Go to [Airtable.com](https://airtable.com) and create a new base
 2. Name it "EcoHubs Applications" (or your preferred name)
 
-### 2. Create Applications Table
+### 2. Create Members Table
 
-Create a table named **"Applications"** (or set `AIRTABLE_APPLICATIONS_TABLE` env var to match your table name).
+Create a table named **"Members"** (this name is hardcoded and cannot be changed).
 
-### 3. Configure Table Fields
+#### Members Table Fields
 
-Create the following fields in your Applications table. Field names must match exactly (case-sensitive):
-
-#### Page 1: Basic Information
+Create the following fields in your Members table. Field names must match exactly (case-sensitive):
 
 | Field Name | Type | Description |
 |------------|------|-------------|
-| `fullName` | Single line text | Applicant's full name |
-| `email` | Email | Applicant's email address |
+| `fullName` | Single line text | Member's full name |
+| `email` | Email | Member's email address (used for lookup) |
 | `location` | Single line text | Country/location |
 | `timeAvailability` | Single line text | Time availability per week |
 | `languages` | Long text | Languages spoken |
 | `discovery` | Long text | How they discovered EcoHubs |
 
-#### Page 2: Values & Alignment
+**Note:** Members are automatically created or updated when an application is submitted. If a member with the same email already exists, their information is updated. Members can have multiple applications.
+
+### 3. Create Applications Table
+
+Create a table named **"Applications"** (or set `AIRTABLE_APPLICATIONS_TABLE` env var to match your table name).
+
+#### Applications Table Fields
+
+Create the following fields in your Applications table. Field names must match exactly (case-sensitive):
+
+#### Link to Member
 
 | Field Name | Type | Description |
 |------------|------|-------------|
-| `resonance` | Long text | What resonates with regenerative living |
-| `missingInSociety` | Long text | What's missing in society today |
-| `attraction` | Long text | What attracts them to EcoHubs |
-| `values` | Single line text | Selected values (comma-separated) |
-| `alignmentWithNature` | Long text | Understanding of living in alignment with nature |
+| `relatedMember` | Link to another record | Link to Members table (required) |
 
-#### Page 3: Collaboration & Self-Awareness
+#### Page 2: Values & Vision
+
+| Field Name | Type | Description |
+|------------|------|-------------|
+| `resonanceCombined` | Long text | What resonates with EcoHubs and regenerative living |
+| `natureCommunityMeaning` | Long text | Understanding of living well in community and alignment with nature |
+| `values` | Single line text | Selected values (comma-separated, up to 3) |
+
+#### Page 3: Emotional Maturity & Communication
 
 | Field Name | Type | Description |
 |------------|------|-------------|
 | `groupWork` | Long text | What helps groups work well |
 | `teamworkMoment` | Long text | Moment when teamwork felt easy |
 | `disagreementResponse` | Single line text | Response to disagreement |
-| `disagreementResponseOther` | Long text | Additional details (optional) |
+| `disagreementResponseOther` | Long text | Additional details (optional, shown when "Other" selected) |
 | `ideaNotChosen` | Single line text | Response when idea not chosen |
-| `ideaNotChosenOther` | Long text | Additional details (optional) |
+| `ideaNotChosenOther` | Long text | Additional details (optional, shown when "Other" selected) |
 | `comfortFeedback` | Number | Comfort receiving feedback (1-10) |
 | `comfortAskingHelp` | Number | Comfort asking for help (1-10) |
 | `adaptToChange` | Number | Ease adapting to change (1-10) |
 | `decisionMakingValue` | Single line text | Valued aspect of decision-making |
-| `personalPatternOptional` | Long text | Personal pattern working on (optional) |
 
-#### Page 4: Motivation & Contribution
+#### Page 4: Motivation, Contribution, Skills
 
 | Field Name | Type | Description |
 |------------|------|-------------|
 | `motivation` | Long text | Motivation to join |
 | `contribution` | Long text | What they want to contribute |
 | `receiveLearn` | Long text | What they hope to receive/learn |
-| `communityMeaning` | Long text | What community means to them |
-| `joiningReason` | Long text | Reason for joining |
-
-#### Page 5: Experience & Skills
-
-| Field Name | Type | Description |
-|------------|------|-------------|
 | `experienceAreas` | Single line text | Experience areas (comma-separated) |
-| `experienceAreasOther` | Long text | Other experience areas (optional) |
+| `experienceAreasOther` | Long text | Other experience areas (optional, shown when "Other" selected) |
 | `proudProject` | Long text | Project they're proud of |
 | `bestWorkEnvironments` | Long text | Environments for best work |
 
-#### Page 6: Commitment & Stability
+#### Page 5: Stability, Challenges, Next Steps
 
 | Field Name | Type | Description |
 |------------|------|-------------|
 | `manageCommitments` | Long text | How they manage commitments |
-| `obstaclesToContribution` | Long text | Obstacles and how they handle them |
-| `stability` | Single line text | Stability status |
-| `stabilityComment` | Long text | Additional stability context (optional) |
-| `commitmentLevel` | Single line text | Commitment level to shaping blueprint |
-
-#### Page 7: Self-Reflection
-
-| Field Name | Type | Description |
-|------------|------|-------------|
-| `reactToIdeasNotChosen` | Long text | Reaction when ideas not chosen |
-| `collaborationChallenges` | Long text | Collaboration challenges |
-| `personalPattern` | Long text | Personal pattern working on |
-| `howOthersDescribe` | Long text | How others describe working with them |
-
-#### Page 8: Vision & Concerns
-
-| Field Name | Type | Description |
-|------------|------|-------------|
-| `whatExcites` | Long text | What excites about co-creating blueprint |
+| `collaborationChallengesMerged` | Long text | Collaboration challenges and how they handle them |
 | `concernsDoubts` | Long text | Concerns or doubts |
 | `howStartContributing` | Long text | How they'd like to start contributing |
 | `anythingElse` | Long text | Anything else to share (optional) |
-
-#### Page 9: Consciousness & Meaning
-
-| Field Name | Type | Description |
-|------------|------|-------------|
-| `lifeMeaning` | Long text | What gives life meaning |
-| `responsibilityMeaning` | Long text | What responsibility means |
-| `freedomMeaning` | Long text | What freedom means in community context |
 
 #### Metadata Fields
 
 | Field Name | Type | Description |
 |------------|------|-------------|
+| `applicationId` | Single line text | Unique UUID for this application (auto-generated) |
 | `submittedAt` | Date | Submission timestamp (auto-filled) |
 | `status` | Single line text | Application status (default: "New") |
 
@@ -147,8 +126,15 @@ The integration is automatic. When a user submits the application form:
 
 1. Form data is validated
 2. Email notifications are sent
-3. **Application is saved to Airtable** (if configured)
-4. Optional GitHub issue is created (if configured)
+3. **Member is found or created** in Members table (based on email)
+4. **Application is saved to Airtable** linked to the Member (if configured)
+5. Optional Snapshot proposal is created (if configured)
+
+**Important:** 
+- Members are automatically created or updated based on email address
+- If a member with the same email already exists, their information is updated
+- Members can have multiple applications (one-to-many relationship)
+- Each application gets a unique UUID (`applicationId`)
 
 The Airtable save is **non-blocking** - if it fails, the form submission still succeeds (errors are logged to console).
 
@@ -177,10 +163,14 @@ console.log('Airtable connected:', isConnected);
 
 ## Field Mapping Notes
 
+- **Members table** stores PAGE 1 fields only (fullName, email, location, timeAvailability, languages, discovery)
+- **Applications table** stores PAGE 2-5 fields and links to Members via `relatedMember` field
+- **Linked records**: `relatedMember` field must be set up as a "Link to another record" field pointing to the Members table
 - **Array fields** (`values`, `experienceAreas`) are automatically converted to comma-separated strings
 - **Number fields** (`comfortFeedback`, `comfortAskingHelp`, `adaptToChange`) must be Number type in Airtable
 - **Optional fields** are included even if empty (empty strings)
 - **Date field** (`submittedAt`) is set automatically as ISO timestamp string
+- **UUID field** (`applicationId`) is automatically generated for each application
 
 ## Troubleshooting
 
@@ -188,9 +178,12 @@ console.log('Airtable connected:', isConnected);
 
 1. **Check environment variables**: Ensure `AIRTABLE_API_KEY` and `AIRTABLE_BASE_ID` are set
 2. **Check API key permissions**: Token must have access to your base
-3. **Check table name**: Default is "Applications", or set `AIRTABLE_APPLICATIONS_TABLE`
+3. **Check table names**: 
+   - Members table must be named exactly "Members"
+   - Applications table default is "Applications", or set `AIRTABLE_APPLICATIONS_TABLE`
 4. **Check field names**: Must match exactly (case-sensitive)
-5. **Check server logs**: Look for Airtable error messages
+5. **Check linked record field**: `relatedMember` must be set up as "Link to another record" pointing to Members table
+6. **Check server logs**: Look for Airtable error messages
 
 ### Common Errors
 
