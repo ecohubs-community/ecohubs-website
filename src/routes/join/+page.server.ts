@@ -80,20 +80,31 @@ export const actions: Actions = {
 				timestamp,
 			};
 
-			await sendEmail({
-				to: adminEmail,
-				subject: `New Application: ${data.fullName}`,
-				html: getApplicationEmailHTML(applicationData),
-				text: getApplicationEmailText(applicationData),
-				replyTo: data.email,
-			});
+			// Send emails (non-blocking - don't fail submission if email fails)
+			try {
+				await sendEmail({
+					to: adminEmail,
+					subject: `New Application: ${data.fullName}`,
+					html: getApplicationEmailHTML(applicationData),
+					text: getApplicationEmailText(applicationData),
+					replyTo: data.email,
+				});
+			} catch (error) {
+				console.error('Failed to send admin notification email:', error);
+				// Don't fail the form submission if email fails
+			}
 
-			await sendEmail({
-				to: data.email,
-				subject: 'Application Received - EcoHubs Community',
-				html: getApplicationConfirmationHTML(data.fullName),
-				text: getApplicationConfirmationText(data.fullName),
-			});
+			try {
+				await sendEmail({
+					to: data.email,
+					subject: 'Application Received - EcoHubs Community',
+					html: getApplicationConfirmationHTML(data.fullName),
+					text: getApplicationConfirmationText(data.fullName),
+				});
+			} catch (error) {
+				console.error('Failed to send confirmation email:', error);
+				// Don't fail the form submission if email fails
+			}
 
 			// Save to Airtable (non-blocking)
 			try {

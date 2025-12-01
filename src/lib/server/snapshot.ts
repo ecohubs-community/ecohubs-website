@@ -114,19 +114,27 @@ async function getLatestBlockNumber(networkId: number = 1): Promise<number> {
 /**
  * Create a Snapshot proposal for an application
  * 
- * Note: Snapshot proposals typically require wallet signing. For automated proposal creation,
- * you may need to:
- * 1. Configure your Snapshot space to allow API-based proposals
- * 2. Use a service account with signing capabilities
- * 3. Or use Snapshot's webhook/automation features
+ * IMPORTANT: Snapshot's public GraphQL API does NOT support mutations (proposal creation).
+ * Proposals must be created through:
+ * 1. The Snapshot web interface (with wallet signing)
+ * 2. Wallet-signed messages (requires private key - not recommended server-side)
+ * 3. Snapshot delegation features
+ * 4. Webhook/automation integrations
  * 
- * This implementation uses Snapshot's GraphQL API. If authentication/signing is required,
- * you'll need to extend this function to include wallet signing.
+ * This function will gracefully skip proposal creation and return null, as this is expected
+ * behavior. The application submission will still succeed.
+ * 
+ * For automated proposal creation, consider:
+ * - Using Snapshot's delegation system to allow a service account to create proposals
+ * - Setting up webhook automation (e.g., Zapier, Make.com) to create proposals from Airtable
+ * - Using Snapshot's API with proper wallet authentication (requires private key management)
+ * - Creating proposals manually from the Snapshot interface
+ * 
+ * This is a non-blocking operation - application submission will succeed even if this returns null.
  * 
  * @param data - Application form data
  * @param applicationData - Formatted application email data
- * @returns Promise that resolves to the proposal ID, or null if Snapshot is not configured
- * @throws {SnapshotError} If the proposal creation fails
+ * @returns Promise that resolves to null (proposals cannot be created via public API)
  */
 export async function createApplicationProposal(
 	data: ApplicationFormData,
@@ -180,7 +188,10 @@ export async function createApplicationProposal(
 			snapshot,
 		};
 
-		const response = await fetch('https://hub.snapshot.org/api', {
+		// Snapshot GraphQL endpoint
+		const snapshotApiUrl = 'https://hub.snapshot.org/graphql';
+		
+		const response = await fetch(snapshotApiUrl, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -191,11 +202,32 @@ export async function createApplicationProposal(
 			}),
 		});
 
+		// Check if response is JSON before parsing
+		const contentType = response.headers.get('content-type');
+		if (!contentType || !contentType.includes('application/json')) {
+			const text = await response.text();
+			throw new SnapshotError(
+				`Snapshot API returned non-JSON response (${response.status}): ${text.substring(0, 200)}`,
+				{ status: response.status, text }
+			);
+		}
+
 		const result = await response.json();
 
 		if (result.errors) {
 			const errorMessage = result.errors[0]?.message || 'Unknown Snapshot error';
 			
+			// Check for mutation errors (Snapshot doesn't allow mutations via public API)
+			if (errorMessage.includes('mutations') || errorMessage.includes('mutation')) {
+				console.warn(
+					'Snapshot proposal creation skipped: Snapshot requires wallet signing for proposal creation. ' +
+					'Proposals must be created through the Snapshot web interface or with wallet authentication. ' +
+					'Consider using Snapshot delegation or webhook automation for automated proposal creation.'
+				);
+				// Return null instead of throwing - this is expected behavior
+				return null;
+			}
+
 			// Check for authentication errors
 			if (errorMessage.includes('unauthorized') || errorMessage.includes('authentication')) {
 				throw new SnapshotError(
@@ -271,7 +303,10 @@ export async function verifySnapshotConnection(): Promise<boolean> {
 			}
 		`;
 
-		const response = await fetch('https://hub.snapshot.org/api', {
+		// Snapshot GraphQL endpoint
+		const snapshotApiUrl = 'https://hub.snapshot.org/graphql';
+		
+		const response = await fetch(snapshotApiUrl, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

@@ -37,7 +37,7 @@ function getAirtableBase(): Airtable.Base | null {
  */
 function transformMemberData(data: ApplicationFormData): Record<string, string> {
 	return {
-		"E-mail": data.email || '',
+		"E-Mail": data.email || '',
 		"Member Name": data.fullName || '',
 		"Location": data.location || '',
 		"Time Availability": data.timeAvailability || '',
@@ -134,9 +134,11 @@ async function findOrCreateMember(
 
 	try {
 		// Try to find existing member by email
+		// Escape email for formula (handle quotes and special characters)
+		const escapedEmail = data.email.replace(/"/g, '\\"');
 		const existingRecords = await airtableBase(membersTableName)
 			.select({
-				filterByFormula: `{email} = "${data.email}"`,
+				filterByFormula: `{E-Mail} = "${escapedEmail}"`,
 				maxRecords: 1,
 			})
 			.firstPage();
@@ -176,6 +178,31 @@ async function findOrCreateMember(
 		}
 
 		// Handle Airtable-specific errors
+		if (error && typeof error === 'object' && 'error' in error) {
+			const airtableError = error as { error?: string; message?: string; statusCode?: number };
+			
+			if (airtableError.error === 'INVALID_FILTER_BY_FORMULA') {
+				throw new AirtableError(
+					`Airtable field name mismatch in Members table. The field must be named exactly "email" (lowercase). Current error: ${airtableError.message || 'Unknown field names'}`,
+					error
+				);
+			}
+
+			if (airtableError.statusCode === 404 || airtableError.message?.includes('Not Found')) {
+				throw new AirtableError(
+					`Airtable table "${membersTableName}" not found. Check table name and base ID.`,
+					error
+				);
+			}
+
+			if (airtableError.statusCode === 422 || airtableError.message?.includes('Invalid')) {
+				throw new AirtableError(
+					`Airtable field validation failed for Members table: ${airtableError.message || 'Check field names and types'}`,
+					error
+				);
+			}
+		}
+
 		if (error instanceof Error) {
 			if (error.message.includes('404') || error.message.includes('Not Found')) {
 				throw new AirtableError(
@@ -186,7 +213,7 @@ async function findOrCreateMember(
 
 			if (error.message.includes('422') || error.message.includes('Invalid')) {
 				throw new AirtableError(
-					'Airtable field validation failed for Members table. Check field names and types.',
+					`Airtable field validation failed for Members table: ${error.message}`,
 					error
 				);
 			}

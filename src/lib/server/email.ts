@@ -15,20 +15,32 @@ export function getEmailTransporter(): Transporter {
 	const smtpUser = SMTP_USER || '';	
 	const smtpPassword = SMTP_PASSWORD || '';
 
+	// Determine if we should use secure (SSL/TLS) or STARTTLS
+	// Port 465 = SSL/TLS (secure: true)
+	// Port 587 = STARTTLS (secure: false, requiresTLS: true)
+	// Port 25 = Plain (secure: false)
+	const isSecurePort = smtpPort === 465;
+	const useSecure = isSecurePort || (smtpSecure && smtpPort !== 587);
+	const requireTLS = smtpPort === 587 && !useSecure;
+
 	transporter = nodemailer.createTransport({
 		host: smtpHost,
 		port: smtpPort,
-		secure: smtpSecure,
+		secure: useSecure, // true for 465, false for other ports
+		requireTLS: requireTLS, // true for 587
 		auth: smtpUser && smtpPassword ? {
 			user: smtpUser,
 			pass: smtpPassword,
 		} : undefined,
-		// For development with services like MailHog/Mailpit
-		...(smtpHost === 'localhost' && {
-			tls: {
-				rejectUnauthorized: false
-			}
-		})
+		// Connection timeout settings
+		connectionTimeout: 10000, // 10 seconds
+		socketTimeout: 10000, // 10 seconds
+		greetingTimeout: 10000, // 10 seconds
+		// TLS options
+		tls: {
+			// Don't reject unauthorized certificates for localhost/dev servers
+			rejectUnauthorized: smtpHost !== 'localhost'
+		}
 	});
 
 	return transporter;
