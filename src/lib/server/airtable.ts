@@ -35,13 +35,14 @@ function getAirtableBase(): Airtable.Base | null {
 /**
  * Transform PAGE 1 data for Members table
  */
-function transformMemberData(data: ApplicationFormData): Record<string, string> {
+function transformMemberData(data: ApplicationFormData): Record<string, string | string[]> {
+	const languagesArray = data.languages ? data.languages.split(',').map(lang => lang.trim()) : [];
 	return {
 		"E-Mail": data.email || '',
 		"Member Name": data.fullName || '',
 		"Location": data.location || '',
 		"Time Availability": data.timeAvailability || '',
-		"Languages": data.languages || '',
+		"Languages": Array.isArray(languagesArray) ? languagesArray : (data.languages ? [data.languages] : []),
 		"How Discovered": data.discovery || '',
 	};
 }
@@ -66,15 +67,16 @@ function transformApplicationData(
 		// Page 2: Values & Vision
 		"Resonance": data.resonanceCombined || '',
 		"Nature Community Meaning": data.natureCommunityMeaning || '',
-		"Values": Array.isArray(data.values) ? data.values.join(', ') : data.values || '',
+		// Values field: Send as array if it's an array (for Multiple select field type)
+		"Values": Array.isArray(data.values) ? data.values : (data.values ? [data.values] : []),
 
 		// Page 3: Emotional Maturity & Communication
 		"Work Group": data.groupWork || '',
 		"Teamwork Moment": data.teamworkMoment || '',
 		"Disagreement Response": data.disagreementResponse || '',
-		"Disagreement Response Other": data.disagreementResponseOther || '',
+		"Disagreement Response Other": data.disagreementResponseOther || '-',
 		"Idea Not Chosen": data.ideaNotChosen || '',
-		"Idea Not Chosen Other": data.ideaNotChosenOther || '',
+		"Idea Not Chosen Other": data.ideaNotChosenOther || '-',
 		"Comfort Feedback": data.comfortFeedback || 0,
 		"Comfort Asking Help": data.comfortAskingHelp || 0,
 		"Adapt to Change": data.adaptToChange || 0,
@@ -84,10 +86,11 @@ function transformApplicationData(
 		"Motivation": data.motivation || '',
 		"Contribution": data.contribution || '',
 		"Receive and Learn": data.receiveLearn || '',
+		// Experience Areas field: Send as array if it's an array (for Multiple select field type)
 		"Experience Areas": Array.isArray(data.experienceAreas)
-			? data.experienceAreas.join(', ')
-			: data.experienceAreas || '',
-		"Experience Areas Other": data.experienceAreasOther || '',
+			? data.experienceAreas
+			: (data.experienceAreas ? [data.experienceAreas] : []),
+		"Experience Areas Other": data.experienceAreasOther || '-',
 		"Proud Project": data.proudProject || '',
 		"Best Work Environments": data.bestWorkEnvironments || '',
 
@@ -96,7 +99,7 @@ function transformApplicationData(
 		"Collaboration Challenges": data.collaborationChallengesMerged || '',
 		"Concerns and Doubts": data.concernsDoubts || '',
 		"How to Start Contributing": data.howStartContributing || '',
-		"Anything Else": data.anythingElse || '',
+		"Anything Else": data.anythingElse || '-',
 
 		// Metadata
 		"Application ID": applicationId,

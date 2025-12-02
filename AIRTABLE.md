@@ -52,7 +52,7 @@ Create the following fields in your Applications table. Field names must match e
 |------------|------|-------------|
 | `resonanceCombined` | Long text | What resonates with EcoHubs and regenerative living |
 | `natureCommunityMeaning` | Long text | Understanding of living well in community and alignment with nature |
-| `values` | Single line text | Selected values (comma-separated, up to 3) |
+| `values` | Multiple select | Selected values (array of strings, up to 3) |
 
 #### Page 3: Emotional Maturity & Communication
 
@@ -76,7 +76,7 @@ Create the following fields in your Applications table. Field names must match e
 | `motivation` | Long text | Motivation to join |
 | `contribution` | Long text | What they want to contribute |
 | `receiveLearn` | Long text | What they hope to receive/learn |
-| `experienceAreas` | Single line text | Experience areas (comma-separated) |
+| `experienceAreas` | Multiple select | Experience areas (array of strings) |
 | `experienceAreasOther` | Long text | Other experience areas (optional, shown when "Other" selected) |
 | `proudProject` | Long text | Project they're proud of |
 | `bestWorkEnvironments` | Long text | Environments for best work |
@@ -98,6 +98,7 @@ Create the following fields in your Applications table. Field names must match e
 | `applicationId` | Single line text | Unique UUID for this application (auto-generated) |
 | `submittedAt` | Date | Submission timestamp (auto-filled) |
 | `status` | Single line text | Application status (default: "New") |
+| `Snapshot Proposal ID` | Single line text | Snapshot proposal ID (optional, filled when proposal is created) |
 
 ### 4. Get API Credentials
 
@@ -166,7 +167,7 @@ console.log('Airtable connected:', isConnected);
 - **Members table** stores PAGE 1 fields only (fullName, email, location, timeAvailability, languages, discovery)
 - **Applications table** stores PAGE 2-5 fields and links to Members via `relatedMember` field
 - **Linked records**: `relatedMember` field must be set up as a "Link to another record" field pointing to the Members table
-- **Array fields** (`values`, `experienceAreas`) are automatically converted to comma-separated strings
+- **Multiple select fields** (`values`, `experienceAreas`) are sent as arrays of strings to Airtable
 - **Number fields** (`comfortFeedback`, `comfortAskingHelp`, `adaptToChange`) must be Number type in Airtable
 - **Optional fields** are included even if empty (empty strings)
 - **Date field** (`submittedAt`) is set automatically as ISO timestamp string

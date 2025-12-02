@@ -53,6 +53,7 @@
 	"dependencies": {
 		"@motionone/svelte": "^10.16.4",
 		"@safe-global/api-kit": "^4.0.1",
+		"@snapshot-labs/snapshot.js": "^0.14.17",
 		"@types/nodemailer": "^7.0.4",
 		"airtable": "^0.12.2",
 		"ethers": "^6.15.0",

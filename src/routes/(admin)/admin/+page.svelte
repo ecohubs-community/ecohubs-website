@@ -1,17 +1,11 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { goto } from '$app/navigation';
-	import { Shield, Users, FileText, LogOut, Home } from 'lucide-svelte';
+	import { Shield, Users, FileText } from 'lucide-svelte';
 
 	let { data }: { data: PageData } = $props();
 
 	function formatAddress(address: string): string {
 		return `${address.slice(0, 6)}...${address.slice(-4)}`;
-	}
-
-	async function handleLogout() {
-		await fetch('/auth/logout', { method: 'POST' });
-		goto('/');
 	}
 </script>
 
@@ -30,22 +24,6 @@
 					<p class="text-gray-600 dark:text-gray-400">
 						Welcome, <span class="font-mono font-semibold">{formatAddress(data.user.address)}</span>
 					</p>
-				</div>
-				<div class="flex gap-3">
-					<a
-						href="/"
-						class="px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors flex items-center gap-2"
-					>
-						<Home class="w-4 h-4" />
-						Home
-					</a>
-					<button
-						onclick={handleLogout}
-						class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors flex items-center gap-2"
-					>
-						<LogOut class="w-4 h-4" />
-						Logout
-					</button>
 				</div>
 			</div>
 		</div>

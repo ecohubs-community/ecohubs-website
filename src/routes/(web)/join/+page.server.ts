@@ -5,7 +5,6 @@ import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { sendEmail } from '$lib/server/email';
 import { saveApplication, AirtableError } from '$lib/server/airtable';
-import { createApplicationProposal, SnapshotError } from '$lib/server/snapshot';
 import {
 	getApplicationEmailHTML,
 	getApplicationEmailText,
@@ -119,21 +118,6 @@ export const actions: Actions = {
 					console.error('Failed to save to Airtable:', error);
 				}
 				// Don't fail the form submission if Airtable fails
-			}
-
-			// Create Snapshot proposal (non-blocking)
-			try {
-				await createApplicationProposal(data, applicationData);
-			} catch (error) {
-				if (error instanceof SnapshotError) {
-					console.error('Snapshot error:', error.message);
-					if (error.originalError) {
-						console.error('Original error:', error.originalError);
-					}
-				} else {
-					console.error('Failed to create Snapshot proposal:', error);
-				}
-				// Don't fail the form submission if Snapshot fails
 			}
 
 			return { form, success: true };
