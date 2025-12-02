@@ -159,7 +159,10 @@
 					<img
 						src="/src/lib/assets/hero.webp"
 						alt="Nature and Technology"
+						width="800"
+						height="800"
 						class="w-full h-full object-cover organic-shape shadow-2xl shadow-emerald-900/10"
+						loading="eager"
 					/>
 
 					<!-- Floating Badges -->

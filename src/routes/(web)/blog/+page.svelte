@@ -13,6 +13,7 @@
 <SEO
 	title="Blog - EcoHubs.community"
 	description="Read our latest articles about intentional communities, regenerative practices, and building the blueprint for sustainable living."
+	ogImage="/og-blog.jpg"
 />
 
 <Section spacing="xl">
@@ -42,8 +43,15 @@
 							<div class="h-64 lg:h-full overflow-hidden">
 								<img
 									src={featuredPost.image}
+									srcset={featuredPost.image.includes('unsplash.com') 
+										? `${featuredPost.image}&w=400 400w, ${featuredPost.image}&w=800 800w, ${featuredPost.image}&w=1200 1200w`
+										: featuredPost.image}
+									sizes="(max-width: 1024px) 100vw, 50vw"
 									alt={featuredPost.title}
+									width="1200"
+									height="800"
 									class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+									loading="eager"
 								/>
 							</div>
 						{/if}
@@ -98,8 +106,15 @@
 								<div class="h-48 overflow-hidden">
 									<img
 										src={post.image}
+										srcset={post.image.includes('unsplash.com') 
+											? `${post.image}&w=300 300w, ${post.image}&w=600 600w, ${post.image}&w=900 900w`
+											: post.image}
+										sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 										alt={post.title}
+										width="900"
+										height="600"
 										class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+										loading="lazy"
 									/>
 								</div>
 							{/if}

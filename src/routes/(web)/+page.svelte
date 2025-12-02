@@ -451,6 +451,7 @@
 <SEO
 	title="EcoHubs.community - A Regenerative Future Designed Together"
 	description="Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities powered by blockchain technology. Be part of the first 1000."
+	ogImage="/og-home.jpg"
 />
 
 <Hero />
@@ -478,8 +479,26 @@
 			<!-- Image Grid -->
 			<div class="relative">
 				<div class="grid grid-cols-2 gap-4">
-					<img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-2xl mt-8 shadow-lg" alt="Community Hands">
-					<img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-2xl shadow-lg" alt="Plants">
+					<img 
+						src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+						srcset="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 400w, https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 687w"
+						sizes="(max-width: 768px) 50vw, 343px"
+						width="687"
+						height="458"
+						class="rounded-2xl mt-8 shadow-lg" 
+						alt="Community Hands"
+						loading="lazy"
+					>
+					<img 
+						src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+						srcset="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 400w, https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 687w"
+						sizes="(max-width: 768px) 50vw, 343px"
+						width="687"
+						height="458"
+						class="rounded-2xl shadow-lg" 
+						alt="Plants"
+						loading="lazy"
+					>
 				</div>
 				<!-- Decorative Circle -->
 				<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-ecohubs-primary/20 rounded-[100%] scale-110 animate-pulse"></div>
@@ -576,8 +595,13 @@
 			<div class="order-1 lg:order-2">
 				<img
 					src="https://images.unsplash.com/photo-1660836815332-3f38535964d1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGJsb2NrY2hhaW4lMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww"
+					srcset="https://images.unsplash.com/photo-1660836815332-3f38535964d1?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGJsb2NrY2hhaW4lMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww 400w, https://images.unsplash.com/photo-1660836815332-3f38535964d1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGJsb2NrY2hhaW4lMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww 800w, https://images.unsplash.com/photo-1660836815332-3f38535964d1?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGJsb2NrY2hhaW4lMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww 1200w"
+					sizes="(max-width: 1024px) 100vw, 50vw"
+					width="1200"
+					height="800"
 					class="rounded-3xl shadow-2xl organic-shape hover:rotate-1 transition-transform duration-700 object-cover h-96 w-full"
 					alt="Green Growth"
+					loading="lazy"
 				/>
 			</div>
 		</div>
@@ -640,8 +664,26 @@
 			</div>
 			<div class="relative">
         <div class="grid grid-cols-2 gap-4 z-10 relative">
-          <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-2xl shadow-lg w-full h-48 object-cover transform translate-y-4" alt="Hub 1">
-          <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-2xl shadow-lg w-full h-48 object-cover transform -translate-y-4" alt="Hub 2">
+          <img 
+						src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+						srcset="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 400w, https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 800w, https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1170w"
+						sizes="(max-width: 768px) 50vw, 585px"
+						width="1170"
+						height="780"
+						class="rounded-2xl shadow-lg w-full h-48 object-cover transform translate-y-4" 
+						alt="Hub 1"
+						loading="lazy"
+					>
+          <img 
+						src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+						srcset="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 400w, https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 800w, https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1170w"
+						sizes="(max-width: 768px) 50vw, 585px"
+						width="1170"
+						height="780"
+						class="rounded-2xl shadow-lg w-full h-48 object-cover transform -translate-y-4" 
+						alt="Hub 2"
+						loading="lazy"
+					>
         </div>
         <!-- Decorative Circle -->
         <div class="absolute z-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-ecohubs-primary/20 rounded-[100%] scale-110 animate-spin-slow-80 animate-pulse"></div>
@@ -716,7 +758,14 @@
 				</p>
 			</div>
 			<div class="relative">
-				<img src={StefanImage} class="rounded-2xl shadow-xl w-full h-96 object-cover organic-shape" alt="Founder">
+				<img 
+					src={StefanImage} 
+					width="800"
+					height="600"
+					class="rounded-2xl shadow-xl w-full h-96 object-cover organic-shape" 
+					alt="Founder"
+					loading="lazy"
+				>
 				<div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
 					<p class="text-sm font-bold text-gray-400 uppercase mb-1">Founder</p>
 					<p class="text-lg font-serif font-bold text-gray-900">Stefan Lessle</p>

@@ -59,7 +59,7 @@ Build reusable, accessible components with Tailwind utility classes and variants
 ## Newsletter (Linkmonk)
 
 - Implement a server endpoint to POST to your self-hosted Linkmonk instance.
-- Provide additional storage: store signups to Airtable/Airtable-like DB.
+- Newsletter signups go directly to Linkmonk (no Airtable storage needed).
 - Confirm API usage, error handling, and double opt-in recommended.
 
 ## Contact Form & Mail Recommendations
@@ -72,7 +72,7 @@ Build reusable, accessible components with Tailwind utility classes and variants
 - Implement with Svelte Superforms + Formsnap-style transitions (one question per view, animated transitions, progress indicator, conditional fields).
 - It would be great if the questions, order of questions, and fieldtypes would be easy manageable (in code, e.g. JSON)
 - Save partial responses (autosave) and final submissions to a secure backend (endpoint) and optionally to GitHub Issues or a private Airtable.
-- Integrate application acceptance flow and automated emails (Linkmonk or SMTP).
+- Application acceptance/rejection workflow happens on Snapshot (admin interface exists for managing applications).
 
 ## Web3 DAO Tools (Optional Embeds & Explanation)
 
@@ -103,8 +103,8 @@ Build reusable, accessible components with Tailwind utility classes and variants
 - Application form flow with autosave + submission handler.
 - SEO: sitemap, robots, JSON-LD examples, OG images.
 - README: deployment instructions (Vercel & Node), environment variables, GitHub CI, and self-hosting notes.
-- Design tokens: colors, type scale, spacing, iconography guidelines, motion spec.
-- Small visual moodboard + hero SVG assets.
+- Design tokens: colors, type scale, spacing, iconography guidelines, motion spec (documented in DESIGN_TOKENS.md).
+- Visual moodboard: **Will be added later** (not required for initial implementation).
 
 ## Notes & Constraints
 

@@ -28,7 +28,23 @@
 				body: JSON.stringify({ email }),
 			});
 
-			const data = await response.json();
+			// Read response as text first, then try to parse as JSON
+			const contentType = response.headers.get('content-type');
+			const responseText = await response.text();
+			let data: { success?: boolean; message?: string } = {};
+			
+			if (contentType && contentType.includes('application/json')) {
+				try {
+					data = JSON.parse(responseText);
+				} catch (parseError) {
+					console.error('Failed to parse JSON response:', responseText);
+					throw new Error('Invalid response from server. Please try again later.');
+				}
+			} else {
+				// Non-JSON response
+				console.error('Non-JSON response:', responseText);
+				throw new Error('Server error. Please try again later.');
+			}
 
 			if (!response.ok) {
 				throw new Error(data.message || 'Failed to subscribe');
@@ -52,7 +68,7 @@
 			bind:value={email}
 			placeholder="Email address"
 			disabled={isSubmitting || submitStatus === 'success'}
-			class="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:border-ecohubs-primary focus-visible:ring-2 focus-visible:ring-green-400 disabled:opacity-50 disabled:cursor-not-allowed"
+			class="bg-white border text-gray-600 border-gray-200 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:border-ecohubs-primary focus-visible:ring-2 focus-visible:ring-green-400 disabled:opacity-50 disabled:cursor-not-allowed"
 			aria-label="Email address"
 			required
 		/>
@@ -60,7 +76,7 @@
 	<button
 		type="submit"
 		disabled={isSubmitting || submitStatus === 'success'}
-		class="bg-ecohubs-primary text-white p-2 rounded-lg hover:bg-ecohubs-dark transition-colors focus-visible:ring-2 focus-visible:ring-green-400 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[40px]"
+		class="bg-ecohubs-primary text-white p-2 rounded-lg hover:bg-ecohubs-dark transition-colors focus-visible:ring-2 focus-visible:ring-green-400 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[40px] cursor-pointer"
 		aria-label={submitStatus === 'success' ? 'Subscribed successfully' : 'Subscribe to newsletter'}
 	>
 		{#if isSubmitting}

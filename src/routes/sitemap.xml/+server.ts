@@ -1,4 +1,5 @@
 import type { RequestHandler } from './$types';
+import { getAllPosts } from '$lib/server/blog';
 
 const siteUrl = 'https://ecohubs.community';
 
@@ -17,13 +18,25 @@ const routes = [
 export const prerender = true;
 
 export const GET: RequestHandler = async () => {
+	const blogPosts = await getAllPosts();
+	
+	const allRoutes = [
+		...routes,
+		...blogPosts.map((post) => ({
+			path: `/blog/${post.slug}`,
+			priority: '0.7',
+			changefreq: 'monthly' as const,
+			lastmod: post.date
+		}))
+	];
+
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes
+${allRoutes
 	.map(
 		(route) => `  <url>
     <loc>${siteUrl}${route.path}</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <lastmod>${route.lastmod ? new Date(route.lastmod).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority}</priority>
   </url>`

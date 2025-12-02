@@ -7,6 +7,7 @@
 		canonical?: string;
 		ogImage?: string;
 		twitterCard?: 'summary' | 'summary_large_image' | 'app' | 'player';
+		type?: 'website' | 'article';
 		jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 		noindex?: boolean;
 	}
@@ -15,8 +16,9 @@
 		title = 'EcoHubs.community - Building Intentional Communities on Blockchain',
 		description = 'Join EcoHubs.community in creating sustainable, regenerative intentional communities powered by blockchain technology.',
 		canonical,
-		ogImage = '/og-image.jpg',
+		ogImage = '/og-default.jpg',
 		twitterCard = 'summary_large_image',
+		type = 'website',
 		jsonLd,
 		noindex = false
 	}: Props = $props();
@@ -70,7 +72,7 @@
 	<link rel="canonical" href={canonicalUrl} />
 
 	<!-- Open Graph / Facebook -->
-	<meta property="og:type" content="website" />
+	<meta property="og:type" content={type} />
 	<meta property="og:url" content={canonicalUrl} />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />

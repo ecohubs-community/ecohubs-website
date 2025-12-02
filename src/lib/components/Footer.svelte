@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Sprout, Twitter, Github, Disc, ArrowRight } from 'lucide-svelte';
+	import { Sprout, Twitter, Github, Disc, ArrowRight, GithubIcon, DiscIcon, MessageCircleIcon, NetworkIcon } from 'lucide-svelte';
 	import Logo from '$lib/components/Logo.svelte';
 	import NewsletterForm from './NewsletterForm.svelte';
 	
@@ -9,13 +9,16 @@
 		{ href: '/blueprint', label: 'Blueprint' },
 		{ href: '/dao', label: 'Governance' },
 		{ href: '/ecotoken', label: 'EcoToken' },
-		{ href: '/vision', label: 'Community Hubs' }
+		{ href: '/vision', label: 'Community Hubs' },
+		{ href: '/blog', label: 'Blog' }
 	];
 
 	const socialLinks = [
 		{ href: 'https://twitter.com/ecohubs', label: 'Twitter', icon: Twitter },
-		{ href: 'https://github.com/ecohubs', label: 'GitHub', icon: Github },
-		{ href: '#', label: 'Discord', icon: Disc }
+		{ href: 'https://github.com/ecohubs-community', label: 'GitHub', icon: GithubIcon },
+		{ href: 'https://discord.gg/ecohubs', label: 'Discord', icon: DiscIcon },
+		{ href: 'https://mastodon.social/@ecohubs', label: 'Mastodon', icon: MessageCircleIcon },
+		{ href: 'https://farcaster.xyz/ecohubs', label: 'Farcaster', icon: NetworkIcon }
 	];
 </script>
 

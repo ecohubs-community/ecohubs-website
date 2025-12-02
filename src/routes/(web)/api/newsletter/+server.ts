@@ -1,6 +1,11 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { LINKMONK_API_KEY, LINKMONK_URL, ZAPIER_WEBHOOK_URL } from '$env/static/private';
+import { 
+	LINKMONK_URL,
+	LINKMONK_USERNAME,
+	LINKMONK_PASSWORD,
+	ZAPIER_WEBHOOK_URL 
+} from '$env/static/private';
 
 // Simple in-memory rate limiting (for production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -58,37 +63,92 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		}
 
 
-		// If Linkmonk is configured, use it
-		if (LINKMONK_URL && LINKMONK_API_KEY) {
+		// If Listmonk is configured, use it
+		// Listmonk uses Basic Auth with username and password
+		const listmonkUsername = LINKMONK_USERNAME || '';
+		const listmonkPassword = LINKMONK_PASSWORD || '';
+		
+		// Debug logging
+		console.log('Listmonk config check:', {
+			url: LINKMONK_URL,
+			hasUsername: !!listmonkUsername,
+			hasPassword: !!listmonkPassword,
+			usernameLength: listmonkUsername?.length || 0
+		});
+		
+		if (LINKMONK_URL && listmonkUsername) {
 			try {
+				// Listmonk requires Basic Authentication with username:password
+				const authHeader = `Basic ${Buffer.from(`${listmonkUsername}:${listmonkPassword}`).toString('base64')}`;
+				
+				console.log('Attempting Listmonk subscription for:', email);
+				
 				const response = await fetch(`${LINKMONK_URL}/api/subscribers`, {
 					method: 'POST',
 					headers: {
+						'Authorization': authHeader,
 						'Content-Type': 'application/json',
-						'Authorization': `Bearer ${LINKMONK_API_KEY}`,
 					},
 					body: JSON.stringify({
 						email,
-						lists: [1], // Default list ID, adjust as needed
+						name: email.split('@')[0],
 						status: 'enabled',
-						preconfirm_subscriptions: false, // Double opt-in
+						preconfirm_subscriptions: false,
+						lists: [1],
 					}),
 				});
 
+				const responseText = await response.text();
+				console.log('Listmonk response status:', response.status);
+				console.log('Listmonk response:', responseText);
+
 				if (!response.ok) {
-					const errorData = await response.json().catch(() => ({}));
-					console.error('Linkmonk API error:', errorData);
-					throw new Error('Failed to subscribe via Linkmonk');
+					// Try to parse error response, but handle non-JSON gracefully
+					const contentType = response.headers.get('content-type');
+					let errorData: { message?: string } = {};
+					
+					if (contentType && contentType.includes('application/json')) {
+						try {
+							errorData = JSON.parse(responseText) as { message?: string };
+						} catch {
+							console.error('Listmonk API error (non-JSON):', responseText);
+							errorData = { message: responseText || 'Unknown error' };
+						}
+					} else {
+						console.error('Listmonk API error (non-JSON):', responseText);
+						errorData = { message: responseText || 'Unknown error' };
+					}
+					
+					console.error('Listmonk API error:', errorData);
+					throw new Error(errorData.message || 'Failed to subscribe via Listmonk');
 				}
 
+				// Parse successful response
+				let responseData: { data?: unknown } = {};
+				try {
+					responseData = JSON.parse(responseText);
+				} catch {
+					// Response might be empty, which is fine
+				}
+
+				console.log('Listmonk subscription successful:', responseData);
 				return json({
 					success: true,
 					message: 'Successfully subscribed! Please check your email to confirm.',
 				});
 			} catch (error) {
-				console.error('Linkmonk subscription error:', error);
+				console.error('Listmonk subscription error:', error);
+				// Don't silently fall through - re-throw if it's a known error
+				if (error instanceof Error && error.message.includes('Failed to subscribe')) {
+					throw error;
+				}
 				// Fall through to Zapier webhook if available
 			}
+		} else {
+			console.warn('Listmonk not configured:', {
+				hasUrl: !!LINKMONK_URL,
+				hasUsername: !!listmonkUsername
+			});
 		}
 
 		// Fallback to Zapier webhook if configured

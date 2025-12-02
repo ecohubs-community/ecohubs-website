@@ -9,15 +9,42 @@
 
 	const post = data.post;
 	const formattedDate = formatDate(post.date);
+	const siteUrl = 'https://ecohubs.community';
+
+	// Article JSON-LD schema
+	const articleJsonLd = {
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		headline: post.title,
+		description: post.excerpt,
+		image: post.image ? (post.image.startsWith('http') ? post.image : `${siteUrl}${post.image}`) : `${siteUrl}/og-blog.jpg`,
+		datePublished: post.date,
+		dateModified: post.date,
+		author: {
+			'@type': 'Person',
+			name: post.author
+		},
+		publisher: {
+			'@type': 'Organization',
+			name: 'EcoHubs.community',
+			logo: {
+				'@type': 'ImageObject',
+				url: `${siteUrl}/logo.png`
+			}
+		},
+		...(post.tags && post.tags.length > 0 ? { articleSection: post.tags.join(', ') } : {})
+	};
 </script>
 
 <SEO
 	title="{post.title} - EcoHubs Blog"
 	description={post.excerpt}
 	type="article"
+	ogImage={post.image || '/og-blog.jpg'}
+	jsonLd={articleJsonLd}
 />
 
-<article class="py-16">
+<article class="py-16 mt-10">
 	<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 		<!-- Back Button -->
 		<a
@@ -67,8 +94,15 @@
 			<div class="mb-12 rounded-2xl overflow-hidden">
 				<img
 					src={post.image}
+					srcset={post.image.includes('unsplash.com') 
+						? `${post.image}&w=400 400w, ${post.image}&w=800 800w, ${post.image}&w=1200 1200w`
+						: post.image}
+					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 800px, 1200px"
 					alt={post.title}
+					width="1200"
+					height="630"
 					class="w-full h-auto object-cover"
+					loading="eager"
 				/>
 			</div>
 		{/if}
@@ -89,10 +123,10 @@
 						href="https://twitter.com/intent/tweet?text={encodeURIComponent(post.title)}&url={encodeURIComponent(`https://ecohubs.community/blog/${post.slug}`)}"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+						class="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
 					>
 						<Share2 class="w-4 h-4" aria-hidden="true" />
-						<span class="text-sm">Twitter</span>
+						<span class="text-sm">Twitter / X</span>
 					</a>
 				</div>
 			</div>

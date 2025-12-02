@@ -2,7 +2,7 @@
 	import '../../layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import { page } from '$app/stores';
-	import { LayoutDashboard, FileText, LogOut, Home } from 'lucide-svelte';
+	import { LayoutDashboard, FileText, LogOut, Home, HouseIcon } from 'lucide-svelte';
 	import { goto } from '$app/navigation';
 	import LogoImg from '$lib/assets/Logo.svg';
 
@@ -61,14 +61,14 @@
 					<div class="flex items-center gap-3">
 						<a
 							href="/"
-							class="px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors flex items-center gap-2"
+							class="px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
 						>
-							<Home class="w-4 h-4" />
-							<span class="hidden sm:inline">Website</span>
+							<HouseIcon class="w-4 h-4" />
+							<span class="hidden sm:inline">Back to Website</span>
 						</a>
 						<button
 							onclick={handleLogout}
-							class="px-3 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors flex items-center gap-2"
+							class="px-3 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
 						>
 							<LogOut class="w-4 h-4" />
 							<span class="hidden sm:inline">Logout</span>
