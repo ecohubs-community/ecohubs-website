@@ -2,7 +2,7 @@
 	import '../../layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import { page } from '$app/stores';
-	import { LayoutDashboard, FileText, LogOut, Home, HouseIcon } from 'lucide-svelte';
+	import { LayoutDashboard, FileText, LogOut, Home, HouseIcon, BookOpen } from 'lucide-svelte';
 	import { goto } from '$app/navigation';
 	import LogoImg from '$lib/assets/Logo.svg';
 
@@ -10,7 +10,8 @@
 
 	const navItems = [
 		{ href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
-		{ href: '/admin/proposals', label: 'Proposals', icon: FileText }
+		{ href: '/admin/proposals', label: 'Proposals', icon: FileText },
+		{ href: '/admin/blog/drafts', label: 'Blog Drafts', icon: BookOpen }
 	];
 
 	async function handleLogout() {

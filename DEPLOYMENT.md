@@ -60,7 +60,13 @@ AIRTABLE_APPLICATIONS_TABLE=Applications
 # Application Voting (Snapshot)
 SNAPSHOT_SPACE=ecohubs.eth
 SNAPSHOT_NETWORK=1
-SNAPSHOT_VOTING_DURATION=604800
+SNAPSHOT_VOTING_DURATION=604800  # 7 days for application proposals
+SNAPSHOT_BLOG_VOTING_DURATION=172800  # 2 days for blog publication proposals
+
+# Ghost CMS Integration
+GHOST_URL=https://your-ghost-instance.com
+GHOST_CONTENT_API_KEY=your_content_api_key_here
+GHOST_ADMIN_API_KEY=your_admin_api_key_here
 
 # Safe Authentication (Admin Dashboard)
 SAFE_ADDRESS=0x1234567890123456789012345678901234567890

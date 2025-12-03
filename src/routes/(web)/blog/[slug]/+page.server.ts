@@ -1,12 +1,25 @@
-import { getAllPosts } from '$lib/server/blog';
+import { error } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
+import { getPost, getRelatedPosts } from '$lib/server/blog';
 
-export const prerender = true;
+export const prerender = false; // Dynamic rendering for Ghost CMS
 
-// Generate static paths for all blog posts
-export async function entries() {
-	const posts = await getAllPosts();
-	return posts.map((post) => ({
-		slug: post.slug,
-	}));
-}
-
+export const load: PageServerLoad = async ({ params }) => {
+	const post = await getPost(params.slug);
+	
+	if (!post) {
+		throw error(404, 'Post not found');
+	}
+	
+	// Get related posts based on tags
+	const relatedPosts = await getRelatedPosts(
+		post.slug,
+		post.tags || [],
+		3
+	);
+	
+	return {
+		post,
+		relatedPosts
+	};
+};

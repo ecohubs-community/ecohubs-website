@@ -68,6 +68,16 @@
 				<h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Stay Updated</h4>
 				<p class="text-xs text-gray-400 mb-3">Subscribe to our newsletter for updates.</p>
 				<NewsletterForm />
+				<div class="mt-4">
+					<a
+						href="/feed.xml"
+						class="text-xs text-gray-500 hover:text-ecohubs-primary transition-colors flex items-center gap-1"
+						aria-label="RSS Feed"
+					>
+						<ArrowRight class="w-3 h-3" aria-hidden="true" />
+						RSS Feed
+					</a>
+				</div>
 			</div>
 		</div>
 

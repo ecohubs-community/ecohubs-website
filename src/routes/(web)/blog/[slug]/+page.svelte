@@ -1,7 +1,7 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import Section from '$lib/components/Section.svelte';
-	import { Calendar, Clock, User, ArrowLeft, Share2 } from 'lucide-svelte';
+	import { Calendar, Clock, User, ArrowLeft, Share2, ArrowRight } from 'lucide-svelte';
 	import { formatDate } from '$lib/utils/blog';
 	import type { PageData } from './$types';
 
@@ -109,8 +109,50 @@
 
 		<!-- Post Content -->
 		<div class="prose prose-lg prose-ecohubs max-w-none">
-			<svelte:component this={post.content} />
+			{@html post.html}
 		</div>
+
+		<!-- Related Articles -->
+		{#if data.relatedPosts && data.relatedPosts.length > 0}
+			<section class="mt-16 pt-8 border-t border-gray-200">
+				<h2 class="font-serif text-2xl font-bold text-ecohubs-dark mb-6">Related Articles</h2>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{#each data.relatedPosts as relatedPost}
+						<article class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition-all hover:-translate-y-1">
+							{#if relatedPost.image}
+								<div class="h-48 overflow-hidden">
+									<img
+										src={relatedPost.image}
+										alt={relatedPost.title}
+										width="900"
+										height="600"
+										class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+										loading="lazy"
+									/>
+								</div>
+							{/if}
+							<div class="p-6">
+								<h3 class="font-serif text-xl font-bold text-gray-900 mb-3 hover:text-ecohubs-primary transition-colors">
+									<a href="/blog/{relatedPost.slug}">
+										{relatedPost.title}
+									</a>
+								</h3>
+								<p class="text-gray-600 text-sm mb-4 line-clamp-3">
+									{relatedPost.excerpt}
+								</p>
+								<a
+									href="/blog/{relatedPost.slug}"
+									class="inline-flex items-center gap-2 text-ecohubs-primary text-sm font-medium hover:text-ecohubs-dark transition-colors"
+								>
+									Read More
+									<ArrowRight class="w-4 h-4" aria-hidden="true" />
+								</a>
+							</div>
+						</article>
+					{/each}
+				</div>
+			</section>
+		{/if}
 
 		<!-- Post Footer -->
 		<footer class="mt-16 pt-8 border-t border-gray-200">
@@ -191,6 +233,88 @@
 	:global(.prose-ecohubs img) {
 		border-radius: 0.5em;
 		margin: 2em 0;
+	}
+
+	:global(.prose-ecohubs h1) {
+		font-family: var(--font-serif);
+		color: #064e3b;
+		font-weight: 700;
+		margin-top: 1.5em;
+		margin-bottom: 0.75em;
+		font-size: 2.25em;
+	}
+
+	:global(.prose-ecohubs h4) {
+		color: #059669;
+		font-weight: 600;
+		margin-top: 1.4em;
+		margin-bottom: 0.7em;
+	}
+
+	:global(.prose-ecohubs h5) {
+		color: #059669;
+		font-weight: 600;
+		margin-top: 1.2em;
+		margin-bottom: 0.6em;
+	}
+
+	:global(.prose-ecohubs h6) {
+		color: #059669;
+		font-weight: 600;
+		margin-top: 1em;
+		margin-bottom: 0.5em;
+	}
+
+	:global(.prose-ecohubs p) {
+		margin-top: 1em;
+		margin-bottom: 1em;
+		line-height: 1.75;
+	}
+
+	:global(.prose-ecohubs ul),
+	:global(.prose-ecohubs ol) {
+		margin-top: 1em;
+		margin-bottom: 1em;
+		padding-left: 1.5em;
+	}
+
+	:global(.prose-ecohubs li) {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+
+	:global(.prose-ecohubs strong) {
+		font-weight: 600;
+		color: #064e3b;
+	}
+
+	:global(.prose-ecohubs em) {
+		font-style: italic;
+	}
+
+	:global(.prose-ecohubs hr) {
+		border: none;
+		border-top: 2px solid #e5e7eb;
+		margin: 2em 0;
+	}
+
+	:global(.prose-ecohubs table) {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 1.5em 0;
+	}
+
+	:global(.prose-ecohubs th),
+	:global(.prose-ecohubs td) {
+		border: 1px solid #e5e7eb;
+		padding: 0.75em;
+		text-align: left;
+	}
+
+	:global(.prose-ecohubs th) {
+		background-color: #f3f4f6;
+		font-weight: 600;
+		color: #064e3b;
 	}
 </style>
 
