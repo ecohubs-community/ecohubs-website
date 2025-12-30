@@ -14,9 +14,9 @@
 	];
 
 	const socialLinks = [
-		{ href: 'https://twitter.com/ecohubs', label: 'Twitter', icon: Twitter },
+		// { href: 'https://twitter.com/ecohubs', label: 'Twitter', icon: Twitter },
 		{ href: 'https://github.com/ecohubs-community', label: 'GitHub', icon: GithubIcon },
-		{ href: 'https://discord.gg/ecohubs', label: 'Discord', icon: DiscIcon },
+		{ href: 'https://discord.gg/Xnh7247Nq3', label: 'Discord', icon: DiscIcon },
 		{ href: 'https://mastodon.social/@ecohubs', label: 'Mastodon', icon: MessageCircleIcon },
 		{ href: 'https://farcaster.xyz/ecohubs', label: 'Farcaster', icon: NetworkIcon }
 	];
