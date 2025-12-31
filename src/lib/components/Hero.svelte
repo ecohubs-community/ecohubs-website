@@ -97,10 +97,10 @@
 					<a
 						href="/join"
 						class="px-8 py-4 bg-ecohubs-primary text-white font-medium rounded-xl hover:bg-ecohubs-dark transition-all shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 hover:scale-105 hover:rotate-1 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
-						aria-label="Join the First 1000 Pioneers"
+						aria-label="Join the First 500 Pioneers"
 						data-sveltekit-preload-data="hover"
 					>
-						Join the First 1000 Pioneers
+						Join the First 500 Pioneers
 						<Users class="h-4 w-4" aria-hidden="true" />
 					</a>
 					<a
@@ -141,7 +141,7 @@
 							A growing movement of people designing regenerative communities.
 						</p>
 						<p class="text-xs text-gray-500 mt-1">
-							Join the pioneers shaping the first 1000-member co-creation network.
+							Join the pioneers shaping the first 500-member co-creation network.
 						</p>
 					</div>
 				</div>

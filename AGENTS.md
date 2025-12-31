@@ -23,7 +23,7 @@ You are an expert full-stack frontend engineer and designer who delivers product
 
 Create these static routes (prerendered):
 
-- `/` — Home / Landing (hero animation, vision snapshot, CTA: Join the First 1000, newsletter form)
+- `/` — Home / Landing (hero animation, vision snapshot, CTA: Join the First 500, newsletter form)
 - `/vision` — Deep vision & blueprint summary (link to /blueprint)
 - `/dao` — DAO overview (Snapshot links optional; explain governance + treasury)
 - `/ecotoken` — EcoToken rules & economics (non-speculative, Ecuador compliance note)

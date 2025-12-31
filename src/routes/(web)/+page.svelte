@@ -4,6 +4,7 @@
 	import InfoCard from '$lib/components/InfoCard.svelte';
 	import FeatureCard from '$lib/components/FeatureCard.svelte';
 	import GovernanceSection from '$lib/components/GovernanceSection.svelte';
+	import EcosystemSection from '$lib/components/EcosystemSection.svelte';
 	import EcoTokenFeature from '$lib/components/EcoTokenFeature.svelte';
 	import BlueprintCard from '$lib/components/BlueprintCard.svelte';
 	import PersonaCard from '$lib/components/PersonaCard.svelte';
@@ -56,7 +57,10 @@
 
 		House,
 
-		TriangleAlert
+		TriangleAlert,
+
+		ChartBar
+
 
 
 
@@ -126,21 +130,21 @@
 		}
 	];
 
-	// Governance Features Data
+	// Governance Features Data (Updated & Aligned)
 	const governanceFeatures = [
 		{
 			icon: Vote,
 			iconColor: 'text-blue-600',
 			iconBg: 'bg-blue-50',
-			title: 'DAO Voting',
-			description: 'Every member has a voice. We use Snapshot for gasless, on-chain voting.',
-			detailTitle: 'Your Voice, Your Vote',
+			title: 'Member-Guided Decisions',
+			description: 'Key decisions are made together through transparent, gas-free voting.',
+			detailTitle: 'Participation Before Automation',
 			detailDescription:
-				"Traditional organizations are top-down. EcoHubs is bottom-up. We use Snapshot to allow token holders to vote on proposals without paying gas fees. Whether it's approving a new budget or changing a community rule, the power rests with the people.",
+				'EcoHubs uses Snapshot to coordinate collective decisions such as new member applications, content publication, and shared direction. Voting is gas-free and accessible, allowing participation without financial or technical barriers. Governance starts with human judgment, supported — not replaced — by tools.',
 			detailImage:
 				'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800',
-			detailImageAlt: 'Voting',
-			buttonText: 'See Live Proposals',
+			detailImageAlt: 'Community voting',
+			buttonText: 'Explore Decisions',
 			buttonBgColor: 'bg-blue-600',
 			buttonIcon: ArrowRight,
 			buttonHref: '/dao'
@@ -149,52 +153,52 @@
 			icon: WalletMinimal,
 			iconColor: 'text-amber-600',
 			iconBg: 'bg-amber-50',
-			title: 'Transparent Treasury',
-			description: 'Funds are managed openly via Gnosis Safe multi-sig wallets.',
-			detailTitle: 'Funds Managed in the Open',
+			title: 'Shared Stewardship',
+			description: 'Access, permissions, and influence are earned through contribution.',
+			detailTitle: 'Responsibility Grows With Trust',
 			detailDescription:
-				'No hidden bank accounts. Our treasury is managed by a Gnosis Safe multi-signature wallet. Every transaction is recorded on the blockchain, viewable by anyone, anytime. This radical transparency ensures resources go exactly where the community decides.',
+				'Instead of financial stakes or speculation, EcoHubs emphasizes contribution-based authority. Through ecohubsOS and Offcoin, members earn experience and internal tokens by helping the community. Over time, this unlocks permissions, influence, and responsibility — creating a culture of earned trust rather than assigned power.',
 			detailImage:
-				'https://images.unsplash.com/photo-1627123424574-724758594e93?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-			detailImageAlt: 'Treasury',
-			buttonText: 'View Treasury',
+				'https://images.unsplash.com/photo-1627123424574-724758594e93?q=80&w=687&auto=format&fit=crop',
+			detailImageAlt: 'Stewardship and responsibility',
+			buttonText: 'How Contribution Works',
 			buttonBgColor: 'bg-amber-600',
 			buttonIcon: Eye,
-			buttonHref: '/dao'
+			buttonHref: '/contribute'
 		},
 		{
 			icon: Users,
 			iconColor: 'text-purple-600',
 			iconBg: 'bg-purple-50',
-			title: 'Collective Decisions',
-			description: 'Proposals are debated in the forum and ratified by consensus.',
-			detailTitle: 'Wisdom of the Crowd',
+			title: 'Deliberation & Sense-Making',
+			description: 'Decisions emerge through dialogue, not just votes.',
+			detailTitle: 'From Conversation to Coherence',
 			detailDescription:
-				"Good governance isn't just voting; it's discussing. Our forum allows members to debate ideas, refine proposals, and build consensus before a vote ever happens. We value deliberation and the synthesis of diverse perspectives.",
+				'Before decisions are made, ideas are discussed in member forums and community spaces. We use Flarum and Discord to surface perspectives, refine proposals, and build shared understanding. Voting is the final step — not the first.',
 			detailImage:
 				'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800',
-			detailImageAlt: 'Discussion',
-			buttonText: 'Join the Forum',
+			detailImageAlt: 'Group discussion',
+			buttonText: 'Join the Discussion',
 			buttonBgColor: 'bg-purple-600',
 			buttonIcon: MessageCircle,
-			buttonHref: '/dao'
+			buttonHref: '/forum'
 		},
 		{
 			icon: ShieldCheck,
 			iconColor: 'text-emerald-600',
 			iconBg: 'bg-emerald-50',
-			title: 'Auditable Trust',
-			description: 'Immutable records build long-term trust without bureaucracy.',
-			detailTitle: 'Trust Code, Not Just People',
+			title: 'Trust by Design',
+			description: 'Transparency where it matters, flexibility where humans matter.',
+			detailTitle: 'A Conscious Use of Technology',
 			detailDescription:
-				"In a world of broken promises, code offers certainty. Our governance rules are encoded in smart contracts. This creates a trustless environment where you don't have to know someone to cooperate with them effectively and securely.",
+				'EcoHubs is not “fully on-chain” — by choice. We use blockchain selectively where transparency, auditability, and fairness add real value. Other parts remain off-chain to preserve nuance, care, and human judgment. Trust here is built through visibility, participation, and shared accountability.',
 			detailImage:
 				'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800',
-			detailImageAlt: 'Blockchain',
-			buttonText: 'Verify Contracts',
+			detailImageAlt: 'Technology and trust',
+			buttonText: 'Our Approach to Tech',
 			buttonBgColor: 'bg-emerald-600',
 			buttonIcon: CodeXml,
-			buttonHref: '/dao'
+			buttonHref: '/about#technology'
 		}
 	];
 
@@ -202,25 +206,25 @@
 	const ecoTokenFeatures = [
 		{
 			Icon: Shovel,
-			title: 'Earn by Contributing',
+			title: 'Earn Through Contribution',
 			description:
-				'Log hours in the community garden or help build housing to mint tokens. Real value, no speculation.',
+				'Members earn recognition and internal tokens by contributing to the EcoHubs online ecosystem — through research, writing, facilitation, coordination, design, development, or stewardship of shared knowledge.',
 			gradientFrom: 'from-emerald-500',
 			gradientTo: 'to-teal-500'
 		},
 		{
-			Icon: ShoppingBasket,
-			title: 'Spend Locally',
+			Icon: ChartBar,
+			title: 'Unlock Access & Influence',
 			description:
-				'Exchange tokens for fresh produce, tool rentals, expert workshops, childcare services, or community meals within the network.',
+				'Today, earned tokens and experience unlock access, permissions, and responsibilities within EcoHubs — shaping discussions, initiatives, and the shared blueprint. In the future, this model can extend into physical communities and local exchange.',
 			gradientFrom: 'from-amber-400',
 			gradientTo: 'to-orange-500'
 		},
 		{
 			Icon: ShieldCheck,
-			title: 'Non-Speculative Design',
+			title: 'Designed for Use, Not Speculation',
 			description:
-				"EcoToken is not for trading or speculation. It's a community utility token focused on real contributions and local exchange.",
+				'EcoHubs tokens are non-transferable and non-speculative by design. They exist to acknowledge effort, coordinate collaboration, and build trust — not to be traded or accumulated for profit.',
 			gradientFrom: 'from-blue-400',
 			gradientTo: 'to-indigo-500'
 		}
@@ -425,7 +429,7 @@
 			phase: 1,
 			title: 'Community Formation & Vision Alignment',
 			description:
-				'Gather the first 1000 aligned members, establish shared values, and co-create the foundation of the EcoHubs blueprint.'
+				'Gather the first 500 aligned members, establish shared values, and co-create the foundation of the EcoHubs blueprint.'
 		},
 		{
 			phase: 2,
@@ -450,7 +454,7 @@
 
 <SEO
 	title="EcoHubs.community - A Regenerative Future Designed Together"
-	description="Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities powered by blockchain technology. Be part of the first 1000."
+	description="Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities powered by blockchain technology. Be part of the first 500."
 	ogImage="/og-home.jpg"
 />
 
@@ -560,6 +564,9 @@
 	</div>
 </section>
 
+<!-- Ecosystem Section -->
+<EcosystemSection />
+
 <!-- Governance Section -->
 <section id="governance" class="py-24 md:py-32 relative bg-white">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -581,8 +588,7 @@
 					A Contribution Economy That <span class="text-ecohubs-accent">Rewards Real Work</span>
 				</h2>
 				<p class="text-gray-600 mb-8 text-lg">
-					EcoToken rewards those who grow food, build infrastructure, care for others, teach
-					workshops, or regenerate land.
+					EcoTokens are designed to one day reward real-world regenerative work. Today, we are prototyping this model online through contribution-based recognition.
 				</p>
 
 				<div class="space-y-6">
@@ -603,6 +609,10 @@
 					alt="Green Growth"
 					loading="lazy"
 				/>
+
+				<div class="text-gray-600 mt-8 text-md">
+					We start by rewarding contributions to shared knowledge and coordination — because strong physical communities begin with strong social foundations.
+				</div>
 			</div>
 		</div>
 	</div>
@@ -722,10 +732,10 @@
 					<a
 						href="/join"
 						class="px-8 py-4 bg-ecohubs-primary text-white font-bold rounded-xl hover:bg-ecohubs-dark transition-all transform hover:-translate-y-1 hover:scale-105 shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
-						aria-label="Apply to Join the First 1000"
+						aria-label="Apply to Join the First 500"
 			data-sveltekit-preload-data="hover"
 		>
-						Apply to Join the First 1000
+						Apply to Join the First 500
 						<ArrowRight class="w-4 h-4" aria-hidden="true" />
 					</a>
 		<a
@@ -841,7 +851,7 @@
 		<p class="text-emerald-100 text-lg mb-4 max-w-2xl mx-auto">
 			Help us shape the blueprint. Join a curated group of regenerative thinkers, builders, and creators.
 		</p>
-		<p class="text-emerald-200 text-sm mb-2">Already 120 applied</p>
+		<!-- <p class="text-emerald-200 text-sm mb-2">Already 120 applied</p> -->
 		<p class="text-emerald-50 text-sm mb-10 max-w-xl mx-auto">
 			We're looking for permaculturists, community builders, Web3 contributors, regenerative designers, and anyone committed to co-creating a better way to live together.
 		</p>

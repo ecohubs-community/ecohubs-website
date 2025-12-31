@@ -112,14 +112,14 @@
 									{feature.detailDescription}
 								</p>
 							</div>
-							<div class="mt-6 flex justify-start">
+							<!-- <div class="mt-6 flex justify-start">
 								<a
 									href={feature.buttonHref}
 									class="px-6 py-3 {feature.buttonBgColor} text-white rounded-lg font-medium hover:{feature.buttonBgColor}/20 transition-colors flex items-center gap-2"
 								>
 									{feature.buttonText} <feature.buttonIcon class="w-4 h-4" aria-hidden="true" />
 								</a>
-							</div>
+							</div> -->
 						</div>
 					{/each}
 				</div>

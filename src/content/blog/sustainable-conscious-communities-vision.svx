@@ -146,7 +146,7 @@ No community is an island. We:
 
 ### Phase 1: Blueprint Co-Creation (Now)
 
-We're gathering the first 1000 members to collectively design the blueprint. This isn't top-down planning—it's **collaborative systems design** drawing on:
+We're gathering the first 500 members to collectively design the blueprint. This isn't top-down planning—it's **collaborative systems design** drawing on:
 - Permaculture practitioners
 - Community veterans with lived experience
 - Web3 builders and governance innovators
@@ -208,7 +208,7 @@ EcoHubs is one experiment among many. Our contribution is:
 
 ## Join the Journey
 
-The first 1000 members are special—you'll help shape the blueprint itself. You'll influence:
+The first 500 members are special—you'll help shape the blueprint itself. You'll influence:
 - What gets prioritized in community design
 - How governance structures actually work
 - What the EcoToken economy looks like in practice
@@ -221,5 +221,5 @@ Are you ready?
 
 ---
 
-*[Apply to join the first 1000](/join) or [explore the blueprint](/blueprint) to learn more.*
+*[Apply to join the first 500](/join) or [explore the blueprint](/blueprint) to learn more.*
 

@@ -47,7 +47,7 @@
 					<Users class="w-6 h-6 text-purple-600" aria-hidden="true" />
 				</div>
 				<h3 class="font-bold text-gray-900 mb-2">Join Our Community</h3>
-				<p class="text-sm text-gray-600 mb-3">Be part of the first 1000</p>
+				<p class="text-sm text-gray-600 mb-3">Be part of the first 500</p>
 				<a href="/join" class="text-ecohubs-primary hover:underline">
 					Apply Now
 				</a>

@@ -9,14 +9,14 @@
 
 <SEO
 	title="Join Us - EcoHubs.community"
-	description="Apply to join EcoHubs.community and be part of the first 1000 founding members."
+	description="Apply to join EcoHubs.community and be part of the first 500 founding members."
 />
 
 <Section spacing="xl">
 	<div class="mx-auto w-full max-w-5xl">
 		<div class="text-center mb-12">
 			<h1 class="font-serif text-4xl font-bold text-ecohubs-dark sm:text-5xl mb-4">
-				Join the First 1000
+				Join the First 500
 			</h1>
 			<p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
 				We're building a selective, committed community of founders who share our vision for regenerative intentional communities.

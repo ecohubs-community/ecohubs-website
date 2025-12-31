@@ -28,3 +28,6 @@ src/lib/paraglide
 
 # AI learning docs
 ai-learning-docs
+
+.pnpm-store
+project.inlang/cache/*

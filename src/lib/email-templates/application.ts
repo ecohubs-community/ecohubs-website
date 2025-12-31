@@ -466,7 +466,7 @@ export function getApplicationConfirmationHTML(name: string): string {
 				<h3>What Happens Next?</h3>
 				<ul style="margin: 0;">
 					<li><strong>Review Process:</strong> Our team will carefully review your application within 7-10 days.</li>
-					<li><strong>Selection:</strong> We're looking for the first 1000 founding members who align with our vision for regenerative communities.</li>
+					<li><strong>Selection:</strong> We're looking for the first 500 founding members who align with our vision for regenerative communities.</li>
 					<li><strong>You'll Hear From Us:</strong> We'll email you with next steps, whether you're selected for the first cohort or invited to join a waiting list.</li>
 				</ul>
 			</div>
@@ -511,7 +511,7 @@ Thank you for applying to join the EcoHubs community. Your application has been 
 WHAT HAPPENS NEXT?
 
 - Review Process: Our team will carefully review your application within 7-10 days.
-- Selection: We're looking for the first 1000 founding members who align with our vision for regenerative communities.
+- Selection: We're looking for the first 500 founding members who align with our vision for regenerative communities.
 - You'll Hear From Us: We'll email you with next steps, whether you're selected for the first cohort or invited to join a waiting list.
 
 WHILE YOU WAIT...
