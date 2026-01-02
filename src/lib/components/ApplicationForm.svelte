@@ -2,11 +2,13 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { applicationQuestions, applicationSchema } from '$lib/config/application-questions';
-	import { ArrowLeft, ArrowRight, Check, ClockIcon, LoaderCircle } from 'lucide-svelte';
+	import { ArrowLeft, ArrowRight, Check, ClockIcon, LoaderCircle, AlertCircle } from 'lucide-svelte';
 	import { fly, fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import type { PageData } from '../../routes/join/$types';
 	import { onMount } from 'svelte';
+	import { Turnstile } from 'svelte-turnstile';
+	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
 
 	interface Props {
 		data: PageData;
@@ -18,6 +20,9 @@
 	let isSubmitting = $state(false);
 	let submitSuccess = $state(false);
 	let submitError = $state('');
+	let isRateLimited = $state(false);
+	let turnstileToken = $state<string | null>(null);
+	let turnstileError = $state<string | null>(null);
 	
 	// Local state for all inputs on current page
 	let pageInputValues = $state<Record<string, string | string[] | number>>({});
@@ -51,12 +56,21 @@
 			} else {
 				// On last page, validate before submission
 				const validationErrors = validateCurrentPage();
-				
+
+				// Check Turnstile verification
+				if (!turnstileToken) {
+					cancel();
+					turnstileError = 'Please complete the verification challenge.';
+					return;
+				}
+
 				if (validationErrors.length === 0) {
 					syncPageToForm();
 					saveToLocalStorage();
 					isSubmitting = true;
 					submitError = '';
+					isRateLimited = false;
+					turnstileError = null;
 				} else {
 					cancel();
 					validationErrors.forEach((error) => {
@@ -74,7 +88,17 @@
 					localStorage.removeItem('ecohubs-application-draft');
 				}
 			} else if (result.type === 'failure') {
-				submitError = 'Failed to submit application. Please try again.';
+				const data = result.data as { error?: string; isRateLimited?: boolean } | undefined;
+				if (data?.isRateLimited) {
+					isRateLimited = true;
+					submitError = data.error || 'Too many applications submitted. Please try again later.';
+				} else if (data?.error) {
+					submitError = data.error;
+				} else {
+					submitError = 'Failed to submit application. Please try again.';
+				}
+				// Reset Turnstile on failure
+				turnstileToken = null;
 			}
 		},
 	});
@@ -466,6 +490,39 @@
 				{/if}
 			{/each}
 
+			<!-- Turnstile hidden input -->
+			{#if turnstileToken}
+				<input type="hidden" name="cf-turnstile-response" value={turnstileToken} />
+			{/if}
+
+			<!-- Turnstile Widget on Last Page -->
+			{#if isLastPage}
+				<div class="mb-6 flex justify-center">
+					<Turnstile
+						siteKey={PUBLIC_TURNSTILE_SITE_KEY}
+						on:turnstile-callback={(e) => {
+							turnstileToken = e.detail.token;
+							turnstileError = null;
+						}}
+						on:turnstile-error={() => {
+							turnstileError = 'Verification failed. Please try again.';
+							turnstileToken = null;
+						}}
+						on:turnstile-expired={() => {
+							turnstileError = 'Verification expired. Please try again.';
+							turnstileToken = null;
+						}}
+						theme="light"
+					/>
+				</div>
+				{#if turnstileError}
+					<div class="mb-4 bg-red-50 border border-red-200 rounded-lg p-3 flex items-center gap-2" role="alert" in:fly={{ y: -10, duration: 200 }}>
+						<AlertCircle class="w-4 h-4 text-red-600 flex-shrink-0" aria-hidden="true" />
+						<p class="text-sm text-red-700">{turnstileError}</p>
+					</div>
+				{/if}
+			{/if}
+
 			<!-- Navigation Buttons -->
 			<div class="flex items-center justify-between pt-6 border-t border-gray-200">
 				<button
@@ -481,7 +538,7 @@
 				{#if isLastPage}
 					<button
 						type="submit"
-						disabled={isSubmitting}
+						disabled={isSubmitting || !turnstileToken}
 						class="flex items-center gap-2 px-8 py-3 bg-ecohubs-primary text-white font-bold rounded-lg hover:bg-ecohubs-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
 					>
 						{#if isSubmitting}
@@ -504,8 +561,17 @@
 			</div>
 
 			{#if submitError}
-				<div class="mt-4 bg-red-50 border border-red-200 rounded-lg p-4" role="alert">
-					<p class="text-sm text-red-800">{submitError}</p>
+				<div class="mt-4 bg-red-50 border border-red-200 rounded-lg p-4" role="alert" in:fly={{ y: -10, duration: 200 }}>
+					<div class="flex items-start gap-3">
+						<AlertCircle class="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
+						<div>
+							<p class="font-medium text-red-800">Submission Failed</p>
+							<p class="text-sm text-red-700 mt-1">{submitError}</p>
+							{#if isRateLimited}
+								<p class="text-sm text-red-600 mt-2">Please wait about an hour before trying again.</p>
+							{/if}
+						</div>
+					</div>
 				</div>
 			{/if}
 		</form>

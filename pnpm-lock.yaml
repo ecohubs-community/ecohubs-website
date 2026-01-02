@@ -26,9 +26,6 @@ importers:
       '@types/nodemailer':
         specifier: ^7.0.4
         version: 7.0.4
-      airtable:
-        specifier: ^0.12.2
-        version: 0.12.2
       ethers:
         specifier: ^6.15.0
         version: 6.15.0
@@ -47,6 +44,9 @@ importers:
       nodemailer:
         specifier: ^7.0.10
         version: 7.0.10
+      svelte-turnstile:
+        specifier: ^0.11.0
+        version: 0.11.0(svelte@5.43.14)
       sveltekit-superforms:
         specifier: ^2.28.1
         version: 2.28.1(@sveltejs/kit@2.49.0(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.43.14)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.43.14)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)))(@types/json-schema@7.0.15)(esbuild@0.25.12)(svelte@5.43.14)(typescript@5.9.3)
@@ -1211,9 +1211,6 @@ packages:
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
 
-  '@types/node@14.18.63':
-    resolution: {integrity: sha512-fAtCfv4jJg+ExtXhvCkCqUKZ+4ok/JQk01qDKhL5BDDoS3AxKXhV5/MAVUZyQnSEd2GT92fkgZl0pz0Q0AzcIQ==}
-
   '@types/node@22.19.1':
     resolution: {integrity: sha512-LCCV0HdSZZZb34qifBsyWlUmok6W7ouER+oQIGBScS8EsZsQbrtFTUrDX4hOl+CS6p7cnNC4td+qrSVGSCTUfQ==}
 
@@ -1378,13 +1375,6 @@ packages:
       zod:
         optional: true
 
-  abort-controller@3.0.0:
-    resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
-    engines: {node: '>=6.5'}
-
-  abortcontroller-polyfill@1.7.8:
-    resolution: {integrity: sha512-9f1iZ2uWh92VcrU9Y8x+LdM4DLj75VE0MJB8zuF1iUnroEptStw+DQ8EQPMUdfe5k+PkB1uUfDQfWbhstH8LrQ==}
-
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -1400,10 +1390,6 @@ packages:
 
   aes-js@4.0.0-beta.5:
     resolution: {integrity: sha512-G965FqalsNyrPqgEGON7nIx1e/OVENSgiEIzyC63haUMuvNnwIgIjMs52hlTCKhkBny7A2ORNlfY9Zu+jmGk1Q==}
-
-  airtable@0.12.2:
-    resolution: {integrity: sha512-HS3VytUBTKj8A0vPl7DDr5p/w3IOGv6RXL0fv7eczOWAtj9Xe8ri4TAiZRXoOyo+Z/COADCj+oARFenbxhmkIg==}
-    engines: {node: '>=8.0.0'}
 
   ajv-errors@3.0.0:
     resolution: {integrity: sha512-V3wD15YHfHz6y0KdhYFjyy9vWtEVALT9UrxfN3zqlI6dMioHnJrqOYfyPKol3oqrnCM9uwkcdCwkJ0WUcbLMTQ==}
@@ -1751,10 +1737,6 @@ packages:
   ethers@6.15.0:
     resolution: {integrity: sha512-Kf/3ZW54L4UT0pZtsY/rf+EkBU7Qi5nnhonjUb8yTXcxH3cdcWrV2cRyk0Xk/4jK6OoHhxxZHriyhje20If2hQ==}
     engines: {node: '>=14.0.0'}
-
-  event-target-shim@5.0.1:
-    resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
-    engines: {node: '>=6'}
 
   eventemitter3@5.0.1:
     resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
@@ -2158,9 +2140,6 @@ packages:
   lodash.set@4.3.2:
     resolution: {integrity: sha512-4hNPN5jlm/N/HLMCO43v8BXKq9Z7QdAGc/VGrRD61w8gN9g/6jF9A4L1pbUgBLCffi0w9VsXfTOij5x8iTyFvg==}
 
-  lodash@4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-
   lossless-json@4.3.0:
     resolution: {integrity: sha512-ToxOC+SsduRmdSuoLZLYAr5zy1Qu7l5XhmPWM3zefCZ5IcrzW/h108qbJUKfOlDlhvhjUK84+8PSVX0kxnit0g==}
 
@@ -2546,6 +2525,11 @@ packages:
     peerDependencies:
       svelte: ^5.0.0-next.126
 
+  svelte-turnstile@0.11.0:
+    resolution: {integrity: sha512-2LFklx9JVsR3fJ7e3fGG1HEAWWEqRq1WfNaVrKgZJ+pzfY2NColiH+wH0kK2yX3DrcGLiJ9vBeTyiLFWotKpLA==}
+    peerDependencies:
+      svelte: ^3.58.0 || ^4.0.0 || ^5.0.0
+
   svelte@5.43.14:
     resolution: {integrity: sha512-pHeUrp1A5S6RGaXhJB7PtYjL1VVjbVrJ2EfuAoPu9/1LeoMaJa/pcdCsCSb0gS4eUHAHnhCbUDxORZyvGK6kOQ==}
     engines: {node: '>=18'}
@@ -2618,6 +2602,9 @@ packages:
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+
+  turnstile-types@1.2.3:
+    resolution: {integrity: sha512-EDjhDB9TDwda2JRbhzO/kButPio3JgrC3gXMVAMotxldybTCJQVMvPNJ89rcAiN9vIrCb2i1E+VNBCqB8wue0A==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -4482,8 +4469,6 @@ snapshots:
     dependencies:
       '@types/unist': 2.0.11
 
-  '@types/node@14.18.63': {}
-
   '@types/node@22.19.1':
     dependencies:
       undici-types: 6.21.0
@@ -4711,12 +4696,6 @@ snapshots:
       typescript: 5.9.3
       zod: 3.25.76
 
-  abort-controller@3.0.0:
-    dependencies:
-      event-target-shim: 5.0.1
-
-  abortcontroller-polyfill@1.7.8: {}
-
   acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
       acorn: 8.15.0
@@ -4726,16 +4705,6 @@ snapshots:
   aes-js@3.0.0: {}
 
   aes-js@4.0.0-beta.5: {}
-
-  airtable@0.12.2:
-    dependencies:
-      '@types/node': 14.18.63
-      abort-controller: 3.0.0
-      abortcontroller-polyfill: 1.7.8
-      lodash: 4.17.21
-      node-fetch: 2.7.0
-    transitivePeerDependencies:
-      - encoding
 
   ajv-errors@3.0.0(ajv@8.17.1):
     dependencies:
@@ -5136,8 +5105,6 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  event-target-shim@5.0.1: {}
-
   eventemitter3@5.0.1: {}
 
   expect-type@1.2.2: {}
@@ -5482,8 +5449,6 @@ snapshots:
   lodash.once@4.1.1: {}
 
   lodash.set@4.3.2: {}
-
-  lodash@4.17.21: {}
 
   lossless-json@4.3.0: {}
 
@@ -5847,6 +5812,11 @@ snapshots:
       style-to-object: 1.0.14
       svelte: 5.43.14
 
+  svelte-turnstile@0.11.0(svelte@5.43.14):
+    dependencies:
+      svelte: 5.43.14
+      turnstile-types: 1.2.3
+
   svelte@5.43.14:
     dependencies:
       '@jridgewell/remapping': 2.3.5
@@ -5941,6 +5911,8 @@ snapshots:
   tslib@2.7.0: {}
 
   tslib@2.8.1: {}
+
+  turnstile-types@1.2.3: {}
 
   type-check@0.4.0:
     dependencies:

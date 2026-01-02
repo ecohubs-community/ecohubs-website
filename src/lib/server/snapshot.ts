@@ -51,7 +51,7 @@ export function formatApplicationForSnapshot(data: ApplicationEmailData): string
 
 *Submitted: ${new Date(data.timestamp).toLocaleString()}*
 
-**Note:** Full application details are stored securely in Airtable. This proposal contains a summary for voting purposes.
+**Note:** Full application details are stored in ecohubsOS. This proposal contains a summary for voting purposes.
 `;
 }
 
