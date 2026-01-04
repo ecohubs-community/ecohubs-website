@@ -109,7 +109,7 @@
 						aria-label="See the Blueprint Vision"
 						data-sveltekit-preload-data="hover"
 					>
-						See the Blueprint Vision
+						Learn about the Vision
 					</a>
 				</div>
 

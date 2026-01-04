@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ComponentType } from 'svelte';
+	import Icon from '@iconify/svelte';
 
 	let {
 		icon,
@@ -8,7 +8,7 @@
 		title,
 		description
 	}: {
-		icon: ComponentType;
+		icon: string;
 		iconColor: string;
 		iconBg: string;
 		title: string;
@@ -16,14 +16,11 @@
 	} = $props();
 </script>
 
-<article
-	class="glass-card rounded-2xl p-6 transition-all-smooth text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ecohubs-primary focus-visible:ring-offset-2"
-	tabindex="0"
->
-	<div class="w-16 h-16 rounded-full {iconBg} flex items-center justify-center {iconColor} mx-auto mb-4">
-		<svelte:component this={icon} class="w-8 h-8" aria-hidden="true" />
-	</div>
-	<h3 class="text-xl font-bold text-gray-900 font-serif mb-3">{title}</h3>
-	<p class="text-gray-600 leading-relaxed text-sm">{description}</p>
-</article>
 
+<div class="glass-card p-6 rounded-2xl hover:bg-white/90 transition-all">
+	<div class="w-12 h-12 {iconBg} rounded-xl flex items-center justify-center mb-4 {iconColor}">
+		<Icon icon={icon} class="w-6 h-6" aria-hidden="true" />
+	</div>
+	<h4 class="text-lg font-bold text-gray-900 mb-2">{title}</h4>
+	<p class="text-gray-500 text-sm leading-relaxed">{description}</p>
+</div>

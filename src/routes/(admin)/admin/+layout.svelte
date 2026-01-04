@@ -14,9 +14,9 @@
 		{ href: '/admin/blog/drafts', label: 'Blog Drafts', icon: BookOpen }
 	];
 
-	async function handleLogout() {
-		await fetch('/auth/logout', { method: 'POST' });
-		goto('/');
+	function handleLogout() {
+		// Directly navigate to logout - the server hook will handle the redirect
+		goto('/auth/logout');
 	}
 </script>
 

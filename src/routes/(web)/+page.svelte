@@ -1,36 +1,31 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import Hero from '$lib/components/Hero.svelte';
-	import InfoCard from '$lib/components/InfoCard.svelte';
-	import FeatureCard from '$lib/components/FeatureCard.svelte';
 	import GovernanceSection from '$lib/components/GovernanceSection.svelte';
 	import EcosystemSection from '$lib/components/EcosystemSection.svelte';
 	import EcoTokenFeature from '$lib/components/EcoTokenFeature.svelte';
 	import BlueprintCard from '$lib/components/BlueprintCard.svelte';
-	import PersonaCard from '$lib/components/PersonaCard.svelte';
-	import DifferentiatorCard from '$lib/components/DifferentiatorCard.svelte';
-	import RoadmapPhase from '$lib/components/RoadmapPhase.svelte';
   import StefanImage from '$lib/assets/stefan.webp';
+	import MemberGuidedDecisionsImage from '$lib/assets/member-guided-decisions.webp';
+	import SharedStewardshipImage from '$lib/assets/shared-stewardship.webp';
+	import DeliberationSenseMakingImage from '$lib/assets/deliberation-sense-making.webp';
+	import TrustByDesignImage from '$lib/assets/trust-by-design.webp';
+	import ContributionEconomyImage from '$lib/assets/contribution-economy.webp';
 	import {
 		Unlink,
-		AlertTriangle,
 		Lock,
-		Check,
 		Microscope,
 		Network,
 		Flower2,
 		Vote,
-		Wallet2,
 		Users,
 		ShieldCheck,
 		ArrowRight,
 		Shovel,
-		ShoppingBasket,
 		Leaf,
 		Scale,
 		Zap,
 		Droplets,
-		Home,
 		HeartHandshake,
 		BookOpen,
 		FileText,
@@ -47,26 +42,16 @@
 		UsersRound,
 		MessageCircle,
 		Eye,
-		Code2,
-		Users2,
 		Repeat,
-
 		WalletMinimal,
-
 		CodeXml,
-
 		House,
-
 		TriangleAlert,
-
 		ChartBar
-
-
-
-
-
 	} from 'lucide-svelte';
 	import WhyCard from '$lib/components/WhyCard.svelte';
+	import BoxInfoCard from '$lib/components/BoxInfoCard.svelte';
+	import PersonaCard from '$lib/components/PersonaCard.svelte';
 
 	// Why We Need New Models Data
 	const whyCards = [
@@ -111,19 +96,19 @@
 	// Technology That Serves Life Data
 	const approachCards = [
 		{
-			icon: Microscope,
+			icon: "tabler:microscope",
 			title: 'Community-Led Research',
 			description:
 				"Our blueprint grows from practice. Every pilot community becomes a living laboratory where solutions are tested, refined, and shared."
 		},
 		{
-			icon: Network,
+			icon: "tabler:affiliate",
 			title: 'Collaborative Evolution',
 			description:
 				'Like a mycelial network, our intelligence expands through connection. The blueprint is open-source, shaped by everyone who contributes.'
 		},
 		{
-			icon: Flower2,
+			icon: "tabler:plant-2",
 			title: 'Systems Thinking',
 			description:
 				"We design communities as whole systems—where housing, food, water, energy, and culture work together as a resilient living ecosystem."
@@ -141,8 +126,7 @@
 			detailTitle: 'Participation Before Automation',
 			detailDescription:
 				'EcoHubs uses Snapshot to coordinate collective decisions such as new member applications, content publication, and shared direction. Voting is gas-free and accessible, allowing participation without financial or technical barriers. Governance starts with human judgment, supported — not replaced — by tools.',
-			detailImage:
-				'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800',
+			detailImage: MemberGuidedDecisionsImage,
 			detailImageAlt: 'Community voting',
 			buttonText: 'Explore Decisions',
 			buttonBgColor: 'bg-blue-600',
@@ -158,8 +142,7 @@
 			detailTitle: 'Responsibility Grows With Trust',
 			detailDescription:
 				'Instead of financial stakes or speculation, EcoHubs emphasizes contribution-based authority. Through ecohubsOS and Offcoin, members earn experience and internal tokens by helping the community. Over time, this unlocks permissions, influence, and responsibility — creating a culture of earned trust rather than assigned power.',
-			detailImage:
-				'https://images.unsplash.com/photo-1627123424574-724758594e93?q=80&w=687&auto=format&fit=crop',
+			detailImage: SharedStewardshipImage,
 			detailImageAlt: 'Stewardship and responsibility',
 			buttonText: 'How Contribution Works',
 			buttonBgColor: 'bg-amber-600',
@@ -175,8 +158,7 @@
 			detailTitle: 'From Conversation to Coherence',
 			detailDescription:
 				'Before decisions are made, ideas are discussed in member forums and community spaces. We use Flarum and Discord to surface perspectives, refine proposals, and build shared understanding. Voting is the final step — not the first.',
-			detailImage:
-				'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800',
+			detailImage: DeliberationSenseMakingImage,
 			detailImageAlt: 'Group discussion',
 			buttonText: 'Join the Discussion',
 			buttonBgColor: 'bg-purple-600',
@@ -192,8 +174,7 @@
 			detailTitle: 'A Conscious Use of Technology',
 			detailDescription:
 				'EcoHubs is not “fully on-chain” — by choice. We use blockchain selectively where transparency, auditability, and fairness add real value. Other parts remain off-chain to preserve nuance, care, and human judgment. Trust here is built through visibility, participation, and shared accountability.',
-			detailImage:
-				'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800',
+			detailImage: TrustByDesignImage,
 			detailImageAlt: 'Technology and trust',
 			buttonText: 'Our Approach to Tech',
 			buttonBgColor: 'bg-emerald-600',
@@ -338,7 +319,7 @@
 	// Who Is This For Data
 	const personaCards = [
 		{
-			icon: Sprout,
+			icon: "tabler:flower",
 			iconColor: 'text-emerald-600',
 			iconBg: 'bg-emerald-50',
 			title: 'Regenerative Thinkers',
@@ -346,7 +327,7 @@
 				"Permaculturists, ecologists, and land stewards seeking community models that honor nature's patterns."
 		},
 		{
-			icon: Users,
+			icon: "tabler:users",
 			iconColor: 'text-blue-600',
 			iconBg: 'bg-blue-50',
 			title: 'Community Builders',
@@ -354,7 +335,7 @@
 				"Those who've dreamed of intentional communities but lacked the tools and blueprint to make it real."
 		},
 		{
-			icon: Code,
+			icon: "tabler:code",
 			iconColor: 'text-purple-600',
 			iconBg: 'bg-purple-50',
 			title: 'Web3 Contributors',
@@ -362,7 +343,7 @@
 				'Builders interested in using blockchain for governance, transparency, and regenerative impact.'
 		},
 		{
-			icon: Lightbulb,
+			icon: "tabler:bulb",
 			iconColor: 'text-amber-600',
 			iconBg: 'bg-amber-50',
 			title: 'Climate Innovators',
@@ -370,7 +351,7 @@
 				'Those seeking systemic solutions beyond individual actions—community-scale regeneration.'
 		},
 		{
-			icon: Heart,
+			icon: "tabler:heart",
 			iconColor: 'text-teal-600',
 			iconBg: 'bg-teal-50',
 			title: 'Cultural Pioneers',
@@ -378,7 +359,7 @@
 				'Early believers in new models for living—collaborative, open-minded, visionary.'
 		},
 		{
-			icon: Compass,
+			icon: "tabler:compass",
 			iconColor: 'text-orange-600',
 			iconBg: 'bg-orange-50',
 			title: 'Seekers of Meaning',
@@ -553,12 +534,8 @@
 		</div>
 
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-			{#each approachCards as card, index (card.title)}
-				<div class="bg-white p-8 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-					<div class="text-ecohubs-primary mb-4"><svelte:component this={card.icon} class="w-10 h-10" aria-hidden="true" /></div>
-					<h4 class="text-xl font-bold text-gray-900 mb-2">{card.title}</h4>
-					<p class="text-gray-500 text-sm leading-relaxed">{card.description}</p>
-				</div>
+			{#each approachCards as card}
+				<BoxInfoCard {...card}  />
 			{/each}
 		</div>
 	</div>
@@ -600,8 +577,7 @@
 
 			<div class="order-1 lg:order-2">
 				<img
-					src="https://images.unsplash.com/photo-1660836815332-3f38535964d1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGJsb2NrY2hhaW4lMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww"
-					srcset="https://images.unsplash.com/photo-1660836815332-3f38535964d1?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGJsb2NrY2hhaW4lMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww 400w, https://images.unsplash.com/photo-1660836815332-3f38535964d1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGJsb2NrY2hhaW4lMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww 800w, https://images.unsplash.com/photo-1660836815332-3f38535964d1?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGJsb2NrY2hhaW4lMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww 1200w"
+					src={ContributionEconomyImage}
 					sizes="(max-width: 1024px) 100vw, 50vw"
 					width="1200"
 					height="800"
@@ -715,13 +691,7 @@
 
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 who-for-cards">
 			{#each personaCards as card (card.title)}
-				<div class="glass-card p-6 rounded-2xl hover:bg-white/90 transition-all">
-					<div class="w-12 h-12 {card.iconBg} rounded-xl flex items-center justify-center mb-4 {card.iconColor}">
-						<svelte:component this={card.icon} class="w-6 h-6" aria-hidden="true" />
-					</div>
-					<h4 class="text-lg font-bold text-gray-900 mb-2">{card.title}</h4>
-					<p class="text-gray-500 text-sm leading-relaxed">{card.description}</p>
-				</div>
+				<PersonaCard {...card} />
 			{/each}
 		</div>
 

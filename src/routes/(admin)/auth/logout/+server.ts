@@ -6,3 +6,9 @@ export const POST: RequestHandler = async ({ cookies }) => {
 	throw redirect(303, '/');
 };
 
+export const GET: RequestHandler = async ({ cookies }) => {
+	cookies.delete('auth_token', { path: '/' });
+	throw redirect(303, '/');
+};
+
+

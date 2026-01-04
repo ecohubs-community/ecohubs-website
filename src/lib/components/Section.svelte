@@ -30,7 +30,7 @@
 
 <section class="w-full {spacingClasses[spacing]}">
 	{#if container}
-		<div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 ">
 			{#if columns > 1}
 				<div class="grid w-full gap-6 {gridClasses[columns]} lg:gap-8">
 					{@render children()}
