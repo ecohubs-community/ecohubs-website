@@ -3,7 +3,6 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import { page } from '$app/stores';
 	import { LayoutDashboard, FileText, LogOut, Home, HouseIcon, BookOpen } from 'lucide-svelte';
-	import { goto } from '$app/navigation';
 	import LogoImg from '$lib/assets/Logo.svg';
 
 	let { children } = $props();
@@ -13,11 +12,6 @@
 		{ href: '/admin/proposals', label: 'Proposals', icon: FileText },
 		{ href: '/admin/blog/drafts', label: 'Blog Drafts', icon: BookOpen }
 	];
-
-	function handleLogout() {
-		// Directly navigate to logout - the server hook will handle the redirect
-		goto('/auth/logout');
-	}
 </script>
 
 <svelte:head>
