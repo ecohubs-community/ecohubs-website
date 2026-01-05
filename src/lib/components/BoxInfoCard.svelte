@@ -7,7 +7,7 @@
     description: string;
   };
 
-  let { icon, title, description } = $props() as BoxInfoCardProps;
+  let { icon, title, description }: BoxInfoCardProps = $props();
 </script>
 
 <div class="bg-white p-8 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">

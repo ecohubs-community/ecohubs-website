@@ -1,5 +1,6 @@
 <script lang="ts">
 	interface Props {
+		id?: string;
 		columns?: 1 | 2 | 3 | 4;
 		spacing?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 		container?: boolean;
@@ -7,6 +8,7 @@
 	}
 
 	let {
+		id,
 		columns = 1,
 		spacing = 'lg',
 		container = true,
@@ -29,7 +31,7 @@
 	};
 </script>
 
-<section class="w-full {spacingClasses[spacing]}">
+<section class="w-full {spacingClasses[spacing]}" {id}>
 	{#if container}
 		<div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 ">
 			{#if columns > 1}
