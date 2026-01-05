@@ -7,8 +7,8 @@
 
 	const ecosystemLinks = [
 		{ href: '/blueprint', label: 'Blueprint' },
-		{ href: '/dao', label: 'Governance' },
-		{ href: '/ecotoken', label: 'EcoToken' },
+		// { href: '/dao', label: 'Governance' },
+		// { href: '/ecotoken', label: 'EcoToken' },
 		{ href: '/vision', label: 'Community Hubs' },
 		{ href: '/blog', label: 'Blog' }
 	];

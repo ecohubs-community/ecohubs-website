@@ -1,7 +1,7 @@
 <script lang="ts">
 	interface Props {
 		columns?: 1 | 2 | 3 | 4;
-		spacing?: 'sm' | 'md' | 'lg' | 'xl';
+		spacing?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 		container?: boolean;
 		children: import('svelte').Snippet;
 	}
@@ -14,6 +14,7 @@
 	}: Props = $props();
 
 	const spacingClasses = {
+		none: 'py-0',
 		sm: 'py-8 md:py-12',
 		md: 'py-12 md:py-16',
 		lg: 'py-16 md:py-24',

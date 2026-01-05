@@ -14,9 +14,6 @@
 	import {
 		Unlink,
 		Lock,
-		Microscope,
-		Network,
-		Flower2,
 		Vote,
 		Users,
 		ShieldCheck,
@@ -33,12 +30,6 @@
 		Share2,
 		Copy,
 		Sprout,
-		Code,
-		Lightbulb,
-		Heart,
-		Compass,
-		FileCode,
-		FlaskConical,
 		UsersRound,
 		MessageCircle,
 		Eye,
@@ -52,6 +43,7 @@
 	import WhyCard from '$lib/components/WhyCard.svelte';
 	import BoxInfoCard from '$lib/components/BoxInfoCard.svelte';
 	import PersonaCard from '$lib/components/PersonaCard.svelte';
+	import ColoredCard from '$lib/components/ColoredCard.svelte';
 
 	// Why We Need New Models Data
 	const whyCards = [
@@ -371,7 +363,7 @@
 	// What Makes EcoHubs Different Data
 	const differentiatorCards = [
 		{
-			icon: FileCode,
+			icon: "tabler:file-code",
 			title: 'Open-Source Blueprint',
 			description:
 				"Unlike proprietary models, our blueprint is fully open-source. Anyone can use, adapt, and improve it. No gatekeeping.",
@@ -379,7 +371,7 @@
 			gradientTo: 'to-teal-50'
 		},
 		{
-			icon: Network,
+			icon: "tabler:network",
 			title: 'Tech + Ecology Fusion',
 			description:
 				"We don't choose between nature and technology. We use blockchain for transparency and trust, while staying grounded in ecological principles.",
@@ -387,7 +379,7 @@
 			gradientTo: 'to-indigo-50'
 		},
 		{
-			icon: FlaskConical,
+			icon: "tabler:flask",
 			title: 'Real-World Testing',
 			description:
 				"We're not just theorizing. Pilot hubs will test and refine every aspect of the blueprint before scaling globally.",
@@ -395,7 +387,7 @@
 			gradientTo: 'to-pink-50'
 		},
 		{
-			icon: UsersRound,
+			icon: "tabler:users",
 			title: 'Community-Led Evolution',
 			description:
 				"The blueprint evolves through community practice, not top-down planning. Every member shapes what comes next.",
@@ -766,16 +758,7 @@
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 			{#each differentiatorCards as card, index (card.title)}
-        {@const CardIcon = card.icon}
-				<div class="p-8 bg-linear-to-br {card.gradientFrom} {card.gradientTo} rounded-2xl border border-{card.gradientFrom.split('-')[1]}-100">
-					<div class="flex items-center gap-4 mb-4">
-						<div class="w-12 h-12 bg-{card.gradientFrom.split('-')[1]}-500 rounded-xl flex items-center justify-center text-white">
-							<CardIcon class="w-6 h-6" aria-hidden="true" />
-						</div>
-						<h4 class="text-xl font-bold text-gray-900">{card.title}</h4>
-					</div>
-					<p class="text-gray-600 leading-relaxed">{card.description}</p>
-				</div>
+       <ColoredCard	 {...card} />
 			{/each}
 		</div>
 	</div>

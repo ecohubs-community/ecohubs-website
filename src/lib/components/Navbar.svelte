@@ -10,8 +10,8 @@
 
 	const navLinks = [
 		{ href: '/vision', label: 'Vision' },
-		{ href: '/dao', label: 'DAO' },
-		{ href: '/ecotoken', label: 'EcoToken' },
+		// { href: '/dao', label: 'DAO' },
+		// { href: '/ecotoken', label: 'EcoToken' },
 		{ href: '/blueprint', label: 'Blueprint' },
 		{ href: '/join', label: 'Join' },
 		{ href: '/blog', label: 'Blog' }
