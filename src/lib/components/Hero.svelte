@@ -2,6 +2,7 @@
 	import { Users, GitBranch, Vote, Flower2, Sprout, Leaf, Heart } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 	import { animate } from 'motion';
+	import HeroImage from '$lib/assets/hero.webp';
 
 	let heroText: HTMLElement;
 	let heroSub: HTMLElement;
@@ -157,7 +158,7 @@
 				<!-- Main Image -->
 				<div class="relative w-full aspect-4/5 md:aspect-square">
 					<img
-						src="/src/lib/assets/hero.webp"
+						src={HeroImage}
 						alt="Nature and Technology"
 						width="800"
 						height="800"
