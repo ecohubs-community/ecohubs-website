@@ -766,20 +766,34 @@
 </section>
 
 <!-- Roadmap Section -->
-<section id="roadmap" class="py-24 md:py-32 relative bg-gray-50">
+<section id="roadmap" class="py-16 md:py-24 lg:py-32 relative bg-gray-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16">
-			<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-4">Roadmap to First Community</h2>
+		<div class="text-center mb-10 md:mb-16">
+			<h2 class="text-3xl md:text-4xl font-serif font-bold text-ecohubs-dark mb-4">Roadmap to First Community</h2>
 			<p class="text-gray-600 max-w-2xl mx-auto">A clear path from vision to reality. Here's where we're heading.</p>
 		</div>
 
 		<div class="relative max-w-2xl mx-auto">
-			<!-- Timeline Line -->
-			<div class="absolute left-8 top-0 bottom-24 w-0.5 bg-linear-to-b from-ecohubs-primary to-ecohubs-dark hidden md:block"></div>
+			<!-- Timeline Line - visible on md and up -->
+			<div class="absolute left-4 md:left-8 top-0 bottom-20 w-0.5 bg-linear-to-b from-ecohubs-primary to-ecohubs-dark hidden md:block"></div>
 
-			<div class="space-y-12">
+			<div class="space-y-6 md:space-y-12">
 				{#each roadmapPhases as phase, index (phase.phase)}
-					<div class="relative flex gap-8 items-start">
+					<!-- Mobile Layout: Stacked -->
+					<div class="md:hidden">
+						<div class="flex items-center gap-3 mb-3">
+							<div class="shrink-0 w-10 h-10 {index === 0 ? 'bg-ecohubs-dark' : 'bg-ecohubs-primary'} rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
+								{phase.phase}
+							</div>
+							<h4 class="text-base font-bold text-gray-900">{phase.title}</h4>
+						</div>
+						<div class="ml-[52px] bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+							<p class="text-gray-600 text-sm">{phase.description}</p>
+						</div>
+					</div>
+
+					<!-- Desktop Layout: Side by side -->
+					<div class="hidden md:flex relative gap-8 items-start">
 						<div class="shrink-0 w-16 h-16 {index === 0 ? 'bg-ecohubs-dark' : 'bg-ecohubs-primary'} rounded-full flex items-center justify-center text-white font-bold shadow-lg relative z-10">
 							{phase.phase}
 						</div>

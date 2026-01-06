@@ -343,27 +343,28 @@
      SECTION 1: HERO
      ============================================ -->
 <Section spacing="xl" columns={2}>
-	<div>
+	<!-- Text content - shows second on mobile (below image) -->
+	<div class="order-2 md:order-1">
 		<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-6">
 			Open Source Knowledge
 		</div>
-		<h1 class="font-serif text-4xl font-bold leading-tight text-ecohubs-dark sm:text-5xl lg:text-6xl">
+		<h1 class="font-serif text-3xl sm:text-4xl font-bold leading-tight text-ecohubs-dark md:text-5xl lg:text-6xl">
 			The Blueprint for <span class="text-gradient">Regenerative Communities</span>
 		</h1>
 
-		<p class="mt-6 text-lg leading-relaxed text-gray-600">
+		<p class="mt-4 md:mt-6 text-base md:text-lg leading-relaxed text-gray-600">
 			This is not content. It's infrastructure for rebuilding community knowledge—a shared, evolving
 			foundation for building EcoHubs worldwide.
 		</p>
 
-		<p class="mt-4 text-gray-500">
+		<p class="mt-3 md:mt-4 text-gray-500 text-sm md:text-base">
 			Digital. Open. Grounded in practice. Designed for replication, not perfection.
 		</p>
 
-		<div class="mt-10 flex flex-wrap items-center gap-4">
+		<div class="mt-8 md:mt-10 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
 			<a
 				href="#structure"
-				class="px-8 py-4 bg-ecohubs-primary text-white font-medium rounded-xl hover:bg-ecohubs-dark transition-all shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 hover:scale-105 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
+				class="px-6 md:px-8 py-3 md:py-4 bg-ecohubs-primary text-white font-medium rounded-xl hover:bg-ecohubs-dark transition-all shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 hover:scale-105 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
 				aria-label="Explore the Blueprint"
 			>
 				Explore the Blueprint
@@ -372,17 +373,17 @@
 
 			<a
 				href="#contribute"
-				class="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-ecohubs-primary hover:text-ecohubs-primary hover:scale-105 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
+				class="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-ecohubs-primary hover:text-ecohubs-primary hover:scale-105 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
 				aria-label="Contribute"
 			>
 				Contribute
 				<Icon icon="tabler:arrow-right" class="w-4 h-4" />
 			</a>
 		</div>
-		<div class="mt-8">
-			<a 
+		<div class="mt-6 md:mt-8">
+			<a
 				href="https://blueprint.ecohubs.community"
-				class="text-ecohubs-primary hover:underline flex items-center gap-2"
+				class="text-ecohubs-primary hover:underline flex items-center gap-2 text-sm md:text-base"
 				aria-label="Contribute"
 				target="_blank"
 			>
@@ -392,11 +393,12 @@
 		</div>
 	</div>
 
-	<div>
+	<!-- Image - shows first on mobile (on top) -->
+	<div class="order-1 md:order-2">
 		<div
-			class="relative h-100 w-full rounded-xl border border-border-subtle"
+			class="relative w-full rounded-xl border border-border-subtle"
 		>
-			<img src={BluePrintCommunity} alt="Network of regenerative EcoHubs" class="rounded-3xl shadow-2xl organic-shape-animated hover:rotate-1 transition-transform duration-700 object-cover h-96 w-full" loading="lazy" />
+			<img src={BluePrintCommunity} alt="Network of regenerative EcoHubs" class="rounded-3xl shadow-2xl organic-shape-animated hover:rotate-1 transition-transform duration-700 object-cover h-56 sm:h-72 md:h-96 w-full" loading="lazy" />
 		</div>
 	</div>
 </Section>

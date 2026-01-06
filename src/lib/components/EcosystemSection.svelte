@@ -146,25 +146,67 @@
   });
 </script>
 
-<section id="ecosystem" bind:this={sectionRef} class="py-24 relative bg-gradient-to-b from-white via-emerald-50/20 to-white overflow-hidden">
-  
-  <div class="absolute inset-0 pointer-events-none">
+<section id="ecosystem" bind:this={sectionRef} class="py-16 md:py-24 relative bg-gradient-to-b from-white via-emerald-50/20 to-white overflow-hidden">
+
+  <div class="absolute inset-0 pointer-events-none hidden md:block">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-emerald-100/40 rounded-full blur-3xl opacity-50"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="text-center mb-12 max-w-3xl mx-auto">
+    <div class="text-center mb-8 md:mb-12 max-w-3xl mx-auto">
       <h2 class="text-xs font-bold text-emerald-600 tracking-[0.2em] uppercase mb-3">Our Digital Mycelium</h2>
-      <h3 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6 leading-tight">
-        The <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-500">Operating System</span><br/> for Regenerative Action
+      <h3 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+        The <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-500">Operating System</span> for Regenerative Action
       </h3>
-      <p class="text-gray-600 text-lg leading-relaxed">
-        Explore the tools that power our community. Click on the apps in the dock below to learn how we collaborate and govern.
+      <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+        Explore the tools that power our community. <span class="hidden md:inline">Click on the apps in the dock below to learn how we collaborate and govern.</span><span class="md:hidden">Tap on any tool to learn more.</span>
       </p>
     </div>
 
-    <div class="relative w-full max-w-5xl mx-auto">
-      
+    <!-- Mobile View: Grid of tool cards -->
+    <div class="md:hidden grid grid-cols-2 gap-3 mb-8">
+      {#each tools as tool, index}
+        {@const ToolIcon = tool.icon}
+        <button
+          onclick={() => activeTool = activeTool?.title === tool.title ? null : tool}
+          class="relative p-4 rounded-2xl bg-white border-2 transition-all duration-300 text-left
+            {activeTool?.title === tool.title ? `${tool.hoverBorderColor} shadow-lg` : 'border-gray-100 hover:border-gray-200'}"
+        >
+          <div class="w-10 h-10 rounded-xl {tool.iconBg} {tool.iconColor} flex items-center justify-center mb-3">
+            <ToolIcon class="w-5 h-5" />
+          </div>
+          <h4 class="font-bold text-sm text-gray-900 mb-1">{tool.title}</h4>
+          <span class="text-[10px] uppercase tracking-wider text-gray-400 font-medium">{tool.category}</span>
+        </button>
+      {/each}
+    </div>
+
+    <!-- Mobile: Expanded tool detail -->
+    {#if activeTool}
+      {@const ActiveIcon = activeTool.icon}
+      <div class="md:hidden mb-8 p-6 rounded-2xl bg-white border-2 {activeTool.hoverBorderColor} shadow-lg" transition:fly={{ y: 10, duration: 200 }}>
+        <div class="flex items-start gap-4 mb-4">
+          <div class="w-14 h-14 rounded-2xl {activeTool.iconBg} {activeTool.iconColor} flex items-center justify-center shrink-0">
+            <ActiveIcon class="w-7 h-7" />
+          </div>
+          <div>
+            <h4 class="font-serif font-bold text-xl text-gray-900">{activeTool.title}</h4>
+            <span class="text-xs uppercase tracking-wider text-gray-400 font-medium">{activeTool.category}</span>
+          </div>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed">{activeTool.description}</p>
+        <button
+          onclick={() => activeTool = null}
+          class="mt-4 text-xs font-semibold text-gray-500 hover:text-gray-800"
+        >
+          Close
+        </button>
+      </div>
+    {/if}
+
+    <!-- Desktop View: Laptop mockup (hidden on mobile) -->
+    <div class="relative w-full max-w-5xl mx-auto hidden md:block">
+
       <div class="relative bg-slate-300 rounded-[2rem] p-2 shadow-2xl border border-slate-400 ring-1 ring-slate-300/10 transform transition-transform duration-700">
         
         <div class="relative w-full aspect-[16/10] md:aspect-[16/9] bg-gradient-to-br from-slate-200 to-slate-300 rounded-[1.5rem] overflow-hidden flex flex-col shadow-inner">

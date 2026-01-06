@@ -68,10 +68,10 @@
 </script>
 
 <section bind:this={heroSection} class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-			<!-- Left Content -->
-			<div class="z-10 order-2 lg:order-1">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full overflow-hidden">
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+			<!-- Left Content - shows below image on mobile -->
+			<div class="z-10 order-2 lg:order-1 mt-6 lg:mt-0">
 				<div
 					class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-4"
 				>
@@ -148,15 +148,15 @@
 				</div>
 			</div>
 
-			<!-- Right Visual -->
+			<!-- Right Visual - shows first (on top) on mobile -->
 			<div bind:this={heroVisual} class="order-1 lg:order-2 relative opacity-0">
-				<!-- Blob Background -->
+				<!-- Blob Background - hidden on mobile to prevent overflow -->
 				<div
-					class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-linear-to-tr from-emerald-100/50 to-orange-100/50 rounded-full blur-3xl -z-10"
+					class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-linear-to-tr from-emerald-100/50 to-orange-100/50 rounded-full blur-3xl -z-10 hidden md:block"
 				></div>
 
 				<!-- Main Image -->
-				<div class="relative w-full aspect-4/5 md:aspect-square">
+				<div class="relative w-full aspect-[4/3] sm:aspect-4/5 md:aspect-square">
 					<img
 						src={HeroImage}
 						alt="Nature and Technology"
@@ -166,8 +166,8 @@
 						loading="eager"
 					/>
 
-					<!-- Floating Badges -->
-					<div class="absolute bottom-2 left-0 flex flex-col gap-2 floating-leaf floating-badge opacity-0">
+					<!-- Floating Badges - hidden on mobile to prevent overflow -->
+					<div class="absolute bottom-2 left-0 flex-col gap-2 floating-leaf floating-badge opacity-0 hidden md:flex">
 						<div
 							class="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-emerald-100"
 						>
@@ -185,7 +185,7 @@
 						</div>
 					</div>
 					<div
-						class="absolute bottom-[45%] -right-3 flex flex-col gap-2 floating-leaf floating-leaf-delay-2000 floating-badge opacity-0"
+						class="absolute bottom-[45%] -right-3 flex-col gap-2 floating-leaf floating-leaf-delay-2000 floating-badge opacity-0 hidden md:flex"
 					>
 						<div
 							class="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-blue-100"
@@ -201,7 +201,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="absolute top-4 left-14 flex flex-col gap-2 floating-leaf floating-leaf-delay-1000 floating-badge opacity-0">
+					<div class="absolute top-4 left-14 flex-col gap-2 floating-leaf floating-leaf-delay-1000 floating-badge opacity-0 hidden md:flex">
 						<div
 							class="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-teal-100"
 						>
