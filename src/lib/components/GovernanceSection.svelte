@@ -19,7 +19,6 @@
 			buttonText: string;
 			buttonBgColor: string;
 			buttonIcon: typeof LucideIcon;
-			buttonHref: string;
 		}>;
 	} = $props();
 

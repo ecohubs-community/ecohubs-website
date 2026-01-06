@@ -123,7 +123,7 @@
 			buttonText: 'Explore Decisions',
 			buttonBgColor: 'bg-blue-600',
 			buttonIcon: ArrowRight,
-			buttonHref: '/dao'
+			// buttonHref: '/dao'
 		},
 		{
 			icon: WalletMinimal,
@@ -139,7 +139,7 @@
 			buttonText: 'How Contribution Works',
 			buttonBgColor: 'bg-amber-600',
 			buttonIcon: Eye,
-			buttonHref: '/contribute'
+			// buttonHref: '/contribute'
 		},
 		{
 			icon: Users,
@@ -155,7 +155,7 @@
 			buttonText: 'Join the Discussion',
 			buttonBgColor: 'bg-purple-600',
 			buttonIcon: MessageCircle,
-			buttonHref: '/forum'
+			// buttonHref: '/forum'
 		},
 		{
 			icon: ShieldCheck,
@@ -171,7 +171,7 @@
 			buttonText: 'Our Approach to Tech',
 			buttonBgColor: 'bg-emerald-600',
 			buttonIcon: CodeXml,
-			buttonHref: '/about#technology'
+			// buttonHref: '/about#technology'
 		}
 	];
 
