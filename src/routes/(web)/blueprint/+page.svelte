@@ -1,11 +1,11 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import Section from '$lib/components/Section.svelte';
-	import PersonaCard from '$lib/components/PersonaCard.svelte';
 	import Icon from '@iconify/svelte';
 	import { spring } from 'svelte/motion';
 	import { fade, fly, scale } from 'svelte/transition';
-	import { cubicOut, cubicInOut } from 'svelte/easing';
+	import BluePrintCommunity from '$lib/assets/blueprint-community.webp';
+	import BluePrintCommunity2 from '$lib/assets/blueprint-community-2.webp';
 
 	// ============================================
 	// SECTION 2: The Problem - Lost Knowledge
@@ -314,6 +314,29 @@
 <SEO
 	title="The Blueprint – EcoHubs.community"
 	description="Explore the open-source blueprint for building regenerative communities. A living knowledge system designed for replication, adaptation, and continuous improvement."
+	ogImage="/og-blueprint.jpg"
+	breadcrumbs={[
+		{ name: 'Home', url: 'https://ecohubs.community' },
+		{ name: 'Blueprint', url: 'https://ecohubs.community/blueprint' }
+	]}
+	faq={[
+		{
+			question: 'What is the EcoHubs Blueprint?',
+			answer: 'A living knowledge system designed for replication, adaptation, and continuous improvement. It is modular, adaptable, versioned, and grounded in real-world experiments from regenerative communities.'
+		},
+		{
+			question: 'What is the Blueprint NOT?',
+			answer: 'It is not a rigid rulebook, utopian manifesto, top-down authority, or finished product. It is always evolving based on community practice.'
+		},
+		{
+			question: 'How is the Blueprint organized?',
+			answer: 'The Blueprint is organized in four levels: Domains (broad areas like Governance, Food Systems), Topics (specific themes within domains), Modules (reusable patterns), and Articles (detailed guidance and case studies).'
+		},
+		{
+			question: 'How can I contribute to the Blueprint?',
+			answer: 'You can write or improve articles, review and discuss proposals, document experiments from real communities, or propose new domains. Contributions require EcoHubs membership to ensure quality.'
+		}
+	]}
 />
 
 <!-- ============================================
@@ -369,40 +392,11 @@
 		</div>
 	</div>
 
-	<!-- Animated hierarchy diagram -->
-	<div class="relative hidden md:flex items-center justify-center">
-		<div class="relative w-full max-w-md aspect-square">
-			<!-- Animated rings representing hierarchy -->
-			<div class="absolute inset-0 flex items-center justify-center">
-				<!-- Outer ring - Domains -->
-				<div class="absolute w-full h-full rounded-full border-2 border-emerald-200 animate-[spin_60s_linear_infinite]">
-					<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-1 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-full">Domains</div>
-				</div>
-				<!-- Second ring - Topics -->
-				<div class="absolute w-[75%] h-[75%] rounded-full border-2 border-sky-200 animate-[spin_45s_linear_infinite_reverse]">
-					<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-1 bg-sky-100 text-sky-700 text-xs font-semibold rounded-full">Topics</div>
-				</div>
-				<!-- Third ring - Modules -->
-				<div class="absolute w-[50%] h-[50%] rounded-full border-2 border-amber-200 animate-[spin_30s_linear_infinite]">
-					<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-1 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">Modules</div>
-				</div>
-				<!-- Center - Articles -->
-				<div class="absolute w-[25%] h-[25%] rounded-full bg-rose-50 border-2 border-rose-200 flex items-center justify-center">
-					<span class="text-rose-700 text-xs font-semibold">Articles</span>
-				</div>
-			</div>
-
-			<!-- Floating nodes -->
-			{#each [0, 1, 2, 3, 4, 5] as i}
-				<div
-					class="absolute w-3 h-3 rounded-full bg-ecohubs-primary/60 animate-pulse"
-					style="
-						top: {20 + (i * 12)}%;
-						left: {15 + (i * 13)}%;
-						animation-delay: {i * 0.5}s;
-					"
-				></div>
-			{/each}
+	<div>
+		<div
+			class="relative h-100 w-full rounded-xl border border-border-subtle"
+		>
+			<img src={BluePrintCommunity} alt="Network of regenerative EcoHubs" class="rounded-3xl shadow-2xl organic-shape-animated hover:rotate-1 transition-transform duration-700 object-cover h-96 w-full" loading="lazy" />
 		</div>
 	</div>
 </Section>
@@ -683,6 +677,52 @@
 	</div>
 </Section>
 
+
+<Section columns="2">
+	<!-- Animated hierarchy diagram -->
+	<div class="relative hidden md:flex items-center justify-center">
+		<div class="relative w-full max-w-md aspect-square">
+			<!-- Animated rings representing hierarchy -->
+			<div class="absolute inset-0 flex items-center justify-center">
+				<!-- Outer ring - Domains -->
+				<div class="absolute w-full h-full rounded-full border-2 border-emerald-200 animate-[spin_60s_linear_infinite]">
+					<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-1 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-full">Domains</div>
+				</div>
+				<!-- Second ring - Topics -->
+				<div class="absolute w-[75%] h-[75%] rounded-full border-2 border-sky-200 animate-[spin_45s_linear_infinite_reverse]">
+					<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-1 bg-sky-100 text-sky-700 text-xs font-semibold rounded-full">Topics</div>
+				</div>
+				<!-- Third ring - Modules -->
+				<div class="absolute w-[50%] h-[50%] rounded-full border-2 border-amber-200 animate-[spin_30s_linear_infinite]">
+					<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-1 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">Modules</div>
+				</div>
+				<!-- Center - Articles -->
+				<div class="absolute w-[25%] h-[25%] rounded-full bg-rose-50 border-2 border-rose-200 flex items-center justify-center">
+					<span class="text-rose-700 text-xs font-semibold">Articles</span>
+				</div>
+			</div>
+
+			<!-- Floating nodes -->
+			<!-- {#each [0, 1, 2, 3, 4, 5] as i}
+				<div
+					class="absolute w-3 h-3 rounded-full bg-ecohubs-primary/60 animate-pulse"
+					style="
+						top: {20 + (i * 12)}%;
+						left: {15 + (i * 13)}%;
+						animation-delay: {i * 0.5}s;
+					"
+				></div>
+			{/each} -->
+		</div>
+	</div>
+
+	<div class="my-10 mx-auto max-w-3xl">
+		<div class="relative h-100 w-full rounded-xl border border-border-subtle">
+			<img src={BluePrintCommunity2} alt="EcoHubs Blueprint structure applied" class="rounded-3xl shadow-2xl organic-shape-pebble hover:rotate-1 transition-transform duration-700 object-cover h-96 w-full" loading="lazy" />
+		</div>
+	</div>
+</Section>
+
 <!-- ============================================
      SECTION 5: STRUCTURE - HOW IT'S ORGANIZED
      ============================================ -->
@@ -787,6 +827,7 @@
 		</div>
 	</div>
 </Section>
+
 
 <!-- ============================================
      SECTION 6: HOW IT'S BUILT

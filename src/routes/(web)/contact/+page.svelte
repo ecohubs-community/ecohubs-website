@@ -25,7 +25,7 @@
 					<Mail class="w-6 h-6 text-ecohubs-primary" aria-hidden="true" />
 				</div>
 				<h3 class="font-bold text-gray-900 mb-2">Email Us</h3>
-				<p class="text-sm text-gray-600 mb-3">Get a response within 24-48 hours</p>
+				<p class="text-sm text-gray-600 mb-3">We will get back to you as soon as possible</p>
 				<a href="mailto:hello@ecohubs.community" class="text-ecohubs-primary hover:underline">
 					hello@ecohubs.community
 				</a>
@@ -37,8 +37,8 @@
 				</div>
 				<h3 class="font-bold text-gray-900 mb-2">Join the Discussion</h3>
 				<p class="text-sm text-gray-600 mb-3">Connect with our community</p>
-				<a href="https://github.com/ecohubs/community" class="text-ecohubs-primary hover:underline" target="_blank" rel="noopener noreferrer">
-					Community Forum
+				<a href="https://discord.gg/Xnh7247Nq3" class="text-ecohubs-primary hover:underline" target="_blank" rel="noopener noreferrer">
+					Community Discord
 				</a>
 			</div>
 

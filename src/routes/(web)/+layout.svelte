@@ -3,6 +3,9 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import NetworkCanvas from '$lib/components/NetworkCanvas.svelte';
+	import NavigationProgress from '$lib/components/NavigationProgress.svelte';
+	import Analytics from '$lib/components/Analytics.svelte';
+	import CookieConsent from '$lib/components/CookieConsent.svelte';
 	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
@@ -14,7 +17,12 @@
 	<!-- Preconnect to Google Fonts for faster font loading -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+	<!-- DNS prefetch for external resources -->
+	<link rel="dns-prefetch" href="https://images.unsplash.com" />
+	<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 </svelte:head>
+
+<NavigationProgress />
 
 <div class="flex min-h-screen flex-col relative">
 	<NetworkCanvas />
@@ -32,3 +40,6 @@
 		<Footer />
 	</div>
 </div>
+
+<Analytics />
+<CookieConsent />

@@ -6,13 +6,12 @@ const siteUrl = 'https://ecohubs.community';
 const routes = [
 	{ path: '', priority: '1.0', changefreq: 'weekly' },
 	{ path: '/vision', priority: '0.9', changefreq: 'monthly' },
-	{ path: '/dao', priority: '0.8', changefreq: 'monthly' },
-	{ path: '/ecotoken', priority: '0.8', changefreq: 'monthly' },
 	{ path: '/blueprint', priority: '0.8', changefreq: 'monthly' },
 	{ path: '/join', priority: '0.9', changefreq: 'monthly' },
 	{ path: '/contact', priority: '0.7', changefreq: 'yearly' },
-	{ path: '/about', priority: '0.8', changefreq: 'monthly' },
-	{ path: '/blog', priority: '0.8', changefreq: 'weekly' }
+	{ path: '/blog', priority: '0.8', changefreq: 'weekly' },
+	{ path: '/privacy', priority: '0.3', changefreq: 'yearly' },
+	{ path: '/terms', priority: '0.3', changefreq: 'yearly' }
 ];
 
 export const prerender = true;

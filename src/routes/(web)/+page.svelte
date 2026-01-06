@@ -429,6 +429,7 @@
 	title="EcoHubs.community - A Regenerative Future Designed Together"
 	description="Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities powered by blockchain technology. Be part of the first 500."
 	ogImage="/og-home.jpg"
+	breadcrumbs={[{ name: 'Home', url: 'https://ecohubs.community' }]}
 />
 
 <Hero />
@@ -573,7 +574,7 @@
 					sizes="(max-width: 1024px) 100vw, 50vw"
 					width="1200"
 					height="800"
-					class="rounded-3xl shadow-2xl organic-shape hover:rotate-1 transition-transform duration-700 object-cover h-96 w-full"
+					class="rounded-3xl shadow-2xl organic-shape-pebble hover:rotate-1 transition-transform duration-700 object-cover h-96 w-full"
 					alt="Green Growth"
 					loading="lazy"
 				/>
@@ -818,7 +819,8 @@
 				Apply for Membership
 			</a>
 			<a
-				href="/vision"
+				href='/EcoHubs_Manifesto.pdf'
+				target="_blank"
 				class="px-8 py-4 bg-transparent border-2 border-emerald-400 text-emerald-100 font-medium rounded-xl hover:bg-emerald-800 hover:scale-105 transition-all focus-visible:ring-2 focus-visible:ring-emerald-400"
 				aria-label="Read the Manifesto"
 				data-sveltekit-preload-data="hover"

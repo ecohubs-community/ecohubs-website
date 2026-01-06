@@ -72,11 +72,11 @@
 			<!-- Left Content -->
 			<div class="z-10 order-2 lg:order-1">
 				<div
-					class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100"
+					class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-4"
 				>
 					<span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
 					<span class="text-xs font-bold text-blue-600 tracking-widest uppercase">
-						Regenerative Web3
+						Regenerative Community
 					</span>
 				</div>
 
@@ -161,7 +161,7 @@
 						alt="Nature and Technology"
 						width="800"
 						height="800"
-						class="w-full h-full object-cover organic-shape shadow-2xl shadow-emerald-900/10"
+						class="w-full h-full object-cover organic-shape-animated shadow-2xl shadow-emerald-900/10"
 						loading="eager"
 					/>
 
@@ -195,7 +195,7 @@
 								</div>
 								<div>
 									<div class="text-xs font-bold text-gray-400 uppercase">Collaborate with the community</div>
-									<div class="text-lg font-serif text-gray-900">DAO Governance Enabled</div>
+									<div class="text-lg font-serif text-gray-900">DAO-like Governance</div>
 								</div>
 							</div>
 						</div>

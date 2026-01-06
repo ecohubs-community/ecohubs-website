@@ -31,11 +31,19 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	// Apply paraglide middleware
-	return paraglideMiddleware(event.request, ({ request, locale }) => {
+	return paraglideMiddleware(event.request, async ({ request, locale }) => {
 		event.request = request;
 
-		return resolve(event, {
+		const response = await resolve(event, {
 			transformPageChunk: ({ html }) => html.replace('%paraglide.lang%', locale)
 		});
+
+		// Add security headers
+		response.headers.set('X-Frame-Options', 'SAMEORIGIN');
+		response.headers.set('X-Content-Type-Options', 'nosniff');
+		response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+		response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+
+		return response;
 	});
 };

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Sprout, Twitter, Github, Disc, ArrowRight, GithubIcon, DiscIcon, MessageCircleIcon, NetworkIcon } from 'lucide-svelte';
+	import { Github, ArrowRight, DiscIcon, MessageCircleIcon, NetworkIcon } from 'lucide-svelte';
 	import Logo from '$lib/components/Logo.svelte';
 	import NewsletterForm from './NewsletterForm.svelte';
 	
@@ -9,16 +9,18 @@
 		{ href: '/blueprint', label: 'Blueprint' },
 		// { href: '/dao', label: 'Governance' },
 		// { href: '/ecotoken', label: 'EcoToken' },
-		{ href: '/vision', label: 'Community Hubs' },
-		{ href: '/blog', label: 'Blog' }
+		{ href: '/vision', label: 'Vision' },
+		{ href: '/blog', label: 'Blog' },
+		{ href: '/join', label: 'Join' },
+		{ href: '/contact', label: 'Contact' }
 	];
 
 	const socialLinks = [
-		// { href: 'https://twitter.com/ecohubs', label: 'Twitter', icon: Twitter },
-		{ href: 'https://github.com/ecohubs-community', label: 'GitHub', icon: GithubIcon },
-		{ href: 'https://discord.gg/Xnh7247Nq3', label: 'Discord', icon: DiscIcon },
-		{ href: 'https://mastodon.social/@ecohubs', label: 'Mastodon', icon: MessageCircleIcon },
-		{ href: 'https://farcaster.xyz/ecohubs', label: 'Farcaster', icon: NetworkIcon }
+		// { href: 'https://twitter.com/ecohubs', label: 'Twitter', icon: "/social-icons/x.svg" },
+		{ href: 'https://github.com/ecohubs-community', label: 'GitHub', icon: "/social-icons/github.svg" },
+		{ href: 'https://discord.gg/Xnh7247Nq3', label: 'Discord', icon: "/social-icons/discord.svg" },
+		{ href: 'https://mastodon.social/@ecohubs', label: 'Mastodon', icon: "/social-icons/mastodon.svg" },
+		{ href: 'https://farcaster.xyz/ecohubs', label: 'Farcaster', icon: "/social-icons/farcaster.svg" }
 	];
 </script>
 
@@ -36,12 +38,12 @@
 						{@const Icon = link.icon}
 						<a
 							href={link.href}
-							class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-ecohubs-primary hover:border-ecohubs-primary transition-all focus-visible:ring-2 focus-visible:ring-green-400"
+							class="w-10 h-10 rounded-full group bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-ecohubs-primary hover:border-ecohubs-primary transition-all focus-visible:ring-2 focus-visible:ring-green-400"
 							aria-label="Follow us on {link.label}"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<Icon class="w-5 h-5" aria-hidden="true" />
+							<img src={link.icon} alt={link.label} class="w-5 h-5 opacity-50 group-hover:opacity-80 transition-opacity" />
 						</a>
 					{/each}
 				</div>

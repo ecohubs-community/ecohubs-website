@@ -3,7 +3,6 @@
 	import Section from '$lib/components/Section.svelte';
 	import NetworkOfHubsImage from '$lib/assets/network-regenerative-ecohubs.webp';
 	import PersonaCard from '$lib/components/PersonaCard.svelte';
-
 	import { spring } from 'svelte/motion';
   import { fade, fly, scale } from 'svelte/transition';
   import { cubicOut, cubicInOut } from 'svelte/easing';
@@ -464,11 +463,19 @@
 <SEO
 	title="Vision – EcoHubs.community"
 	description="A vision for a global network of small, regenerative EcoHubs — human-scale communities living in alignment with nature and cooperation."
+	ogImage="/og-vision.jpg"
+	breadcrumbs={[
+		{ name: 'Home', url: 'https://ecohubs.community' },
+		{ name: 'Vision', url: 'https://ecohubs.community/vision' }
+	]}
 />
 
 <!-- HERO: THE END RESULT -->
 <Section spacing="xl" columns={2}>
 	<div>
+		<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-semibold uppercase tracking-wider mb-6">
+			Vision of the Future
+		</div>
 		<h1 class="font-serif text-4xl font-bold leading-tight text-ecohubs-dark sm:text-5xl">
 			A Network of <span class="text-gradient">Regenerative EcoHubs</span>
 		</h1>
@@ -504,12 +511,11 @@
 		</div>
 	</div>
 
-	<!-- Optional visual placeholder -->
-	<div class="">
+	<div>
 		<div
 			class="relative h-100 w-full rounded-xl border border-border-subtle"
 		>
-			<img src={NetworkOfHubsImage} alt="Network of regenerative EcoHubs" class="rounded-3xl shadow-2xl organic-shape hover:rotate-1 transition-transform duration-700 object-cover h-96 w-full" loading="lazy" />
+			<img src={NetworkOfHubsImage} alt="Network of regenerative EcoHubs" class="rounded-3xl shadow-2xl organic-shape-pebble-animated hover:rotate-1 transition-transform duration-700 object-cover h-96 w-full" loading="lazy" />
 		</div>
 	</div>
 </Section>
@@ -821,10 +827,7 @@
 	</div>
 </Section>
 
-
-
-
-<Section spacing="xl">
+<Section spacing="lg">
 	<div class="relative py-24 overflow-hidden">
 		<div class="absolute inset-0 pointer-events-none">
 			<div class="absolute top-10 left-1/4 w-96 h-96 bg-emerald-200/40 rounded-full blur-[100px] animate-pulse"></div>

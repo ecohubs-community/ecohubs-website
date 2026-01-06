@@ -10,6 +10,11 @@
 <SEO
 	title="Join Us - EcoHubs.community"
 	description="Apply to join EcoHubs.community and be part of the first 500 founding members."
+	ogImage="/og-join.jpg"
+	breadcrumbs={[
+		{ name: 'Home', url: 'https://ecohubs.community' },
+		{ name: 'Join', url: 'https://ecohubs.community/join' }
+	]}
 />
 
 <Section spacing="xl">
@@ -23,7 +28,8 @@
 			</p>
 			<div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-full text-sm text-emerald-800">
 				<span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-				<span><strong>120+ applications</strong> received so far</span>
+				<!-- <span><strong>120+ applications</strong> received so far</span> -->
+				<span>Build the future with us!</span>
 			</div>
 		</div>
 

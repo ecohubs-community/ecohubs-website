@@ -4,11 +4,13 @@
 	import { onMount } from 'svelte';
 	import Logo from '$lib/components/Logo.svelte';
 	import { page } from '$app/state';
+	import Icon from '@iconify/svelte';
 
 	let scrolled = $state(false);
 	let mobileMenuOpen = $state(false);
 
 	const navLinks = [
+		{ href: '/', label: 'Home' },
 		{ href: '/vision', label: 'Vision' },
 		// { href: '/dao', label: 'DAO' },
 		// { href: '/ecotoken', label: 'EcoToken' },
@@ -45,14 +47,18 @@
 			<div class="hidden md:block">
 				<div class="ml-10 flex items-baseline space-x-8 font-sans font-medium text-sm text-gray-600">
 					{#each navLinks as link (link.href)}
-						{@const isActive = page.url.pathname.startsWith(link.href)}
+						{@const isActive = (link.href === "/" && page.url.pathname === "/") || (link.href !== "/" && page.url.pathname.startsWith(link.href)) }
 						<a
 							href={link.href}
 							class="hover:text-ecohubs-primary transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-green-400 rounded px-2 py-1 {isActive ? 'bg-ecohubs-primary/10 text-ecohubs-primary py-2 px-3 rounded-full' : 'text-gray-600'}"
 							aria-label={link.label}
 							data-sveltekit-preload-data="hover"
 						>
-							{link.label}
+							{#if link.href === '/'}
+								<Icon icon="tabler:home" class="inline-block w-4 h-4" aria-hidden="true" />
+							{:else}
+								{link.label}
+							{/if}
 						</a>
 					{/each}
 				</div>
