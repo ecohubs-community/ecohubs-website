@@ -3,10 +3,7 @@
 	"devCommand": "pnpm dev",
 	"installCommand": "pnpm install",
 	"framework": "sveltekit",
-	"outputDirectory": "build",
-	"env": {
-		"PUBLIC_SITE_URL": "@public_site_url"
-	}
+	"outputDirectory": "build"
 }
 
 
