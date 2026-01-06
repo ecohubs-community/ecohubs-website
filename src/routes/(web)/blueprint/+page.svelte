@@ -678,7 +678,7 @@
 </Section>
 
 
-<Section columns="2">
+<Section columns={2}>
 	<!-- Animated hierarchy diagram -->
 	<div class="relative hidden md:flex items-center justify-center">
 		<div class="relative w-full max-w-md aspect-square">
