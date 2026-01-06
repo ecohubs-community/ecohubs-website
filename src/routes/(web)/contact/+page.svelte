@@ -8,6 +8,11 @@
 <SEO
 	title="Contact - EcoHubs.community"
 	description="Get in touch with EcoHubs.community. We'd love to hear from you."
+	ogImage="/og-contact.jpg"
+	breadcrumbs={[
+		{ name: 'Home', url: 'https://ecohubs.community' },
+		{ name: 'Contact', url: 'https://ecohubs.community/contact' }
+	]}
 />
 
 <Section spacing="xl">

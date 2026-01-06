@@ -42,6 +42,11 @@
 	type="article"
 	ogImage={post.image || '/og-blog.jpg'}
 	jsonLd={articleJsonLd}
+	breadcrumbs={[
+		{ name: 'Home', url: 'https://ecohubs.community' },
+		{ name: 'Blog', url: 'https://ecohubs.community/blog' },
+		{ name: post.title, url: `https://ecohubs.community/blog/${post.slug}` }
+	]}
 />
 
 <article class="py-16 mt-10">

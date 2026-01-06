@@ -8,7 +8,7 @@ import {
 	getContactConfirmationText,
 	type ContactEmailData
 } from '$lib/email-templates/contact';
-import { ADMIN_EMAIL, RATE_LIMIT_MAX_REQUESTS, RATE_LIMIT_WINDOW, ZAPIER_WEBHOOK_URL } from '$env/static/private';
+import { ADMIN_EMAIL, RATE_LIMIT_MAX_REQUESTS, RATE_LIMIT_WINDOW, ZAPIER_WEBHOOK_URL, TURNSTILE_SECRET_KEY } from '$env/static/private';
 
 // Simple in-memory rate limiting (for production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -45,10 +45,38 @@ function validateEmail(email: string): boolean {
 	return emailRegex.test(email);
 }
 
+// Verify Cloudflare Turnstile token
+async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
+	if (!TURNSTILE_SECRET_KEY) {
+		// If no secret key configured, skip verification
+		return true;
+	}
+
+	try {
+		const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			body: new URLSearchParams({
+				secret: TURNSTILE_SECRET_KEY,
+				response: token,
+				remoteip: ip
+			})
+		});
+
+		const result = await response.json();
+		return result.success === true;
+	} catch (error) {
+		console.error('Turnstile verification error:', error);
+		return false;
+	}
+}
+
 export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 	try {
 		const clientIp = getClientAddress();
-		
+
 		// Rate limiting
 		if (!checkRateLimit(clientIp)) {
 			return json(
@@ -58,7 +86,35 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		}
 
 		const body = await request.json();
-		
+
+		// Honeypot check - if website field is filled, it's likely a bot
+		if (body.website) {
+			// Silently reject but return success to fool bots
+			console.log('Honeypot triggered - likely bot submission');
+			return json({
+				success: true,
+				message: 'Message sent successfully!'
+			});
+		}
+
+		// Verify Turnstile token
+		const turnstileToken = body.turnstileToken || '';
+		if (TURNSTILE_SECRET_KEY && turnstileToken) {
+			const isValidToken = await verifyTurnstile(turnstileToken, clientIp);
+			if (!isValidToken) {
+				return json(
+					{ success: false, message: 'Security verification failed. Please try again.' },
+					{ status: 400 }
+				);
+			}
+		} else if (TURNSTILE_SECRET_KEY && !turnstileToken) {
+			// Turnstile is configured but no token provided
+			return json(
+				{ success: false, message: 'Please complete the security verification.' },
+				{ status: 400 }
+			);
+		}
+
 		// Sanitize and validate inputs
 		const name = sanitizeInput(body.name || '');
 		const email = sanitizeInput(body.email || '').toLowerCase();

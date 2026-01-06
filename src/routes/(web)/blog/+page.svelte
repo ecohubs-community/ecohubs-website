@@ -14,6 +14,10 @@
 	title="Blog - EcoHubs.community"
 	description="Read our latest articles about intentional communities, regenerative practices, and building the blueprint for sustainable living."
 	ogImage="/og-blog.jpg"
+	breadcrumbs={[
+		{ name: 'Home', url: 'https://ecohubs.community' },
+		{ name: 'Blog', url: 'https://ecohubs.community/blog' }
+	]}
 />
 
 <Section spacing="xl">
