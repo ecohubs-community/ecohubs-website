@@ -16,7 +16,7 @@ export const SEO_CONFIG = {
 	organization: {
 		name: 'EcoHubs.community',
 		legalName: 'EcoHubs Community',
-		foundingDate: '2024',
+		foundingDate: '2025',
 		founders: [
 			{
 				name: 'Stefan Lessle',
@@ -28,8 +28,12 @@ export const SEO_CONFIG = {
 			addressCountry: 'EC' // Ecuador
 		},
 		socialProfiles: [
-			'https://github.com/ecohubs'
-			// Add more social profiles as needed
+			'https://github.com/ecohubs-community',
+			'https://mastodon.social/@ecohubs',
+			'https://farcaster.xyz/ecohubs',
+			'https://discord.gg/Xnh7247Nq3',
+			'https://facebook.com/ecohubscommunity',
+			'https://x.com/eco_hubs'
 		]
 	},
 

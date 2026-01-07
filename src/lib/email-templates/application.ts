@@ -475,8 +475,7 @@ export function getApplicationConfirmationHTML(name: string): string {
 			<ul>
 				<li>Explore our <a href="https://blueprint.ecohubs.community" style="color: #059669;">blueprint</a> in detail</li>
 				<li>Join the conversation on <a href="https://discord.gg/Xnh7247Nq3" style="color: #059669;">Discord</a></li>
-				<li>Follow us on <a href="https://mastodon.social/@ecohubs" style="color: #059669;">Mastadon</a> for updates</li>
-				<li>Follow us on <a href="https://farcaster.xyz/ecohubs" style="color: #059669;">Farcaster</a> for updates</li>
+				<li>Follow us on Social Media for updates (links below)</li>
 				<li>Share EcoHubs with others who might be interested</li>
 			</ul>
 
@@ -495,6 +494,8 @@ export function getApplicationConfirmationHTML(name: string): string {
 				<a href="https://ecohubs.community" style="color: #059669; text-decoration: none;">Website</a> •
 				<a href="https://mastodon.social/@ecohubs" style="color: #059669; text-decoration: none;">Mastadon</a> •
 				<a href="https://farcaster.xyz/ecohubs" style="color: #059669; text-decoration: none;">Farcaster</a>
+				<a href="https://x.com/eco_hubs" style="color: #059669; text-decoration: none;">X</a>
+				<a href="https://github.com/ecohubs-community" style="color: #059669; text-decoration: none;">GitHub</a>
 			</p>
 		</div>
 	</div>
@@ -519,8 +520,7 @@ WHILE YOU WAIT...
 
 - Explore our blueprint: https://blueprint.ecohubs.community
 - Join the conversation on Discord: https://discord.gg/Xnh7247Nq3
-- Follow us on Mastadon: https://mastodon.social/@ecohubs
-- Follow us on Farcaster: https://farcaster.xyz/ecohubs
+- Follow us on Social Media for updates (links below)
 - Share EcoHubs with others who might be interested
 
 We believe that regenerative communities are not just possible—they're necessary. Thank you for being part of this vision.
@@ -535,6 +535,8 @@ Co-Creating the Blueprint for Regenerative Living
 Website: https://ecohubs.community
 Mastadon: https://mastodon.social/@ecohubs
 Farcaster: https://farcaster.xyz/ecohubs
+X: https://x.com/eco_hubs
+GitHub: https://github.com/ecohubs-community
 `;
 }
 
