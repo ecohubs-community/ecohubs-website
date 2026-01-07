@@ -43,16 +43,16 @@ async function verifyTurnstile(token: string): Promise<{ success: boolean; 'erro
 
 export const actions: Actions = {
 	default: async ({ request, fetch }) => {
+		// Clone request BEFORE consuming it, so we can read form data for Turnstile token
+		const formData = await request.clone().formData();
+		const turnstileToken = formData.get('cf-turnstile-response');
+
 		// @ts-expect-error - Zod v3 compatibility with sveltekit-superforms
 		const form = await superValidate(request, zod(applicationSchema));
 
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-
-		// Get Turnstile token from form data
-		const formData = await request.clone().formData();
-		const turnstileToken = formData.get('cf-turnstile-response');
 
 		// Verify Turnstile token
 		if (turnstileToken && typeof turnstileToken === 'string') {
@@ -80,6 +80,7 @@ export const actions: Actions = {
 			// Submit to ecohubsOS API
 			if (ECOHUBSOS_API_URL && ECOHUBSOS_API_KEY) {
 				try {
+					console.log('Submitting to ecohubsOS API:', ECOHUBSOS_API_URL);
 					const response = await fetch(`${ECOHUBSOS_API_URL}/api/applications`, {
 						method: 'POST',
 						headers: {
@@ -93,7 +94,13 @@ export const actions: Actions = {
 					});
 
 					if (!response.ok) {
-						const errorData = await response.json().catch(() => ({}));
+						const errorText = await response.text();
+						let errorData: { message?: string } = {};
+						try {
+							errorData = JSON.parse(errorText);
+						} catch {
+							console.error('ecohubsOS API returned non-JSON error:', errorText);
+						}
 
 						// Handle rate limiting
 						if (response.status === 429) {
@@ -105,12 +112,13 @@ export const actions: Actions = {
 						}
 
 						// Handle other API errors
-						console.error('ecohubsOS API error:', response.status, errorData);
+						console.error('ecohubsOS API error:', response.status, errorData, errorText);
 						return fail(response.status, {
 							form,
 							error: errorData.message || 'Failed to submit application. Please try again.'
 						});
 					}
+					console.log('ecohubsOS API submission successful');
 				} catch (error) {
 					console.error('ecohubsOS API request failed:', error);
 					return fail(500, {
