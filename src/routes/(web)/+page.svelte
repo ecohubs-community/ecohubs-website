@@ -427,7 +427,7 @@
 
 <SEO
 	title="EcoHubs.community - A Regenerative Future Designed Together"
-	description="Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities powered by blockchain technology. Be part of the first 500."
+	description="Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities. Be part of the first 500."
 	ogImage="/og-home.jpg"
 	breadcrumbs={[{ name: 'Home', url: 'https://ecohubs.community' }]}
 />

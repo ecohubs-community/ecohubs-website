@@ -6,7 +6,7 @@ export const SEO_CONFIG = {
 	siteUrl: 'https://ecohubs.community',
 	defaultTitle: 'EcoHubs.community - Building Regenerative Communities',
 	defaultDescription:
-		"Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities powered by blockchain technology.",
+		"Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities. Be part of the first 500.",
 	defaultOgImage: '/og-default.jpg',
 	themeColor: '#4a7c2a',
 	locale: 'en_US',
