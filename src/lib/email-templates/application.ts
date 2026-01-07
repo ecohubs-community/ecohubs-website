@@ -467,15 +467,16 @@ export function getApplicationConfirmationHTML(name: string): string {
 				<ul style="margin: 0;">
 					<li><strong>Review Process:</strong> Our team will carefully review your application within 7-10 days.</li>
 					<li><strong>Selection:</strong> We're looking for the first 500 founding members who align with our vision for regenerative communities.</li>
-					<li><strong>You'll Hear From Us:</strong> We'll email you with next steps, whether you're selected for the first cohort or invited to join a waiting list.</li>
+					<li><strong>You'll Hear From Us:</strong> We'll email you with next steps, whether you're selected for the first cohort.</li>
 				</ul>
 			</div>
 
 			<p><strong>While You Wait...</strong></p>
 			<ul>
-				<li>Explore our <a href="https://ecohubs.community/blueprint" style="color: #059669;">blueprint</a> in detail</li>
-				<li>Join the conversation on <a href="https://github.com/ecohubs" style="color: #059669;">GitHub</a></li>
-				<li>Follow us on <a href="https://twitter.com/ecohubs" style="color: #059669;">Twitter</a> for updates</li>
+				<li>Explore our <a href="https://blueprint.ecohubs.community" style="color: #059669;">blueprint</a> in detail</li>
+				<li>Join the conversation on <a href="https://discord.gg/Xnh7247Nq3" style="color: #059669;">Discord</a></li>
+				<li>Follow us on <a href="https://mastodon.social/@ecohubs" style="color: #059669;">Mastadon</a> for updates</li>
+				<li>Follow us on <a href="https://farcaster.xyz/ecohubs" style="color: #059669;">Farcaster</a> for updates</li>
 				<li>Share EcoHubs with others who might be interested</li>
 			</ul>
 
@@ -492,8 +493,8 @@ export function getApplicationConfirmationHTML(name: string): string {
 			<p>Co-Creating the Blueprint for Regenerative Living</p>
 			<p style="margin-top: 16px;">
 				<a href="https://ecohubs.community" style="color: #059669; text-decoration: none;">Website</a> •
-				<a href="https://github.com/ecohubs" style="color: #059669; text-decoration: none;">GitHub</a> •
-				<a href="https://twitter.com/ecohubs" style="color: #059669; text-decoration: none;">Twitter</a>
+				<a href="https://mastodon.social/@ecohubs" style="color: #059669; text-decoration: none;">Mastadon</a> •
+				<a href="https://farcaster.xyz/ecohubs" style="color: #059669; text-decoration: none;">Farcaster</a>
 			</p>
 		</div>
 	</div>
@@ -512,13 +513,14 @@ WHAT HAPPENS NEXT?
 
 - Review Process: Our team will carefully review your application within 7-10 days.
 - Selection: We're looking for the first 500 founding members who align with our vision for regenerative communities.
-- You'll Hear From Us: We'll email you with next steps, whether you're selected for the first cohort or invited to join a waiting list.
+- You'll Hear From Us: We'll email you with next steps, whether you're selected for the first cohort.
 
 WHILE YOU WAIT...
 
-- Explore our blueprint: https://ecohubs.community/blueprint
-- Join the conversation on GitHub: https://github.com/ecohubs
-- Follow us on Twitter: https://twitter.com/ecohubs
+- Explore our blueprint: https://blueprint.ecohubs.community
+- Join the conversation on Discord: https://discord.gg/Xnh7247Nq3
+- Follow us on Mastadon: https://mastodon.social/@ecohubs
+- Follow us on Farcaster: https://farcaster.xyz/ecohubs
 - Share EcoHubs with others who might be interested
 
 We believe that regenerative communities are not just possible—they're necessary. Thank you for being part of this vision.
@@ -531,8 +533,8 @@ EcoHubs.community
 Co-Creating the Blueprint for Regenerative Living
 
 Website: https://ecohubs.community
-GitHub: https://github.com/ecohubs
-Twitter: https://twitter.com/ecohubs
+Mastadon: https://mastodon.social/@ecohubs
+Farcaster: https://farcaster.xyz/ecohubs
 `;
 }
 
