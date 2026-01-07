@@ -288,6 +288,7 @@ html {
 
 /* Image Masks for Organic Feel */
 .organic-shape {
+  border: 0;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   overflow: hidden;
   transition: border-radius 1s ease;
@@ -298,6 +299,7 @@ html {
 
 .organic-shape-pebble {
   /* Creating a wider, more grounded base */
+  border: 0;
   border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
   background: linear-gradient(135deg, #6e8efb, #a777e3);
   transition: border-radius 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s ease;
@@ -305,11 +307,13 @@ html {
 
 .organic-shape-pebble:hover {
   /* Morphs into a more vertical, rounded rectangle look */
+  border: 0;
   border-radius: 58% 42% 38% 62% / 45% 58% 42% 55%;
   transform: scale(1.05);
 }
 
 .organic-shape-pebble-animated {
+  border: 0;
   background: linear-gradient(135deg, #6e8efb, #a777e3);
   animation: morph-pebble 8s infinite alternate ease-in-out;
 }
@@ -326,6 +330,7 @@ html {
 }
 
 .organic-shape-animated {
+  border: 0;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   background: #ff7e5f;
   animation: morphing 8s infinite alternate ease-in-out;
