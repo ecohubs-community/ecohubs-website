@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Github, ArrowRight, DiscIcon, MessageCircleIcon, NetworkIcon } from 'lucide-svelte';
+	import { ArrowRight } from 'lucide-svelte';
 	import Logo from '$lib/components/Logo.svelte';
 	import NewsletterForm from './NewsletterForm.svelte';
 	
@@ -35,13 +35,12 @@
 				</p>
 				<div class="flex gap-4">
 					{#each socialLinks as link (link.label)}
-						{@const Icon = link.icon}
 						<a
 							href={link.href}
 							class="w-10 h-10 rounded-full group bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-ecohubs-primary hover:border-ecohubs-primary transition-all focus-visible:ring-2 focus-visible:ring-green-400"
 							aria-label="Follow us on {link.label}"
 							target="_blank"
-							rel="noopener noreferrer"
+							rel={link.label === "Mastodon" ? "me" : "noopener noreferrer"}
 						>
 							<img src={link.icon} alt={link.label} class="w-5 h-5 opacity-50 group-hover:opacity-80 transition-opacity" />
 						</a>
