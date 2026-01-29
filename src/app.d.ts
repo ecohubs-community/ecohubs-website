@@ -32,7 +32,8 @@ declare global {
 	interface Window {
 		turnstile?: Turnstile;
 		onTurnstileLoad?: () => void;
-		dataLayer: unknown[];
+		dataLayer: any[];
+		gtag: (...args: any[]) => void;
 	}
 }
 
