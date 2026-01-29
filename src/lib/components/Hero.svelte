@@ -90,7 +90,7 @@
 				</h1>
 
 				<p bind:this={heroSub} class="mt-4 text-xl text-gray-600 font-light leading-relaxed max-w-lg opacity-0">
-					We are co-creating the world's first open-source blueprint for regenerative communities
+					We are co-creating the world's first open-source <span class="tooltip">blueprint<span class="tooltiptext tooltip-top">Also called "RCOS" – Regenerative Community Operating System</span></span> for regenerative communities
 					— where technology supports life, and people live in harmony with nature.
 				</p>
 
@@ -179,7 +179,7 @@
 									<div class="text-xs font-bold text-gray-400 uppercase">
 										Actively create the future
 									</div>
-									<div class="text-lg font-serif text-gray-900">Blueprint in Co-Creation</div>
+									<div class="text-lg font-serif text-gray-900"><div class="tooltip">Blueprint<span class="tooltiptext tooltip-top">Also called "RCOS" – Regenerative Community Operating System</span></div> in Co-Creation</div>
 								</div>
 							</div>
 						</div>
@@ -196,7 +196,7 @@
 								</div>
 								<div>
 									<div class="text-xs font-bold text-gray-400 uppercase">Collaborate with the community</div>
-									<div class="text-lg font-serif text-gray-900">DAO-like Governance</div>
+									<div class="text-lg font-serif text-gray-900"><div class="tooltip">DAO<span class="tooltiptext tooltip-top">Decentralized Autonomous Organization</span></div>-like Governance</div>
 								</div>
 							</div>
 						</div>

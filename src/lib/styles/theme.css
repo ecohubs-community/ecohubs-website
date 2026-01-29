@@ -213,6 +213,19 @@ body {
   overflow-x: hidden;
 }
 
+a[href^="http://"]:not([href*="ecohubs.community"]),
+a[href^="https://"]:not([href*="ecohubs.community"]) {
+  color: var(--color-secondary); /* Optional: color the icon differently */
+  text-decoration: underline;
+}
+
+a[href^="http://"]:not([href*="ecohubs.community"])::after,
+a[href^="https://"]:not([href*="ecohubs.community"])::after {
+  content: " ↗"; /* Adds an arrow icon after the link text */
+  font-size: 0.8em; /* Makes the icon slightly smaller than the text */
+  vertical-align: super; /* Adjusts the vertical alignment of the icon */
+  text-decoration: none !important; /* Ensures the icon is not underlined */
+}
 
 /* Focus Styles for Accessibility */
 :focus-visible {
@@ -402,3 +415,46 @@ button:active {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* Add dots under the hoverable text */
+  cursor: pointer;
+}
+
+/* Tooltip text */
+.tooltiptext {
+  visibility: hidden; /* Hidden by default */
+  width: 130px;
+  background-color: black;
+  color: #ffffff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1; /* Ensure tooltip is displayed above content */
+  font-size: 14px;
+}
+
+.tooltiptext.tooltip-top::after {
+  content: '';
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent; /* Arrow pointing down */
+}
+
+.tooltiptext.tooltip-top {
+  bottom: 125%; /* Position above the text */
+  left: 50%;
+  margin-left: -65px; /* Center the tooltip */
+}
+
+/* Show the tooltip text on hover */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

@@ -5,7 +5,7 @@
 	import EcosystemSection from '$lib/components/EcosystemSection.svelte';
 	import EcoTokenFeature from '$lib/components/EcoTokenFeature.svelte';
 	import BlueprintCard from '$lib/components/BlueprintCard.svelte';
-  import StefanImage from '$lib/assets/stefan.webp';
+  	import StefanImage from '$lib/assets/stefan.webp';
 	import MemberGuidedDecisionsImage from '$lib/assets/member-guided-decisions.webp';
 	import SharedStewardshipImage from '$lib/assets/shared-stewardship.webp';
 	import DeliberationSenseMakingImage from '$lib/assets/deliberation-sense-making.webp';
@@ -19,13 +19,8 @@
 		ShieldCheck,
 		ArrowRight,
 		Shovel,
-		Leaf,
-		Scale,
-		Zap,
-		Droplets,
 		HeartHandshake,
 		BookOpen,
-		FileText,
 		MapPin,
 		Share2,
 		Copy,
@@ -36,9 +31,32 @@
 		Repeat,
 		WalletMinimal,
 		CodeXml,
-		House,
 		TriangleAlert,
-		ChartBar
+		ChartBar,
+
+		Compass,
+
+		Scale,
+
+		Coins,
+
+		ShieldAlert,
+
+		Settings,
+
+		RefreshCcw,
+
+		Leaf,
+
+		FileText
+
+
+
+
+
+
+
+
 	} from 'lucide-svelte';
 	import WhyCard from '$lib/components/WhyCard.svelte';
 	import BoxInfoCard from '$lib/components/BoxInfoCard.svelte';
@@ -68,7 +86,7 @@
 				description: "Extractive systems are depleting our planet. We need regenerative models that give back more than they take."
 			},
 			solution: {
-				text: 'Our blueprint shows how communities can become net-positive for ecosystems.'
+				text: 'Our blueprint (RCOS - Regenerative Community Operating System) shows how communities can become net-positive for ecosystems.'
 			}
 		},
 		{
@@ -80,7 +98,7 @@
 				description: 'Opaque governance leaves people feeling powerless. We build systems where every voice matters.'
 			},
 			solution: {
-				text: 'DAO governance returns power to communities through transparent, auditable systems.'
+				text: 'DAO (Decentralized Autonomous Organization) governance returns power to communities through transparent, auditable systems.'
 			}
 		}
 	];
@@ -91,13 +109,13 @@
 			icon: "tabler:microscope",
 			title: 'Community-Led Research',
 			description:
-				"Our blueprint grows from practice. Every pilot community becomes a living laboratory where solutions are tested, refined, and shared."
+				"Our blueprint (RCOS) grows from practice. Every pilot community becomes a living laboratory where solutions are tested, refined, and shared."
 		},
 		{
 			icon: "tabler:affiliate",
 			title: 'Collaborative Evolution',
 			description:
-				'Like a mycelial network, our intelligence expands through connection. The blueprint is open-source, shaped by everyone who contributes.'
+				'Like a mycelial network, our intelligence expands through connection. The blueprint (RCOS) is open-source, shaped by everyone who contributes.'
 		},
 		{
 			icon: "tabler:plant-2",
@@ -189,7 +207,7 @@
 			Icon: ChartBar,
 			title: 'Unlock Access & Influence',
 			description:
-				'Today, earned tokens and experience unlock access, permissions, and responsibilities within EcoHubs — shaping discussions, initiatives, and the shared blueprint. In the future, this model can extend into physical communities and local exchange.',
+				'Today, earned tokens and experience unlock access, permissions, and responsibilities within EcoHubs — shaping discussions, initiatives, and the shared blueprint (RCOS). In the future, this model can extend into physical communities and local exchange.',
 			gradientFrom: 'from-amber-400',
 			gradientTo: 'to-orange-500'
 		},
@@ -205,106 +223,106 @@
 
 	// Blueprint Cards Data
 	const blueprintCards = [
-		{
-			image:
-				'https://images.unsplash.com/photo-1440342359743-84fcb8c21f21?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-			imageAlt: 'Ecology',
-			Icon: Leaf,
-			iconBg: 'bg-emerald-500',
-			heading: 'Ecology',
-			subheading: 'Regenerative Agriculture & Soil Health',
-			description:
-				'From compost biology to agroforestry guilds, our blueprint provides methods for transforming degraded land into thriving regenerative ecosystems that nourish people and biodiversity.',
-			gradientFrom: 'from-emerald-900/60',
-			gradientTo: 'to-transparent'
+		 {
+			image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
+			imageAlt: "Purpose and Scope",
+			Icon: Compass,
+			iconBg: "bg-stone-500",
+			heading: "Purpose & Scope",
+			subheading: "RCOS Layer 0",
+			description: "Defines why the community exists, what is governed, and which invariants cannot be violated. This layer prevents hidden ideology, scope creep, and informal power from shaping the system.",
+			gradientFrom: "from-stone-900/60",
+			gradientTo: "to-transparent"
 		},
 		{
-			image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800',
-			imageAlt: 'Governance',
+			image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800",
+			imageAlt: "Membership",
+			Icon: Users,
+			iconBg: "bg-indigo-500",
+			heading: "Membership",
+			subheading: "RCOS Layer 1",
+			description: "Makes membership explicit: how people join, participate, change status, and exit. Rights and obligations are symmetrical and legible, so belonging never depends on informal approval.",
+			gradientFrom: "from-indigo-900/60",
+			gradientTo: "to-transparent"
+		},
+		{
+			image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800",
+			imageAlt: "Governance",
 			Icon: Scale,
-			iconBg: 'bg-blue-500',
-			heading: 'Governance',
-			subheading: 'Governance & Self-Determination',
-			description:
-				'DAO structures, consensus models, conflict resolution, and transparent decision-making. Power flows from the community, not from hierarchy.',
-			gradientFrom: 'from-blue-900/60',
-			gradientTo: 'to-transparent'
+			iconBg: "bg-blue-500",
+			heading: "Governance",
+			subheading: "RCOS Layer 2",
+			description: "Defines how decisions are made, who can decide what, and how authority is constrained. Governance power is explicit, reviewable, and never derived from charisma or status.",
+			gradientFrom: "from-blue-900/60",
+			gradientTo: "to-transparent"
 		},
 		{
-			image:
-				'https://images.unsplash.com/photo-1662078907809-b9e486757a0a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-			imageAlt: 'Energy',
-			Icon: Zap,
-			iconBg: 'bg-indigo-500',
-			heading: 'Energy',
-			subheading: 'Renewable Energy & Circular Systems',
-			description:
-				'Solar, micro-hydropower, biogas, and energy-sharing models designed for communities that want to live lightly, independently, and in harmony with ecological rhythms.',
-			gradientFrom: 'from-indigo-900/60',
-			gradientTo: 'to-transparent'
+			image: "https://images.unsplash.com/photo-1662078907809-b9e486757a0a?q=80&w=1470&auto=format&fit=crop",
+			imageAlt: "Economy",
+			Icon: Coins,
+			iconBg: "bg-emerald-500",
+			heading: "Economy & Resources",
+			subheading: "RCOS Layer 3",
+			description: "Clarifies how value flows inside the community: commons vs private resources, contributions, internal economies, and treasury rules. Prevents invisible labor and economic power accumulation.",
+			gradientFrom: "from-emerald-900/60",
+			gradientTo: "to-transparent"
 		},
 		{
-			image:
-				'https://plus.unsplash.com/premium_photo-1683288081743-5161d099f16e?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-			imageAlt: 'Resources',
-			Icon: Droplets,
-			iconBg: 'bg-blue-500',
-			heading: 'Resources',
-			subheading: 'Water, Waste & Resource Cycles',
-			description:
-				'Greywater wetlands, composting systems, rain capture, and circular waste flows that turn "waste" into life-giving inputs for gardens, ecosystems, and soil.',
-			gradientFrom: 'from-blue-900/60',
-			gradientTo: 'to-transparent'
+			image: "https://images.unsplash.com/photo-1626447269096-f8665509589c?auto=format&fit=crop&q=80&w=800",
+			imageAlt: "Conflict and Accountability",
+			Icon: ShieldAlert,
+			iconBg: "bg-red-500",
+			heading: "Conflict & Accountability",
+			subheading: "RCOS Layer 4",
+			description: "Defines how conflicts are handled, repaired, and escalated. Provides due process, safety safeguards, and accountability without relying on informal exclusion or silence.",
+			gradientFrom: "from-red-900/60",
+			gradientTo: "to-transparent"
 		},
 		{
-			image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800',
-			imageAlt: 'Housing',
-			Icon: House,
-			iconBg: 'bg-amber-500',
-			heading: 'Housing',
-			subheading: 'Community Housing & Eco-Construction',
-			description:
-				"We explore earthen building, bamboo structures, passive cooling, thermal mass, shared spaces, and resilient community layouts rooted in nature's geometry.",
-			gradientFrom: 'from-amber-900/60',
-			gradientTo: 'to-transparent'
+			image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800",
+			imageAlt: "Operations",
+			Icon: Settings,
+			iconBg: "bg-amber-500",
+			heading: "Operations & Coordination",
+			subheading: "RCOS Layer 5",
+			description: "Makes daily work possible without burnout: roles, meetings, documentation, and workload boundaries. Coordination is explicit so the system does not depend on heroics.",
+			gradientFrom: "from-amber-900/60",
+			gradientTo: "to-transparent"
 		},
 		{
-			image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800',
-			imageAlt: 'Culture',
-			Icon: HeartHandshake,
-			iconBg: 'bg-purple-500',
-			heading: 'Culture',
-			subheading: 'Social Fabric & Culture Building',
-			description:
-				'We focus on communication frameworks, conflict resolution, rituals, celebrations, and the deep social architecture that turns a group of people into a living community.',
-			gradientFrom: 'from-purple-900/60',
-			gradientTo: 'to-transparent'
+			image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
+			imageAlt: "Evolution",
+			Icon: RefreshCcw,
+			iconBg: "bg-purple-500",
+			heading: "Evolution & Adaptation",
+			subheading: "RCOS Layer 6",
+			description: "Defines how the system evolves over time through versioning, experiments, and learning. Change is possible, but always constrained, reversible, and documented.",
+			gradientFrom: "from-purple-900/60",
+			gradientTo: "to-transparent"
 		},
 		{
-			image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800',
-			imageAlt: 'Education',
-			Icon: BookOpen,
-			iconBg: 'bg-teal-500',
-			heading: 'Education',
-			subheading: 'Learning, Education & Skill Sharing',
-			description:
-				'A blueprint for intergenerational learning — nature-based education, mentorship circles, regenerative skills, and shared knowledge as community wealth. We are understanding community as a living school.',
-			gradientFrom: 'from-teal-900/60',
-			gradientTo: 'to-transparent'
+			image: "https://images.unsplash.com/photo-1440342359743-84fcb8c21f21?q=80&w=1470&auto=format&fit=crop",
+			imageAlt: "Modules",
+			Icon: Leaf,
+			iconBg: "bg-green-500",
+			heading: "Modules",
+			subheading: "Applied Domains",
+			description: "Permaculture, education, housing, energy, culture, and more. Modules extend RCOS into real-world domains without changing the core rules of the system.",
+			gradientFrom: "from-green-900/60",
+			gradientTo: "to-transparent"
 		},
 		{
-			image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
-			imageAlt: 'Blueprint',
+			image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
+			imageAlt: "Blueprint",
 			Icon: FileText,
-			iconBg: 'bg-emerald-500',
-			heading: 'View the Blueprint',
-			subheading: '',
-			description:
-				'Explore our complete open-source blueprint. Every module, every detail, every lesson learned—all available for you to adapt and improve.',
-			link: '/blueprint',
-			variant: 'cta' as const,
-			gradientFrom: 'from-emerald-900/60',
-			gradientTo: 'to-transparent'
+			iconBg: "bg-emerald-500",
+			heading: "Explore the Blueprint",
+			subheading: "RCOS in Practice",
+			description: "The Blueprint is the applied view of RCOS: core layers, modules, artifacts, and stress tests. Open, evolving, and designed to be adapted by real communities.",
+			link: "/blueprint",
+			variant: 'cta',
+			gradientFrom: "from-emerald-900/60",
+			gradientTo: "to-transparent"
 		}
 	];
 
@@ -542,7 +560,7 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16 max-w-3xl mx-auto">
 			<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-4">Power to the Community</h2>
-			<p class="text-gray-600">Blockchain technology enables trust without hierarchy. Our DAO ecosystem ensures transparency and collective agency.</p>
+			<p class="text-gray-600">Blockchain technology enables trust without hierarchy. Our <a href="https://en.wikipedia.org/wiki/Decentralized_autonomous_organization" target="_blank" rel="noopener noreferrer">DAO</a> (Decentralized Autonomous Organization) ecosystem ensures transparency and collective agency.</p>
 		</div>
 
 		<GovernanceSection features={governanceFeatures} />
@@ -595,15 +613,17 @@
 				Building the Future Together
 		</h2>
 			<p class="text-gray-600 max-w-2xl mx-auto">
-				Our blueprint is an open-source, living document. It covers every aspect of regenerative
-				community life.
+				The <a href="https://blueprint.ecohubs.community">Blueprint</a>, formally called RCOS (Regenerative Community Operating System), is the main deliverable of EcoHubs. 
+				It is a shared, open standard that helps communities make their structure explicit: how decisions are made, how people join and leave, how resources are managed, how conflicts are handled, and how the community evolves over time. 
+				The goal is not to impose a single way of living, but to provide a clear, modular system that communities can adapt, test, and improve together.
 			</p>
 		</div>
 
 		<!-- Masonry Layout -->
-		<div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+		<!-- Grid Layout: left-to-right, top-to-bottom -->
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 			{#each blueprintCards as card (card.heading)}
-				<BlueprintCard {...card} />
+				<BlueprintCard {...card} variant={card.variant as 'default' | 'cta' | undefined} />
 			{/each}
 		</div>
 	</div>
@@ -844,3 +864,4 @@
 		</div>
 	</div>
 </section>
+
