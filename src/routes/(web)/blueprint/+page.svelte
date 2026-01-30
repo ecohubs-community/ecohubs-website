@@ -12,34 +12,34 @@
 	// ============================================
 	const failureProblems = [
 		{
+			id: 'purpose',
+			label: 'Unclear Purpose & Scope',
+			icon: 'tabler:target',
+			detail: 'When purpose and boundaries stay implicit, expectations drift and conflict becomes personal.'
+		},
+		{
+			id: 'membership',
+			label: 'Implicit Membership',
+			icon: 'tabler:user-question',
+			detail: 'If roles, rights, and exit paths are undefined, people end up negotiating belonging in moments of stress.'
+		},
+		{
 			id: 'governance',
-			label: 'Unclear Governance',
+			label: 'Decision Drift',
 			icon: 'tabler:scale',
-			detail: 'Who decides? How? When? Without clear answers, conflict festers.'
+			detail: 'Without explicit decision pathways, authority accumulates informally and outcomes feel arbitrary.'
+		},
+		{
+			id: 'economy',
+			label: 'Resource Ambiguity',
+			icon: 'tabler:coin-off',
+			detail: 'Commons vs private resources, contribution recognition, and treasury rules need shared clarity.'
 		},
 		{
 			id: 'conflict',
-			label: 'Unresolved Conflict',
+			label: 'No Repair Path',
 			icon: 'tabler:flame',
-			detail: 'Small disagreements become fractures without shared tools for resolution.'
-		},
-		{
-			id: 'economics',
-			label: 'Economic Stress',
-			icon: 'tabler:coin-off',
-			detail: 'Hidden power dynamics and unclear financial structures erode trust.'
-		},
-		{
-			id: 'burnout',
-			label: 'Burnout & Overwhelm',
-			icon: 'tabler:battery-1',
-			detail: 'Uneven responsibility distribution exhausts the most committed.'
-		},
-		{
-			id: 'legal',
-			label: 'Legal Blind Spots',
-			icon: 'tabler:gavel',
-			detail: 'Modern regulations catch communities unprepared.'
+			detail: 'Conflict is normal. Without defined escalation and repair, issues get buried until they explode.'
 		}
 	];
 
@@ -58,8 +58,8 @@
 	// ============================================
 	const networkBenefits = [
 		{ text: 'Not one perfect model', icon: 'tabler:puzzle' },
-		{ text: 'A common structure + shared values', icon: 'tabler:heart-handshake' },
-		{ text: 'Freedom to adapt locally', icon: 'tabler:map-pin' },
+		{ text: 'A shared structure before ideology', icon: 'tabler:heart-handshake' },
+		{ text: 'Adapted locally, made explicit', icon: 'tabler:map-pin' },
 		{ text: 'Coordination without centralization', icon: 'tabler:topology-ring-3' }
 	];
 
@@ -87,17 +87,17 @@
 	// SECTION 4: What the Blueprint Is (and Isn't)
 	// ============================================
 	const blueprintIs = [
-		{ text: 'A living knowledge system', icon: 'tabler:plant-2', desc: 'Continuously updated and refined' },
-		{ text: 'Modular and adaptable', icon: 'tabler:puzzle', desc: 'Use what fits, adapt what doesn\'t' },
-		{ text: 'Versioned and reviewable', icon: 'tabler:git-branch', desc: 'Every change is tracked and visible' },
-		{ text: 'Grounded in experiments', icon: 'tabler:flask-2', desc: 'Theory tested through practice' }
+		{ text: 'A formal, open standard (RCOS)', icon: 'tabler:plant-2', desc: 'The Blueprint is the human-facing name for RCOS during the transition' },
+		{ text: 'A layered operating system', icon: 'tabler:puzzle', desc: 'Clear responsibility boundaries across core layers of community life' },
+		{ text: 'A shared language for governance', icon: 'tabler:git-branch', desc: 'Membership, economy, conflict, operations, and evolution are made legible' },
+		{ text: 'Grounded in real failure modes', icon: 'tabler:flask-2', desc: 'Stress tests and practice help communities learn without collapsing' }
 	];
 
 	const blueprintIsNot = [
-		{ text: 'A rigid rulebook', icon: 'tabler:book-off', desc: 'No one-size-fits-all prescriptions' },
-		{ text: 'A utopian manifesto', icon: 'tabler:cloud-off', desc: 'Practical, not idealistic' },
-		{ text: 'A top-down authority', icon: 'tabler:hierarchy-off', desc: 'No central control or gatekeeping' },
-		{ text: 'A finished product', icon: 'tabler:checkbox', desc: 'Always evolving, never complete' }
+		{ text: 'Software or a platform', icon: 'tabler:book-off', desc: 'RCOS is a standard, not an app you install' },
+		{ text: 'A DAO product', icon: 'tabler:cloud-off', desc: 'Governance tools can help, but they are not the system itself' },
+		{ text: 'A fixed ideology', icon: 'tabler:hierarchy-off', desc: 'Structure comes before values; communities adapt without losing clarity' },
+		{ text: 'A replacement for judgment', icon: 'tabler:checkbox', desc: 'RCOS reduces ambiguity but never replaces people' }
 	];
 
 	// ============================================
@@ -105,36 +105,72 @@
 	// ============================================
 	const structureLayers = [
 		{
-			level: 'Domains',
+			layer: 0,
+			level: 'Layer 0: Purpose & Scope',
 			color: 'emerald',
-			icon: 'tabler:category',
-			question: 'What broad areas of community life matter?',
-			examples: ['Governance', 'Food Systems', 'Infrastructure', 'Economy', 'Culture', 'Education']
+			icon: 'tabler:target',
+			question: 'Why the community exists, what is governed, and what must not be violated.',
+			examples: ['Purpose statement', 'Scope boundaries', 'Non-negotiable invariants', 'What is out of scope']
 		},
 		{
-			level: 'Topics',
+			layer: 1,
+			level: 'Layer 1: Membership',
 			color: 'sky',
-			icon: 'tabler:tag',
-			question: 'What specific themes exist within each domain?',
-			examples: ['Decision Making', 'Conflict Resolution', 'Membership', 'Resource Sharing']
+			icon: 'tabler:users',
+			question: 'How people join, participate, change status, and exit—without implicit membership.',
+			examples: ['Entry paths', 'Rights & responsibilities', 'Status changes', 'Exit and offboarding']
 		},
 		{
-			level: 'Modules',
+			layer: 2,
+			level: 'Layer 2: Governance',
 			color: 'amber',
-			icon: 'tabler:package',
-			question: 'What reusable patterns address concrete challenges within each topic?',
-			examples: ['Sociocracy Circles', 'Consent Process', 'Work Tracking', 'Shared Budgets']
+			icon: 'tabler:scale',
+			question: 'How decisions are made, who can decide what, and how authority is constrained.',
+			examples: ['Decision types', 'Proposal pathways', 'Delegation rules', 'Transparency requirements']
 		},
 		{
-			level: 'Articles',
+			layer: 3,
+			level: 'Layer 3: Economy & Resources',
 			color: 'rose',
-			icon: 'tabler:file-text',
-			question: 'What detailed guidance, practices, or case studies exist within each module?',
-			examples: ['Step-by-step guides', 'Case studies', 'Failure reports', 'Templates']
+			icon: 'tabler:coins',
+			question: 'Commons vs private resources, contribution recognition, and treasury rules.',
+			examples: ['Commons boundaries', 'Contribution accounting', 'Budgeting rules', 'Treasury safeguards']
+		},
+		{
+			layer: 4,
+			level: 'Layer 4: Conflict, Repair & Accountability',
+			color: 'emerald',
+			icon: 'tabler:user-heart',
+			question: 'How conflict is handled, escalated, repaired, and when separation is required.',
+			examples: ['Repair pathways', 'Escalation ladder', 'Accountability steps', 'Separation protocols']
+		},
+		{
+			layer: 5,
+			level: 'Layer 5: Operations & Coordination',
+			color: 'sky',
+			icon: 'tabler:calendar-time',
+			question: 'Roles, meetings, documentation, workload boundaries, and day-to-day coordination.',
+			examples: ['Role definitions', 'Meeting cadence', 'Documentation norms', 'Workload limits']
+		},
+		{
+			layer: 6,
+			level: 'Layer 6: Evolution & Adaptation',
+			color: 'amber',
+			icon: 'tabler:trending-up',
+			question: 'How rules change, experiments run, and learning is captured without collapse.',
+			examples: ['Amendment process', 'Experiment design', 'Retrospectives', 'Versioning and review']
 		}
 	];
 
 	let activeStructureLayer = $state(0);
+	const moduleExamples = [
+		'Permaculture',
+		'Minimal Permaculture',
+		'Education',
+		'Housing',
+		'Land Commons Safeguards',
+		'Alternative Economies'
+	];
 
 	// ============================================
 	// SECTION 6: How It's Built - Process
@@ -203,28 +239,28 @@
 	const benefits = [
 		{
 			title: 'Reduce Repeated Mistakes',
-			desc: 'Learn from others\' failures instead of repeating them.',
+			desc: 'Use shared stress tests and failure reports instead of starting from scratch.',
 			icon: 'tabler:shield-check',
 			before: 'Every community starts from scratch',
 			after: 'Build on tested foundations'
 		},
 		{
 			title: 'Faster Learning Cycles',
-			desc: 'Many parallel experiments accelerate collective wisdom.',
+			desc: 'Parallel experiments make learning visible and transferable.',
 			icon: 'tabler:bolt',
 			before: 'Years to discover what works',
 			after: 'Shared insights speed progress'
 		},
 		{
 			title: 'Shared Memory Across Hubs',
-			desc: 'Knowledge persists even when individuals move on.',
+			desc: 'Structure stays legible even as people come and go.',
 			icon: 'tabler:database',
 			before: 'Knowledge walks out the door',
 			after: 'Institutional memory remains'
 		},
 		{
 			title: 'Lower Barrier to Starting',
-			desc: 'Don\'t reinvent basics. Focus on what makes your hub unique.',
+			desc: 'Adopt parts of RCOS now, evolve the rest over time.',
 			icon: 'tabler:door-enter',
 			before: 'Overwhelmed by complexity',
 			after: 'Clear starting points'
@@ -242,32 +278,32 @@
 			icon: 'tabler:plant-2',
 			iconColor: 'text-emerald-600',
 			iconBg: 'bg-emerald-50',
-			description: 'Starting a regenerative community from scratch.',
-			finds: ['Governance templates', 'Legal frameworks', 'Culture-building guides']
+			description: 'Starting from zero and trying to stay coherent under pressure.',
+			finds: ['Purpose & scope templates', 'Membership pathways', 'Decision maps and constraints']
 		},
 		{
 			persona: 'Existing Communities',
 			icon: 'tabler:home-2',
 			iconColor: 'text-sky-600',
 			iconBg: 'bg-sky-50',
-			description: 'Looking to improve specific areas.',
-			finds: ['Conflict resolution tools', 'Economic models', 'Decision-making upgrades']
+			description: 'Improving a specific weak point without rewriting everything.',
+			finds: ['Conflict repair pathways', 'Resource governance patterns', 'Operations and role clarity']
 		},
 		{
 			persona: 'Researchers & Educators',
 			icon: 'tabler:school',
 			iconColor: 'text-indigo-600',
 			iconBg: 'bg-indigo-50',
-			description: 'Studying or teaching community living.',
-			finds: ['Case studies', 'Failure analyses', 'Comparative frameworks']
+			description: 'Studying how communities succeed and fail in repeatable ways.',
+			finds: ['Stress tests', 'Failure analyses', 'Layered comparisons between communities']
 		},
 		{
 			persona: 'Governance Designers',
 			icon: 'tabler:scale',
 			iconColor: 'text-amber-600',
 			iconBg: 'bg-amber-50',
-			description: 'Redesigning how groups make decisions.',
-			finds: ['Sociocracy modules', 'Consent processes', 'Role definitions']
+			description: 'Designing decision pathways that keep authority explicit.',
+			finds: ['Decision rights and constraints', 'Delegation patterns', 'Transparency and documentation norms']
 		}
 	];
 
@@ -296,8 +332,8 @@
 			color: 'amber'
 		},
 		{
-			action: 'Propose New Domains',
-			desc: 'Identify gaps and suggest new areas to explore.',
+			action: 'Propose New Modules',
+			desc: 'Suggest optional extensions that apply RCOS to specific domains.',
 			icon: 'tabler:plus',
 			color: 'rose'
 		}
@@ -312,8 +348,8 @@
 </script>
 
 <SEO
-	title="The Blueprint – EcoHubs.community"
-	description="Explore the open-source blueprint for building regenerative communities. A living knowledge system designed for replication, adaptation, and continuous improvement."
+	title="The Blueprint (RCOS) – EcoHubs.community"
+	description="The Blueprint, formally RCOS (Regenerative Community Operating System), is an open standard for making community structure explicit: membership, governance, resources, conflict, operations, and evolution."
 	ogImage="/og-blueprint.jpg"
 	breadcrumbs={[
 		{ name: 'Home', url: 'https://ecohubs.community' },
@@ -321,22 +357,39 @@
 	]}
 	faq={[
 		{
-			question: 'What is the EcoHubs Blueprint?',
-			answer: 'A living knowledge system designed for replication, adaptation, and continuous improvement. It is modular, adaptable, versioned, and grounded in real-world experiments from regenerative communities.'
+			question: 'What is the Blueprint (RCOS)?',
+			answer: 'The Blueprint, formally called RCOS (Regenerative Community Operating System), is an open standard for designing and operating communities with clear structure across membership, governance, resources, conflict, operations, and evolution.'
 		},
 		{
-			question: 'What is the Blueprint NOT?',
-			answer: 'It is not a rigid rulebook, utopian manifesto, top-down authority, or finished product. It is always evolving based on community practice.'
+			question: 'What is RCOS not?',
+			answer: 'It is not software, not a DAO product, and not a fixed ideology. It does not replace human judgment; it helps communities make assumptions explicit and reviewable.'
 		},
 		{
-			question: 'How is the Blueprint organized?',
-			answer: 'The Blueprint is organized in four levels: Domains (broad areas like Governance, Food Systems), Topics (specific themes within domains), Modules (reusable patterns), and Articles (detailed guidance and case studies).'
+			question: 'What are the RCOS core layers?',
+			answer: 'RCOS is organized into seven layers: Purpose & Scope, Membership, Governance, Economy & Resources, Conflict/Repair/Accountability, Operations & Coordination, and Evolution & Adaptation.'
+		},
+		{
+			question: 'What are modules?',
+			answer: 'Modules are optional extensions that apply RCOS to specific domains (like food systems, housing, land stewardship, or education) without changing the core rules.'
 		},
 		{
 			question: 'How can I contribute to the Blueprint?',
-			answer: 'You can write or improve articles, review and discuss proposals, document experiments from real communities, or propose new domains. Contributions require EcoHubs membership to ensure quality.'
+			answer: 'You can write or improve articles, review and discuss proposals, document experiments from real communities, or propose new modules. Contributions require EcoHubs membership to help keep the standard coherent.'
 		}
 	]}
+	jsonLd={{
+		'@context': 'https://schema.org',
+		'@type': 'WebPage',
+		name: 'The Blueprint (RCOS)',
+		description:
+			'The Blueprint, formally RCOS (Regenerative Community Operating System), is an open standard for making community structure explicit across core layers and optional modules.',
+		url: 'https://ecohubs.community/blueprint',
+		about: [
+			{ '@type': 'Thing', name: 'Regenerative Community Operating System', alternateName: 'RCOS' },
+			{ '@type': 'Thing', name: 'Regenerative communities' },
+			{ '@type': 'Thing', name: 'Community governance' }
+		]
+	}}
 />
 
 <!-- ============================================
@@ -346,19 +399,18 @@
 	<!-- Text content - shows second on mobile (below image) -->
 	<div class="order-2 md:order-1">
 		<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-6">
-			Open Source Knowledge
+			Open Standard
 		</div>
 		<h1 class="font-serif text-3xl sm:text-4xl font-bold leading-tight text-ecohubs-dark md:text-5xl lg:text-6xl">
-			The Blueprint for <span class="text-gradient">Regenerative Communities</span>
+			The Blueprint <span class="text-gradient">(RCOS)</span> for Regenerative Communities
 		</h1>
 
 		<p class="mt-4 md:mt-6 text-base md:text-lg leading-relaxed text-gray-600">
-			This is not content. It's infrastructure for rebuilding community knowledge—a shared, evolving
-			foundation for building EcoHubs worldwide.
+			The Blueprint, formally called RCOS (Regenerative Community Operating System), is a shared way to make community structure explicit—so authority, responsibility, and repair do not drift into informal norms.
 		</p>
 
 		<p class="mt-3 md:mt-4 text-gray-500 text-sm md:text-base">
-			Digital. Open. Grounded in practice. Designed for replication, not perfection.
+			Adaptable by design. Grounded in practice. Focused on clarity over persuasion.
 		</p>
 
 		<div class="mt-8 md:mt-10 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
@@ -398,7 +450,7 @@
 		<div
 			class="relative w-full rounded-xl border border-border-subtle"
 		>
-			<img src={BluePrintCommunity} alt="Network of regenerative EcoHubs" class="rounded-3xl shadow-2xl organic-shape-animated hover:rotate-1 transition-transform duration-700 object-cover h-56 sm:h-72 md:h-96 w-full" loading="lazy" />
+			<img src={BluePrintCommunity} alt="A network of communities connected by shared structure" class="rounded-3xl shadow-2xl organic-shape-animated hover:rotate-1 transition-transform duration-700 object-cover h-56 sm:h-72 md:h-96 w-full" loading="lazy" />
 		</div>
 	</div>
 </Section>
@@ -409,11 +461,10 @@
 <Section spacing="lg">
 	<div class="max-w-3xl mb-12">
 		<h2 class="font-serif text-3xl font-bold leading-tight text-ecohubs-dark sm:text-4xl">
-			Lost Knowledge, Rising Complexity
+			Why Structure Matters
 		</h2>
 		<p class="mt-4 text-lg leading-relaxed text-gray-600">
-			Community knowledge wasn't destroyed—it fragmented and failed to scale. Modern life demands
-			legal awareness, economic coordination, conflict resolution, and governance models all at once.
+			Communities fail for repeatable reasons: unclear membership, decision drift, resource ambiguity, and missing repair paths. RCOS treats these as design problems—things that can be made explicit, tested, and improved.
 		</p>
 	</div>
 
@@ -686,21 +737,21 @@
 		<div class="relative w-full max-w-md aspect-square">
 			<!-- Animated rings representing hierarchy -->
 			<div class="absolute inset-0 flex items-center justify-center">
-				<!-- Outer ring - Domains -->
+				<!-- Outer ring - Core layers -->
 				<div class="absolute w-full h-full rounded-full border-2 border-emerald-200 animate-[spin_60s_linear_infinite]">
-					<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-1 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-full">Domains</div>
+					<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-1 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-full">Templates</div>
 				</div>
-				<!-- Second ring - Topics -->
+				<!-- Second ring - Modules -->
 				<div class="absolute w-[75%] h-[75%] rounded-full border-2 border-sky-200 animate-[spin_45s_linear_infinite_reverse]">
-					<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-1 bg-sky-100 text-sky-700 text-xs font-semibold rounded-full">Topics</div>
+					<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-1 bg-sky-100 text-sky-700 text-xs font-semibold rounded-full">Artifacts</div>
 				</div>
-				<!-- Third ring - Modules -->
+				<!-- Third ring - Practices -->
 				<div class="absolute w-[50%] h-[50%] rounded-full border-2 border-amber-200 animate-[spin_30s_linear_infinite]">
 					<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-1 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">Modules</div>
 				</div>
-				<!-- Center - Articles -->
+				<!-- Center - Artifacts -->
 				<div class="absolute w-[25%] h-[25%] rounded-full bg-rose-50 border-2 border-rose-200 flex items-center justify-center">
-					<span class="text-rose-700 text-xs font-semibold">Articles</span>
+					<span class="text-rose-700 text-xs font-semibold">Core layers</span>
 				</div>
 			</div>
 
@@ -720,7 +771,7 @@
 
 	<div class="my-10 mx-auto max-w-3xl">
 		<div class="relative h-100 w-full rounded-xl border border-border-subtle">
-			<img src={BluePrintCommunity2} alt="EcoHubs Blueprint structure applied" class="rounded-3xl shadow-2xl organic-shape-pebble hover:rotate-1 transition-transform duration-700 object-cover h-96 w-full" loading="lazy" />
+			<img src={BluePrintCommunity2} alt="RCOS core layers and modules applied in practice" class="rounded-3xl shadow-2xl organic-shape-pebble hover:rotate-1 transition-transform duration-700 object-cover h-96 w-full" loading="lazy" />
 		</div>
 	</div>
 </Section>
@@ -731,13 +782,13 @@
 <Section spacing="lg" id="structure">
 	<div class="max-w-3xl mx-auto text-center mb-12">
 		<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-semibold uppercase tracking-wider mb-4">
-			System Architecture
+			RCOS Core
 		</div>
 		<h2 class="font-serif text-3xl font-bold leading-tight text-ecohubs-dark sm:text-4xl">
-			How the Blueprint Is Organized
+			The RCOS Core Layers
 		</h2>
 		<p class="mt-4 text-lg leading-relaxed text-gray-600">
-			A clear hierarchy from broad areas to specific guidance. Each level answers a different question.
+			RCOS is organized into layers with clear responsibility boundaries. Communities can adapt implementation details, but the layer boundaries keep assumptions from going implicit.
 		</p>
 	</div>
 
@@ -753,7 +804,7 @@
 				}}
 				{@const colors = colorMap[layer.color]}
 				<button
-					class="group relative w-full text-left p-5 rounded-2xl transition-all duration-300 border-2
+					class="group relative w-full text-left p-2 rounded-2xl transition-all duration-300 border-2
 					{activeStructureLayer === i
 						? `bg-white shadow-lg ${colors.border} scale-[1.02]`
 						: 'bg-stone-50/50 border-transparent hover:bg-white hover:shadow-md'}"
@@ -766,7 +817,7 @@
 						</div>
 						<div>
 							<h3 class="font-bold text-lg text-stone-800">{layer.level}</h3>
-							<p class="text-sm text-stone-500 mt-0.5">{layer.question}</p>
+							<!-- <p class="text-sm text-stone-500 mt-0.5">{layer.question}</p> -->
 						</div>
 					</div>
 
@@ -794,7 +845,7 @@
 					<div in:fly={{ y: 20, duration: 400 }} class="relative z-10">
 						<div class="flex items-center gap-3 mb-6">
 							<div class="px-3 py-1 rounded-full bg-white/10 text-xs font-semibold uppercase tracking-wider {colorMap[layer.color]}">
-								Level {activeStructureLayer + 1}
+								Layer {layer.layer}
 							</div>
 						</div>
 
@@ -826,6 +877,58 @@
 					</div>
 				{/key}
 			</div>
+		</div>
+	</div>
+</Section>
+
+<Section spacing="lg" id="modules">
+	<div class="max-w-3xl mx-auto text-center mb-12">
+		<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-4">
+			Optional Extensions
+		</div>
+		<h2 class="font-serif text-3xl font-bold leading-tight text-ecohubs-dark sm:text-4xl">
+			Modules and Adaptability
+		</h2>
+		<p class="mt-4 text-lg leading-relaxed text-gray-600">
+			Modules extend RCOS into real-world domains without changing core invariants or overriding governance.
+			Communities can adopt RCOS partially or fully, and evolve their implementation over time.
+		</p>
+	</div>
+
+	<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+		<div class="lg:col-span-7 bg-white rounded-3xl p-8 shadow-xl border border-stone-100">
+			<h3 class="text-xl font-bold text-stone-800 mb-4">What modules do</h3>
+			<ul class="space-y-2 text-stone-600">
+				<li class="flex items-start gap-3">
+					<Icon icon="tabler:check" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+					<span>Apply RCOS to specific domains like food systems, housing, education, or land stewardship.</span>
+				</li>
+				<li class="flex items-start gap-3">
+					<Icon icon="tabler:check" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+					<span>Remain optional: communities choose what fits their context and constraints.</span>
+				</li>
+				<li class="flex items-start gap-3">
+					<Icon icon="tabler:check" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+					<span>Stay compatible with the core: modules do not change core layer boundaries.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="lg:col-span-5 bg-ecohubs-dark rounded-3xl p-8 text-white">
+			<h3 class="text-xl font-bold mb-4">Example modules</h3>
+			<div class="flex flex-wrap gap-2">
+				{#each moduleExamples as example, i}
+					<span
+						class="px-4 py-2 rounded-lg bg-white/10 text-sm text-white border border-white/10 hover:border-white/30 transition-colors cursor-default"
+						in:scale={{ duration: 250, delay: i * 40 }}
+					>
+						{example}
+					</span>
+				{/each}
+			</div>
+			<p class="text-sm text-stone-300 mt-6">
+				Modules are intentionally non-ideological: they describe structure and constraints, not “the right way” to live.
+			</p>
 		</div>
 	</div>
 </Section>
@@ -983,7 +1086,7 @@
 			<div class="flex items-center gap-4 p-4 rounded-xl bg-stone-50 border border-stone-100">
 				<Icon icon="tabler:brand-github" class="w-6 h-6 text-stone-600" />
 				<p class="text-sm text-stone-600">
-					Built on <span class="font-semibold">GitHub</span> for versioning & transparency, with a custom app for collaboration.
+					Versioned on <span class="font-semibold">GitHub</span> so changes are trackable and reviewable.
 				</p>
 			</div>
 
@@ -1014,10 +1117,10 @@
 <Section spacing="lg">
 	<div class="max-w-3xl mx-auto text-center mb-12">
 		<h2 class="font-serif text-3xl font-bold leading-tight text-ecohubs-dark sm:text-4xl">
-			Preventing Failure Before It Happens
+			Stress Tests & Realism
 		</h2>
 		<p class="mt-4 text-lg leading-relaxed text-gray-600">
-			The real value of shared knowledge infrastructure.
+			RCOS uses real failure modes as learning tools. The goal is not perfection, but legibility under stress.
 		</p>
 	</div>
 
@@ -1121,10 +1224,10 @@
 			Join the Effort
 		</div>
 		<h2 class="font-serif text-3xl font-bold leading-tight text-ecohubs-dark sm:text-4xl">
-			Build the Future Together
+			Help Improve the Standard
 		</h2>
 		<p class="mt-4 text-lg leading-relaxed text-gray-600">
-			The blueprint is publicly readable. Contributions require membership to ensure quality.
+			The blueprint is publicly readable. Contributions require membership to help keep the core coherent.
 		</p>
 	</div>
 

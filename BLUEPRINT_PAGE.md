@@ -1,245 +1,260 @@
-1. Hero — The Blueprint for Regenerative Communities
+# RCOS-Aligned Content Guide for the Blueprint Page
 
-Goal
-Immediately answer: What is the Blueprint and why does it matter?
+## Purpose of This File
 
-Core message
-This is not content. It’s infrastructure for rebuilding community knowledge.
+This document instructs coding and content AIs on **how to update, rewrite, or extend the Blueprint page** so that it is fully aligned with **RCOS (Regenerative Community Operating System)**.
 
-Key points
-- A shared, evolving blueprint for building EcoHubs
-- Digital, open, and grounded in practice
-- Designed for replication, not perfection
+It serves two roles:
+1. **Source of truth** about what RCOS is and how it should be explained.
+2. **Editorial and tone guide** to ensure clarity, humility, and precision.
 
-Layout / Interaction
-- Strong headline + subline
-- Subtle animated diagram hinting at “Domains → Modules → Articles”
-- Gentle motion on scroll (fade + translate)
-- Primary CTA: Explore the Blueprint
-- Secondary CTA: Contribute
+This file is authoritative for all AI-assisted changes to the Blueprint page.
 
-⸻
+---
 
-2. The Problem — Lost Knowledge, Rising Complexity
+## What RCOS Is (Source of Truth)
 
-Goal
-Explain why the blueprint is necessary — historically and now.
+RCOS stands for **Regenerative Community Operating System**.
 
-Core message
-Community knowledge wasn’t destroyed — it fragmented and failed to scale.
+RCOS is **not software**, **not a DAO product**, and **not a fixed ideology**.
 
-Narrative points
-- Community living knowledge used to be local and implicit
-- Modern life is more complex, interconnected, regulated
-- Communities today fail repeatedly on the same issues:
-- governance
-- conflict
-- economics
-- burnout
-- unclear ownership
-- Reinventing everything locally no longer works
+RCOS is:
+- A **formal, open standard** for how communities are structured
+- A **layered operating system** for community living
+- A way to make communities **legible, testable, and improvable**
+- A shared language for governance, membership, economy, conflict, operations, and evolution
 
-Layout / Interaction
-- Split layout:
-- Left: short narrative text
-- Right: animated “loop of failure” (same problems recurring)
-- On hover or scroll: problems highlight cyclically
-- Tone: calm, honest, non-accusatory
+RCOS defines:
+- What must be explicit
+- What may be optional
+- What must never be implicit or informal
 
-⸻
+The **Blueprint** is the applied, human-facing name for RCOS during the transition phase.
 
-3. The Idea — A Shared Foundation for Many Communities
+When updating content:
+- Treat **Blueprint** as the friendly term
+- Treat **RCOS** as the formal name
+- Make it clear they refer to the same thing
 
-Goal
-Introduce the blueprint as the missing connective tissue.
+Example:
+> The Blueprint, formally called RCOS (Regenerative Community Operating System), is an open standard for designing and operating regenerative communities.
 
-Core message
-Independent communities need a shared foundation to scale without losing autonomy.
+---
 
-Key ideas
-- Not one perfect model
-- A common structure + shared values
-- Freedom to adapt locally
-- Coordination without centralization
+## Core Structure of RCOS (Must Be Reflected)
 
-Layout / Interaction
-- Visual comparison:
-- “Isolated Communities” → fragmented, fragile
-- “Networked Communities” → resilient, learning system
-- Animate connections forming between hubs
-- Light parallax or node animations
+RCOS is structured into **layers**, each with clear responsibility boundaries.
 
-⸻
+These layers must be referenced consistently and accurately.
 
-4. What the Blueprint Is (and Isn’t)
+### RCOS Core Layers
 
-Goal
-Remove misconceptions and position it clearly.
+- **Layer 0: Purpose & Scope**
+  Defines why the community exists, what is governed, and what invariants cannot be violated.
 
-What it IS
-- A living knowledge system
-- Modular and adaptable
-- Versioned and reviewable
-- Grounded in real-world experiments
+- **Layer 1: Membership**
+  Defines how people join, participate, change status, and exit. No implicit membership.
 
-What it IS NOT
-- A rigid rulebook
-- A utopian manifesto
-- A top-down authority
-- A finished product
+- **Layer 2: Governance**
+  Defines how decisions are made, who can decide what, and how authority is constrained.
 
-Layout / Interaction
-- Two-column “Is / Is Not” cards
-- Subtle hover states
-- Icons + concise statements
-- Clean, readable, confident
+- **Layer 3: Economy & Resources**
+  Defines commons vs private resources, contribution recognition, internal economies, and treasury rules.
 
-⸻
+- **Layer 4: Conflict, Repair & Accountability**
+  Defines how conflict is handled, escalated, repaired, and when separation is required.
 
-5. Structure — How the Blueprint Is Organized
+- **Layer 5: Operations & Coordination**
+  Defines roles, meetings, documentation, and workload boundaries.
 
-Goal
-Make the system tangible and understandable.
+- **Layer 6: Evolution & Adaptation**
+  Defines how rules change, experiments run, and learning is captured without collapse.
 
-Explain the hierarchy
-- Domains → Topics → Modules → Articles
-- Each level answers a different question
-- Designed for navigation, reuse, and iteration
+The Blueprint page should:
+- Reference these layers explicitly
+- Avoid mixing them into vague categories like “culture” or “values”
+- Emphasize that **structure comes before ideology**
 
-Domains examples
-- Governance
-- Food systems
-- Infrastructure
-- Economy
-- Culture
+---
+
+## What the Blueprint Page Is For
+
+The Blueprint page should explain:
+
+- What RCOS is, in simple language
+- Why structure matters in communities
+- How RCOS helps communities avoid common failure modes
+- That RCOS is modular and adaptable
+- That communities can adopt it partially or fully
+
+The Blueprint page should **not**:
+- Explain every layer in full detail
+- Read like legal documentation
+- Contain implementation minutiae
+
+It should act as:
+- A conceptual map
+- A trust-building overview
+- An invitation to explore deeper documentation
+
+---
+
+## Modules: How to Explain Them
+
+Modules are **optional extensions** that sit on top of the RCOS Core.
+
+Modules:
+- Do NOT change core invariants
+- Do NOT override governance
+- Apply RCOS to specific domains
+
+Examples of modules:
+- Permaculture
+- Minimal Permaculture
 - Education
-- (Expandable)
+- Housing
+- Land Commons Safeguards
+- Alternative Economies
 
-Layout / Interaction
-- Layered vertical or stacked diagram
-- Click / hover expands layers
-- Highlight relationships between domains
-- Animated transitions between levels
+How to describe modules:
+> Modules extend RCOS into real-world domains like food systems, education, or land stewardship, without changing the core rules of the system.
 
-⸻
+Do NOT describe modules as:
+- Required
+- Ideological
+- “The right way” to live
 
-6. How It’s Built — From Theory to Practice (and Back)
+---
 
-Goal
-Show this is rigorous, iterative, and real.
+## Tone and Language Guidelines (Critical)
 
-Process
-	1.	Ideas emerge from practice
-	2.	Articles are proposed
-	3.	Reviewed collaboratively
-	4.	Tested in real hubs
-	5.	Improved or discarded
-	6.	Knowledge evolves
+### Tone to Use
 
-Key tools
-- GitHub for versioning & review
-- Custom app for collaboration
-- Structured contribution workflows
+- Clear
+- Grounded
+- Humble
+- Non-marketing
+- Non-evangelical
+- Precise but human
 
-Layout / Interaction
-- Circular flow diagram (loop, not linear)
-- Soft animated arrows
-- Each step highlights on hover
-- Emphasize feedback loops
+Preferred framing:
+- “This helps make things explicit”
+- “This reduces ambiguity”
+- “This is one possible structure”
+- “Communities adapt this to their context”
 
-⸻
+### Tone to Avoid
 
-7. Why This Matters — Preventing Failure Before It Happens
+Avoid:
+- Grandiose claims
+- “World-changing” language
+- Buzzwords
+- Crypto hype
+- Moral superiority
 
-Goal
-Make the value unmistakable.
+Do NOT say:
+- “The future of humanity”
+- “The only way”
+- “Revolutionary system”
+- “Disrupting everything”
 
-Benefits
-- Reduce repeated mistakes
-- Faster learning cycles
-- Shared memory across hubs
-- Lower barrier to starting
-- More resilient communities
+---
 
-Layout / Interaction
-- Metrics-style cards (without fake numbers)
-- Before / after mental models
-- Calm, confident tone
+## What to Say vs What Not to Say (Examples)
 
-⸻
+### Good Example
 
-8. How You Can Use the Blueprint
+> RCOS helps communities make implicit assumptions explicit, so power, responsibility, and conflict do not drift into informal hierarchies.
 
-Goal
-Show practical entry points for different users.
+### Bad Example
 
-Use cases
-- Starting a new EcoHub
-- Improving an existing community
-- Research & education
-- Governance redesign
-- Conflict prevention
+> RCOS guarantees harmony and eliminates conflict.
 
-Layout / Interaction
-- Persona-based cards
-- Hover reveals “What you’ll find”
-- Optional deep links to blueprint sections
+---
 
-⸻
+### Good Example
 
-9. How to Contribute — Build the Future Together
+> The Blueprint is designed to be adapted. Communities can adopt parts of it and evolve their implementation over time.
 
-Goal
-Turn readers into contributors.
+### Bad Example
 
-Ways to contribute
-- Write or improve articles
-- Review and discuss
-- Document experiments
-- Propose new domains or modules
+> Communities must fully implement the Blueprint to succeed.
 
-Access
-- Publicly readable
-- Member-only contributions
-- Clear contribution pathways
+---
 
-Layout / Interaction
-- Step-by-step contributor flow
-- GitHub + App clearly explained
-- CTA: Apply for Access / Start Contributing
+### Good Example
 
-⸻
+> Conflict is treated as a normal condition with defined pathways.
 
-10. Call to Action — This Is a Long-Term Project
+### Bad Example
 
-Goal
-Anchor expectations and invite commitment.
+> RCOS prevents conflict.
 
-Message
-- This is generational work
-- Built slowly, carefully, together
-- Designed to outlive its creators
+---
 
-Layout / Interaction
-- Minimalist closing section
-- Strong typography
-- Soft background gradient
-- One clear CTA
+## DAO Terminology Guidance
 
-Overall Design Notes:
-- Calm, confident, non-hype tone
-- Organic motion (no sharp animations)
-- Emphasis on loops, layers, and networks
-- Consistent iconography
-- Space to breathe — clarity over density
-- needs to fit optically to current pages
-- use interactivity and animations to support content visually or interactively
+If the term “DAO” appears on the Blueprint page:
 
-Tech:
-- svelte 5 (with runes)
-- tailwind 4
-- svelte animations
-- use <Section> component
-- Icons: Iconify and tabler package
-- Extract/reuse repeating content components
-- Use data arrays for repeating contents
+- Assume many readers do not understand it
+- Always explain it on first use
+- Prefer human language over crypto framing
+
+Acceptable explanation:
+> DAO (Decentralized Autonomous Organization), meaning a rule-based organization where authority is defined by agreed processes rather than hierarchy.
+
+Avoid:
+- Token talk
+- Blockchain technical details
+- Financial speculation framing
+
+---
+
+## Structural Priorities for the Blueprint Page
+
+When reorganizing or expanding the page, prioritize in this order:
+
+1. Purpose of RCOS
+2. Why structure matters in communities
+3. RCOS Layers overview
+4. Modules and adaptability
+5. Stress tests and real-world validation
+6. Invitation to explore or contribute
+
+Do NOT start with:
+- Tools
+- Technology
+- Ideology
+- Vision statements without structure
+
+---
+
+## Stress Tests and Realism
+
+If referencing stress tests:
+
+- Frame them as learning tools
+- Emphasize failure modes, not perfection
+- Show RCOS as something tested against reality
+
+Example:
+> RCOS includes stress tests based on real community failures, such as informal power accumulation or conflict avoidance.
+
+---
+
+## Final Instruction to AI Agents
+
+When updating the Blueprint page:
+
+- Always prefer clarity over persuasion
+- Always make authority explicit
+- Always separate structure from values
+- Always assume readers are intelligent but cautious
+- Never imply RCOS replaces human judgment
+
+If unsure:
+- Reduce claims
+- Add clarity
+- Make assumptions explicit
+
+RCOS exists to reduce ambiguity, not to replace people.
