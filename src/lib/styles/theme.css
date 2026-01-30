@@ -213,14 +213,14 @@ body {
   overflow-x: hidden;
 }
 
-a[href^="http://"]:not([href*="ecohubs.community"]),
-a[href^="https://"]:not([href*="ecohubs.community"]) {
+a[href^="http://"]:not([href*="ecohubs.community"]):not(:has(img)),
+a[href^="https://"]:not([href*="ecohubs.community"]):not(:has(img)) {
   color: var(--color-secondary); /* Optional: color the icon differently */
   text-decoration: underline;
 }
 
-a[href^="http://"]:not([href*="ecohubs.community"])::after,
-a[href^="https://"]:not([href*="ecohubs.community"])::after {
+a[href^="http://"]:not([href*="ecohubs.community"]):not(:has(img))::after,
+a[href^="https://"]:not([href*="ecohubs.community"]):not(:has(img))::after {
   content: " ↗"; /* Adds an arrow icon after the link text */
   font-size: 0.8em; /* Makes the icon slightly smaller than the text */
   vertical-align: super; /* Adjusts the vertical alignment of the icon */

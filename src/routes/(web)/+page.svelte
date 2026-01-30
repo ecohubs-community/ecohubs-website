@@ -33,30 +33,14 @@
 		CodeXml,
 		TriangleAlert,
 		ChartBar,
-
 		Compass,
-
 		Scale,
-
 		Coins,
-
 		ShieldAlert,
-
 		Settings,
-
 		RefreshCcw,
-
 		Leaf,
-
 		FileText
-
-
-
-
-
-
-
-
 	} from 'lucide-svelte';
 	import WhyCard from '$lib/components/WhyCard.svelte';
 	import BoxInfoCard from '$lib/components/BoxInfoCard.svelte';
@@ -151,7 +135,7 @@
 			description: 'Access, permissions, and influence are earned through contribution.',
 			detailTitle: 'Responsibility Grows With Trust',
 			detailDescription:
-				'Instead of financial stakes or speculation, EcoHubs emphasizes contribution-based authority. Through ecohubsOS and Offcoin, members earn experience and internal tokens by helping the community. Over time, this unlocks permissions, influence, and responsibility — creating a culture of earned trust rather than assigned power.',
+				'Instead of financial stakes or speculation, EcoHubs emphasizes contribution-based authority. Through ecohubsOS and <a href="https://offcoin.space" target="_blank" rel="noopener noreferrer">Offcoin</a>, members earn experience and internal tokens by helping the community. Over time, this unlocks permissions, influence, and responsibility — creating a culture of earned trust rather than assigned power.',
 			detailImage: SharedStewardshipImage,
 			detailImageAlt: 'Stewardship and responsibility',
 			buttonText: 'How Contribution Works',
@@ -560,7 +544,7 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16 max-w-3xl mx-auto">
 			<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-4">Power to the Community</h2>
-			<p class="text-gray-600">Blockchain technology enables trust without hierarchy. Our <a href="https://en.wikipedia.org/wiki/Decentralized_autonomous_organization" target="_blank" rel="noopener noreferrer">DAO</a> (Decentralized Autonomous Organization) ecosystem ensures transparency and collective agency.</p>
+			<p class="text-gray-600">Blockchain technology enables trust without hierarchy. Our <a href="https://en.wikipedia.org/wiki/Decentralized_autonomous_organization" target="_blank" rel="noopener noreferrer">DAO</a>-like (Decentralized Autonomous Organization) ecosystem ensures transparency and collective agency.</p>
 		</div>
 
 		<GovernanceSection features={governanceFeatures} />

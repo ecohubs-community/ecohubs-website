@@ -1,32 +1,19 @@
 <script lang="ts">
-  import type { ComponentType } from 'svelte';
   import {
-    ScrollText,
-    MessageCircle,
-    Vote,
-    LayoutDashboard,
-    Coins,
-    MessagesSquare,
-    Target,
-    GitBranch,
     Network,
     Wifi,
     Battery,
     Check,
     X,
-    Maximize2,
-    Minus,
-    Search,
-
-	LayoutGrid
-
+	  LayoutGrid
   } from 'lucide-svelte';
   import { onMount } from 'svelte';
   import { fade, scale, fly } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
+  import Icon from '@iconify/svelte';
 
   interface EcosystemTool {
-    icon: ComponentType;
+    icon: string;
     iconColor: string;
     iconBg: string;
     hoverBorderColor: string;
@@ -36,11 +23,12 @@
     description: string;
     category: 'onboarding' | 'dialogue' | 'action' | 'governance';
     highlight?: boolean;
+    link?: {href: string; target: '_blank' | '_self'};
   }
 
   const tools: EcosystemTool[] = [
     {
-      icon: ScrollText,
+      icon: "tabler:writing-sign",
       iconColor: 'text-blue-600',
       iconBg: 'bg-blue-100',
       hoverBorderColor: 'border-blue-200',
@@ -48,10 +36,11 @@
       hoverTextColor: 'text-blue-600',
       title: 'Application Form',
       description: 'Selective membership process. We welcome aligned contributors who share our vision for regenerative communities.',
+      link: {href: 'https://ecohubs.community/join', target: '_self'},
       category: 'onboarding'
     },
     {
-      icon: LayoutDashboard,
+      icon: "tabler:layout-dashboard",
       iconColor: 'text-emerald-600',
       iconBg: 'bg-emerald-100',
       hoverBorderColor: 'border-emerald-200',
@@ -63,29 +52,31 @@
       highlight: true
     },
     {
-      icon: MessageCircle,
+      icon: "tabler:brand-discord",
       iconColor: 'text-indigo-600',
       iconBg: 'bg-indigo-100',
       hoverBorderColor: 'border-indigo-200',
       hoverRingColor: 'ring-indigo-200',
       hoverTextColor: 'text-indigo-600',
       title: 'Discord',
-      description: 'Real-time community chat. Public channels for open discussion, private member channels for deeper collaboration.',
+      description: 'Real-time community chat. Public channels for open discussion, private member channels for deeper collaboration. [Third-party tool]',
+      link: {href: 'https://discord.com/invite/Xnh7247Nq3', target: '_blank'},
       category: 'dialogue'
     },
     {
-      icon: MessagesSquare,
+      icon: "tabler:message-share",
       iconColor: 'text-purple-600',
       iconBg: 'bg-purple-100',
       hoverBorderColor: 'border-purple-200',
       hoverRingColor: 'ring-purple-200',
       hoverTextColor: 'text-purple-600',
       title: 'Flarum Forum',
-      description: 'Structured discussions for proposals, decisions, and sense-making. Where ideas mature before voting.',
+      description: 'Structured discussions for proposals, decisions, and sense-making. Where ideas mature before voting. [Third-party tool]',
+      link: {href: 'https://flarum.org', target: '_blank'},
       category: 'dialogue'
     },
     {
-      icon: Target,
+      icon: "tabler:target",
       iconColor: 'text-orange-600',
       iconBg: 'bg-orange-100',
       hoverBorderColor: 'border-orange-200',
@@ -93,10 +84,11 @@
       hoverTextColor: 'text-orange-600',
       title: 'Puckstack',
       description: 'Gas-free bounty board. Organize work with tasks & quests, reward effort with XP & tokens, govern with earned authority.',
+      link: {href: 'https://puckstack.xyz', target: '_self'},
       category: 'action'
     },
     {
-      icon: GitBranch,
+      icon: "tabler:git-branch",
       iconColor: 'text-teal-600',
       iconBg: 'bg-teal-100',
       hoverBorderColor: 'border-teal-200',
@@ -104,21 +96,23 @@
       hoverTextColor: 'text-teal-600',
       title: 'Blueprint App',
       description: 'Git-based collaboration for structuring and writing articles. GitHub workflows with PRs and approvals for quality control.',
+      link: {href: 'https://blueprint.ecohubs.community', target: '_self'},
       category: 'action'
     },
     {
-      icon: Vote,
+      icon: "tabler:notes",
       iconColor: 'text-amber-600',
       iconBg: 'bg-amber-100',
       hoverBorderColor: 'border-amber-200',
       hoverRingColor: 'ring-amber-200',
       hoverTextColor: 'text-amber-600',
       title: 'Snapshot',
-      description: 'Gas-free voting for member applications, decisions, blog posts, and governance. Transparent and auditable.',
+      description: 'Gas-free voting for member applications, decisions, blog posts, and governance. Transparent and auditable. [Third-party tool]',
+      link: {href: 'https://snapshot.org', target: '_blank'},
       category: 'governance'
     },
     {
-      icon: Coins,
+      icon: "tabler:coin",
       iconColor: 'text-rose-600',
       iconBg: 'bg-rose-100',
       hoverBorderColor: 'border-rose-200',
@@ -126,6 +120,7 @@
       hoverTextColor: 'text-rose-600',
       title: 'Offcoin',
       description: 'Off-chain tokens reward collaboration. XP unlocks permissions and responsibilities. Built into Puckstack and EcoHubsOS.',
+      link: {href: 'https://offcoin.space', target: '_blank'},
       category: 'governance'
     }
   ];
@@ -165,15 +160,14 @@
 
     <!-- Mobile View: Grid of tool cards -->
     <div class="md:hidden grid grid-cols-2 gap-3 mb-8">
-      {#each tools as tool, index}
-        {@const ToolIcon = tool.icon}
+      {#each tools as tool}
         <button
           onclick={() => activeTool = activeTool?.title === tool.title ? null : tool}
           class="relative p-4 rounded-2xl bg-white border-2 transition-all duration-300 text-left
             {activeTool?.title === tool.title ? `${tool.hoverBorderColor} shadow-lg` : 'border-gray-100 hover:border-gray-200'}"
         >
           <div class="w-10 h-10 rounded-xl {tool.iconBg} {tool.iconColor} flex items-center justify-center mb-3">
-            <ToolIcon class="w-5 h-5" />
+            <Icon icon={tool.icon} class="w-5 h-5" />
           </div>
           <h4 class="font-bold text-sm text-gray-900 mb-1">{tool.title}</h4>
           <span class="text-[10px] uppercase tracking-wider text-gray-400 font-medium">{tool.category}</span>
@@ -183,11 +177,10 @@
 
     <!-- Mobile: Expanded tool detail -->
     {#if activeTool}
-      {@const ActiveIcon = activeTool.icon}
       <div class="md:hidden mb-8 p-6 rounded-2xl bg-white border-2 {activeTool.hoverBorderColor} shadow-lg" transition:fly={{ y: 10, duration: 200 }}>
         <div class="flex items-start gap-4 mb-4">
           <div class="w-14 h-14 rounded-2xl {activeTool.iconBg} {activeTool.iconColor} flex items-center justify-center shrink-0">
-            <ActiveIcon class="w-7 h-7" />
+            <Icon icon={activeTool.icon} class="w-7 h-7" />
           </div>
           <div>
             <h4 class="font-serif font-bold text-xl text-gray-900">{activeTool.title}</h4>
@@ -195,12 +188,22 @@
           </div>
         </div>
         <p class="text-gray-600 text-sm leading-relaxed">{activeTool.description}</p>
-        <button
-          onclick={() => activeTool = null}
-          class="mt-4 text-xs font-semibold text-gray-500 hover:text-gray-800"
-        >
-          Close
-        </button>
+        <!-- Add link to tool -->
+        
+        <div class="flex items-center gap-4 mt-4">
+          <button
+            onclick={() => activeTool = null}
+            class="text-xs font-semibold text-gray-500 hover:text-gray-800"
+          >
+            Close
+          </button>
+
+          {#if activeTool.link}
+            <a href={activeTool.link.href} target={activeTool.link.target} class="text-xs font-semibold text-emerald-600 hover:text-emerald-800 mb-1">
+              {activeTool.title}
+            </a>
+          {/if}
+        </div>
       </div>
     {/if}
 
@@ -286,7 +289,6 @@
             </div>
 
             {#if activeTool}
-                {@const ActiveIcon = activeTool.icon}
                 <div class="absolute inset-0 z-40 flex items-center justify-center p-4 md:p-12" transition:fade={{ duration: 200 }}>
                     
                     <div 
@@ -306,7 +308,7 @@
                                 <div class="w-3 h-3 rounded-full bg-green-400"></div>
                             </div>
                             <span class="text-xs font-medium text-gray-500 flex items-center gap-1">
-                                <ActiveIcon class="w-3 h-3" />
+                                <Icon icon={activeTool.icon} class="w-3 h-3" />
                                 {activeTool.title}.app
                             </span>
                             <div class="w-10"></div> </div>
@@ -315,7 +317,7 @@
                             <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b {activeTool.iconBg.replace('bg-', 'from-')}/50 to-transparent opacity-30"></div>
                             
                             <div class="relative w-20 h-20 {activeTool.iconBg} rounded-2xl flex items-center justify-center shadow-lg mb-6 ring-4 ring-white">
-                                <ActiveIcon class="w-10 h-10 {activeTool.iconColor}" />
+                                <Icon icon={activeTool.icon} class="w-10 h-10 {activeTool.iconColor}" />
                             </div>
                             
                             <h2 class="text-2xl font-serif font-bold text-gray-900 mb-2">{activeTool.title}</h2>
@@ -326,6 +328,15 @@
                             <p class="text-gray-600 text-sm leading-relaxed max-w-sm mb-6">
                                 {activeTool.description}
                             </p>
+
+                            {#if activeTool.link}
+                              <div class="mb-5">
+                                <span class="text-xs font-semibold text-gray-500">Visit</span> 
+                                <a href={activeTool.link.href} target={activeTool.link.target} class="text-xs font-semibold text-emerald-600 hover:text-emerald-800">
+                                  {activeTool.title}
+                                </a>
+                              </div>
+                            {/if}
 
                             <button 
                                 onclick={() => activeTool = null}
@@ -356,9 +367,6 @@
                 class="bg-white/40 backdrop-blur-xl border border-white/40 shadow-2xl rounded-2xl md:rounded-3xl px-3 py-3 md:px-4 md:py-3 flex items-center gap-2 md:gap-4 pointer-events-auto transition-all duration-300 hover:scale-105 hover:bg-white/50"
             >
               {#each tools.filter((t) => !t.highlight) as tool, index}
-                {@const ToolIcon = tool.icon}
-                {@const isHovered = hoveredIndex === index}
-                
                 <div class="relative group flex flex-col items-center">
                     
                     <div class="absolute -top-12 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none mb-2">
@@ -376,7 +384,7 @@
                                 {activeTool?.title === tool.title ? 'ring-2 ring-offset-2 ring-offset-transparent ring-emerald-400 -translate-y-2' : ''}"
                     >
                         <div class="absolute inset-0 rounded-xl md:rounded-2xl {tool.iconBg} opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                        <ToolIcon class="w-5 h-5 md:w-6 md:h-6 {tool.iconColor} relative z-10" strokeWidth={2} />
+                        <Icon icon={tool.icon} class="w-5 h-5 md:w-6 md:h-6 {tool.iconColor} relative z-10" strokeWidth={2} />
                         
                         {#if activeTool?.title === tool.title}
                             <div class="absolute -bottom-3 w-1 h-1 bg-gray-800 rounded-full"></div>

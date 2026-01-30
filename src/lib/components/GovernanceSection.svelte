@@ -105,7 +105,7 @@
 						/>
 					</div>
 					<h4 class="text-lg font-serif font-bold text-gray-900 mb-2">{feature.detailTitle}</h4>
-					<p class="text-gray-600 text-sm leading-relaxed">{feature.detailDescription}</p>
+					<p class="text-gray-600 text-sm leading-relaxed">{@html feature.detailDescription}</p>
 				</div>
 			{/if}
 		</div>
@@ -159,7 +159,7 @@
 						</div>
 						<h4 class="text-2xl font-serif font-bold text-gray-900 mb-3">{feature.detailTitle}</h4>
 						<p class="text-gray-600 leading-relaxed">
-							{feature.detailDescription}
+							{@html feature.detailDescription}
 						</p>
 					</div>
 				</div>
