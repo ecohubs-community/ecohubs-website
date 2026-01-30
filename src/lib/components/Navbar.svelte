@@ -14,7 +14,7 @@
 		{ href: '/vision', label: 'Vision' },
 		// { href: '/dao', label: 'DAO' },
 		// { href: '/ecotoken', label: 'EcoToken' },
-		{ href: '/blueprint', label: 'Blueprint' },
+		{ href: '/blueprint', label: 'Blueprint (RCOS)' },
 		{ href: '/join', label: 'Join' },
 		{ href: '/blog', label: 'Blog' }
 	];
