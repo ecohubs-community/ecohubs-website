@@ -1,79 +1,21 @@
 <script lang="ts">
 	import { Loader2, Send, Check } from 'lucide-svelte';
-	import { browser } from '$app/environment';
-	import { onMount } from 'svelte';
+	import { Turnstile } from 'svelte-turnstile';
+	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
 
 	// Turnstile site key from environment (public)
-	const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
+	const TURNSTILE_SITE_KEY = PUBLIC_TURNSTILE_SITE_KEY || undefined;
 
 	let name = $state('');
 	let email = $state('');
 	let message = $state('');
 	// Honeypot field - should remain empty (hidden from users, visible to bots)
 	let website = $state('');
-	let turnstileToken = $state('');
+	let turnstileToken = $state<string | null>(null);
 	let isSubmitting = $state(false);
 	let submitStatus = $state<'idle' | 'success' | 'error'>('idle');
 	let errorMessage = $state('');
-	let turnstileWidgetId = $state<string | null>(null);
-	let turnstileContainer: HTMLDivElement;
-
-	// Load Turnstile script and render widget
-	onMount(() => {
-		if (!browser || !TURNSTILE_SITE_KEY) return;
-
-		// Check if Turnstile script is already loaded
-		if (window.turnstile) {
-			renderTurnstile();
-			return;
-		}
-
-		// Load Turnstile script
-		const script = document.createElement('script');
-		script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad';
-		script.async = true;
-		script.defer = true;
-
-		// Define callback for when Turnstile loads
-		window.onTurnstileLoad = () => {
-			renderTurnstile();
-		};
-
-		document.head.appendChild(script);
-
-		return () => {
-			// Cleanup widget on unmount
-			if (turnstileWidgetId && window.turnstile) {
-				window.turnstile.remove(turnstileWidgetId);
-			}
-		};
-	});
-
-	function renderTurnstile() {
-		if (!turnstileContainer || !window.turnstile || !TURNSTILE_SITE_KEY) return;
-
-		turnstileWidgetId = window.turnstile.render(turnstileContainer, {
-			sitekey: TURNSTILE_SITE_KEY,
-			callback: (token: string) => {
-				turnstileToken = token;
-			},
-			'expired-callback': () => {
-				turnstileToken = '';
-			},
-			'error-callback': () => {
-				turnstileToken = '';
-				errorMessage = 'Security verification failed. Please refresh and try again.';
-			},
-			theme: 'light'
-		});
-	}
-
-	function resetTurnstile() {
-		if (turnstileWidgetId && window.turnstile) {
-			window.turnstile.reset(turnstileWidgetId);
-			turnstileToken = '';
-		}
-	}
+	let turnstileResetKey = $state(0);
 
 	async function handleSubmit(event: Event) {
 		event.preventDefault();
@@ -134,13 +76,14 @@
 			name = '';
 			email = '';
 			message = '';
-			turnstileToken = '';
+			turnstileToken = null;
+			turnstileResetKey += 1;
 		} catch (error) {
 			submitStatus = 'error';
 			errorMessage =
 				error instanceof Error ? error.message : 'Something went wrong. Please try again.';
-			// Reset Turnstile on error so user can retry
-			resetTurnstile();
+			turnstileToken = null;
+			turnstileResetKey += 1;
 		} finally {
 			isSubmitting = false;
 		}
@@ -157,7 +100,7 @@
 			type="text"
 			bind:value={name}
 			disabled={isSubmitting || submitStatus === 'success'}
-			class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+			class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-colors dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-400 dark:border-gray-700"
 			placeholder="Your name"
 			required
 		/>
@@ -172,7 +115,7 @@
 			type="email"
 			bind:value={email}
 			disabled={isSubmitting || submitStatus === 'success'}
-			class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+			class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-colors dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-400 dark:border-gray-700"
 			placeholder="your.email@example.com"
 			required
 		/>
@@ -187,7 +130,7 @@
 			bind:value={website}
 			tabindex="-1"
 			autocomplete="off"
-			class="w-full px-4 py-3 border border-gray-300 rounded-lg"
+			class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder:text-gray-500 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-400 dark:border-gray-700"
 			placeholder="Leave this empty"
 		/>
 	</div>
@@ -201,7 +144,7 @@
 			bind:value={message}
 			disabled={isSubmitting || submitStatus === 'success'}
 			rows="6"
-			class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-colors resize-none"
+			class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-colors resize-none dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-400 dark:border-gray-700"
 			placeholder="Tell us what's on your mind..."
 			required
 		></textarea>
@@ -210,7 +153,27 @@
 	<!-- Turnstile Widget -->
 	{#if TURNSTILE_SITE_KEY}
 		<div class="flex justify-center">
-			<div bind:this={turnstileContainer}></div>
+			{#key turnstileResetKey}
+				<Turnstile
+					siteKey={TURNSTILE_SITE_KEY}
+					theme="auto"
+					on:turnstile-callback={(e) => {
+						turnstileToken = e.detail.token;
+						submitStatus = 'idle';
+						errorMessage = '';
+					}}
+					on:turnstile-error={() => {
+						turnstileToken = null;
+						submitStatus = 'error';
+						errorMessage = 'Security verification failed. Please try again.';
+					}}
+					on:turnstile-expired={() => {
+						turnstileToken = null;
+						submitStatus = 'error';
+						errorMessage = 'Security verification expired. Please try again.';
+					}}
+				/>
+			{/key}
 		</div>
 	{/if}
 
@@ -235,7 +198,7 @@
 
 	<button
 		type="submit"
-		disabled={isSubmitting || submitStatus === 'success'}
+		disabled={isSubmitting || submitStatus === 'success' || (TURNSTILE_SITE_KEY && !turnstileToken)}
 		class="w-full px-6 py-3 bg-ecohubs-primary text-white font-medium rounded-lg hover:bg-ecohubs-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
 	>
 		{#if isSubmitting}

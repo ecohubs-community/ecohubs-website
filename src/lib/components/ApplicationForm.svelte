@@ -5,7 +5,7 @@
 	import { ArrowLeft, ArrowRight, Check, ClockIcon, LoaderCircle, AlertCircle } from 'lucide-svelte';
 	import { fly, fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import type { PageData } from '../../routes/join/$types';
+	import type { PageData } from '../../routes/(web)/join/$types';
 	import { onMount } from 'svelte';
 	import { Turnstile } from 'svelte-turnstile';
 	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
