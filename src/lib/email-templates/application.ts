@@ -465,15 +465,15 @@ export function getApplicationConfirmationHTML(name: string): string {
 			<div class="highlight">
 				<h3>What Happens Next?</h3>
 				<ul style="margin: 0;">
-					<li><strong>Review Process:</strong> Our team will carefully review your application within 7-10 days.</li>
-					<li><strong>Selection:</strong> We're looking for the first 500 founding members who align with our vision for regenerative communities.</li>
+					<li><strong>Review Process:</strong> Our team will carefully review your application within 3-5 days.</li>
+					<li><strong>Selection:</strong> We're looking for the first 500 founding members who align with our vision for making regenerative communities more accessible.</li>
 					<li><strong>You'll Hear From Us:</strong> We'll email you with next steps, whether you're selected for the first cohort.</li>
 				</ul>
 			</div>
 
 			<p><strong>While You Wait...</strong></p>
 			<ul>
-				<li>Explore our <a href="https://blueprint.ecohubs.community" style="color: #059669;">blueprint</a> in detail</li>
+				<li>Explore our <a href="https://blueprint.ecohubs.community" style="color: #059669;">RCOS blueprint</a> in detail</li>
 				<li>Join the conversation on <a href="https://discord.gg/Xnh7247Nq3" style="color: #059669;">Discord</a></li>
 				<li>Follow us on Social Media for updates (links below)</li>
 				<li>Share EcoHubs with others who might be interested</li>
@@ -481,7 +481,7 @@ export function getApplicationConfirmationHTML(name: string): string {
 
 			<p>We believe that regenerative communities are not just possible—they're necessary. Thank you for being part of this vision.</p>
 
-			<p><em>With gratitude,<br>The EcoHubs Team</em></p>
+			<p><em>With gratitude,<br>Stefan from the EcoHubs Team</em></p>
 
 			<center>
 				<a href="https://ecohubs.community/vision" class="button">Explore Our Vision</a>
@@ -513,13 +513,13 @@ Thank you for applying to join the EcoHubs community. Your application has been 
 
 WHAT HAPPENS NEXT?
 
-- Review Process: Our team will carefully review your application within 7-10 days.
-- Selection: We're looking for the first 500 founding members who align with our vision for regenerative communities.
+- Review Process: Our team will carefully review your application within 3-5 days.
+- Selection: We're looking for the first 500 founding members who align with our vision for making regenerative communities more accessible.
 - You'll Hear From Us: We'll email you with next steps, whether you're selected for the first cohort.
 
 WHILE YOU WAIT...
 
-- Explore our blueprint: https://blueprint.ecohubs.community
+- Explore our RCOS blueprint: https://blueprint.ecohubs.community
 - Join the conversation on Discord: https://discord.gg/Xnh7247Nq3
 - Follow us on Social Media for updates (links below)
 - Share EcoHubs with others who might be interested
@@ -527,7 +527,7 @@ WHILE YOU WAIT...
 We believe that regenerative communities are not just possible—they're necessary. Thank you for being part of this vision.
 
 With gratitude,
-The EcoHubs Team
+Stefan from the EcoHubs Team
 
 ---
 EcoHubs.community
