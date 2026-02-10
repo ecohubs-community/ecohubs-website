@@ -243,7 +243,8 @@ export function getContactConfirmationHTML(name: string): string {
 			<p style="margin-top: 16px;">
 				<a href="https://ecohubs.community" style="color: #059669; text-decoration: none;">Website</a> •
 				<a href="https://github.com/ecohubs" style="color: #059669; text-decoration: none;">GitHub</a> •
-				<a href="https://twitter.com/ecohubs" style="color: #059669; text-decoration: none;">Twitter</a>
+				<a href="https://x.com/eco_hubs" style="color: #059669; text-decoration: none;">X</a> •
+				<a href="https://www.instagram.com/ecohubs_community/" style="color: #059669; text-decoration: none;">Instagram</a>
 			</p>
 		</div>
 	</div>
@@ -265,8 +266,9 @@ EcoHubs.community
 Co-Creating the Blueprint for Regenerative Living
 
 Website: https://ecohubs.community
-GitHub: https://github.com/ecohubs
+GitHub: https://github.com/ecohubs-community
 Twitter: https://twitter.com/ecohubs
+Instagram: https://www.instagram.com/ecohubs_community/
 `;
 }
 

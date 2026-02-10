@@ -493,8 +493,9 @@ export function getApplicationConfirmationHTML(name: string): string {
 			<p style="margin-top: 16px;">
 				<a href="https://ecohubs.community" style="color: #059669; text-decoration: none;">Website</a> •
 				<a href="https://mastodon.social/@ecohubs" style="color: #059669; text-decoration: none;">Mastadon</a> •
-				<a href="https://farcaster.xyz/ecohubs" style="color: #059669; text-decoration: none;">Farcaster</a>
-				<a href="https://x.com/eco_hubs" style="color: #059669; text-decoration: none;">X</a>
+				<a href="https://farcaster.xyz/ecohubs" style="color: #059669; text-decoration: none;">Farcaster</a> •
+				<a href="https://x.com/eco_hubs" style="color: #059669; text-decoration: none;">X</a> •
+				<a href="https://www.instagram.com/ecohubs_community/" style="color: #059669; text-decoration: none;">Instagram</a> •
 				<a href="https://github.com/ecohubs-community" style="color: #059669; text-decoration: none;">GitHub</a>
 			</p>
 		</div>
@@ -536,6 +537,7 @@ Website: https://ecohubs.community
 Mastadon: https://mastodon.social/@ecohubs
 Farcaster: https://farcaster.xyz/ecohubs
 X: https://x.com/eco_hubs
+Instagram: https://www.instagram.com/ecohubs_community/
 GitHub: https://github.com/ecohubs-community
 `;
 }

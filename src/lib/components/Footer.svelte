@@ -20,6 +20,7 @@
 		{ href: 'https://mastodon.social/@ecohubs', label: 'Mastodon', icon: "/social-icons/mastodon.svg" },
 		{ href: 'https://farcaster.xyz/ecohubs', label: 'Farcaster', icon: "/social-icons/farcaster.svg" },
 		{ href: 'https://x.com/eco_hubs', label: 'X', icon: "/social-icons/x.svg" },
+		{ href: 'https://www.instagram.com/ecohubs_community/', label: 'Instagram', icon: "/social-icons/instagram.svg" },
 		{ href: 'https://github.com/ecohubs-community', label: 'GitHub', icon: "/social-icons/github.svg" },
 	];
 </script>
