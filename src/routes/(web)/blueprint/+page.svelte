@@ -402,7 +402,7 @@
 			Open Standard
 		</div>
 		<h1 class="font-serif text-3xl sm:text-4xl font-bold leading-tight text-ecohubs-dark md:text-5xl lg:text-6xl">
-			The Blueprint <span class="text-gradient">(RCOS)</span> for Regenerative Communities
+			The Blueprint for Regenerative Communities
 		</h1>
 
 		<p class="mt-4 md:mt-6 text-base md:text-lg leading-relaxed text-gray-600">
@@ -1282,7 +1282,7 @@
 
 			<div class="mt-10 pt-8 border-t border-white/10">
 				<a
-					href="/join"
+					href="/membership"
 					class="block w-full py-4 bg-ecohubs-accent text-white font-bold rounded-xl text-center hover:bg-white hover:text-ecohubs-dark transition-all hover:scale-105 shadow-lg"
 				>
 					Apply for Membership
@@ -1320,7 +1320,7 @@
 
 				<div class="mt-12 flex flex-col sm:flex-row justify-center gap-4">
 					<a
-						href="/join"
+						href="/membership"
 						class="px-8 py-4 bg-ecohubs-primary text-white font-bold rounded-xl hover:bg-ecohubs-dark transition-all hover:scale-105 shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 flex items-center justify-center gap-2"
 					>
 						Join the First 500

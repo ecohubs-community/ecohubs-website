@@ -57,10 +57,16 @@ export const SEO_CONFIG = {
 				'Explore the open-source blueprint for building regenerative communities. A living knowledge system designed for replication and adaptation.',
 			ogImage: '/og-blueprint.jpg'
 		},
-		join: {
-			title: 'Join Us - EcoHubs.community',
+		membership: {
+			title: 'Become a Member - EcoHubs.community',
 			description:
-				'Apply to join EcoHubs.community and be part of the first 500 pioneers building regenerative communities.',
+				'Apply to join our online community collaborating on making regenerative communities more accessible, resilient, and more normal.',
+			ogImage: '/og-membership.jpg'
+		},
+		join: {
+			title: 'Apply - EcoHubs.community',
+			description:
+				'Fill out the application form to join EcoHubs.community and be part of the first 500 pioneers building regenerative communities.',
 			ogImage: '/og-join.jpg'
 		},
 		contact: {
@@ -94,7 +100,8 @@ export const SITE_NAVIGATION = {
 	home: { name: 'Home', path: '/' },
 	vision: { name: 'Vision', path: '/vision', parent: 'home' },
 	blueprint: { name: 'Blueprint', path: '/blueprint', parent: 'home' },
-	join: { name: 'Join', path: '/join', parent: 'home' },
+	membership: { name: 'Membership', path: '/membership', parent: 'home' },
+	join: { name: 'Apply', path: '/join', parent: 'membership' },
 	contact: { name: 'Contact', path: '/contact', parent: 'home' },
 	blog: { name: 'Blog', path: '/blog', parent: 'home' },
 	privacy: { name: 'Privacy', path: '/privacy', parent: 'home' },

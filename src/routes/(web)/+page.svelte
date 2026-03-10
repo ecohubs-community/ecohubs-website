@@ -1,24 +1,13 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import Hero from '$lib/components/Hero.svelte';
-	import GovernanceSection from '$lib/components/GovernanceSection.svelte';
-	import EcosystemSection from '$lib/components/EcosystemSection.svelte';
-	import EcoTokenFeature from '$lib/components/EcoTokenFeature.svelte';
 	import BlueprintCard from '$lib/components/BlueprintCard.svelte';
   	import StefanImage from '$lib/assets/stefan.webp';
-	import MemberGuidedDecisionsImage from '$lib/assets/member-guided-decisions.webp';
-	import SharedStewardshipImage from '$lib/assets/shared-stewardship.webp';
-	import DeliberationSenseMakingImage from '$lib/assets/deliberation-sense-making.webp';
-	import TrustByDesignImage from '$lib/assets/trust-by-design.webp';
-	import ContributionEconomyImage from '$lib/assets/contribution-economy.webp';
 	import {
 		Unlink,
 		Lock,
-		Vote,
 		Users,
-		ShieldCheck,
 		ArrowRight,
-		Shovel,
 		HeartHandshake,
 		BookOpen,
 		MapPin,
@@ -26,13 +15,8 @@
 		Copy,
 		Sprout,
 		UsersRound,
-		MessageCircle,
-		Eye,
 		Repeat,
-		WalletMinimal,
-		CodeXml,
 		TriangleAlert,
-		ChartBar,
 		Compass,
 		Scale,
 		Coins,
@@ -93,7 +77,7 @@
 			icon: "tabler:microscope",
 			title: 'Community-Led Research',
 			description:
-				"Our blueprint (RCOS) grows from practice. Every pilot community becomes a living laboratory where solutions are tested, refined, and shared."
+				"Our blueprint (RCOS) grows from practice. Every pilot project becomes a living laboratory where solutions are tested, refined, and shared."
 		},
 		{
 			icon: "tabler:affiliate",
@@ -106,102 +90,6 @@
 			title: 'Systems Thinking',
 			description:
 				"We design communities as whole systems—where housing, food, water, energy, and culture work together as a resilient living ecosystem."
-		}
-	];
-
-	// Governance Features Data (Updated & Aligned)
-	const governanceFeatures = [
-		{
-			icon: Vote,
-			iconColor: 'text-blue-600',
-			iconBg: 'bg-blue-50',
-			title: 'Member-Guided Decisions',
-			description: 'Key decisions are made together through transparent, gas-free voting.',
-			detailTitle: 'Participation Before Automation',
-			detailDescription:
-				'EcoHubs uses Snapshot to coordinate collective decisions such as new member applications, content publication, and shared direction. Voting is gas-free and accessible, allowing participation without financial or technical barriers. Governance starts with human judgment, supported — not replaced — by tools.',
-			detailImage: MemberGuidedDecisionsImage,
-			detailImageAlt: 'Community voting',
-			buttonText: 'Explore Decisions',
-			buttonBgColor: 'bg-blue-600',
-			buttonIcon: ArrowRight,
-			// buttonHref: '/dao'
-		},
-		{
-			icon: WalletMinimal,
-			iconColor: 'text-amber-600',
-			iconBg: 'bg-amber-50',
-			title: 'Shared Stewardship',
-			description: 'Access, permissions, and influence are earned through contribution.',
-			detailTitle: 'Responsibility Grows With Trust',
-			detailDescription:
-				'Instead of financial stakes or speculation, EcoHubs emphasizes contribution-based authority. Through ecohubsOS and <a href="https://offcoin.space" target="_blank" rel="noopener noreferrer">Offcoin</a>, members earn experience and internal tokens by helping the community. Over time, this unlocks permissions, influence, and responsibility — creating a culture of earned trust rather than assigned power.',
-			detailImage: SharedStewardshipImage,
-			detailImageAlt: 'Stewardship and responsibility',
-			buttonText: 'How Contribution Works',
-			buttonBgColor: 'bg-amber-600',
-			buttonIcon: Eye,
-			// buttonHref: '/contribute'
-		},
-		{
-			icon: Users,
-			iconColor: 'text-purple-600',
-			iconBg: 'bg-purple-50',
-			title: 'Deliberation & Sense-Making',
-			description: 'Decisions emerge through dialogue, not just votes.',
-			detailTitle: 'From Conversation to Coherence',
-			detailDescription:
-				'Before decisions are made, ideas are discussed in member forums and community spaces. We use Flarum and Discord to surface perspectives, refine proposals, and build shared understanding. Voting is the final step — not the first.',
-			detailImage: DeliberationSenseMakingImage,
-			detailImageAlt: 'Group discussion',
-			buttonText: 'Join the Discussion',
-			buttonBgColor: 'bg-purple-600',
-			buttonIcon: MessageCircle,
-			// buttonHref: '/forum'
-		},
-		{
-			icon: ShieldCheck,
-			iconColor: 'text-emerald-600',
-			iconBg: 'bg-emerald-50',
-			title: 'Trust by Design',
-			description: 'Transparency where it matters, flexibility where humans matter.',
-			detailTitle: 'A Conscious Use of Technology',
-			detailDescription:
-				'EcoHubs is not “fully on-chain” — by choice. We use blockchain selectively where transparency, auditability, and fairness add real value. Other parts remain off-chain to preserve nuance, care, and human judgment. Trust here is built through visibility, participation, and shared accountability.',
-			detailImage: TrustByDesignImage,
-			detailImageAlt: 'Technology and trust',
-			buttonText: 'Our Approach to Tech',
-			buttonBgColor: 'bg-emerald-600',
-			buttonIcon: CodeXml,
-			// buttonHref: '/about#technology'
-		}
-	];
-
-	// EcoToken Features Data
-	const ecoTokenFeatures = [
-		{
-			Icon: Shovel,
-			title: 'Earn Through Contribution',
-			description:
-				'Members earn recognition and internal tokens by contributing to the EcoHubs online ecosystem — through research, writing, facilitation, coordination, design, development, or stewardship of shared knowledge.',
-			gradientFrom: 'from-emerald-500',
-			gradientTo: 'to-teal-500'
-		},
-		{
-			Icon: ChartBar,
-			title: 'Unlock Access & Influence',
-			description:
-				'Today, earned tokens and experience unlock access, permissions, and responsibilities within EcoHubs — shaping discussions, initiatives, and the shared blueprint (RCOS). In the future, this model can extend into physical communities and local exchange.',
-			gradientFrom: 'from-amber-400',
-			gradientTo: 'to-orange-500'
-		},
-		{
-			Icon: ShieldCheck,
-			title: 'Designed for Use, Not Speculation',
-			description:
-				'EcoHubs tokens are non-transferable and non-speculative by design. They exist to acknowledge effort, coordinate collaboration, and build trust — not to be traded or accumulated for profit.',
-			gradientFrom: 'from-blue-400',
-			gradientTo: 'to-indigo-500'
 		}
 	];
 
@@ -376,7 +264,7 @@
 			icon: "tabler:network",
 			title: 'Tech + Ecology Fusion',
 			description:
-				"We don't choose between nature and technology. We use blockchain for transparency and trust, while staying grounded in ecological principles.",
+				"We don't choose between nature and technology. We use transparent, decentralized tools for fairness and trust, while staying grounded in ecological principles.",
 			gradientFrom: 'from-blue-50',
 			gradientTo: 'to-indigo-50'
 		},
@@ -384,7 +272,7 @@
 			icon: "tabler:flask",
 			title: 'Real-World Testing',
 			description:
-				"We're not just theorizing. Pilot hubs will test and refine every aspect of the blueprint before scaling globally.",
+				"We're not just theorizing. Pilot projects will test and refine every aspect of the blueprint before scaling globally.",
 			gradientFrom: 'from-purple-50',
 			gradientTo: 'to-pink-50'
 		},
@@ -414,15 +302,9 @@
 		},
 		{
 			phase: 3,
-			title: 'EcoToken Contribution Economy',
+			title: 'Pilot Projects',
 			description:
-				'Introduce a transparent, non-speculative token system that recognizes meaningful work and supports a cooperative internal economy.'
-		},
-		{
-			phase: 4,
-			title: 'Pilot Community Hubs',
-			description:
-				'Launch the first regenerative community hubs, test the blueprint in real conditions, refine it together, and document everything openly for global replication.'
+				'Apply the blueprint through pilot projects at new or existing regenerative communities, test it in real conditions, refine it together, and document everything openly for global replication.'
 		}
 	];
 </script>
@@ -496,7 +378,7 @@
 				<p class="text-gray-600 text-lg mb-6 leading-relaxed">
 					Imagine communities designed like forests—resilient, diverse, and self-sustaining. Our unique blueprint approach combines ecological wisdom with decentralized governance, creating living systems that evolve through real-world practice.
 				</p>
-				<ul class="space-y-4">
+				<ul class="space-y-4 mb-8">
 					<li class="flex items-center gap-3 text-gray-700">
 						<Sprout class="text-ecohubs-primary w-5 h-5" aria-hidden="true" />
 						<span>Ecological Design & Permaculture</span>
@@ -514,6 +396,14 @@
 						<span>Strong Social Fabric & Conflict Resolution</span>
 					</li>
 				</ul>
+				<a
+					href="/vision"
+					class="inline-flex items-center gap-2 text-ecohubs-primary font-medium hover:text-ecohubs-dark transition-colors focus-visible:ring-2 focus-visible:ring-green-400 rounded"
+					data-sveltekit-preload-data="hover"
+				>
+					Learn more about our vision
+					<ArrowRight class="w-4 h-4" aria-hidden="true" />
+				</a>
 			</div>
 		</div>
 	</div>
@@ -536,59 +426,6 @@
 	</div>
 </section>
 
-<!-- Ecosystem Section -->
-<EcosystemSection />
-
-<!-- Governance Section -->
-<section id="governance" class="py-24 md:py-32 relative bg-white">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16 max-w-3xl mx-auto">
-			<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-4">Power to the Community</h2>
-			<p class="text-gray-600">Blockchain technology enables trust without hierarchy. Our <a href="https://en.wikipedia.org/wiki/Decentralized_autonomous_organization" target="_blank" rel="noopener noreferrer">DAO</a>-like (Decentralized Autonomous Organization) ecosystem ensures transparency and collective agency.</p>
-		</div>
-
-		<GovernanceSection features={governanceFeatures} />
-	</div>
-</section>
-
-<!-- EcoToken Section -->
-<section id="ecotoken" class="py-24 md:py-32 bg-white border-y border-gray-100">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-			<div class="order-2 lg:order-1">
-				<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-6">
-					A Contribution Economy That <span class="text-ecohubs-accent">Rewards Real Work</span>
-				</h2>
-				<p class="text-gray-600 mb-8 text-lg">
-					EcoTokens are designed to one day reward real-world regenerative work. Today, we are prototyping this model online through contribution-based recognition.
-				</p>
-
-				<div class="space-y-6">
-					{#each ecoTokenFeatures as feature (feature.title)}
-						<EcoTokenFeature {...feature} />
-					{/each}
-				</div>
-			</div>
-
-			<div class="order-1 lg:order-2">
-				<img
-					src={ContributionEconomyImage}
-					sizes="(max-width: 1024px) 100vw, 50vw"
-					width="1200"
-					height="800"
-					class="rounded-3xl shadow-2xl organic-shape-pebble hover:rotate-1 transition-transform duration-700 object-cover h-96 w-full"
-					alt="Green Growth"
-					loading="lazy"
-				/>
-
-				<div class="text-gray-600 mt-8 text-md">
-					We start by rewarding contributions to shared knowledge and coordination — because strong physical communities begin with strong social foundations.
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
 <!-- Blueprint Section -->
 <section id="blueprint" class="py-24 md:py-32 relative bg-gray-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -603,46 +440,74 @@
 			</p>
 		</div>
 
-		<!-- Masonry Layout -->
-		<!-- Grid Layout: left-to-right, top-to-bottom -->
+		<!-- Grid Layout -->
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 			{#each blueprintCards as card (card.heading)}
 				<BlueprintCard {...card} variant={card.variant as 'default' | 'cta' | undefined} />
 			{/each}
 		</div>
+
+		<!-- Blueprint CTAs -->
+		<div class="mt-16 text-center">
+			<p class="text-sm font-bold text-ecohubs-primary tracking-widest uppercase mb-4">Our First Tangible Outcome</p>
+			<p class="text-gray-600 max-w-xl mx-auto mb-8">
+				The Blueprint is the first real result of our collaborative work — an evolving, open-source document shaped by the community.
+			</p>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a
+					href="/blueprint"
+					class="px-8 py-4 bg-ecohubs-primary text-white font-bold rounded-xl hover:bg-ecohubs-dark transition-all hover:scale-105 shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
+					aria-label="Explore the Blueprint Overview"
+					data-sveltekit-preload-data="hover"
+				>
+					Explore the Blueprint
+					<BookOpen class="w-4 h-4" aria-hidden="true" />
+				</a>
+				<a
+					href="https://blueprint.ecohubs.community"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-ecohubs-primary hover:text-ecohubs-primary hover:scale-105 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
+					aria-label="Read the full Blueprint"
+				>
+					Read the Full Blueprint
+					<ArrowRight class="w-4 h-4" aria-hidden="true" />
+				</a>
+			</div>
+		</div>
 	</div>
 </section>
 
-<!-- Community Hubs Section -->
-<section id="hubs" class="py-24 md:py-32 bg-gray-50">
+<!-- From Vision to Reality Section -->
+<section id="from-vision" class="py-24 md:py-32 bg-gray-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 			<div>
 				<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-6">From Vision to Reality</h2>
 				<p class="text-gray-600 mb-6 text-lg">
-					EcoHubs is not just a theory. We are establishing pilot hubs, to test and refine these models in the real world.
+					EcoHubs is not just a theory. Today, we collaborate online — co-creating the blueprint, building tools, and growing a community of contributors. In the future, we plan to apply our blueprint through pilot projects at new or existing communities.
 				</p>
 				<ul class="space-y-4 mb-8">
 					<li class="flex items-center gap-3 text-gray-700">
-						<MapPin class="text-ecohubs-accent w-5 h-5" aria-hidden="true" />
-						<span>Pilot Sites</span>
-					</li>
-					<li class="flex items-center gap-3 text-gray-700">
 						<Share2 class="text-ecohubs-accent w-5 h-5" aria-hidden="true" />
-						<span>Shared Tools & Methods</span>
+						<span>Online Collaboration & Shared Tools</span>
 					</li>
 					<li class="flex items-center gap-3 text-gray-700">
 						<Copy class="text-ecohubs-accent w-5 h-5" aria-hidden="true" />
 						<span>Scalable, Replicable Designs</span>
 					</li>
+					<li class="flex items-center gap-3 text-gray-700">
+						<MapPin class="text-ecohubs-accent w-5 h-5" aria-hidden="true" />
+						<span>Future Pilot Projects at Real Communities</span>
+					</li>
 				</ul>
 				<a
-					href="/join"
+					href="/membership"
 					class="px-6 py-3 bg-ecohubs-primary text-white rounded-xl font-medium hover:bg-ecohubs-dark hover:scale-105 transition-all inline-flex items-center gap-2 shadow-lg focus-visible:ring-2 focus-visible:ring-green-400"
-					aria-label="Apply to Join Pilot Community"
-			data-sveltekit-preload-data="hover"
-		>
-					Apply to Join Pilot Community <ArrowRight class="w-4 h-4" aria-hidden="true" />
+					aria-label="Become a Member"
+					data-sveltekit-preload-data="hover"
+				>
+					Become a Member <ArrowRight class="w-4 h-4" aria-hidden="true" />
 				</a>
 			</div>
 			<div class="relative">
@@ -697,12 +562,12 @@
 			<div class="max-w-2xl mx-auto">
 				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
 					<a
-						href="/join"
+						href="/membership"
 						class="px-8 py-4 bg-ecohubs-primary text-white font-bold rounded-xl hover:bg-ecohubs-dark transition-all transform hover:-translate-y-1 hover:scale-105 shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
-						aria-label="Apply to Join the First 500"
-			data-sveltekit-preload-data="hover"
-		>
-						Apply to Join the First 500
+						aria-label="Become a Member"
+						data-sveltekit-preload-data="hover"
+					>
+						Become a Member
 						<ArrowRight class="w-4 h-4" aria-hidden="true" />
 					</a>
 		<a
@@ -773,7 +638,7 @@
 <section id="roadmap" class="py-16 md:py-24 lg:py-32 relative bg-gray-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-10 md:mb-16">
-			<h2 class="text-3xl md:text-4xl font-serif font-bold text-ecohubs-dark mb-4">Roadmap to First Community</h2>
+			<h2 class="text-3xl md:text-4xl font-serif font-bold text-ecohubs-dark mb-4">Our Roadmap</h2>
 			<p class="text-gray-600 max-w-2xl mx-auto">A clear path from vision to reality. Here's where we're heading.</p>
 		</div>
 
@@ -829,12 +694,12 @@
 		</p>
 		<div class="flex flex-col sm:flex-row justify-center gap-4">
 			<a
-				href="/join"
+				href="/membership"
 				class="px-8 py-4 bg-ecohubs-accent text-white font-bold rounded-xl hover:bg-white hover:text-ecohubs-dark transition-all transform hover:-translate-y-1 hover:scale-105 hover:rotate-1 shadow-xl shadow-orange-900/20 hover:shadow-orange-900/40 focus-visible:ring-2 focus-visible:ring-orange-400"
-				aria-label="Apply for Membership"
+				aria-label="Become a Member"
 				data-sveltekit-preload-data="hover"
 			>
-				Apply for Membership
+				Become a Member
 			</a>
 			<a
 				href='/EcoHubs_Manifesto.pdf'

@@ -15,7 +15,7 @@
 		// { href: '/dao', label: 'DAO' },
 		// { href: '/ecotoken', label: 'EcoToken' },
 		{ href: '/blueprint', label: 'Blueprint (RCOS)' },
-		{ href: '/join', label: 'Join' },
+		{ href: '/membership', label: 'Membership' },
 		{ href: '/blog', label: 'Blog' }
 	];
 
@@ -67,12 +67,12 @@
 			<!-- CTA Button (Desktop) + Mobile Menu Button -->
 			<div class="flex items-center gap-4">
 				<a
-					href="/join"
+					href="/membership"
 					class="hidden md:flex items-center gap-2 bg-ecohubs-dark text-white px-6 py-2.5 rounded-full font-sans text-sm font-medium transition-all duration-300 hover:bg-ecohubs-primary hover:shadow-lg hover:shadow-emerald-900/20 transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-green-400"
-					aria-label="Join Community"
+					aria-label="Become a Member"
 					data-sveltekit-preload-data="hover"
 				>
-					<span class="hidden lg:block">Join Community</span>
+					<span class="hidden lg:block">Become a Member</span>
 					<span class="block lg:hidden">Join</span>
 					<ArrowRight class="h-4 w-4" aria-hidden="true" />
 				</a>
@@ -109,12 +109,12 @@
 					</a>
 				{/each}
 				<a
-					href="/join"
+					href="/membership"
 					class="block px-4 py-3 bg-ecohubs-primary text-white text-center rounded-lg font-medium hover:bg-ecohubs-dark transition-colors focus-visible:ring-2 focus-visible:ring-green-400"
 					onclick={() => (mobileMenuOpen = false)}
 					data-sveltekit-preload-data="hover"
 				>
-					Join Community
+					Become a Member
 				</a>
 			</div>
 		</div>

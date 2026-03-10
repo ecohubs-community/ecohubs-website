@@ -501,7 +501,7 @@
 			</a>
 
 			<a
-				href="/join"
+				href="/membership"
 				class="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-ecohubs-primary hover:text-ecohubs-primary hover:scale-105 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
 				aria-label="Join the Community"
 				data-sveltekit-preload-data="hover"
@@ -1193,7 +1193,7 @@
 					</a>
 
 					<a
-						href="/join"
+						href="/membership"
 						class="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-ecohubs-primary hover:text-ecohubs-primary hover:scale-105 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
 						aria-label="Join the Community"
 						data-sveltekit-preload-data="hover"

@@ -36,7 +36,7 @@
       hoverTextColor: 'text-blue-600',
       title: 'Application Form',
       description: 'Selective membership process. We welcome aligned contributors who share our vision for regenerative communities.',
-      link: {href: 'https://ecohubs.community/join', target: '_self'},
+      link: {href: 'https://ecohubs.community/membership', target: '_self'},
       category: 'onboarding'
     },
     {

@@ -53,7 +53,7 @@
 				</div>
 				<h3 class="font-bold text-gray-900 mb-2">Join Our Community</h3>
 				<p class="text-sm text-gray-600 mb-3">Be part of the first 500</p>
-				<a href="/join" class="text-ecohubs-primary hover:underline">
+				<a href="/membership" class="text-ecohubs-primary hover:underline">
 					Apply Now
 				</a>
 			</div>

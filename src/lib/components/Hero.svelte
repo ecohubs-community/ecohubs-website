@@ -96,12 +96,12 @@
 
 				<div bind:this={heroCta} class="mt-12 flex flex-col sm:flex-row gap-4 opacity-0">
 					<a
-						href="/join"
+						href="/membership"
 						class="px-8 py-4 bg-ecohubs-primary text-white font-medium rounded-xl hover:bg-ecohubs-dark transition-all shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 hover:scale-105 hover:rotate-1 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400"
-						aria-label="Join the First 500 Pioneers"
+						aria-label="Become a Member"
 						data-sveltekit-preload-data="hover"
 					>
-						Join the First 500 Pioneers
+						Become a Member
 						<Users class="h-4 w-4" aria-hidden="true" />
 					</a>
 					<a

@@ -11,7 +11,7 @@
 		// { href: '/ecotoken', label: 'EcoToken' },
 		{ href: '/vision', label: 'Vision' },
 		{ href: '/blog', label: 'Blog' },
-		{ href: '/join', label: 'Join' },
+		{ href: '/membership', label: 'Membership' },
 		{ href: '/contact', label: 'Contact' }
 	];
 
