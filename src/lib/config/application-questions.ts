@@ -43,8 +43,8 @@ export const applicationQuestions: Question[] = [
 	{
 		id: 'location',
 		type: 'text',
-		question: 'Country / Location',
-		placeholder: 'e.g., Ecuador, Berlin, Germany',
+		question: 'Where are you currently based?',
+		placeholder: 'e.g., Ecuador, Berlin, Nomadic, Worldwide',
 		required: true,
 		page: 1,
 		validationSchema: z.string().min(2),

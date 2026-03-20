@@ -33,13 +33,27 @@
 			</div>
 		</div>
 
+		<div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+			<div class="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-xl border border-gray-100 text-sm text-gray-600">
+				<svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+				No wallet needed to apply
+			</div>
+			<div class="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-xl border border-gray-100 text-sm text-gray-600">
+				<svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+				No credit card ever required
+			</div>
+		</div>
+
 		<div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 lg:p-12">
 			<ApplicationForm {data} />
 		</div>
 
-		<div class="mt-12 text-center">
+		<div class="mt-12 text-center space-y-2">
 			<p class="text-sm text-gray-500">
 				<strong>Note:</strong> Completing this application does not guarantee membership. We're carefully selecting founding members who align with our values and can actively contribute to co-creating the blueprint.
+			</p>
+			<p class="text-sm text-gray-400">
+				A digital wallet will be needed during onboarding after acceptance — we'll guide you through it.
 			</p>
 		</div>
 	</div>
