@@ -30,6 +30,56 @@
 	import BoxInfoCard from '$lib/components/BoxInfoCard.svelte';
 	import PersonaCard from '$lib/components/PersonaCard.svelte';
 	import ColoredCard from '$lib/components/ColoredCard.svelte';
+	import Faq from '$lib/components/Faq.svelte';
+
+	// FAQ Data
+	const homeFaq = [
+		{
+			question: 'What is EcoHubs?',
+			answer: 'EcoHubs is an **online community** collaborating on an open-source blueprint for regenerative communities. We bring together permaculturists, community builders, developers, and regenerative thinkers to co-create better ways of living together.'
+		},
+		{
+			question: 'Is EcoHubs a physical community or ecovillage?',
+			answer: 'Not yet. Right now, EcoHubs is an **online-first community**. We are collaborating on the blueprint (RCOS) together. In the future, we plan to apply it through pilot projects at new or existing communities.'
+		},
+		{
+			question: 'What is the Blueprint (RCOS)?',
+			answer: 'The Blueprint, formally called **RCOS** (Regenerative Community Operating System), is a shared, open standard that helps communities make their structure explicit: how decisions are made, how people join and leave, how resources are managed, and how the community evolves over time.'
+		},
+		{
+			question: 'How can I get involved?',
+			answer: 'You can [apply for membership](/membership) and join our online community. Members contribute through research, writing, design, development, facilitation, and more. Every contribution shapes the blueprint.'
+		},
+		{
+			question: "Is EcoHubs a real project or just an idea / vision?",
+			answer: "EcoHubs is not just a conceptual vision. It is structured as a phased initiative moving from **community formation → blueprint development → real-world pilot hubs**.\n\nThe project explicitly states that physical pilot communities will be launched to **test, refine, and validate the model in real conditions**, with all learnings fed back into the open-source blueprint.\n\nThis means:\n- The current phase is **co-creation and coordination**\n- The goal is **real-world implementation**, not just theory\n- The blueprint evolves through **practice, not speculation**"
+		},
+		{
+			question: "Is this just another crypto/DAO project trying to use blockchain for everything?",
+			answer: "No. While EcoHubs uses blockchain-based tools, it is **not a speculative crypto project**.\n\nKey distinctions:\n- Tokens are **non-transferable and non-speculative**\n- They are used to **recognize contributions**, not to generate profit\n- Governance focuses on **transparency and participation**, not financialization\n\nBlockchain is treated as **infrastructure for coordination and trust**, not as the core purpose of the project."
+		},
+		
+		{
+			question: "How is this different from existing ecovillages or intentional communities?",
+			answer: "EcoHubs differentiates itself in three main ways:\n\n1. **Open-source blueprint**  \n   Most communities operate with implicit or undocumented systems. EcoHubs aims to document everything transparently so it can be replicated and improved.\n\n2. **Integrated systems design**  \n   It combines ecology, governance, economy, and culture into a **single coherent system**, rather than treating them separately.\n\n3. **Digital coordination layer**  \n   It uses tools (DAO, forums, apps) to enable **scalable collaboration and shared learning across communities**.\n\nThe goal is not just to build one community, but to create a **replicable model for many**."
+		},
+		{
+			question: "Is the goal to replace existing society or to create an alternative within it?",
+			answer: "EcoHubs does not position itself as a replacement for society, but as a **parallel model** that can evolve and expand.\n\nIt focuses on:\n- Prototyping **regenerative ways of living**\n- Demonstrating viable alternatives\n- Allowing gradual adoption and adaptation\n\nThis approach avoids ideological confrontation and instead focuses on **practical, working examples**."
+		},
+		{
+			question: "How do people earn a living in an EcoHubs community?",
+			answer: "EcoHubs envisions a **hybrid economic model**:\n\n- **Internal contribution economy** (EcoTokens): recognizing work inside the community\n- **External income** (USD or local currencies): through remote work, services, or local production\n\nThe system is designed to:\n- Reduce dependence on extractive systems over time\n- Enable **local circular economies**\n- Transition gradually rather than requiring immediate full self-sufficiency"
+		},
+		// {
+		// 	question: "What prevents this from becoming chaotic or poorly governed?",
+		// 	answer: "EcoHubs emphasizes **structured governance design**, not informal consensus.\n\nKey elements include:\n- Transparent decision-making systems (DAO-based voting)\n- Defined roles and permissions based on contribution\n- Deliberation processes before decisions\n- Built-in conflict resolution and social frameworks\n\nThe intention is to balance:\n- **Clarity and structure**\n- **Human flexibility and dialogue**"
+		// },
+		{
+			question: "Is this only for idealistic people, or is it practical and grounded?",
+			answer: "While the vision is ambitious, the approach is intentionally practical:\n\n- Focus on **tested regenerative practices** (permaculture, water systems, energy systems)\n- Real-world pilot hubs to validate ideas\n- Incremental development rather than instant perfection\n\nThe project explicitly acknowledges that many past communities failed due to lack of structure, and aims to **address those gaps systematically**."
+		}
+	];
 
 	// Why We Need New Models Data
 	const whyCards = [
@@ -314,6 +364,7 @@
 	description="Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities. Be part of the first 500."
 	ogImage="/og-home.jpg"
 	breadcrumbs={[{ name: 'Home', url: 'https://ecohubs.community' }]}
+	faq={homeFaq}
 />
 
 <Hero />
@@ -633,6 +684,9 @@
 		</div>
 	</div>
 </section>
+
+<!-- FAQ Section -->
+<Faq title="Frequently Asked Questions" items={homeFaq} />
 
 <!-- Roadmap Section -->
 <section id="roadmap" class="py-16 md:py-24 lg:py-32 relative bg-gray-50">

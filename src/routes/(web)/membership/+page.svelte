@@ -8,6 +8,7 @@
 	import DeliberationSenseMakingImage from '$lib/assets/deliberation-sense-making.webp';
 	import TrustByDesignImage from '$lib/assets/trust-by-design.webp';
 	import ContributionEconomyImage from '$lib/assets/contribution-economy.webp';
+	import Faq from '$lib/components/Faq.svelte';
 	import {
 		Vote,
 		Users,
@@ -118,6 +119,46 @@
 			gradientTo: 'to-indigo-500'
 		}
 	];
+
+	// FAQ Data
+	const membershipFaq = [
+		{
+			question: 'What does membership involve?',
+			answer: 'Members participate in an **online community** — contributing to the blueprint (RCOS), joining discussions, voting on proposals, and collaborating on shared tools. It is not a physical community membership.'
+		},
+		{
+			question: 'How long does the application process take?',
+			answer: 'After you submit your application, it goes through a **3-day community review and vote**. You will be notified of the outcome by email.'
+		},
+		{
+			question: 'Is there a membership fee?',
+			answer: 'No. Membership is **free and contribution-based**. You earn recognition and access through active participation, not financial payment.'
+		},
+		{
+			question: "Do I need to be technical or understand Web3 to participate?",
+			answer: "No. EcoHubs is intentionally designed to include people from **diverse backgrounds**, including:\n\n- Permaculturists and land stewards\n- Community builders\n- Designers, educators, facilitators\n- Developers and Web3 contributors\n\nTechnology is meant to **support coordination**, not create barriers. Participation is based on contribution, not technical expertise."
+		},
+		{
+			question: 'What kind of contributions are valued?',
+			answer: 'We value **many forms of contribution**: research, writing, facilitation, coordination, design, development, stewardship of shared knowledge, and community building. There is no single expected skill set.'
+		},
+		{
+			question: 'Can I leave the community at any time?',
+			answer: 'Yes. Membership is voluntary. You can step back or exit at any time. Our blueprint includes **clear exit paths** as part of its membership design.'
+		},
+		{
+			question: 'What tools does the community use?',
+			answer: 'We use [ecohubsOS](https://os.ecohubs.community), Snapshot for voting, Flarum and Discord for discussions, and collaborative documents for blueprint development.'
+		},
+		{
+			question: "Is joining early risky, and what do I actually gain as a pioneer?",
+			answer: "Yes — early participation carries uncertainty, but also influence.\n\nPotential gains:\n- Ability to **shape the blueprint and systems**\n- Early access to roles, responsibilities, and decision-making\n- Stronger relationships with aligned people\n\nTrade-offs:\n- Systems are still evolving\n- Not all structures are finalized\n\nThis is positioned as a **co-creation phase**, not a finished product."
+		},
+		{
+			question: "Who controls the project today, and how decentralized is it really?",
+			answer: "Currently, EcoHubs is in an **early-stage founder-led phase**, transitioning toward community governance.\n\nPlanned trajectory:\n1. Founder-led coordination (early stage)\n2. Community co-creation of systems\n3. Increasing decentralization via DAO governance\n\nThis acknowledges a practical reality: full decentralization is **not immediate**, but a process."
+		}
+	];
 </script>
 
 <SEO
@@ -127,6 +168,7 @@
 		{ name: 'Home', url: 'https://ecohubs.community' },
 		{ name: 'Membership', url: 'https://ecohubs.community/membership' }
 	]}
+	faq={membershipFaq}
 />
 
 <!-- Hero Section -->
@@ -327,6 +369,9 @@
 		</div>
 	</div>
 </section>
+
+<!-- FAQ Section -->
+<Faq title="Frequently Asked Questions" items={membershipFaq} />
 
 <!-- Final CTA Section -->
 <section class="py-24 md:py-32 relative overflow-hidden">

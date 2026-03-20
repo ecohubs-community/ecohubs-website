@@ -6,6 +6,39 @@
 	import { fade, fly, scale } from 'svelte/transition';
 	import BluePrintCommunity from '$lib/assets/blueprint-community.webp';
 	import BluePrintCommunity2 from '$lib/assets/blueprint-community-2.webp';
+	import Faq from '$lib/components/Faq.svelte';
+
+	// FAQ Data
+	const blueprintFaq = [
+		{
+			question: 'What is the Blueprint (RCOS)?',
+			answer: 'The Blueprint, formally called **RCOS** (Regenerative Community Operating System), is an open standard for designing and operating communities with clear structure across membership, governance, resources, conflict, operations, and evolution.'
+		},
+		{
+			question: 'What is RCOS not?',
+			answer: 'It is **not software**, not a DAO product, and not a fixed ideology. It does not replace human judgment — it helps communities make assumptions explicit and reviewable.'
+		},
+		{
+			question: 'What are the RCOS core layers?',
+			answer: 'RCOS is organized into **seven layers**: Purpose & Scope, Membership, Governance, Economy & Resources, Conflict/Repair/Accountability, Operations & Coordination, and Evolution & Adaptation.'
+		},
+		{
+			question: 'What are modules?',
+			answer: 'Modules are **optional extensions** that apply RCOS to specific domains (like food systems, housing, land stewardship, or education) without changing the core rules.'
+		},
+		{
+			question: 'How can I contribute to the Blueprint?',
+			answer: 'You can write or improve articles, review and discuss proposals, document experiments from real communities, or propose new modules. Contributions require [EcoHubs membership](/membership) to help keep the standard coherent.'
+		},
+		{
+			question: 'Can I use the Blueprint for my own community?',
+			answer: 'Yes. The Blueprint is **open-source** and designed to be adapted. You can adopt specific layers or modules that fit your needs without using the entire system.'
+		},
+		{
+			question: "Why should I trust that this will succeed when many intentional communities fail?",
+			answer: "EcoHubs is explicitly built around learning from past failures:\n\nCommon failure points it addresses:\n- Lack of clear governance\n- Weak economic models\n- Poor conflict resolution\n- Knowledge not being documented or transferable\n\nIts strategy is to:\n- Treat each community as a **learning system**\n- Document failures and adaptations openly\n- Iterate continuously rather than assuming a perfect design upfront"
+		}
+	];
 
 	// ============================================
 	// SECTION 2: The Problem - Lost Knowledge
@@ -1214,6 +1247,9 @@
 		{/each}
 	</div>
 </Section>
+
+<!-- FAQ Section -->
+<Faq title="Frequently Asked Questions" items={blueprintFaq} />
 
 <!-- ============================================
      SECTION 9: HOW TO CONTRIBUTE
