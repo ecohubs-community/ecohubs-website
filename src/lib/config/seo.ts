@@ -33,7 +33,8 @@ export const SEO_CONFIG = {
 			'https://farcaster.xyz/ecohubs',
 			'https://discord.gg/Xnh7247Nq3',
 			'https://facebook.com/ecohubscommunity',
-			'https://x.com/eco_hubs'
+			'https://x.com/eco_hubs',
+			'https://www.linkedin.com/company/ecohubs/'
 		]
 	},
 
