@@ -46,6 +46,14 @@
 			question: 'What is the Blueprint (RCOS)?',
 			answer: 'The Blueprint, formally called **RCOS** (Regenerative Community Operating System), is a shared, open standard that helps communities make their structure explicit: how decisions are made, how people join and leave, how resources are managed, and how the community evolves over time.'
 		},
+		 {
+			question: "How is EcoHubs funded?",
+			answer: "EcoHubs uses a **hybrid funding model** designed to stay aligned with its regenerative and non-speculative principles.\n\nCurrent and planned funding sources include:\n\n- **Grants** from foundations, Web3 ecosystems, and impact organizations  \n- **Private funding** (currently covering core costs such as hosting and domain expenses)  \n- **Community contributions** (time, skills, and resources)  \n- **Partnerships and collaborations** with aligned projects  \n- **Future revenue streams**, such as onboarding support, tools, or educational programs\n\nThe goal is to fund development without relying on extractive or purely profit-driven models, while maintaining **transparency and alignment with community values**."
+		},
+		{
+			question: "Can I donate to EcoHubs?",
+			answer: "Yes — EcoHubs welcomes support from people who resonate with the vision.\n\nDonations help fund:\n\n- Development of the open-source platform and blueprint  \n- Coordination and community-building efforts  \n- Pilot hubs and real-world implementation  \n- Ongoing operational costs (currently also supported through private funding, such as hosting and domain expenses)\n\nAs the project evolves, clearer donation channels and transparency mechanisms (e.g. public tracking of funds) are being established.\n\nIf you're interested in contributing, you can also support EcoHubs through:\n- **Time and skills**  \n- **Collaboration or partnerships**  \n- **Helping grow the community**\n\nFinancial support is just one of many valuable ways to contribute."
+		},
 		{
 			question: 'How can I get involved?',
 			answer: 'You can [apply for membership](/membership) and join our online community. Members contribute through research, writing, design, development, facilitation, and more. Every contribution shapes the blueprint.'
