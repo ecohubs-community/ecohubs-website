@@ -25,7 +25,13 @@
 		Rocket,
 		Globe,
 		Sprout,
-		Target
+		Target,
+		Mail,
+		Share2,
+		PenLine,
+		Compass,
+		Lightbulb,
+		BookOpen
 	} from 'lucide-svelte';
 
 	// Governance Features Data
@@ -157,6 +163,112 @@
 		{
 			question: "Who controls the project today, and how decentralized is it really?",
 			answer: "Currently, EcoHubs is in an **early-stage founder-led phase**, transitioning toward community governance.\n\nPlanned trajectory:\n1. Founder-led coordination (early stage)\n2. Community co-creation of systems\n3. Increasing decentralization via DAO governance\n\nThis acknowledges a practical reality: full decentralization is **not immediate**, but a process."
+		}
+	];
+
+	// Contribution Areas Data
+	const contributionAreas = [
+		{
+			icon: Mail,
+			title: 'Coordinate Community Updates',
+			description: 'Help keep members informed through newsletters, announcements, and internal communications that connect the community.',
+			iconColor: 'text-blue-600',
+			iconBg: 'bg-blue-50',
+			barColor: 'bg-blue-400',
+			size: 'wide',
+			illustration: `<svg class="w-28 h-28 opacity-60" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+				<rect x="35" y="42" width="50" height="36" rx="4" stroke="#93c5fd" stroke-width="2" fill="#dbeafe" fill-opacity="0.5"/>
+				<path d="M35 46l25 18 25-18" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+				<circle cx="20" cy="30" r="6" fill="#bfdbfe" stroke="#93c5fd" stroke-width="1.5"/>
+				<circle cx="100" cy="30" r="6" fill="#bfdbfe" stroke="#93c5fd" stroke-width="1.5"/>
+				<circle cx="16" cy="90" r="5" fill="#bfdbfe" stroke="#93c5fd" stroke-width="1.5"/>
+				<circle cx="104" cy="90" r="5" fill="#bfdbfe" stroke="#93c5fd" stroke-width="1.5"/>
+				<path d="M26 33 L38 44" stroke="#93c5fd" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.7"/>
+				<path d="M94 33 L82 44" stroke="#93c5fd" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.7"/>
+				<path d="M20 85 L38 74" stroke="#93c5fd" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.7"/>
+				<path d="M100 85 L82 74" stroke="#93c5fd" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.7"/>
+				<circle cx="78" cy="42" r="7" fill="#3b82f6" fill-opacity="0.15"/>
+				<circle cx="78" cy="42" r="4" fill="#60a5fa" fill-opacity="0.4"/>
+			</svg>`
+		},
+		{
+			icon: Users,
+			title: 'Facilitate Conversations & Workshops',
+			description: 'Guide discussions, host workshops, and support pilot communities in applying the RCOS blueprint. Create spaces for meaningful dialogue and collaborative sense-making.',
+			iconColor: 'text-purple-600',
+			iconBg: 'bg-purple-50',
+			barColor: 'bg-purple-400',
+			size: 'tall',
+			illustration: `<svg class="w-32 h-32 opacity-50" viewBox="0 0 140 140" fill="none" aria-hidden="true">
+				<circle cx="70" cy="70" r="38" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+				<circle cx="70" cy="30" r="8" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.5"/>
+				<circle cx="70" cy="30" r="3.5" fill="#a78bfa" fill-opacity="0.5"/>
+				<circle cx="104" cy="52" r="8" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.5"/>
+				<circle cx="104" cy="52" r="3.5" fill="#a78bfa" fill-opacity="0.5"/>
+				<circle cx="104" cy="88" r="8" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.5"/>
+				<circle cx="104" cy="88" r="3.5" fill="#a78bfa" fill-opacity="0.5"/>
+				<circle cx="70" cy="110" r="8" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.5"/>
+				<circle cx="70" cy="110" r="3.5" fill="#a78bfa" fill-opacity="0.5"/>
+				<circle cx="36" cy="88" r="8" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.5"/>
+				<circle cx="36" cy="88" r="3.5" fill="#a78bfa" fill-opacity="0.5"/>
+				<circle cx="36" cy="52" r="8" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.5"/>
+				<circle cx="36" cy="52" r="3.5" fill="#a78bfa" fill-opacity="0.5"/>
+				<path d="M58 62 Q60 56 68 56 L72 56 Q80 56 82 62 Q84 68 80 72 L78 74 L74 78 L72 74 L68 74 Q60 74 58 68 Z" fill="#c4b5fd" fill-opacity="0.35" stroke="#a78bfa" stroke-width="1"/>
+			</svg>`
+		},
+		{
+			icon: Share2,
+			title: 'Connect People & Communities',
+			description: 'Bridge relationships between members, communities, and aligned organizations to grow the ecosystem.',
+			iconColor: 'text-teal-600',
+			iconBg: 'bg-teal-50',
+			barColor: 'bg-teal-400',
+			size: 'default'
+		},
+		{
+			icon: PenLine,
+			title: 'Create Stories & Content',
+			description: 'Write articles, create social media content, and craft narratives that bring our shared vision to life.',
+			iconColor: 'text-amber-600',
+			iconBg: 'bg-amber-50',
+			barColor: 'bg-amber-400',
+			size: 'default'
+		},
+		{
+			icon: Compass,
+			title: 'Shape the RCOS Blueprint',
+			description: 'Co-design the regenerative community operating system — propose improvements and evolve the framework together.',
+			iconColor: 'text-emerald-600',
+			iconBg: 'bg-emerald-50',
+			barColor: 'bg-emerald-400',
+			size: 'default'
+		},
+		{
+			icon: CodeXml,
+			title: 'Build Digital Tools',
+			description: 'Develop the platforms, integrations, and open-source tools that power the EcoHubs ecosystem.',
+			iconColor: 'text-indigo-600',
+			iconBg: 'bg-indigo-50',
+			barColor: 'bg-indigo-400',
+			size: 'default'
+		},
+		{
+			icon: Lightbulb,
+			title: 'Design Strategy & Initiatives',
+			description: 'Shape creative direction, plan initiatives, and translate vision into structured, actionable next steps.',
+			iconColor: 'text-rose-600',
+			iconBg: 'bg-rose-50',
+			barColor: 'bg-rose-400',
+			size: 'wide'
+		},
+		{
+			icon: BookOpen,
+			title: 'Research Regenerative Models',
+			description: 'Investigate best practices, analyze existing communities, and contribute evidence-based insights on regenerative living.',
+			iconColor: 'text-orange-600',
+			iconBg: 'bg-orange-50',
+			barColor: 'bg-orange-400',
+			size: 'wide'
 		}
 	];
 </script>
@@ -366,6 +478,96 @@
 					</p>
 				</div>
 			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Ways You Can Contribute -->
+<section id="contribute" class="py-24 md:py-32 relative overflow-hidden">
+	<div class="absolute inset-0 bg-gradient-to-b from-emerald-50/30 via-white to-amber-50/20"></div>
+	<div class="absolute top-20 -left-32 w-64 h-64 bg-emerald-100/40 rounded-full blur-3xl"></div>
+	<div class="absolute bottom-20 -right-32 w-64 h-64 bg-amber-100/30 rounded-full blur-3xl"></div>
+
+	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="text-center mb-16 max-w-3xl mx-auto">
+			<h2 class="text-4xl font-serif font-bold text-ecohubs-dark mb-4">Ways You Can Contribute</h2>
+			<p class="text-gray-600 text-lg leading-relaxed">
+				There are no fixed roles here — just a wide range of ways to get involved. Browse what resonates with your skills and interests, and shape your own path within the community.
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 lg:[grid-auto-flow:dense]">
+			{#each contributionAreas as area (area.title)}
+				{@const isWide = area.size === 'wide'}
+				{@const isTall = area.size === 'tall'}
+				<div
+					class="rounded-2xl overflow-hidden bg-white/80 backdrop-blur-sm shadow-[0_4px_20px_-5px_rgba(0,0,0,0.08)] border border-gray-100 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300
+						{isWide ? 'md:col-span-2 lg:col-span-2' : ''}
+						{isTall ? 'lg:row-span-2' : ''}"
+				>
+					<div class="h-1 {area.barColor}"></div>
+					{#if isWide}
+						<!-- Wide card: horizontal on md+, vertical on mobile -->
+						<div class="p-6 lg:p-8 flex flex-col md:flex-row md:items-start md:gap-5">
+							<div class="w-12 h-12 md:w-14 md:h-14 {area.iconBg} rounded-xl flex items-center justify-center {area.iconColor} shrink-0 mb-4 md:mb-0">
+								<svelte:component this={area.icon} class="w-6 h-6 md:w-7 md:h-7" aria-hidden="true" />
+							</div>
+							<div class="flex-1">
+								<h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2">{area.title}</h3>
+								<p class="text-gray-600 text-sm leading-relaxed">{area.description}</p>
+							</div>
+							{#if area.illustration}
+								<div class="hidden lg:flex items-center justify-center shrink-0">
+									{@html area.illustration}
+								</div>
+							{/if}
+						</div>
+					{:else if isTall}
+						<!-- Tall card: vertical, extra room on lg -->
+						<div class="p-6 lg:p-8 flex flex-col lg:h-full">
+							<div class="w-12 h-12 lg:w-14 lg:h-14 {area.iconBg} rounded-xl flex items-center justify-center {area.iconColor} mb-4 lg:mb-5">
+								<svelte:component this={area.icon} class="w-6 h-6 lg:w-7 lg:h-7" aria-hidden="true" />
+							</div>
+							<h3 class="text-lg lg:text-xl font-serif font-bold text-gray-900 mb-2 lg:mb-3">{area.title}</h3>
+							<p class="text-gray-600 text-sm leading-relaxed">{area.description}</p>
+							{#if area.illustration}
+								<div class="hidden md:flex mt-auto pt-6 items-center justify-center">
+									{@html area.illustration}
+								</div>
+							{/if}
+						</div>
+					{:else}
+						<!-- Standard card -->
+						<div class="p-6">
+							<div class="w-12 h-12 {area.iconBg} rounded-xl flex items-center justify-center {area.iconColor} mb-4">
+								<svelte:component this={area.icon} class="w-6 h-6" aria-hidden="true" />
+							</div>
+							<h3 class="text-lg font-serif font-bold text-gray-900 mb-2">{area.title}</h3>
+							<p class="text-gray-600 text-sm leading-relaxed">{area.description}</p>
+							{#if area.illustration}
+								<div class="hidden md:flex mt-4 items-center justify-center">
+									{@html area.illustration}
+								</div>
+							{/if}
+						</div>
+					{/if}
+				</div>
+			{/each}
+		</div>
+
+		<div class="mt-16 text-center max-w-2xl mx-auto">
+			<p class="text-gray-500 leading-relaxed mb-6">
+				These aren't fixed roles — they're starting points. Many members contribute across multiple areas, and your path will evolve as you get involved. After you become a member, reach out on Discord, our forum, or by email — an existing member will help you find your way in.
+			</p>
+			<a
+				href="/join"
+				class="inline-flex items-center gap-2 px-8 py-4 bg-ecohubs-primary text-white font-bold rounded-xl hover:bg-ecohubs-dark transition-all transform hover:-translate-y-1 hover:scale-105 shadow-lg shadow-emerald-600/20 focus-visible:ring-2 focus-visible:ring-green-400"
+				aria-label="Start Your Application"
+				data-sveltekit-preload-data="hover"
+			>
+				Start Your Application
+				<ArrowRight class="w-5 h-5" aria-hidden="true" />
+			</a>
 		</div>
 	</div>
 </section>
