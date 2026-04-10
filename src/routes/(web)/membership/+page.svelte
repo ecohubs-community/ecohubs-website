@@ -466,25 +466,12 @@
 			</div>
 		</div>
 
-		<div class="mt-12 bg-gray-50 p-8 rounded-2xl border border-gray-100">
-			<div class="flex items-start gap-4">
-				<div class="shrink-0 w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-					<Sprout class="w-6 h-6 text-blue-600" aria-hidden="true" />
-				</div>
-				<div>
-					<h3 class="text-xl font-bold text-gray-900 mb-2">What We're Looking For</h3>
-					<p class="text-gray-600 leading-relaxed">
-						We welcome researchers, designers, developers, writers, facilitators, permaculturists, community builders, and anyone committed to co-creating regenerative ways of living. If you believe in transparent governance, contribution-based collaboration, and designing systems that work with nature — you belong here.
-					</p>
-				</div>
-			</div>
-		</div>
 	</div>
 </section>
 
 <!-- Ways You Can Contribute -->
 <section id="contribute" class="py-24 md:py-32 relative overflow-hidden">
-	<div class="absolute inset-0 bg-gradient-to-b from-emerald-50/30 via-white to-amber-50/20"></div>
+	<div class="absolute inset-0 bg-linear-to-b from-emerald-50/30 via-white to-amber-50/20"></div>
 	<div class="absolute top-20 -left-32 w-64 h-64 bg-emerald-100/40 rounded-full blur-3xl"></div>
 	<div class="absolute bottom-20 -right-32 w-64 h-64 bg-amber-100/30 rounded-full blur-3xl"></div>
 
