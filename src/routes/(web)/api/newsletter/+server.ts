@@ -138,11 +138,6 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 				});
 			} catch (error) {
 				console.error('Listmonk subscription error:', error);
-				// Don't silently fall through - re-throw if it's a known error
-				if (error instanceof Error && error.message.includes('Failed to subscribe')) {
-					throw error;
-				}
-				// Fall through to Zapier webhook if available
 			}
 		} else {
 			console.warn('Listmonk not configured:', {
@@ -179,14 +174,16 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			}
 		}
 
-		// If no integration is configured, log the subscription and return success
-		// In production, you should configure at least one integration
-		console.log('Newsletter subscription (no integration configured):', email);
-		
-		return json({
-			success: true,
-			message: 'Successfully subscribed! Please check your email to confirm.',
-		});
+		// No integration succeeded
+		console.error('Newsletter subscription failed: no integration configured or all integrations failed for:', email);
+
+		return json(
+			{
+				success: false,
+				message: 'Subscription service is temporarily unavailable. Please try again later.',
+			},
+			{ status: 503 }
+		);
 	} catch (error) {
 		console.error('Newsletter subscription error:', error);
 		return json(
