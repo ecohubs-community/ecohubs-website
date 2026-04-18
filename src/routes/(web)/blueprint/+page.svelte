@@ -420,8 +420,15 @@
 		about: [
 			{ '@type': 'Thing', name: 'Regenerative Community Operating System', alternateName: 'RCOS' },
 			{ '@type': 'Thing', name: 'Regenerative communities' },
-			{ '@type': 'Thing', name: 'Community governance' }
-		]
+			{ '@type': 'Thing', name: 'Community governance' },
+			{ '@type': 'Thing', name: 'Fruit Haven Ecovillage', url: 'https://fruithaven.land/' }
+		],
+		review: {
+			'@type': 'Review',
+			author: { '@type': 'Person', name: 'Boris P.' },
+			reviewBody: 'Fruit Haven\'s experience with the EcoHubs Community and its RCOS framework has been genuinely transformative. The introduction of the Regenerative Community Operating System sparked renewed motivation and inspiration within our community, helping us restart consistent weekly meetings and re-engage with our shared vision.',
+			itemReviewed: { '@type': 'Thing', name: 'RCOS (Regenerative Community Operating System)' }
+		}
 	}}
 />
 
@@ -1196,6 +1203,95 @@
 				</div>
 			</div>
 		{/each}
+	</div>
+</Section>
+
+<!-- ============================================
+     SECTION: RCOS IN ACTION — FRUITHAVEN
+     ============================================ -->
+<Section spacing="lg" id="in-action">
+	<div class="max-w-3xl mx-auto text-center mb-12">
+		<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-4">
+			<Icon icon="tabler:leaf" class="w-4 h-4" />
+			Real-World Application
+		</div>
+		<h2 class="font-serif text-3xl font-bold leading-tight text-ecohubs-dark sm:text-4xl">
+			RCOS in Action: Fruit Haven, Ecuador
+		</h2>
+		<p class="mt-4 text-lg leading-relaxed text-gray-600">
+			The Blueprint is not just theory — it has been applied with real communities to create tangible, lasting impact.
+		</p>
+	</div>
+
+	<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+		<!-- Left: Context and key outcomes -->
+		<div>
+			<p class="text-stone-600 leading-relaxed mb-6">
+				<a href="https://fruithaven.land/" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary font-semibold hover:underline">Fruit Haven</a>
+				is an intentional community and ecovillage in Ecuador. When they began working with the RCOS framework through a series of guided facilitation sessions, the results were immediate and concrete.
+			</p>
+
+			<div class="space-y-4">
+				<div class="flex items-start gap-4 p-4 rounded-xl bg-emerald-50 border border-emerald-100">
+					<div class="shrink-0 w-10 h-10 rounded-lg bg-white text-emerald-600 flex items-center justify-center shadow-sm">
+						<Icon icon="tabler:refresh" class="w-5 h-5" />
+					</div>
+					<div>
+						<p class="font-semibold text-stone-800">Restarted Weekly Meetings</p>
+						<p class="text-sm text-stone-600 mt-1">RCOS sparked renewed motivation, helping the community re-establish consistent meetings and re-engage with their shared vision.</p>
+					</div>
+				</div>
+
+				<div class="flex items-start gap-4 p-4 rounded-xl bg-sky-50 border border-sky-100">
+					<div class="shrink-0 w-10 h-10 rounded-lg bg-white text-sky-600 flex items-center justify-center shadow-sm">
+						<Icon icon="tabler:file-text" class="w-5 h-5" />
+					</div>
+					<div>
+						<p class="font-semibold text-stone-800">From Implicit to Explicit</p>
+						<p class="text-sm text-stone-600 mt-1">By revisiting old documentation, the community made roles, processes, and expectations explicit — reducing confusion and strengthening trust.</p>
+					</div>
+				</div>
+
+				<div class="flex items-start gap-4 p-4 rounded-xl bg-amber-50 border border-amber-100">
+					<div class="shrink-0 w-10 h-10 rounded-lg bg-white text-amber-600 flex items-center justify-center shadow-sm">
+						<Icon icon="tabler:users-group" class="w-5 h-5" />
+					</div>
+					<div>
+						<p class="font-semibold text-stone-800">Better Inclusion of Neighbors</p>
+						<p class="text-sm text-stone-600 mt-1">A common language and framework allowed neighboring landowners to be heard and included in collective decision-making for the first time.</p>
+					</div>
+				</div>
+			</div>
+
+			<p class="mt-6 text-sm text-stone-500">
+				The full series of facilitation sessions is available as
+				<a href="https://www.youtube.com/playlist?list=PLuxOGwcC8ea2RfBxhMgBWg6xnyeFYdzn1" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline">audio recordings on YouTube</a>.
+			</p>
+		</div>
+
+		<!-- Right: Testimonial -->
+		<div class="relative">
+			<div class="absolute -top-4 -left-4 text-emerald-200 pointer-events-none">
+				<Icon icon="tabler:quote" class="w-16 h-16 opacity-40" />
+			</div>
+			<blockquote class="relative bg-white rounded-3xl p-8 border border-stone-100 shadow-lg" cite="https://fruithaven.land/">
+				<p class="text-stone-700 leading-relaxed italic">
+					"Fruit Haven's experience with the EcoHubs Community and its RCOS framework has been genuinely transformative. The introduction of the Regenerative Community Operating System sparked renewed motivation and inspiration within our community, helping us restart consistent weekly meetings and re-engage with our shared vision. By encouraging us to revisit old documentation and shift from implicit understanding to explicit structures, RCOS gave us the clarity we were missing — clearly defining roles, processes, and expectations in a way that reduced confusion and strengthened trust."
+				</p>
+				<p class="mt-4 text-stone-700 leading-relaxed italic">
+					"As an open-source blueprint designed to make governance, membership, and resource flows transparent and adaptable, RCOS provided exactly the kind of structure intentional communities often lack. Most importantly, it created a common language and framework that allowed us to better include and hear neighboring landowners within the Ecovillage, fostering unity, collaboration, and more meaningful collective decision-making."
+				</p>
+				<footer class="mt-6 flex items-center gap-3 border-t border-stone-100 pt-6">
+					<div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm">
+						BP
+					</div>
+					<div>
+						<cite class="not-italic font-semibold text-stone-800">Boris P.</cite>
+						<p class="text-sm text-stone-500">Community Member, <a href="https://fruithaven.land/" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline">Fruit Haven</a></p>
+					</div>
+				</footer>
+			</blockquote>
+		</div>
 	</div>
 </Section>
 
