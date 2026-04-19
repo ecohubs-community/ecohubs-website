@@ -1234,11 +1234,11 @@
 			<div class="space-y-4">
 				<div class="flex items-start gap-4 p-4 rounded-xl bg-emerald-50 border border-emerald-100">
 					<div class="shrink-0 w-10 h-10 rounded-lg bg-white text-emerald-600 flex items-center justify-center shadow-sm">
-						<Icon icon="tabler:refresh" class="w-5 h-5" />
+						<Icon icon="tabler:file-stack" class="w-5 h-5" />
 					</div>
 					<div>
-						<p class="font-semibold text-stone-800">Restarted Weekly Meetings</p>
-						<p class="text-sm text-stone-600 mt-1">RCOS sparked renewed motivation, helping the community re-establish consistent meetings and re-engage with their shared vision.</p>
+						<p class="font-semibold text-stone-800">A Shared Language & Thinking in Proposals</p>
+						<p class="text-sm text-stone-600 mt-1">After only a few sessions, the group was organizing ideas as distinct proposals — separating concerns, avoiding rabbit holes, and bringing sharper clarity to every discussion.</p>
 					</div>
 				</div>
 
@@ -1254,11 +1254,11 @@
 
 				<div class="flex items-start gap-4 p-4 rounded-xl bg-amber-50 border border-amber-100">
 					<div class="shrink-0 w-10 h-10 rounded-lg bg-white text-amber-600 flex items-center justify-center shadow-sm">
-						<Icon icon="tabler:users-group" class="w-5 h-5" />
+						<Icon icon="tabler:user-check" class="w-5 h-5" />
 					</div>
 					<div>
-						<p class="font-semibold text-stone-800">Better Inclusion of Neighbors</p>
-						<p class="text-sm text-stone-600 mt-1">A common language and framework allowed neighboring landowners to be heard and included in collective decision-making for the first time.</p>
+						<p class="font-semibold text-stone-800">Clarity Between Members & Landowners</p>
+						<p class="text-sm text-stone-600 mt-1">A long-standing confusion between community members and landowners — roles that can overlap but aren't the same — was finally untangled, drawing a precise line between the two and clarifying where they meet.</p>
 					</div>
 				</div>
 			</div>
@@ -1279,7 +1279,7 @@
 					"Fruit Haven's experience with the EcoHubs Community and its RCOS framework has been genuinely transformative. The introduction of the Regenerative Community Operating System sparked renewed motivation and inspiration within our community, helping us restart consistent weekly meetings and re-engage with our shared vision. By encouraging us to revisit old documentation and shift from implicit understanding to explicit structures, RCOS gave us the clarity we were missing — clearly defining roles, processes, and expectations in a way that reduced confusion and strengthened trust."
 				</p>
 				<p class="mt-4 text-stone-700 leading-relaxed italic">
-					"As an open-source blueprint designed to make governance, membership, and resource flows transparent and adaptable, RCOS provided exactly the kind of structure intentional communities often lack. Most importantly, it created a common language and framework that allowed us to better include and hear neighboring landowners within the Ecovillage, fostering unity, collaboration, and more meaningful collective decision-making."
+					"As an open-source blueprint designed to make governance, membership, and resource flows transparent and adaptable, RCOS provided exactly the kind of structure intentional communities often lack. Most importantly, it created a common language and framework that helped us untangle a long-standing confusion between community members and landowners — roles that had been lived almost interchangeably. RCOS let us draw a precise line between the two and clarify where they overlap, fostering unity, collaboration, and more meaningful collective decision-making."
 				</p>
 				<footer class="mt-6 flex items-center gap-3 border-t border-stone-100 pt-6">
 					<div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm">
