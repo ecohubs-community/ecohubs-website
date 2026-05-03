@@ -1,0 +1,1641 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EcoHubs — A Regenerative Future Designed Together</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Pridi', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          story: ['Fraunces', 'serif'],
+        },
+        colors: {
+          ecohubs: {
+            base: '#fbfbf9',
+            ivory: '#f5f2ea',
+            text: '#1c1917',
+            primary: '#059669',
+            dark: '#064e3b',
+            deep: '#0b2e24',
+            accent: '#d97706',
+            light: '#a7f3d0',
+            soil: '#8b6f47',
+            clay: '#c4a484',
+            muted: '#6b7265',
+          },
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    --ecohubs-dark: #064e3b;
+    --ecohubs-deep: #0b2e24;
+    --ecohubs-primary: #059669;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #fbfbf9;
+    color: #1c1917;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-serif { font-family: 'Pridi', serif; }
+  .font-story { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
+  .text-gradient {
+    background: linear-gradient(135deg, #059669, #0b2e24);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .drop-cap::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 4.5rem;
+    line-height: 0.9;
+    float: left;
+    padding: 0.35rem 0.7rem 0 0;
+    color: #064e3b;
+    font-style: italic;
+  }
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .hairline { height: 1px; background: linear-gradient(90deg, transparent, rgba(6,78,59,0.25), transparent); }
+  .kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .quote-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  .soft-shadow { box-shadow: 0 30px 60px -30px rgba(11, 46, 36, 0.25); }
+  .pulse-dot::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 9999px;
+    background: currentColor;
+    opacity: 0.25;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.25; }
+    50% { transform: scale(1.6); opacity: 0; }
+  }
+  .story-marker {
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(6, 78, 59, 0.35), transparent);
+  }
+  .fade-mask {
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent);
+    mask-image: linear-gradient(to bottom, black 85%, transparent);
+  }
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- ================================================================ -->
+<!-- NAV (simplified, matches current site)                            -->
+<!-- ================================================================ -->
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#fbfbf9]/80 border-b border-stone-200/60">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2.5 font-serif text-[17px] text-ecohubs-dark">
+      <img src="assets/ecohubs-logo.svg" alt="EcoHubs" class="w-8 h-8" />
+      EcoHubs
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-stone-700">
+      <a href="#voices" class="hover:text-ecohubs-dark">Stories</a>
+      <a href="#vision" class="hover:text-ecohubs-dark">Vision</a>
+      <a href="#blueprint" class="hover:text-ecohubs-dark">Blueprint</a>
+      <a href="#members" class="hover:text-ecohubs-dark">Members</a>
+      <a href="#faq" class="hover:text-ecohubs-dark">FAQ</a>
+      <a href="#join" class="hover:text-ecohubs-dark">Join</a>
+    </nav>
+    <a href="#join" class="px-4 py-2 bg-ecohubs-dark text-white text-sm rounded-full hover:bg-ecohubs-deep transition-colors">Become a Member</a>
+  </div>
+</header>
+
+<!-- ================================================================ -->
+<!-- 1. HERO — EMOTIONAL OPENING                                       -->
+<!-- Leading with a felt statement, not a concept                       -->
+<!-- ================================================================ -->
+<section class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+  <!-- warm gradient wash -->
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5f2ea] via-[#fbfbf9] to-[#fbfbf9]"></div>
+  <div class="absolute -z-10 top-20 -left-40 w-[500px] h-[500px] rounded-full bg-emerald-200/25 blur-3xl"></div>
+  <div class="absolute -z-10 bottom-0 -right-20 w-[420px] h-[420px] rounded-full bg-amber-200/30 blur-3xl"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <div class="lg:col-span-7">
+        <div class="kicker text-emerald-700 mb-6 flex items-center gap-3">
+          <span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"></span>
+          A living project · Pilot hub active in Ecuador
+        </div>
+
+        <h1 class="font-serif text-5xl md:text-6xl lg:text-[76px] leading-[1.02] tracking-tight text-ecohubs-deep">
+          Maybe it wasn't <br class="hidden md:block"/>
+          <em class="font-story italic font-normal text-ecohubs-primary">you</em>
+          <span class="text-stone-400 font-story italic font-light">—</span> <br class="hidden md:block"/>
+          maybe it was the <br class="hidden md:block"/>way we live.
+        </h1>
+
+        <p class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light">
+          EcoHubs is a growing network of people building a different way to live
+          together — rooted in nature, honest about conflict, and designed so that
+          belonging is built in, not left to chance.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row gap-3">
+          <a href="#story" class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-all inline-flex items-center justify-center gap-2 group">
+            Read the story behind this
+            <span class="transition-transform group-hover:translate-x-0.5">→</span>
+          </a>
+          <a href="#join" class="px-7 py-3.5 bg-transparent border border-stone-300 text-stone-800 font-medium rounded-full hover:border-ecohubs-dark hover:text-ecohubs-dark transition-all inline-flex items-center justify-center gap-2">
+            Join the community
+          </a>
+        </div>
+
+        <div class="mt-14 flex items-start gap-4 max-w-md">
+          <div class="flex -space-x-2">
+            <div class="w-9 h-9 rounded-full border-2 border-[#fbfbf9] bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=120&auto=format&fit=crop')"></div>
+            <div class="w-9 h-9 rounded-full border-2 border-[#fbfbf9] bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=120&auto=format&fit=crop')"></div>
+            <div class="w-9 h-9 rounded-full border-2 border-[#fbfbf9] bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=120&auto=format&fit=crop')"></div>
+            <div class="w-9 h-9 rounded-full border-2 border-[#fbfbf9] bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1502767089025-6572583495b0?q=80&w=120&auto=format&fit=crop')"></div>
+          </div>
+          <div class="text-sm text-stone-600 leading-snug pt-1">
+            Permaculturists, community builders, systems thinkers and
+            <em class="font-story italic">seekers of a different kind of life</em> —
+            co-creating this, one pilot at a time.
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero portrait mosaic -->
+      <div class="lg:col-span-5 relative">
+        <div class="grid grid-cols-5 grid-rows-6 gap-3 h-[520px]">
+          <div class="col-span-3 row-span-4 rounded-[28px] overflow-hidden soft-shadow">
+            <img src="https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?q=80&w=900&auto=format&fit=crop" alt="Hands working the soil together" class="w-full h-full object-cover"/>
+          </div>
+          <div class="col-span-2 row-span-3 rounded-[24px] overflow-hidden soft-shadow mt-8">
+            <img src="https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?q=80&w=700&auto=format&fit=crop" alt="Quiet moment by water" class="w-full h-full object-cover"/>
+          </div>
+          <div class="col-span-2 row-span-3 rounded-[24px] overflow-hidden soft-shadow">
+            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=700&auto=format&fit=crop" alt="Community meal" class="w-full h-full object-cover"/>
+          </div>
+          <div class="col-span-3 row-span-2 rounded-[24px] overflow-hidden soft-shadow">
+            <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=900&auto=format&fit=crop" alt="Open ocean" class="w-full h-full object-cover"/>
+          </div>
+        </div>
+        <!-- floating quote chip — one voice of many -->
+        <div class="absolute -left-4 bottom-6 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[260px] border border-stone-100 hidden md:block">
+          <p class="font-story italic text-[15px] leading-snug text-stone-800">
+            "For the first time in my life, I didn't feel lonely."
+          </p>
+          <p class="mt-2 text-[11px] text-stone-500 tracking-wider uppercase">One of many voices · read the stories below</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hairline max-w-4xl mx-auto"></div>
+
+<!-- ================================================================ -->
+<!-- 2. STORY — STEFAN'S FIRST-PERSON NARRATIVE                        -->
+<!-- Moved near the top so the reader feels, then thinks               -->
+<!-- ================================================================ -->
+<section id="story" class="relative py-24 md:py-36 bg-[#f5f2ea]">
+  <div class="absolute inset-0 grain pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <!-- Section opener -->
+    <div class="max-w-2xl mb-20" id="voices">
+      <div class="kicker text-emerald-800 mb-4">Stories behind this project</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        Every project begins with a feeling. <br/>
+        <em class="font-story italic font-normal text-stone-500">This one is carried by many.</em>
+      </h2>
+      <p class="mt-6 text-lg text-stone-700 leading-relaxed">
+        EcoHubs didn't come from a single person with a plan — it came from many people, in different corners of the world, who quietly felt the same thing. One of those stories is Stefan's, who started writing the Blueprint. Below it you'll find the others who make this a <em class="font-story italic">community</em>, not a project.
+      </p>
+    </div>
+
+    <!-- Story layout: left rail portrait + right column text beats -->
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+
+      <!-- LEFT: sticky portrait card -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-28 self-start">
+        <div class="relative">
+          <div class="rounded-[32px] overflow-hidden soft-shadow aspect-[4/5]">
+            <img src="assets/stefan.webp" alt="Stefan Leßle, founder of EcoHubs" class="w-full h-full object-cover"/>
+          </div>
+          <div class="absolute -bottom-5 left-6 right-6 bg-[#fbfbf9] rounded-2xl p-5 border border-stone-200 shadow-sm">
+            <div class="text-[11px] tracking-widest uppercase text-stone-500 mb-1">Founder</div>
+            <div class="font-serif text-xl text-ecohubs-deep">Stefan Leßle</div>
+            <div class="text-sm text-stone-600 mt-0.5">Currently living in a community in Ecuador</div>
+          </div>
+        </div>
+
+        <div class="mt-12 pl-1">
+          <div class="kicker text-stone-500 mb-3">Chapters</div>
+          <ol class="space-y-2 text-sm text-stone-600">
+            <li class="flex gap-3"><span class="font-story italic text-ecohubs-primary">01</span> Feeling alien</li>
+            <li class="flex gap-3"><span class="font-story italic text-ecohubs-primary">02</span> Leaving, and listening</li>
+            <li class="flex gap-3"><span class="font-story italic text-ecohubs-primary">03</span> Finding others who felt it too</li>
+            <li class="flex gap-3"><span class="font-story italic text-ecohubs-primary">04</span> Why I stopped trying to change the system</li>
+            <li class="flex gap-3"><span class="font-story italic text-ecohubs-primary">05</span> The guidebook I wish had existed</li>
+          </ol>
+        </div>
+      </aside>
+
+      <!-- RIGHT: story beats -->
+      <div class="lg:col-span-8 space-y-16">
+
+        <!-- Beat 01 -->
+        <article class="relative pl-6 border-l border-emerald-900/15">
+          <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-ecohubs-primary"></div>
+          <div class="kicker text-stone-500 mb-3">01 · Feeling alien</div>
+          <p class="font-story text-2xl md:text-[28px] leading-[1.35] text-ecohubs-deep drop-cap">
+            Growing up in Germany, I felt a little alien. A little lonely. I didn't
+            understand back then why — but the feeling was strong, and I listened to it
+            instead of suppressing it.
+          </p>
+          <p class="mt-5 text-stone-700 leading-relaxed text-lg max-w-xl">
+            For a long time I thought something was wrong with me. Eventually another
+            thought arrived: <em class="font-story italic">maybe it isn't me. Maybe it's the way we live.</em>
+          </p>
+        </article>
+
+        <!-- Beat 02 — with image -->
+        <article class="grid md:grid-cols-5 gap-6 items-start">
+          <div class="md:col-span-2 md:order-2">
+            <div class="rounded-2xl overflow-hidden soft-shadow aspect-[4/5]">
+              <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=700&auto=format&fit=crop" alt="Open road, travel" class="w-full h-full object-cover"/>
+            </div>
+          </div>
+          <div class="md:col-span-3 md:order-1 relative pl-6 border-l border-emerald-900/15">
+            <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-ecohubs-primary"></div>
+            <div class="kicker text-stone-500 mb-3">02 · Leaving, and listening</div>
+            <p class="font-story text-xl leading-[1.55] text-stone-800">
+              So I left. I traveled for many years, and for the first time I had space
+              to actually hear myself. I connected to nature. I connected to other
+              people who also felt alien in their previous lives.
+            </p>
+            <p class="mt-4 text-stone-700 leading-relaxed">
+              And for the first time — <em class="font-story italic text-ecohubs-deep">I didn't feel lonely.</em>
+              I felt connected to myself. I felt alive.
+            </p>
+          </div>
+        </article>
+
+        <!-- Beat 03 — pull quote treatment -->
+        <article class="relative">
+          <div class="kicker text-stone-500 mb-4">03 · Finding others who felt it too</div>
+          <blockquote class="relative bg-white rounded-[28px] p-8 md:p-12 border border-stone-200/80">
+            <span class="quote-mark absolute -top-4 left-8 text-7xl leading-none text-ecohubs-primary/30">"</span>
+            <p class="font-story text-2xl md:text-[26px] leading-[1.4] text-ecohubs-deep">
+              I learned so much about different ways of living — permaculture, alternative
+              education, meaningful work, new ways of making decisions. Alternatives that
+              <span class="underline decoration-ecohubs-primary/40 decoration-2 underline-offset-4">actually work</span>,
+              that are a lot better. And I kept asking: <em class="italic">why don't we use them?</em>
+            </p>
+          </blockquote>
+        </article>
+
+        <!-- Beat 04 — the turn -->
+        <article class="relative pl-6 border-l border-emerald-900/15">
+          <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-amber-600"></div>
+          <div class="kicker text-stone-500 mb-3">04 · Why I stopped trying to change the system</div>
+          <p class="font-story text-xl leading-[1.55] text-stone-800">
+            I had endless ideas for applying these alternatives inside the big system we
+            live in. Over time I learned it's almost impossible. The system is too rigid.
+            Too big to bend.
+          </p>
+          <p class="mt-5 text-stone-700 leading-relaxed">
+            This is where I think most companies fail when they try to make an impact.
+            They put band-aids on wounds. They don't heal the wound — because the system
+            doesn't allow the wound to be healed.
+          </p>
+          <p class="mt-5 text-stone-700 leading-relaxed">
+            So I changed my question. Not <em class="font-story italic">how do I fix this system?</em>,
+            but <em class="font-story italic text-ecohubs-deep">how do I build a new way of life inside it —
+            one that depends on it as little as possible?</em>
+          </p>
+        </article>
+
+        <!-- Beat 05 — arrival -->
+        <article class="relative pl-6 border-l border-emerald-900/15">
+          <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-ecohubs-primary"></div>
+          <div class="kicker text-stone-500 mb-3">05 · The guidebook I wish had existed</div>
+          <p class="font-story text-xl leading-[1.55] text-stone-800">
+            That's how EcoHubs began. Not as a product. As a direction.
+          </p>
+          <p class="mt-5 text-stone-700 leading-relaxed">
+            When I started researching intentional communities, I learned that
+            <strong class="text-ecohubs-deep">80–90% of them fail.</strong> Not because the vision
+            is wrong. Because we were never taught how to live this close together — how
+            to make decisions, resolve conflict, make the invisible things clear.
+          </p>
+          <p class="mt-5 text-stone-700 leading-relaxed">
+            So I wrote the guidebook I wished someone had handed me. It is not an
+            ideology. It is a handful of patterns that say: <em class="font-story italic">make this
+            explicit. Talk about this before it breaks. This is what's usually left
+            unsaid.</em> We call it the Blueprint.
+          </p>
+          <p class="mt-6 text-sm text-stone-500">— Stefan</p>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 2b. OTHER VOICES — Stefan's is one of many                        -->
+<!-- ================================================================ -->
+<section class="relative py-24 md:py-28 bg-[#fbfbf9]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-16">
+      <div class="kicker text-emerald-700 mb-4">And from others, in their own words</div>
+      <h2 class="font-serif text-3xl md:text-5xl text-ecohubs-deep leading-tight">
+        Stefan started writing it down. <br/>
+        <em class="font-story italic font-normal text-stone-500">These are some of the people who carry it now.</em>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      <!-- Voice 1 -->
+      <article class="bg-white rounded-3xl p-7 border border-stone-200/80 soft-shadow flex flex-col">
+        <p class="font-story italic text-xl leading-snug text-ecohubs-deep flex-1">
+          "I'd tried to start a community twice before. Both times it broke on the same thing — we never agreed on how to disagree. The Blueprint gave us the words."
+        </p>
+        <div class="mt-6 flex items-center gap-3 pt-6 border-t border-stone-100">
+          <div class="w-11 h-11 rounded-full bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=160&auto=format&fit=crop')"></div>
+          <div>
+            <div class="font-serif text-base text-ecohubs-deep">Anika S.</div>
+            <div class="text-xs text-stone-500">Berlin · Governance writer</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Voice 2 -->
+      <article class="bg-white rounded-3xl p-7 border border-stone-200/80 soft-shadow flex flex-col">
+        <p class="font-story italic text-xl leading-snug text-ecohubs-deep flex-1">
+          "I came to the pilot tired. After three months I realised I'd stopped checking my phone the moment I woke up. That was the first thing that changed — and then everything did."
+        </p>
+        <div class="mt-6 flex items-center gap-3 pt-6 border-t border-stone-100">
+          <div class="w-11 h-11 rounded-full bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=160&auto=format&fit=crop')"></div>
+          <div>
+            <div class="font-serif text-base text-ecohubs-deep">Maria L.</div>
+            <div class="text-xs text-stone-500">Cuenca, EC · Permaculture lead</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Voice 3 -->
+      <article class="bg-white rounded-3xl p-7 border border-stone-200/80 soft-shadow flex flex-col">
+        <p class="font-story italic text-xl leading-snug text-ecohubs-deep flex-1">
+          "I'm not moving anywhere. I'm a single father in Lyon. But every Thursday at 8pm I'm in a circle with people who treat me like I matter. That's already more than my city gave me."
+        </p>
+        <div class="mt-6 flex items-center gap-3 pt-6 border-t border-stone-100">
+          <div class="w-11 h-11 rounded-full bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=160&auto=format&fit=crop')"></div>
+          <div>
+            <div class="font-serif text-base text-ecohubs-deep">Owen P.</div>
+            <div class="text-xs text-stone-500">Cardiff · Listening circle host</div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="#members" class="inline-flex items-center gap-2 text-sm text-ecohubs-dark hover:text-ecohubs-deep font-medium group">
+        Meet the whole community
+        <span class="transition-transform group-hover:translate-x-0.5">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 3a. THE WOUNDS — a full map of the problem, felt not diagnosed    -->
+<!-- ================================================================ -->
+<section class="relative py-24 md:py-36 bg-ecohubs-deep text-[#f5f2ea] overflow-hidden">
+  <div class="absolute inset-0 -z-0 opacity-40"
+       style="background-image: radial-gradient(circle at 30% 20%, rgba(16,185,129,0.2), transparent 50%), radial-gradient(circle at 80% 80%, rgba(217,119,6,0.15), transparent 55%);"></div>
+
+  <div class="max-w-6xl mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-3xl mb-16">
+      <div class="kicker text-emerald-300/80 mb-5">If Stefan's story sounded familiar</div>
+      <h2 class="font-serif text-4xl md:text-6xl leading-[1.05] text-[#f5f2ea]">
+        It's <em class="font-story italic font-normal text-emerald-300">not just you.</em> <br/>
+        It's the system we all grew up inside.
+      </h2>
+      <p class="mt-6 text-lg md:text-xl text-stone-200/80 leading-relaxed max-w-2xl">
+        What most of us live with wasn't designed for humans. It was designed
+        for output, for growth, for scale. These are some of the wounds it leaves.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="p-6 rounded-2xl bg-[#0a3d2e]/50 border border-emerald-900/40">
+        <div class="text-xs tracking-widest uppercase text-amber-300/80 mb-3">Belonging</div>
+        <h3 class="font-serif text-xl text-white mb-2">The loneliness no one names</h3>
+        <p class="text-stone-200/80 text-sm leading-relaxed">We've never been so connected and so alone. Neighbors we never meet. Hours of scrolling instead of one shared meal.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-[#0a3d2e]/50 border border-emerald-900/40">
+        <div class="text-xs tracking-widest uppercase text-amber-300/80 mb-3">Earth</div>
+        <h3 class="font-serif text-xl text-white mb-2">We are taking more than the land can give</h3>
+        <p class="text-stone-200/80 text-sm leading-relaxed">Extractive agriculture strips the soil. Short-term profit costs the biosphere its long-term life. The math stopped working a while ago.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-[#0a3d2e]/50 border border-emerald-900/40">
+        <div class="text-xs tracking-widest uppercase text-amber-300/80 mb-3">Economy</div>
+        <h3 class="font-serif text-xl text-white mb-2">Globalization hollowed out the local</h3>
+        <p class="text-stone-200/80 text-sm leading-relaxed">Power concentrates at the top. Towns lose their shops, their culture, their self-sufficiency. Energy is burned just to ship our food around the world.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-[#0a3d2e]/50 border border-emerald-900/40">
+        <div class="text-xs tracking-widest uppercase text-amber-300/80 mb-3">Work</div>
+        <h3 class="font-serif text-xl text-white mb-2">Eight hours a day to survive</h3>
+        <p class="text-stone-200/80 text-sm leading-relaxed">Most work is abstract and far from home. You never see who it served. A lifetime of effort and still the question: <em class="font-story italic">what was all that for?</em></p>
+      </div>
+      <div class="p-6 rounded-2xl bg-[#0a3d2e]/50 border border-emerald-900/40">
+        <div class="text-xs tracking-widest uppercase text-amber-300/80 mb-3">Power</div>
+        <h3 class="font-serif text-xl text-white mb-2">Decisions made by people you'll never meet</h3>
+        <p class="text-stone-200/80 text-sm leading-relaxed">A huge party, a distant capital, a shareholder meeting. None of it reaches your street. None of it knows your name.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-[#0a3d2e]/50 border border-emerald-900/40">
+        <div class="text-xs tracking-widest uppercase text-amber-300/80 mb-3">Education</div>
+        <h3 class="font-serif text-xl text-white mb-2">School prepares us for the economy, not for life</h3>
+        <p class="text-stone-200/80 text-sm leading-relaxed">Our children learn to be productive. They don't learn how to be neighbors, how to grow food, how to repair conflict, how to listen to themselves.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-[#0a3d2e]/50 border border-emerald-900/40">
+        <div class="text-xs tracking-widest uppercase text-amber-300/80 mb-3">Nature</div>
+        <h3 class="font-serif text-xl text-white mb-2">We forgot we <em class="font-story italic">are</em> nature</h3>
+        <p class="text-stone-200/80 text-sm leading-relaxed">We built walls between us and the living world, then wondered why we felt empty. We are not visitors to the ecosystem. We are part of it.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-[#0a3d2e]/50 border border-emerald-900/40">
+        <div class="text-xs tracking-widest uppercase text-amber-300/80 mb-3">Change</div>
+        <h3 class="font-serif text-xl text-white mb-2">The system is too rigid to heal itself</h3>
+        <p class="text-stone-200/80 text-sm leading-relaxed">Better ways exist for every one of these problems. They just can't be installed into a structure this rigid. Band-aids, not healing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 3b. MANIFESTO MOMENT — the declarative turn                       -->
+<!-- ================================================================ -->
+<section class="relative py-28 md:py-36 bg-[#0a1f18] text-[#f5f2ea] overflow-hidden">
+  <div class="absolute inset-0 -z-0 opacity-40"
+       style="background-image: radial-gradient(circle at 50% 40%, rgba(16,185,129,0.25), transparent 55%);"></div>
+  <div class="max-w-4xl mx-auto px-6 lg:px-8 relative text-center">
+    <div class="kicker text-emerald-300/80 mb-6">Our stance</div>
+    <p class="font-serif text-3xl md:text-[44px] leading-[1.2] text-[#f5f2ea]">
+      <span class="font-story italic text-stone-400/80 font-light">The system does not provide —</span><br/>
+      <span class="text-emerald-300 font-story italic font-normal">nature does.</span>
+    </p>
+    <p class="mt-10 font-serif text-2xl md:text-3xl leading-[1.35] text-stone-200/90 max-w-3xl mx-auto">
+      Power is a human construct. <br/>
+      <em class="font-story italic text-stone-400/80 font-light">It only works as long as we consent to it.</em>
+    </p>
+    <div class="mt-14 mx-auto w-16 h-px bg-emerald-500/40"></div>
+    <p class="mt-10 text-lg text-stone-200/80 max-w-2xl mx-auto leading-relaxed">
+      We are not waiting for permission from a system that cannot heal itself.
+      We are quietly building a different way of life <em class="font-story italic">inside</em> it —
+      one that needs it less, and less, and less.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 3c. THE ANSWER — problem × community, paired                       -->
+<!-- ================================================================ -->
+<section class="py-24 md:py-36 bg-[#fbfbf9]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <div class="kicker text-emerald-700 mb-4">What changes in a regenerative community</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        Most of these wounds <em class="font-story italic font-normal text-stone-500">dissolve</em> <br/>
+        when the scale gets small again.
+      </h2>
+      <p class="mt-6 text-lg text-stone-700 leading-relaxed">
+        Not because community is a cure, but because most of our pain comes
+        from living at a scale humans were never built for. Bring the scale
+        back down — to a place, to people you know by name — and the knots
+        start to loosen on their own.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="text-xs tracking-widest uppercase text-stone-500 mb-1">Belonging</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-1.5">Neighbors who know your name</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">In a small place, you are seen. You are missed when you are gone. Belonging isn't an achievement — it's the air you breathe.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="text-xs tracking-widest uppercase text-stone-500 mb-1">Work</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-1.5">Work that lands in someone's hands</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">When the person you serve is across the table, not across the planet, work stops being a shift you survive and starts being something that means something.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="text-xs tracking-widest uppercase text-stone-500 mb-1">Earth</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-1.5">Land cared for by the people who live on it</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">Permaculture, regenerative agriculture, local food. Soil is built, not mined. Water is read, not piped. Nature isn't a backdrop — it's the other half of the community.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="text-xs tracking-widest uppercase text-stone-500 mb-1">Economy</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-1.5">Local first, resilient by design</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">Small businesses serving the people around them. Less dependency on fragile global chains. Less waste shipped. More value staying where it's made.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="text-xs tracking-widest uppercase text-stone-500 mb-1">Power</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-1.5">Decisions made by the people they touch</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">Local governance gives power back to you — where it can actually change your street, your water, your school. Not a party. Not a capital. You.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="text-xs tracking-widest uppercase text-stone-500 mb-1">Education</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-1.5">Children who learn life, not just labor</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">Mixed-age, curiosity-led, rooted in the real world. From books, from AI, from the adults around them, from nature itself. School is no longer a building — it's the community.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="text-xs tracking-widest uppercase text-stone-500 mb-1">Nature</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-1.5">Surrounded by the living world, again</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">Small villages sit inside ecosystems, not on top of them. You see, feel, and respond to the seasons. Remembering we are nature stops being a slogan and becomes a daily fact.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="text-xs tracking-widest uppercase text-stone-500 mb-1">Change</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-1.5">Small enough to actually change</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">The big system can't adopt permaculture, alternative education, or new decision-making — it's too rigid. A community of a hundred people can try all three this year.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="text-xs tracking-widest uppercase text-stone-500 mb-1">Waste</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-1.5">Closed loops, not long lines</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">When nothing is shipped across the world, there is less to throw away. Wastewater is treated on the land, by the land. Leftovers feed the soil that feeds you.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="text-xs tracking-widest uppercase text-stone-500 mb-1">Culture</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-1.5">Plural, not monoculture</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">Each hub can hold its own values, rituals, and beliefs. The network doesn't demand sameness — it shares what works and lets each place stay itself.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 3d. NETWORK — the decentralized answer at scale                   -->
+<!-- ================================================================ -->
+<section class="py-24 md:py-36 bg-[#f5f2ea] relative overflow-hidden">
+  <div class="absolute inset-0 grain pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative grid lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-5 relative">
+      <!-- Simple svg of a network of hubs -->
+      <svg viewBox="0 0 400 400" class="w-full max-w-md mx-auto">
+        <defs>
+          <radialGradient id="hubGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#059669" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#064e3b" stop-opacity="1"/>
+          </radialGradient>
+        </defs>
+        <!-- connections -->
+        <g stroke="#064e3b" stroke-opacity="0.25" stroke-width="1">
+          <line x1="200" y1="200" x2="80" y2="100"/>
+          <line x1="200" y1="200" x2="320" y2="80"/>
+          <line x1="200" y1="200" x2="340" y2="240"/>
+          <line x1="200" y1="200" x2="260" y2="340"/>
+          <line x1="200" y1="200" x2="90" y2="310"/>
+          <line x1="200" y1="200" x2="60" y2="220"/>
+          <line x1="80" y1="100" x2="320" y2="80"/>
+          <line x1="320" y1="80" x2="340" y2="240"/>
+          <line x1="340" y1="240" x2="260" y2="340"/>
+          <line x1="260" y1="340" x2="90" y2="310"/>
+          <line x1="90" y1="310" x2="60" y2="220"/>
+          <line x1="60" y1="220" x2="80" y2="100"/>
+        </g>
+        <!-- hubs -->
+        <circle cx="200" cy="200" r="18" fill="url(#hubGrad)"/>
+        <circle cx="80"  cy="100" r="10" fill="#059669"/>
+        <circle cx="320" cy="80"  r="10" fill="#059669"/>
+        <circle cx="340" cy="240" r="10" fill="#059669"/>
+        <circle cx="260" cy="340" r="10" fill="#059669"/>
+        <circle cx="90"  cy="310" r="10" fill="#059669"/>
+        <circle cx="60"  cy="220" r="10" fill="#059669"/>
+        <!-- halos -->
+        <circle cx="200" cy="200" r="28" fill="none" stroke="#059669" stroke-opacity="0.35"/>
+        <circle cx="200" cy="200" r="40" fill="none" stroke="#059669" stroke-opacity="0.18"/>
+      </svg>
+    </div>
+    <div class="lg:col-span-7">
+      <div class="kicker text-emerald-700 mb-4">A network, not an escape</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight mb-6">
+        One community is a refuge. <br/>
+        <em class="font-story italic font-normal">A network of them</em> is an answer.
+      </h2>
+      <p class="text-lg text-stone-700 leading-relaxed mb-5">
+        An EcoHub on its own is a beautiful project. But the vision is bigger:
+        an <strong>interconnected network</strong> of small, locally rooted communities
+        that share what they learn and strengthen each other. A decentralized
+        answer where the big system has only rigid ones.
+      </p>
+      <p class="text-lg text-stone-700 leading-relaxed mb-8">
+        We are not trying to replace the system with a revolution. We are quietly
+        reducing our dependency on it — community by community — until a different
+        way of life becomes normal, accessible, and replicable.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div class="p-4 rounded-xl bg-white border border-stone-200/70">
+          <div class="font-story italic text-2xl text-ecohubs-primary">Local</div>
+          <p class="text-sm text-stone-600 mt-1">Rooted in a place, adapted to its culture and climate.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-white border border-stone-200/70">
+          <div class="font-story italic text-2xl text-ecohubs-primary">Connected</div>
+          <p class="text-sm text-stone-600 mt-1">Sharing patterns, failures, and tools through the Blueprint.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-white border border-stone-200/70">
+          <div class="font-story italic text-2xl text-ecohubs-primary">Replicable</div>
+          <p class="text-sm text-stone-600 mt-1">Forkable. Not franchised. Every hub stays its own place.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 4. VISION — emotional-first, then logical                         -->
+<!-- ================================================================ -->
+<section id="vision" class="py-24 md:py-32 relative">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-14 items-center">
+    <div class="relative">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="rounded-2xl overflow-hidden aspect-[3/4] mt-10 soft-shadow">
+          <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=700&auto=format&fit=crop" alt="Community hands" class="w-full h-full object-cover"/>
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-[3/4] soft-shadow">
+          <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=700&auto=format&fit=crop" alt="Meal shared" class="w-full h-full object-cover"/>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="kicker text-emerald-700 mb-4">The Vision</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight mb-6">
+        Small places <br/>
+        <em class="font-story italic font-normal">where your work, your home,<br/>and the people you love</em> <br/>
+        are in the same story.
+      </h2>
+      <p class="text-lg text-stone-700 leading-relaxed mb-5">
+        An EcoHub is a small, place-based community where people live, work, and
+        learn together while regenerating the land they depend on. Human-scale.
+        Locally rooted. Connected to a wider network of others doing the same.
+      </p>
+      <p class="text-lg text-stone-700 leading-relaxed mb-8">
+        Not a utopia. Not an escape. A working model for belonging, tested in
+        real conditions and shared openly so others don't have to start from zero.
+      </p>
+      <ul class="space-y-3 mb-10">
+        <li class="flex items-start gap-3 text-stone-800"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Work that <em class="font-story italic">means something</em> because it shows up in your neighbors' lives</li>
+        <li class="flex items-start gap-3 text-stone-800"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Decisions made in the open, by the people they affect</li>
+        <li class="flex items-start gap-3 text-stone-800"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Land and resources held in care, not in competition</li>
+        <li class="flex items-start gap-3 text-stone-800"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Conflict treated as information, not as failure</li>
+      </ul>
+      <a href="#blueprint" class="inline-flex items-center gap-2 text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1">
+        See how we're making it practical →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 5. THE BLUEPRINT — logical section, but introduced emotionally    -->
+<!-- ================================================================ -->
+<section id="blueprint" class="py-24 md:py-32 bg-[#f5f2ea] relative">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <div class="kicker text-emerald-800 mb-4">The Blueprint · RCOS</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight mb-6">
+        <em class="font-story italic font-normal">The guidebook I wished existed,</em><br/>
+        now open-source.
+      </h2>
+      <p class="text-lg text-stone-700 leading-relaxed">
+        The Blueprint (formally: the Regenerative Community Operating System)
+        is the first tangible outcome of EcoHubs. It is not a rulebook. It's a
+        living set of patterns that helps a community make the invisible things
+        explicit — before they quietly break the whole thing.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4">
+      <!-- layer cards (compressed, legible) -->
+      <div class="p-6 bg-white rounded-2xl border border-stone-200/80">
+        <div class="text-xs tracking-widest uppercase text-stone-400 mb-2">Layer 0</div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2">Purpose & Scope</h3>
+        <p class="text-sm text-stone-600 leading-relaxed">Why this community exists, and what it refuses to compromise.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl border border-stone-200/80">
+        <div class="text-xs tracking-widest uppercase text-stone-400 mb-2">Layer 1</div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2">Membership</h3>
+        <p class="text-sm text-stone-600 leading-relaxed">How people join, participate, change status, and leave — with dignity.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl border border-stone-200/80">
+        <div class="text-xs tracking-widest uppercase text-stone-400 mb-2">Layer 2</div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2">Governance</h3>
+        <p class="text-sm text-stone-600 leading-relaxed">Who decides what, on whose behalf, and how power stays reviewable.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl border border-stone-200/80">
+        <div class="text-xs tracking-widest uppercase text-stone-400 mb-2">Layer 3</div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2">Economy & Resources</h3>
+        <p class="text-sm text-stone-600 leading-relaxed">How value flows, how labor is seen, how the commons is protected.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl border border-stone-200/80">
+        <div class="text-xs tracking-widest uppercase text-stone-400 mb-2">Layer 4</div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2">Conflict & Accountability</h3>
+        <p class="text-sm text-stone-600 leading-relaxed">How we repair, hold each other, and avoid quiet exclusion.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl border border-stone-200/80">
+        <div class="text-xs tracking-widest uppercase text-stone-400 mb-2">Layer 5</div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2">Operations</h3>
+        <p class="text-sm text-stone-600 leading-relaxed">Daily coordination that doesn't burn out the people carrying it.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl border border-stone-200/80">
+        <div class="text-xs tracking-widest uppercase text-stone-400 mb-2">Layer 6</div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2">Evolution</h3>
+        <p class="text-sm text-stone-600 leading-relaxed">How the whole system changes — safely, and in the open.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl border border-stone-200/80">
+        <div class="text-xs tracking-widest uppercase text-stone-400 mb-2">Modules</div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2">Real-world domains</h3>
+        <p class="text-sm text-stone-600 leading-relaxed">Permaculture, education, housing, culture — applied, not theoretical.</p>
+      </div>
+      <a href="#" class="p-6 bg-ecohubs-deep text-white rounded-2xl border border-emerald-900/40 group flex flex-col justify-between">
+        <div>
+          <div class="text-xs tracking-widest uppercase text-emerald-300/80 mb-2">Explore</div>
+          <h3 class="font-serif text-xl mb-2">Open the full Blueprint</h3>
+          <p class="text-sm text-stone-300 leading-relaxed">It's freely readable. Editable by members. Evolving with every pilot.</p>
+        </div>
+        <span class="mt-4 text-emerald-300 group-hover:translate-x-1 transition-transform inline-block">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 5b. WHAT MAKES US DIFFERENT — answers the inevitable question     -->
+<!-- ================================================================ -->
+<section class="py-24 md:py-32 bg-[#fbfbf9]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-14">
+      <div class="kicker text-emerald-700 mb-4">Why this isn't another community project</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        Other people have tried. <br/>
+        <em class="font-story italic font-normal text-stone-500">We learned from where they broke.</em>
+      </h2>
+      <p class="mt-5 text-lg text-stone-700 leading-relaxed max-w-xl">
+        We are not the first to try this — and that is the point. Most intentional communities fail in the same handful of ways. The Blueprint is built around those failure points, not around anyone's ideology.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      <div class="relative bg-white rounded-3xl p-7 border border-stone-200/80">
+        <div class="text-[11px] tracking-widest uppercase text-stone-500 mb-4">Most projects</div>
+        <p class="font-serif text-lg text-stone-700 leading-snug mb-6 line-through decoration-stone-300/80 decoration-1">Built around one founder's vision and aesthetic.</p>
+        <div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">EcoHubs</div>
+        <p class="font-serif text-xl text-ecohubs-deep leading-snug">Built around a <em class="font-story italic">pattern language</em> the community itself shapes and forks.</p>
+      </div>
+      <div class="relative bg-white rounded-3xl p-7 border border-stone-200/80">
+        <div class="text-[11px] tracking-widest uppercase text-stone-500 mb-4">Most projects</div>
+        <p class="font-serif text-lg text-stone-700 leading-snug mb-6 line-through decoration-stone-300/80 decoration-1">Avoid talking about money, power, or conflict until they explode.</p>
+        <div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">EcoHubs</div>
+        <p class="font-serif text-xl text-ecohubs-deep leading-snug"><em class="font-story italic">Makes the invisible explicit</em> — before it breaks. Conflict patterns are written down on day one.</p>
+      </div>
+      <div class="relative bg-white rounded-3xl p-7 border border-stone-200/80">
+        <div class="text-[11px] tracking-widest uppercase text-stone-500 mb-4">Most projects</div>
+        <p class="font-serif text-lg text-stone-700 leading-snug mb-6 line-through decoration-stone-300/80 decoration-1">Either fully off-grid retreat, or fully digital with no roots.</p>
+        <div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">EcoHubs</div>
+        <p class="font-serif text-xl text-ecohubs-deep leading-snug"><em class="font-story italic">Local hubs</em>, woven into a <em class="font-story italic">global network</em>. Roots and reach, not one or the other.</p>
+      </div>
+      <div class="relative bg-white rounded-3xl p-7 border border-stone-200/80">
+        <div class="text-[11px] tracking-widest uppercase text-stone-500 mb-4">Most projects</div>
+        <p class="font-serif text-lg text-stone-700 leading-snug mb-6 line-through decoration-stone-300/80 decoration-1">Sell a fixed model. Take it or leave it.</p>
+        <div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">EcoHubs</div>
+        <p class="font-serif text-xl text-ecohubs-deep leading-snug"><em class="font-story italic">Open-source.</em> Every pattern is reviewable, replaceable, forkable by the people who'll live it.</p>
+      </div>
+      <div class="relative bg-white rounded-3xl p-7 border border-stone-200/80">
+        <div class="text-[11px] tracking-widest uppercase text-stone-500 mb-4">Most projects</div>
+        <p class="font-serif text-lg text-stone-700 leading-snug mb-6 line-through decoration-stone-300/80 decoration-1">Charisma-based authority. The founder is the rulebook.</p>
+        <div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">EcoHubs</div>
+        <p class="font-serif text-xl text-ecohubs-deep leading-snug"><em class="font-story italic">No gurus.</em> Authority is structural, distributed, and written down — so anyone can hold it.</p>
+      </div>
+      <div class="relative bg-white rounded-3xl p-7 border border-stone-200/80">
+        <div class="text-[11px] tracking-widest uppercase text-stone-500 mb-4">Most projects</div>
+        <p class="font-serif text-lg text-stone-700 leading-snug mb-6 line-through decoration-stone-300/80 decoration-1">Idealistic about labor. Pretend everyone contributes equally.</p>
+        <div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">EcoHubs</div>
+        <p class="font-serif text-xl text-ecohubs-deep leading-snug"><em class="font-story italic">Honest accounting.</em> XP and ECO make contribution visible — so care and craft don't go unseen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 6. ECUADOR PILOT — the story is already happening                 -->
+<!-- ================================================================ -->
+<section id="pilot" class="py-24 md:py-36 relative overflow-hidden">
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[#fbfbf9] to-[#f5f2ea]"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
+    <div class="lg:col-span-5 relative">
+      <div class="rounded-[32px] overflow-hidden soft-shadow aspect-[4/5]">
+        <img src="https://images.unsplash.com/photo-1504198266287-1659872e6590?q=80&w=800&auto=format&fit=crop" alt="Community in Ecuador" class="w-full h-full object-cover"/>
+      </div>
+      <div class="absolute -bottom-6 -right-2 md:-right-6 bg-white rounded-2xl px-5 py-4 border border-stone-200 soft-shadow max-w-xs">
+        <div class="text-xs tracking-widest uppercase text-emerald-700 mb-1 flex items-center gap-2">
+          <span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"></span>
+          Pilot · Active now
+        </div>
+        <div class="font-serif text-lg text-ecohubs-deep">A community in Ecuador</div>
+        <div class="text-xs text-stone-500 mt-1">Week 6 of applied Blueprint practice</div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7">
+      <div class="kicker text-emerald-700 mb-4">Already Living, Not Just Planned</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight mb-8">
+        A pilot is already happening <br/>
+        <em class="font-story italic font-normal text-stone-500">— and it's working.</em>
+      </h2>
+
+      <p class="text-lg text-stone-700 leading-relaxed mb-5">
+        Six weeks ago, I started applying the Blueprint inside a real community
+        here in Ecuador. People who had lived with a long history of unresolved
+        conflict. People who wanted it to work but didn't quite know how.
+      </p>
+      <p class="text-lg text-stone-700 leading-relaxed mb-8">
+        The Blueprint doesn't magic away the pain. It does something quieter:
+        it <em class="font-story italic">names the thing that's hard</em>, and gives the
+        community a shared language to work on it together.
+      </p>
+
+      <blockquote class="pl-6 border-l-2 border-emerald-700/40 mb-10">
+        <p class="font-story italic text-xl text-ecohubs-deep leading-snug">
+          "It really touches points in us. We can feel it. We're excited for the
+          first time in a long time."
+        </p>
+        <p class="mt-3 text-sm text-stone-500">— Member of the pilot community</p>
+      </blockquote>
+
+      <div class="flex flex-wrap items-center gap-6 text-sm text-stone-600">
+        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Non-ideological</div>
+        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Works online or offline</div>
+        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Fork-friendly · use your own way</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 6b. MEMBER CONSTELLATION — the community, not the founder        -->
+<!-- ================================================================ -->
+<section id="members" class="relative py-24 md:py-36 bg-[#0a1f18] text-[#f5f2ea] overflow-hidden">
+  <div class="absolute inset-0 -z-0 opacity-30"
+       style="background-image: radial-gradient(circle at 50% 50%, rgba(16,185,129,0.25), transparent 55%);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-2xl mb-14">
+      <div class="kicker text-emerald-300/80 mb-4">The people behind this</div>
+      <h2 class="font-serif text-4xl md:text-5xl leading-tight text-[#f5f2ea]">
+        EcoHubs is not a product. <br/>
+        <em class="font-story italic font-normal text-emerald-300">It's the people showing up.</em>
+      </h2>
+      <p class="mt-5 text-lg text-stone-200/75 leading-relaxed">
+        Each circle is a real member — currently in the community, contributing their
+        craft, their voice, their time. The larger ones are the people carrying the
+        most weight right now. <em class="font-story italic">Click any one</em> to read their story.
+      </p>
+    </div>
+
+    <!-- Constellation canvas -->
+    <div class="relative rounded-[28px] bg-gradient-to-br from-[#072018] to-[#0f3328] border border-emerald-900/40 overflow-hidden">
+      <svg id="constellation-lines" class="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true"></svg>
+      <div id="constellation" class="relative h-[560px] md:h-[640px]"></div>
+
+      <!-- Detail panel -->
+      <div id="member-detail" class="absolute top-4 right-4 w-[290px] bg-[#0b2e24]/95 backdrop-blur rounded-2xl border border-emerald-900/60 p-5 shadow-2xl hidden">
+        <button id="member-detail-close" class="absolute top-3 right-3 text-emerald-200/60 hover:text-white text-xl leading-none w-6 h-6 flex items-center justify-center" aria-label="Close">×</button>
+        <div class="flex items-center gap-3 mb-3">
+          <div id="md-avatar" class="w-14 h-14 rounded-full bg-cover bg-center border-2 border-emerald-400/40"></div>
+          <div>
+            <div id="md-name" class="font-serif text-lg text-white leading-tight"></div>
+            <div id="md-location" class="text-xs text-stone-300/70 mt-0.5"></div>
+          </div>
+        </div>
+        <p id="md-bio" class="text-sm text-stone-200/85 leading-relaxed mb-4"></p>
+        <div id="md-contrib" class="text-xs text-emerald-300/90 font-story italic mb-4"></div>
+        <div class="grid grid-cols-3 gap-2 pt-3 border-t border-emerald-900/40">
+          <div>
+            <div class="text-[10px] tracking-widest uppercase text-stone-400/70">XP</div>
+            <div id="md-xp" class="font-serif text-white text-lg"></div>
+          </div>
+          <div>
+            <div class="text-[10px] tracking-widest uppercase text-stone-400/70">ECO</div>
+            <div id="md-eco" class="font-serif text-emerald-300 text-lg"></div>
+          </div>
+          <div>
+            <div class="text-[10px] tracking-widest uppercase text-stone-400/70">Langs</div>
+            <div id="md-langs" class="text-stone-200 text-xs mt-1"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="absolute bottom-4 left-4 flex flex-wrap items-center gap-4 text-xs text-stone-300/70">
+        <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-emerald-500"></span> Active</span>
+        <span class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-emerald-500/80 ring-2 ring-emerald-300/50"></span> Higher contribution</span>
+        <span class="hidden sm:inline text-stone-400/50">· drag to explore · click to open</span>
+      </div>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="p-5 rounded-2xl bg-[#072018]/80 border border-emerald-900/40">
+        <div class="font-serif text-3xl text-emerald-300" id="stat-members">—</div>
+        <div class="text-xs tracking-widest uppercase text-stone-300/70 mt-1">Active members</div>
+      </div>
+      <div class="p-5 rounded-2xl bg-[#072018]/80 border border-emerald-900/40">
+        <div class="font-serif text-3xl text-emerald-300" id="stat-countries">—</div>
+        <div class="text-xs tracking-widest uppercase text-stone-300/70 mt-1">Countries</div>
+      </div>
+      <div class="p-5 rounded-2xl bg-[#072018]/80 border border-emerald-900/40">
+        <div class="font-serif text-3xl text-emerald-300" id="stat-langs">—</div>
+        <div class="text-xs tracking-widest uppercase text-stone-300/70 mt-1">Languages spoken</div>
+      </div>
+      <div class="p-5 rounded-2xl bg-[#072018]/80 border border-emerald-900/40">
+        <div class="font-serif text-3xl text-emerald-300" id="stat-xp">—</div>
+        <div class="text-xs tracking-widest uppercase text-stone-300/70 mt-1">XP co-created</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 6c. TECH SERVES LIFE — the platform's quiet philosophy            -->
+<!-- ================================================================ -->
+<section class="relative py-24 md:py-32 bg-[#f5f2ea] overflow-hidden">
+  <div class="absolute inset-0 grain pointer-events-none opacity-50"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-5">
+        <div class="kicker text-emerald-800 mb-4">On the technology behind this</div>
+        <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+          Tech serves life. <br/>
+          <em class="font-story italic font-normal text-stone-500">Not the other way around.</em>
+        </h2>
+        <p class="mt-6 text-lg text-stone-700 leading-relaxed">
+          We build software because community at this scale needs memory, transparency, and a way to find each other. But we don't build for engagement, for attention, for retention metrics. We build the smallest possible platform that lets a community <em class="font-story italic">see itself.</em>
+        </p>
+        <p class="mt-5 text-lg text-stone-700 leading-relaxed">
+          When the platform is doing its job well, you forget it's there.
+        </p>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-white rounded-2xl p-6 border border-stone-200/80">
+            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="1.8"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3"/></svg>
+            </div>
+            <h3 class="font-serif text-lg text-ecohubs-deep mb-1.5">No engagement loops</h3>
+            <p class="text-sm text-stone-700 leading-relaxed">No streaks, no notifications designed to pull you back. The community is the reason to come — not the dopamine.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 border border-stone-200/80">
+            <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center mb-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="1.8"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>
+            </div>
+            <h3 class="font-serif text-lg text-ecohubs-deep mb-1.5">Privacy by design</h3>
+            <p class="text-sm text-stone-700 leading-relaxed">Your data lives in the community, not in an ad market. No third-party tracking. No selling anyone's attention.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 border border-stone-200/80">
+            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+            <h3 class="font-serif text-lg text-ecohubs-deep mb-1.5">Open source</h3>
+            <p class="text-sm text-stone-700 leading-relaxed">The platform is auditable, forkable, replaceable. If a community grows past us, they can take it with them.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 border border-stone-200/80">
+            <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center mb-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18M12 3a13 13 0 000 18"/></svg>
+            </div>
+            <h3 class="font-serif text-lg text-ecohubs-deep mb-1.5">Offline-first life</h3>
+            <p class="text-sm text-stone-700 leading-relaxed">The real work happens face-to-face, on land, in kitchens, in circles. The screen is the smallest possible bridge between them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 7. WHO THIS IS FOR — emotional persona cards                     -->
+<!-- ================================================================ -->
+<section class="py-24 md:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <div class="kicker text-emerald-700 mb-4">Who this is for</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        If you've been quietly looking for <em class="font-story italic font-normal">this</em>,<br/>
+        you're in the right place.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="p-7 rounded-2xl bg-[#f5f2ea] border border-stone-200/60">
+        <div class="font-story italic text-xl text-ecohubs-deep mb-2">"I felt alien too."</div>
+        <p class="text-sm text-stone-600 leading-relaxed">People who knew early that the default life wasn't the only life — and who have been searching since.</p>
+      </div>
+      <div class="p-7 rounded-2xl bg-[#f5f2ea] border border-stone-200/60">
+        <div class="font-story italic text-xl text-ecohubs-deep mb-2">"I've tried to build a community and it broke."</div>
+        <p class="text-sm text-stone-600 leading-relaxed">Organizers and founders who've seen well-meaning projects collapse, and want to understand why.</p>
+      </div>
+      <div class="p-7 rounded-2xl bg-[#f5f2ea] border border-stone-200/60">
+        <div class="font-story italic text-xl text-ecohubs-deep mb-2">"I work with land."</div>
+        <p class="text-sm text-stone-600 leading-relaxed">Permaculturists, farmers, stewards — who know the soil is ready, and the humans are the harder part.</p>
+      </div>
+      <div class="p-7 rounded-2xl bg-[#f5f2ea] border border-stone-200/60">
+        <div class="font-story italic text-xl text-ecohubs-deep mb-2">"I build tools for people."</div>
+        <p class="text-sm text-stone-600 leading-relaxed">Designers, developers, facilitators who want their craft to land somewhere that actually matters.</p>
+      </div>
+      <div class="p-7 rounded-2xl bg-[#f5f2ea] border border-stone-200/60">
+        <div class="font-story italic text-xl text-ecohubs-deep mb-2">"I want meaningful work."</div>
+        <p class="text-sm text-stone-600 leading-relaxed">People whose work feels abstract, far from home, and who want it to feed the people they live near.</p>
+      </div>
+      <div class="p-7 rounded-2xl bg-[#f5f2ea] border border-stone-200/60">
+        <div class="font-story italic text-xl text-ecohubs-deep mb-2">"I'm just tired of doing this alone."</div>
+        <p class="text-sm text-stone-600 leading-relaxed">Which is, honestly, a lot of us. That's enough of a reason to show up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 7b. FAQ                                                           -->
+<!-- ================================================================ -->
+<section id="faq" class="py-24 md:py-32 bg-white">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-14">
+      <div class="kicker text-emerald-700 mb-4">Questions we hear a lot</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        Honest answers <em class="font-story italic font-normal text-stone-500">to the honest questions.</em>
+      </h2>
+    </div>
+
+    <div class="divide-y divide-stone-200 border-t border-b border-stone-200" id="faq-list">
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">Is EcoHubs a commune, an eco-village, or something else?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          Neither, and both. EcoHubs is a <em class="font-story italic">network</em> of small, locally rooted communities — each one decides its own form. Some will look like eco-villages, others like urban co-living projects, others like digital-first collectives. What they share is the Blueprint: a common language for how they work together.
+        </div>
+      </details>
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">Do I have to move somewhere to join?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          No. Most members are online, in their current home base. The community meets, contributes, and co-creates the Blueprint together — from anywhere. Physical hubs like the Ecuador pilot come next, when communities are ready.
+        </div>
+      </details>
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">What does "regenerative" mean here?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          That a community gives back more than it takes — to the land, to its people, and to the wider world. Regeneration is about building soil, trust, skill, and resilience over time. Not sustainability in the sense of "do less damage," but a way of life that actively leaves things healthier than it found them.
+        </div>
+      </details>
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">Is this a crypto project? Why ECO tokens?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          EcoHubs is not a speculative crypto project. ECO is an internal value unit used inside the community to recognize contributions — like a transparent ledger for labor and care. It's not traded, not promoted as an investment, and never the reason to join. The reason to join is the people and the work.
+        </div>
+      </details>
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">How do you prevent this from becoming a cult, or an echo chamber?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          By making the structure <em class="font-story italic">boringly explicit</em>. The Blueprint writes down what is usually left unsaid — how decisions get made, how conflict gets repaired, how people enter and leave. No charisma-based authority. Every pattern is reviewable, forkable, and open-source.
+        </div>
+      </details>
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">I don't have skills in permaculture or governance. Am I still welcome?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          Very. Every community needs cooks, listeners, writers, organizers, carers, translators, builders, teachers. The question isn't what you already know — it's what you want to show up for.
+        </div>
+      </details>
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">What does joining cost, and what do I get?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          Application is free and based on alignment, not payment. Members get access to the community platform, the full Blueprint, the voice to shape it, and — when you're ready — a path into the physical pilot hubs.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 8. ROADMAP (kept, condensed)                                      -->
+<!-- ================================================================ -->
+<section class="py-24 md:py-32 bg-[#f5f2ea]">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-16">
+      <div class="kicker text-emerald-800 mb-4">Roadmap</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        One step at a time, in the open.
+      </h2>
+    </div>
+    <div class="space-y-6">
+      <div class="grid md:grid-cols-[auto,1fr] gap-6 items-start">
+        <div class="w-14 h-14 rounded-full bg-ecohubs-deep text-white font-serif text-xl flex items-center justify-center">01</div>
+        <div class="pt-2">
+          <h3 class="font-serif text-2xl text-ecohubs-deep mb-2">Gather the people</h3>
+          <p class="text-stone-700 leading-relaxed">First 500 aligned members. Shared values. Foundation of the Blueprint co-created, not dictated.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-[auto,1fr] gap-6 items-start">
+        <div class="w-14 h-14 rounded-full bg-ecohubs-primary text-white font-serif text-xl flex items-center justify-center">02</div>
+        <div class="pt-2">
+          <h3 class="font-serif text-2xl text-ecohubs-deep mb-2">Grow the Blueprint</h3>
+          <p class="text-stone-700 leading-relaxed">Open-source, evolving — shaped by practice across ecology, governance, economy, culture, and care.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-[auto,1fr] gap-6 items-start">
+        <div class="w-14 h-14 rounded-full bg-amber-600 text-white font-serif text-xl flex items-center justify-center">03</div>
+        <div class="pt-2">
+          <h3 class="font-serif text-2xl text-ecohubs-deep mb-2">Pilot, learn, share</h3>
+          <p class="text-stone-700 leading-relaxed">Apply the Blueprint in real communities. Ecuador is the first. Document every scar, every win, openly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 8b. CO-CREATE CTA — collaborative invitation, before the final ask -->
+<!-- ================================================================ -->
+<section class="py-24 md:py-32 bg-[#f5f2ea] relative overflow-hidden">
+  <div class="absolute inset-0 grain pointer-events-none opacity-50"></div>
+  <div class="max-w-5xl mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-2xl mb-12">
+      <div class="kicker text-emerald-800 mb-4">Before you join — a different invitation</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        We are not finished. <br/>
+        <em class="font-story italic font-normal text-stone-500">That is the point.</em>
+      </h2>
+      <p class="mt-5 text-lg text-stone-700 leading-relaxed">
+        EcoHubs is not a product you sign up to. It's a Blueprint that gets better with every person who reads it carefully, disagrees with a chapter, runs an experiment, comes back with what they learned. There are many ways in.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <a href="#" class="group bg-white rounded-3xl p-7 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors block">
+        <div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">Read & respond</div>
+        <h3 class="font-serif text-2xl text-ecohubs-deep leading-snug mb-3">Critique a chapter of the Blueprint.</h3>
+        <p class="text-sm text-stone-700 leading-relaxed mb-6">No commitment. Read what we have, tell us where it's wrong. The best critiques become co-authors.</p>
+        <span class="text-sm text-ecohubs-dark font-medium group-hover:translate-x-0.5 inline-block transition-transform">Open the Blueprint →</span>
+      </a>
+      <a href="#" class="group bg-white rounded-3xl p-7 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors block">
+        <div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">Bring a skill</div>
+        <h3 class="font-serif text-2xl text-ecohubs-deep leading-snug mb-3">Contribute what you already do well.</h3>
+        <p class="text-sm text-stone-700 leading-relaxed mb-6">Permaculture, governance, translation, code, cooking, listening. We need every one of these.</p>
+        <span class="text-sm text-ecohubs-dark font-medium group-hover:translate-x-0.5 inline-block transition-transform">See where we need help →</span>
+      </a>
+      <a href="#" class="group bg-white rounded-3xl p-7 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors block">
+        <div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">Host a hub</div>
+        <h3 class="font-serif text-2xl text-ecohubs-deep leading-snug mb-3">Start a local circle where you live.</h3>
+        <p class="text-sm text-stone-700 leading-relaxed mb-6">A monthly meal, a weekly listening circle, a piece of land. We help you set the form, you hold the room.</p>
+        <span class="text-sm text-ecohubs-dark font-medium group-hover:translate-x-0.5 inline-block transition-transform">Apply to host →</span>
+      </a>
+    </div>
+
+    <p class="mt-10 text-center text-sm text-stone-500 max-w-xl mx-auto font-story italic">
+      None of these are tiers. None of these cost. They are the doorways we have noticed people walk through.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 9. FINAL CTA — warmer than a form                                 -->
+<!-- ================================================================ -->
+<section id="join" class="relative py-28 md:py-40 overflow-hidden">
+  <div class="absolute inset-0 -z-10 bg-ecohubs-deep"></div>
+  <div class="absolute inset-0 -z-10 opacity-40"
+       style="background-image: radial-gradient(circle at 20% 30%, rgba(16,185,129,0.35), transparent 50%), radial-gradient(circle at 80% 70%, rgba(217,119,6,0.2), transparent 55%);"></div>
+
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center text-[#f5f2ea]">
+    <div class="kicker text-emerald-300 mb-5">An invitation</div>
+    <h2 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-8">
+      If any part of this <br/>
+      <em class="font-story italic font-normal text-emerald-300">sounded like your life</em> <span class="font-story italic font-light">—</span><br/>
+      come build it with us.
+    </h2>
+    <p class="text-lg text-stone-200/85 leading-relaxed mb-10 max-w-xl mx-auto">
+      We're not looking for believers. We're looking for people who are ready
+      to make the invisible things explicit — in their own lives, and with others.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-3">
+      <a href="#" class="px-8 py-4 bg-[#f5f2ea] text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors">
+        Become a founding member
+      </a>
+      <a href="#" class="px-8 py-4 border border-emerald-300/50 text-emerald-100 font-medium rounded-full hover:bg-emerald-900/40 transition-colors">
+        Read the manifesto
+      </a>
+    </div>
+    <p class="mt-10 text-xs text-emerald-200/60 tracking-widest uppercase">
+      Non-speculative · Non-ideological · Built in the open
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 10. FOOTER                                                        -->
+<!-- ================================================================ -->
+<footer class="bg-[#06170f] text-stone-300">
+  <!-- Newsletter strip -->
+  <div class="border-b border-emerald-900/40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <div class="kicker text-emerald-300/80 mb-3">Stay close to the work</div>
+        <h3 class="font-serif text-2xl md:text-3xl text-[#f5f2ea] leading-tight">
+          One letter a month. <em class="font-story italic font-normal text-emerald-300">No noise.</em>
+        </h3>
+        <p class="mt-3 text-sm text-stone-400 max-w-md">
+          Field notes from the pilots, new chapters of the Blueprint, invitations
+          to gatherings — written by humans, sent when there's something real to say.
+        </p>
+      </div>
+      <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('button').textContent='Thank you ✓';">
+        <input
+          type="email"
+          required
+          placeholder="your@email.com"
+          class="flex-1 px-5 py-3.5 rounded-full bg-[#0b2419] border border-emerald-900/50 text-[#f5f2ea] placeholder:text-stone-500 focus:outline-none focus:border-emerald-400/60"
+        />
+        <button class="px-6 py-3.5 bg-emerald-500 text-[#06170f] font-medium rounded-full hover:bg-emerald-400 transition-colors whitespace-nowrap">
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main footer grid -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid grid-cols-2 md:grid-cols-5 gap-10">
+    <!-- Brand column -->
+    <div class="col-span-2">
+      <a href="#" class="flex items-center gap-2.5 mb-4">
+        <img src="assets/ecohubs-logo.svg" alt="EcoHubs" class="w-9 h-9" />
+        <span class="font-serif text-xl text-[#f5f2ea]">EcoHubs</span>
+      </a>
+      <p class="text-sm text-stone-400 leading-relaxed max-w-sm">
+        A network of small communities living the questions of belonging,
+        regeneration, and a more honest economy — one place at a time.
+      </p>
+      <div class="mt-6 flex items-center gap-3">
+        <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-emerald-900/50 flex items-center justify-center hover:border-emerald-400/60 hover:text-[#f5f2ea] transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube" class="w-9 h-9 rounded-full border border-emerald-900/50 flex items-center justify-center hover:border-emerald-400/60 hover:text-[#f5f2ea] transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-emerald-900/50 flex items-center justify-center hover:border-emerald-400/60 hover:text-[#f5f2ea] transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M11 17v-4.5a2 2 0 014 0V17M11 10v7"/></svg>
+        </a>
+        <a href="#" aria-label="GitHub" class="w-9 h-9 rounded-full border border-emerald-900/50 flex items-center justify-center hover:border-emerald-400/60 hover:text-[#f5f2ea] transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 00-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Explore -->
+    <div>
+      <div class="kicker text-emerald-300/70 mb-4">Explore</div>
+      <ul class="space-y-3 text-sm">
+        <li><a href="#story" class="hover:text-[#f5f2ea] transition-colors">The story</a></li>
+        <li><a href="#vision" class="hover:text-[#f5f2ea] transition-colors">Vision</a></li>
+        <li><a href="#blueprint" class="hover:text-[#f5f2ea] transition-colors">Blueprint</a></li>
+        <li><a href="#pilot" class="hover:text-[#f5f2ea] transition-colors">Ecuador pilot</a></li>
+        <li><a href="#members" class="hover:text-[#f5f2ea] transition-colors">Members</a></li>
+      </ul>
+    </div>
+
+    <!-- Get involved -->
+    <div>
+      <div class="kicker text-emerald-300/70 mb-4">Take part</div>
+      <ul class="space-y-3 text-sm">
+        <li><a href="#join" class="hover:text-[#f5f2ea] transition-colors">Become a member</a></li>
+        <li><a href="#faq" class="hover:text-[#f5f2ea] transition-colors">FAQ</a></li>
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Host a hub</a></li>
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Contribute</a></li>
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Donate</a></li>
+      </ul>
+    </div>
+
+    <!-- About -->
+    <div>
+      <div class="kicker text-emerald-300/70 mb-4">About</div>
+      <ul class="space-y-3 text-sm">
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Manifesto</a></li>
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Open source</a></li>
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Press</a></li>
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom strip -->
+  <div class="border-t border-emerald-900/40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between gap-3 text-xs text-stone-500">
+      <div>© <span id="footer-year">2026</span> EcoHubs.community · Built in the open, with care.</div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-stone-300">Privacy</a>
+        <a href="#" class="hover:text-stone-300">Imprint</a>
+        <a href="#" class="hover:text-stone-300">Code of Conduct</a>
+        <span class="hidden md:inline">EN · DE · ES</span>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+
+<!-- ================================================================ -->
+<!-- MEMBER CONSTELLATION JS                                           -->
+<!-- ================================================================ -->
+<script>
+(() => {
+  const members = [
+    { name: 'Stefan Müller', loc: 'Founder · Cuenca, EC 🇪🇨', xp: 12400, eco: 3200, langs: 'DE · EN · ES',
+      bio: 'Founder. The one who got lonely enough to start writing it down. Currently anchoring the Ecuador pilot.',
+      contrib: 'Holds the Blueprint and the pilot.', img: 'assets/stefan.webp' },
+    { name: 'Maria L.', loc: 'Cuenca, EC 🇪🇨', xp: 8200, eco: 2400, langs: 'ES · EN',
+      bio: 'Permaculture lead at the pilot. Maps the land, holds the planting calendar, teaches the children.',
+      contrib: 'Designs how the land breathes.' },
+    { name: 'Tomás R.', loc: 'Quito, EC 🇪🇨', xp: 6900, eco: 1850, langs: 'ES · EN · QU',
+      bio: 'Translator and bridge. Helps the Blueprint speak to communities outside Europe.',
+      contrib: 'Carries the words between worlds.' },
+    { name: 'Anika S.', loc: 'Berlin, DE 🇩🇪', xp: 7400, eco: 2100, langs: 'DE · EN',
+      bio: 'Governance writer. Insists on making the invisible explicit. Drafts the conflict-repair patterns.',
+      contrib: 'Writes how decisions get made.' },
+    { name: 'Diego F.', loc: 'Mexico City 🇲🇽', xp: 5200, eco: 1400, langs: 'ES · EN',
+      bio: 'Builder. Coordinates the open-source platform — the place where the community thinks together.',
+      contrib: 'Keeps the digital house standing.' },
+    { name: 'Elena P.', loc: 'Lisbon, PT 🇵🇹', xp: 4800, eco: 1300, langs: 'PT · EN · ES',
+      bio: 'Cook, listener, host. The first to notice when someone has gone quiet.',
+      contrib: 'Holds the room together.' },
+    { name: 'Yuki H.', loc: 'Kyoto, JP 🇯🇵', xp: 3900, eco: 980, langs: 'JA · EN',
+      bio: 'Studies the small economies — how value circulates without extraction.',
+      contrib: 'Watches the money move.' },
+    { name: 'Sofía A.', loc: 'Buenos Aires 🇦🇷', xp: 4100, eco: 1100, langs: 'ES · EN',
+      bio: 'Education circle. Pulling together what children should learn that schools forgot.',
+      contrib: 'Carries the next generation in mind.' },
+    { name: 'Lukas B.', loc: 'Vienna, AT 🇦🇹', xp: 3400, eco: 870, langs: 'DE · EN',
+      bio: 'Quiet researcher. Reads the literature, finds the precedents, brings them home.',
+      contrib: 'Connects us to those who tried before.' },
+    { name: 'Aïsha N.', loc: 'Marrakech, MA 🇲🇦', xp: 3100, eco: 760, langs: 'AR · FR · EN',
+      bio: 'Storyteller. Captures member voices, turns them into letters, films, fragments.',
+      contrib: 'Gives the community its voice back.' },
+    { name: 'Marco V.', loc: 'Rome, IT 🇮🇹', xp: 2700, eco: 680, langs: 'IT · EN',
+      bio: 'Carpenter and slow-builder. Believes the wood remembers the hands.',
+      contrib: 'Makes things meant to last.' },
+    { name: 'Priya K.', loc: 'Bangalore, IN 🇮🇳', xp: 2400, eco: 590, langs: 'EN · HI · KN',
+      bio: 'Researching how the model lands in South Asian urban contexts.',
+      contrib: 'Translates the Blueprint sideways.' },
+    { name: 'Hanna J.', loc: 'Stockholm, SE 🇸🇪', xp: 2000, eco: 510, langs: 'SV · EN',
+      bio: 'Climate scientist by day, learner here. Wants to live the answer she keeps measuring.',
+      contrib: 'Brings the long view.' },
+    { name: 'Chen W.', loc: 'Taipei, TW 🇹🇼', xp: 1800, eco: 460, langs: 'ZH · EN',
+      bio: 'Designer of the visual language. Decides what the community looks and feels like.',
+      contrib: 'Holds the aesthetic.' },
+    { name: 'Owen P.', loc: 'Cardiff, UK 🇬🇧', xp: 1600, eco: 410, langs: 'EN · CY',
+      bio: 'Joined six months ago. Already running the weekly listening circle.',
+      contrib: 'Shows up every Thursday.' },
+    { name: 'Léa M.', loc: 'Lyon, FR 🇫🇷', xp: 1400, eco: 360, langs: 'FR · EN',
+      bio: 'Newcomer. Asks the questions everyone was too embarrassed to ask.',
+      contrib: 'Keeps us honest.' },
+    { name: 'Noor S.', loc: 'Amman, JO 🇯🇴', xp: 1100, eco: 280, langs: 'AR · EN',
+      bio: 'Looking at how regenerative communities can hold space for displaced people.',
+      contrib: 'Opens the door wider.' },
+    { name: 'Igor K.', loc: 'Belgrade, RS 🇷🇸', xp: 900, eco: 230, langs: 'SR · EN',
+      bio: 'Software, but with a long love for soil. Quiet, steady, present.',
+      contrib: 'Just shows up.' }
+  ];
+
+  // Stats
+  const totalXP = members.reduce((s, m) => s + m.xp, 0);
+  const countries = new Set(members.map(m => m.loc.split(' ').pop())).size;
+  const langs = new Set(members.flatMap(m => m.langs.split(' · '))).size;
+  const setStat = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  setStat('stat-members', members.length);
+  setStat('stat-countries', countries);
+  setStat('stat-langs', langs);
+  setStat('stat-xp', (totalXP/1000).toFixed(1) + 'k');
+
+  const root = document.getElementById('constellation');
+  const linesSvg = document.getElementById('constellation-lines');
+  if (!root) return;
+
+  // Layout: pack circles by XP, organic positioning
+  const W = root.offsetWidth || 800;
+  const H = root.offsetHeight || 600;
+  const maxXp = Math.max(...members.map(m => m.xp));
+  const minXp = Math.min(...members.map(m => m.xp));
+  const sizeFor = xp => 36 + (xp - minXp) / (maxXp - minXp) * 78;
+
+  // Initial positions: spiral from center
+  const positions = members.map((m, i) => {
+    const angle = i * 0.65 + (m.name.length * 0.13);
+    const radius = 40 + i * 14;
+    return {
+      x: W/2 + Math.cos(angle) * radius,
+      y: H/2 + Math.sin(angle) * radius * 0.7,
+      vx: 0, vy: 0,
+      r: sizeFor(m.xp) / 2,
+      m
+    };
+  });
+
+  // Simple force-directed packing (a few iterations)
+  for (let step = 0; step < 200; step++) {
+    for (let i = 0; i < positions.length; i++) {
+      const a = positions[i];
+      // Pull to center softly
+      a.vx += (W/2 - a.x) * 0.001;
+      a.vy += (H/2 - a.y) * 0.001;
+      // Repel from others
+      for (let j = 0; j < positions.length; j++) {
+        if (i === j) continue;
+        const b = positions[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d = Math.sqrt(dx*dx + dy*dy) || 0.01;
+        const minD = a.r + b.r + 8;
+        if (d < minD) {
+          const push = (minD - d) / d * 0.5;
+          a.vx += dx * push;
+          a.vy += dy * push;
+        }
+      }
+      a.x += a.vx; a.y += a.vy;
+      a.vx *= 0.5; a.vy *= 0.5;
+      // Keep inside
+      a.x = Math.max(a.r + 6, Math.min(W - a.r - 6, a.x));
+      a.y = Math.max(a.r + 6, Math.min(H - a.r - 6, a.y));
+    }
+  }
+
+  // Draw connecting lines: nearest 2 neighbors
+  linesSvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const lineFrags = [];
+  positions.forEach((p, i) => {
+    const others = positions
+      .map((q, j) => ({ j, d: Math.hypot(p.x - q.x, p.y - q.y) }))
+      .filter(o => o.j !== i)
+      .sort((a, b) => a.d - b.d)
+      .slice(0, 2);
+    others.forEach(o => {
+      const q = positions[o.j];
+      lineFrags.push(`<line x1="${p.x}" y1="${p.y}" x2="${q.x}" y2="${q.y}" stroke="rgba(110,231,183,0.13)" stroke-width="0.7"/>`);
+    });
+  });
+  linesSvg.innerHTML = lineFrags.join('');
+
+  // Render avatars
+  positions.forEach((p, i) => {
+    const m = p.m;
+    const node = document.createElement('button');
+    node.className = 'absolute rounded-full bg-cover bg-center ring-2 ring-emerald-400/30 hover:ring-emerald-300/90 hover:scale-110 transition-all shadow-lg shadow-black/40 group';
+    node.style.cssText = `
+      width: ${p.r*2}px; height: ${p.r*2}px;
+      left: ${p.x - p.r}px; top: ${p.y - p.r}px;
+      background-color: hsl(${(i*47)%360 + 130}, 30%, 30%);
+      animation: pulse-${i} ${3 + (i%5)*0.4}s ease-in-out ${i*0.2}s infinite;
+    `;
+    if (m.img) node.style.backgroundImage = `url(${m.img})`;
+    node.setAttribute('aria-label', m.name);
+    node.title = m.name;
+
+    // initials fallback
+    const initials = m.name.split(' ').map(w => w[0]).join('').slice(0, 2);
+    if (!m.img) {
+      node.innerHTML = `<span class="absolute inset-0 flex items-center justify-center text-emerald-100 font-serif" style="font-size:${p.r*0.7}px;">${initials}</span>`;
+    }
+
+    // hover label
+    const label = document.createElement('div');
+    label.className = 'absolute left-1/2 -translate-x-1/2 -top-7 text-xs text-emerald-100 bg-[#06170f]/90 px-2 py-0.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap';
+    label.textContent = m.name;
+    node.appendChild(label);
+
+    node.addEventListener('click', () => showMember(m));
+    root.appendChild(node);
+  });
+
+  // Add pulse keyframes once
+  const style = document.createElement('style');
+  let kf = '';
+  for (let i = 0; i < positions.length; i++) {
+    const amp = 1 + (i % 4) * 0.02;
+    kf += `@keyframes pulse-${i}{0%,100%{transform:scale(1)}50%{transform:scale(${amp})}}`;
+  }
+  style.textContent = kf;
+  document.head.appendChild(style);
+
+  // Detail panel
+  const panel = document.getElementById('member-detail');
+  const closeBtn = document.getElementById('member-detail-close');
+  function showMember(m) {
+    panel.classList.remove('hidden');
+    document.getElementById('md-name').textContent = m.name;
+    document.getElementById('md-location').textContent = m.loc;
+    document.getElementById('md-bio').textContent = m.bio;
+    document.getElementById('md-contrib').textContent = '“' + m.contrib + '”';
+    document.getElementById('md-xp').textContent = m.xp.toLocaleString();
+    document.getElementById('md-eco').textContent = m.eco.toLocaleString();
+    document.getElementById('md-langs').textContent = m.langs;
+    const av = document.getElementById('md-avatar');
+    if (m.img) {
+      av.style.backgroundImage = `url(${m.img})`;
+      av.textContent = '';
+    } else {
+      av.style.backgroundImage = 'none';
+      av.style.backgroundColor = '#1a8e7b';
+      av.innerHTML = `<span class="w-full h-full flex items-center justify-center text-emerald-50 font-serif text-lg">${m.name.split(' ').map(w => w[0]).join('').slice(0,2)}</span>`;
+    }
+  }
+  closeBtn.addEventListener('click', () => panel.classList.add('hidden'));
+  // Open Stefan by default
+  showMember(members[0]);
+})();
+</script>
+
+</body>
+</html>
