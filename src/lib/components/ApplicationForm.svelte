@@ -23,6 +23,7 @@
 	let isRateLimited = $state(false);
 	let turnstileToken = $state<string | null>(null);
 	let turnstileError = $state<string | null>(null);
+	const turnstileEnabled = !!PUBLIC_TURNSTILE_SITE_KEY;
 	
 	// Local state for all inputs on current page
 	let pageInputValues = $state<Record<string, string | string[] | number>>({});
@@ -57,8 +58,8 @@
 				// On last page, validate before submission
 				const validationErrors = validateCurrentPage();
 
-				// Check Turnstile verification
-				if (!turnstileToken) {
+				// Check Turnstile verification (skip when not configured)
+				if (turnstileEnabled && !turnstileToken) {
 					cancel();
 					turnstileError = 'Please complete the verification challenge.';
 					return;
@@ -496,7 +497,7 @@
 			{/if}
 
 			<!-- Turnstile Widget on Last Page -->
-			{#if isLastPage}
+			{#if isLastPage && turnstileEnabled}
 				<div class="mb-6 flex justify-center">
 					<Turnstile
 						siteKey={PUBLIC_TURNSTILE_SITE_KEY}
@@ -538,7 +539,7 @@
 				{#if isLastPage}
 					<button
 						type="submit"
-						disabled={isSubmitting || !turnstileToken}
+						disabled={isSubmitting || (turnstileEnabled && !turnstileToken)}
 						class="flex items-center gap-2 px-8 py-3 bg-ecohubs-primary text-white font-bold rounded-lg hover:bg-ecohubs-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
 					>
 						{#if isSubmitting}

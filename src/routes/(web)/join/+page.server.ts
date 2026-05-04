@@ -11,7 +11,7 @@ import {
 	getApplicationConfirmationText,
 	type ApplicationEmailData
 } from '$lib/email-templates/application';
-import { ADMIN_EMAIL, TURNSTILE_SECRET_KEY, ECOHUBSOS_API_URL, ECOHUBSOS_API_KEY } from '$env/static/private';
+import { ADMIN_EMAIL, TURNSTILE_SECRET_KEY, ECOHUBSOS_API_URL, ECOHUBSOS_APPLICATIONS_API_KEY } from '$env/static/private';
 
 export const load: PageServerLoad = async () => {
 	// @ts-expect-error - Zod v3 compatibility with sveltekit-superforms
@@ -77,15 +77,19 @@ export const actions: Actions = {
 			const timestamp = new Date().toISOString();
 			const data = form.data as ApplicationFormData;
 
-			// Submit to ecohubsOS API
-			if (ECOHUBSOS_API_URL && ECOHUBSOS_API_KEY) {
+			// Submit to ecohubsOS API (skip when unset or still using the placeholder key)
+			const ecohubsOSConfigured =
+				!!ECOHUBSOS_API_URL &&
+				!!ECOHUBSOS_APPLICATIONS_API_KEY &&
+				ECOHUBSOS_APPLICATIONS_API_KEY !== 'your-secure-api-key';
+			if (ecohubsOSConfigured) {
 				try {
 					console.log('Submitting to ecohubsOS API:', ECOHUBSOS_API_URL);
 					const response = await fetch(`${ECOHUBSOS_API_URL}/api/applications`, {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
-							'x-api-key': ECOHUBSOS_API_KEY
+							'x-api-key': ECOHUBSOS_APPLICATIONS_API_KEY
 						},
 						body: JSON.stringify({
 							...data,
@@ -127,7 +131,7 @@ export const actions: Actions = {
 					});
 				}
 			} else {
-				console.warn('ECOHUBSOS_API_URL or ECOHUBSOS_API_KEY not configured');
+				console.warn('ECOHUBSOS_API_URL or ECOHUBSOS_APPLICATIONS_API_KEY not configured');
 			}
 
 			const applicationData: ApplicationEmailData = {
@@ -204,9 +208,11 @@ export const actions: Actions = {
 			return { form, success: true };
 		} catch (error) {
 			console.error('Application submission error:', error);
+			const detail =
+				error instanceof Error ? `${error.name}: ${error.message}` : String(error);
 			return fail(500, {
 				form,
-				error: 'Failed to submit application. Please try again.'
+				error: `Failed to submit application. Please try again. [${detail}]`
 			});
 		}
 	}

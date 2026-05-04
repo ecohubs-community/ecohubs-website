@@ -142,7 +142,7 @@
 							A growing movement of people designing regenerative communities.
 						</p>
 						<p class="text-xs text-gray-500 mt-1">
-							Join the pioneers shaping the first 500-member co-creation network.
+							Join the pioneers shaping the first 150-member co-creation network.
 						</p>
 					</div>
 				</div>

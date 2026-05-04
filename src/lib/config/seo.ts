@@ -6,7 +6,7 @@ export const SEO_CONFIG = {
 	siteUrl: 'https://ecohubs.community',
 	defaultTitle: 'EcoHubs.community - Building Regenerative Communities',
 	defaultDescription:
-		"Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities. Be part of the first 500.",
+		"Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities. Be part of the first 150.",
 	defaultOgImage: '/og-default.jpg',
 	themeColor: '#4a7c2a',
 	locale: 'en_US',
@@ -43,7 +43,7 @@ export const SEO_CONFIG = {
 		home: {
 			title: 'EcoHubs.community - A Regenerative Future Designed Together',
 			description:
-				"Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities. Be part of the first 500.",
+				"Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities. Be part of the first 150.",
 			ogImage: '/og-home.jpg'
 		},
 		vision: {
@@ -67,7 +67,7 @@ export const SEO_CONFIG = {
 		join: {
 			title: 'Apply - EcoHubs.community',
 			description:
-				'Fill out the application form to join EcoHubs.community and be part of the first 500 pioneers building regenerative communities.',
+				'Fill out the application form to join EcoHubs.community and be part of the first 150 pioneers building regenerative communities.',
 			ogImage: '/og-join.jpg'
 		},
 		contact: {

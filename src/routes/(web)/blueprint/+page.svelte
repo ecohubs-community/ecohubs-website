@@ -1455,7 +1455,7 @@
 						href="/membership"
 						class="px-8 py-4 bg-ecohubs-primary text-white font-bold rounded-xl hover:bg-ecohubs-dark transition-all hover:scale-105 shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 flex items-center justify-center gap-2"
 					>
-						Join the First 500
+						Join the First 150
 						<Icon icon="tabler:arrow-right" class="w-5 h-5" />
 					</a>
 				</div>

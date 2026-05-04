@@ -163,7 +163,12 @@
 		{
 			question: "Who controls the project today, and how decentralized is it really?",
 			answer: "Currently, EcoHubs is in an **early-stage founder-led phase**, transitioning toward community governance.\n\nPlanned trajectory:\n1. Founder-led coordination (early stage)\n2. Community co-creation of systems\n3. Increasing decentralization via DAO governance\n\nThis acknowledges a practical reality: full decentralization is **not immediate**, but a process."
-		}
+		},
+		{ 
+			question: "Do I have to move somewhere to join?",                                 
+			answer: "No. Most members are online, in their current home base. The community meets, contributes, and co-creates the Blueprint together — from anywhere. Physical hubs like the Ecuador pilot come next, when communities are ready." 
+		},
+
 	];
 
 	// Contribution Areas Data

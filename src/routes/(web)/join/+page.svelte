@@ -9,7 +9,7 @@
 
 <SEO
 	title="Join Us - EcoHubs.community"
-	description="Apply to join EcoHubs.community and be part of the first 500 founding members."
+	description="Apply to join EcoHubs.community and be part of the first 150 founding members."
 	ogImage="/og-join.jpg"
 	breadcrumbs={[
 		{ name: 'Home', url: 'https://ecohubs.community' },
@@ -21,7 +21,7 @@
 	<div class="mx-auto w-full max-w-5xl">
 		<div class="text-center mb-12">
 			<h1 class="font-serif text-4xl font-bold text-ecohubs-dark sm:text-5xl mb-4">
-				Join the First 500
+				Join the First 150
 			</h1>
 			<p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
 				We're building a selective, committed community of founders who share our vision for regenerative intentional communities.
@@ -51,9 +51,6 @@
 		<div class="mt-12 text-center space-y-2">
 			<p class="text-sm text-gray-500">
 				<strong>Note:</strong> Completing this application does not guarantee membership. We're carefully selecting founding members who align with our values and can actively contribute to co-creating the blueprint.
-			</p>
-			<p class="text-sm text-gray-400">
-				A digital wallet will be needed during onboarding after acceptance — we'll guide you through it.
 			</p>
 		</div>
 	</div>
