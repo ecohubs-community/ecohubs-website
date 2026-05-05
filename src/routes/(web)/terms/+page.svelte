@@ -309,11 +309,20 @@
 	:global(.prose-legal ul),
 	:global(.prose-legal ol) {
 		margin: 1em 0;
-		padding-left: 1.5em;
+		padding-left: 1.6em;
+	}
+
+	:global(.prose-legal ul) {
+		list-style-type: disc;
+	}
+
+	:global(.prose-legal ol) {
+		list-style-type: decimal;
 	}
 
 	:global(.prose-legal li) {
 		margin: 0.4em 0;
+		padding-left: 0.4em;
 	}
 
 	:global(.prose-legal ul > li::marker) {

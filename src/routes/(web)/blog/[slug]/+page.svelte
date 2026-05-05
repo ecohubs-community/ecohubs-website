@@ -368,12 +368,21 @@
 	:global(.prose-ecohubs ol) {
 		margin-top: 1em;
 		margin-bottom: 1em;
-		padding-left: 1.5em;
+		padding-left: 1.6em;
+	}
+
+	:global(.prose-ecohubs ul) {
+		list-style-type: disc;
+	}
+
+	:global(.prose-ecohubs ol) {
+		list-style-type: decimal;
 	}
 
 	:global(.prose-ecohubs li) {
 		margin-top: 0.4em;
 		margin-bottom: 0.4em;
+		padding-left: 0.4em;
 	}
 
 	:global(.prose-ecohubs ul > li::marker) {
