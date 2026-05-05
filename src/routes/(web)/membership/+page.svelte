@@ -2,8 +2,7 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import PersonaIcons from '$lib/components/PersonaIcons.svelte';
 	import EcosystemSection from '$lib/components/EcosystemSection.svelte';
-	import HeroImage from '$lib/assets/hero.webp';
-	import BlueprintImage from '$lib/assets/blueprint-community.webp';
+	import { Leaf, Coins } from 'lucide-svelte';
 
 	import { rooms, faqItems, doorways, voices } from './data';
 
@@ -90,30 +89,88 @@
 				</div>
 			</div>
 
-			<!-- Right: image mosaic -->
+			<!-- Right: stylized "member card" mockup — mirrors the Blueprint
+			     spec-card pattern (artifact-style), but the artifact is a
+			     member identity rather than the RCOS spec. Different content,
+			     same family. -->
 			<div class="lg:col-span-5 relative">
-				<div class="grid grid-cols-5 grid-rows-6 gap-3 h-[520px]">
-					<div class="col-span-3 row-span-4 rounded-[28px] overflow-hidden soft-shadow">
-						<img src={HeroImage} alt="Community working together" class="w-full h-full object-cover" />
+				<div class="relative bg-white rounded-[28px] border border-stone-200/80 soft-shadow p-7 overflow-hidden">
+					<div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-emerald-200/40 blur-2xl pointer-events-none"></div>
+
+					<!-- Header: status pulse + version label -->
+					<div class="flex items-center justify-between mb-6">
+						<div class="flex items-center gap-2">
+							<span class="relative inline-block w-2 h-2 rounded-full bg-emerald-500 text-emerald-500 pulse-dot"></span>
+							<span class="text-[11px] tracking-wide text-emerald-700 font-medium">active</span>
+						</div>
+						<span class="font-mono text-[10px] tracking-widest text-stone-400 uppercase">
+							ecohubsOS · member · v0
+						</span>
 					</div>
-					<div class="col-span-2 row-span-3 rounded-[24px] overflow-hidden soft-shadow mt-8">
-						<img
-							src="https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?q=80&w=700&auto=format&fit=crop"
-							alt="Quiet moment in nature"
-							class="w-full h-full object-cover"
-						/>
+
+					<!-- Identity row -->
+					<div class="flex items-center gap-4 pb-5 border-b border-stone-200/70">
+						<div class="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center font-serif text-2xl text-ecohubs-deep shrink-0">
+							M
+						</div>
+						<div class="min-w-0">
+							<div class="font-serif text-xl text-ecohubs-deep leading-tight truncate">Maria L.</div>
+							<div class="font-story italic text-[13px] text-stone-600 leading-snug">
+								Permaculturist · Cuenca, EC
+							</div>
+						</div>
 					</div>
-					<div class="col-span-2 row-span-3 rounded-[24px] overflow-hidden soft-shadow">
-						<img
-							src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=700&auto=format&fit=crop"
-							alt="Community meal"
-							class="w-full h-full object-cover"
-						/>
+
+					<!-- ECO + XP chips -->
+					<div class="flex items-center gap-2 mt-5">
+						<span class="inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 text-emerald-800">
+							<Leaf class="w-3 h-3" strokeWidth={2} aria-hidden="true" />
+							<span>1 322 XP</span>
+						</span>
+						<span class="inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200/70 text-amber-800">
+							<Coins class="w-3 h-3" strokeWidth={2} aria-hidden="true" />
+							<span>847 ECO</span>
+						</span>
+						<span class="ml-auto font-mono text-[10px] tracking-wide text-stone-400">
+							joined · 2024-11
+						</span>
 					</div>
-					<div class="col-span-3 row-span-2 rounded-[24px] overflow-hidden soft-shadow">
-						<img src={BlueprintImage} alt="Community blueprint" class="w-full h-full object-cover" />
+
+					<!-- Active rooms -->
+					<div class="mt-6">
+						<div class="font-mono text-[10px] tracking-widest text-stone-400 uppercase mb-3">
+							Rooms
+						</div>
+						<ul class="font-mono text-[12px] leading-[1.9] text-stone-700 space-y-1">
+							<li class="flex items-center gap-2.5">
+								<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+								<span class="text-emerald-700">room 05</span>
+								<span class="text-stone-400">·</span>
+								<span class="text-stone-800">shape the RCOS Blueprint</span>
+							</li>
+							<li class="flex items-center gap-2.5">
+								<span class="w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0"></span>
+								<span class="text-purple-700">room 02</span>
+								<span class="text-stone-400">·</span>
+								<span class="text-stone-800">facilitate workshops</span>
+							</li>
+							<li class="flex items-center gap-2.5">
+								<span class="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0"></span>
+								<span class="text-amber-700">room 09</span>
+								<span class="text-stone-400">·</span>
+								<span class="text-stone-800">apply RCOS in your community</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="mt-7 pt-5 border-t border-stone-200 flex items-center justify-between text-xs text-stone-500">
+						<span>Earned · non-transferable · open</span>
+						<a href="#apply" class="text-ecohubs-primary hover:underline font-medium">
+							open profile →
+						</a>
 					</div>
 				</div>
+
 				<div class="absolute -left-4 bottom-6 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[270px] border border-stone-100 hidden md:block">
 					<p class="font-story italic text-[15px] leading-snug text-stone-800">
 						"I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter."
