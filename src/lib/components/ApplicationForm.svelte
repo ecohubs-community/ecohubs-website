@@ -2,7 +2,7 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { applicationQuestions, applicationSchema } from '$lib/config/application-questions';
-	import { ArrowLeft, ArrowRight, Check, ClockIcon, LoaderCircle, AlertCircle } from 'lucide-svelte';
+	import { Check, LoaderCircle, AlertCircle } from 'lucide-svelte';
 	import { fly, fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import type { PageData } from '../../routes/(web)/join/$types';
@@ -279,55 +279,50 @@
 </script>
 
 {#if submitSuccess}
-	<div class="text-center py-12" in:fade={{ duration: 300 }}>
-		<div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-			<Check class="w-10 h-10 text-green-600" aria-hidden="true" />
+	<div class="bg-white rounded-3xl border border-stone-200/70 soft-shadow p-10 md:p-14 text-center" in:fade={{ duration: 300 }}>
+		<div class="w-16 h-16 bg-emerald-50 border border-emerald-100 rounded-full flex items-center justify-center mx-auto mb-7">
+			<Check class="w-8 h-8 text-emerald-700" aria-hidden="true" strokeWidth={2} />
 		</div>
-		<h2 class="text-3xl font-serif font-bold text-gray-900 mb-4">
-			Application Submitted! 🌱
+		<div class="kicker text-emerald-700 mb-4">Received with care</div>
+		<h2 class="font-serif text-3xl md:text-[40px] text-ecohubs-deep leading-tight mb-5">
+			Thank you<span class="font-story italic font-light text-stone-400">.</span><br />
+			<em class="font-story italic font-normal text-ecohubs-primary">We're glad you wrote.</em>
 		</h2>
-		<p class="text-lg text-gray-600 mb-6 max-w-xl mx-auto">
-			Thank you for your interest in EcoHubs. We've received your application and will review it carefully.
+		<p class="text-stone-700 leading-relaxed max-w-xl mx-auto mb-3">
+			Your application has arrived. Someone here will read it slowly — not scan it — because that's
+			how we want this community to feel from the very first moment.
 		</p>
-		<p class="text-sm text-gray-500">
-			You'll hear from us within 7-10 days. Check your email (including spam folder) for updates.
+		<p class="text-stone-500 text-sm leading-relaxed max-w-md mx-auto font-story italic">
+			You'll hear back within a few days. Check your email (including spam) for our reply.
 		</p>
-		<div class="mt-8">
-			<a
-				href="/"
-				class="inline-flex items-center gap-2 px-6 py-3 bg-ecohubs-primary text-white font-medium rounded-lg hover:bg-ecohubs-dark transition-colors"
-			>
-				Return Home
-			</a>
-		</div>
+		<a
+			href="/"
+			class="mt-8 inline-flex items-center gap-2 px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-all group"
+		>
+			Back to home
+			<span class="transition-transform group-hover:translate-x-0.5">→</span>
+		</a>
 	</div>
 {:else}
-	<div class="max-w-3xl mx-auto">
-		<!-- Time Estimate Badge -->
-		<div class="mb-6 flex items-center justify-center">
-			<div class="inline-flex items-center gap-2 px-4 py-2 bg-gray-500/10 text-gray-500 rounded-full text-sm font-medium">
-				<ClockIcon class="w-4 h-4" aria-hidden="true" />
-				<span>20-25 min</span>
-			</div>
+	<div class="relative bg-white rounded-3xl border border-stone-200/70 soft-shadow overflow-hidden">
+		<!-- Progress bar pinned to the top edge of the card -->
+		<div class="absolute top-0 inset-x-0 h-1 bg-stone-200/70 z-10" aria-hidden="true">
+			<div
+				class="h-full bg-gradient-to-r from-emerald-500 to-emerald-600 transition-all duration-500 ease-out"
+				style="width: {progress}%"
+			></div>
 		</div>
 
-		<!-- Progress Bar -->
-		<div class="mb-8">
-			<div class="flex items-center justify-between mb-2">
-				<span class="text-sm font-medium text-gray-600">
-					Page {currentPage} of {totalPages}
+		<div class="p-7 md:p-10 lg:p-12">
+			<!-- Page label -->
+			<div class="flex items-center justify-between mb-8">
+				<span class="kicker text-emerald-700">
+					Chapter {currentPage} of {totalPages}
 				</span>
-				<span class="text-sm font-medium text-ecohubs-primary">
-					{Math.round(progress)}% Complete
+				<span class="text-xs text-stone-500 font-story italic">
+					{Math.round(progress)}% complete
 				</span>
 			</div>
-			<div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-				<div
-					class="h-full bg-ecohubs-primary transition-all duration-500 ease-out"
-					style="width: {progress}%"
-				></div>
-			</div>
-		</div>
 
 		<form method="POST" use:enhance class="min-h-[400px]">
 			{#key currentPage}
@@ -342,12 +337,12 @@
 						
 						<div class="question-block">
 							<!-- Question -->
-							<h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2">
+							<h3 class="font-serif text-xl md:text-[22px] text-ecohubs-deep leading-snug mb-2">
 								{question.question}
 							</h3>
-							
+
 							{#if question.description}
-								<p class="text-gray-600 mb-4">{question.description}</p>
+								<p class="text-stone-600 leading-relaxed mb-5">{question.description}</p>
 							{/if}
 
 							<!-- Input Field -->
@@ -360,7 +355,7 @@
 										oninput={(e) => handleInput(question.id, e.currentTarget.value)}
 										placeholder={question.placeholder}
 										aria-invalid={questionError ? 'true' : 'false'}
-										class="w-full px-4 py-4 text-lg text-gray-900 placeholder:text-gray-400 border-2 rounded-xl transition-all {questionError ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent'}"
+										class="w-full px-5 py-3.5 text-base text-ecohubs-deep placeholder:text-stone-400 bg-ecohubs-ivory/60 border rounded-2xl transition-all focus:outline-none focus:bg-white {questionError ? 'border-red-400 focus:ring-2 focus:ring-red-200 focus:border-red-500' : 'border-stone-300 focus:ring-2 focus:ring-emerald-200 focus:border-emerald-500'}"
 									/>
 								{:else if question.type === 'textarea'}
 									<textarea
@@ -370,10 +365,10 @@
 										placeholder={question.placeholder}
 										rows="6"
 										aria-invalid={questionError ? 'true' : 'false'}
-										class="w-full px-4 py-4 text-lg text-gray-900 placeholder:text-gray-400 border-2 rounded-xl transition-all resize-none {questionError ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent'}"
+										class="w-full px-5 py-4 text-base text-ecohubs-deep placeholder:text-stone-400 bg-ecohubs-ivory/60 border rounded-2xl transition-all resize-none focus:outline-none focus:bg-white {questionError ? 'border-red-400 focus:ring-2 focus:ring-red-200 focus:border-red-500' : 'border-stone-300 focus:ring-2 focus:ring-emerald-200 focus:border-emerald-500'}"
 									></textarea>
 									{#if questionValue}
-										<p class="text-sm text-gray-500 mt-2">
+										<p class="text-xs text-stone-500 mt-2 font-story italic">
 											{String(questionValue).length} characters
 										</p>
 									{/if}
@@ -383,43 +378,43 @@
 										value={String(questionValue)}
 										onchange={(e) => handleInput(question.id, e.currentTarget.value)}
 										aria-invalid={questionError ? 'true' : 'false'}
-										class="w-full px-4 py-4 text-lg text-gray-900 border-2 rounded-xl transition-all {questionError ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-2 focus:ring-ecohubs-primary focus:border-transparent'}"
+										class="w-full px-5 py-3.5 text-base text-ecohubs-deep bg-ecohubs-ivory/60 border rounded-2xl transition-all focus:outline-none focus:bg-white {questionError ? 'border-red-400 focus:ring-2 focus:ring-red-200 focus:border-red-500' : 'border-stone-300 focus:ring-2 focus:ring-emerald-200 focus:border-emerald-500'}"
 									>
-										<option value="">Select an option...</option>
+										<option value="">Select an option…</option>
 										{#each question.options || [] as option}
 											<option value={option}>{option}</option>
 										{/each}
 									</select>
 								{:else if question.type === 'radio'}
-									<div class="space-y-3" role="radiogroup" aria-invalid={questionError ? 'true' : 'false'}>
+									<div class="space-y-2.5" role="radiogroup" aria-invalid={questionError ? 'true' : 'false'}>
 										{#each question.options || [] as option}
-											<label class="flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors {String(questionValue) === option ? 'border-ecohubs-primary bg-ecohubs-primary/5' : questionError ? 'border-red-300 hover:border-red-400' : 'border-gray-300 hover:border-ecohubs-primary'}">
+											<label class="flex items-center gap-3 px-4 py-3 border rounded-2xl cursor-pointer transition-all {String(questionValue) === option ? 'border-emerald-500 bg-emerald-50/50 shadow-sm' : questionError ? 'border-red-200 hover:border-red-300 bg-white' : 'border-stone-200 hover:border-emerald-300 hover:bg-ecohubs-ivory/40 bg-white'}">
 												<input
 													type="radio"
 													name={question.id}
 													value={option}
 													checked={String(questionValue) === option}
 													onchange={() => handleInput(question.id, option)}
-													class="w-5 h-5 text-ecohubs-primary focus:ring-ecohubs-primary"
+													class="w-4 h-4 text-emerald-600 focus:ring-emerald-500"
 												/>
-												<span class="text-lg text-gray-800">{option}</span>
+												<span class="text-base text-stone-800">{option}</span>
 											</label>
 										{/each}
 									</div>
 								{:else if question.type === 'checkbox'}
-									<div class="space-y-3" role="group">
+									<div class="space-y-2.5" role="group">
 										{#each question.options || [] as option}
 											{@const isChecked = Array.isArray(questionValue) && questionValue.includes(option)}
-											<label class="flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-colors {isChecked ? 'border-ecohubs-primary bg-ecohubs-primary/5' : questionError ? 'border-red-300 hover:border-red-400' : 'border-gray-300 hover:border-ecohubs-primary'}">
+											<label class="flex items-center gap-3 px-4 py-3 border rounded-2xl cursor-pointer transition-all {isChecked ? 'border-emerald-500 bg-emerald-50/50 shadow-sm' : questionError ? 'border-red-200 hover:border-red-300 bg-white' : 'border-stone-200 hover:border-emerald-300 hover:bg-ecohubs-ivory/40 bg-white'}">
 												<input
 													type="checkbox"
 													name={`${question.id}[]`}
 													value={option}
 													checked={isChecked}
 													onchange={(e) => handleCheckboxChange(question.id, option, e.currentTarget.checked)}
-													class="w-5 h-5 text-ecohubs-primary focus:ring-ecohubs-primary rounded"
+													class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 rounded"
 												/>
-												<span class="text-lg text-gray-800">{option}</span>
+												<span class="text-base text-stone-800">{option}</span>
 											</label>
 										{/each}
 									</div>
@@ -427,14 +422,14 @@
 									{@const scaleValue = typeof questionValue === 'number' ? questionValue : Number(questionValue) || 0}
 									<div class="scale-input">
 										{#if question.scaleLabels?.min || question.scaleLabels?.max}
-											<div class="flex items-center justify-between mb-4">
+											<div class="flex items-center justify-between mb-3 text-xs tracking-wide text-stone-500 font-story italic">
 												{#if question.scaleLabels?.min}
-													<span class="text-sm text-gray-600 font-medium">{question.scaleLabels.min}</span>
+													<span>{question.scaleLabels.min}</span>
 												{:else}
 													<span></span>
 												{/if}
 												{#if question.scaleLabels?.max}
-													<span class="text-sm text-gray-600 font-medium">{question.scaleLabels.max}</span>
+													<span>{question.scaleLabels.max}</span>
 												{:else}
 													<span></span>
 												{/if}
@@ -443,16 +438,16 @@
 										<div class="grid grid-cols-5 md:grid-cols-10 gap-2" role="radiogroup" aria-invalid={questionError ? 'true' : 'false'}>
 											{#each Array.from({ length: 10 }, (_, i) => i + 1) as num}
 												{@const isSelected = scaleValue === num}
-												<label class="flex flex-col items-center gap-2 p-3 border-2 rounded-xl cursor-pointer transition-colors {isSelected ? 'border-ecohubs-primary bg-ecohubs-primary/10' : questionError ? 'border-red-300 hover:border-red-400' : 'border-gray-300 hover:border-ecohubs-primary'}">
+												<label class="relative flex items-center justify-center aspect-square border rounded-xl cursor-pointer transition-all font-serif text-base {isSelected ? 'border-emerald-500 bg-emerald-600 text-white shadow-sm' : questionError ? 'border-red-200 text-stone-700 hover:border-red-300 bg-white' : 'border-stone-200 text-stone-700 hover:border-emerald-300 hover:bg-ecohubs-ivory/40 bg-white'}">
 													<input
 														type="radio"
 														name={question.id}
 														value={num}
 														checked={isSelected}
 														onchange={() => handleScaleChange(question.id, num)}
-														class="w-5 h-5 text-ecohubs-primary focus:ring-ecohubs-primary"
+														class="sr-only"
 													/>
-													<span class="text-lg font-semibold text-gray-800">{num}</span>
+													<span>{num}</span>
 												</label>
 											{/each}
 										</div>
@@ -467,8 +462,9 @@
 
 							<!-- Error Message -->
 							{#if (questionError as any)?.[0]?.message}
-								<div class="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg" role="alert" in:fly={{ y: -10, duration: 200 }}>
-									<p class="text-red-700 text-sm font-medium">
+								<div class="mt-3 p-3 bg-red-50 border border-red-200 rounded-xl flex items-start gap-2" role="alert" in:fly={{ y: -10, duration: 200 }}>
+									<AlertCircle class="w-4 h-4 text-red-600 mt-0.5 shrink-0" aria-hidden="true" />
+									<p class="text-red-700 text-sm">
 										{(questionError as any)?.[0]?.message}
 									</p>
 								</div>
@@ -525,14 +521,14 @@
 			{/if}
 
 			<!-- Navigation Buttons -->
-			<div class="flex items-center justify-between pt-6 border-t border-gray-200">
+			<div class="flex items-center justify-between gap-4 pt-7 border-t border-stone-200/70">
 				<button
 					type="button"
 					onclick={goToPrevious}
 					disabled={currentPage === 1}
-					class="flex items-center gap-2 px-6 py-3 text-gray-700 font-medium rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+					class="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-stone-600 font-medium rounded-full transition-colors hover:text-ecohubs-deep hover:bg-stone-100 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent group"
 				>
-					<ArrowLeft class="w-5 h-5" aria-hidden="true" />
+					<span class="transition-transform group-hover:-translate-x-0.5" aria-hidden="true">←</span>
 					<span>Back</span>
 				</button>
 
@@ -540,36 +536,36 @@
 					<button
 						type="submit"
 						disabled={isSubmitting || (turnstileEnabled && !turnstileToken)}
-						class="flex items-center gap-2 px-8 py-3 bg-ecohubs-primary text-white font-bold rounded-lg hover:bg-ecohubs-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+						class="inline-flex items-center gap-2 px-7 py-3.5 bg-ecohubs-dark text-white text-sm font-medium rounded-full hover:bg-ecohubs-deep transition-all disabled:opacity-50 disabled:cursor-not-allowed group shadow-sm hover:shadow-md"
 					>
 						{#if isSubmitting}
-							<LoaderCircle class="w-5 h-5 animate-spin" aria-hidden="true" />
-							<span>Submitting...</span>
+							<LoaderCircle class="w-4 h-4 animate-spin" aria-hidden="true" />
+							<span>Sending…</span>
 						{:else}
-							<span>Submit Application</span>
-							<Check class="w-5 h-5" aria-hidden="true" />
+							<span>Send my application</span>
+							<span class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">→</span>
 						{/if}
 					</button>
 				{:else}
 					<button
 						type="submit"
-						class="flex items-center gap-2 px-8 py-3 bg-ecohubs-primary text-white font-bold rounded-lg hover:bg-ecohubs-dark transition-all cursor-pointer"
+						class="inline-flex items-center gap-2 px-7 py-3.5 bg-ecohubs-dark text-white text-sm font-medium rounded-full hover:bg-ecohubs-deep transition-all group shadow-sm hover:shadow-md"
 					>
-						<span>Next</span>
-						<ArrowRight class="w-5 h-5" aria-hidden="true" />
+						<span>Continue</span>
+						<span class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">→</span>
 					</button>
 				{/if}
 			</div>
 
 			{#if submitError}
-				<div class="mt-4 bg-red-50 border border-red-200 rounded-lg p-4" role="alert" in:fly={{ y: -10, duration: 200 }}>
+				<div class="mt-5 bg-red-50 border border-red-200 rounded-2xl p-4" role="alert" in:fly={{ y: -10, duration: 200 }}>
 					<div class="flex items-start gap-3">
-						<AlertCircle class="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
+						<AlertCircle class="w-5 h-5 text-red-600 shrink-0 mt-0.5" aria-hidden="true" />
 						<div>
-							<p class="font-medium text-red-800">Submission Failed</p>
+							<p class="font-serif text-red-800 text-base">Submission failed</p>
 							<p class="text-sm text-red-700 mt-1">{submitError}</p>
 							{#if isRateLimited}
-								<p class="text-sm text-red-600 mt-2">Please wait about an hour before trying again.</p>
+								<p class="text-sm text-red-600 mt-2 font-story italic">Please wait about an hour before trying again.</p>
 							{/if}
 						</div>
 					</div>
@@ -578,9 +574,10 @@
 		</form>
 
 		<!-- Draft Autosave Indicator -->
-		<p class="text-xs text-gray-400 text-center mt-6">
-			💾 Your progress is automatically saved
+		<p class="text-xs text-stone-400 text-center mt-7 font-story italic">
+			Your progress is saved automatically as you go.
 		</p>
+		</div>
 	</div>
 {/if}
 

@@ -92,9 +92,7 @@
 	<div class="absolute -z-0 -bottom-32 -left-32 w-[360px] h-[360px] rounded-full bg-amber-200/25 blur-3xl pointer-events-none"></div>
 
 	<div class="max-w-4xl mx-auto px-6 lg:px-8 relative">
-		<div class="bg-white rounded-3xl border border-stone-200/70 soft-shadow p-7 md:p-10 lg:p-12">
-			<ApplicationForm {data} />
-		</div>
+		<ApplicationForm {data} />
 
 		<p class="mt-6 text-center text-sm text-stone-500 max-w-2xl mx-auto font-story italic leading-relaxed">
 			Completing the form is not a guarantee — it's an honest conversation. We answer everyone,
