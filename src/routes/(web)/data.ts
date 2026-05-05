@@ -134,19 +134,6 @@ export const answers = [
 	{ cat: 'Culture',   title: 'Plural, not monoculture',               body: "Each hub can hold its own values, rituals, and beliefs. The network doesn't demand sameness — it shares what works and lets each place stay itself." }
 ];
 
-// ─── BLUEPRINT LAYERS ─────────────────────────────────────────────────────────
-
-export const blueprintLayers = [
-	{ layer: 'Layer 0', title: 'Purpose & Scope',           body: 'Why this community exists, and what it refuses to compromise.' },
-	{ layer: 'Layer 1', title: 'Membership',                body: 'How people join, participate, change status, and leave — with dignity.' },
-	{ layer: 'Layer 2', title: 'Governance',                body: 'Who decides what, on whose behalf, and how power stays reviewable.' },
-	{ layer: 'Layer 3', title: 'Economy & Resources',       body: 'How value flows, how labor is seen, how the commons is protected.' },
-	{ layer: 'Layer 4', title: 'Conflict & Accountability', body: 'How we repair, hold each other, and avoid quiet exclusion.' },
-	{ layer: 'Layer 5', title: 'Operations',                body: "Daily coordination that doesn't burn out the people carrying it." },
-	{ layer: 'Layer 6', title: 'Evolution',                 body: 'How the whole system changes — safely, and in the open.' },
-	{ layer: 'Modules', title: 'Real-world domains',        body: 'Permaculture, education, housing, culture — applied, not theoretical.' }
-];
-
 // ─── COMPARISONS ──────────────────────────────────────────────────────────────
 
 export const comparisons = [
@@ -162,23 +149,23 @@ export const comparisons = [
 
 export const techCards = [
 	{
-		title: 'A bridge, not a destination',
-		body: 'Most of the real life happens face-to-face — on land, in kitchens, in circles. Tech is the smallest possible bridge to find each other across distance and remember what we said. The platform should quietly disappear most of the time.',
+		title: "Don't cede the tools",
+		body: 'AI is being shaped, right now, by people who use it to extract — to concentrate attention, capital, and decisions in fewer and fewer hands. If those of us building something different sit this out, the future gets written without us. We pick up the same tools, deliberately, while there is still time to point them somewhere else.',
 		accent: 'emerald'
 	},
 	{
-		title: 'AI, used honestly',
-		body: "Yes, we use AI — to translate, to draft, to research, to prototype. It lets one person do the work of ten. We don't pretend it's free of cost. We use it where it creates more than it consumes, and we say so when we do.",
+		title: 'Spend now, save more later',
+		body: "Yes, AI costs energy and water — we don't pretend otherwise. We treat it as an upfront investment, the way you build soil. Compute spent now to design regenerative systems returns many times over: in trips not taken, in food grown closer to home, in mistakes a hundred communities don't have to make twice.",
 		accent: 'amber'
 	},
 	{
-		title: 'Not the attention economy',
-		body: "No infinite scroll. No streaks. No notifications designed to pull you back. Our model isn't your time. The platform doesn't compete for your day — it tries to make sure you don't need to spend it here.",
+		title: 'Change what the tools optimise for',
+		body: "A tool isn't good or bad — its metric is. Extractive AI is tuned for profit per resource: more clicks, more attention, more dollars wrung from the same earth. We use the same engines, pointed at a different target — life per resource. Same code, opposite direction.",
 		accent: 'emerald'
 	},
 	{
-		title: 'Built lean, by choice',
-		body: "Few servers, shared infrastructure, no third-party tracking, no ad markets. We treat compute the way a permaculture garden treats water — use what's needed, return what isn't, and ask whether the trade is worth it.",
+		title: 'Move at the speed of the crisis',
+		body: 'Extraction is digital, fast, and well-funded. Regeneration is too often analog and slow — and it has been losing ground for decades. To rebuild on the same scale we have been losing on, we have to work at that pace. Patience in the soil, yes. Patience in the response, no.',
 		accent: 'amber'
 	}
 ];

@@ -1,14 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { animate } from 'motion';
-  import { Sprout, Users, Compass, Telescope } from 'lucide-svelte';
-
   import ConstellationMap from '$lib/components/ConstellationMap.svelte';
+  import PersonaIcons from '$lib/components/PersonaIcons.svelte';
   import HeroImage from '$lib/assets/hero.webp';
   import BlueprintImage from '$lib/assets/blueprint-community.webp';
   import NetworkImage from '$lib/assets/network-regenerative-ecohubs.webp';
   import jungleNature from '$lib/assets/jungle-nature.webp';
-  import fruitHavenTeam from '$lib/assets/fruithaven-team.webp';
 
   import {
     initScrollAnimations,
@@ -20,8 +18,6 @@
     stories,
     wounds,
     answers,
-    blueprintLayers,
-    comparisons,
     techCards,
     personas,
     faqItems,
@@ -36,6 +32,9 @@
 
   let showAllAnswers = $state(false);
   const ANSWERS_PREVIEW_COUNT = 4;
+
+  let showAllWounds = $state(false);
+  const WOUNDS_PREVIEW_COUNT = 4;
 
   // ─── ANIMATIONS ─────────────────────────────────────────────────────────────
   // Hero cascades in on mount; everything below is scroll-triggered via the
@@ -137,30 +136,14 @@
           </a>
         </div>
 
-        <div data-hero-step="0.52" class="mt-14 flex items-start gap-4 max-w-md">
-          <div class="flex -space-x-2 shrink-0">
-            {#each [
-              { Icon: Sprout,    label: 'Permaculturists' },
-              { Icon: Users,     label: 'Community builders' },
-              { Icon: Compass,   label: 'Systems thinkers' },
-              { Icon: Telescope, label: 'Seekers' },
-            ] as { Icon, label }}
-              <div
-                class="w-10 h-10 rounded-full border-2 border-ecohubs-base bg-white
-                       shadow-[0_2px_6px_rgba(11,46,36,0.08)] flex items-center justify-center
-                       text-emerald-700"
-                title={label}
-                aria-label={label}
-              >
-                <Icon class="w-[18px] h-[18px]" strokeWidth={1.6} aria-hidden="true" />
-              </div>
-            {/each}
-          </div>
-          <div class="text-sm text-stone-600 leading-snug pt-1">
-            Permaculturists, community builders, systems thinkers and
-            <em class="font-story italic">seekers of a different kind of life</em> —
-            co-creating this, one pilot at a time.
-          </div>
+        <div data-hero-step="0.52" class="mt-14 max-w-md">
+          <PersonaIcons>
+            {#snippet caption()}
+              Permaculturists, community builders, systems thinkers and
+              <em class="font-story italic">seekers of a different kind of life</em> —
+              co-creating this, one pilot at a time.
+            {/snippet}
+          </PersonaIcons>
         </div>
       </div>
 
@@ -415,13 +398,54 @@
     </div>
 
     <div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-      {#each wounds as w}
+      {#each wounds.slice(0, WOUNDS_PREVIEW_COUNT) as w}
         <div class="p-6 rounded-2xl border border-emerald-900/40" style="background: rgba(10,61,46,0.5);">
           <div class="text-xs tracking-widest uppercase text-amber-300/80 mb-3">{w.cat}</div>
           <h3 class="font-serif text-xl text-white mb-2">{w.title}</h3>
           <p class="text-stone-200/80 text-sm leading-relaxed">{w.body}</p>
         </div>
       {/each}
+
+      {#if showAllWounds}
+        {#each wounds.slice(WOUNDS_PREVIEW_COUNT) as w}
+          <div class="reveal-fade-in p-6 rounded-2xl border border-emerald-900/40" style="background: rgba(10,61,46,0.5);">
+            <div class="text-xs tracking-widest uppercase text-amber-300/80 mb-3">{w.cat}</div>
+            <h3 class="font-serif text-xl text-white mb-2">{w.title}</h3>
+            <p class="text-stone-200/80 text-sm leading-relaxed">{w.body}</p>
+          </div>
+        {/each}
+      {/if}
+    </div>
+
+    <!-- Poetic reveal — same pattern as the answers section, recoloured for the dark bg -->
+    <div class="mt-10 max-w-2xl mx-auto text-center">
+      {#if !showAllWounds}
+        <p class="font-story italic text-stone-300/70 text-base md:text-lg leading-relaxed">
+          There are {wounds.length - WOUNDS_PREVIEW_COUNT} more wounds — we didn't list every one.
+          The pattern is what matters.
+        </p>
+        <button
+          type="button"
+          onclick={() => (showAllWounds = true)}
+          class="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full
+                 border border-emerald-400/30 text-emerald-200/90 text-sm
+                 hover:border-emerald-300/60 hover:text-[#f5f2ea] transition-colors"
+        >
+          See the rest
+          <span aria-hidden="true">↓</span>
+        </button>
+      {:else}
+        <button
+          type="button"
+          onclick={() => (showAllWounds = false)}
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full
+                 border border-emerald-900/40 text-stone-300/70 text-sm
+                 hover:border-emerald-400/40 hover:text-stone-200 transition-colors"
+        >
+          <span aria-hidden="true">↑</span>
+          Show fewer
+        </button>
+      {/if}
     </div>
   </div>
 </section>
@@ -667,140 +691,85 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════
-     5. BLUEPRINT
+     5. BLUEPRINT — teaser
 ═══════════════════════════════════════════════════════════════════ -->
-<section id="blueprint" class="py-24 md:py-32 bg-ecohubs-ivory relative">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div data-scroll-animate="fade-up" class="max-w-3xl mb-16">
-      <div class="kicker text-emerald-800 mb-4">The Blueprint · RCOS</div>
-      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight mb-6">
-        <em class="font-story italic font-normal">The guidebook I wished existed,</em><br />
-        now open-source.
-      </h2>
-      <p class="text-lg text-stone-700 leading-relaxed">
-        The Blueprint (formally: the Regenerative Community Operating System)
-        is the first tangible outcome of EcoHubs. It is not a rulebook. It's a
-        living set of patterns that helps a community make the invisible things
-        explicit — before they quietly break the whole thing.
-      </p>
-    </div>
+<section id="blueprint" class="relative py-24 md:py-36 bg-ecohubs-ivory overflow-hidden">
+  <div class="absolute -z-0 -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-emerald-200/30 blur-3xl pointer-events-none"></div>
+  <div class="absolute -z-0 -bottom-32 -left-32 w-[440px] h-[440px] rounded-full bg-amber-200/25 blur-3xl pointer-events-none"></div>
 
-    <div class="grid md:grid-cols-3 gap-4">
-      {#each blueprintLayers as layer}
-        <div class="p-6 bg-white rounded-2xl border border-stone-200/80">
-          <div class="text-xs tracking-widest uppercase text-stone-400 mb-2">{layer.layer}</div>
-          <h3 class="font-serif text-xl text-ecohubs-deep mb-2">{layer.title}</h3>
-          <p class="text-sm text-stone-600 leading-relaxed">{layer.body}</p>
-        </div>
-      {/each}
-      <a href="/blueprint"
-         class="p-6 bg-ecohubs-deep text-white rounded-2xl border border-emerald-900/40 group flex flex-col justify-between">
-        <div>
-          <div class="text-xs tracking-widest uppercase text-emerald-300/80 mb-2">Explore</div>
-          <h3 class="font-serif text-xl mb-2">Open the full Blueprint</h3>
-          <p class="text-sm text-stone-300 leading-relaxed">It's freely readable. Editable by members. Evolving with every pilot.</p>
-        </div>
-        <span class="mt-4 text-emerald-300 group-hover:translate-x-1 transition-transform inline-block">→</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════
-     5b. WHAT MAKES US DIFFERENT
-═══════════════════════════════════════════════════════════════════ -->
-<section class="py-24 md:py-32 bg-ecohubs-base">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div data-scroll-animate="fade-up" class="max-w-2xl mb-14">
-      <div class="kicker text-emerald-700 mb-4">Why this isn't another community project</div>
-      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
-        Other people have tried.<br />
-        <em class="font-story italic font-normal text-stone-500">We learned from where they broke.</em>
-      </h2>
-      <p class="mt-5 text-lg text-stone-700 leading-relaxed max-w-xl">
-        We are not the first to try this — and that is the point. Most intentional communities fail in the
-        same handful of ways. The Blueprint is built around those failure points, not around anyone's ideology.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
-      {#each comparisons as c}
-        <div class="relative bg-white rounded-3xl p-7 border border-stone-200/80">
-          <div class="text-[11px] tracking-widest uppercase text-stone-500 mb-4">Most projects</div>
-          <p class="font-serif text-lg text-stone-700 leading-snug mb-6 line-through decoration-stone-300/80 decoration-1">{c.most}</p>
-          <div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">EcoHubs</div>
-          <p class="font-serif text-xl text-ecohubs-deep leading-snug"><em class="font-story italic">{c.eco}</em></p>
-        </div>
-      {/each}
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════
-     6. ECUADOR PILOT
-═══════════════════════════════════════════════════════════════════ -->
-<section id="pilot" class="py-24 md:py-36 relative overflow-hidden">
-  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-base to-ecohubs-ivory"></div>
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
-
-    <div data-scroll-animate="fade-up" class="lg:col-span-5 relative">
-      <div class="rounded-[32px] overflow-hidden soft-shadow aspect-[4/5]">
-        <img src={fruitHavenTeam}
-             alt="FruitHaven Community in Ecuador" class="w-full h-full object-cover" />
-      </div>
-      <div class="absolute -bottom-6 left-4 right-4 md:left-auto md:-right-8 md:w-[22rem] bg-white rounded-2xl px-6 py-5 border border-stone-200 soft-shadow">
-        <div class="text-xs tracking-widest uppercase text-emerald-700 mb-2 flex items-center gap-2 whitespace-nowrap">
-          <span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 pulse-dot shrink-0"></span>
-          Pilot · Active now
-        </div>
-        <div class="font-serif text-lg text-ecohubs-deep leading-tight">FruitHaven community in Ecuador</div>
-        <div class="text-xs text-stone-500 mt-1.5">Applying RCOS Blueprint practice since March 2026</div>
-      </div>
-    </div>
-
+  <div class="max-w-6xl mx-auto px-6 lg:px-8 relative grid lg:grid-cols-12 gap-12 items-center">
     <div data-scroll-animate="fade-up" class="lg:col-span-7">
-      <div class="kicker text-emerald-700 mb-4">Already Living, Not Just Planned</div>
-      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight mb-8">
-        A pilot is already happening<br />
-        <em class="font-story italic font-normal text-stone-500">— and it's working.</em>
+      <div class="kicker text-emerald-800 mb-4 flex items-center gap-3">
+        <span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"></span>
+        The Blueprint · RCOS
+      </div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight mb-6">
+        <em class="font-story italic font-normal">The guidebook</em> we wished<br />
+        had existed.
       </h2>
       <p class="text-lg text-stone-700 leading-relaxed mb-5">
-        In March 2026, we introduced the Blueprint to a community in Ecuador facing complex, long-standing divisions. 
-        These were people deeply committed to healing, yet they needed a new path forward to bridge the gaps that had persisted for so long.
+        The Blueprint — formally <strong class="text-ecohubs-deep">RCOS</strong> (Regenerative Community
+        Operating System) — is an open standard for designing and operating regenerative communities.
+        Not software. Not an ideology. A shared way to make community structure
+        <em class="font-story italic">explicit, testable, and improvable.</em>
       </p>
       <p class="text-lg text-stone-700 leading-relaxed mb-8">
-        The Blueprint doesn't magic away the pain. It does something quieter:
-        it <em class="font-story italic">names the thing that's hard</em>, and gives the
-        community a shared language to work on it together.
+        It's the first tangible outcome of EcoHubs — and the bridge between the vision and the ground.
+        Anyone can pick it up, read it, fork it, and put it to work today.
       </p>
-      <blockquote class="pl-6 border-l-2 border-emerald-700/40 mb-10">
-        <p class="font-story italic text-xl text-ecohubs-deep leading-snug">
-          "The introduction of the Regenerative Community Operating System sparked renewed motivation and inspiration within our community."
-        </p>
-        <p class="mt-3 text-sm text-stone-500">— Boris P., Member of the pilot community</p>
-      </blockquote>
-      <div class="flex flex-wrap items-center gap-6 text-sm text-stone-600 mb-8">
-        {#each ['Non-ideological', 'Works online or offline', 'Fork-friendly · use your own way'] as tag}
-          <div class="flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span>{tag}
-          </div>
-        {/each}
-      </div>
 
-      <div class="flex flex-col sm:flex-row gap-4 sm:items-center">
-        <a href="https://fruithaven.land/"
-           target="_blank" rel="noopener noreferrer"
-           class="no-external-decoration px-6 py-3 bg-ecohubs-dark text-white font-medium rounded-full
-                  hover:bg-ecohubs-deep transition-colors inline-flex items-center justify-center gap-2 group">
-          Visit FruitHaven
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="/blueprint"
+           class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-colors inline-flex items-center justify-center gap-2 group">
+          Explore the Blueprint
           <span class="transition-transform group-hover:translate-x-0.5">→</span>
         </a>
-        <a href="https://www.youtube.com/playlist?list=PLuxOGwcC8ea2RfBxhMgBWg6xnyeFYdzn1"
-           target="_blank" rel="noopener noreferrer"
-           class="no-external-decoration inline-flex items-center gap-2 text-ecohubs-dark font-medium border-b border-ecohubs-dark/40
-                  hover:border-ecohubs-dark pb-1">
-          Listen to the session recordings →
+        <a href="https://blueprint.ecohubs.community"
+           target="_blank" rel="noopener"
+           class="no-external-decoration px-7 py-3.5 bg-transparent border border-stone-300 text-stone-800 font-medium rounded-full hover:border-ecohubs-dark hover:text-ecohubs-dark transition-colors inline-flex items-center justify-center gap-2">
+          Read it live
+          <span class="text-xs opacity-70">↗</span>
         </a>
+      </div>
+
+      <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-stone-600">
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Open standard</span>
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Modular &amp; forkable</span>
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Tested in a live pilot</span>
+      </div>
+    </div>
+
+    <!-- Right: stylized "spec" card -->
+    <div data-scroll-animate="fade-up" class="lg:col-span-5 relative">
+      <div class="relative bg-white rounded-[28px] border border-stone-200/80 soft-shadow p-7 overflow-hidden">
+        <div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-emerald-200/40 blur-2xl pointer-events-none"></div>
+        <div class="flex items-center justify-between mb-5">
+          <div class="flex items-center gap-2 text-stone-400">
+            <span class="w-2.5 h-2.5 rounded-full bg-stone-300"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-stone-300"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-stone-300"></span>
+          </div>
+          <span class="font-mono text-[10px] tracking-widest text-stone-400 uppercase">RCOS · v0 · public draft</span>
+        </div>
+
+        <div class="font-mono text-[12px] leading-[1.9] text-stone-600 space-y-1">
+          <div><span class="text-emerald-700">layer 0</span> · <span class="text-stone-800">purpose &amp; scope</span></div>
+          <div><span class="text-emerald-700">layer 1</span> · <span class="text-stone-800">membership</span></div>
+          <div><span class="text-emerald-700">layer 2</span> · <span class="text-stone-800">governance</span></div>
+          <div><span class="text-emerald-700">layer 3</span> · <span class="text-stone-800">economy &amp; resources</span></div>
+          <div><span class="text-emerald-700">layer 4</span> · <span class="text-stone-800">conflict &amp; repair</span></div>
+          <div><span class="text-emerald-700">layer 5</span> · <span class="text-stone-800">operations</span></div>
+          <div><span class="text-emerald-700">layer 6</span> · <span class="text-stone-800">evolution</span></div>
+          <div class="pt-2 text-stone-400">— optional —</div>
+          <div><span class="text-amber-700">module</span> · <span class="text-stone-800">permaculture</span></div>
+          <div><span class="text-amber-700">module</span> · <span class="text-stone-800">education</span></div>
+          <div><span class="text-amber-700">module</span> · <span class="text-stone-800">housing</span></div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-stone-200 flex items-center justify-between text-xs text-stone-500">
+          <span>Open · Forkable · Adaptable</span>
+          <a href="/blueprint" class="text-ecohubs-primary hover:underline font-medium">See all seven layers →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -850,8 +819,7 @@
           remember what it said.
         </p>
         <p class="mt-5 text-lg text-stone-700 leading-relaxed">
-          We don't use it to manufacture engagement, replace relationships, or grow at any cost. When the
-          platform is doing its job well, you forget it's there.
+          We don't use it to manufacture engagement, replace relationships, or grow at any cost. 
         </p>
       </div>
       <div class="lg:col-span-7">
