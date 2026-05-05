@@ -1,58 +1,178 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
-	import Section from '$lib/components/Section.svelte';
 	import ApplicationForm from '$lib/components/ApplicationForm.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 </script>
 
+<svelte:head>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet"
+	/>
+</svelte:head>
+
 <SEO
-	title="Join Us - EcoHubs.community"
-	description="Apply to join EcoHubs.community and be part of the first 150 founding members."
+	title="Apply to join — EcoHubs.community"
+	description="A short application, read by real people, decided in the open. Free, contribution-based, and held together by a community that's writing the Blueprint for a different way to live."
 	ogImage="/og-join.jpg"
 	breadcrumbs={[
 		{ name: 'Home', url: 'https://ecohubs.community' },
-		{ name: 'Join', url: 'https://ecohubs.community/join' }
+		{ name: 'Apply', url: 'https://ecohubs.community/join' }
 	]}
 />
 
-<Section spacing="xl">
-	<div class="mx-auto w-full max-w-5xl">
-		<div class="text-center mb-12">
-			<h1 class="font-serif text-4xl font-bold text-ecohubs-dark sm:text-5xl mb-4">
-				Join the First 150
-			</h1>
-			<p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
-				We're building a selective, committed community of founders who share our vision for regenerative intentional communities.
-			</p>
-			<div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-full text-sm text-emerald-800">
-				<span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-				<!-- <span><strong>120+ applications</strong> received so far</span> -->
-				<span>Build the future with us!</span>
+<!-- ═══════════════════════════════════════════════════════════════════
+		1. HERO
+═══════════════════════════════════════════════════════════════════ -->
+<section class="relative pt-32 pb-12 md:pt-40 md:pb-16 overflow-hidden">
+	<div class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"></div>
+	<div class="absolute -z-10 top-20 -left-40 w-[420px] h-[420px] rounded-full bg-emerald-200/25 blur-3xl"></div>
+	<div class="absolute -z-10 bottom-0 -right-20 w-[360px] h-[360px] rounded-full bg-amber-200/30 blur-3xl"></div>
+
+	<div class="max-w-4xl mx-auto px-6 lg:px-8">
+		<div class="kicker text-emerald-700 mb-5 flex items-center gap-3">
+			<span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"></span>
+			Open · Free · Contribution-based
+		</div>
+		<h1 class="font-serif text-5xl md:text-6xl lg:text-[68px] leading-[1.05] tracking-tight text-ecohubs-deep">
+			Tell us who you are<span class="font-story italic font-light text-stone-400">,</span><br />
+			<em class="font-story italic font-normal text-ecohubs-primary">in your own words.</em>
+		</h1>
+		<p class="mt-7 text-lg text-stone-700 leading-relaxed max-w-2xl font-light">
+			This is the application. Twenty quiet minutes, five short chapters, no recruiter screen.
+			What you write here lands in front of real people who read every answer — and decide
+			together who joins next.
+		</p>
+	</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+		2. EXPECTATIONS — what to expect, in 3 lines
+═══════════════════════════════════════════════════════════════════ -->
+<section class="bg-ecohubs-base pb-12 md:pb-16">
+	<div class="max-w-4xl mx-auto px-6 lg:px-8">
+		<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+			<div class="flex items-start gap-3 p-4 rounded-2xl bg-ecohubs-ivory border border-stone-200/60">
+				<span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+				<div>
+					<div class="font-serif text-base text-ecohubs-deep">~20 minutes</div>
+					<div class="text-stone-600 text-sm mt-0.5">Background, values, a question of yours.</div>
+				</div>
+			</div>
+			<div class="flex items-start gap-3 p-4 rounded-2xl bg-ecohubs-ivory border border-stone-200/60">
+				<span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+				<div>
+					<div class="font-serif text-base text-ecohubs-deep">3 days</div>
+					<div class="text-stone-600 text-sm mt-0.5">Community review and vote on ecohubsOS.</div>
+				</div>
+			</div>
+			<div class="flex items-start gap-3 p-4 rounded-2xl bg-ecohubs-ivory border border-stone-200/60">
+				<span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+				<div>
+					<div class="font-serif text-base text-ecohubs-deep">No fee, ever</div>
+					<div class="text-stone-600 text-sm mt-0.5">No wallet, no credit card, no upsell.</div>
+				</div>
 			</div>
 		</div>
+	</div>
+</section>
 
-		<div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-			<div class="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-xl border border-gray-100 text-sm text-gray-600">
-				<svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-				No wallet needed to apply
-			</div>
-			<div class="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-xl border border-gray-100 text-sm text-gray-600">
-				<svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-				No credit card ever required
-			</div>
-		</div>
+<div class="hairline max-w-4xl mx-auto"></div>
 
-		<div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 lg:p-12">
+<!-- ═══════════════════════════════════════════════════════════════════
+		3. THE FORM
+═══════════════════════════════════════════════════════════════════ -->
+<section class="py-16 md:py-24 bg-ecohubs-ivory relative overflow-hidden">
+	<div class="absolute inset-0 grain pointer-events-none opacity-40"></div>
+	<div class="absolute -z-0 -top-32 -right-32 w-[420px] h-[420px] rounded-full bg-emerald-200/30 blur-3xl pointer-events-none"></div>
+	<div class="absolute -z-0 -bottom-32 -left-32 w-[360px] h-[360px] rounded-full bg-amber-200/25 blur-3xl pointer-events-none"></div>
+
+	<div class="max-w-4xl mx-auto px-6 lg:px-8 relative">
+		<div class="bg-white rounded-3xl border border-stone-200/70 soft-shadow p-7 md:p-10 lg:p-12">
 			<ApplicationForm {data} />
 		</div>
 
-		<div class="mt-12 text-center space-y-2">
-			<p class="text-sm text-gray-500">
-				<strong>Note:</strong> Completing this application does not guarantee membership. We're carefully selecting founding members who align with our values and can actively contribute to co-creating the blueprint.
-			</p>
-		</div>
+		<p class="mt-6 text-center text-sm text-stone-500 max-w-2xl mx-auto font-story italic leading-relaxed">
+			Completing the form is not a guarantee — it's an honest conversation. We answer everyone,
+			either way, usually within a few days.
+		</p>
 	</div>
-</Section>
+</section>
 
+<!-- ═══════════════════════════════════════════════════════════════════
+		4. CLOSING NOTE
+═══════════════════════════════════════════════════════════════════ -->
+<section class="py-16 md:py-20 bg-ecohubs-base border-t border-stone-200/70 text-center">
+	<div class="max-w-2xl mx-auto px-6 lg:px-8">
+		<div class="kicker text-emerald-700 mb-3">Just looking?</div>
+		<p class="font-story italic text-xl md:text-2xl text-ecohubs-deep leading-snug">
+			Read the <a href="/membership" class="text-ecohubs-primary not-italic hover:text-ecohubs-deep underline decoration-ecohubs-primary/40 underline-offset-4 hover:decoration-ecohubs-primary">membership page</a>
+			or the <a href="/blueprint" class="text-ecohubs-primary not-italic hover:text-ecohubs-deep underline decoration-ecohubs-primary/40 underline-offset-4 hover:decoration-ecohubs-primary">Blueprint</a>
+			first — applying when you're ready works better for everyone.
+		</p>
+	</div>
+</section>
+
+<style>
+	:global(main p),
+	:global(main li),
+	:global(main label),
+	:global(main input),
+	:global(main textarea),
+	:global(main select),
+	:global(main button),
+	:global(main span:not([class*='font-'])),
+	:global(main div:not([class*='font-'])) {
+		font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	}
+
+	:global(.font-story) {
+		font-family: var(--font-story, 'Fraunces', serif);
+		font-optical-sizing: auto;
+	}
+
+	:global(.kicker) {
+		font-size: 0.72rem;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	:global(.soft-shadow) {
+		box-shadow: 0 30px 60px -30px rgba(11, 46, 36, 0.25);
+	}
+
+	.hairline {
+		height: 1px;
+		background: linear-gradient(90deg, transparent, rgba(6, 78, 59, 0.25), transparent);
+	}
+
+	:global(.pulse-dot)::before {
+		content: '';
+		position: absolute;
+		inset: -6px;
+		border-radius: 9999px;
+		background: currentColor;
+		opacity: 0.25;
+		animation: pulse-ring 2.4s ease-in-out infinite;
+	}
+
+	@keyframes pulse-ring {
+		0%, 100% { transform: scale(1);   opacity: 0.25; }
+		50%      { transform: scale(1.6); opacity: 0;    }
+	}
+
+	:global(.grain)::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		opacity: 0.5;
+		mix-blend-mode: multiply;
+		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+	}
+</style>
