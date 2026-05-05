@@ -506,7 +506,7 @@
 		<div class="space-y-3 max-w-4xl" data-scroll-stagger>
 			{#each values as v (v.number)}
 				<article
-					class="grid md:grid-cols-[180px,1fr] gap-6 md:gap-10 items-start p-6 md:p-8 rounded-2xl bg-white border border-stone-200/70 hover:border-emerald-700/40 transition-colors"
+					class="grid md:grid-cols-[180px_1fr] gap-6 md:gap-10 items-start p-6 md:p-8 rounded-2xl bg-white border border-stone-200/70 hover:border-emerald-700/40 transition-colors"
 				>
 					<div>
 						<div class="kicker text-stone-500 mb-2">Value {v.number}</div>
@@ -632,7 +632,7 @@
 
 			<ol class="space-y-6" data-scroll-stagger>
 				{#each loopSteps as step (step.number)}
-					<li class="grid grid-cols-[auto,1fr] gap-5">
+					<li class="grid grid-cols-[auto_1fr] gap-5">
 						<span class="font-story italic text-2xl text-ecohubs-primary w-10 shrink-0"
 							>{step.number}</span
 						>

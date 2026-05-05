@@ -495,7 +495,7 @@
 
     <div data-scroll-stagger class="grid md:grid-cols-2 gap-4">
       {#each answers.slice(0, ANSWERS_PREVIEW_COUNT) as a}
-        <div class="grid grid-cols-[auto,1fr] gap-5 p-6 rounded-2xl bg-ecohubs-ivory border border-stone-200/70">
+        <div class="grid grid-cols-[auto_1fr] gap-5 p-6 rounded-2xl bg-ecohubs-ivory border border-stone-200/70">
           <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif shrink-0">→</div>
           <div>
             <div class="text-xs tracking-widest uppercase text-stone-500 mb-1">{a.cat}</div>
@@ -507,7 +507,7 @@
 
       {#if showAllAnswers}
         {#each answers.slice(ANSWERS_PREVIEW_COUNT) as a}
-          <div class="reveal-fade-in grid grid-cols-[auto,1fr] gap-5 p-6 rounded-2xl bg-ecohubs-ivory border border-stone-200/70">
+          <div class="reveal-fade-in grid grid-cols-[auto_1fr] gap-5 p-6 rounded-2xl bg-ecohubs-ivory border border-stone-200/70">
             <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif shrink-0">→</div>
             <div>
               <div class="text-xs tracking-widest uppercase text-stone-500 mb-1">{a.cat}</div>
@@ -922,7 +922,7 @@
         { n: '02', color: 'bg-ecohubs-primary', title: 'Grow the Blueprint', body: 'Open-source, evolving — shaped by practice across ecology, governance, economy, culture, and care.' },
         { n: '03', color: 'bg-amber-600',       title: 'Pilot, learn, share', body: 'Apply the Blueprint in real communities. Ecuador is the first. Document every scar, every win, openly.' },
       ] as step}
-        <div class="grid md:grid-cols-[auto,1fr] gap-6 items-start">
+        <div class="grid md:grid-cols-[auto_1fr] gap-6 items-start">
           <div class="w-14 h-14 rounded-full {step.color} text-white font-serif text-xl flex items-center justify-center shrink-0">
             {step.n}
           </div>
