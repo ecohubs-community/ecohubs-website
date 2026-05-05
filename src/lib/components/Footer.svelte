@@ -104,7 +104,7 @@
 						required
 						placeholder="your@email.com"
 						disabled={isSubmitting || submitStatus === 'success'}
-						class="flex-1 px-5 py-3.5 rounded-full bg-[#0b2419] border border-emerald-900/50 text-[#f5f2ea] placeholder:text-stone-500 focus:outline-none focus:border-emerald-400/60 disabled:opacity-50"
+						class="flex-1 px-5 py-3.5 rounded-full bg-[#0b2419] border border-emerald-900/50 text-[#f5f2ea] placeholder:text-emerald-300/40 focus:outline-none focus:border-emerald-400/60 disabled:opacity-50"
 						aria-label="Email address"
 					/>
 					<button
