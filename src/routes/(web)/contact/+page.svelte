@@ -100,7 +100,7 @@
 					href={ch.href}
 					target={ch.external ? '_blank' : undefined}
 					rel={ch.external ? 'noopener noreferrer' : undefined}
-					class="group bg-white rounded-3xl p-7 md:p-8 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors flex flex-col"
+					class="no-external-decoration group bg-white rounded-3xl p-7 md:p-8 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors flex flex-col"
 				>
 					<div class="w-12 h-12 {ch.iconBg} rounded-xl flex items-center justify-center {ch.iconColor} mb-5">
 						<svelte:component this={ch.Icon} class="w-5 h-5" strokeWidth={1.8} aria-hidden="true" />
