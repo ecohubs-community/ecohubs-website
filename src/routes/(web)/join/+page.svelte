@@ -81,17 +81,19 @@
 	</div>
 </section>
 
-<div class="hairline max-w-4xl mx-auto"></div>
-
 <!-- ═══════════════════════════════════════════════════════════════════
 		3. THE FORM
+		Section starts further down (more breathing room above the band),
+		and the form card is pulled up with a negative margin so it
+		visually crosses the section's top edge — like a letter sliding
+		out from under the seal.
 ═══════════════════════════════════════════════════════════════════ -->
-<section class="py-16 md:py-24 bg-ecohubs-ivory relative overflow-hidden">
+<section class="pt-40 md:pt-56 pb-16 md:pb-24 bg-ecohubs-ivory relative overflow-visible">
 	<div class="absolute inset-0 grain pointer-events-none opacity-40"></div>
 	<div class="absolute -z-0 -top-32 -right-32 w-[420px] h-[420px] rounded-full bg-emerald-200/30 blur-3xl pointer-events-none"></div>
 	<div class="absolute -z-0 -bottom-32 -left-32 w-[360px] h-[360px] rounded-full bg-amber-200/25 blur-3xl pointer-events-none"></div>
 
-	<div class="max-w-4xl mx-auto px-6 lg:px-8 relative">
+	<div class="max-w-4xl mx-auto px-6 lg:px-8 relative -mt-56 md:-mt-72">
 		<ApplicationForm {data} />
 
 		<p class="mt-6 text-center text-sm text-stone-500 max-w-2xl mx-auto font-story italic leading-relaxed">
