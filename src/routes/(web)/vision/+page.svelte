@@ -272,7 +272,7 @@
 
 				<div
 					data-hero-step="0.65"
-					class="absolute -left-3 -bottom-2 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[260px] border border-stone-100 hidden md:block"
+					class="absolute -right-8 -bottom-4 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[260px] border border-stone-100 hidden md:block"
 				>
 					<p class="font-story italic text-[15px] leading-snug text-stone-800">
 						"We are not designing a perfect place. We are designing a place that can keep getting

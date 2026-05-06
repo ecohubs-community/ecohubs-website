@@ -53,7 +53,7 @@
 <!-- ═══════════════════════════════════════════════════════════════════
 		2. EXPECTATIONS — what to expect, in 3 lines
 ═══════════════════════════════════════════════════════════════════ -->
-<section class="bg-ecohubs-base pb-28 md:pb-40">
+<section class="bg-ecohubs-base pb-28 md:pb-34">
 	<div class="max-w-4xl mx-auto px-6 lg:px-8">
 		<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
 			<div class="flex items-start gap-3 p-4 rounded-2xl bg-ecohubs-ivory border border-stone-200/60">

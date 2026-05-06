@@ -171,7 +171,7 @@
 					</div>
 				</div>
 
-				<div class="absolute -left-4 bottom-6 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[270px] border border-stone-100 hidden md:block">
+				<div class="absolute -right-28 bottom-14 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[270px] border border-stone-100 hidden md:block">
 					<p class="font-story italic text-[15px] leading-snug text-stone-800">
 						"I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter."
 					</p>
