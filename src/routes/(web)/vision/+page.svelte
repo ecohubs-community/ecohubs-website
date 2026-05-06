@@ -131,153 +131,145 @@
 			</div>
 
 			<div class="lg:col-span-5 relative">
-				<!-- Hand-drawn SVG of "a place" — single, calm illustration instead
-				     of the 5×6 photo mosaic used by /, /membership. The arcs around
-				     the cluster foreshadow the network strip lower on the page. -->
-				<div
-					data-hero-step="0.20"
-					class="relative h-[480px] rounded-[28px] overflow-hidden soft-shadow bg-gradient-to-b from-ecohubs-ivory to-emerald-50 border border-stone-200/60"
-				>
-					<svg
-						viewBox="0 0 480 480"
-						preserveAspectRatio="xMidYMax meet"
-						class="absolute inset-0 w-full h-full"
-						aria-hidden="true"
-					>
-						<!-- Subtle grain background -->
+				<div class="relative aspect-[5/6] w-full max-w-[520px] mx-auto">
+					<div class="absolute inset-0 rounded-[32px] bg-gradient-to-b from-[#f8f4e8] via-[#fbfbf9] to-[#f0ebe0] soft-shadow"></div>
+
+					<svg viewBox="0 0 500 600" class="relative w-full h-full" preserveAspectRatio="xMidYMid meet" aria-label="A horizon with a network of small communities">
 						<defs>
-							<radialGradient id="sun" cx="50%" cy="50%" r="50%">
-								<stop offset="0%" stop-color="#fcd34d" stop-opacity="0.95" />
-								<stop offset="60%" stop-color="#fbbf24" stop-opacity="0.55" />
-								<stop offset="100%" stop-color="#f59e0b" stop-opacity="0" />
-							</radialGradient>
-							<linearGradient id="hill1" x1="0" x2="0" y1="0" y2="1">
-								<stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.55" />
-								<stop offset="100%" stop-color="#a7f3d0" stop-opacity="0" />
-							</linearGradient>
-							<linearGradient id="pond" x1="0" x2="0" y1="0" y2="1">
-								<stop offset="0%" stop-color="#0b2e24" stop-opacity="0.18" />
-								<stop offset="100%" stop-color="#0b2e24" stop-opacity="0.08" />
-							</linearGradient>
+						<radialGradient id="sun" cx="50%" cy="50%" r="50%">
+							<stop offset="0%" stop-color="#f5d6a5"/>
+							<stop offset="60%" stop-color="#e8b87a" stop-opacity="0.6"/>
+							<stop offset="100%" stop-color="#e8b87a" stop-opacity="0"/>
+						</radialGradient>
+						<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+							<stop offset="0%" stop-color="#fbf6ea"/>
+							<stop offset="55%" stop-color="#f4ead4"/>
+							<stop offset="100%" stop-color="#e9dcb8"/>
+						</linearGradient>
+						<linearGradient id="hill1" x1="0" y1="0" x2="0" y2="1">
+							<stop offset="0%" stop-color="#94a99a"/>
+							<stop offset="100%" stop-color="#7e9684"/>
+						</linearGradient>
+						<linearGradient id="hill2" x1="0" y1="0" x2="0" y2="1">
+							<stop offset="0%" stop-color="#5f7d68"/>
+							<stop offset="100%" stop-color="#476054"/>
+						</linearGradient>
+						<linearGradient id="hill3" x1="0" y1="0" x2="0" y2="1">
+							<stop offset="0%" stop-color="#2f4a3c"/>
+							<stop offset="100%" stop-color="#1f3329"/>
+						</linearGradient>
+						<linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+							<stop offset="0%" stop-color="#3d2f1f"/>
+							<stop offset="100%" stop-color="#241a10"/>
+						</linearGradient>
+						<clipPath id="frame">
+							<rect x="20" y="20" width="460" height="560" rx="28"/>
+						</clipPath>
 						</defs>
 
-						<!-- Sun / soft horizon glow -->
-						<circle cx="340" cy="180" r="48" fill="url(#sun)" />
-						<circle cx="340" cy="180" r="18" fill="#fcd34d" fill-opacity="0.8" />
+						<g clip-path="url(#frame)">
+						<rect x="0" y="0" width="500" height="420" fill="url(#sky)"/>
+						<circle cx="335" cy="180" r="160" fill="url(#sun)"/>
+						<circle cx="335" cy="180" r="46" fill="#f0c98a"/>
 
-						<!-- Concentric "network of places" arcs around the cluster -->
-						<g stroke="#0b2e24" stroke-opacity="0.12" fill="none" stroke-dasharray="2 4">
-							<ellipse cx="240" cy="320" rx="220" ry="60" />
-							<ellipse cx="240" cy="320" rx="170" ry="44" />
-							<ellipse cx="240" cy="320" rx="120" ry="30" />
+						<g stroke="#064e3b" fill="none" opacity="0.18" stroke-width="1">
+							<circle cx="250" cy="430" r="80"/>
+							<circle cx="250" cy="430" r="140"/>
+							<circle cx="250" cy="430" r="210"/>
+							<circle cx="250" cy="430" r="290"/>
 						</g>
 
-						<!-- Distant tiny "other places" on the outermost arc -->
-						<g fill="#059669" fill-opacity="0.55">
-							<circle cx="40" cy="320" r="3" />
-							<circle cx="440" cy="320" r="3" />
-							<circle cx="100" cy="270" r="2.5" />
-							<circle cx="380" cy="370" r="2.5" />
+						<g stroke="#1f3329" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.55">
+							<path d="M120 130 q4 -4 8 0 q4 -4 8 0"/>
+							<path d="M150 110 q3 -3 6 0 q3 -3 6 0"/>
+							<path d="M180 135 q3 -3 6 0 q3 -3 6 0"/>
+							<path d="M105 160 q3 -3 6 0 q3 -3 6 0"/>
 						</g>
 
-						<!-- Far hills -->
-						<path d="M0 290 Q120 240 240 270 T480 250 L480 360 L0 360 Z" fill="url(#hill1)" />
-						<path
-							d="M0 290 Q120 240 240 270 T480 250"
-							fill="none"
-							stroke="#0b2e24"
-							stroke-opacity="0.25"
-							stroke-width="1"
-						/>
+						<path d="M0 320 Q 90 280 170 305 T 320 295 T 500 285 L 500 420 L 0 420 Z" fill="url(#hill1)" opacity="0.85"/>
+						<path d="M0 360 Q 110 320 220 345 T 410 340 T 500 350 L 500 460 L 0 460 Z" fill="url(#hill2)"/>
+						<path d="M0 410 Q 80 370 170 395 Q 260 420 350 388 Q 430 360 500 395 L 500 520 L 0 520 Z" fill="url(#hill3)"/>
+						<path d="M0 470 Q 250 440 500 475 L 500 600 L 0 600 Z" fill="url(#ground)"/>
 
-						<!-- Pond -->
-						<ellipse cx="120" cy="395" rx="52" ry="8" fill="url(#pond)" />
-						<path
-							d="M68 395 Q120 388 172 395"
-							fill="none"
-							stroke="#0b2e24"
-							stroke-opacity="0.3"
-							stroke-width="1"
-						/>
-
-						<!-- Footpath winding toward the cluster -->
-						<path
-							d="M40 470 Q140 420 220 410 T360 380"
-							fill="none"
-							stroke="#8b6f47"
-							stroke-opacity="0.5"
-							stroke-width="2"
-							stroke-dasharray="4 4"
-						/>
-
-						<!-- Three buildings — small cluster -->
-						<g stroke="#0b2e24" stroke-width="1.4" stroke-opacity="0.85">
-							<!-- Building 1 (left, larger) -->
-							<rect x="218" y="350" width="40" height="36" fill="#fbfbf9" />
-							<path d="M214 350 L238 326 L262 350 Z" fill="#fbfbf9" />
-							<rect x="232" y="364" width="12" height="22" fill="#0b2e24" fill-opacity="0.55" />
-							<rect x="221" y="356" width="6" height="6" fill="#fde68a" fill-opacity="0.9" />
-							<rect x="249" y="356" width="6" height="6" fill="#fde68a" fill-opacity="0.9" />
-
-							<!-- Building 2 (right, planted roof) -->
-							<rect x="270" y="358" width="34" height="28" fill="#fbfbf9" />
-							<path d="M267 358 L287 340 L307 358 Z" fill="#86efac" fill-opacity="0.85" />
-							<!-- planted-roof tufts -->
-							<circle cx="280" cy="346" r="2" fill="#059669" fill-opacity="0.85" />
-							<circle cx="287" cy="343" r="2" fill="#059669" fill-opacity="0.85" />
-							<circle cx="295" cy="346" r="2" fill="#059669" fill-opacity="0.85" />
-							<rect x="282" y="368" width="10" height="18" fill="#0b2e24" fill-opacity="0.55" />
-
-							<!-- Building 3 (small, behind) -->
-							<rect x="195" y="360" width="22" height="22" fill="#fbfbf9" />
-							<path d="M193 360 L206 348 L219 360 Z" fill="#fbfbf9" />
-							<rect x="201" y="370" width="6" height="12" fill="#0b2e24" fill-opacity="0.55" />
-							<rect x="208" y="365" width="5" height="5" fill="#fde68a" fill-opacity="0.85" />
+						<g stroke="#5a4628" stroke-width="1" opacity="0.55" fill="none">
+							<path d="M-20 500 Q 250 478 520 506"/>
+							<path d="M-20 520 Q 250 498 520 526"/>
+							<path d="M-20 540 Q 250 518 520 546"/>
+							<path d="M-20 562 Q 250 540 520 568"/>
 						</g>
 
-						<!-- Trees scattered around -->
-						<g stroke="#0b2e24" stroke-width="1.2" stroke-opacity="0.8">
-							<!-- Left tree -->
-							<line x1="170" y1="386" x2="170" y2="364" />
-							<circle cx="170" cy="356" r="14" fill="#86efac" fill-opacity="0.8" />
-
-							<!-- Right tall tree -->
-							<line x1="330" y1="386" x2="330" y2="350" />
-							<ellipse cx="330" cy="338" rx="11" ry="18" fill="#86efac" fill-opacity="0.8" />
-
-							<!-- Small bush near pond -->
-							<circle cx="90" cy="382" r="6" fill="#86efac" fill-opacity="0.85" />
-							<circle cx="155" cy="384" r="5" fill="#86efac" fill-opacity="0.85" />
-
-							<!-- Background tree, far right -->
-							<line x1="400" y1="362" x2="400" y2="342" />
-							<circle cx="400" cy="334" r="10" fill="#86efac" fill-opacity="0.7" />
+						<g transform="translate(228 372)">
+							<circle r="22" fill="#e8b87a" opacity="0.25"/>
+							<circle r="14" fill="#e8b87a" opacity="0.4"/>
+							<path d="M-10 0 L 0 -16 L 10 0 Z" fill="#1f3329"/>
+							<rect x="-8" y="0" width="16" height="10" fill="#2a4035"/>
+							<rect x="-2" y="3" width="4" height="7" fill="#f0c98a"/>
+							<path d="M0 -16 Q -3 -22 0 -28 Q 3 -34 0 -40" stroke="#fbf6ea" stroke-width="1.2" fill="none" opacity="0.7"/>
+							<line x1="14" y1="-10" x2="-2" y2="-10" stroke="#5a4628" stroke-width="0.8" opacity="0.6"/>
 						</g>
 
-						<!-- Tiny wandering birds near the sun -->
-						<g stroke="#0b2e24" stroke-opacity="0.55" stroke-width="1.2" fill="none" stroke-linecap="round">
-							<path d="M280 150 q4 -4 8 0 q4 -4 8 0" />
-							<path d="M310 130 q3 -3 6 0 q3 -3 6 0" />
+						<g transform="translate(132 388)">
+							<path d="M-7 0 L 0 -11 L 7 0 Z" fill="#1f3329"/>
+							<rect x="-5" y="0" width="10" height="7" fill="#2a4035"/>
+							<rect x="-1.2" y="2" width="2.4" height="5" fill="#f0c98a" opacity="0.85"/>
+							<path d="M0 -11 Q -2 -15 0 -19 Q 2 -23 0 -27" stroke="#fbf6ea" stroke-width="1" fill="none" opacity="0.55"/>
 						</g>
+
+						<g transform="translate(338 358)">
+							<path d="M-7 0 L 0 -11 L 7 0 Z" fill="#1f3329"/>
+							<rect x="-5" y="0" width="10" height="7" fill="#2a4035"/>
+							<rect x="-1.2" y="2" width="2.4" height="5" fill="#f0c98a" opacity="0.85"/>
+							<path d="M0 -11 Q -2 -15 0 -19 Q 2 -23 0 -27" stroke="#fbf6ea" stroke-width="1" fill="none" opacity="0.55"/>
+						</g>
+
+						<g transform="translate(76 332)">
+							<path d="M-5 0 L 0 -8 L 5 0 Z" fill="#476054"/>
+							<rect x="-3.5" y="0" width="7" height="5" fill="#5f7d68"/>
+						</g>
+
+						<g transform="translate(412 326)">
+							<path d="M-5 0 L 0 -8 L 5 0 Z" fill="#476054"/>
+							<rect x="-3.5" y="0" width="7" height="5" fill="#5f7d68"/>
+						</g>
+
+						<g transform="translate(266 376)">
+							<line x1="0" y1="0" x2="0" y2="-14" stroke="#3d2f1f" stroke-width="1.5"/>
+							<circle cx="0" cy="-18" r="7" fill="#2a4035"/>
+							<circle cx="-4" cy="-15" r="4" fill="#2f4a3c"/>
+							<circle cx="4" cy="-15" r="4" fill="#2f4a3c"/>
+						</g>
+						<g transform="translate(196 380)">
+							<line x1="0" y1="0" x2="0" y2="-10" stroke="#3d2f1f" stroke-width="1.2"/>
+							<circle cx="0" cy="-13" r="5" fill="#2a4035"/>
+						</g>
+
+						<g stroke="#b8884a" fill="none" stroke-width="1" stroke-dasharray="2 3" opacity="0.7">
+							<path d="M132 388 Q 180 350 228 372"/>
+							<path d="M228 372 Q 280 348 338 358"/>
+							<path d="M76 332 Q 100 318 132 388"/>
+							<path d="M338 358 Q 380 330 412 326"/>
+						</g>
+
+						<line x1="0" y1="420" x2="500" y2="420" stroke="#1f3329" stroke-width="0.6" opacity="0.25"/>
+						</g>
+
+						<rect x="20" y="20" width="460" height="560" rx="28" fill="none" stroke="#0b2e24" stroke-opacity="0.08" stroke-width="1"/>
 					</svg>
 
-					<!-- Editorial caption pinned in the upper-left corner of the frame -->
-					<div class="absolute top-5 left-6 max-w-[160px]">
-						<div class="kicker text-emerald-700 mb-1.5">A place</div>
-						<p class="font-story italic text-[13px] leading-snug text-stone-600">
-							A small cluster, rooted in a landscape — connected to others like it.
+					<div class="absolute top-5 right-5 bg-[#fbfbf9]/90 backdrop-blur rounded-full px-3.5 py-1.5 border border-stone-200/80 shadow-sm flex items-center gap-2">
+						<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 pulse-dot relative inline-block text-emerald-600"></span>
+						<span class="text-[11px] tracking-widest uppercase text-stone-600 font-medium">Horizon · 2030+</span>
+					</div>
+
+					<div class="absolute -left-3 -bottom-4 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[280px] border border-stone-100">
+						<div class="flex items-center gap-2 mb-2">
+						<span class="w-2 h-2 rounded-full bg-amber-300"></span>
+						<span class="text-[10px] tracking-widest uppercase text-stone-500 font-semibold">A network, not a place</span>
+						</div>
+						<p class="font-story italic text-[14px] leading-snug text-stone-800">
+						"We are not designing a perfect place. We are designing a place that can keep getting truer."
 						</p>
 					</div>
-				</div>
-
-				<div
-					data-hero-step="0.65"
-					class="absolute -right-8 -bottom-4 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[260px] border border-stone-100 hidden md:block"
-				>
-					<p class="font-story italic text-[15px] leading-snug text-stone-800">
-						"We are not designing a perfect place. We are designing a place that can keep getting
-						truer."
-					</p>
 				</div>
 			</div>
 		</div>

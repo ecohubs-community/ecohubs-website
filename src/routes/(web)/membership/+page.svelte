@@ -89,93 +89,120 @@
 				</div>
 			</div>
 
-			<!-- Right: stylized "member card" mockup — mirrors the Blueprint
-			     spec-card pattern (artifact-style), but the artifact is a
-			     member identity rather than the RCOS spec. Different content,
-			     same family. -->
+			<!-- Right: a "membership card" — a fillable dossier that you grow into.
+           Echoes the Blueprint's structured aesthetic, but personal — reinforcing
+           "you don't join, you start showing up". -->
 			<div class="lg:col-span-5 relative">
-				<div class="relative bg-white rounded-[28px] border border-stone-200/80 soft-shadow p-7 overflow-hidden">
-					<div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-emerald-200/40 blur-2xl pointer-events-none"></div>
+				<!-- the card itself, slightly rotated for a paper-on-desk feel -->
+				<div class="relative" style="transform: rotate(-1.2deg);">
+				<!-- back card (paper stack) -->
+				<div class="absolute inset-0 translate-x-3 translate-y-3 rounded-[26px] bg-[#efe8d6] border border-stone-200/70"></div>
+				<div class="absolute inset-0 translate-x-1.5 translate-y-1.5 rounded-[26px] bg-[#f6f1e2] border border-stone-200/70"></div>
 
-					<!-- Header: status pulse + version label -->
-					<div class="flex items-center justify-between mb-6">
-						<div class="flex items-center gap-2">
-							<span class="relative inline-block w-2 h-2 rounded-full bg-emerald-500 text-emerald-500 pulse-dot"></span>
-							<span class="text-[11px] tracking-wide text-emerald-700 font-medium">active</span>
-						</div>
-						<span class="font-mono text-[10px] tracking-widest text-stone-400 uppercase">
-							ecohubsOS · member · v0
-						</span>
+				<!-- main card -->
+				<div class="relative bg-[#fbfbf9] rounded-[26px] border border-stone-200/80 soft-shadow overflow-hidden">
+					<!-- top bar — like a passport / dossier header -->
+					<div class="px-7 pt-6 pb-4 flex items-start justify-between border-b border-dashed border-stone-300/80">
+					<div>
+						<div class="font-mono text-[10px] tracking-[0.22em] text-stone-500 uppercase">EcoHubs · Membership Dossier</div>
+						<div class="mt-1 font-serif text-[15px] text-ecohubs-deep">No. <span class="font-story italic">— assigned upon arrival</span></div>
 					</div>
-
-					<!-- Identity row -->
-					<div class="flex items-center gap-4 pb-5 border-b border-stone-200/70">
-						<div class="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center font-serif text-2xl text-ecohubs-deep shrink-0">
-							M
-						</div>
-						<div class="min-w-0">
-							<div class="font-serif text-xl text-ecohubs-deep leading-tight truncate">Maria L.</div>
-							<div class="font-story italic text-[13px] text-stone-600 leading-snug">
-								Permaculturist · Cuenca, EC
-							</div>
+					<!-- subtle stamp-like seal -->
+					<div class="relative w-14 h-14 shrink-0">
+						<div class="absolute inset-0 rounded-full border-2 border-emerald-700/30"></div>
+						<div class="absolute inset-1.5 rounded-full border border-emerald-700/20 flex items-center justify-center">
+						<span class="font-story italic text-[11px] text-emerald-800/80 leading-none text-center">open<br/>standard</span>
 						</div>
 					</div>
-
-					<!-- ECO + XP chips -->
-					<div class="flex items-center gap-2 mt-5">
-						<span class="inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 text-emerald-800">
-							<Leaf class="w-3 h-3" strokeWidth={2} aria-hidden="true" />
-							<span>1 322 XP</span>
-						</span>
-						<span class="inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200/70 text-amber-800">
-							<Coins class="w-3 h-3" strokeWidth={2} aria-hidden="true" />
-							<span>847 ECO</span>
-						</span>
-						<span class="ml-auto font-mono text-[10px] tracking-wide text-stone-400">
-							joined · 2024-11
-						</span>
 					</div>
 
-					<!-- Active rooms -->
-					<div class="mt-6">
-						<div class="font-mono text-[10px] tracking-widest text-stone-400 uppercase mb-3">
-							Rooms
-						</div>
-						<ul class="font-mono text-[12px] leading-[1.9] text-stone-700 space-y-1">
-							<li class="flex items-center gap-2.5">
-								<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
-								<span class="text-emerald-700">room 05</span>
-								<span class="text-stone-400">·</span>
-								<span class="text-stone-800">shape the RCOS Blueprint</span>
-							</li>
-							<li class="flex items-center gap-2.5">
-								<span class="w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0"></span>
-								<span class="text-purple-700">room 02</span>
-								<span class="text-stone-400">·</span>
-								<span class="text-stone-800">facilitate workshops</span>
-							</li>
-							<li class="flex items-center gap-2.5">
-								<span class="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0"></span>
-								<span class="text-amber-700">room 09</span>
-								<span class="text-stone-400">·</span>
-								<span class="text-stone-800">apply RCOS in your community</span>
-							</li>
+					<!-- name slot -->
+					<div class="px-7 pt-5">
+					<div class="kicker text-stone-500 mb-2">Member · name</div>
+					<div class="flex items-end gap-3">
+						<div class="font-story italic text-3xl text-stone-300 leading-none pb-1">your name,</div>
+						<div class="font-story italic text-[15px] text-stone-400 pb-1.5">written by you</div>
+					</div>
+					<div class="mt-3 h-px bg-stone-300"></div>
+					</div>
+
+					<!-- two columns: what you bring / what grows -->
+					<div class="px-7 py-6 grid grid-cols-2 gap-6">
+					<div>
+						<div class="kicker text-stone-500 mb-3">What you bring</div>
+						<ul class="space-y-2.5 text-[13.5px] text-stone-700">
+						<li class="flex items-center gap-2.5">
+							<span class="w-3.5 h-3.5 rounded-[3px] border border-stone-400 inline-flex items-center justify-center text-emerald-700 text-[10px] leading-none">✓</span>
+							Time &amp; honest attention
+						</li>
+						<li class="flex items-center gap-2.5">
+							<span class="w-3.5 h-3.5 rounded-[3px] border border-stone-400 inline-flex items-center justify-center text-emerald-700 text-[10px] leading-none">✓</span>
+							A craft, a question, or a skill
+						</li>
+						<li class="flex items-center gap-2.5">
+							<span class="w-3.5 h-3.5 rounded-[3px] border border-stone-400"></span>
+							<span class="text-stone-500 italic font-story">— write your own</span>
+						</li>
+						<li class="flex items-center gap-2.5">
+							<span class="w-3.5 h-3.5 rounded-[3px] border border-stone-400"></span>
+							<span class="text-stone-500 italic font-story">— write your own</span>
+						</li>
 						</ul>
 					</div>
+					<div>
+						<div class="kicker text-stone-500 mb-3">What grows</div>
+						<ul class="space-y-2.5 text-[13.5px] text-stone-700">
+						<li class="flex items-center gap-2.5">
+							<span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span>
+							Trust
+						</li>
+						<li class="flex items-center gap-2.5">
+							<span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span>
+							Access
+						</li>
+						<li class="flex items-center gap-2.5">
+							<span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span>
+							Influence on the Blueprint
+						</li>
+						<li class="flex items-center gap-2.5 text-stone-500">
+							<span class="w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+							<span class="font-story italic">— and slowly, belonging</span>
+						</li>
+						</ul>
+					</div>
+					</div>
 
-					<div class="mt-7 pt-5 border-t border-stone-200 flex items-center justify-between text-xs text-stone-500">
-						<span>Earned · non-transferable · open</span>
-						<a href="#apply" class="text-ecohubs-primary hover:underline font-medium">
-							open profile →
-						</a>
+					<!-- status pills row -->
+					<div class="px-7 pb-5 flex flex-wrap gap-2">
+					<span class="px-2.5 py-1 text-[11px] font-medium rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/70">Free</span>
+					<span class="px-2.5 py-1 text-[11px] font-medium rounded-full bg-amber-50 text-amber-800 border border-amber-200/70">Contribution-based</span>
+					<span class="px-2.5 py-1 text-[11px] font-medium rounded-full bg-stone-100 text-stone-700 border border-stone-200">Online</span>
+					<span class="px-2.5 py-1 text-[11px] font-medium rounded-full bg-stone-100 text-stone-700 border border-stone-200">Application-only</span>
+					</div>
+
+					<!-- signature footer -->
+					<div class="px-7 py-5 bg-[#f5f2ea] border-t border-dashed border-stone-300/80 flex items-end justify-between gap-4">
+					<div class="flex-1">
+						<div class="kicker text-stone-500 mb-2">Signed, by showing up</div>
+						<svg viewBox="0 0 220 36" class="w-full max-w-[220px] h-9 opacity-50">
+						<path d="M4 24 C 14 6, 28 28, 42 18 S 70 8, 86 22 S 116 30, 134 14 S 162 4, 184 20 S 210 28, 218 18"
+								stroke="#0b2e24" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+						</svg>
+					</div>
+					<div class="text-right shrink-0">
+						<div class="kicker text-stone-500 mb-1">Date</div>
+						<div class="font-story italic text-stone-700 text-[15px]">when you're ready</div>
+					</div>
 					</div>
 				</div>
+				</div>
 
-				<div class="absolute -right-28 bottom-14 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[270px] border border-stone-100 hidden md:block">
-					<p class="font-story italic text-[15px] leading-snug text-stone-800">
-						"I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter."
-					</p>
-					<p class="mt-2 text-[11px] text-stone-500 tracking-wider uppercase">Anika · governance writer</p>
+				<!-- floating quote chip — same voice family as other pages, distinct from card -->
+				<div class="absolute -left-4 -bottom-6 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[270px] border border-stone-100 hidden md:block">
+				<p class="font-story italic text-[15px] leading-snug text-stone-800">
+					"I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter."
+				</p>
+				<p class="mt-2 text-[11px] text-stone-500 tracking-wider uppercase">Anika · governance writer</p>
 				</div>
 			</div>
 		</div>
