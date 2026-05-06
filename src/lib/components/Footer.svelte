@@ -11,6 +11,7 @@
 		{ href: '/vision', label: 'Vision' },
 		{ href: '/blog', label: 'Blog' },
 		{ href: '/membership', label: 'Membership' },
+		{ href: '/faq', label: 'FAQ' },
 		{ href: '/contact', label: 'Contact' }
 	];
 

@@ -16,6 +16,7 @@
 		// { href: '/ecotoken', label: 'EcoToken' },
 		{ href: '/blueprint', label: 'Blueprint (RCOS)' },
 		{ href: '/membership', label: 'Membership' },
+		{ href: '/faq', label: 'FAQ' },
 		{ href: '/blog', label: 'Blog' }
 	];
 

@@ -444,36 +444,81 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      5b. WHY THIS ISN'T ANOTHER COMMUNITY PROJECT
 ═══════════════════════════════════════════════════════════════════ -->
-<section class="py-24 md:py-32 bg-ecohubs-base">
-	<div class="max-w-7xl mx-auto px-6 lg:px-8">
-		<div data-scroll-animate class="max-w-2xl mb-14">
-			<div class="kicker text-emerald-700 mb-4">Why this isn't another community project</div>
-			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+<section class="relative py-24 md:py-36 bg-ecohubs-deep text-ecohubs-ivory overflow-hidden">
+	<div
+		class="absolute inset-0 -z-0 opacity-50"
+		style="background-image: radial-gradient(circle at 15% 20%, rgba(217,119,6,0.18), transparent 55%), radial-gradient(circle at 85% 80%, rgba(16,185,129,0.22), transparent 55%);"
+	></div>
+	<div class="absolute inset-0 grain pointer-events-none opacity-40"></div>
+
+	<div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+		<div data-scroll-animate class="max-w-3xl mb-14">
+			<div class="kicker text-amber-200/80 mb-5 flex items-center gap-3">
+				<span class="h-px w-8 bg-amber-200/40"></span>
+				Why this isn't another community project
+			</div>
+			<h2 class="font-serif text-4xl md:text-6xl leading-[1.05] text-ecohubs-ivory">
 				Other people have tried.<br />
-				<em class="font-story italic font-normal text-stone-500">We learned from where they broke.</em>
+				<em class="font-story italic font-normal text-emerald-300">We learned from where they broke.</em>
 			</h2>
-			<p class="mt-5 text-lg text-stone-700 leading-relaxed max-w-xl">
+			<p class="mt-6 text-lg md:text-xl text-stone-200/85 leading-relaxed max-w-2xl">
 				We are not the first to try this — and that is the point. Most intentional communities fail
 				in the same handful of ways. The Blueprint is built around those failure points, not around
 				anyone's ideology.
 			</p>
 		</div>
 
-		<div data-scroll-stagger class="grid md:grid-cols-3 gap-6 lg:gap-8">
-			{#each comparisons as c}
-				<div class="relative bg-white rounded-3xl p-7 border border-stone-200/80">
-					<div class="text-[11px] tracking-widest uppercase text-stone-500 mb-4">Most projects</div>
-					<p
-						class="font-serif text-lg text-stone-700 leading-snug mb-6 line-through decoration-stone-300/80 decoration-1"
-					>
-						{c.most}
-					</p>
-					<div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">EcoHubs</div>
-					<p class="font-serif text-xl text-ecohubs-deep leading-snug">
-						<em class="font-story italic">{c.eco}</em>
-					</p>
-				</div>
+		<div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+			{#each comparisons as c, i}
+				<article
+					class="group relative rounded-3xl border border-emerald-900/40 overflow-hidden
+					       bg-gradient-to-br from-[#0a3d2e]/70 to-[#0b2e24]/80 hover:border-emerald-400/40 transition-colors"
+				>
+					<div class="absolute top-0 right-0 font-story italic text-[80px] leading-none text-emerald-300/10 pr-5 pt-3 select-none">
+						{String(i + 1).padStart(2, '0')}
+					</div>
+
+					<!-- "Most projects" — muted, struck-through, deliberately quieter -->
+					<div class="px-7 pt-7 pb-5 border-b border-emerald-900/40 relative">
+						<div class="flex items-center gap-2 text-[11px] tracking-widest uppercase text-amber-300/70 mb-3">
+							<span class="w-1.5 h-1.5 rounded-full bg-amber-400/60"></span>
+							Most projects
+						</div>
+						<p class="font-serif text-base text-stone-300/55 leading-snug line-through decoration-amber-300/30 decoration-1">
+							{c.most}
+						</p>
+					</div>
+
+					<!-- "EcoHubs" — bold, emerald, clearly the answer -->
+					<div class="px-7 pt-5 pb-7 relative">
+						<div class="flex items-center gap-2 text-[11px] tracking-widest uppercase text-emerald-300 mb-3">
+							<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+							EcoHubs
+						</div>
+						<p class="font-serif text-xl text-ecohubs-ivory leading-snug">
+							<em class="font-story italic text-emerald-100">{c.eco}</em>
+						</p>
+					</div>
+				</article>
 			{/each}
+		</div>
+
+		<div data-scroll-animate class="mt-14 flex flex-col sm:flex-row gap-3 items-start">
+			<a
+				href="https://blueprint.ecohubs.community"
+				target="_blank"
+				rel="noopener"
+				class="px-7 py-3.5 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors inline-flex items-center justify-center gap-2"
+			>
+				See how the Blueprint avoids each one
+				<span class="text-sm">↗</span>
+			</a>
+			<a
+				href="#pilot"
+				class="px-7 py-3.5 border border-emerald-300/50 text-emerald-100 font-medium rounded-full hover:bg-emerald-900/40 transition-colors inline-flex items-center justify-center gap-2"
+			>
+				Watch it tested in the pilot →
+			</a>
 		</div>
 	</div>
 </section>
@@ -738,6 +783,22 @@
 				</div>
 			{/each}
 		</div>
+
+		<div data-scroll-animate class="mt-12 flex flex-col sm:flex-row gap-3">
+			<a
+				href="/membership"
+				class="px-6 py-3 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-colors inline-flex items-center justify-center gap-2 group"
+			>
+				Find your way in
+				<span class="transition-transform group-hover:translate-x-0.5">→</span>
+			</a>
+			<a
+				href="/contact"
+				class="inline-flex items-center gap-2 text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1"
+			>
+				Talk to us first →
+			</a>
+		</div>
 	</div>
 </section>
 
@@ -814,6 +875,15 @@
 					</div>
 				</details>
 			{/each}
+		</div>
+
+		<div class="mt-8 text-center">
+			<a
+				href="/faq#blueprint"
+				class="inline-flex items-center gap-2 text-sm text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1"
+			>
+				See all questions across the project →
+			</a>
 		</div>
 	</div>
 </section>

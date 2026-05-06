@@ -124,6 +124,38 @@ export const values: Value[] = [
 	},
 ];
 
+export interface FaqItem {
+	q: string;
+	a: string;
+}
+
+export const faqItems: FaqItem[] = [
+	{
+		q: 'What problem are you actually trying to solve?',
+		a: "Modern life has fragmented belonging, work, and place. We're building a pattern where small communities can hold all three together — locally, regeneratively, and without rebuilding from scratch each time."
+	},
+	{
+		q: 'Is this a utopia, an eco-village, or a co-living brand?',
+		a: 'None of those. We borrow from all of them and refuse the parts that didn\'t work. Not a utopia — utopias are brittle. Not a co-living brand — we\'re not selling lifestyle. The closest honest description is <em class="font-story italic">a network of small communities sharing an open standard.</em>'
+	},
+	{
+		q: 'What does success look like in 10 years?',
+		a: "Many small hubs around the world running the Blueprint in their own way, with a living, well-maintained shared standard between them. Success is not size — it's resilience and honest replication."
+	},
+	{
+		q: 'What are your stances on politics, religion, ideology?',
+		a: 'We have stances — on ecology, dignity, transparency, non-extraction — and they\'re written into the Blueprint. We don\'t have a doctrine you must agree with. We expect disagreement; we ask for honest disagreement.'
+	},
+	{
+		q: 'How is this different from intentional communities of the past?',
+		a: 'We start from an open, versioned standard — not a charismatic founder. Decisions are logged, governance is explicit, and conflict-repair is a chapter, not a private conversation. Past projects often failed where these were missing.'
+	},
+	{
+		q: 'What could go wrong, honestly?',
+		a: 'The Blueprint could ossify; the founder phase could overstay its welcome; pilots could underdeliver. We name these risks in the open and write them into the working notes — being honest about failure modes is part of how we keep them survivable.'
+	}
+];
+
 export interface LoopStep {
 	number: string;
 	title: string;

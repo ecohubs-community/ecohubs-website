@@ -121,7 +121,7 @@
           belonging is built in, not left to chance.
         </p>
 
-        <div data-hero-step="0.42" class="mt-10 flex flex-col sm:flex-row gap-3">
+        <div data-hero-step="0.42" class="mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
           <a href="#story"
             class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full
                    hover:bg-ecohubs-deep transition-all inline-flex items-center justify-center gap-2 group">
@@ -133,6 +133,14 @@
                    rounded-full hover:border-ecohubs-dark hover:text-ecohubs-dark transition-all
                    inline-flex items-center justify-center gap-2">
             Join the community
+          </a>
+          <a href="https://ecohubs.community/EcoHubs_Manifesto.pdf"
+            target="_blank" rel="noopener noreferrer"
+            class="no-external-decoration px-7 py-3.5 bg-transparent text-ecohubs-dark font-medium
+                   rounded-full hover:bg-emerald-50/70 transition-all
+                   inline-flex items-center justify-center gap-2 group">
+            <span class="text-base">↓</span>
+            Download manifesto
           </a>
         </div>
 
@@ -622,6 +630,127 @@
           </div>
         {/each}
       </div>
+
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="/vision"
+           class="px-6 py-3 bg-ecohubs-dark text-white font-medium rounded-full
+                  hover:bg-ecohubs-deep transition-colors inline-flex items-center justify-center gap-2 group">
+          Read the full vision
+          <span class="transition-transform group-hover:translate-x-0.5">→</span>
+        </a>
+        <a href="#already-doing"
+           class="inline-flex items-center gap-2 text-ecohubs-dark font-medium border-b border-ecohubs-dark/40
+                  hover:border-ecohubs-dark pb-1">
+          What we're already doing →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     3e. WHAT WE ARE ALREADY DOING
+═══════════════════════════════════════════════════════════════════ -->
+<section id="already-doing" class="relative py-24 md:py-36 bg-ecohubs-base overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div data-scroll-animate="fade-up" class="max-w-3xl mb-16">
+      <div class="kicker text-emerald-700 mb-4 flex items-center gap-3">
+        <span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 pulse-dot"></span>
+        Not waiting · already underway
+      </div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        What we are <em class="font-story italic font-normal text-stone-500">already doing</em><br />
+        — quietly, in the open.
+      </h2>
+      <p class="mt-6 text-lg text-stone-700 leading-relaxed">
+        EcoHubs is not a future plan waiting for funding. Five strands of work are underway right now.
+        Each one feeds the others, and each one is documented as we go.
+      </p>
+    </div>
+
+    <div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {#each [
+        {
+          num: '01',
+          tag: 'Practice',
+          title: 'Applying the RCOS Blueprint to our own community.',
+          body: "We are the first test of the Blueprint. Membership, governance, conflict, and decision pathways are written down and used by us, on us — refined as the community grows.",
+          cta: 'Read our RCOS specs ↗',
+          href: 'https://specs.ecohubs.blueprint',
+          external: true,
+          accent: 'emerald'
+        },
+        {
+          num: '02',
+          tag: 'Pilot',
+          title: 'FruitHaven Community RCOS pilot.',
+          body: 'In Ecuador, an existing community has been applying the Blueprint since March 2026 — under real ecological, social and economic constraints. Lessons feed straight back into the standard.',
+          cta: 'See the pilot →',
+          href: '/blueprint#pilot',
+          accent: 'amber'
+        },
+        {
+          num: '03',
+          tag: 'Research',
+          title: 'Studying what works (and what breaks) in intentional communities.',
+          body: "We read the literature, talk to elders of past projects, and document the failure patterns that keep coming back. The Blueprint earns its place by surviving those patterns — not by ignoring them.",
+          cta: 'Open the research →',
+          href: '/blueprint',
+          accent: 'emerald'
+        },
+        {
+          num: '04',
+          tag: 'Design',
+          title: 'New ways to make community more accessible & replicable.',
+          body: "Lower the bar to entry. Make adoption modular. Make resilience the default. We are designing the patterns, tools, and onboarding paths that turn intentional community from rare into normal.",
+          cta: 'See where we need help →',
+          href: '/membership',
+          accent: 'emerald'
+        },
+        {
+          num: '05',
+          tag: 'Community',
+          title: 'Growing the online community — members, events, partnerships.',
+          body: 'Weekly calls, member onboarding, partner conversations, public events. The network gets stronger every time someone shows up — and every relationship made here is a thread that holds.',
+          cta: 'Become a member →',
+          href: '/membership',
+          accent: 'amber'
+        }
+      ] as item}
+        <article class="group bg-white rounded-3xl p-7 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors flex flex-col">
+          <div class="flex items-baseline justify-between mb-4">
+            <span class="font-story italic text-3xl {item.accent === 'amber' ? 'text-amber-700' : 'text-ecohubs-primary'}">{item.num}</span>
+            <span class="kicker text-stone-500">{item.tag}</span>
+          </div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-3 leading-snug">{item.title}</h3>
+          <p class="text-sm text-stone-700 leading-relaxed mb-6 flex-1">{item.body}</p>
+          <a href={item.href}
+             target={item.external ? '_blank' : undefined}
+             rel={item.external ? 'noopener noreferrer' : undefined}
+             class="no-external-decoration text-sm text-ecohubs-dark font-medium inline-flex items-center gap-1.5 group-hover:translate-x-0.5 transition-transform">
+            {item.cta}
+          </a>
+        </article>
+      {/each}
+
+      <!-- 6th tile: invitation to join the work -->
+      <a href="/membership"
+         class="group bg-ecohubs-deep text-ecohubs-ivory rounded-3xl p-7 border border-emerald-900/40 flex flex-col justify-between">
+        <div>
+          <div class="flex items-baseline justify-between mb-4">
+            <span class="font-story italic text-3xl text-emerald-300">+</span>
+            <span class="kicker text-emerald-300/80">Open work</span>
+          </div>
+          <h3 class="font-serif text-xl mb-3 leading-snug">Pick a strand. Bring a hand.</h3>
+          <p class="text-sm text-stone-200/85 leading-relaxed mb-6">
+            All five strands are open. Pick the one that matches your craft —
+            the work moves faster when more people show up.
+          </p>
+        </div>
+        <span class="text-sm text-emerald-300 font-medium inline-flex items-center gap-1.5 group-hover:translate-x-0.5 transition-transform">
+          Join the work →
+        </span>
+      </a>
     </div>
   </div>
 </section>
@@ -819,8 +948,21 @@
           remember what it said.
         </p>
         <p class="mt-5 text-lg text-stone-700 leading-relaxed">
-          We don't use it to manufacture engagement, replace relationships, or grow at any cost. 
+          We don't use it to manufacture engagement, replace relationships, or grow at any cost.
         </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="/blueprint"
+             class="px-6 py-3 bg-ecohubs-dark text-white font-medium rounded-full
+                    hover:bg-ecohubs-deep transition-colors inline-flex items-center justify-center gap-2 group">
+            How tech sits in the Blueprint
+            <span class="transition-transform group-hover:translate-x-0.5">→</span>
+          </a>
+          <a href="/contact"
+             class="inline-flex items-center gap-2 text-ecohubs-dark font-medium border-b border-ecohubs-dark/40
+                    hover:border-ecohubs-dark pb-1">
+            Disagree with us →
+          </a>
+        </div>
       </div>
       <div class="lg:col-span-7">
         <div data-scroll-stagger class="grid sm:grid-cols-2 gap-4">
@@ -892,7 +1034,7 @@
     </div>
 
     <div data-scroll-stagger class="divide-y divide-stone-200 border-t border-b border-stone-200">
-      {#each faqItems as item}
+      {#each faqItems.slice(0, 6) as item}
         <details class="group py-6">
           <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
             <span class="font-serif text-xl text-ecohubs-deep leading-snug">{item.q}</span>
@@ -901,6 +1043,15 @@
           <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">{item.a}</div>
         </details>
       {/each}
+    </div>
+
+    <div class="mt-8 text-center">
+      <a
+        href="/faq"
+        class="inline-flex items-center gap-2 text-sm text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1"
+      >
+        See all questions →
+      </a>
     </div>
   </div>
 </section>
@@ -933,6 +1084,20 @@
         </div>
       {/each}
     </div>
+
+    <div data-scroll-animate="fade-up" class="mt-14 flex flex-col sm:flex-row gap-3">
+      <a href="/vision"
+         class="px-6 py-3 bg-ecohubs-dark text-white font-medium rounded-full
+                hover:bg-ecohubs-deep transition-colors inline-flex items-center justify-center gap-2 group">
+        See where this is going
+        <span class="transition-transform group-hover:translate-x-0.5">→</span>
+      </a>
+      <a href="#already-doing"
+         class="inline-flex items-center gap-2 text-ecohubs-dark font-medium border-b border-ecohubs-dark/40
+                hover:border-ecohubs-dark pb-1">
+        What we're doing today →
+      </a>
+    </div>
   </div>
 </section>
 
@@ -955,11 +1120,11 @@
       </p>
     </div>
 
-    <div data-scroll-stagger class="grid md:grid-cols-3 gap-5">
+    <div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
       {#each [
-        { tag: 'Read & respond',  title: 'Critique a chapter of the Blueprint.',      body: 'No commitment. Read what we have, tell us where it\'s wrong. The best critiques become co-authors.', cta: 'Open the Blueprint →', href: '/blueprint' },
-        { tag: 'Bring a skill',   title: 'Contribute what you already do well.',      body: 'Permaculture, governance, translation, code, cooking, listening. We need every one of these.',        cta: 'See where we need help →', href: '/membership' },
-        { tag: 'Host a hub',      title: 'Start a local circle where you live.',      body: 'A monthly meal, a weekly listening circle, a piece of land. We help you set the form, you hold the room.', cta: 'Apply to host →', href: '/contact' },
+        { tag: 'On the ground',   title: 'Apply RCOS in your community.',             body: 'Already part of (or starting) a local community? Try a Blueprint chapter on the ground. We help you adapt it, you bring back what you learn.', cta: 'Tell us about it →', href: '/contact' },
+        { tag: 'Bring a skill',   title: 'Contribute what you already do well.',      body: 'Permaculture, governance, facilitation, code, listening, storytelling. We need every one of these.',        cta: 'See where we need help →', href: '/membership' },
+        { tag: 'Partner with us', title: 'Become an EcoHubs partner.',                body: 'Organisations, foundations, communities and projects working in adjacent terrain — we co-design, fund pilots, and share what we learn.', cta: 'Start a conversation →', href: '/contact' },
       ] as card}
         <a href={card.href}
            class="group bg-white rounded-3xl p-7 border border-stone-200/80

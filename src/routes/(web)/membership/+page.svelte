@@ -6,12 +6,9 @@
 
 	import { rooms, faqItems, doorways, voices } from './data';
 
-	// Plain HTML <meta> answers in case search engines crawl the FAQ JSON-LD.
-	const seoFaq = faqItems.map(({ q, a }) => ({
-		question: q,
-		// strip simple HTML for the JSON-LD payload
-		answer: a.replace(/<[^>]+>/g, '')
-	}));
+	// FAQPage JSON-LD is emitted only by the dedicated /faq route (canonical
+	// source), so we don't duplicate the schema here even though the same Q&As
+	// appear on this page for human readers.
 </script>
 
 <svelte:head>
@@ -30,7 +27,6 @@
 		{ name: 'Home', url: 'https://ecohubs.community' },
 		{ name: 'Membership', url: 'https://ecohubs.community/membership' }
 	]}
-	faq={seoFaq}
 />
 
 <!-- ═══════════════════════════════════════════════════════════════════
@@ -197,13 +193,13 @@
 				</div>
 				</div>
 
-				<!-- floating quote chip — same voice family as other pages, distinct from card -->
+				<!-- floating quote chip — same voice family as other pages, distinct from card 
 				<div class="absolute -left-4 -bottom-6 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[270px] border border-stone-100 hidden md:block">
-				<p class="font-story italic text-[15px] leading-snug text-stone-800">
-					"I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter."
-				</p>
-				<p class="mt-2 text-[11px] text-stone-500 tracking-wider uppercase">Anika · governance writer</p>
-				</div>
+					<p class="font-story italic text-[15px] leading-snug text-stone-800">
+						"I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter."
+					</p>
+					<p class="mt-2 text-[11px] text-stone-500 tracking-wider uppercase">Anika · governance writer</p>
+				</div>-->
 			</div>
 		</div>
 	</div>
@@ -539,6 +535,23 @@
 		<p class="mt-10 text-sm text-stone-500 max-w-2xl font-story italic">
 			Rooms are not roles. Most members move between several. Inside, the way to find others working on the same thing is to join the calls and reach out — we are still small enough that direct contact is the fastest path.
 		</p>
+
+		<div class="mt-10 flex flex-col sm:flex-row gap-3">
+			<a
+				href="/join"
+				class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-all inline-flex items-center justify-center gap-2 group"
+				data-sveltekit-preload-data="hover"
+			>
+				Apply to join a room
+				<span class="transition-transform group-hover:translate-x-0.5">→</span>
+			</a>
+			<a
+				href="/contact"
+				class="px-7 py-3.5 bg-transparent border border-stone-300 text-stone-800 font-medium rounded-full hover:border-ecohubs-dark hover:text-ecohubs-dark transition-all inline-flex items-center justify-center gap-2"
+			>
+				Open a room we haven't named
+			</a>
+		</div>
 	</div>
 </section>
 
@@ -600,7 +613,7 @@
 
 <!-- ═══════════════════════════════════════════════════════════════════
 		8. MEMBER VOICES
-═══════════════════════════════════════════════════════════════════ -->
+═══════════════════════════════════════════════════════════════════ 
 <section class="relative py-24 md:py-28 bg-ecohubs-ivory">
 	<div class="absolute inset-0 grain pointer-events-none opacity-40"></div>
 	<div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
@@ -628,7 +641,7 @@
 			{/each}
 		</div>
 	</div>
-</section>
+</section>-->
 
 <!-- ═══════════════════════════════════════════════════════════════════
 		9. WHAT YOU GET WHEN YOU'RE INSIDE
@@ -662,6 +675,23 @@
 				</div>
 			{/each}
 		</div>
+
+		<div class="mt-14 flex flex-col sm:flex-row gap-3">
+			<a
+				href="/join"
+				class="px-7 py-3.5 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors inline-flex items-center justify-center gap-2"
+				data-sveltekit-preload-data="hover"
+			>
+				Apply for your seat
+				<span>→</span>
+			</a>
+			<a
+				href="/faq"
+				class="px-7 py-3.5 border border-emerald-300/50 text-emerald-100 font-medium rounded-full hover:bg-emerald-900/40 transition-colors inline-flex items-center justify-center gap-2"
+			>
+				Read the questions first →
+			</a>
+		</div>
 	</div>
 </section>
 
@@ -687,6 +717,15 @@
 					<div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">{@html item.a}</div>
 				</details>
 			{/each}
+		</div>
+
+		<div class="mt-8 text-center">
+			<a
+				href="/faq#membership"
+				class="inline-flex items-center gap-2 text-sm text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1"
+			>
+				See all questions across the project →
+			</a>
 		</div>
 	</div>
 </section>

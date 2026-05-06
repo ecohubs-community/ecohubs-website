@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Questions & Answers — EcoHubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Pridi', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          story: ['Fraunces', 'serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          ecohubs: {
+            base: '#fbfbf9',
+            ivory: '#f5f2ea',
+            text: '#1c1917',
+            primary: '#059669',
+            dark: '#064e3b',
+            deep: '#0b2e24',
+            accent: '#d97706',
+            light: '#a7f3d0',
+            muted: '#6b7265',
+          },
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #fbfbf9;
+    color: #1c1917;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-serif { font-family: 'Pridi', serif; }
+  .font-story { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .hairline { height: 1px; background: linear-gradient(90deg, transparent, rgba(6,78,59,0.25), transparent); }
+  .kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  details summary::-webkit-details-marker { display: none; }
+  .soft-shadow { box-shadow: 0 30px 60px -30px rgba(11, 46, 36, 0.25); }
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- ================================================================ -->
+<!-- NAV                                                              -->
+<!-- ================================================================ -->
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#fbfbf9]/80 border-b border-stone-200/60">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="Homepage Redesign.html" class="flex items-center gap-2.5 font-serif text-[17px] text-ecohubs-dark">
+      <img src="assets/ecohubs-logo.svg" alt="EcoHubs" class="w-8 h-8" />
+      EcoHubs
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-stone-700">
+      <a href="Homepage Redesign.html#story" class="hover:text-ecohubs-dark">Stories</a>
+      <a href="Vision Page.html" class="hover:text-ecohubs-dark">Vision</a>
+      <a href="Blueprint Page.html" class="hover:text-ecohubs-dark">Blueprint</a>
+      <a href="Membership Page.html" class="hover:text-ecohubs-dark">Members</a>
+      <a href="FAQ Page.html" class="text-ecohubs-dark font-medium">FAQ</a>
+    </nav>
+    <a href="Membership Page.html#apply" class="px-4 py-2 bg-ecohubs-dark text-white text-sm rounded-full hover:bg-ecohubs-deep transition-colors">Apply to Join</a>
+  </div>
+</header>
+
+<!-- ================================================================ -->
+<!-- HERO                                                              -->
+<!-- ================================================================ -->
+<section class="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5f2ea] via-[#fbfbf9] to-[#fbfbf9]"></div>
+  <div class="absolute -z-10 top-20 -left-32 w-[420px] h-[420px] rounded-full bg-emerald-200/25 blur-3xl"></div>
+  <div class="absolute -z-10 bottom-0 -right-20 w-[360px] h-[360px] rounded-full bg-amber-200/25 blur-3xl"></div>
+
+  <div class="max-w-5xl mx-auto px-6 lg:px-8">
+    <div class="kicker text-emerald-700 mb-5">Questions &amp; answers</div>
+    <h1 class="font-serif text-5xl md:text-6xl lg:text-[68px] leading-[1.05] tracking-tight text-ecohubs-deep">
+      The questions <em class="font-story italic font-normal text-stone-500">we hear most —</em><br/>
+      and the answers we keep <em class="font-story italic font-normal text-ecohubs-primary">refining out loud.</em>
+    </h1>
+    <p class="mt-7 text-lg md:text-xl text-stone-700 leading-relaxed max-w-2xl font-light">
+      Four sections, written plainly. If your question isn't here, it probably belongs in the
+      Blueprint — and we'd like to hear it.
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-2 text-sm">
+      <a href="#general" class="px-4 py-2 rounded-full bg-white border border-stone-200 hover:border-ecohubs-primary/50 text-stone-700 hover:text-ecohubs-dark transition-colors">General</a>
+      <a href="#vision" class="px-4 py-2 rounded-full bg-white border border-stone-200 hover:border-ecohubs-primary/50 text-stone-700 hover:text-ecohubs-dark transition-colors">Vision</a>
+      <a href="#blueprint" class="px-4 py-2 rounded-full bg-white border border-stone-200 hover:border-ecohubs-primary/50 text-stone-700 hover:text-ecohubs-dark transition-colors">Blueprint</a>
+      <a href="#membership" class="px-4 py-2 rounded-full bg-white border border-stone-200 hover:border-ecohubs-primary/50 text-stone-700 hover:text-ecohubs-dark transition-colors">Membership</a>
+    </div>
+  </div>
+</section>
+
+<div class="hairline max-w-4xl mx-auto"></div>
+
+<!-- ================================================================ -->
+<!-- FAQ BODY                                                          -->
+<!-- ================================================================ -->
+<section class="py-20 md:py-24 bg-[#fbfbf9]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+    <!-- Sticky side nav -->
+    <aside class="lg:col-span-3 lg:sticky lg:top-28 self-start">
+      <div class="kicker text-emerald-700 mb-5">Sections</div>
+      <ol class="space-y-1 text-sm">
+        <li><a href="#general" class="group flex items-baseline gap-3 py-2 text-stone-700 hover:text-ecohubs-dark transition-colors">
+          <span class="font-mono text-[10px] tracking-widest text-stone-400 group-hover:text-ecohubs-primary">01</span>
+          <span class="font-serif text-base">General</span>
+        </a></li>
+        <li><a href="#vision" class="group flex items-baseline gap-3 py-2 text-stone-700 hover:text-ecohubs-dark transition-colors">
+          <span class="font-mono text-[10px] tracking-widest text-stone-400 group-hover:text-ecohubs-primary">02</span>
+          <span class="font-serif text-base">Vision</span>
+        </a></li>
+        <li><a href="#blueprint" class="group flex items-baseline gap-3 py-2 text-stone-700 hover:text-ecohubs-dark transition-colors">
+          <span class="font-mono text-[10px] tracking-widest text-stone-400 group-hover:text-ecohubs-primary">03</span>
+          <span class="font-serif text-base">Blueprint</span>
+        </a></li>
+        <li><a href="#membership" class="group flex items-baseline gap-3 py-2 text-stone-700 hover:text-ecohubs-dark transition-colors">
+          <span class="font-mono text-[10px] tracking-widest text-stone-400 group-hover:text-ecohubs-primary">04</span>
+          <span class="font-serif text-base">Membership</span>
+        </a></li>
+      </ol>
+
+      <div class="mt-10 p-5 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="kicker text-stone-500 mb-2">Didn't find it?</div>
+        <p class="text-sm text-stone-700 leading-relaxed mb-4">
+          Send the question. If it's a good one, it ends up here — with credit.
+        </p>
+        <a href="mailto:hello@ecohubs.community" class="text-sm text-ecohubs-dark font-medium hover:text-ecohubs-primary transition-colors">
+          hello@ecohubs.community →
+        </a>
+      </div>
+    </aside>
+
+    <!-- Sections -->
+    <div class="lg:col-span-9 space-y-20">
+
+      <!-- ============== GENERAL ============== -->
+      <section id="general" class="scroll-mt-24">
+        <div class="flex items-baseline gap-4 mb-8">
+          <span class="font-mono text-[11px] tracking-widest text-emerald-700">01 · GENERAL</span>
+          <span class="flex-1 h-px bg-stone-200"></span>
+        </div>
+        <h2 class="font-serif text-3xl md:text-4xl text-ecohubs-deep leading-tight mb-3">
+          The basics, <em class="font-story italic font-normal text-stone-500">in plain language.</em>
+        </h2>
+        <p class="text-stone-600 leading-relaxed mb-8 max-w-2xl">
+          What EcoHubs is, who's behind it, and how to read the rest of this site.
+        </p>
+
+        <div class="divide-y divide-stone-200 border-t border-b border-stone-200">
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">What is EcoHubs, in one paragraph?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              EcoHubs is an online community writing the Blueprint for a different way to live and work together — and, eventually, a network of small physical hubs that put it into practice. We're online-first today; physical pilots come next, when communities are ready.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">Who is behind this?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              A founder-led core right now, transitioning toward community governance. Members shape the Blueprint, vote on proposals, and decide together who joins next. Names, roles, and decision logs are public inside ecohubsOS.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">Is this a non-profit, a company, or a DAO?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              A hybrid by design — a stewarding entity that holds legal responsibility, with community-decided governance for direction, content, and membership. The legal and governance details are written into the Blueprint and reviewed in the open.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">Where are you based?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              Everywhere members are. The community is online and globally distributed. The first physical pilot hub is in Ecuador. More will follow as the Blueprint matures and member-led local groups emerge.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">How can I follow along without joining?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              Read the Blueprint — it's open. Subscribe to the field-notes letter for monthly updates from inside the community. No tracking, no engagement loop, easy to unsubscribe.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">Is the project funded? By whom?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              Funding today comes from founder capital and aligned grants. We publish the funding sources and constraints openly. We do not take investment that requires speculative returns on community participation.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ============== VISION ============== -->
+      <section id="vision" class="scroll-mt-24">
+        <div class="flex items-baseline gap-4 mb-8">
+          <span class="font-mono text-[11px] tracking-widest text-emerald-700">02 · VISION</span>
+          <span class="flex-1 h-px bg-stone-200"></span>
+        </div>
+        <h2 class="font-serif text-3xl md:text-4xl text-ecohubs-deep leading-tight mb-3">
+          What we're trying to do, <em class="font-story italic font-normal text-stone-500">and what we're not.</em>
+        </h2>
+        <p class="text-stone-600 leading-relaxed mb-8 max-w-2xl">
+          The why under the work — and the limits of what we claim.
+        </p>
+
+        <div class="divide-y divide-stone-200 border-t border-b border-stone-200">
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">What problem are you actually trying to solve?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              Modern life has fragmented belonging, work, and place. We're building a pattern where small communities can hold all three together — locally, regeneratively, and without rebuilding from scratch each time.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">Is this a utopia, an eco-village, or a co-living brand?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              None of those. We borrow from all of them and refuse the parts that didn't work. Not a utopia — utopias are brittle. Not a co-living brand — we're not selling lifestyle. The closest honest description is <em class="font-story italic">a network of small communities sharing an open standard.</em>
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">What does success look like in 10 years?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              Many small hubs around the world running the Blueprint in their own way, with a living, well-maintained shared standard between them. Success is not size — it's resilience and honest replication.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">What are your stances on politics, religion, ideology?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              We have stances — on ecology, dignity, transparency, non-extraction — and they're written into the Blueprint. We don't have a doctrine you must agree with. We expect disagreement; we ask for honest disagreement.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">How is this different from intentional communities of the past?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              We start from an open, versioned standard — not a charismatic founder. Decisions are logged, governance is explicit, and conflict-repair is a chapter, not a private conversation. Past projects often failed where these were missing.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">What could go wrong, honestly?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              The Blueprint could ossify; the founder phase could overstay its welcome; pilots could underdeliver. We name these risks in the open and write them into the working notes — being honest about failure modes is part of how we keep them survivable.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ============== BLUEPRINT ============== -->
+      <section id="blueprint" class="scroll-mt-24">
+        <div class="flex items-baseline gap-4 mb-8">
+          <span class="font-mono text-[11px] tracking-widest text-emerald-700">03 · BLUEPRINT</span>
+          <span class="flex-1 h-px bg-stone-200"></span>
+        </div>
+        <h2 class="font-serif text-3xl md:text-4xl text-ecohubs-deep leading-tight mb-3">
+          The shared document, <em class="font-story italic font-normal text-stone-500">how it actually works.</em>
+        </h2>
+        <p class="text-stone-600 leading-relaxed mb-8 max-w-2xl">
+          What's in it, who edits it, and what licence it carries.
+        </p>
+
+        <div class="divide-y divide-stone-200 border-t border-b border-stone-200">
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">What exactly is the Blueprint?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              A living, versioned document of patterns: how a hub starts, how it governs, how it shares value, how it repairs conflict, how it leaves room for difference. It's a standard, not a script — read it like infrastructure, not a manifesto.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">Who can edit it?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              Members. Anyone can propose changes; substantive edits go through review and a community vote before merging. Drafts, comments, and the full edit history are visible inside ecohubsOS.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">Is it open source? What licence?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              Yes — published under a permissive open licence (CC BY-SA for the writing, MIT for the tooling). Other communities are welcome to adopt, fork, and adapt it. Attribution and share-alike are how the standard stays a standard.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">How are chapters structured?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              Each chapter follows the same shape: the question it answers, the pattern we propose, the trade-offs, the worked examples, the open issues. If a chapter doesn't have all five, it's still a draft.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">How do you handle disagreement on a chapter?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              Disagreement is treated as material, not noise. Strong objections become "open issues" attached to the chapter and stay visible until resolved. Sometimes that means two patterns coexist — one isn't always right.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">What's the current version, and how often does it change?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              The Blueprint is on a slow release cadence — minor revisions weekly, named versions roughly twice a year. Each version is tagged, archived, and citable. Hubs can pin to a version and upgrade deliberately.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">Can my community adopt only parts of it?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              Yes. The Blueprint is modular — you can adopt the governance chapter without the value-accounting chapter, or vice versa. We'd love to hear which patterns you take and which you leave; that feedback shapes the next version.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ============== MEMBERSHIP ============== -->
+      <section id="membership" class="scroll-mt-24">
+        <div class="flex items-baseline gap-4 mb-8">
+          <span class="font-mono text-[11px] tracking-widest text-emerald-700">04 · MEMBERSHIP</span>
+          <span class="flex-1 h-px bg-stone-200"></span>
+        </div>
+        <h2 class="font-serif text-3xl md:text-4xl text-ecohubs-deep leading-tight mb-3">
+          Joining, contributing, <em class="font-story italic font-normal text-stone-500">and stepping back.</em>
+        </h2>
+        <p class="text-stone-600 leading-relaxed mb-8 max-w-2xl">
+          The application, the day-to-day, and the dignified way out.
+        </p>
+
+        <div class="divide-y divide-stone-200 border-t border-b border-stone-200">
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">Is there a fee to join?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              No. Membership is free and contribution-based. Trust, access, and influence grow with what you bring — not what you pay.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">How long does the application take?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              About 20 minutes for you, then a 3-day community review. The community itself reads applications and decides together — there's no auto-approval and no founder veto.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">Do I need to be technical or understand Web3?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              No. Members include permaculturists, parents, facilitators, designers, educators, listeners. Tools support coordination — they don't gatekeep it.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">What does a typical week look like as a member?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              A few async threads in the rooms you care about, an optional weekly call, occasional proposal reviews and votes. Most members put in two to five hours a week. Some put in much more during a chapter they care about; some less in quieter seasons. Both are fine.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">What is ECO, and is it a cryptocurrency?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              ECO is an internal value unit — non-transferable, non-tradeable, never speculative. It marks contribution and unlocks access and responsibility inside the community. Not an investment, not a coin to flip.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">Do I have to move somewhere to be a member?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              No. The community is online-first. Physical hubs come later, when communities are ready, and they're optional. You can be a deeply involved member without ever stepping onto a hub.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">Can I leave? What happens to my contributions?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              Yes, any time. Step back, exit, return — the Blueprint includes clear, dignified paths for all of those. Your contributions remain credited; your personal data leaves with you on request.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">What happens if my application isn't accepted?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              You'll hear back with the actual reason — not a form letter. Sometimes it's timing, sometimes it's a fit question, sometimes it's "come back after you've read X chapter." We answer everyone, either way.
+            </div>
+          </details>
+
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <span class="font-serif text-xl text-ecohubs-deep leading-snug">How does conflict between members get handled?</span>
+              <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+            </summary>
+            <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+              Through the conflict-repair chapter of the Blueprint — a written protocol with named steps: direct conversation, facilitated circle, community-supported repair, and, where needed, structured separation. None of it is private; the protocol is.
+            </div>
+          </details>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- STILL HAVE A QUESTION                                             -->
+<!-- ================================================================ -->
+<section class="relative py-24 md:py-32 overflow-hidden bg-[#f5f2ea]">
+  <div class="absolute inset-0 grain pointer-events-none opacity-40"></div>
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center relative">
+    <div class="kicker text-emerald-700 mb-5">Still have a question?</div>
+    <h2 class="font-serif text-3xl md:text-5xl text-ecohubs-deep leading-tight mb-6">
+      The good ones <em class="font-story italic font-normal text-stone-500">become chapters.</em>
+    </h2>
+    <p class="text-lg text-stone-700 leading-relaxed mb-9 max-w-xl mx-auto">
+      Send it. We read everything. If your question reveals a gap in the Blueprint, you'll see it answered here — and credited — in the next revision.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-3">
+      <a href="mailto:hello@ecohubs.community" class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-colors inline-flex items-center justify-center gap-2">
+        Email us your question
+        <span>→</span>
+      </a>
+      <a href="Membership Page.html#apply" class="px-7 py-3.5 border border-stone-300 text-stone-800 font-medium rounded-full hover:border-ecohubs-dark hover:text-ecohubs-dark transition-colors inline-flex items-center justify-center gap-2">
+        Or apply to join
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- FOOTER                                                            -->
+<!-- ================================================================ -->
+<footer class="bg-[#06170f] text-stone-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid grid-cols-2 md:grid-cols-5 gap-10">
+    <div class="col-span-2">
+      <a href="Homepage Redesign.html" class="flex items-center gap-2.5 mb-4">
+        <img src="assets/ecohubs-logo.svg" alt="EcoHubs" class="w-9 h-9" />
+        <span class="font-serif text-xl text-[#f5f2ea]">EcoHubs</span>
+      </a>
+      <p class="text-sm text-stone-400 leading-relaxed max-w-sm">
+        A network of small communities living the questions of belonging,
+        regeneration, and a more honest economy — one place at a time.
+      </p>
+    </div>
+    <div>
+      <div class="kicker text-emerald-300/70 mb-4">Explore</div>
+      <ul class="space-y-3 text-sm">
+        <li><a href="Homepage Redesign.html#story" class="hover:text-[#f5f2ea] transition-colors">The story</a></li>
+        <li><a href="Vision Page.html" class="hover:text-[#f5f2ea] transition-colors">Vision</a></li>
+        <li><a href="Blueprint Page.html" class="hover:text-[#f5f2ea] transition-colors">Blueprint</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="kicker text-emerald-300/70 mb-4">Take part</div>
+      <ul class="space-y-3 text-sm">
+        <li><a href="Membership Page.html#apply" class="hover:text-[#f5f2ea] transition-colors">Become a member</a></li>
+        <li><a href="FAQ Page.html" class="hover:text-[#f5f2ea] transition-colors">FAQ</a></li>
+        <li><a href="Membership Page.html#contribute" class="hover:text-[#f5f2ea] transition-colors">Contribute</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="kicker text-emerald-300/70 mb-4">About</div>
+      <ul class="space-y-3 text-sm">
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Manifesto</a></li>
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Open source</a></li>
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-emerald-900/40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between gap-3 text-xs text-stone-500">
+      <div>© <span id="footer-year">2026</span> EcoHubs.community · Built in the open, with care.</div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-stone-300">Privacy</a>
+        <a href="#" class="hover:text-stone-300">Imprint</a>
+        <a href="#" class="hover:text-stone-300">Code of Conduct</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>

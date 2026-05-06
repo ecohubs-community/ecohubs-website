@@ -360,6 +360,24 @@
 				Local enough to feel like home.<br />
 				Connected enough to change everything.
 			</p>
+
+			<div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+				<a
+					href="https://ecohubs.community/EcoHubs_Manifesto.pdf"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="no-external-decoration px-7 py-3.5 bg-amber-100/95 text-ecohubs-deep font-medium rounded-full hover:bg-amber-50 transition-colors inline-flex items-center justify-center gap-2"
+				>
+					<span class="text-base">↓</span>
+					Download the manifesto
+				</a>
+				<a
+					href="/blueprint"
+					class="px-7 py-3.5 border border-amber-200/40 text-amber-100 font-medium rounded-full hover:bg-amber-200/10 transition-colors inline-flex items-center justify-center gap-2"
+				>
+					See how we make it practical →
+				</a>
+			</div>
 		</div>
 	</div>
 </section>
@@ -395,6 +413,22 @@
 					<p class="text-stone-700 leading-relaxed text-[15px]">{p.body}</p>
 				</article>
 			{/each}
+		</div>
+
+		<div data-scroll-animate class="mt-12 flex flex-col sm:flex-row gap-3">
+			<a
+				href="/blueprint"
+				class="px-6 py-3 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-colors inline-flex items-center justify-center gap-2 group"
+			>
+				See the principles, written down
+				<span class="transition-transform group-hover:translate-x-0.5">→</span>
+			</a>
+			<a
+				href="/membership"
+				class="inline-flex items-center gap-2 text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1"
+			>
+				Help shape them →
+			</a>
 		</div>
 	</div>
 </section>
@@ -577,6 +611,22 @@
 					<em class="font-story italic">planting trees we will not sit under.</em>
 				</p>
 			</article>
+		</div>
+
+		<div data-scroll-animate class="mt-14 flex flex-col sm:flex-row gap-3">
+			<a
+				href="/membership"
+				class="px-6 py-3 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-colors inline-flex items-center justify-center gap-2 group"
+			>
+				Plant a tree with us
+				<span class="transition-transform group-hover:translate-x-0.5">→</span>
+			</a>
+			<a
+				href="/blueprint#pilot"
+				class="inline-flex items-center gap-2 text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1"
+			>
+				Where horizon 01 is happening →
+			</a>
 		</div>
 	</div>
 </section>

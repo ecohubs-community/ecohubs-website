@@ -80,22 +80,19 @@ export const stories: Story[] = [
 		]
 	},
 	{
-		id: 'anika',
-		name: 'Anika S.',
-		keyword: 'Conflict',
-		location: 'Berlin · Governance writer',
+		id: 'boris',
+		name: 'Boris',
+		keyword: 'We are Nature',
+		location: 'Ecohubs Member ·  Ecuador',
 		placeholder: true,
-		testimonial:
-			"I'd tried to start a community twice before. Both times it broke on the same thing — we never agreed on how to disagree. The Blueprint gave us the words."
+		
 	},
 	{
-		id: 'owen',
-		name: 'Owen P.',
-		keyword: 'Alone',
-		location: 'Cardiff · Listening circle host',
+		id: 'luisa',
+		name: 'Luisa',
+		keyword: 'Resilience',
+		location: 'Ecohubs Member · Italy',
 		placeholder: true,
-		testimonial:
-			"I'm not moving anywhere. I'm a single father in Lyon. But every Thursday at 8pm I'm in a circle with people who treat me like I matter. That's already more than my city gave me."
 	},
 	{
 		id: 'share',
