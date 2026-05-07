@@ -52,6 +52,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # SvelteKit's $env/static/private inlines values at build time.
+      # CI doesn't have a real .env, so seed it from the example file —
+      # the build only needs the keys to exist; values aren't called.
+      - name: Seed build-time .env from .env.example
+        run: cp .env.example .env
+
       - name: Build project
         run: pnpm build
         env:
@@ -83,6 +89,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Seed .env from .env.example
+        run: cp .env.example .env
 
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps

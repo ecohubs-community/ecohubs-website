@@ -24,6 +24,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Seed build-time .env from .env.example
+        run: cp .env.example .env
+
       - name: Build project
         run: pnpm build
         env:
