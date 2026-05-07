@@ -231,7 +231,7 @@
 			{@const pos = memberPos(selectedIdx)}
 			<div
 				role="tooltip"
-				class="absolute z-50 w-72 rounded-2xl border border-emerald-900/60 p-5 shadow-2xl pointer-events-none"
+				class="constellation-card absolute z-50 w-[22rem] rounded-2xl border border-emerald-900/60 p-5 shadow-2xl pointer-events-auto flex flex-col"
 				style="
           left: {pos.x}%;
           top: {pos.y}%;
@@ -240,7 +240,7 @@
           backdrop-filter: blur(8px);
         "
 			>
-				<div class="flex items-center gap-3 mb-3">
+				<div class="flex items-center gap-3 mb-3 shrink-0">
 					<div
 						class="w-12 h-12 rounded-full overflow-hidden border border-emerald-400/40
                    bg-emerald-950 shrink-0"
@@ -261,9 +261,26 @@
 						<div class="text-xs text-stone-300/70 mt-0.5">{m.loc}</div>
 					</div>
 				</div>
-				<p class="text-sm text-stone-200/85 leading-relaxed mb-3">{m.bio}</p>
-				<div class="font-story italic text-xs text-emerald-300/90 mb-3">{m.contrib}</div>
-				<div class="grid grid-cols-3 gap-2 pt-3 border-t border-emerald-900/40 text-left">
+
+				<!-- Scrollable text region — bio and contribution can each be up to
+				     ~2000 chars from the API; scrolling keeps the card height fixed
+				     instead of pushing everything off the constellation. -->
+				<div class="constellation-card-body min-h-0 max-h-56 overflow-y-auto pr-1.5 -mr-1.5">
+					{#if m.bio}
+						<p class="text-sm text-stone-200/85 leading-relaxed mb-3 whitespace-pre-line">
+							{m.bio}
+						</p>
+					{/if}
+					{#if m.contrib}
+						<div class="font-story italic text-xs text-emerald-300/90 whitespace-pre-line">
+							{m.contrib}
+						</div>
+					{/if}
+				</div>
+
+				<div
+					class="grid grid-cols-3 gap-2 pt-3 mt-3 border-t border-emerald-900/40 text-left shrink-0"
+				>
 					<div>
 						<div class="text-[10px] tracking-widest uppercase text-stone-400/70">XP</div>
 						<div class="font-serif text-white text-lg">{m.xp.toLocaleString()}</div>
@@ -334,5 +351,26 @@
 	.font-story {
 		font-family: var(--font-story, 'Fraunces', serif);
 		font-optical-sizing: auto;
+	}
+
+	/* Slim, brand-tinted scrollbar for the bio/contribution scroll region inside
+	   the dark profile card. Default OS scrollbars look harsh against the deep
+	   green background. */
+	.constellation-card-body {
+		scrollbar-width: thin;
+		scrollbar-color: rgba(167, 243, 208, 0.35) transparent;
+	}
+	.constellation-card-body::-webkit-scrollbar {
+		width: 6px;
+	}
+	.constellation-card-body::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	.constellation-card-body::-webkit-scrollbar-thumb {
+		background: rgba(167, 243, 208, 0.3);
+		border-radius: 9999px;
+	}
+	.constellation-card-body::-webkit-scrollbar-thumb:hover {
+		background: rgba(167, 243, 208, 0.5);
 	}
 </style>

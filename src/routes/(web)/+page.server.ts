@@ -24,16 +24,6 @@ export interface ConstellationMember {
 }
 
 const CACHE_TTL_MS = 12 * 60 * 60 * 1000; // 12 hours
-const BIO_MAX_LENGTH = 220;
-
-function truncate(text: string, max: number): string {
-	if (text.length <= max) return text;
-	// Cut at the last word boundary before the limit so we don't slice mid-word.
-	const slice = text.slice(0, max);
-	const lastSpace = slice.lastIndexOf(' ');
-	const cut = lastSpace > max * 0.6 ? slice.slice(0, lastSpace) : slice;
-	return cut.trimEnd().replace(/[,;:.\-—]+$/, '') + '…';
-}
 
 let cache: { data: ConstellationMember[]; expires: number } | null = null;
 
@@ -83,7 +73,7 @@ function mapMember(m: ApiMember): ConstellationMember {
 		xp: m.xp ?? 0,
 		eco: m.eco ?? 0,
 		langs,
-		bio: m.bio ? truncate(m.bio, BIO_MAX_LENGTH) : '',
+		bio: m.bio ?? '',
 		contrib: m.contribution ?? '',
 		img: m.avatarUrl ?? undefined
 	};
