@@ -12,7 +12,6 @@ import {
 	ADMIN_EMAIL,
 	RATE_LIMIT_MAX_REQUESTS,
 	RATE_LIMIT_WINDOW,
-	ZAPIER_WEBHOOK_URL,
 	TURNSTILE_SECRET_KEY
 } from '$env/static/private';
 
@@ -146,7 +145,6 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		}
 
 		const adminEmail = ADMIN_EMAIL || 'admin@ecohubs.community';
-		const zapierWebhook = ZAPIER_WEBHOOK_URL || '';
 		const timestamp = new Date().toISOString();
 
 		const contactData: ContactEmailData = {
@@ -181,34 +179,6 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			});
 		} catch (emailError) {
 			console.error('Email sending failed:', emailError);
-
-			// Fallback to Zapier webhook if configured
-			if (zapierWebhook) {
-				try {
-					const response = await fetch(zapierWebhook, {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify({
-							name,
-							email,
-							message,
-							timestamp,
-							source: 'contact_form'
-						})
-					});
-
-					if (response.ok) {
-						return json({
-							success: true,
-							message: "Message received! We'll get back to you soon."
-						});
-					}
-				} catch (webhookError) {
-					console.error('Zapier webhook failed:', webhookError);
-				}
-			}
 
 			// If both methods fail, still log the message but return an error
 			console.log('Contact form submission (email failed):', {

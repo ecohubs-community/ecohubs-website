@@ -49,9 +49,6 @@ ADMIN_EMAIL=admin@your-domain.com
 LINKMONK_URL=https://newsletter.your-domain.com
 LINKMONK_API_KEY=your-api-key
 
-# Fallback Webhook (Zapier)
-ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/...
-
 # Application Storage (Airtable)
 AIRTABLE_API_KEY=your-api-key
 AIRTABLE_BASE_ID=your-base-id

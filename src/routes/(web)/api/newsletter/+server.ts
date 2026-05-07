@@ -3,8 +3,7 @@ import type { RequestHandler } from './$types';
 import {
 	LINKMONK_URL,
 	LINKMONK_USERNAME,
-	LINKMONK_PASSWORD,
-	ZAPIER_WEBHOOK_URL
+	LINKMONK_PASSWORD
 } from '$env/static/private';
 
 // Simple in-memory rate limiting (for production, use Redis or similar)
@@ -143,34 +142,6 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 				hasUrl: !!LINKMONK_URL,
 				hasUsername: !!listmonkUsername
 			});
-		}
-
-		// Fallback to Zapier webhook if configured
-		if (ZAPIER_WEBHOOK_URL) {
-			try {
-				const response = await fetch(ZAPIER_WEBHOOK_URL, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({
-						email,
-						timestamp: new Date().toISOString(),
-						source: 'website'
-					})
-				});
-
-				if (!response.ok) {
-					throw new Error('Zapier webhook failed');
-				}
-
-				return json({
-					success: true,
-					message: 'Successfully subscribed! Please check your email to confirm.'
-				});
-			} catch (error) {
-				console.error('Zapier webhook error:', error);
-			}
 		}
 
 		// No integration succeeded
