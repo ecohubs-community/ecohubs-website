@@ -111,16 +111,26 @@ export function getApplicationEmailHTML(data: ApplicationEmailData): string {
 		timeZoneName: 'short'
 	});
 
-	const valuesArr = Array.isArray(data.values) ? data.values : (data.values ? [data.values] : []);
-	const expArr = Array.isArray(data.experienceAreas) ? data.experienceAreas : (data.experienceAreas ? [data.experienceAreas] : []);
+	const valuesArr = Array.isArray(data.values) ? data.values : data.values ? [data.values] : [];
+	const expArr = Array.isArray(data.experienceAreas)
+		? data.experienceAreas
+		: data.experienceAreas
+			? [data.experienceAreas]
+			: [];
 
-	const valueChips = valuesArr.map(
-		(v) => `<span style="display:inline-block;font-family:${FF_SANS};font-size:12px;font-weight:500;color:${C_DARK};background:${C_IVORY};border:1px solid ${C_LINE};padding:6px 12px;border-radius:999px;margin:0 6px 6px 0;">${v}</span>`
-	).join('');
+	const valueChips = valuesArr
+		.map(
+			(v) =>
+				`<span style="display:inline-block;font-family:${FF_SANS};font-size:12px;font-weight:500;color:${C_DARK};background:${C_IVORY};border:1px solid ${C_LINE};padding:6px 12px;border-radius:999px;margin:0 6px 6px 0;">${v}</span>`
+		)
+		.join('');
 
-	const expChips = expArr.map(
-		(v) => `<span style="display:inline-block;font-family:${FF_SANS};font-size:12px;font-weight:500;color:${C_DARK};background:#ffffff;border:1px solid ${C_LINE};padding:6px 12px;border-radius:999px;margin:0 6px 6px 0;">${v}</span>`
-	).join('');
+	const expChips = expArr
+		.map(
+			(v) =>
+				`<span style="display:inline-block;font-family:${FF_SANS};font-size:12px;font-weight:500;color:${C_DARK};background:#ffffff;border:1px solid ${C_LINE};padding:6px 12px;border-radius:999px;margin:0 6px 6px 0;">${v}</span>`
+		)
+		.join('');
 
 	return `<!DOCTYPE html>
 <html lang="en">
@@ -244,7 +254,7 @@ ${FONTS_LINK}
 					${field('A teamwork moment they remember', data.teamworkMoment, { box: true })}
 					${field('Disagreement response', data.disagreementResponse)}
 					${data.disagreementResponseOther ? field('— in their words', data.disagreementResponseOther, { box: true }) : ''}
-					${field('When their idea isn\'t chosen', data.ideaNotChosen)}
+					${field("When their idea isn't chosen", data.ideaNotChosen)}
 					${data.ideaNotChosenOther ? field('— in their words', data.ideaNotChosenOther, { box: true }) : ''}
 				</table>
 
@@ -284,7 +294,7 @@ ${FONTS_LINK}
 						<div>${expChips || `<span style="font-family:${FF_SERIF};color:${C_MUTED};font-size:14px;">—</span>`}</div>
 					</td></tr>
 					${data.experienceAreasOther ? field('— other experience', data.experienceAreasOther, { box: true }) : ''}
-					${field('A project they\'re proud of', data.proudProject, { box: true })}
+					${field("A project they're proud of", data.proudProject, { box: true })}
 					${field('Where they do their best work', data.bestWorkEnvironments, { box: true })}
 				</table>
 			</td></tr>
@@ -299,7 +309,7 @@ ${FONTS_LINK}
 					${field('How they manage commitments', data.manageCommitments, { box: true })}
 					${field('Honest about collaboration challenges', data.collaborationChallengesMerged, { box: true })}
 					${field('Concerns or doubts', data.concernsDoubts, { box: true })}
-					${field('How they\'d like to start contributing', data.howStartContributing, { box: true })}
+					${field("How they'd like to start contributing", data.howStartContributing, { box: true })}
 					${data.anythingElse ? field('Anything else', data.anythingElse, { box: true }) : ''}
 				</table>
 			</td></tr>

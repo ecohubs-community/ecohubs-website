@@ -3,7 +3,7 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import {
 		initScrollAnimations,
-		initStaggeredScrollAnimations,
+		initStaggeredScrollAnimations
 	} from '$lib/utils/scroll-animations';
 	import { prefersReducedMotion } from '$lib/utils/animations';
 
@@ -16,7 +16,7 @@
 		applicationSteps,
 		personas,
 		contributePaths,
-		faq,
+		faq
 	} from './data';
 	import { comparisons } from '../data';
 	import fruitHavenTeam from '$lib/assets/fruithaven-team.webp';
@@ -24,9 +24,7 @@
 	onMount(() => {
 		if (prefersReducedMotion()) {
 			document
-				.querySelectorAll<HTMLElement>(
-					'[data-scroll-animate], [data-scroll-stagger] > *'
-				)
+				.querySelectorAll<HTMLElement>('[data-scroll-animate], [data-scroll-stagger] > *')
 				.forEach((el) => {
 					el.style.opacity = '1';
 					el.style.transform = 'none';
@@ -37,42 +35,42 @@
 		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
 		initStaggeredScrollAnimations('[data-scroll-stagger]', {
 			threshold: 0.15,
-			staggerDelay: 0.08,
+			staggerDelay: 0.08
 		});
 	});
 </script>
 
 <SEO
 	title="The Blueprint — RCOS, the open standard for regenerative communities | EcoHubs"
-	description="The Blueprint (RCOS) is an open standard for designing and operating regenerative communities — modular, forkable, and tested in a live pilot. The first tangible outcome of EcoHubs."
+	description="The Blueprint (RCOS) is an open standard for designing and operating regenerative communities — modular, forkable, and tested in a live pilot."
+	ogImage="/og-blueprint.jpg"
 	breadcrumbs={[
 		{ name: 'Home', url: 'https://ecohubs.community/' },
-		{ name: 'Blueprint', url: 'https://ecohubs.community/blueprint' },
+		{ name: 'Blueprint', url: 'https://ecohubs.community/blueprint' }
 	]}
 />
-
-<svelte:head>
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-		rel="stylesheet"
-	/>
-</svelte:head>
 
 <!-- ═══════════════════════════════════════════════════════════════════
      1. HERO
 ═══════════════════════════════════════════════════════════════════ -->
 <section class="relative pt-36 pb-20 md:pt-48 md:pb-28 overflow-hidden">
-	<div class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"></div>
-	<div class="absolute -z-10 top-32 -left-32 w-[520px] h-[520px] rounded-full bg-emerald-200/25 blur-3xl"></div>
-	<div class="absolute -z-10 bottom-0 -right-24 w-[440px] h-[440px] rounded-full bg-amber-200/30 blur-3xl"></div>
+	<div
+		class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
+	></div>
+	<div
+		class="absolute -z-10 top-32 -left-32 w-[520px] h-[520px] rounded-full bg-emerald-200/25 blur-3xl"
+	></div>
+	<div
+		class="absolute -z-10 bottom-0 -right-24 w-[440px] h-[440px] rounded-full bg-amber-200/30 blur-3xl"
+	></div>
 
 	<div class="max-w-7xl mx-auto px-6 lg:px-8">
 		<div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
 			<div class="lg:col-span-7">
 				<div data-scroll-animate class="kicker text-emerald-700 mb-6 flex items-center gap-3">
-					<span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"></span>
+					<span
+						class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"
+					></span>
 					The Blueprint · the first tangible outcome of EcoHubs
 				</div>
 
@@ -84,7 +82,10 @@
 					<em class="font-story italic font-normal text-ecohubs-primary">we wished</em> had existed.
 				</h1>
 
-				<p data-scroll-animate class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light">
+				<p
+					data-scroll-animate
+					class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light"
+				>
 					The Blueprint — formally
 					<strong class="text-ecohubs-deep">RCOS</strong> (Regenerative Community Operating System)
 					— is an open standard for designing and operating regenerative communities. Not software,
@@ -101,7 +102,7 @@
 					<a
 						href="https://blueprint.ecohubs.community"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 						class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-all inline-flex items-center justify-center gap-2 group"
 					>
 						Open the live Blueprint
@@ -115,7 +116,10 @@
 					</a>
 				</div>
 
-				<div data-scroll-animate class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-stone-600">
+				<div
+					data-scroll-animate
+					class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-stone-600"
+				>
 					<span class="flex items-center gap-2">
 						<span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Open standard
 					</span>
@@ -130,40 +134,85 @@
 
 			<!-- Right: stylized "spec" card -->
 			<div data-scroll-animate class="lg:col-span-5 relative">
-				<div class="relative bg-white rounded-[28px] border border-stone-200/80 soft-shadow p-7 overflow-hidden">
-					<div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-emerald-200/40 blur-2xl pointer-events-none"></div>
+				<div
+					class="relative bg-white rounded-[28px] border border-stone-200/80 soft-shadow p-7 overflow-hidden"
+				>
+					<div
+						class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-emerald-200/40 blur-2xl pointer-events-none"
+					></div>
 					<div class="flex items-center justify-between mb-5">
 						<div class="flex items-center gap-2 text-stone-400">
 							<span class="w-2.5 h-2.5 rounded-full bg-stone-300"></span>
 							<span class="w-2.5 h-2.5 rounded-full bg-stone-300"></span>
 							<span class="w-2.5 h-2.5 rounded-full bg-stone-300"></span>
 						</div>
-						<span class="font-mono text-[10px] tracking-widest text-stone-400 uppercase">RCOS · v0 · public draft</span>
+						<span class="font-mono text-[10px] tracking-widest text-stone-400 uppercase"
+							>RCOS · v0.1 · public draft</span
+						>
 					</div>
 
 					<div class="font-mono text-[12px] leading-[1.9] text-stone-600 space-y-1">
-						<div><span class="text-emerald-700">layer 0</span> · <span class="text-stone-800">purpose &amp; scope</span></div>
-						<div><span class="text-emerald-700">layer 1</span> · <span class="text-stone-800">membership</span></div>
-						<div><span class="text-emerald-700">layer 2</span> · <span class="text-stone-800">governance</span></div>
-						<div><span class="text-emerald-700">layer 3</span> · <span class="text-stone-800">economy &amp; resources</span></div>
-						<div><span class="text-emerald-700">layer 4</span> · <span class="text-stone-800">conflict, repair &amp; accountability</span></div>
-						<div><span class="text-emerald-700">layer 5</span> · <span class="text-stone-800">operations &amp; coordination</span></div>
-						<div><span class="text-emerald-700">layer 6</span> · <span class="text-stone-800">evolution &amp; adaptation</span></div>
+						<div>
+							<span class="text-emerald-700">layer 0</span> ·
+							<span class="text-stone-800">purpose &amp; scope</span>
+						</div>
+						<div>
+							<span class="text-emerald-700">layer 1</span> ·
+							<span class="text-stone-800">membership</span>
+						</div>
+						<div>
+							<span class="text-emerald-700">layer 2</span> ·
+							<span class="text-stone-800">governance</span>
+						</div>
+						<div>
+							<span class="text-emerald-700">layer 3</span> ·
+							<span class="text-stone-800">economy &amp; resources</span>
+						</div>
+						<div>
+							<span class="text-emerald-700">layer 4</span> ·
+							<span class="text-stone-800">conflict, repair &amp; accountability</span>
+						</div>
+						<div>
+							<span class="text-emerald-700">layer 5</span> ·
+							<span class="text-stone-800">operations &amp; coordination</span>
+						</div>
+						<div>
+							<span class="text-emerald-700">layer 6</span> ·
+							<span class="text-stone-800">evolution &amp; adaptation</span>
+						</div>
 						<div class="pt-2 text-stone-400">— optional —</div>
-						<div><span class="text-amber-700">module</span> · <span class="text-stone-800">permaculture</span></div>
-						<div><span class="text-amber-700">module</span> · <span class="text-stone-800">education</span></div>
-						<div><span class="text-amber-700">module</span> · <span class="text-stone-800">housing</span></div>
-						<div><span class="text-amber-700">module</span> · <span class="text-stone-800">land commons safeguards</span></div>
-						<div><span class="text-amber-700">module</span> · <span class="text-stone-800">alternative economies</span></div>
+						<div>
+							<span class="text-amber-700">module</span> ·
+							<span class="text-stone-800">permaculture</span>
+						</div>
+						<div>
+							<span class="text-amber-700">module</span> ·
+							<span class="text-stone-800">education</span>
+						</div>
+						<div>
+							<span class="text-amber-700">module</span> ·
+							<span class="text-stone-800">housing</span>
+						</div>
+						<div>
+							<span class="text-amber-700">module</span> ·
+							<span class="text-stone-800">land commons safeguards</span>
+						</div>
+						<div>
+							<span class="text-amber-700">module</span> ·
+							<span class="text-stone-800">alternative economies</span>
+						</div>
 					</div>
 
-					<div class="mt-6 pt-5 border-t border-stone-200 flex items-center justify-between text-xs text-stone-500">
+					<div
+						class="mt-6 pt-5 border-t border-stone-200 flex items-center justify-between text-xs text-stone-500"
+					>
 						<span>Open · Forkable · Adaptable</span>
 						<a
 							href="https://blueprint.ecohubs.community"
 							target="_blank"
-							rel="noopener"
-							class="text-ecohubs-primary hover:underline font-medium">blueprint.ecohubs.community ↗</a
+							rel="noopener noreferrer"
+							class="text-ecohubs-primary hover:underline font-medium"
+							>blueprint.ecohubs.community ↗</a
 						>
 					</div>
 				</div>
@@ -195,11 +244,11 @@
 				They fail on the things <em class="font-story italic font-normal">no one wrote down.</em>
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
-				Roughly
-				<strong class="text-ecohubs-deep">80–90% of intentional communities collapse</strong> — not
-				because the vision was wrong, but because the same handful of invisible things were never
-				made explicit. The Blueprint is built around those failure points, so a community can name
-				them before they break.
+				It's estimated that <strong class="text-ecohubs-deep"
+					>80–90% of intentional communities collapse</strong
+				> — not because the vision was wrong, but because the same handful of invisible things were never
+				made explicit. The Blueprint is built around those failure points, so a community can name them
+				before they break.
 			</p>
 		</div>
 
@@ -213,7 +262,10 @@
 			{/each}
 		</div>
 
-		<p data-scroll-animate class="mt-12 max-w-2xl text-stone-600 leading-relaxed font-story italic text-lg">
+		<p
+			data-scroll-animate
+			class="mt-12 max-w-2xl text-stone-600 leading-relaxed font-story italic text-lg"
+		>
 			The Blueprint doesn't promise harmony. It just refuses to leave these things unsaid.
 		</p>
 	</div>
@@ -243,7 +295,9 @@
 		<div class="grid md:grid-cols-2 gap-10 md:gap-14">
 			<div data-scroll-animate>
 				<div class="flex items-center gap-3 mb-7">
-					<span class="pill bg-emerald-500/15 text-emerald-200 border border-emerald-400/30">It is</span>
+					<span class="pill bg-emerald-500/15 text-emerald-200 border border-emerald-400/30"
+						>It is</span
+					>
 					<span class="text-stone-300/70 text-sm">A formal, open standard.</span>
 				</div>
 				<ul class="space-y-5">
@@ -261,7 +315,9 @@
 
 			<div data-scroll-animate>
 				<div class="flex items-center gap-3 mb-7">
-					<span class="pill bg-amber-300/10 text-amber-200 border border-amber-300/30">It is not</span>
+					<span class="pill bg-amber-300/10 text-amber-200 border border-amber-300/30"
+						>It is not</span
+					>
 					<span class="text-stone-300/70 text-sm">And never quietly will be.</span>
 				</div>
 				<ul class="space-y-5">
@@ -300,7 +356,9 @@
 
 		<div data-scroll-stagger class="grid md:grid-cols-3 gap-4">
 			{#each coreLayers as layer}
-				<article class="layer-card bg-white rounded-2xl p-6 border border-stone-200/80 flex flex-col">
+				<article
+					class="layer-card bg-white rounded-2xl p-6 border border-stone-200/80 flex flex-col"
+				>
 					<div class="flex items-baseline justify-between mb-3">
 						<span class="layer-num text-2xl text-ecohubs-primary">{layer.id}</span>
 						<span class="text-xs tracking-widest uppercase text-stone-400">{layer.kicker}</span>
@@ -309,7 +367,8 @@
 					<p class="text-sm text-stone-600 leading-relaxed mb-4">{layer.body}</p>
 					<div class="mt-auto flex flex-wrap gap-1.5 text-[11px]">
 						{#each layer.tags as tag}
-							<span class="px-2 py-0.5 rounded-full bg-ecohubs-ivory border border-stone-200 text-stone-600"
+							<span
+								class="px-2 py-0.5 rounded-full bg-ecohubs-ivory border border-stone-200 text-stone-600"
 								>{tag}</span
 							>
 						{/each}
@@ -318,7 +377,9 @@
 			{/each}
 
 			<!-- Modules -->
-			<article class="layer-card bg-ecohubs-ivory rounded-2xl p-6 border border-stone-200/80 flex flex-col">
+			<article
+				class="layer-card bg-ecohubs-ivory rounded-2xl p-6 border border-stone-200/80 flex flex-col"
+			>
 				<div class="flex items-baseline justify-between mb-3">
 					<span class="layer-num text-2xl text-amber-700">+</span>
 					<span class="text-xs tracking-widest uppercase text-stone-400">Modules</span>
@@ -333,7 +394,7 @@
 			<a
 				href="https://blueprint.ecohubs.community"
 				target="_blank"
-				rel="noopener"
+				rel="noopener noreferrer"
 				class="layer-card bg-ecohubs-deep text-white rounded-2xl p-6 border border-emerald-900/40 group flex flex-col justify-between"
 			>
 				<div>
@@ -365,39 +426,153 @@
 		<!-- Diagram -->
 		<div data-scroll-animate class="lg:col-span-5">
 			<svg viewBox="-20 -20 440 440" class="w-full max-w-md mx-auto">
-				<circle cx="200" cy="200" r="170" fill="none" stroke="#d97706" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 5" />
-				<text x="200" y="14" text-anchor="middle" font-family="Inter" font-size="10" letter-spacing="2" fill="#b45309">
+				<circle
+					cx="200"
+					cy="200"
+					r="170"
+					fill="none"
+					stroke="#d97706"
+					stroke-opacity="0.35"
+					stroke-width="1"
+					stroke-dasharray="3 5"
+				/>
+				<text
+					x="200"
+					y="14"
+					text-anchor="middle"
+					font-family="Inter"
+					font-size="10"
+					letter-spacing="2"
+					fill="#b45309"
+				>
 					MODULES · OPTIONAL
 				</text>
 
-				<circle cx="200" cy="200" r="120" fill="#fbfbf9" stroke="#059669" stroke-opacity="0.5" stroke-width="1.2" />
-				<text x="200" y="64" text-anchor="middle" font-family="Inter" font-size="10" letter-spacing="2" fill="#047857">
+				<circle
+					cx="200"
+					cy="200"
+					r="120"
+					fill="#fbfbf9"
+					stroke="#059669"
+					stroke-opacity="0.5"
+					stroke-width="1.2"
+				/>
+				<text
+					x="200"
+					y="64"
+					text-anchor="middle"
+					font-family="Inter"
+					font-size="10"
+					letter-spacing="2"
+					fill="#047857"
+				>
 					RCOS CORE
 				</text>
 
 				<circle cx="200" cy="200" r="56" fill="#0b2e24" />
-				<text x="200" y="195" text-anchor="middle" font-family="Pridi, serif" font-size="13" fill="#a7f3d0">A living</text>
-				<text x="200" y="215" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="20" fill="#fbfbf9">
+				<text
+					x="200"
+					y="195"
+					text-anchor="middle"
+					font-family="Pridi, serif"
+					font-size="13"
+					fill="#a7f3d0">A living</text
+				>
+				<text
+					x="200"
+					y="215"
+					text-anchor="middle"
+					font-family="Fraunces, serif"
+					font-style="italic"
+					font-size="20"
+					fill="#fbfbf9"
+				>
 					Blueprint
 				</text>
 
 				<g font-family="Pridi, serif" font-size="11" fill="#064e3b" text-anchor="middle">
-					<g><circle cx="200" cy="80" r="14" fill="#fbfbf9" stroke="#059669" /><text x="200" y="84" font-style="italic">L0</text></g>
-					<g><circle cx="304" cy="125" r="14" fill="#fbfbf9" stroke="#059669" /><text x="304" y="129" font-style="italic">L1</text></g>
-					<g><circle cx="320" cy="240" r="14" fill="#fbfbf9" stroke="#059669" /><text x="320" y="244" font-style="italic">L2</text></g>
-					<g><circle cx="245" cy="320" r="14" fill="#fbfbf9" stroke="#059669" /><text x="245" y="324" font-style="italic">L3</text></g>
-					<g><circle cx="155" cy="320" r="14" fill="#fbfbf9" stroke="#059669" /><text x="155" y="324" font-style="italic">L4</text></g>
-					<g><circle cx="80" cy="240" r="14" fill="#fbfbf9" stroke="#059669" /><text x="80" y="244" font-style="italic">L5</text></g>
-					<g><circle cx="96" cy="125" r="14" fill="#fbfbf9" stroke="#059669" /><text x="96" y="129" font-style="italic">L6</text></g>
+					<g
+						><circle cx="200" cy="80" r="14" fill="#fbfbf9" stroke="#059669" /><text
+							x="200"
+							y="84"
+							font-style="italic">L0</text
+						></g
+					>
+					<g
+						><circle cx="304" cy="125" r="14" fill="#fbfbf9" stroke="#059669" /><text
+							x="304"
+							y="129"
+							font-style="italic">L1</text
+						></g
+					>
+					<g
+						><circle cx="320" cy="240" r="14" fill="#fbfbf9" stroke="#059669" /><text
+							x="320"
+							y="244"
+							font-style="italic">L2</text
+						></g
+					>
+					<g
+						><circle cx="245" cy="320" r="14" fill="#fbfbf9" stroke="#059669" /><text
+							x="245"
+							y="324"
+							font-style="italic">L3</text
+						></g
+					>
+					<g
+						><circle cx="155" cy="320" r="14" fill="#fbfbf9" stroke="#059669" /><text
+							x="155"
+							y="324"
+							font-style="italic">L4</text
+						></g
+					>
+					<g
+						><circle cx="80" cy="240" r="14" fill="#fbfbf9" stroke="#059669" /><text
+							x="80"
+							y="244"
+							font-style="italic">L5</text
+						></g
+					>
+					<g
+						><circle cx="96" cy="125" r="14" fill="#fbfbf9" stroke="#059669" /><text
+							x="96"
+							y="129"
+							font-style="italic">L6</text
+						></g
+					>
 				</g>
 
 				<g font-family="Inter" font-size="10" fill="#7c2d12" text-anchor="middle">
-					<g><circle cx="200" cy="30" r="9" fill="#fef3c7" stroke="#d97706" /><text x="200" y="33">P</text></g>
-					<g><circle cx="346" cy="98" r="9" fill="#fef3c7" stroke="#d97706" /><text x="346" y="101">E</text></g>
-					<g><circle cx="370" cy="245" r="9" fill="#fef3c7" stroke="#d97706" /><text x="370" y="248">H</text></g>
-					<g><circle cx="265" cy="368" r="9" fill="#fef3c7" stroke="#d97706" /><text x="265" y="371">L</text></g>
-					<g><circle cx="135" cy="368" r="9" fill="#fef3c7" stroke="#d97706" /><text x="135" y="371">A</text></g>
-					<g><circle cx="30" cy="245" r="9" fill="#fef3c7" stroke="#d97706" /><text x="30" y="248">M</text></g>
+					<g
+						><circle cx="200" cy="30" r="9" fill="#fef3c7" stroke="#d97706" /><text x="200" y="33"
+							>P</text
+						></g
+					>
+					<g
+						><circle cx="346" cy="98" r="9" fill="#fef3c7" stroke="#d97706" /><text x="346" y="101"
+							>E</text
+						></g
+					>
+					<g
+						><circle cx="370" cy="245" r="9" fill="#fef3c7" stroke="#d97706" /><text x="370" y="248"
+							>H</text
+						></g
+					>
+					<g
+						><circle cx="265" cy="368" r="9" fill="#fef3c7" stroke="#d97706" /><text x="265" y="371"
+							>L</text
+						></g
+					>
+					<g
+						><circle cx="135" cy="368" r="9" fill="#fef3c7" stroke="#d97706" /><text x="135" y="371"
+							>A</text
+						></g
+					>
+					<g
+						><circle cx="30" cy="245" r="9" fill="#fef3c7" stroke="#d97706" /><text x="30" y="248"
+							>M</text
+						></g
+					>
 				</g>
 			</svg>
 
@@ -415,10 +590,9 @@
 			</h2>
 			<p class="text-lg text-stone-700 leading-relaxed mb-5">
 				Modules are
-				<strong class="text-ecohubs-deep">optional extensions</strong> that apply RCOS to specific
-				domains — food systems, education, housing, land — without changing the core layers or
-				overriding governance. Adopt the ones that fit your land, your people, your stage. Skip the
-				rest.
+				<strong class="text-ecohubs-deep">optional extensions</strong> that apply RCOS to specific domains
+				— food systems, education, housing, land — without changing the core layers or overriding governance.
+				Adopt the ones that fit your land, your people, your stage. Skip the rest.
 			</p>
 			<p class="text-lg text-stone-700 leading-relaxed mb-8">
 				Modules describe <em class="font-story italic">structure</em>, not "the right way" to live.
@@ -459,7 +633,9 @@
 			</div>
 			<h2 class="font-serif text-4xl md:text-6xl leading-[1.05] text-ecohubs-ivory">
 				Other people have tried.<br />
-				<em class="font-story italic font-normal text-emerald-300">We learned from where they broke.</em>
+				<em class="font-story italic font-normal text-emerald-300"
+					>We learned from where they broke.</em
+				>
 			</h2>
 			<p class="mt-6 text-lg md:text-xl text-stone-200/85 leading-relaxed max-w-2xl">
 				We are not the first to try this — and that is the point. Most intentional communities fail
@@ -474,24 +650,32 @@
 					class="group relative rounded-3xl border border-emerald-900/40 overflow-hidden
 					       bg-gradient-to-br from-[#0a3d2e]/70 to-[#0b2e24]/80 hover:border-emerald-400/40 transition-colors"
 				>
-					<div class="absolute top-0 right-0 font-story italic text-[80px] leading-none text-emerald-300/10 pr-5 pt-3 select-none">
+					<div
+						class="absolute top-0 right-0 font-story italic text-[80px] leading-none text-emerald-300/10 pr-5 pt-3 select-none"
+					>
 						{String(i + 1).padStart(2, '0')}
 					</div>
 
 					<!-- "Most projects" — muted, struck-through, deliberately quieter -->
 					<div class="px-7 pt-7 pb-5 border-b border-emerald-900/40 relative">
-						<div class="flex items-center gap-2 text-[11px] tracking-widest uppercase text-amber-300/70 mb-3">
+						<div
+							class="flex items-center gap-2 text-[11px] tracking-widest uppercase text-amber-300/70 mb-3"
+						>
 							<span class="w-1.5 h-1.5 rounded-full bg-amber-400/60"></span>
 							Most projects
 						</div>
-						<p class="font-serif text-base text-stone-300/55 leading-snug line-through decoration-amber-300/30 decoration-1">
+						<p
+							class="font-serif text-base text-stone-300/55 leading-snug line-through decoration-amber-300/30 decoration-1"
+						>
 							{c.most}
 						</p>
 					</div>
 
 					<!-- "EcoHubs" — bold, emerald, clearly the answer -->
 					<div class="px-7 pt-5 pb-7 relative">
-						<div class="flex items-center gap-2 text-[11px] tracking-widest uppercase text-emerald-300 mb-3">
+						<div
+							class="flex items-center gap-2 text-[11px] tracking-widest uppercase text-emerald-300 mb-3"
+						>
 							<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
 							EcoHubs
 						</div>
@@ -507,7 +691,7 @@
 			<a
 				href="https://blueprint.ecohubs.community"
 				target="_blank"
-				rel="noopener"
+				rel="noopener noreferrer"
 				class="px-7 py-3.5 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors inline-flex items-center justify-center gap-2"
 			>
 				See how the Blueprint avoids each one
@@ -574,7 +758,7 @@
 				<a
 					href="https://blueprint.ecohubs.community"
 					target="_blank"
-					rel="noopener"
+					rel="noopener noreferrer"
 					class="mt-5 inline-flex items-center gap-1.5 text-sm text-emerald-300 font-medium hover:underline"
 					>Open the Blueprint ↗</a
 				>
@@ -628,8 +812,9 @@
 				{#each applicationSteps as step}
 					<li class="grid grid-cols-[auto_1fr] gap-5 items-start">
 						<span
-							class="font-story italic text-2xl w-10 shrink-0 {step.accent === 'amber' ? 'text-amber-700' : 'text-ecohubs-primary'}"
-							>{step.number}</span
+							class="font-story italic text-2xl w-10 shrink-0 {step.accent === 'amber'
+								? 'text-amber-700'
+								: 'text-ecohubs-primary'}">{step.number}</span
 						>
 						<div>
 							<h3 class="font-serif text-xl text-ecohubs-deep mb-1.5">{step.title}</h3>
@@ -644,20 +829,49 @@
 					<div class="px-6 py-4 border-b border-stone-200 flex items-center justify-between">
 						<div class="flex items-center gap-2">
 							<span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-							<span class="text-xs tracking-widest uppercase text-stone-500 font-semibold">Pilot · Ecuador</span>
+							<span class="text-xs tracking-widest uppercase text-stone-500 font-semibold"
+								>Pilot · Ecuador</span
+							>
 						</div>
 						<span class="text-[11px] text-stone-400 font-mono">running RCOS v0.4</span>
 					</div>
 					<div class="p-6 font-mono text-[12.5px] leading-[2] text-stone-700">
-						<div><span class="text-emerald-700">L0</span> purpose       <span class="text-stone-400">// adopted, ratified</span></div>
-						<div><span class="text-emerald-700">L1</span> membership    <span class="text-stone-400">// adopted, in use</span></div>
-						<div><span class="text-emerald-700">L2</span> governance    <span class="text-amber-700">// adapted: small-circle quorum</span></div>
-						<div><span class="text-emerald-700">L3</span> economy       <span class="text-amber-700">// adapted: contribution log</span></div>
-						<div><span class="text-emerald-700">L4</span> conflict      <span class="text-stone-400">// adopted, two repairs run</span></div>
-						<div><span class="text-emerald-700">L5</span> operations    <span class="text-stone-400">// in progress</span></div>
-						<div><span class="text-emerald-700">L6</span> evolution     <span class="text-stone-400">// scheduled, month 3</span></div>
-						<div class="mt-3"><span class="text-amber-700">module</span> permaculture  <span class="text-stone-400">// active</span></div>
-						<div><span class="text-amber-700">module</span> education     <span class="text-stone-400">// scoping</span></div>
+						<div>
+							<span class="text-emerald-700">L0</span> purpose
+							<span class="text-stone-400">// adopted, ratified</span>
+						</div>
+						<div>
+							<span class="text-emerald-700">L1</span> membership
+							<span class="text-stone-400">// adopted, in use</span>
+						</div>
+						<div>
+							<span class="text-emerald-700">L2</span> governance
+							<span class="text-amber-700">// adapted: small-circle quorum</span>
+						</div>
+						<div>
+							<span class="text-emerald-700">L3</span> economy
+							<span class="text-amber-700">// adapted: contribution log</span>
+						</div>
+						<div>
+							<span class="text-emerald-700">L4</span> conflict
+							<span class="text-stone-400">// adopted, two repairs run</span>
+						</div>
+						<div>
+							<span class="text-emerald-700">L5</span> operations
+							<span class="text-stone-400">// in progress</span>
+						</div>
+						<div>
+							<span class="text-emerald-700">L6</span> evolution
+							<span class="text-stone-400">// scheduled, month 3</span>
+						</div>
+						<div class="mt-3">
+							<span class="text-amber-700">module</span> permaculture
+							<span class="text-stone-400">// active</span>
+						</div>
+						<div>
+							<span class="text-amber-700">module</span> education
+							<span class="text-stone-400">// scoping</span>
+						</div>
 						<div class="mt-4 pt-4 border-t border-stone-200 text-stone-500">
 							<div># lessons sent back</div>
 							<div>+ pattern: silent-exit repair</div>
@@ -667,8 +881,8 @@
 					</div>
 				</div>
 				<p class="mt-5 text-sm text-stone-500 leading-relaxed">
-					Every line above is a real choice the pilot is documenting in the open — the same way
-					any community that adopts the Blueprint can.
+					Every line above is a real choice the pilot is documenting in the open — the same way any
+					community that adopts the Blueprint can.
 				</p>
 			</div>
 		</div>
@@ -695,7 +909,8 @@
 				<div
 					class="text-xs tracking-widest uppercase text-emerald-700 mb-2 flex items-center gap-2 whitespace-nowrap"
 				>
-					<span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 pulse-dot shrink-0"></span>
+					<span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 pulse-dot shrink-0"
+					></span>
 					Pilot · Active now
 				</div>
 				<div class="font-serif text-lg text-ecohubs-deep leading-tight">
@@ -770,7 +985,9 @@
 			<div class="kicker text-emerald-700 mb-4">Who picks this up</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
 				The Blueprint is useful
-				<em class="font-story italic font-normal text-stone-500">to more than one kind of person.</em>
+				<em class="font-story italic font-normal text-stone-500"
+					>to more than one kind of person.</em
+				>
 			</h2>
 		</div>
 
@@ -841,8 +1058,8 @@
 		</div>
 
 		<p class="mt-10 text-sm text-stone-500 font-story italic max-w-xl">
-			Contributions sit inside membership — not because we're gating, but because the standard
-			stays coherent when the people editing it are part of the wider community.
+			Contributions sit inside membership — not because we're gating, but because the standard stays
+			coherent when the people editing it are part of the wider community.
 		</p>
 	</div>
 </section>
@@ -899,14 +1116,22 @@
 	></div>
 
 	<div class="max-w-4xl mx-auto px-6 lg:px-8 text-center text-ecohubs-ivory">
-		<div data-scroll-animate class="kicker text-emerald-300 mb-6">The Blueprint is freely readable</div>
+		<div data-scroll-animate class="kicker text-emerald-300 mb-6">
+			The Blueprint is freely readable
+		</div>
 
-		<h2 data-scroll-animate class="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.05] mb-10">
+		<h2
+			data-scroll-animate
+			class="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.05] mb-10"
+		>
 			Read it. Argue with it. <br class="hidden md:block" />
 			<em class="font-story italic font-normal text-emerald-300">Run it.</em>
 		</h2>
 
-		<p data-scroll-animate class="font-serif text-xl md:text-2xl leading-snug text-stone-200/90 max-w-2xl mx-auto mb-14">
+		<p
+			data-scroll-animate
+			class="font-serif text-xl md:text-2xl leading-snug text-stone-200/90 max-w-2xl mx-auto mb-14"
+		>
 			The standard is open. The pilots are live. The next version is shaped by whoever shows up and
 			edits it well.
 		</p>
@@ -917,7 +1142,7 @@
 			<a
 				href="https://blueprint.ecohubs.community"
 				target="_blank"
-				rel="noopener"
+				rel="noopener noreferrer"
 				class="px-8 py-4 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors inline-flex items-center justify-center gap-2"
 			>
 				Open the live Blueprint
@@ -938,93 +1163,7 @@
 </section>
 
 <style>
-	/* ─────────────────────────────────────────────────────────────────────────
-	   Animations: keyframes + FOUC guard for scroll-triggered reveals
-	   ───────────────────────────────────────────────────────────────────── */
-	:global([data-scroll-animate]),
-	:global([data-scroll-stagger] > *) {
-		opacity: 0;
-	}
-	@media (prefers-reduced-motion: reduce) {
-		:global([data-scroll-animate]),
-		:global([data-scroll-stagger] > *) {
-			opacity: 1 !important;
-			transform: none !important;
-		}
-	}
-
-	@keyframes pulse-ring {
-		0%,
-		100% {
-			transform: scale(1);
-			opacity: 0.25;
-		}
-		50% {
-			transform: scale(1.6);
-			opacity: 0;
-		}
-	}
-
-	:global(.pulse-dot)::before {
-		content: '';
-		position: absolute;
-		inset: -6px;
-		border-radius: 9999px;
-		background: currentColor;
-		opacity: 0.25;
-		animation: pulse-ring 2.4s ease-in-out infinite;
-	}
-
-	/* ─────────────────────────────────────────────────────────────────────────
-	   Typography utilities
-	   ───────────────────────────────────────────────────────────────────── */
-	:global(main p),
-	:global(main li),
-	:global(main blockquote),
-	:global(main span:not([class*='font-'])),
-	:global(main div:not([class*='font-'])) {
-		font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-	}
-
-	:global(.font-story) {
-		font-family: var(--font-story, 'Fraunces', serif);
-		font-optical-sizing: auto;
-	}
-
-	:global(.font-mono) {
-		font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-	}
-
-	:global(.kicker) {
-		font-size: 0.72rem;
-		letter-spacing: 0.2em;
-		text-transform: uppercase;
-		font-weight: 600;
-	}
-
-	:global(.soft-shadow) {
-		box-shadow: 0 30px 60px -30px rgba(11, 46, 36, 0.25);
-	}
-
-	:global(.grain)::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-		opacity: 0.5;
-		mix-blend-mode: multiply;
-		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-	}
-
-	.hairline {
-		height: 1px;
-		background: linear-gradient(90deg, transparent, rgba(6, 78, 59, 0.25), transparent);
-		margin: 0 auto;
-	}
-
-	/* ─────────────────────────────────────────────────────────────────────────
-	   Blueprint-specific utilities
-	   ───────────────────────────────────────────────────────────────────── */
+	/* Page-local: pill chip and "layer card" lift used by the Blueprint hero/spec. */
 	:global(.pill) {
 		display: inline-flex;
 		align-items: center;
@@ -1052,10 +1191,5 @@
 		font-family: 'Fraunces', serif;
 		font-style: italic;
 		font-weight: 400;
-	}
-
-	/* FAQ accordion +/× rotation (Tailwind v4 doesn't ship `group-open` out of the box). */
-	:global(details[open] > summary > span:last-child) {
-		transform: rotate(45deg);
 	}
 </style>

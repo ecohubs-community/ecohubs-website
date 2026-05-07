@@ -1,4 +1,12 @@
-import { SMTP_HOST, SMTP_PASSWORD, SMTP_USER, SMTP_SECURE, SMTP_PORT, EMAIL_FROM, EMAIL_FROM_NAME } from '$env/static/private';
+import {
+	SMTP_HOST,
+	SMTP_PASSWORD,
+	SMTP_USER,
+	SMTP_SECURE,
+	SMTP_PORT,
+	EMAIL_FROM,
+	EMAIL_FROM_NAME
+} from '$env/static/private';
 import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
 
@@ -12,7 +20,7 @@ export function getEmailTransporter(): Transporter {
 	const smtpHost = SMTP_HOST || 'localhost';
 	const smtpPort = parseInt(SMTP_PORT || '1025');
 	const smtpSecure = SMTP_SECURE === 'true';
-	const smtpUser = SMTP_USER || '';	
+	const smtpUser = SMTP_USER || '';
 	const smtpPassword = SMTP_PASSWORD || '';
 
 	// Determine if we should use secure (SSL/TLS) or STARTTLS
@@ -28,10 +36,13 @@ export function getEmailTransporter(): Transporter {
 		port: smtpPort,
 		secure: useSecure, // true for 465, false for other ports
 		requireTLS: requireTLS, // true for 587
-		auth: smtpUser && smtpPassword ? {
-			user: smtpUser,
-			pass: smtpPassword,
-		} : undefined,
+		auth:
+			smtpUser && smtpPassword
+				? {
+						user: smtpUser,
+						pass: smtpPassword
+					}
+				: undefined,
 		// Connection timeout settings
 		connectionTimeout: 10000, // 10 seconds
 		socketTimeout: 10000, // 10 seconds
@@ -56,7 +67,7 @@ export interface SendEmailOptions {
 
 export async function sendEmail(options: SendEmailOptions): Promise<void> {
 	const transporter = getEmailTransporter();
-	
+
 	const emailFrom = EMAIL_FROM || 'noreply@ecohubs.community';
 	const emailFromName = EMAIL_FROM_NAME || 'EcoHubs Community';
 
@@ -66,7 +77,7 @@ export async function sendEmail(options: SendEmailOptions): Promise<void> {
 		subject: options.subject,
 		text: options.text,
 		html: options.html,
-		replyTo: options.replyTo,
+		replyTo: options.replyTo
 	});
 }
 
@@ -80,5 +91,3 @@ export async function verifyEmailConnection(): Promise<boolean> {
 		return false;
 	}
 }
-
-

@@ -12,7 +12,6 @@ import {
 	BookOpen,
 	CodeXml,
 	Sprout,
-	Languages,
 	Palette,
 	Coins
 } from 'lucide-svelte';
@@ -203,7 +202,7 @@ export const faqItems: FaqItem[] = [
 	},
 	{
 		q: 'What tools does the community use?',
-		a: '<a href="https://os.ecohubs.community" target="_blank" rel="noopener">ecohubsOS</a> as the home base — including its internal voting system for applications and decisions. Discord and a forum for discussion. Collaborative documents for the Blueprint. The smallest set of tools that lets the community see itself.'
+		a: '<a href="https://os.ecohubs.community" target="_blank" rel="noopener noreferrer">ecohubsOS</a> as the home base — including its internal voting system for applications and decisions. Discord and a forum for discussion. Collaborative documents for the Blueprint. The smallest set of tools that lets the community see itself.'
 	}
 ];
 
@@ -261,7 +260,7 @@ export interface Voice {
 export const voices: Voice[] = [
 	{
 		quote:
-			"I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter. No one asked me — I just saw the gap.",
+			'I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter. No one asked me — I just saw the gap.',
 		name: 'Anika S.',
 		location: 'Berlin · Governance writer'
 	},

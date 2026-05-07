@@ -3,303 +3,164 @@
 [![CI](https://github.com/ecohubs/ecohubs.community/actions/workflows/ci.yml/badge.svg)](https://github.com/ecohubs/ecohubs.community/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-A regenerative community platform built with Svelte 5, featuring DAO governance, contribution-based economics, and an open-source blueprint for intentional communities.
+The public website for EcoHubs — a growing network of people writing the open-source Blueprint (RCOS) for regenerative communities. Built with SvelteKit + Svelte 5 (runes) + Tailwind v4.
 
-## 🌟 Features
+## 🌟 What this site is
 
-- **Svelte 5 (Runes)** - Modern reactive framework with fine-grained reactivity
-- **SvelteKit** - Full-stack framework with static site generation
-- **Tailwind CSS v4** - Utility-first CSS with custom regenerative theme
-- **Multi-Step Forms** - Application form with Superforms + autosave
-- **Email Integration** - Nodemailer SMTP with beautiful HTML templates
-- **Newsletter** - Linkmonk integration with fallback to Zapier
-- **Blog** - mdsvex-powered blog with reading time and RSS feed
-- **SEO Optimized** - Complete meta tags, JSON-LD, sitemap, OG images
-- **Dark Mode** - System preference detection with manual toggle
-- **Accessible** - WCAG AA compliant with keyboard navigation
-- **Performance** - Lighthouse 95+ target (mobile & desktop)
-- **i18n Ready** - Paraglide.js for English/Spanish localization
-- **PWA Ready** - Web manifest and service worker support
+- **Marketing & explanation site** for the EcoHubs project — Vision, Blueprint (RCOS), Membership, FAQ, and Blog.
+- **Application form** that posts into [ecohubsOS](https://os.ecohubs.community) (the separate community platform).
+- **Member constellation** that pulls real members from the ecohubsOS public API and gracefully hides itself when the API is empty.
+- **Manifesto + email + newsletter** plumbing (Linkmonk, Nodemailer, Cloudflare Turnstile).
+
+This repo is the public face. Membership, governance, voting, ECO contribution accounting, and the Blueprint editor all live in **ecohubsOS** (separate codebase).
 
 ## 🚀 Quick Start
 
-### Prerequisites
-
-- **Node.js 18+** (or Bun)
-- **pnpm** (recommended) or npm
-
-### Installation
-
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/ecohubs.community.git
+git clone https://github.com/ecohubs/ecohubs.community.git
 cd ecohubs.community
-
-# Install dependencies
 pnpm install
-
-# Copy environment variables
-cp .env.example .env
-# Edit .env with your configuration
-
-# Start development server
-pnpm dev
-
-# Open http://localhost:5173
+cp .env.example .env       # then fill in real values
+pnpm dev                    # http://localhost:5173
 ```
 
-### Development Commands
+### Common commands
 
 ```bash
-# Development
-pnpm dev              # Start dev server
-pnpm dev:host         # Start dev server with network access
-
-# Building
-pnpm build            # Build for production
-pnpm preview          # Preview production build
-
-# Quality
-pnpm lint             # Run ESLint
-pnpm format           # Format with Prettier
-pnpm check            # Type check with svelte-check
-
-# Testing
-pnpm test             # Run all tests
-pnpm test:unit        # Run unit tests
-pnpm test:e2e         # Run E2E tests with Playwright
+pnpm dev          # dev server
+pnpm build        # production build
+pnpm preview      # preview production build
+pnpm check        # svelte-check (TypeScript + Svelte diagnostics)
+pnpm format       # Prettier
+pnpm test         # unit + e2e
 ```
 
 ## 📦 Environment Variables
 
-Create a `.env` file based on `.env.example`:
-
-### Required
+Required:
 
 ```bash
 PUBLIC_SITE_URL=https://ecohubs.community
-SMTP_HOST=localhost
-SMTP_PORT=1025
+SMTP_HOST=...                         # for contact form / application emails
 EMAIL_FROM=noreply@ecohubs.community
 ADMIN_EMAIL=admin@ecohubs.community
 ```
 
-### Optional
+Integrations (all optional unless you need that feature):
 
 ```bash
-# Newsletter
+# Newsletter (Linkmonk)
 LINKMONK_URL=https://newsletter.ecohubs.community
-LINKMONK_API_KEY=your-api-key
+LINKMONK_USERNAME=...
+LINKMONK_PASSWORD=...
 
-# Integrations
-ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/...
-AIRTABLE_API_KEY=your-api-key
-GITHUB_TOKEN=ghp_your-token
+# Cloudflare Turnstile (anti-bot on contact form)
+PUBLIC_TURNSTILE_SITE_KEY=
+TURNSTILE_SECRET_KEY=
+
+# ecohubsOS API (members constellation + application submission)
+ECOHUBSOS_API_URL=https://os.ecohubs.community
+ECOHUBSOS_APPLICATIONS_API_KEY=...
+ECOHUBSOS_MEMBERS_API_KEY=...
+
+# Ghost (blog source-of-truth)
+GHOST_URL=https://blog.ecohubs.community
+GHOST_CONTENT_API_KEY=...
+
+# Analytics
+VITE_GA_MEASUREMENT_ID=
+GA_MEASUREMENT_ID=
 ```
 
-See [`.env.example`](.env.example) for complete list with descriptions.
+See [`.env.example`](.env.example) for the full list.
 
 ## 📁 Project Structure
 
 ```
-ecohubs.community/
-├── src/
-│   ├── lib/
-│   │   ├── components/          # Reusable Svelte components
-│   │   │   ├── ApplicationForm.svelte
-│   │   │   ├── ContactForm.svelte
-│   │   │   ├── NewsletterForm.svelte
-│   │   │   ├── Hero.svelte
-│   │   │   ├── Navbar.svelte
-│   │   │   └── ...
-│   │   ├── config/              # Application configuration
-│   │   │   └── application-questions.ts
-│   │   ├── email-templates/     # Email HTML/text templates
-│   │   ├── server/              # Server-side utilities
-│   │   │   ├── email.ts
-│   │   │   └── blog.ts
-│   │   ├── styles/              # Global styles & theme
-│   │   │   └── theme.css
-│   │   └── utils/               # Utility functions
-│   ├── routes/                  # SvelteKit routes
-│   │   ├── +layout.svelte
-│   │   ├── +page.svelte         # Home page
-│   │   ├── api/                 # API endpoints
-│   │   │   ├── contact/
-│   │   │   ├── newsletter/
-│   │   │   └── application/
-│   │   ├── blog/
-│   │   │   ├── [slug]/          # Dynamic blog post
-│   │   │   └── +page.svelte     # Blog index
-│   │   ├── join/                # Application form
-│   │   ├── contact/             # Contact page
+src/
+├── app.html                       # Document shell (loads Inter + JetBrains Mono)
+├── lib/
+│   ├── components/                # Reusable Svelte components
+│   │   ├── Navbar.svelte / Footer.svelte
+│   │   ├── SEO.svelte             # Meta + canonical + JSON-LD helper
+│   │   ├── PersonaIcons.svelte    # Hero persona row
+│   │   ├── ConstellationMap.svelte # Member network visualisation
+│   │   ├── EcosystemSection.svelte # "Operating system" section
+│   │   ├── ApplicationForm.svelte
+│   │   ├── ContactForm.svelte
+│   │   ├── CookieConsent.svelte
 │   │   └── ...
-│   ├── content/                 # Blog posts (mdsvex)
-│   │   └── blog/
-│   │       └── *.svx
-│   └── app.html                 # HTML template
-├── static/                      # Static assets
-│   └── manifest.webmanifest
-├── .github/
-│   └── workflows/               # CI/CD pipelines
-├── DEPLOYMENT.md                # Deployment guide
-└── vercel.json                  # Vercel configuration
+│   ├── config/
+│   │   ├── seo.ts                 # Per-page titles, descriptions, OG images
+│   │   └── application-questions.ts
+│   ├── server/                    # Server-only utilities
+│   │   ├── blog.ts                # Ghost client
+│   │   ├── email.ts               # Nodemailer wrapper
+│   │   └── ghost.ts
+│   ├── styles/theme.css           # Tailwind v4 @theme tokens
+│   └── utils/                     # Animation helpers
+├── routes/
+│   ├── layout.css                 # Shared design-system utilities
+│   ├── (web)/                     # Public site (uses Navbar + Footer)
+│   │   ├── +page.svelte           # Home
+│   │   ├── vision/
+│   │   ├── blueprint/
+│   │   ├── membership/
+│   │   ├── faq/
+│   │   ├── blog/
+│   │   ├── contact/
+│   │   ├── join/
+│   │   ├── privacy/
+│   │   ├── terms/
+│   │   └── data.ts                # Shared homepage content (stories, wounds, FAQ, …)
+│   ├── admin/                     # (placeholder)
+│   ├── auth/                      # (placeholder)
+│   ├── api/                       # Newsletter, contact, application endpoints
+│   ├── feed.xml/                  # RSS
+│   └── sitemap.xml/
+├── content/blog/                  # Local mdsvex blog posts (Ghost is the primary source)
+└── design_files/                  # Source-of-truth HTML mockups & design system
 ```
+
+The `(web)/` route group exists so the public site shares one navbar + footer + layout while admin/auth routes can opt out.
+
+## 🎨 Design System
+
+The single source of truth lives at [`design_files/design system/Design System.html`](./design_files/design%20system/Design%20System.html). Tokens are mirrored in [`src/lib/styles/theme.css`](./src/lib/styles/theme.css) (`@theme` block) and shared utility classes (`.kicker`, `.soft-shadow`, `.grain`, `.pulse-dot`, `.hairline`, `.drop-cap`) live in [`src/routes/layout.css`](./src/routes/layout.css).
+
+Brand color tokens: `ecohubs-base`, `ecohubs-ivory`, `ecohubs-primary`, `ecohubs-dark`, `ecohubs-deep`, `ecohubs-accent`, `ecohubs-light`, `ecohubs-muted`. Use these — avoid one-off `bg-[#…]` hex.
+
+Typography: `font-serif` = **Pridi** (display headings); `font-story` = **Fraunces** italic (emotional accents); body = **Inter**; `font-mono` = **JetBrains Mono**.
 
 ## 🚢 Deployment
 
-### Quick Deploy to Vercel
+See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for the full guide (Vercel + self-hosted Node + email setup).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/ecohubs.community)
+## 🛠️ Conventions
 
-### Comprehensive Guides
-
-See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for detailed instructions on:
-
-- **Vercel** - One-click deployment with automatic CI/CD
-- **Self-Hosted Node** - Full control with PM2, Nginx, SSL
-- **Static Hosting** - Netlify, GitHub Pages, etc.
-- **Email Configuration** - Nodemailer, Mailu, MailHog
-- **CI/CD** - GitHub Actions workflows
-
-Quick summary:
-
-```bash
-# Vercel
-vercel
-
-# Self-hosted (after setup)
-pnpm build
-pm2 start ecosystem.config.js
-
-# Static
-pnpm build
-# Deploy build/ directory
-```
-
-## 🛠️ Development
-
-### Adding New Pages
-
-1. Create directory in `src/routes/`
-2. Add `+page.svelte` and `+page.ts`
-3. Set `export const prerender = true` in `+page.ts`
-4. Use `<SEO>` component for metadata
-
-Example:
-```svelte
-<script lang="ts">
-  import SEO from '$lib/components/SEO.svelte';
-</script>
-
-<SEO 
-  title="Page Title"
-  description="Page description for SEO"
-/>
-```
-
-### Styling Guidelines
-
-- **Tailwind CSS v4** with custom theme
-- **Colors**: `ecohubs-primary`, `ecohubs-dark`, `ecohubs-accent`
-- **Typography**: Serif headings (`font-serif`), sans body
-- **Dark mode**: Automatic with system preference
-- **Custom classes**: `.glass-card`, `.text-gradient`, `.organic-shape`
-
-### Components Overview
-
-| Component | Purpose |
-|-----------|---------|
-| `ApplicationForm.svelte` | Multi-step application with Superforms |
-| `ContactForm.svelte` | Contact form with validation |
-| `NewsletterForm.svelte` | Email subscription (Linkmonk) |
-| `Hero.svelte` | Animated hero section |
-| `Navbar.svelte` | Responsive navigation with auto-hide |
-| `Footer.svelte` | Site footer with newsletter |
-| `SEO.svelte` | Meta tags + JSON-LD helper |
-
-### Email Templates
-
-All email templates support both HTML and plain text:
-
-- **Contact**: `src/lib/email-templates/contact.ts`
-- **Application**: `src/lib/email-templates/application.ts`
-- Each template exports HTML and text functions
-
-### Blog Posts
-
-Create new blog posts in `src/content/blog/`:
-
-```markdown
----
-title: "Post Title"
-excerpt: "Brief description"
-date: "2024-11-20"
-author: "Author Name"
-tags: ["tag1", "tag2"]
-readingTime: 8
----
-
-Content here using markdown...
-```
-
-## 🎯 Performance Targets
-
-| Metric | Target | Status |
-|--------|--------|--------|
-| Lighthouse Performance | 95+ | ✅ |
-| First Contentful Paint | < 1.5s | ✅ |
-| Time to Interactive | < 3.5s | ✅ |
-| Cumulative Layout Shift | < 0.1 | ✅ |
-
-## ♿ Accessibility
-
-- WCAG AA compliant
-- Keyboard navigation support
-- Proper ARIA labels and roles
-- Color contrast ratios verified
-- Screen reader tested
-
-## 🧪 Testing
-
-```bash
-# Unit tests (Vitest)
-pnpm test:unit
-
-# E2E tests (Playwright)
-pnpm test:e2e
-
-# Run all tests
-pnpm test
-```
+- **Pages use `<SEO>`**, not raw `<svelte:head>`, so canonical/OG/JSON-LD stay consistent.
+- **External links** that open in new tabs use `target="_blank" rel="noopener noreferrer"`. Pure-CTA external links opt out of the global underline+arrow with `class="no-external-decoration"`.
+- **FAQ** content lives in each page's own `data.ts` and is aggregated on `/faq` (the canonical FAQPage source for JSON-LD).
+- **One `<h1>` per page**; section headers are `<h2>`.
+- **Animations** use `motion` v12 and the `data-scroll-animate` / `data-scroll-stagger` / `data-hero-step` attributes — see [`src/lib/utils/scroll-animations.ts`](./src/lib/utils/scroll-animations.ts).
 
 ## 📝 Contributing
 
 1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
+4. Push (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 
-MIT License - see [LICENSE](./LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Built with [SvelteKit](https://kit.svelte.dev/)
-- Styled with [Tailwind CSS](https://tailwindcss.com/)
-- Icons by [Lucide](https://lucide.dev/)
-- Inspired by [Ethereum Infinite Garden](https://ethereum.org/) & [Regen Network](https://www.regen.network/)
+MIT — see [LICENSE](./LICENSE).
 
 ## 📧 Support
 
-- **Documentation**: [/docs](/docs)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/ecohubs.community/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/ecohubs.community/discussions)
+- **Issues**: [GitHub Issues](https://github.com/ecohubs/ecohubs.community/issues)
 - **Email**: [hello@ecohubs.community](mailto:hello@ecohubs.community)
+- **Discord**: [discord.gg/Xnh7247Nq3](https://discord.gg/Xnh7247Nq3)
 
 ---
 

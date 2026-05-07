@@ -3,21 +3,21 @@
 	import { SEO_CONFIG, generateBreadcrumbs } from '$lib/config/seo';
 
 	const sections = [
-		{ id: 'acceptance',         num: '01', title: 'Acceptance of terms' },
-		{ id: 'description',        num: '02', title: 'Description of service' },
-		{ id: 'responsibilities',   num: '03', title: 'User responsibilities' },
-		{ id: 'open-source',        num: '04', title: 'Open-source Blueprint' },
-		{ id: 'ip',                 num: '05', title: 'Intellectual property' },
-		{ id: 'submissions',        num: '06', title: 'User submissions' },
-		{ id: 'warranties',         num: '07', title: 'Disclaimer of warranties' },
-		{ id: 'liability',          num: '08', title: 'Limitation of liability' },
-		{ id: 'indemnification',    num: '09', title: 'Indemnification' },
-		{ id: 'third-parties',      num: '10', title: 'Third-party links' },
-		{ id: 'modifications',      num: '11', title: 'Modifications to terms' },
-		{ id: 'governing-law',      num: '12', title: 'Governing law' },
-		{ id: 'disputes',           num: '13', title: 'Dispute resolution' },
-		{ id: 'severability',       num: '14', title: 'Severability' },
-		{ id: 'contact',            num: '15', title: 'Contact information' },
+		{ id: 'acceptance', num: '01', title: 'Acceptance of terms' },
+		{ id: 'description', num: '02', title: 'Description of service' },
+		{ id: 'responsibilities', num: '03', title: 'User responsibilities' },
+		{ id: 'open-source', num: '04', title: 'Open-source Blueprint' },
+		{ id: 'ip', num: '05', title: 'Intellectual property' },
+		{ id: 'submissions', num: '06', title: 'User submissions' },
+		{ id: 'warranties', num: '07', title: 'Disclaimer of warranties' },
+		{ id: 'liability', num: '08', title: 'Limitation of liability' },
+		{ id: 'indemnification', num: '09', title: 'Indemnification' },
+		{ id: 'third-parties', num: '10', title: 'Third-party links' },
+		{ id: 'modifications', num: '11', title: 'Modifications to terms' },
+		{ id: 'governing-law', num: '12', title: 'Governing law' },
+		{ id: 'disputes', num: '13', title: 'Dispute resolution' },
+		{ id: 'severability', num: '14', title: 'Severability' },
+		{ id: 'contact', num: '15', title: 'Contact information' }
 	];
 </script>
 
@@ -40,21 +40,25 @@
 		1. HERO
 ═══════════════════════════════════════════════════════════════════ -->
 <section class="relative pt-32 pb-12 md:pt-40 md:pb-16 overflow-hidden">
-	<div class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"></div>
-	<div class="absolute -z-10 top-20 -left-40 w-[420px] h-[420px] rounded-full bg-emerald-200/25 blur-3xl"></div>
+	<div
+		class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
+	></div>
+	<div
+		class="absolute -z-10 top-20 -left-40 w-[420px] h-[420px] rounded-full bg-emerald-200/25 blur-3xl"
+	></div>
 
 	<div class="max-w-4xl mx-auto px-6 lg:px-8">
 		<div class="kicker text-emerald-700 mb-5">The understanding</div>
-		<h1 class="font-serif text-4xl md:text-5xl lg:text-[60px] leading-[1.05] tracking-tight text-ecohubs-deep">
+		<h1
+			class="font-serif text-4xl md:text-5xl lg:text-[60px] leading-[1.05] tracking-tight text-ecohubs-deep"
+		>
 			Terms of <em class="font-story italic font-normal text-stone-500">service.</em>
 		</h1>
 		<p class="mt-6 text-lg text-stone-700 leading-relaxed max-w-2xl font-light">
 			By using EcoHubs.community you agree to a small set of expectations — written in plain
 			language so they're actually readable. Have a look. If anything is unclear, write to us.
 		</p>
-		<p class="mt-5 text-sm text-stone-500 font-story italic">
-			Last updated · January 2025
-		</p>
+		<p class="mt-5 text-sm text-stone-500 font-story italic">Last updated · January 2025</p>
 	</div>
 </section>
 
@@ -72,7 +76,9 @@
 				{#each sections as s}
 					<li class="flex gap-3">
 						<span class="font-story italic text-ecohubs-primary shrink-0 w-6">{s.num}</span>
-						<a href="#{s.id}" class="text-stone-600 hover:text-ecohubs-deep transition-colors">{s.title}</a>
+						<a href="#{s.id}" class="text-stone-600 hover:text-ecohubs-deep transition-colors"
+							>{s.title}</a
+						>
 					</li>
 				{/each}
 			</ol>
@@ -82,21 +88,24 @@
 		<div class="lg:col-span-8">
 			<div class="prose-legal max-w-none">
 				<p class="lead">
-					Welcome to EcoHubs.community. By accessing or using our website and services, you agree
-					to be bound by these Terms of Service. Please read them carefully.
+					Welcome to EcoHubs.community. By accessing or using our website and services, you agree to
+					be bound by these Terms of Service. Please read them carefully.
 				</p>
 
 				<h2 id="acceptance"><span class="kicker-num">01</span> Acceptance of terms</h2>
 				<p>
-					By accessing and using EcoHubs.community ("the Service"), you accept and agree to be
-					bound by these Terms of Service and our <a href="/privacy">Privacy Policy</a>. If you do
-					not agree to these terms, please do not use our Service.
+					By accessing and using EcoHubs.community ("the Service"), you accept and agree to be bound
+					by these Terms of Service and our <a href="/privacy">Privacy Policy</a>. If you do not
+					agree to these terms, please do not use our Service.
 				</p>
 
 				<h2 id="description"><span class="kicker-num">02</span> Description of service</h2>
 				<p>EcoHubs.community is a platform dedicated to:</p>
 				<ul>
-					<li>Co-creating and sharing an open-source blueprint for regenerative intentional communities.</li>
+					<li>
+						Co-creating and sharing an open-source blueprint for regenerative intentional
+						communities.
+					</li>
 					<li>Connecting individuals interested in sustainable community living.</li>
 					<li>Facilitating community governance through decentralised mechanisms.</li>
 					<li>Providing educational resources about regenerative practices.</li>
@@ -114,34 +123,54 @@
 				</ul>
 
 				<h2 id="open-source"><span class="kicker-num">04</span> Open-source Blueprint</h2>
-				<p>The EcoHubs Blueprint and associated documentation are released under open-source principles:</p>
+				<p>
+					The EcoHubs Blueprint and associated documentation are released under open-source
+					principles:
+				</p>
 				<ul>
 					<li>The Blueprint is freely available for use, modification, and distribution.</li>
 					<li>Derivative works should acknowledge EcoHubs.community as the original source.</li>
-					<li>Commercial use of the Blueprint is permitted, provided proper attribution is given.</li>
+					<li>
+						Commercial use of the Blueprint is permitted, provided proper attribution is given.
+					</li>
 					<li>We encourage contributions back to the community to improve the Blueprint.</li>
 				</ul>
-				<p>Specific licensing terms for individual components may be detailed in their respective documentation.</p>
+				<p>
+					Specific licensing terms for individual components may be detailed in their respective
+					documentation.
+				</p>
 
 				<h2 id="ip"><span class="kicker-num">05</span> Intellectual property</h2>
-				<p>Unless otherwise stated, EcoHubs.community and/or its licensors own the intellectual property rights for all material on EcoHubs.community. This includes:</p>
+				<p>
+					Unless otherwise stated, EcoHubs.community and/or its licensors own the intellectual
+					property rights for all material on EcoHubs.community. This includes:
+				</p>
 				<ul>
 					<li>Website design and user interface.</li>
 					<li>Logos and branding elements.</li>
 					<li>Original content not covered by open-source licences.</li>
 				</ul>
-				<p>You may view and/or print pages from the website for your own personal use, subject to restrictions set in these Terms.</p>
+				<p>
+					You may view and/or print pages from the website for your own personal use, subject to
+					restrictions set in these Terms.
+				</p>
 
 				<h2 id="submissions"><span class="kicker-num">06</span> User submissions</h2>
 				<p>When you submit content through our contact forms, applications, or other means:</p>
 				<ul>
 					<li>You retain ownership of your original content.</li>
-					<li>You grant us a non-exclusive right to use your submission for the purposes described at the time of collection.</li>
+					<li>
+						You grant us a non-exclusive right to use your submission for the purposes described at
+						the time of collection.
+					</li>
 					<li>You represent that you have the right to submit such content.</li>
 				</ul>
 
 				<h2 id="warranties"><span class="kicker-num">07</span> Disclaimer of warranties</h2>
-				<p>The Service is provided "as is" and "as available" without warranties of any kind, either express or implied, including but not limited to:</p>
+				<p>
+					The Service is provided "as is" and "as available" without warranties of any kind, either
+					express or implied, including but not limited to:
+				</p>
 				<ul>
 					<li>Implied warranties of merchantability.</li>
 					<li>Fitness for a particular purpose.</li>
@@ -150,7 +179,10 @@
 				<p>We do not warrant that the Service will be uninterrupted, secure, or error-free.</p>
 
 				<h2 id="liability"><span class="kicker-num">08</span> Limitation of liability</h2>
-				<p>To the maximum extent permitted by applicable law, EcoHubs.community shall not be liable for:</p>
+				<p>
+					To the maximum extent permitted by applicable law, EcoHubs.community shall not be liable
+					for:
+				</p>
 				<ul>
 					<li>Any indirect, incidental, special, consequential, or punitive damages.</li>
 					<li>Any loss of profits, data, use, goodwill, or other intangible losses.</li>
@@ -159,7 +191,10 @@
 				</ul>
 
 				<h2 id="indemnification"><span class="kicker-num">09</span> Indemnification</h2>
-				<p>You agree to indemnify and hold harmless EcoHubs.community, its founders, contributors, and affiliates from any claims, damages, losses, or expenses arising from:</p>
+				<p>
+					You agree to indemnify and hold harmless EcoHubs.community, its founders, contributors,
+					and affiliates from any claims, damages, losses, or expenses arising from:
+				</p>
 				<ul>
 					<li>Your use of the Service.</li>
 					<li>Your violation of these Terms.</li>
@@ -167,38 +202,68 @@
 				</ul>
 
 				<h2 id="third-parties"><span class="kicker-num">10</span> Third-party links</h2>
-				<p>Our Service may contain links to third-party websites or services that are not owned or controlled by EcoHubs.community. We have no control over, and assume no responsibility for:</p>
+				<p>
+					Our Service may contain links to third-party websites or services that are not owned or
+					controlled by EcoHubs.community. We have no control over, and assume no responsibility
+					for:
+				</p>
 				<ul>
 					<li>The content, privacy policies, or practices of any third-party websites.</li>
 					<li>Any damages or losses caused by third-party websites.</li>
 				</ul>
 
 				<h2 id="modifications"><span class="kicker-num">11</span> Modifications to terms</h2>
-				<p>We reserve the right to modify these Terms at any time. We will provide notice of material changes by:</p>
+				<p>
+					We reserve the right to modify these Terms at any time. We will provide notice of material
+					changes by:
+				</p>
 				<ul>
 					<li>Updating the "Last updated" date at the top of these Terms.</li>
 					<li>Posting a notice on our website for significant changes.</li>
 				</ul>
-				<p>Your continued use of the Service after changes constitutes acceptance of the modified Terms.</p>
+				<p>
+					Your continued use of the Service after changes constitutes acceptance of the modified
+					Terms.
+				</p>
 
 				<h2 id="governing-law"><span class="kicker-num">12</span> Governing law</h2>
-				<p>These Terms shall be governed by and construed in accordance with the laws of the Republic of Ecuador, without regard to its conflict-of-law provisions.</p>
+				<p>
+					These Terms shall be governed by and construed in accordance with the laws of the Republic
+					of Ecuador, without regard to its conflict-of-law provisions.
+				</p>
 
 				<h2 id="disputes"><span class="kicker-num">13</span> Dispute resolution</h2>
-				<p>Any disputes arising from these Terms or your use of the Service shall be resolved through:</p>
+				<p>
+					Any disputes arising from these Terms or your use of the Service shall be resolved
+					through:
+				</p>
 				<ol>
-					<li><strong>Informal resolution</strong> — first, by attempting to resolve the dispute informally by contacting us.</li>
-					<li><strong>Mediation</strong> — if informal resolution fails, through mediation in Ecuador.</li>
-					<li><strong>Legal proceedings</strong> — if mediation fails, through the courts of Ecuador.</li>
+					<li>
+						<strong>Informal resolution</strong> — first, by attempting to resolve the dispute informally
+						by contacting us.
+					</li>
+					<li>
+						<strong>Mediation</strong> — if informal resolution fails, through mediation in Ecuador.
+					</li>
+					<li>
+						<strong>Legal proceedings</strong> — if mediation fails, through the courts of Ecuador.
+					</li>
 				</ol>
 
 				<h2 id="severability"><span class="kicker-num">14</span> Severability</h2>
-				<p>If any provision of these Terms is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary so that the Terms will otherwise remain in full force and effect.</p>
+				<p>
+					If any provision of these Terms is found to be unenforceable or invalid, that provision
+					will be limited or eliminated to the minimum extent necessary so that the Terms will
+					otherwise remain in full force and effect.
+				</p>
 
 				<h2 id="contact"><span class="kicker-num">15</span> Contact information</h2>
 				<p>If you have any questions about these Terms, write to us:</p>
 				<ul>
-					<li><strong>Email</strong> — <a href="mailto:legal@ecohubs.community">legal@ecohubs.community</a></li>
+					<li>
+						<strong>Email</strong> —
+						<a href="mailto:legal@ecohubs.community">legal@ecohubs.community</a>
+					</li>
 					<li><strong>Contact form</strong> — <a href="/contact">ecohubs.community/contact</a></li>
 				</ul>
 			</div>
@@ -230,7 +295,14 @@
 	:global(main li),
 	:global(main span:not([class*='font-'])),
 	:global(main div:not([class*='font-'])) {
-		font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-family:
+			'Inter',
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			'Segoe UI',
+			Roboto,
+			sans-serif;
 	}
 
 	:global(.font-story) {
@@ -255,7 +327,11 @@
 
 	:global(.prose-legal) {
 		color: #1c1917;
-		font-family: 'Inter', system-ui, -apple-system, sans-serif;
+		font-family:
+			'Inter',
+			system-ui,
+			-apple-system,
+			sans-serif;
 		font-size: 1rem;
 		line-height: 1.75;
 	}

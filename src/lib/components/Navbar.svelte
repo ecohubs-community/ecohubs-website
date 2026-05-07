@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Sprout, Menu, X, ArrowRight } from 'lucide-svelte';
+	import { Menu, X, ArrowRight } from 'lucide-svelte';
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import Logo from '$lib/components/Logo.svelte';
@@ -12,8 +12,6 @@
 	const navLinks = [
 		{ href: '/', label: 'Home' },
 		{ href: '/vision', label: 'Vision' },
-		// { href: '/dao', label: 'DAO' },
-		// { href: '/ecotoken', label: 'EcoToken' },
 		{ href: '/blueprint', label: 'Blueprint (RCOS)' },
 		{ href: '/membership', label: 'Membership' },
 		{ href: '/faq', label: 'FAQ' },
@@ -40,18 +38,28 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex items-center justify-between h-20">
 			<!-- Logo -->
-			<a href="/" class="flex-shrink-0 flex items-center gap-2 group mt-3" data-sveltekit-preload-data="hover">
+			<a
+				href="/"
+				class="flex-shrink-0 flex items-center gap-2 group mt-3"
+				data-sveltekit-preload-data="hover"
+			>
 				<Logo />
 			</a>
 
 			<!-- Desktop Navigation -->
 			<div class="hidden md:block">
-				<div class="ml-10 flex items-baseline space-x-8 font-sans font-medium text-sm text-gray-600">
+				<div
+					class="ml-10 flex items-baseline space-x-8 font-sans font-medium text-sm text-stone-600"
+				>
 					{#each navLinks as link (link.href)}
-						{@const isActive = (link.href === "/" && page.url.pathname === "/") || (link.href !== "/" && page.url.pathname.startsWith(link.href)) }
+						{@const isActive =
+							(link.href === '/' && page.url.pathname === '/') ||
+							(link.href !== '/' && page.url.pathname.startsWith(link.href))}
 						<a
 							href={link.href}
-							class="hover:text-ecohubs-primary transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-green-400 rounded px-2 py-1 {isActive ? 'bg-ecohubs-primary/10 text-ecohubs-primary py-2 px-3 rounded-full' : 'text-gray-600'}"
+							class="hover:text-ecohubs-primary transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-green-400 rounded px-2 py-1 {isActive
+								? 'bg-ecohubs-primary/10 text-ecohubs-primary py-2 px-3 rounded-full'
+								: 'text-stone-600'}"
 							aria-label={link.label}
 							data-sveltekit-preload-data="hover"
 						>
@@ -69,7 +77,7 @@
 			<div class="flex items-center gap-4">
 				<a
 					href="/membership"
-					class="hidden md:flex items-center gap-2 bg-ecohubs-dark text-white px-6 py-2.5 rounded-full font-sans text-sm font-medium transition-all duration-300 hover:bg-ecohubs-primary hover:shadow-lg hover:shadow-emerald-900/20 transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-green-400"
+					class="hidden md:flex items-center gap-2 bg-ecohubs-dark text-white px-6 py-2.5 rounded-full font-sans text-sm font-medium transition-colors duration-300 hover:bg-ecohubs-deep focus-visible:ring-2 focus-visible:ring-green-400"
 					aria-label="Become a Member"
 					data-sveltekit-preload-data="hover"
 				>
@@ -102,7 +110,7 @@
 				{#each navLinks as link (link.href)}
 					<a
 						href={link.href}
-						class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-ecohubs-primary hover:bg-white/50 transition-all focus-visible:ring-2 focus-visible:ring-green-400"
+						class="block px-4 py-3 rounded-2xl text-base font-medium text-stone-700 hover:text-ecohubs-primary hover:bg-white/50 transition-all focus-visible:ring-2 focus-visible:ring-green-400"
 						onclick={() => (mobileMenuOpen = false)}
 						data-sveltekit-preload-data="hover"
 					>
@@ -111,7 +119,7 @@
 				{/each}
 				<a
 					href="/membership"
-					class="block px-4 py-3 bg-ecohubs-primary text-white text-center rounded-lg font-medium hover:bg-ecohubs-dark transition-colors focus-visible:ring-2 focus-visible:ring-green-400"
+					class="block px-4 py-3 bg-ecohubs-dark text-white text-center rounded-full font-medium hover:bg-ecohubs-deep transition-colors focus-visible:ring-2 focus-visible:ring-green-400"
 					onclick={() => (mobileMenuOpen = false)}
 					data-sveltekit-preload-data="hover"
 				>

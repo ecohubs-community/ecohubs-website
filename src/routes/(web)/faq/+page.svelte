@@ -3,7 +3,7 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import {
 		initScrollAnimations,
-		initStaggeredScrollAnimations,
+		initStaggeredScrollAnimations
 	} from '$lib/utils/scroll-animations';
 	import { prefersReducedMotion } from '$lib/utils/animations';
 
@@ -67,9 +67,7 @@
 	onMount(() => {
 		if (prefersReducedMotion()) {
 			document
-				.querySelectorAll<HTMLElement>(
-					'[data-scroll-animate], [data-scroll-stagger] > *'
-				)
+				.querySelectorAll<HTMLElement>('[data-scroll-animate], [data-scroll-stagger] > *')
 				.forEach((el) => {
 					el.style.opacity = '1';
 					el.style.transform = 'none';
@@ -80,7 +78,7 @@
 		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
 		initStaggeredScrollAnimations('[data-scroll-stagger]', {
 			threshold: 0.15,
-			staggerDelay: 0.06,
+			staggerDelay: 0.06
 		});
 	});
 </script>
@@ -88,6 +86,7 @@
 <SEO
 	title="Questions & Answers — EcoHubs"
 	description="The questions we hear most about EcoHubs — the project, the Vision, the Blueprint (RCOS), and Membership — answered plainly, in one place."
+	ogImage="/og-faq.jpg"
 	breadcrumbs={[
 		{ name: 'Home', url: 'https://ecohubs.community/' },
 		{ name: 'FAQ', url: 'https://ecohubs.community/faq' }
@@ -95,30 +94,35 @@
 	faq={seoFaq}
 />
 
-<svelte:head>
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-		rel="stylesheet"
-	/>
-</svelte:head>
-
 <!-- ═══════════════════════════════════════════════════════════════════
      1. HERO
 ═══════════════════════════════════════════════════════════════════ -->
 <section class="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
-	<div class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"></div>
-	<div class="absolute -z-10 top-20 -left-32 w-[420px] h-[420px] rounded-full bg-emerald-200/25 blur-3xl"></div>
-	<div class="absolute -z-10 bottom-0 -right-20 w-[360px] h-[360px] rounded-full bg-amber-200/25 blur-3xl"></div>
+	<div
+		class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
+	></div>
+	<div
+		class="absolute -z-10 top-20 -left-32 w-[420px] h-[420px] rounded-full bg-emerald-200/25 blur-3xl"
+	></div>
+	<div
+		class="absolute -z-10 bottom-0 -right-20 w-[360px] h-[360px] rounded-full bg-amber-200/25 blur-3xl"
+	></div>
 
 	<div class="max-w-5xl mx-auto px-6 lg:px-8">
 		<div data-scroll-animate class="kicker text-emerald-700 mb-5">Questions &amp; answers</div>
-		<h1 data-scroll-animate class="font-serif text-5xl md:text-6xl lg:text-[68px] leading-[1.05] tracking-tight text-ecohubs-deep">
-			The questions <em class="font-story italic font-normal text-stone-500">we hear most —</em><br />
-			and the answers we keep <em class="font-story italic font-normal text-ecohubs-primary">refining out loud.</em>
+		<h1
+			data-scroll-animate
+			class="font-serif text-5xl md:text-6xl lg:text-[68px] leading-[1.05] tracking-tight text-ecohubs-deep"
+		>
+			The questions <em class="font-story italic font-normal text-stone-500">we hear most —</em><br
+			/>
+			and the answers we keep
+			<em class="font-story italic font-normal text-ecohubs-primary">refining out loud.</em>
 		</h1>
-		<p data-scroll-animate class="mt-7 text-lg md:text-xl text-stone-700 leading-relaxed max-w-2xl font-light">
+		<p
+			data-scroll-animate
+			class="mt-7 text-lg md:text-xl text-stone-700 leading-relaxed max-w-2xl font-light"
+		>
 			Four sections, written plainly. If your question isn't here, it probably belongs in the
 			Blueprint — and we'd like to hear it.
 		</p>
@@ -143,7 +147,6 @@
 ═══════════════════════════════════════════════════════════════════ -->
 <section class="py-20 md:py-24 bg-ecohubs-base">
 	<div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-12 lg:gap-16">
-
 		<!-- Sticky side nav -->
 		<aside class="lg:col-span-3 lg:sticky lg:top-28 self-start">
 			<div class="kicker text-emerald-700 mb-5">Sections</div>
@@ -154,8 +157,13 @@
 							href={`#${s.id}`}
 							class="group flex items-baseline gap-3 py-2 text-stone-700 hover:text-ecohubs-dark transition-colors"
 						>
-							<span class="font-mono text-[10px] tracking-widest text-stone-400 group-hover:text-ecohubs-primary">{s.num}</span>
-							<span class="font-serif text-base">{s.tag.charAt(0)}{s.tag.slice(1).toLowerCase()}</span>
+							<span
+								class="font-mono text-[10px] tracking-widest text-stone-400 group-hover:text-ecohubs-primary"
+								>{s.num}</span
+							>
+							<span class="font-serif text-base"
+								>{s.tag.charAt(0)}{s.tag.slice(1).toLowerCase()}</span
+							>
 						</a>
 					</li>
 				{/each}
@@ -166,7 +174,10 @@
 				<p class="text-sm text-stone-700 leading-relaxed mb-4">
 					Send the question. If it's a good one, it ends up here.
 				</p>
-				<a href="/contact" class="text-sm text-ecohubs-dark font-medium hover:text-ecohubs-primary transition-colors">
+				<a
+					href="/contact"
+					class="text-sm text-ecohubs-dark font-medium hover:text-ecohubs-primary transition-colors"
+				>
 					Write to us →
 				</a>
 			</div>
@@ -177,22 +188,31 @@
 			{#each sections as section}
 				<section id={section.id} class="scroll-mt-24">
 					<div class="flex items-baseline gap-4 mb-8">
-						<span class="font-mono text-[11px] tracking-widest text-emerald-700">{section.num} · {section.tag}</span>
+						<span class="font-mono text-[11px] tracking-widest text-emerald-700"
+							>{section.num} · {section.tag}</span
+						>
 						<span class="flex-1 h-px bg-stone-200"></span>
 					</div>
 					<h2 class="font-serif text-3xl md:text-4xl text-ecohubs-deep leading-tight mb-3">
-						{section.title} <em class="font-story italic font-normal text-stone-500">{section.titleEm}</em>
+						{section.title}
+						<em class="font-story italic font-normal text-stone-500">{section.titleEm}</em>
 					</h2>
 					<p class="text-stone-600 leading-relaxed mb-8 max-w-2xl">
 						{section.lead}
 					</p>
 
-					<div data-scroll-stagger class="divide-y divide-stone-200 border-t border-b border-stone-200">
+					<div
+						data-scroll-stagger
+						class="divide-y divide-stone-200 border-t border-b border-stone-200"
+					>
 						{#each section.items as item}
 							<details class="group py-6">
 								<summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
 									<span class="font-serif text-xl text-ecohubs-deep leading-snug">{item.q}</span>
-									<span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0 select-none">+</span>
+									<span
+										class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0 select-none"
+										>+</span
+									>
 								</summary>
 								<div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">{@html item.a}</div>
 							</details>
@@ -215,7 +235,8 @@
 			The good ones <em class="font-story italic font-normal text-stone-500">become chapters.</em>
 		</h2>
 		<p class="text-lg text-stone-700 leading-relaxed mb-9 max-w-xl mx-auto">
-			Send it to us. We read everything. If your question reveals a gap, you'll see it answered here in the next revision.
+			Send it to us. We read everything. If your question reveals a gap, you'll see it answered here
+			in the next revision.
 		</p>
 		<div class="flex flex-col sm:flex-row justify-center gap-3">
 			<a
@@ -234,61 +255,3 @@
 		</div>
 	</div>
 </section>
-
-<style>
-	:global([data-scroll-animate]),
-	:global([data-scroll-stagger] > *) {
-		opacity: 0;
-	}
-	@media (prefers-reduced-motion: reduce) {
-		:global([data-scroll-animate]),
-		:global([data-scroll-stagger] > *) {
-			opacity: 1 !important;
-			transform: none !important;
-		}
-	}
-
-	:global(main p),
-	:global(main li),
-	:global(main blockquote),
-	:global(main span:not([class*='font-'])),
-	:global(main div:not([class*='font-'])) {
-		font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-	}
-
-	:global(.font-story) {
-		font-family: var(--font-story, 'Fraunces', serif);
-		font-optical-sizing: auto;
-	}
-
-	:global(.font-mono) {
-		font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-	}
-
-	:global(.kicker) {
-		font-size: 0.72rem;
-		letter-spacing: 0.2em;
-		text-transform: uppercase;
-		font-weight: 600;
-	}
-
-	:global(.grain)::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-		opacity: 0.5;
-		mix-blend-mode: multiply;
-		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-	}
-
-	.hairline {
-		height: 1px;
-		background: linear-gradient(90deg, transparent, rgba(6, 78, 59, 0.25), transparent);
-		margin: 0 auto;
-	}
-
-	details summary::-webkit-details-marker {
-		display: none;
-	}
-</style>

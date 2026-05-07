@@ -7,7 +7,7 @@ on:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
 
@@ -50,7 +50,3 @@ jobs:
           urls: 'http://localhost:4173'
           prCommentEnabled: true
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
-
-
-
-

@@ -92,6 +92,12 @@ export const SEO_CONFIG = {
 			title: 'Terms of Service - EcoHubs.community',
 			description: 'Terms and conditions for using EcoHubs.community services and platform.',
 			ogImage: '/og-default.jpg'
+		},
+		faq: {
+			title: 'Questions & Answers - EcoHubs.community',
+			description:
+				'The questions we hear most about EcoHubs — the project, the Vision, the Blueprint (RCOS), and Membership — answered plainly, in one place.',
+			ogImage: '/og-faq.jpg'
 		}
 	}
 } as const;
@@ -105,6 +111,7 @@ export const SITE_NAVIGATION = {
 	join: { name: 'Apply', path: '/join', parent: 'membership' },
 	contact: { name: 'Contact', path: '/contact', parent: 'home' },
 	blog: { name: 'Blog', path: '/blog', parent: 'home' },
+	faq: { name: 'FAQ', path: '/faq', parent: 'home' },
 	privacy: { name: 'Privacy', path: '/privacy', parent: 'home' },
 	terms: { name: 'Terms', path: '/terms', parent: 'home' }
 } as const;
@@ -117,12 +124,13 @@ export function generateBreadcrumbs(
 	let currentKey: keyof typeof SITE_NAVIGATION | undefined = pageKey;
 
 	while (currentKey) {
-		const page = SITE_NAVIGATION[currentKey];
+		const node: (typeof SITE_NAVIGATION)[keyof typeof SITE_NAVIGATION] =
+			SITE_NAVIGATION[currentKey];
 		breadcrumbs.unshift({
-			name: page.name,
-			url: `${SEO_CONFIG.siteUrl}${page.path}`
+			name: node.name,
+			url: `${SEO_CONFIG.siteUrl}${node.path}`
 		});
-		currentKey = 'parent' in page ? (page.parent as keyof typeof SITE_NAVIGATION) : undefined;
+		currentKey = 'parent' in node ? (node.parent as keyof typeof SITE_NAVIGATION) : undefined;
 	}
 
 	return breadcrumbs;

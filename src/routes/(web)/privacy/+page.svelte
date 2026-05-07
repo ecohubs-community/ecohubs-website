@@ -3,20 +3,20 @@
 	import { SEO_CONFIG, generateBreadcrumbs } from '$lib/config/seo';
 
 	const sections = [
-		{ id: 'controller',           num: '01', title: 'Data controller' },
-		{ id: 'legal-basis',          num: '02', title: 'Legal basis for processing' },
-		{ id: 'data-collected',       num: '03', title: 'Personal data we collect' },
-		{ id: 'purpose',              num: '04', title: 'Purpose of processing' },
-		{ id: 'cookies',              num: '05', title: 'Cookies and analytics' },
-		{ id: 'third-parties',        num: '06', title: 'Third-party services' },
-		{ id: 'rights',               num: '07', title: 'Your rights under LOPDP' },
-		{ id: 'retention',            num: '08', title: 'Data retention' },
-		{ id: 'transfers',            num: '09', title: 'International data transfers' },
-		{ id: 'security',             num: '10', title: 'Security measures' },
-		{ id: 'children',             num: '11', title: "Children's privacy" },
-		{ id: 'updates',              num: '12', title: 'Updates to this policy' },
-		{ id: 'contact',              num: '13', title: 'Contact information' },
-		{ id: 'authority',            num: '14', title: 'Supervisory authority' },
+		{ id: 'controller', num: '01', title: 'Data controller' },
+		{ id: 'legal-basis', num: '02', title: 'Legal basis for processing' },
+		{ id: 'data-collected', num: '03', title: 'Personal data we collect' },
+		{ id: 'purpose', num: '04', title: 'Purpose of processing' },
+		{ id: 'cookies', num: '05', title: 'Cookies and analytics' },
+		{ id: 'third-parties', num: '06', title: 'Third-party services' },
+		{ id: 'rights', num: '07', title: 'Your rights under LOPDP' },
+		{ id: 'retention', num: '08', title: 'Data retention' },
+		{ id: 'transfers', num: '09', title: 'International data transfers' },
+		{ id: 'security', num: '10', title: 'Security measures' },
+		{ id: 'children', num: '11', title: "Children's privacy" },
+		{ id: 'updates', num: '12', title: 'Updates to this policy' },
+		{ id: 'contact', num: '13', title: 'Contact information' },
+		{ id: 'authority', num: '14', title: 'Supervisory authority' }
 	];
 </script>
 
@@ -39,22 +39,26 @@
 		1. HERO
 ═══════════════════════════════════════════════════════════════════ -->
 <section class="relative pt-32 pb-12 md:pt-40 md:pb-16 overflow-hidden">
-	<div class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"></div>
-	<div class="absolute -z-10 top-20 -left-40 w-[420px] h-[420px] rounded-full bg-emerald-200/25 blur-3xl"></div>
+	<div
+		class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
+	></div>
+	<div
+		class="absolute -z-10 top-20 -left-40 w-[420px] h-[420px] rounded-full bg-emerald-200/25 blur-3xl"
+	></div>
 
 	<div class="max-w-4xl mx-auto px-6 lg:px-8">
 		<div class="kicker text-emerald-700 mb-5">The fine print, plainly</div>
-		<h1 class="font-serif text-4xl md:text-5xl lg:text-[60px] leading-[1.05] tracking-tight text-ecohubs-deep">
+		<h1
+			class="font-serif text-4xl md:text-5xl lg:text-[60px] leading-[1.05] tracking-tight text-ecohubs-deep"
+		>
 			How we handle <em class="font-story italic font-normal text-stone-500">your data.</em>
 		</h1>
 		<p class="mt-6 text-lg text-stone-700 leading-relaxed max-w-2xl font-light">
-			Privacy isn't a footer link to us — it's a posture. This page describes what we collect,
-			why, and what you can do about it. In line with Ecuador's Organic Law on Personal Data
-			Protection (LOPDP) and international data-protection standards.
+			Privacy isn't a footer link to us — it's a posture. This page describes what we collect, why,
+			and what you can do about it. In line with Ecuador's Organic Law on Personal Data Protection
+			(LOPDP) and international data-protection standards.
 		</p>
-		<p class="mt-5 text-sm text-stone-500 font-story italic">
-			Last updated · January 2025
-		</p>
+		<p class="mt-5 text-sm text-stone-500 font-story italic">Last updated · January 2025</p>
 	</div>
 </section>
 
@@ -72,7 +76,9 @@
 				{#each sections as s}
 					<li class="flex gap-3">
 						<span class="font-story italic text-ecohubs-primary shrink-0 w-6">{s.num}</span>
-						<a href="#{s.id}" class="text-stone-600 hover:text-ecohubs-deep transition-colors">{s.title}</a>
+						<a href="#{s.id}" class="text-stone-600 hover:text-ecohubs-deep transition-colors"
+							>{s.title}</a
+						>
 					</li>
 				{/each}
 			</ol>
@@ -82,8 +88,8 @@
 		<div class="lg:col-span-8">
 			<div class="prose-legal max-w-none">
 				<p class="lead">
-					EcoHubs.community ("we," "us," or "our") is committed to protecting your personal data
-					in accordance with Ecuador's Organic Law on Personal Data Protection (LOPDP) and
+					EcoHubs.community ("we," "us," or "our") is committed to protecting your personal data in
+					accordance with Ecuador's Organic Law on Personal Data Protection (LOPDP) and
 					international data-protection standards.
 				</p>
 
@@ -92,14 +98,26 @@
 				<ul>
 					<li><strong>Entity:</strong> EcoHubs.community</li>
 					<li><strong>Location:</strong> Ecuador</li>
-					<li><strong>Contact:</strong> <a href="mailto:privacy@ecohubs.community">privacy@ecohubs.community</a></li>
+					<li>
+						<strong>Contact:</strong>
+						<a href="mailto:privacy@ecohubs.community">privacy@ecohubs.community</a>
+					</li>
 				</ul>
 
 				<h2 id="legal-basis"><span class="kicker-num">02</span> Legal basis for processing</h2>
-				<p>In accordance with Article 10 of the LOPDP, we process your personal data on the following grounds:</p>
+				<p>
+					In accordance with Article 10 of the LOPDP, we process your personal data on the following
+					grounds:
+				</p>
 				<ul>
-					<li><strong>Consent</strong> — when you voluntarily provide information through our contact or application forms.</li>
-					<li><strong>Legitimate interest</strong> — for website analytics to improve our services (with anonymised data).</li>
+					<li>
+						<strong>Consent</strong> — when you voluntarily provide information through our contact or
+						application forms.
+					</li>
+					<li>
+						<strong>Legitimate interest</strong> — for website analytics to improve our services (with
+						anonymised data).
+					</li>
 					<li><strong>Legal obligation</strong> — when required by applicable laws.</li>
 				</ul>
 
@@ -139,15 +157,24 @@
 				<h2 id="cookies"><span class="kicker-num">05</span> Cookies and analytics</h2>
 				<p>We use cookies and similar technologies to enhance your experience.</p>
 				<h3>Essential cookies</h3>
-				<p>Necessary for the website to function and not disable-able. They include cookies that remember your cookie-consent preferences.</p>
+				<p>
+					Necessary for the website to function and not disable-able. They include cookies that
+					remember your cookie-consent preferences.
+				</p>
 				<h3>Analytics cookies (Google Analytics 4)</h3>
-				<p>With your consent, we use Google Analytics 4 to understand how visitors interact with our website. We have configured GA4 with privacy-enhancing settings:</p>
+				<p>
+					With your consent, we use Google Analytics 4 to understand how visitors interact with our
+					website. We have configured GA4 with privacy-enhancing settings:
+				</p>
 				<ul>
 					<li>IP anonymisation enabled.</li>
 					<li>Secure cookie flags (SameSite=Strict).</li>
 					<li>No data sharing with Google for advertising purposes.</li>
 				</ul>
-				<p>You can withdraw your consent at any time by clearing your browser cookies and declining when the consent banner appears again.</p>
+				<p>
+					You can withdraw your consent at any time by clearing your browser cookies and declining
+					when the consent banner appears again.
+				</p>
 
 				<h2 id="third-parties"><span class="kicker-num">06</span> Third-party services</h2>
 				<p>We use the following third-party services that may process your data:</p>
@@ -155,37 +182,66 @@
 					<li><strong>Ghost CMS</strong> — for blog content delivery.</li>
 					<li><strong>Google Analytics</strong> — for website analytics (consent-based).</li>
 				</ul>
-				<p>Each third-party service has its own privacy policy governing its data-processing activities.</p>
+				<p>
+					Each third-party service has its own privacy policy governing its data-processing
+					activities.
+				</p>
 
 				<h2 id="rights"><span class="kicker-num">07</span> Your rights under LOPDP</h2>
 				<p>Under Ecuador's LOPDP, you have the following rights regarding your personal data:</p>
 				<ul>
-					<li><strong>Right of access</strong> — request information about what personal data we hold about you.</li>
-					<li><strong>Right to rectification</strong> — request correction of inaccurate or incomplete data.</li>
+					<li>
+						<strong>Right of access</strong> — request information about what personal data we hold about
+						you.
+					</li>
+					<li>
+						<strong>Right to rectification</strong> — request correction of inaccurate or incomplete
+						data.
+					</li>
 					<li><strong>Right to erasure</strong> — request deletion of your personal data.</li>
-					<li><strong>Right to data portability</strong> — receive your data in a structured, commonly used format.</li>
-					<li><strong>Right to withdraw consent</strong> — withdraw consent at any time without affecting prior processing.</li>
-					<li><strong>Right to object</strong> — object to processing based on legitimate interests.</li>
+					<li>
+						<strong>Right to data portability</strong> — receive your data in a structured, commonly
+						used format.
+					</li>
+					<li>
+						<strong>Right to withdraw consent</strong> — withdraw consent at any time without affecting
+						prior processing.
+					</li>
+					<li>
+						<strong>Right to object</strong> — object to processing based on legitimate interests.
+					</li>
 				</ul>
-				<p>To exercise any of these rights, write to <a href="mailto:privacy@ecohubs.community">privacy@ecohubs.community</a>. We respond within 15 business days as required by the LOPDP.</p>
+				<p>
+					To exercise any of these rights, write to <a href="mailto:privacy@ecohubs.community"
+						>privacy@ecohubs.community</a
+					>. We respond within 15 business days as required by the LOPDP.
+				</p>
 
 				<h2 id="retention"><span class="kicker-num">08</span> Data retention</h2>
 				<p>We retain your personal data only for as long as necessary:</p>
 				<ul>
 					<li><strong>Contact form data</strong> — 2 years from last interaction.</li>
-					<li><strong>Application data</strong> — duration of membership consideration plus 1 year.</li>
+					<li>
+						<strong>Application data</strong> — duration of membership consideration plus 1 year.
+					</li>
 					<li><strong>Analytics data</strong> — 14 months (Google Analytics default).</li>
 				</ul>
 
 				<h2 id="transfers"><span class="kicker-num">09</span> International data transfers</h2>
-				<p>Some of our third-party providers may process data outside Ecuador. When that happens, we ensure appropriate safeguards are in place as required by the LOPDP, including:</p>
+				<p>
+					Some of our third-party providers may process data outside Ecuador. When that happens, we
+					ensure appropriate safeguards are in place as required by the LOPDP, including:
+				</p>
 				<ul>
 					<li>Use of services with adequate data-protection certifications.</li>
 					<li>Standard contractual clauses where applicable.</li>
 				</ul>
 
 				<h2 id="security"><span class="kicker-num">10</span> Security measures</h2>
-				<p>We implement appropriate technical and organisational measures to protect your personal data, including:</p>
+				<p>
+					We implement appropriate technical and organisational measures to protect your personal
+					data, including:
+				</p>
 				<ul>
 					<li>HTTPS encryption for all data transmission.</li>
 					<li>Secure server infrastructure.</li>
@@ -194,20 +250,34 @@
 				</ul>
 
 				<h2 id="children"><span class="kicker-num">11</span> Children's privacy</h2>
-				<p>Our services are not directed to individuals under 18 years of age. We do not knowingly collect personal data from children.</p>
+				<p>
+					Our services are not directed to individuals under 18 years of age. We do not knowingly
+					collect personal data from children.
+				</p>
 
 				<h2 id="updates"><span class="kicker-num">12</span> Updates to this policy</h2>
-				<p>We may update this privacy policy from time to time. We will notify you of any material changes by posting the new policy on this page with an updated revision date.</p>
+				<p>
+					We may update this privacy policy from time to time. We will notify you of any material
+					changes by posting the new policy on this page with an updated revision date.
+				</p>
 
 				<h2 id="contact"><span class="kicker-num">13</span> Contact information</h2>
-				<p>If you have any questions about this privacy policy or our data practices, write to us:</p>
+				<p>
+					If you have any questions about this privacy policy or our data practices, write to us:
+				</p>
 				<ul>
-					<li><strong>Email</strong> — <a href="mailto:privacy@ecohubs.community">privacy@ecohubs.community</a></li>
+					<li>
+						<strong>Email</strong> —
+						<a href="mailto:privacy@ecohubs.community">privacy@ecohubs.community</a>
+					</li>
 					<li><strong>Contact form</strong> — <a href="/contact">ecohubs.community/contact</a></li>
 				</ul>
 
 				<h2 id="authority"><span class="kicker-num">14</span> Supervisory authority</h2>
-				<p>If you believe your data-protection rights have been violated, you have the right to lodge a complaint with the Superintendencia de Protección de Datos Personales (SPDP) of Ecuador.</p>
+				<p>
+					If you believe your data-protection rights have been violated, you have the right to lodge
+					a complaint with the Superintendencia de Protección de Datos Personales (SPDP) of Ecuador.
+				</p>
 			</div>
 		</div>
 	</div>
@@ -237,7 +307,14 @@
 	:global(main li),
 	:global(main span:not([class*='font-'])),
 	:global(main div:not([class*='font-'])) {
-		font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-family:
+			'Inter',
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			'Segoe UI',
+			Roboto,
+			sans-serif;
 	}
 
 	:global(.font-story) {
@@ -264,7 +341,11 @@
 
 	:global(.prose-legal) {
 		color: #1c1917;
-		font-family: 'Inter', system-ui, -apple-system, sans-serif;
+		font-family:
+			'Inter',
+			system-ui,
+			-apple-system,
+			sans-serif;
 		font-size: 1rem;
 		line-height: 1.75;
 	}

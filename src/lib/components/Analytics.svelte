@@ -13,9 +13,8 @@
 	// Initialize dataLayer and gtag function immediately if in browser
 	if (browser && GA_MEASUREMENT_ID) {
 		window.dataLayer = window.dataLayer || [];
-		window.gtag = function () {
-			// eslint-disable-next-line prefer-rest-params
-			window.dataLayer.push(arguments);
+		window.gtag = function (...args: unknown[]) {
+			window.dataLayer.push(args);
 		};
 
 		// 1. Set default consent to 'denied' (Google Consent Mode v2)
@@ -63,7 +62,9 @@
 
 	onMount(() => {
 		if (!GA_MEASUREMENT_ID) {
-			console.warn('Google Analytics ID (VITE_GA_MEASUREMENT_ID) is missing in environment variables.');
+			console.warn(
+				'Google Analytics ID (VITE_GA_MEASUREMENT_ID) is missing in environment variables.'
+			);
 			return;
 		}
 

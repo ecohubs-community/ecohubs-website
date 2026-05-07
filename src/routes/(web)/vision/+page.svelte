@@ -4,10 +4,9 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import {
 		initScrollAnimations,
-		initStaggeredScrollAnimations,
+		initStaggeredScrollAnimations
 	} from '$lib/utils/scroll-animations';
 	import { prefersReducedMotion } from '$lib/utils/animations';
-
 
 	import { principles, notThis, values, loopSteps } from './data';
 
@@ -26,21 +25,21 @@
 
 		const heroKeyframes: Record<string, unknown> = {
 			opacity: [0, 1],
-			transform: ['translateY(16px)', 'translateY(0px)'],
+			transform: ['translateY(16px)', 'translateY(0px)']
 		};
 		document.querySelectorAll<HTMLElement>('[data-hero-step]').forEach((el) => {
 			const delay = parseFloat(el.dataset.heroStep ?? '0') || 0;
 			animate(el, heroKeyframes as never, {
 				duration: 0.7,
 				delay,
-				ease: [0.22, 1, 0.36, 1],
+				ease: [0.22, 1, 0.36, 1]
 			});
 		});
 
 		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
 		initStaggeredScrollAnimations('[data-scroll-stagger]', {
 			threshold: 0.15,
-			staggerDelay: 0.08,
+			staggerDelay: 0.08
 		});
 	});
 </script>
@@ -48,26 +47,20 @@
 <SEO
 	title="Vision — A future small enough to live inside | EcoHubs"
 	description="A growing network of small, human-scale communities — designed to regenerate land, culture, and livelihoods through cooperation and shared responsibility."
+	ogImage="/og-vision.jpg"
 	breadcrumbs={[
 		{ name: 'Home', url: 'https://ecohubs.community/' },
-		{ name: 'Vision', url: 'https://ecohubs.community/vision' },
+		{ name: 'Vision', url: 'https://ecohubs.community/vision' }
 	]}
 />
-
-<svelte:head>
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-		rel="stylesheet"
-	/>
-</svelte:head>
 
 <!-- ═══════════════════════════════════════════════════════════════════
      1. HERO — quietly future-tense
      ═══════════════════════════════════════════════════════════════════ -->
 <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-	<div class="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5f2ea] via-[#fbfbf9] to-[#fbfbf9]"></div>
+	<div
+		class="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5f2ea] via-[#fbfbf9] to-[#fbfbf9]"
+	></div>
 	<div
 		class="absolute -z-10 top-32 -left-32 w-[520px] h-[520px] rounded-full bg-emerald-200/25 blur-3xl"
 	></div>
@@ -100,15 +93,11 @@
 				>
 					Not a utopia. Not a retreat from the world. A patient, honest answer to a question many of
 					us already carry —
-					<em class="font-story italic"
-						>what would a life worth being inside actually look like?</em
+					<em class="font-story italic">what would a life worth being inside actually look like?</em
 					>
 				</p>
 
-				<p
-					data-hero-step="0.40"
-					class="mt-5 text-lg text-stone-600 leading-relaxed max-w-xl"
-				>
+				<p data-hero-step="0.40" class="mt-5 text-lg text-stone-600 leading-relaxed max-w-xl">
 					Below is the picture as clearly as we can see it today: the principles, the values, the
 					horizon, and the way we plan to walk there — together, and in the open.
 				</p>
@@ -132,142 +121,220 @@
 
 			<div class="lg:col-span-5 relative">
 				<div class="relative aspect-[5/6] w-full max-w-[520px] mx-auto">
-					<div class="absolute inset-0 rounded-[32px] bg-gradient-to-b from-[#f8f4e8] via-[#fbfbf9] to-[#f0ebe0] soft-shadow"></div>
+					<div
+						class="absolute inset-0 rounded-[32px] bg-gradient-to-b from-[#f8f4e8] via-[#fbfbf9] to-[#f0ebe0] soft-shadow"
+					></div>
 
-					<svg viewBox="0 0 500 600" class="relative w-full h-full" preserveAspectRatio="xMidYMid meet" aria-label="A horizon with a network of small communities">
+					<svg
+						viewBox="0 0 500 600"
+						class="relative w-full h-full"
+						preserveAspectRatio="xMidYMid meet"
+						aria-label="A horizon with a network of small communities"
+					>
 						<defs>
-						<radialGradient id="sun" cx="50%" cy="50%" r="50%">
-							<stop offset="0%" stop-color="#f5d6a5"/>
-							<stop offset="60%" stop-color="#e8b87a" stop-opacity="0.6"/>
-							<stop offset="100%" stop-color="#e8b87a" stop-opacity="0"/>
-						</radialGradient>
-						<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-							<stop offset="0%" stop-color="#fbf6ea"/>
-							<stop offset="55%" stop-color="#f4ead4"/>
-							<stop offset="100%" stop-color="#e9dcb8"/>
-						</linearGradient>
-						<linearGradient id="hill1" x1="0" y1="0" x2="0" y2="1">
-							<stop offset="0%" stop-color="#94a99a"/>
-							<stop offset="100%" stop-color="#7e9684"/>
-						</linearGradient>
-						<linearGradient id="hill2" x1="0" y1="0" x2="0" y2="1">
-							<stop offset="0%" stop-color="#5f7d68"/>
-							<stop offset="100%" stop-color="#476054"/>
-						</linearGradient>
-						<linearGradient id="hill3" x1="0" y1="0" x2="0" y2="1">
-							<stop offset="0%" stop-color="#2f4a3c"/>
-							<stop offset="100%" stop-color="#1f3329"/>
-						</linearGradient>
-						<linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
-							<stop offset="0%" stop-color="#3d2f1f"/>
-							<stop offset="100%" stop-color="#241a10"/>
-						</linearGradient>
-						<clipPath id="frame">
-							<rect x="20" y="20" width="460" height="560" rx="28"/>
-						</clipPath>
+							<radialGradient id="sun" cx="50%" cy="50%" r="50%">
+								<stop offset="0%" stop-color="#f5d6a5" />
+								<stop offset="60%" stop-color="#e8b87a" stop-opacity="0.6" />
+								<stop offset="100%" stop-color="#e8b87a" stop-opacity="0" />
+							</radialGradient>
+							<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+								<stop offset="0%" stop-color="#fbf6ea" />
+								<stop offset="55%" stop-color="#f4ead4" />
+								<stop offset="100%" stop-color="#e9dcb8" />
+							</linearGradient>
+							<linearGradient id="hill1" x1="0" y1="0" x2="0" y2="1">
+								<stop offset="0%" stop-color="#94a99a" />
+								<stop offset="100%" stop-color="#7e9684" />
+							</linearGradient>
+							<linearGradient id="hill2" x1="0" y1="0" x2="0" y2="1">
+								<stop offset="0%" stop-color="#5f7d68" />
+								<stop offset="100%" stop-color="#476054" />
+							</linearGradient>
+							<linearGradient id="hill3" x1="0" y1="0" x2="0" y2="1">
+								<stop offset="0%" stop-color="#2f4a3c" />
+								<stop offset="100%" stop-color="#1f3329" />
+							</linearGradient>
+							<linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+								<stop offset="0%" stop-color="#3d2f1f" />
+								<stop offset="100%" stop-color="#241a10" />
+							</linearGradient>
+							<clipPath id="frame">
+								<rect x="20" y="20" width="460" height="560" rx="28" />
+							</clipPath>
 						</defs>
 
 						<g clip-path="url(#frame)">
-						<rect x="0" y="0" width="500" height="420" fill="url(#sky)"/>
-						<circle cx="335" cy="180" r="160" fill="url(#sun)"/>
-						<circle cx="335" cy="180" r="46" fill="#f0c98a"/>
+							<rect x="0" y="0" width="500" height="420" fill="url(#sky)" />
+							<circle cx="335" cy="180" r="160" fill="url(#sun)" />
+							<circle cx="335" cy="180" r="46" fill="#f0c98a" />
 
-						<g stroke="#064e3b" fill="none" opacity="0.18" stroke-width="1">
-							<circle cx="250" cy="430" r="80"/>
-							<circle cx="250" cy="430" r="140"/>
-							<circle cx="250" cy="430" r="210"/>
-							<circle cx="250" cy="430" r="290"/>
+							<g stroke="#064e3b" fill="none" opacity="0.18" stroke-width="1">
+								<circle cx="250" cy="430" r="80" />
+								<circle cx="250" cy="430" r="140" />
+								<circle cx="250" cy="430" r="210" />
+								<circle cx="250" cy="430" r="290" />
+							</g>
+
+							<g
+								stroke="#1f3329"
+								stroke-width="1.4"
+								fill="none"
+								stroke-linecap="round"
+								opacity="0.55"
+							>
+								<path d="M120 130 q4 -4 8 0 q4 -4 8 0" />
+								<path d="M150 110 q3 -3 6 0 q3 -3 6 0" />
+								<path d="M180 135 q3 -3 6 0 q3 -3 6 0" />
+								<path d="M105 160 q3 -3 6 0 q3 -3 6 0" />
+							</g>
+
+							<path
+								d="M0 320 Q 90 280 170 305 T 320 295 T 500 285 L 500 420 L 0 420 Z"
+								fill="url(#hill1)"
+								opacity="0.85"
+							/>
+							<path
+								d="M0 360 Q 110 320 220 345 T 410 340 T 500 350 L 500 460 L 0 460 Z"
+								fill="url(#hill2)"
+							/>
+							<path
+								d="M0 410 Q 80 370 170 395 Q 260 420 350 388 Q 430 360 500 395 L 500 520 L 0 520 Z"
+								fill="url(#hill3)"
+							/>
+							<path d="M0 470 Q 250 440 500 475 L 500 600 L 0 600 Z" fill="url(#ground)" />
+
+							<g stroke="#5a4628" stroke-width="1" opacity="0.55" fill="none">
+								<path d="M-20 500 Q 250 478 520 506" />
+								<path d="M-20 520 Q 250 498 520 526" />
+								<path d="M-20 540 Q 250 518 520 546" />
+								<path d="M-20 562 Q 250 540 520 568" />
+							</g>
+
+							<g transform="translate(228 372)">
+								<circle r="22" fill="#e8b87a" opacity="0.25" />
+								<circle r="14" fill="#e8b87a" opacity="0.4" />
+								<path d="M-10 0 L 0 -16 L 10 0 Z" fill="#1f3329" />
+								<rect x="-8" y="0" width="16" height="10" fill="#2a4035" />
+								<rect x="-2" y="3" width="4" height="7" fill="#f0c98a" />
+								<path
+									d="M0 -16 Q -3 -22 0 -28 Q 3 -34 0 -40"
+									stroke="#fbf6ea"
+									stroke-width="1.2"
+									fill="none"
+									opacity="0.7"
+								/>
+								<line
+									x1="14"
+									y1="-10"
+									x2="-2"
+									y2="-10"
+									stroke="#5a4628"
+									stroke-width="0.8"
+									opacity="0.6"
+								/>
+							</g>
+
+							<g transform="translate(132 388)">
+								<path d="M-7 0 L 0 -11 L 7 0 Z" fill="#1f3329" />
+								<rect x="-5" y="0" width="10" height="7" fill="#2a4035" />
+								<rect x="-1.2" y="2" width="2.4" height="5" fill="#f0c98a" opacity="0.85" />
+								<path
+									d="M0 -11 Q -2 -15 0 -19 Q 2 -23 0 -27"
+									stroke="#fbf6ea"
+									stroke-width="1"
+									fill="none"
+									opacity="0.55"
+								/>
+							</g>
+
+							<g transform="translate(338 358)">
+								<path d="M-7 0 L 0 -11 L 7 0 Z" fill="#1f3329" />
+								<rect x="-5" y="0" width="10" height="7" fill="#2a4035" />
+								<rect x="-1.2" y="2" width="2.4" height="5" fill="#f0c98a" opacity="0.85" />
+								<path
+									d="M0 -11 Q -2 -15 0 -19 Q 2 -23 0 -27"
+									stroke="#fbf6ea"
+									stroke-width="1"
+									fill="none"
+									opacity="0.55"
+								/>
+							</g>
+
+							<g transform="translate(76 332)">
+								<path d="M-5 0 L 0 -8 L 5 0 Z" fill="#476054" />
+								<rect x="-3.5" y="0" width="7" height="5" fill="#5f7d68" />
+							</g>
+
+							<g transform="translate(412 326)">
+								<path d="M-5 0 L 0 -8 L 5 0 Z" fill="#476054" />
+								<rect x="-3.5" y="0" width="7" height="5" fill="#5f7d68" />
+							</g>
+
+							<g transform="translate(266 376)">
+								<line x1="0" y1="0" x2="0" y2="-14" stroke="#3d2f1f" stroke-width="1.5" />
+								<circle cx="0" cy="-18" r="7" fill="#2a4035" />
+								<circle cx="-4" cy="-15" r="4" fill="#2f4a3c" />
+								<circle cx="4" cy="-15" r="4" fill="#2f4a3c" />
+							</g>
+							<g transform="translate(196 380)">
+								<line x1="0" y1="0" x2="0" y2="-10" stroke="#3d2f1f" stroke-width="1.2" />
+								<circle cx="0" cy="-13" r="5" fill="#2a4035" />
+							</g>
+
+							<g stroke="#b8884a" fill="none" stroke-width="1" stroke-dasharray="2 3" opacity="0.7">
+								<path d="M132 388 Q 180 350 228 372" />
+								<path d="M228 372 Q 280 348 338 358" />
+								<path d="M76 332 Q 100 318 132 388" />
+								<path d="M338 358 Q 380 330 412 326" />
+							</g>
+
+							<line
+								x1="0"
+								y1="420"
+								x2="500"
+								y2="420"
+								stroke="#1f3329"
+								stroke-width="0.6"
+								opacity="0.25"
+							/>
 						</g>
 
-						<g stroke="#1f3329" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.55">
-							<path d="M120 130 q4 -4 8 0 q4 -4 8 0"/>
-							<path d="M150 110 q3 -3 6 0 q3 -3 6 0"/>
-							<path d="M180 135 q3 -3 6 0 q3 -3 6 0"/>
-							<path d="M105 160 q3 -3 6 0 q3 -3 6 0"/>
-						</g>
-
-						<path d="M0 320 Q 90 280 170 305 T 320 295 T 500 285 L 500 420 L 0 420 Z" fill="url(#hill1)" opacity="0.85"/>
-						<path d="M0 360 Q 110 320 220 345 T 410 340 T 500 350 L 500 460 L 0 460 Z" fill="url(#hill2)"/>
-						<path d="M0 410 Q 80 370 170 395 Q 260 420 350 388 Q 430 360 500 395 L 500 520 L 0 520 Z" fill="url(#hill3)"/>
-						<path d="M0 470 Q 250 440 500 475 L 500 600 L 0 600 Z" fill="url(#ground)"/>
-
-						<g stroke="#5a4628" stroke-width="1" opacity="0.55" fill="none">
-							<path d="M-20 500 Q 250 478 520 506"/>
-							<path d="M-20 520 Q 250 498 520 526"/>
-							<path d="M-20 540 Q 250 518 520 546"/>
-							<path d="M-20 562 Q 250 540 520 568"/>
-						</g>
-
-						<g transform="translate(228 372)">
-							<circle r="22" fill="#e8b87a" opacity="0.25"/>
-							<circle r="14" fill="#e8b87a" opacity="0.4"/>
-							<path d="M-10 0 L 0 -16 L 10 0 Z" fill="#1f3329"/>
-							<rect x="-8" y="0" width="16" height="10" fill="#2a4035"/>
-							<rect x="-2" y="3" width="4" height="7" fill="#f0c98a"/>
-							<path d="M0 -16 Q -3 -22 0 -28 Q 3 -34 0 -40" stroke="#fbf6ea" stroke-width="1.2" fill="none" opacity="0.7"/>
-							<line x1="14" y1="-10" x2="-2" y2="-10" stroke="#5a4628" stroke-width="0.8" opacity="0.6"/>
-						</g>
-
-						<g transform="translate(132 388)">
-							<path d="M-7 0 L 0 -11 L 7 0 Z" fill="#1f3329"/>
-							<rect x="-5" y="0" width="10" height="7" fill="#2a4035"/>
-							<rect x="-1.2" y="2" width="2.4" height="5" fill="#f0c98a" opacity="0.85"/>
-							<path d="M0 -11 Q -2 -15 0 -19 Q 2 -23 0 -27" stroke="#fbf6ea" stroke-width="1" fill="none" opacity="0.55"/>
-						</g>
-
-						<g transform="translate(338 358)">
-							<path d="M-7 0 L 0 -11 L 7 0 Z" fill="#1f3329"/>
-							<rect x="-5" y="0" width="10" height="7" fill="#2a4035"/>
-							<rect x="-1.2" y="2" width="2.4" height="5" fill="#f0c98a" opacity="0.85"/>
-							<path d="M0 -11 Q -2 -15 0 -19 Q 2 -23 0 -27" stroke="#fbf6ea" stroke-width="1" fill="none" opacity="0.55"/>
-						</g>
-
-						<g transform="translate(76 332)">
-							<path d="M-5 0 L 0 -8 L 5 0 Z" fill="#476054"/>
-							<rect x="-3.5" y="0" width="7" height="5" fill="#5f7d68"/>
-						</g>
-
-						<g transform="translate(412 326)">
-							<path d="M-5 0 L 0 -8 L 5 0 Z" fill="#476054"/>
-							<rect x="-3.5" y="0" width="7" height="5" fill="#5f7d68"/>
-						</g>
-
-						<g transform="translate(266 376)">
-							<line x1="0" y1="0" x2="0" y2="-14" stroke="#3d2f1f" stroke-width="1.5"/>
-							<circle cx="0" cy="-18" r="7" fill="#2a4035"/>
-							<circle cx="-4" cy="-15" r="4" fill="#2f4a3c"/>
-							<circle cx="4" cy="-15" r="4" fill="#2f4a3c"/>
-						</g>
-						<g transform="translate(196 380)">
-							<line x1="0" y1="0" x2="0" y2="-10" stroke="#3d2f1f" stroke-width="1.2"/>
-							<circle cx="0" cy="-13" r="5" fill="#2a4035"/>
-						</g>
-
-						<g stroke="#b8884a" fill="none" stroke-width="1" stroke-dasharray="2 3" opacity="0.7">
-							<path d="M132 388 Q 180 350 228 372"/>
-							<path d="M228 372 Q 280 348 338 358"/>
-							<path d="M76 332 Q 100 318 132 388"/>
-							<path d="M338 358 Q 380 330 412 326"/>
-						</g>
-
-						<line x1="0" y1="420" x2="500" y2="420" stroke="#1f3329" stroke-width="0.6" opacity="0.25"/>
-						</g>
-
-						<rect x="20" y="20" width="460" height="560" rx="28" fill="none" stroke="#0b2e24" stroke-opacity="0.08" stroke-width="1"/>
+						<rect
+							x="20"
+							y="20"
+							width="460"
+							height="560"
+							rx="28"
+							fill="none"
+							stroke="#0b2e24"
+							stroke-opacity="0.08"
+							stroke-width="1"
+						/>
 					</svg>
 
-					<div class="absolute top-5 right-5 bg-[#fbfbf9]/90 backdrop-blur rounded-full px-3.5 py-1.5 border border-stone-200/80 shadow-sm flex items-center gap-2">
-						<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 pulse-dot relative inline-block text-emerald-600"></span>
-						<span class="text-[11px] tracking-widest uppercase text-stone-600 font-medium">Horizon · 2030+</span>
+					<div
+						class="absolute top-5 right-5 bg-ecohubs-base/90 backdrop-blur rounded-full px-3.5 py-1.5 border border-stone-200/80 shadow-sm flex items-center gap-2"
+					>
+						<span
+							class="w-1.5 h-1.5 rounded-full bg-emerald-600 pulse-dot relative inline-block text-emerald-600"
+						></span>
+						<span class="text-[11px] tracking-widest uppercase text-stone-600 font-medium"
+							>Horizon · 2030+</span
+						>
 					</div>
 
-					<div class="absolute -left-3 -bottom-4 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[280px] border border-stone-100">
+					<div
+						class="absolute -left-3 -bottom-4 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[280px] border border-stone-100"
+					>
 						<div class="flex items-center gap-2 mb-2">
-						<span class="w-2 h-2 rounded-full bg-amber-300"></span>
-						<span class="text-[10px] tracking-widest uppercase text-stone-500 font-semibold">A network, not a place</span>
+							<span class="w-2 h-2 rounded-full bg-amber-300"></span>
+							<span class="text-[10px] tracking-widest uppercase text-stone-500 font-semibold"
+								>A network, not a place</span
+							>
 						</div>
 						<p class="font-story italic text-[14px] leading-snug text-stone-800">
-						"We are not designing a perfect place. We are designing a place that can keep getting truer."
+							"We are not designing a perfect place. We are designing a place that can keep getting
+							truer."
 						</p>
 					</div>
 				</div>
@@ -281,10 +348,7 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      2. THE MANIFESTO — A network of regenerative EcoHubs
      ═══════════════════════════════════════════════════════════════════ -->
-<section
-	id="manifesto"
-	class="relative py-28 md:py-40 bg-[#0d2a24] text-white overflow-hidden"
->
+<section id="manifesto" class="relative py-28 md:py-40 bg-ecohubs-deep text-white overflow-hidden">
 	<div class="absolute inset-0 grain opacity-50 pointer-events-none"></div>
 
 	<div
@@ -306,11 +370,11 @@
 			data-scroll-animate
 		>
 			A growing network of
-			<em class="font-story italic font-normal text-amber-200/90">small, human-scale</em> communities —
+			<em class="font-story italic font-normal text-amber-200/90">small, human-scale</em>
+			communities —
 			<br class="hidden md:block" />
 			designed to
-			<span
-				class="underline decoration-amber-300/40 decoration-[3px] underline-offset-[10px]"
+			<span class="underline decoration-amber-300/40 decoration-[3px] underline-offset-[10px]"
 				>regenerate land, culture, and livelihoods</span
 			>
 			through cooperation and shared responsibility.
@@ -323,9 +387,9 @@
 					<div>
 						<div class="kicker text-amber-200/70 mb-3">Rooted</div>
 						<p class="font-serif text-xl md:text-[22px] leading-[1.55] text-white/95">
-							Each EcoHub is <em class="font-story italic">deeply adapted</em> to its local ecology
-							and culture — the soil under its feet, the language at its long table, the seasons it
-							lives by.
+							Each EcoHub is <em class="font-story italic">deeply adapted</em> to its local ecology and
+							culture — the soil under its feet, the language at its long table, the seasons it lives
+							by.
 						</p>
 					</div>
 				</div>
@@ -342,8 +406,8 @@
 						<div class="kicker text-amber-200/70 mb-3">Connected</div>
 						<p class="font-serif text-xl md:text-[22px] leading-[1.55] text-white/95">
 							And every hub stays connected to a
-							<em class="font-story italic">shared global commons</em> that accelerates learning,
-							resilience, and regeneration — so no one has to start from zero.
+							<em class="font-story italic">shared global commons</em> that accelerates learning, resilience,
+							and regeneration — so no one has to start from zero.
 						</p>
 					</div>
 				</div>
@@ -385,7 +449,7 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      3. THE SIX PRINCIPLES — what holds an EcoHub together
      ═══════════════════════════════════════════════════════════════════ -->
-<section class="relative py-24 md:py-32 bg-[#fbfbf9]">
+<section class="relative py-24 md:py-32 bg-ecohubs-base">
 	<div class="max-w-7xl mx-auto px-6 lg:px-8">
 		<div class="max-w-3xl mb-16" data-scroll-animate>
 			<div class="kicker text-emerald-700 mb-4">The principles that hold a hub</div>
@@ -402,9 +466,7 @@
 
 		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5" data-scroll-stagger>
 			{#each principles as p (p.number)}
-				<article
-					class="bg-[#f5f2ea] rounded-3xl p-7 border border-stone-200/70 flex flex-col"
-				>
+				<article class="bg-ecohubs-ivory rounded-3xl p-7 border border-stone-200/70 flex flex-col">
 					<div class="flex items-baseline justify-between mb-6">
 						<span class="font-story italic text-3xl text-ecohubs-primary">{p.number}</span>
 						<span class="kicker text-stone-500">{p.kicker}</span>
@@ -436,7 +498,7 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      4. WHAT WE WILL NOT DO — negative vision
      ═══════════════════════════════════════════════════════════════════ -->
-<section class="relative py-24 md:py-32 bg-ecohubs-deep text-[#f5f2ea] overflow-hidden">
+<section class="relative py-24 md:py-32 bg-ecohubs-deep text-ecohubs-ivory overflow-hidden">
 	<div
 		class="absolute inset-0 -z-0 opacity-40"
 		style="background-image: radial-gradient(circle at 30% 20%, rgba(16,185,129,0.18), transparent 50%), radial-gradient(circle at 80% 80%, rgba(217,119,6,0.12), transparent 55%);"
@@ -445,7 +507,7 @@
 	<div class="max-w-6xl mx-auto px-6 lg:px-8 relative">
 		<div class="max-w-3xl mb-16" data-scroll-animate>
 			<div class="kicker text-emerald-300/80 mb-5">A vision needs edges</div>
-			<h2 class="font-serif text-4xl md:text-6xl leading-[1.05] text-[#f5f2ea]">
+			<h2 class="font-serif text-4xl md:text-6xl leading-[1.05] text-ecohubs-ivory">
 				What this <em class="font-story italic font-normal text-emerald-300">is not</em>, <br />
 				and never will be.
 			</h2>
@@ -471,7 +533,7 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      5. THREE HORIZONS
      ═══════════════════════════════════════════════════════════════════ -->
-<section class="py-24 md:py-36 bg-[#fbfbf9]">
+<section class="py-24 md:py-36 bg-ecohubs-base">
 	<div class="max-w-7xl mx-auto px-6 lg:px-8">
 		<div class="max-w-3xl mb-16" data-scroll-animate>
 			<div class="kicker text-emerald-700 mb-4">The vision at three scales</div>
@@ -489,7 +551,7 @@
 		<div class="grid lg:grid-cols-3 gap-6 lg:gap-8" data-scroll-stagger>
 			<!-- Horizon 1 -->
 			<article
-				class="relative bg-[#f5f2ea] rounded-3xl p-8 border border-stone-200/70 flex flex-col"
+				class="relative bg-ecohubs-ivory rounded-3xl p-8 border border-stone-200/70 flex flex-col"
 			>
 				<div class="kicker text-emerald-700 mb-3">Horizon 01 · this decade</div>
 				<h3 class="font-serif text-3xl text-ecohubs-deep leading-tight mb-4">A hub.</h3>
@@ -522,7 +584,7 @@
 
 			<!-- Horizon 2 -->
 			<article
-				class="relative bg-[#f5f2ea] rounded-3xl p-8 border border-stone-200/70 flex flex-col"
+				class="relative bg-ecohubs-ivory rounded-3xl p-8 border border-stone-200/70 flex flex-col"
 			>
 				<div class="kicker text-emerald-700 mb-3">Horizon 02 · next ~15 years</div>
 				<h3 class="font-serif text-3xl text-ecohubs-deep leading-tight mb-4">A network.</h3>
@@ -575,7 +637,7 @@
 
 			<!-- Horizon 3 -->
 			<article
-				class="relative bg-ecohubs-deep text-[#f5f2ea] rounded-3xl p-8 border border-emerald-900/40 flex flex-col overflow-hidden"
+				class="relative bg-ecohubs-deep text-ecohubs-ivory rounded-3xl p-8 border border-emerald-900/40 flex flex-col overflow-hidden"
 			>
 				<div
 					class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none"
@@ -634,7 +696,7 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      6. VALUES — what we hold
      ═══════════════════════════════════════════════════════════════════ -->
-<section class="py-24 md:py-36 bg-[#f5f2ea] relative">
+<section class="py-24 md:py-36 bg-ecohubs-ivory relative">
 	<div class="absolute inset-0 grain pointer-events-none opacity-50"></div>
 
 	<div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
@@ -673,7 +735,7 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      7. HOW A VISION BECOMES A PLACE — the loop
      ═══════════════════════════════════════════════════════════════════ -->
-<section class="py-24 md:py-36 bg-[#fbfbf9]">
+<section class="py-24 md:py-36 bg-ecohubs-base">
 	<div class="max-w-7xl mx-auto px-6 lg:px-8">
 		<div class="max-w-3xl mb-16" data-scroll-animate>
 			<div class="kicker text-emerald-700 mb-4">From idea to ground</div>
@@ -804,7 +866,7 @@
 		style="background-image: radial-gradient(circle at 20% 30%, rgba(16,185,129,0.32), transparent 50%), radial-gradient(circle at 80% 70%, rgba(217,119,6,0.18), transparent 55%);"
 	></div>
 
-	<div class="max-w-4xl mx-auto px-6 lg:px-8 text-center text-[#f5f2ea]">
+	<div class="max-w-4xl mx-auto px-6 lg:px-8 text-center text-ecohubs-ivory">
 		<div class="kicker text-emerald-300 mb-6" data-scroll-animate>
 			Where it ends · where it starts
 		</div>
@@ -822,15 +884,13 @@
 			data-scroll-animate
 		>
 			It is a place we are
-			<em class="font-story italic text-[#f5f2ea] font-normal">creating together</em>, one hub at a time.
+			<em class="font-story italic text-ecohubs-ivory font-normal">creating together</em>, one hub
+			at a time.
 		</p>
 
 		<div class="mx-auto w-16 h-px bg-emerald-500/40 mb-12"></div>
 
-		<p
-			class="text-lg text-stone-200/80 leading-relaxed mb-10 max-w-xl mx-auto"
-			data-scroll-animate
-		>
+		<p class="text-lg text-stone-200/80 leading-relaxed mb-10 max-w-xl mx-auto" data-scroll-animate>
 			If any of this felt familiar — like something you have already been quietly carrying — there's
 			a place for you in the work. There are many ways in. None of them require you to move
 			tomorrow.
@@ -839,7 +899,7 @@
 		<div class="flex flex-col sm:flex-row justify-center gap-3" data-scroll-animate>
 			<a
 				href="/membership"
-				class="px-8 py-4 bg-[#f5f2ea] text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors"
+				class="px-8 py-4 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors"
 			>
 				Become a founding member
 			</a>
@@ -856,88 +916,3 @@
 		</p>
 	</div>
 </section>
-
-<style>
-	/* ─────────────────────────────────────────────────────────────────────────
-     Animations: keyframes + FOUC guard for scroll-triggered reveals
-     ───────────────────────────────────────────────────────────────────── */
-	:global([data-scroll-animate]),
-	:global([data-scroll-stagger] > *),
-	:global([data-hero-step]) {
-		opacity: 0;
-	}
-	@media (prefers-reduced-motion: reduce) {
-		:global([data-scroll-animate]),
-		:global([data-scroll-stagger] > *),
-		:global([data-hero-step]) {
-			opacity: 1 !important;
-			transform: none !important;
-		}
-	}
-
-	@keyframes pulse-ring {
-		0%,
-		100% {
-			transform: scale(1);
-			opacity: 0.25;
-		}
-		50% {
-			transform: scale(1.6);
-			opacity: 0;
-		}
-	}
-
-	:global(.pulse-dot)::before {
-		content: '';
-		position: absolute;
-		inset: -6px;
-		border-radius: 9999px;
-		background: currentColor;
-		opacity: 0.25;
-		animation: pulse-ring 2.4s ease-in-out infinite;
-	}
-
-	/* ─────────────────────────────────────────────────────────────────────────
-     Typography utilities
-     ───────────────────────────────────────────────────────────────────── */
-	:global(main p),
-	:global(main li),
-	:global(main blockquote),
-	:global(main span:not([class*='font-'])),
-	:global(main div:not([class*='font-'])) {
-		font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-			sans-serif;
-	}
-
-	:global(.font-story) {
-		font-family: var(--font-story, 'Fraunces', serif);
-		font-optical-sizing: auto;
-	}
-
-	:global(.kicker) {
-		font-size: 0.72rem;
-		letter-spacing: 0.2em;
-		text-transform: uppercase;
-		font-weight: 600;
-	}
-
-	:global(.soft-shadow) {
-		box-shadow: 0 30px 60px -30px rgba(11, 46, 36, 0.25);
-	}
-
-	:global(.grain)::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-		opacity: 0.5;
-		mix-blend-mode: multiply;
-		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-	}
-
-	.hairline {
-		height: 1px;
-		background: linear-gradient(90deg, transparent, rgba(6, 78, 59, 0.25), transparent);
-		margin: 0 auto;
-	}
-</style>

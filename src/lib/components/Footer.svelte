@@ -6,8 +6,6 @@
 
 	const ecosystemLinks = [
 		{ href: '/blueprint', label: 'Blueprint' },
-		// { href: '/dao', label: 'Governance' },
-		// { href: '/ecotoken', label: 'EcoToken' },
 		{ href: '/vision', label: 'Vision' },
 		{ href: '/blog', label: 'Blog' },
 		{ href: '/membership', label: 'Membership' },
@@ -17,12 +15,32 @@
 
 	const socialLinks = [
 		{ href: 'https://discord.gg/Xnh7247Nq3', label: 'Discord', icon: '/social-icons/discord.svg' },
-		{ href: 'https://mastodon.social/@ecohubs', label: 'Mastodon', icon: '/social-icons/mastodon.svg' },
-		{ href: 'https://farcaster.xyz/ecohubs', label: 'Farcaster', icon: '/social-icons/farcaster.svg' },
+		{
+			href: 'https://mastodon.social/@ecohubs',
+			label: 'Mastodon',
+			icon: '/social-icons/mastodon.svg'
+		},
+		{
+			href: 'https://farcaster.xyz/ecohubs',
+			label: 'Farcaster',
+			icon: '/social-icons/farcaster.svg'
+		},
 		{ href: 'https://x.com/eco_hubs', label: 'X', icon: '/social-icons/x.svg' },
-		{ href: 'https://www.instagram.com/ecohubs_community/', label: 'Instagram', icon: '/social-icons/instagram.svg' },
-		{ href: 'https://www.linkedin.com/company/ecohubs/', label: 'LinkedIn', icon: '/social-icons/linkedin.svg' },
-		{ href: 'https://github.com/ecohubs-community', label: 'GitHub', icon: '/social-icons/github.svg' }
+		{
+			href: 'https://www.instagram.com/ecohubs_community/',
+			label: 'Instagram',
+			icon: '/social-icons/instagram.svg'
+		},
+		{
+			href: 'https://www.linkedin.com/company/ecohubs/',
+			label: 'LinkedIn',
+			icon: '/social-icons/linkedin.svg'
+		},
+		{
+			href: 'https://github.com/ecohubs-community',
+			label: 'GitHub',
+			icon: '/social-icons/github.svg'
+		}
 	];
 
 	let email = $state('');
@@ -72,7 +90,8 @@
 			email = '';
 		} catch (error) {
 			submitStatus = 'error';
-			errorMessage = error instanceof Error ? error.message : 'Something went wrong. Please try again.';
+			errorMessage =
+				error instanceof Error ? error.message : 'Something went wrong. Please try again.';
 		} finally {
 			isSubmitting = false;
 		}
@@ -85,12 +104,14 @@
 		<div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 grid md:grid-cols-2 gap-10 items-center">
 			<div>
 				<div class="kicker text-emerald-300/80 mb-3">Stay close to the work</div>
-				<h3 class="font-serif text-2xl md:text-3xl text-[#f5f2ea] leading-tight">
-					Letters from a young project.<br/>
+				<h3 class="font-serif text-2xl md:text-3xl text-ecohubs-ivory leading-tight">
+					Letters from a young project.<br />
 					<em class="font-story italic font-normal text-emerald-300">Rare, but real.</em>
 				</h3>
 				<p class="mt-3 text-sm text-stone-400 max-w-md">
-					We're early — a small project finding its shape. When something actually shifts — a new chapter of the Blueprint, a note from the Ecuador pilot, an invitation to gather — we'll write. No schedule. No filler.
+					We're early — a small project finding its shape. When something actually shifts — a new
+					chapter of the Blueprint, a note from the Ecuador pilot, an invitation to gather — we'll
+					write. No schedule. No filler.
 				</p>
 			</div>
 			<div>
@@ -105,13 +126,13 @@
 						required
 						placeholder="your@email.com"
 						disabled={isSubmitting || submitStatus === 'success'}
-						class="flex-1 px-5 py-3.5 rounded-full bg-[#0b2419] border border-emerald-900/50 text-[#f5f2ea] placeholder:text-emerald-300/40 focus:outline-none focus:border-emerald-400/60 disabled:opacity-50"
+						class="flex-1 px-5 py-3.5 rounded-full bg-[#0b2419] border border-emerald-900/50 text-ecohubs-ivory placeholder:text-emerald-300/40 focus:outline-none focus:border-emerald-400/60 disabled:opacity-50"
 						aria-label="Email address"
 					/>
 					<button
 						type="submit"
 						disabled={isSubmitting || submitStatus === 'success'}
-						class="px-6 py-3.5 bg-emerald-500 text-[#06170f] font-medium rounded-full hover:bg-emerald-400 transition-colors whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+						class="px-6 py-3.5 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
 					>
 						{#if isSubmitting}
 							<Loader2 class="w-4 h-4 animate-spin" aria-hidden="true" />
@@ -133,7 +154,7 @@
 				{/if}
 				<a
 					href="/feed.xml"
-					class="mt-4 inline-flex items-center gap-1 text-xs text-stone-400 hover:text-[#f5f2ea] transition-colors"
+					class="mt-4 inline-flex items-center gap-1 text-xs text-stone-400 hover:text-ecohubs-ivory transition-colors"
 					aria-label="RSS Feed"
 				>
 					<ArrowRight class="w-3 h-3" aria-hidden="true" />
@@ -151,8 +172,8 @@
 				<Logo />
 			</div>
 			<p class="text-sm text-stone-400 leading-relaxed max-w-sm">
-				We are co-creating the blueprint for regenerative living. Join us to design communities
-				that thrive in harmony with nature.
+				We are co-creating the blueprint for regenerative living. Join us to design communities that
+				thrive in harmony with nature.
 			</p>
 			<div class="mt-6 flex flex-wrap items-center gap-3">
 				{#each socialLinks as link (link.label)}
@@ -182,7 +203,7 @@
 					<li>
 						<a
 							href={link.href}
-							class="hover:text-[#f5f2ea] transition-colors focus-visible:ring-2 focus-visible:ring-green-400 rounded"
+							class="hover:text-ecohubs-ivory transition-colors focus-visible:ring-2 focus-visible:ring-green-400 rounded"
 							data-sveltekit-preload-data="hover"
 						>
 							{link.label}
@@ -196,8 +217,12 @@
 		<div>
 			<div class="kicker text-emerald-300/70 mb-4">Legal</div>
 			<ul class="space-y-3 text-sm">
-				<li><a href="/privacy" class="hover:text-[#f5f2ea] transition-colors">Privacy Policy</a></li>
-				<li><a href="/terms" class="hover:text-[#f5f2ea] transition-colors">Terms of Service</a></li>
+				<li>
+					<a href="/privacy" class="hover:text-ecohubs-ivory transition-colors">Privacy Policy</a>
+				</li>
+				<li>
+					<a href="/terms" class="hover:text-ecohubs-ivory transition-colors">Terms of Service</a>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -207,7 +232,9 @@
 		<div
 			class="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between gap-3 text-xs text-stone-500"
 		>
-			<div>&copy; {currentYear} EcoHubs.community · Built in the open, with care and regenerative principles.</div>
+			<div>
+				&copy; {currentYear} EcoHubs.community · Built in the open, with care and regenerative principles.
+			</div>
 		</div>
 	</div>
 </footer>

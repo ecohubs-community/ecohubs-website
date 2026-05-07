@@ -25,17 +25,17 @@ The Blueprint addresses this gap by acting as a shared foundation: a living, dig
 What the Blueprint Is (and Is Not)
 
 The Blueprint is:
-	•	A living knowledge base, continuously updated
-	•	Modular and adaptable to local contexts
-	•	Open for contribution and review
-	•	Grounded in real-world experience and experimentation
-	•	Designed for replication and learning across communities
+• A living knowledge base, continuously updated
+• Modular and adaptable to local contexts
+• Open for contribution and review
+• Grounded in real-world experience and experimentation
+• Designed for replication and learning across communities
 
 The Blueprint is not:
-	•	A utopian manifesto
-	•	A one-size-fits-all solution
-	•	A centralized authority or governance body
-	•	A static document or theoretical framework detached from practice
+• A utopian manifesto
+• A one-size-fits-all solution
+• A centralized authority or governance body
+• A static document or theoretical framework detached from practice
 
 Its role is to provide orientation, structure, and shared language, while explicitly leaving room for local adaptation, cultural differences, and experimentation.
 
@@ -44,10 +44,10 @@ Its role is to provide orientation, structure, and shared language, while explic
 Structure and Organization
 
 The Blueprint is organized as a structured catalog of knowledge, designed to be navigable, evolvable, and scalable. Its hierarchy follows a clear structure:
-	•	Domains: Broad areas of community life (e.g. governance, food systems, infrastructure, economy, culture, education)
-	•	Topics: Specific problem spaces or themes within a domain
-	•	Modules: Reusable building blocks addressing concrete challenges or patterns
-	•	Articles: Detailed explanations, guides, practices, case studies, or reflections
+• Domains: Broad areas of community life (e.g. governance, food systems, infrastructure, economy, culture, education)
+• Topics: Specific problem spaces or themes within a domain
+• Modules: Reusable building blocks addressing concrete challenges or patterns
+• Articles: Detailed explanations, guides, practices, case studies, or reflections
 
 This structure allows contributors and users to work at different levels of abstraction — from high-level principles to concrete, actionable guidance — while maintaining coherence across the system.
 
@@ -56,19 +56,13 @@ This structure allows contributors and users to work at different levels of abst
 How the Blueprint Is Built
 
 The Blueprint is digital-first and built using GitHub-based workflows for versioning, transparency, and review. This ensures that:
-	•	Changes are traceable
-	•	Contributions can be discussed and improved collaboratively
-	•	Knowledge evolves through structured feedback loops
+• Changes are traceable
+• Contributions can be discussed and improved collaboratively
+• Knowledge evolves through structured feedback loops
 
 On top of this, a dedicated application supports content creation, review, and curation, making participation accessible beyond traditional developer workflows.
 
-The creation process follows an iterative cycle:
-	1.	Practices and ideas emerge from real-world community experience
-	2.	Content is proposed as articles or modules
-	3.	Contributions are reviewed collaboratively
-	4.	Patterns are tested, refined, or rejected in practice
-	5.	Learnings are integrated back into the Blueprint
-	6.	The system evolves over time
+The creation process follows an iterative cycle: 1. Practices and ideas emerge from real-world community experience 2. Content is proposed as articles or modules 3. Contributions are reviewed collaboratively 4. Patterns are tested, refined, or rejected in practice 5. Learnings are integrated back into the Blueprint 6. The system evolves over time
 
 This loop ensures that theory and practice remain tightly connected.
 
@@ -77,11 +71,11 @@ This loop ensures that theory and practice remain tightly connected.
 Why the Blueprint Is Necessary
 
 Most community initiatives fail due to recurring issues:
-	•	Unclear governance and decision-making
-	•	Unresolved conflict and communication breakdowns
-	•	Economic stress and hidden power dynamics
-	•	Burnout and uneven responsibility distribution
-	•	Legal and structural blind spots
+• Unclear governance and decision-making
+• Unresolved conflict and communication breakdowns
+• Economic stress and hidden power dynamics
+• Burnout and uneven responsibility distribution
+• Legal and structural blind spots
 
 The Blueprint exists to reduce these failure modes by making implicit knowledge explicit, shareable, and improvable. It acts as a collective memory for the EcoHubs network, preventing each new project from starting from zero.
 
@@ -94,9 +88,9 @@ Contribution and Collective Intelligence
 The Blueprint is designed as a collective intelligence system. Anyone aligned with the EcoHubs vision can eventually contribute — by writing, reviewing, documenting experiments, or improving existing content.
 
 Contribution is intentional and curated:
-	•	Reading is open
-	•	Writing and editing require membership
-	•	Review and iteration are core principles
+• Reading is open
+• Writing and editing require membership
+• Review and iteration are core principles
 
 This balances openness with quality, ensuring the Blueprint remains trustworthy and usable over time.
 

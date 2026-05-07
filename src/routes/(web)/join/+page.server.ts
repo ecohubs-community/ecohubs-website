@@ -11,7 +11,12 @@ import {
 	getApplicationConfirmationText,
 	type ApplicationEmailData
 } from '$lib/email-templates/application';
-import { ADMIN_EMAIL, TURNSTILE_SECRET_KEY, ECOHUBSOS_API_URL, ECOHUBSOS_APPLICATIONS_API_KEY } from '$env/static/private';
+import {
+	ADMIN_EMAIL,
+	TURNSTILE_SECRET_KEY,
+	ECOHUBSOS_API_URL,
+	ECOHUBSOS_APPLICATIONS_API_KEY
+} from '$env/static/private';
 
 export const load: PageServerLoad = async () => {
 	// @ts-expect-error - Zod v3 compatibility with sveltekit-superforms
@@ -19,7 +24,9 @@ export const load: PageServerLoad = async () => {
 	return { form };
 };
 
-async function verifyTurnstile(token: string): Promise<{ success: boolean; 'error-codes'?: string[] }> {
+async function verifyTurnstile(
+	token: string
+): Promise<{ success: boolean; 'error-codes'?: string[] }> {
 	if (!TURNSTILE_SECRET_KEY) {
 		console.warn('TURNSTILE_SECRET_KEY not configured, skipping verification');
 		return { success: true };
@@ -208,8 +215,7 @@ export const actions: Actions = {
 			return { form, success: true };
 		} catch (error) {
 			console.error('Application submission error:', error);
-			const detail =
-				error instanceof Error ? `${error.name}: ${error.message}` : String(error);
+			const detail = error instanceof Error ? `${error.name}: ${error.message}` : String(error);
 			return fail(500, {
 				form,
 				error: `Failed to submit application. Please try again. [${detail}]`

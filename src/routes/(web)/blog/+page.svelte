@@ -4,7 +4,7 @@
 	import { formatDate } from '$lib/utils/blog';
 	import {
 		initScrollAnimations,
-		initStaggeredScrollAnimations,
+		initStaggeredScrollAnimations
 	} from '$lib/utils/scroll-animations';
 	import { prefersReducedMotion } from '$lib/utils/animations';
 	import type { PageData } from './$types';
@@ -28,7 +28,7 @@
 		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
 		initStaggeredScrollAnimations('[data-scroll-stagger]', {
 			threshold: 0.15,
-			staggerDelay: 0.08,
+			staggerDelay: 0.08
 		});
 	});
 </script>
@@ -56,20 +56,28 @@
 		1. HERO
 ═══════════════════════════════════════════════════════════════════ -->
 <section class="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
-	<div class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"></div>
-	<div class="absolute -z-10 top-20 -left-40 w-[420px] h-[420px] rounded-full bg-emerald-200/25 blur-3xl"></div>
-	<div class="absolute -z-10 bottom-0 -right-20 w-[360px] h-[360px] rounded-full bg-amber-200/30 blur-3xl"></div>
+	<div
+		class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
+	></div>
+	<div
+		class="absolute -z-10 top-20 -left-40 w-[420px] h-[420px] rounded-full bg-emerald-200/25 blur-3xl"
+	></div>
+	<div
+		class="absolute -z-10 bottom-0 -right-20 w-[360px] h-[360px] rounded-full bg-amber-200/30 blur-3xl"
+	></div>
 
 	<div class="max-w-4xl mx-auto px-6 lg:px-8">
 		<div class="kicker text-emerald-700 mb-5">Field notes</div>
-		<h1 class="font-serif text-5xl md:text-6xl lg:text-[68px] leading-[1.05] tracking-tight text-ecohubs-deep">
+		<h1
+			class="font-serif text-5xl md:text-6xl lg:text-[68px] leading-[1.05] tracking-tight text-ecohubs-deep"
+		>
 			Letters from the work<span class="font-story italic font-light text-stone-400">,</span><br />
 			<em class="font-story italic font-normal text-stone-500">written as it happens.</em>
 		</h1>
 		<p class="mt-7 text-lg text-stone-700 leading-relaxed max-w-2xl font-light">
-			Reflections, lessons learned in the open, and quiet updates from inside the community —
-			about regenerative practice, governance, the Blueprint, and the everyday work of building
-			a different way to live.
+			Reflections, lessons learned in the open, and quiet updates from inside the community — about
+			regenerative practice, governance, the Blueprint, and the everyday work of building a
+			different way to live.
 		</p>
 	</div>
 </section>
@@ -117,7 +125,9 @@
 						{#if featured.tags && featured.tags.length > 0}
 							<div class="flex flex-wrap gap-2 mb-4">
 								{#each featured.tags.slice(0, 3) as tag}
-									<span class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-medium">
+									<span
+										class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-medium"
+									>
 										{tag}
 									</span>
 								{/each}
@@ -131,7 +141,9 @@
 						<p class="text-stone-700 text-[15px] leading-relaxed mb-6 line-clamp-4">
 							{featured.excerpt}
 						</p>
-						<div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs tracking-wide text-stone-500 mb-7 font-story italic">
+						<div
+							class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs tracking-wide text-stone-500 mb-7 font-story italic"
+						>
 							<time datetime={featured.date}>{formatDate(featured.date)}</time>
 							{#if featured.readingTime}
 								<span class="text-stone-400">·</span>
@@ -159,9 +171,14 @@
 					</h2>
 				</div>
 
-				<div data-scroll-stagger class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+				<div
+					data-scroll-stagger
+					class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+				>
 					{#each rest as post}
-						<article class="bg-white rounded-2xl overflow-hidden border border-stone-200/70 hover:soft-shadow hover:-translate-y-1 transition-all duration-300 flex flex-col">
+						<article
+							class="bg-white rounded-2xl overflow-hidden border border-stone-200/70 hover:soft-shadow hover:-translate-y-1 transition-all duration-300 flex flex-col"
+						>
 							{#if post.image}
 								<a href="/blog/{post.slug}" class="block h-48 overflow-hidden">
 									<img
@@ -182,7 +199,9 @@
 								{#if post.tags && post.tags.length > 0}
 									<div class="flex flex-wrap gap-2 mb-3">
 										{#each post.tags.slice(0, 2) as tag}
-											<span class="px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-[11px] font-medium">
+											<span
+												class="px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-[11px] font-medium"
+											>
 												{tag}
 											</span>
 										{/each}
@@ -196,7 +215,9 @@
 								<p class="text-stone-700 text-sm leading-relaxed mb-5 line-clamp-3 flex-1">
 									{post.excerpt}
 								</p>
-								<div class="flex items-center justify-between pt-4 border-t border-stone-100 text-xs text-stone-500">
+								<div
+									class="flex items-center justify-between pt-4 border-t border-stone-100 text-xs text-stone-500"
+								>
 									<span class="font-story italic">
 										<time datetime={post.date}>{formatDate(post.date)}</time>
 										{#if post.readingTime}
@@ -227,7 +248,14 @@
 	:global(main blockquote),
 	:global(main span:not([class*='font-'])),
 	:global(main div:not([class*='font-'])) {
-		font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-family:
+			'Inter',
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			'Segoe UI',
+			Roboto,
+			sans-serif;
 	}
 
 	:global(.font-story) {

@@ -24,17 +24,17 @@
 		dateModified: post.date,
 		author: {
 			'@type': 'Person',
-			name: post.author,
+			name: post.author
 		},
 		publisher: {
 			'@type': 'Organization',
 			name: 'EcoHubs.community',
 			logo: {
 				'@type': 'ImageObject',
-				url: `${siteUrl}/logo.png`,
-			},
+				url: `${siteUrl}/logo.png`
+			}
 		},
-		...(post.tags && post.tags.length > 0 ? { articleSection: post.tags.join(', ') } : {}),
+		...(post.tags && post.tags.length > 0 ? { articleSection: post.tags.join(', ') } : {})
 	};
 </script>
 
@@ -64,8 +64,12 @@
 		HEADER (kicker, title, meta)
 ═══════════════════════════════════════════════════════════════════ -->
 <section class="relative pt-32 pb-12 md:pt-40 md:pb-16 overflow-hidden">
-	<div class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"></div>
-	<div class="absolute -z-10 top-20 -left-40 w-[420px] h-[420px] rounded-full bg-emerald-200/25 blur-3xl"></div>
+	<div
+		class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
+	></div>
+	<div
+		class="absolute -z-10 top-20 -left-40 w-[420px] h-[420px] rounded-full bg-emerald-200/25 blur-3xl"
+	></div>
 
 	<div class="max-w-3xl mx-auto px-6 lg:px-8">
 		<a
@@ -79,14 +83,18 @@
 		{#if post.tags && post.tags.length > 0}
 			<div class="flex flex-wrap gap-2 mb-6">
 				{#each post.tags as tag}
-					<span class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-medium">
+					<span
+						class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-medium"
+					>
 						{tag}
 					</span>
 				{/each}
 			</div>
 		{/if}
 
-		<h1 class="font-serif text-4xl md:text-5xl lg:text-[56px] text-ecohubs-deep leading-[1.08] tracking-tight mb-8">
+		<h1
+			class="font-serif text-4xl md:text-5xl lg:text-[56px] text-ecohubs-deep leading-[1.08] tracking-tight mb-8"
+		>
 			{post.title}
 		</h1>
 
@@ -144,19 +152,25 @@
 		RELATED POSTS
 ═══════════════════════════════════════════════════════════════════ -->
 {#if data.relatedPosts && data.relatedPosts.length > 0}
-	<section class="py-20 md:py-28 bg-ecohubs-ivory border-t border-stone-200/70 relative overflow-hidden">
+	<section
+		class="py-20 md:py-28 bg-ecohubs-ivory border-t border-stone-200/70 relative overflow-hidden"
+	>
 		<div class="absolute inset-0 grain pointer-events-none opacity-40"></div>
 		<div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
 			<div class="max-w-2xl mb-12">
 				<div class="kicker text-emerald-700 mb-4">If this resonated</div>
 				<h2 class="font-serif text-3xl md:text-4xl text-ecohubs-deep leading-tight">
-					You might also want <em class="font-story italic font-normal text-stone-500">to sit with these.</em>
+					You might also want <em class="font-story italic font-normal text-stone-500"
+						>to sit with these.</em
+					>
 				</h2>
 			</div>
 
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 				{#each data.relatedPosts as relatedPost}
-					<article class="bg-white rounded-2xl overflow-hidden border border-stone-200/70 hover:soft-shadow hover:-translate-y-1 transition-all duration-300 flex flex-col">
+					<article
+						class="bg-white rounded-2xl overflow-hidden border border-stone-200/70 hover:soft-shadow hover:-translate-y-1 transition-all duration-300 flex flex-col"
+					>
 						{#if relatedPost.image}
 							<a href="/blog/{relatedPost.slug}" class="block h-44 overflow-hidden">
 								<img
@@ -171,7 +185,10 @@
 						{/if}
 						<div class="p-6 flex flex-col flex-1">
 							<h3 class="font-serif text-lg text-ecohubs-deep leading-snug mb-3">
-								<a href="/blog/{relatedPost.slug}" class="hover:text-ecohubs-primary transition-colors">
+								<a
+									href="/blog/{relatedPost.slug}"
+									class="hover:text-ecohubs-primary transition-colors"
+								>
 									{relatedPost.title}
 								</a>
 							</h3>
@@ -207,7 +224,9 @@
 			</div>
 			<div class="flex flex-wrap gap-3">
 				<a
-					href="https://twitter.com/intent/tweet?text={encodeURIComponent(post.title)}&url={encodeURIComponent(`${siteUrl}/blog/${post.slug}`)}"
+					href="https://twitter.com/intent/tweet?text={encodeURIComponent(
+						post.title
+					)}&url={encodeURIComponent(`${siteUrl}/blog/${post.slug}`)}"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 text-stone-800 text-sm font-medium hover:border-ecohubs-dark hover:text-ecohubs-dark transition-colors"
@@ -233,7 +252,14 @@
 	:global(main li),
 	:global(main span:not([class*='font-'])),
 	:global(main div:not([class*='font-'])) {
-		font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-family:
+			'Inter',
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			'Segoe UI',
+			Roboto,
+			sans-serif;
 	}
 
 	:global(.font-story) {
@@ -275,7 +301,11 @@
 
 	:global(.prose-ecohubs) {
 		color: #1c1917;
-		font-family: 'Inter', system-ui, -apple-system, sans-serif;
+		font-family:
+			'Inter',
+			system-ui,
+			-apple-system,
+			sans-serif;
 		font-size: 1.0625rem;
 		line-height: 1.8;
 	}

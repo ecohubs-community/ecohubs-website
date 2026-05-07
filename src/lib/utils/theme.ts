@@ -36,7 +36,3 @@ export function applyTheme(theme: 'light' | 'dark'): void {
 	document.documentElement.classList.add(theme);
 	document.documentElement.style.colorScheme = theme;
 }
-
-
-
-

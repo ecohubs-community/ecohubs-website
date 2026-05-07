@@ -154,4 +154,3 @@
 	style="z-index: -1;"
 	aria-hidden="true"
 ></canvas>
-
