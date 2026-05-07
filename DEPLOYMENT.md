@@ -49,19 +49,16 @@ ADMIN_EMAIL=admin@your-domain.com
 LINKMONK_URL=https://newsletter.your-domain.com
 LINKMONK_API_KEY=your-api-key
 
-# Fallback Webhook (Zapier)
-ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/...
-
 # Application Storage (Airtable)
 AIRTABLE_API_KEY=your-api-key
 AIRTABLE_BASE_ID=your-base-id
 AIRTABLE_APPLICATIONS_TABLE=Applications
 
 # Application Voting (Snapshot)
-SNAPSHOT_SPACE=ecohubs.eth
-SNAPSHOT_NETWORK=1
-SNAPSHOT_VOTING_DURATION=604800  # 7 days for application proposals
-SNAPSHOT_BLOG_VOTING_DURATION=172800  # 2 days for blog publication proposals
+# SNAPSHOT_SPACE=ecohubs.eth
+# SNAPSHOT_NETWORK=1
+# SNAPSHOT_VOTING_DURATION=604800  # 7 days for application proposals
+# SNAPSHOT_BLOG_VOTING_DURATION=172800  # 2 days for blog publication proposals
 
 # Ghost CMS Integration
 GHOST_URL=https://your-ghost-instance.com
@@ -95,16 +92,19 @@ See [`.env.example`](.env.example) for the complete list.
 ### Manual Deployment
 
 1. **Install Vercel CLI:**
+
    ```bash
    npm install -g vercel
    ```
 
 2. **Login to Vercel:**
+
    ```bash
    vercel login
    ```
 
 3. **Deploy:**
+
    ```bash
    vercel
    ```
@@ -123,6 +123,7 @@ See [`.env.example`](.env.example) for the complete list.
 ### Vercel-Specific Configuration
 
 The project includes `vercel.json` with optimized settings. Vercel automatically:
+
 - Detects SvelteKit
 - Sets up proper routing
 - Handles serverless functions for API routes
@@ -230,16 +231,18 @@ Create `ecosystem.config.js`:
 
 ```javascript
 module.exports = {
-	apps: [{
-		name: 'ecohubs',
-		script: 'build/index.js',
-		instances: 'max',
-		exec_mode: 'cluster',
-		env: {
-			NODE_ENV: 'production',
-			PORT: 3000
+	apps: [
+		{
+			name: 'ecohubs',
+			script: 'build/index.js',
+			instances: 'max',
+			exec_mode: 'cluster',
+			env: {
+				NODE_ENV: 'production',
+				PORT: 3000
+			}
 		}
-	}]
+	]
 };
 ```
 
@@ -341,6 +344,7 @@ The `build/` directory contains static files.
 ### Deploy to:
 
 **Netlify:**
+
 ```bash
 # Install Netlify CLI
 npm install -g netlify-cli
@@ -350,6 +354,7 @@ netlify deploy --prod --dir=build
 ```
 
 **GitHub Pages:**
+
 ```bash
 # Install gh-pages
 pnpm add -D gh-pages
@@ -372,6 +377,7 @@ pnpm deploy
 Use a local SMTP server for testing:
 
 **Option 1: MailHog (Recommended)**
+
 ```bash
 # macOS
 brew install mailhog
@@ -386,6 +392,7 @@ chmod +x MailHog_linux_amd64
 Access web UI at `http://localhost:8025`
 
 `.env` configuration:
+
 ```bash
 SMTP_HOST=localhost
 SMTP_PORT=1025
@@ -395,6 +402,7 @@ SMTP_PASSWORD=
 ```
 
 **Option 2: Mailpit**
+
 ```bash
 # macOS
 brew install mailpit
@@ -425,6 +433,7 @@ SMTP_PASSWORD=your-secure-password
 #### Option 2: Plesk Mail
 
 If using Plesk:
+
 1. Create email account in Plesk
 2. Note SMTP settings (usually mail.yourdomain.com:587)
 3. Configure in `.env`
@@ -432,6 +441,7 @@ If using Plesk:
 #### Option 3: Transactional Email Service
 
 For easier setup, use a service like:
+
 - **SendGrid** (12,000 emails/month free)
 - **Mailgun** (5,000 emails/month free)
 - **Postmark** (100 emails/month free)
@@ -503,11 +513,13 @@ Configure secrets in GitHub repository settings.
 ### Build Failures
 
 **Error: `Cannot find module '@sveltejs/adapter-static'`**
+
 ```bash
 pnpm install
 ```
 
 **Error: Memory issues during build**
+
 ```bash
 NODE_OPTIONS=--max-old-space-size=4096 pnpm build
 ```
@@ -532,14 +544,16 @@ NODE_OPTIONS=--max-old-space-size=4096 pnpm build
 ### Performance Issues
 
 1. Enable precompression:
+
    ```javascript
    // svelte.config.js
    adapter: adapter({
-       precompress: true
-   })
+   	precompress: true
+   });
    ```
 
 2. Configure caching in Nginx:
+
    ```nginx
    location /_app/ {
        expires 1y;
@@ -556,11 +570,13 @@ NODE_OPTIONS=--max-old-space-size=4096 pnpm build
 ### Log Viewing
 
 **PM2 logs:**
+
 ```bash
 pm2 logs ecohubs
 ```
 
 **Nginx logs:**
+
 ```bash
 sudo tail -f /var/log/nginx/access.log
 sudo tail -f /var/log/nginx/error.log
@@ -579,6 +595,7 @@ pm2 reload ecosystem.config.js
 ### Backups
 
 Regular backups of:
+
 - Database (if using)
 - Uploaded files
 - Environment variables
@@ -589,7 +606,7 @@ Regular backups of:
 ## Support
 
 For deployment issues:
+
 - Check [GitHub Issues](https://github.com/yourusername/ecohubs.community/issues)
 - Join our [Community Forum](https://github.com/yourusername/ecohubs.community/discussions)
 - Email: [tech@ecohubs.community](mailto:tech@ecohubs.community)
-

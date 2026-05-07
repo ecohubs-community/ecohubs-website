@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Become a Member — EcoHubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Pridi', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          story: ['Fraunces', 'serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          ecohubs: {
+            base: '#fbfbf9',
+            ivory: '#f5f2ea',
+            text: '#1c1917',
+            primary: '#059669',
+            dark: '#064e3b',
+            deep: '#0b2e24',
+            accent: '#d97706',
+            light: '#a7f3d0',
+            soil: '#8b6f47',
+            clay: '#c4a484',
+            muted: '#6b7265',
+          },
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    --ecohubs-dark: #064e3b;
+    --ecohubs-deep: #0b2e24;
+    --ecohubs-primary: #059669;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #fbfbf9;
+    color: #1c1917;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-serif { font-family: 'Pridi', serif; }
+  .font-story { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .text-gradient {
+    background: linear-gradient(135deg, #059669, #0b2e24);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .hairline { height: 1px; background: linear-gradient(90deg, transparent, rgba(6,78,59,0.25), transparent); }
+  .kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .quote-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  .soft-shadow { box-shadow: 0 30px 60px -30px rgba(11, 46, 36, 0.25); }
+  .pulse-dot::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 9999px;
+    background: currentColor;
+    opacity: 0.25;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.25; }
+    50% { transform: scale(1.6); opacity: 0; }
+  }
+  .placeholder-img {
+    background:
+      repeating-linear-gradient(
+        135deg,
+        rgba(6, 78, 59, 0.05) 0px,
+        rgba(6, 78, 59, 0.05) 12px,
+        rgba(6, 78, 59, 0.10) 12px,
+        rgba(6, 78, 59, 0.10) 24px
+      ),
+      #eef0e7;
+  }
+  .placeholder-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #4b5b51;
+    background: rgba(255,255,255,0.85);
+    padding: 4px 9px;
+    border-radius: 4px;
+  }
+  details summary::-webkit-details-marker { display: none; }
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- ================================================================ -->
+<!-- NAV                                                              -->
+<!-- ================================================================ -->
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#fbfbf9]/80 border-b border-stone-200/60">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="Homepage Redesign.html" class="flex items-center gap-2.5 font-serif text-[17px] text-ecohubs-dark">
+      <img src="assets/ecohubs-logo.svg" alt="EcoHubs" class="w-8 h-8" />
+      EcoHubs
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-stone-700">
+      <a href="Homepage Redesign.html#story" class="hover:text-ecohubs-dark">Stories</a>
+      <a href="Vision Page.html" class="hover:text-ecohubs-dark">Vision</a>
+      <a href="Blueprint Page.html" class="hover:text-ecohubs-dark">Blueprint</a>
+      <a href="Membership Page.html" class="text-ecohubs-dark font-medium">Members</a>
+      <a href="#faq" class="hover:text-ecohubs-dark">FAQ</a>
+    </nav>
+    <a href="#apply" class="px-4 py-2 bg-ecohubs-dark text-white text-sm rounded-full hover:bg-ecohubs-deep transition-colors">Apply to Join</a>
+  </div>
+</header>
+
+<!-- ================================================================ -->
+<!-- 1. HERO                                                          -->
+<!-- ================================================================ -->
+<section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5f2ea] via-[#fbfbf9] to-[#fbfbf9]"></div>
+  <div class="absolute -z-10 top-20 -left-40 w-[500px] h-[500px] rounded-full bg-emerald-200/25 blur-3xl"></div>
+  <div class="absolute -z-10 bottom-0 -right-20 w-[420px] h-[420px] rounded-full bg-amber-200/30 blur-3xl"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <div class="lg:col-span-7">
+        <div class="kicker text-emerald-700 mb-6 flex items-center gap-3">
+          <span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"></span>
+          Open for applications · Free · Contribution-based
+        </div>
+
+        <h1 class="font-serif text-5xl md:text-6xl lg:text-[72px] leading-[1.04] tracking-tight text-ecohubs-deep">
+          You don't <em class="font-story italic font-normal text-stone-500">join</em> EcoHubs<span class="font-story italic font-light text-stone-400">.</span><br/>
+          You start <em class="font-story italic font-normal text-ecohubs-primary">showing up</em> for it.
+        </h1>
+
+        <p class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light">
+          Membership is not a tier you buy or a list you get on. It's a quiet
+          decision to bring your craft, your time, or your honest questions to
+          a community that's writing the Blueprint for a different way to live.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row gap-3">
+          <a href="#apply" class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-all inline-flex items-center justify-center gap-2 group">
+            Apply to become a member
+            <span class="transition-transform group-hover:translate-x-0.5">→</span>
+          </a>
+          <a href="#what-it-is" class="px-7 py-3.5 bg-transparent border border-stone-300 text-stone-800 font-medium rounded-full hover:border-ecohubs-dark hover:text-ecohubs-dark transition-all inline-flex items-center justify-center gap-2">
+            What does that actually mean?
+          </a>
+        </div>
+
+        <div class="mt-12 flex items-start gap-4 max-w-md">
+          <div class="flex -space-x-2">
+            <div class="w-9 h-9 rounded-full border-2 border-[#fbfbf9] bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=120&auto=format&fit=crop')"></div>
+            <div class="w-9 h-9 rounded-full border-2 border-[#fbfbf9] bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=120&auto=format&fit=crop')"></div>
+            <div class="w-9 h-9 rounded-full border-2 border-[#fbfbf9] bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=120&auto=format&fit=crop')"></div>
+            <div class="w-9 h-9 rounded-full border-2 border-[#fbfbf9] bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1502767089025-6572583495b0?q=80&w=120&auto=format&fit=crop')"></div>
+          </div>
+          <div class="text-sm text-stone-600 leading-snug pt-1">
+            Permaculturists, governance writers, designers, parents and
+            <em class="font-story italic">people who got tired of doing this alone</em> —
+            already inside.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: a "membership card" — a fillable dossier that you grow into.
+           Echoes the Blueprint's structured aesthetic, but personal — reinforcing
+           "you don't join, you start showing up". -->
+      <div class="lg:col-span-5 relative">
+        <!-- the card itself, slightly rotated for a paper-on-desk feel -->
+        <div class="relative" style="transform: rotate(-1.2deg);">
+          <!-- back card (paper stack) -->
+          <div class="absolute inset-0 translate-x-3 translate-y-3 rounded-[26px] bg-[#efe8d6] border border-stone-200/70"></div>
+          <div class="absolute inset-0 translate-x-1.5 translate-y-1.5 rounded-[26px] bg-[#f6f1e2] border border-stone-200/70"></div>
+
+          <!-- main card -->
+          <div class="relative bg-[#fbfbf9] rounded-[26px] border border-stone-200/80 soft-shadow overflow-hidden">
+            <!-- top bar — like a passport / dossier header -->
+            <div class="px-7 pt-6 pb-4 flex items-start justify-between border-b border-dashed border-stone-300/80">
+              <div>
+                <div class="font-mono text-[10px] tracking-[0.22em] text-stone-500 uppercase">EcoHubs · Membership Dossier</div>
+                <div class="mt-1 font-serif text-[15px] text-ecohubs-deep">No. <span class="font-story italic">— assigned upon arrival</span></div>
+              </div>
+              <!-- subtle stamp-like seal -->
+              <div class="relative w-14 h-14 shrink-0">
+                <div class="absolute inset-0 rounded-full border-2 border-emerald-700/30"></div>
+                <div class="absolute inset-1.5 rounded-full border border-emerald-700/20 flex items-center justify-center">
+                  <span class="font-story italic text-[11px] text-emerald-800/80 leading-none text-center">open<br/>standard</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- name slot -->
+            <div class="px-7 pt-5">
+              <div class="kicker text-stone-500 mb-2">Member · name</div>
+              <div class="flex items-end gap-3">
+                <div class="font-story italic text-3xl text-stone-300 leading-none pb-1">your name,</div>
+                <div class="font-story italic text-[15px] text-stone-400 pb-1.5">written by you</div>
+              </div>
+              <div class="mt-3 h-px bg-stone-300"></div>
+            </div>
+
+            <!-- two columns: what you bring / what grows -->
+            <div class="px-7 py-6 grid grid-cols-2 gap-6">
+              <div>
+                <div class="kicker text-stone-500 mb-3">What you bring</div>
+                <ul class="space-y-2.5 text-[13.5px] text-stone-700">
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-3.5 h-3.5 rounded-[3px] border border-stone-400 inline-flex items-center justify-center text-emerald-700 text-[10px] leading-none">✓</span>
+                    Time &amp; honest attention
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-3.5 h-3.5 rounded-[3px] border border-stone-400 inline-flex items-center justify-center text-emerald-700 text-[10px] leading-none">✓</span>
+                    A craft, a question, or a skill
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-3.5 h-3.5 rounded-[3px] border border-stone-400"></span>
+                    <span class="text-stone-500 italic font-story">— write your own</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-3.5 h-3.5 rounded-[3px] border border-stone-400"></span>
+                    <span class="text-stone-500 italic font-story">— write your own</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <div class="kicker text-stone-500 mb-3">What grows</div>
+                <ul class="space-y-2.5 text-[13.5px] text-stone-700">
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span>
+                    Trust
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span>
+                    Access
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span>
+                    Influence on the Blueprint
+                  </li>
+                  <li class="flex items-center gap-2.5 text-stone-500">
+                    <span class="w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+                    <span class="font-story italic">— and slowly, belonging</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- status pills row -->
+            <div class="px-7 pb-5 flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 text-[11px] font-medium rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/70">Free</span>
+              <span class="px-2.5 py-1 text-[11px] font-medium rounded-full bg-amber-50 text-amber-800 border border-amber-200/70">Contribution-based</span>
+              <span class="px-2.5 py-1 text-[11px] font-medium rounded-full bg-stone-100 text-stone-700 border border-stone-200">Online</span>
+              <span class="px-2.5 py-1 text-[11px] font-medium rounded-full bg-stone-100 text-stone-700 border border-stone-200">Application-only</span>
+            </div>
+
+            <!-- signature footer -->
+            <div class="px-7 py-5 bg-[#f5f2ea] border-t border-dashed border-stone-300/80 flex items-end justify-between gap-4">
+              <div class="flex-1">
+                <div class="kicker text-stone-500 mb-2">Signed, by showing up</div>
+                <svg viewBox="0 0 220 36" class="w-full max-w-[220px] h-9 opacity-50">
+                  <path d="M4 24 C 14 6, 28 28, 42 18 S 70 8, 86 22 S 116 30, 134 14 S 162 4, 184 20 S 210 28, 218 18"
+                        stroke="#0b2e24" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="kicker text-stone-500 mb-1">Date</div>
+                <div class="font-story italic text-stone-700 text-[15px]">when you're ready</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- floating quote chip — same voice family as other pages, distinct from card -->
+        <div class="absolute -left-4 -bottom-6 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[270px] border border-stone-100 hidden md:block">
+          <p class="font-story italic text-[15px] leading-snug text-stone-800">
+            "I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter."
+          </p>
+          <p class="mt-2 text-[11px] text-stone-500 tracking-wider uppercase">Anika · governance writer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hairline max-w-4xl mx-auto"></div>
+
+<!-- ================================================================ -->
+<!-- 2. WHAT MEMBERSHIP ACTUALLY IS — honest framing                  -->
+<!-- ================================================================ -->
+<section id="what-it-is" class="relative py-24 md:py-32 bg-[#fbfbf9]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <div class="kicker text-emerald-700 mb-4">Before you apply — what this is, honestly</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        We'd rather <em class="font-story italic font-normal text-stone-500">undersell it</em><br/>
+        than have you arrive disappointed.
+      </h2>
+      <p class="mt-6 text-lg text-stone-700 leading-relaxed">
+        Plenty of community projects sell a finished thing. We can't — because we're not finished, and that's intentional. Here's exactly what membership is, and what it isn't, in plain language.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <!-- IS -->
+      <div class="rounded-3xl bg-[#f5f2ea] border border-stone-200/70 p-7 md:p-9 relative overflow-hidden">
+        <div class="kicker text-emerald-700 mb-6">What it is</div>
+        <ul class="space-y-5">
+          <li class="flex items-start gap-4">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+            <p class="text-stone-800 leading-relaxed">
+              <strong class="text-ecohubs-deep">An online community</strong> — held together by tools, calls, and a shared document called the Blueprint.
+            </p>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+            <p class="text-stone-800 leading-relaxed">
+              <strong class="text-ecohubs-deep">Free to join.</strong> No fee, no tier, no premium. Application is based on alignment, not payment.
+            </p>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+            <p class="text-stone-800 leading-relaxed">
+              <strong class="text-ecohubs-deep">Contribution-based.</strong> Trust, access, and influence grow with what you bring — research, writing, listening, code, care.
+            </p>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+            <p class="text-stone-800 leading-relaxed">
+              <strong class="text-ecohubs-deep">A voice in the work.</strong> Members shape the Blueprint, vote on proposals, and decide together who joins next.
+            </p>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+            <p class="text-stone-800 leading-relaxed">
+              <strong class="text-ecohubs-deep">A path, when you're ready.</strong> Pilot hubs (Ecuador first) come next. Online relationships precede physical ones.
+            </p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- IS NOT -->
+      <div class="rounded-3xl bg-white border border-stone-200/70 p-7 md:p-9 relative overflow-hidden">
+        <div class="kicker text-amber-700 mb-6">What it isn't</div>
+        <ul class="space-y-5">
+          <li class="flex items-start gap-4">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0"></span>
+            <p class="text-stone-700 leading-relaxed">
+              Not a place to <em class="font-story italic">move to</em> — yet. We're not currently placing members in physical communities.
+            </p>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0"></span>
+            <p class="text-stone-700 leading-relaxed">
+              Not a <em class="font-story italic">crypto investment</em>. ECO is an internal value unit, non-transferable, never traded.
+            </p>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0"></span>
+            <p class="text-stone-700 leading-relaxed">
+              Not a <em class="font-story italic">consumer product</em>. There's no feed to scroll, no engagement loop. Show up, or don't.
+            </p>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0"></span>
+            <p class="text-stone-700 leading-relaxed">
+              Not an <em class="font-story italic">ideology</em>. We have stances; we don't have a doctrine you must agree with.
+            </p>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0"></span>
+            <p class="text-stone-700 leading-relaxed">
+              Not a <em class="font-story italic">finished thing</em>. It will change while you're inside it. That's the offer.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 3. THREE DOORWAYS                                                 -->
+<!-- ================================================================ -->
+<section class="py-24 md:py-32 bg-[#f5f2ea] relative overflow-hidden">
+  <div class="absolute inset-0 grain pointer-events-none opacity-50"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-2xl mb-14">
+      <div class="kicker text-emerald-800 mb-4">Three doorways in</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        There's no <em class="font-story italic font-normal text-stone-500">one way</em> to begin.<br/>
+        Pick the one that feels honest.
+      </h2>
+      <p class="mt-5 text-lg text-stone-700 leading-relaxed">
+        These aren't tiers. They're the doorways we've noticed people actually walk through. You can start with one and end up doing all three. Most people do.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5 lg:gap-7">
+      <!-- Read & respond -->
+      <a href="#" class="group bg-white rounded-3xl p-7 md:p-8 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors block flex flex-col">
+        <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-5">01 · Read & respond</div>
+        <h3 class="font-serif text-2xl md:text-[26px] text-ecohubs-deep leading-snug mb-4">Critique a chapter of the Blueprint.</h3>
+        <p class="text-stone-700 leading-relaxed text-[15px] flex-1">
+          No commitment. Read what we have, tell us where it's wrong, where it's missing, where it's naïve. The best critiques become co-authors.
+        </p>
+        <div class="mt-7 pt-6 border-t border-stone-100 flex items-center justify-between">
+          <span class="text-xs text-stone-500 font-story italic">~30 minutes · async</span>
+          <span class="text-sm text-ecohubs-dark font-medium group-hover:translate-x-0.5 inline-block transition-transform">Open the Blueprint →</span>
+        </div>
+      </a>
+
+      <!-- Bring a skill -->
+      <a href="#contribute" class="group bg-white rounded-3xl p-7 md:p-8 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors block flex flex-col">
+        <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-5">02 · Bring a skill</div>
+        <h3 class="font-serif text-2xl md:text-[26px] text-ecohubs-deep leading-snug mb-4">Contribute what you already do well.</h3>
+        <p class="text-stone-700 leading-relaxed text-[15px] flex-1">
+          Permaculture, governance, translation, code, cooking, listening, design, research. We need every one of these — not later, now.
+        </p>
+        <div class="mt-7 pt-6 border-t border-stone-100 flex items-center justify-between">
+          <span class="text-xs text-stone-500 font-story italic">a few hours a week</span>
+          <span class="text-sm text-ecohubs-dark font-medium group-hover:translate-x-0.5 inline-block transition-transform">See where we need help →</span>
+        </div>
+      </a>
+
+      <!-- Host -->
+      <a href="#" class="group bg-white rounded-3xl p-7 md:p-8 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors block flex flex-col">
+        <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-5">03 · Host a circle</div>
+        <h3 class="font-serif text-2xl md:text-[26px] text-ecohubs-deep leading-snug mb-4">Start something local where you live.</h3>
+        <p class="text-stone-700 leading-relaxed text-[15px] flex-1">
+          A monthly meal. A weekly listening circle. A reading group around a Blueprint chapter. We help you set the form — you hold the room.
+        </p>
+        <div class="mt-7 pt-6 border-t border-stone-100 flex items-center justify-between">
+          <span class="text-xs text-stone-500 font-story italic">an evening a month, ongoing</span>
+          <span class="text-sm text-ecohubs-dark font-medium group-hover:translate-x-0.5 inline-block transition-transform">Apply to host →</span>
+        </div>
+      </a>
+    </div>
+
+    <p class="mt-12 text-center text-sm text-stone-500 max-w-xl mx-auto font-story italic">
+      None of these are tiers. None of these cost. They are the doorways we have noticed people walk through.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 4. APPLICATION PROCESS                                            -->
+<!-- ================================================================ -->
+<section id="apply" class="py-24 md:py-32 bg-[#fbfbf9]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+      <!-- LEFT: intro -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-28 self-start">
+        <div class="kicker text-emerald-700 mb-4">How becoming a member works</div>
+        <h2 class="font-serif text-4xl md:text-[44px] text-ecohubs-deep leading-tight mb-6">
+          A short application,<br/>
+          read by <em class="font-story italic font-normal text-stone-500">real people</em>,<br/>
+          decided in the open.
+        </h2>
+        <p class="text-stone-700 leading-relaxed mb-8">
+          We don't auto-approve. The community itself reads each application and decides together. It's slower than clicking Sign Up — and that's why it works.
+        </p>
+
+        <div class="space-y-4 text-sm">
+          <div class="flex items-start gap-3 p-4 rounded-2xl bg-[#f5f2ea] border border-stone-200/60">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+            <div>
+              <div class="font-medium text-ecohubs-deep">~20 minutes to apply</div>
+              <div class="text-stone-600 mt-0.5">Background, values, how you'd like to show up.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-2xl bg-[#f5f2ea] border border-stone-200/60">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+            <div>
+              <div class="font-medium text-ecohubs-deep">3 days to hear back</div>
+              <div class="text-stone-600 mt-0.5">Community review and vote, by email at the end.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-2xl bg-[#f5f2ea] border border-stone-200/60">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+            <div>
+              <div class="font-medium text-ecohubs-deep">No fee, ever</div>
+              <div class="text-stone-600 mt-0.5">Membership is free and remains free.</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT: steps -->
+      <div class="lg:col-span-8 space-y-8">
+        <!-- Step 1 -->
+        <article class="grid grid-cols-[auto,1fr] gap-6 md:gap-8 items-start p-7 md:p-9 bg-white rounded-3xl border border-stone-200/70 soft-shadow">
+          <div class="flex flex-col items-center">
+            <div class="w-14 h-14 rounded-full bg-ecohubs-deep text-[#f5f2ea] font-serif text-xl flex items-center justify-center">01</div>
+            <div class="mt-3 w-px flex-1 bg-stone-200 min-h-[40px]"></div>
+          </div>
+          <div>
+            <div class="kicker text-stone-500 mb-2">Step one</div>
+            <h3 class="font-serif text-2xl md:text-[28px] text-ecohubs-deep leading-snug mb-3">Tell us who you are, in your own words.</h3>
+            <p class="text-stone-700 leading-relaxed mb-5">
+              The form takes about 20 minutes. We ask about your background, what you care about, what brought you here, and how you'd like to contribute. We read all of it. Long answers welcome — short ones too, if you mean them.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs">Your background</span>
+              <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs">What you care about</span>
+              <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs">How you'd contribute</span>
+              <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs">A question you have</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Step 2 -->
+        <article class="grid grid-cols-[auto,1fr] gap-6 md:gap-8 items-start p-7 md:p-9 bg-white rounded-3xl border border-stone-200/70 soft-shadow">
+          <div class="flex flex-col items-center">
+            <div class="w-14 h-14 rounded-full bg-ecohubs-primary text-white font-serif text-xl flex items-center justify-center">02</div>
+            <div class="mt-3 w-px flex-1 bg-stone-200 min-h-[40px]"></div>
+          </div>
+          <div>
+            <div class="kicker text-stone-500 mb-2">Step two</div>
+            <h3 class="font-serif text-2xl md:text-[28px] text-ecohubs-deep leading-snug mb-3">The community reads it. The community decides.</h3>
+            <p class="text-stone-700 leading-relaxed mb-5">
+              Parts of your application are made visible to current members for three days. They review, ask questions, and vote. We trust the people already inside to know who fits. <em class="font-story italic">No founder veto. No private inbox.</em>
+            </p>
+            <div class="grid sm:grid-cols-3 gap-3 mt-2">
+              <div class="p-4 rounded-xl bg-[#f5f2ea] border border-stone-200/60">
+                <div class="font-mono text-[10px] tracking-widest uppercase text-stone-500 mb-1">Day 0</div>
+                <div class="text-sm text-ecohubs-deep font-medium">Posted to members</div>
+              </div>
+              <div class="p-4 rounded-xl bg-[#f5f2ea] border border-stone-200/60">
+                <div class="font-mono text-[10px] tracking-widest uppercase text-stone-500 mb-1">Day 1–3</div>
+                <div class="text-sm text-ecohubs-deep font-medium">Discussion + vote</div>
+              </div>
+              <div class="p-4 rounded-xl bg-[#f5f2ea] border border-stone-200/60">
+                <div class="font-mono text-[10px] tracking-widest uppercase text-stone-500 mb-1">Day 3</div>
+                <div class="text-sm text-ecohubs-deep font-medium">You hear back</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Step 3 -->
+        <article class="grid grid-cols-[auto,1fr] gap-6 md:gap-8 items-start p-7 md:p-9 bg-white rounded-3xl border border-stone-200/70 soft-shadow">
+          <div class="flex flex-col items-center">
+            <div class="w-14 h-14 rounded-full bg-amber-600 text-white font-serif text-xl flex items-center justify-center">03</div>
+          </div>
+          <div>
+            <div class="kicker text-stone-500 mb-2">Step three</div>
+            <h3 class="font-serif text-2xl md:text-[28px] text-ecohubs-deep leading-snug mb-3">You walk in. Someone is waiting for you.</h3>
+            <p class="text-stone-700 leading-relaxed mb-5">
+              On approval, you log in to <a href="https://os.ecohubs.community" class="text-ecohubs-dark underline decoration-ecohubs-primary/40 underline-offset-4 hover:decoration-ecohubs-primary" target="_blank" rel="noopener">os.ecohubs.community</a>, walk through a short onboarding, and meet the existing members in your area of contribution. You won't be left to figure it out alone.
+            </p>
+            <div class="flex flex-wrap gap-3 text-sm">
+              <span class="inline-flex items-center gap-2 text-stone-700"><span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Buddy from existing members</span>
+              <span class="inline-flex items-center gap-2 text-stone-700"><span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> First call inside two weeks</span>
+              <span class="inline-flex items-center gap-2 text-stone-700"><span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span> Open Blueprint, full voice</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="pt-4">
+          <a href="/join" class="inline-flex items-center gap-2 px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-all group">
+            Start your application
+            <span class="transition-transform group-hover:translate-x-0.5">→</span>
+          </a>
+          <p class="mt-4 text-sm text-stone-500 max-w-md font-story italic">
+            Completing the form is not a guarantee — it's an honest conversation. Most applications take a single sitting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 5. CONTRIBUTION AREAS                                             -->
+<!-- ================================================================ -->
+<section id="contribute" class="py-24 md:py-32 bg-[#f5f2ea] relative overflow-hidden">
+  <div class="absolute inset-0 grain pointer-events-none opacity-40"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-3xl mb-14">
+      <div class="kicker text-emerald-800 mb-4">Where the work actually is</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        There are no fixed roles<span class="font-story italic font-light text-stone-400">.</span><br/>
+        <em class="font-story italic font-normal text-stone-500">Just rooms with their lights on, waiting.</em>
+      </h2>
+      <p class="mt-6 text-lg text-stone-700 leading-relaxed">
+        Browse the rooms. Most members move between several. Your path will shape itself once you're inside, but here's what people are working on right now.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+      <!-- 01 -->
+      <article class="bg-white rounded-2xl p-6 lg:p-7 border border-stone-200/70 hover:soft-shadow transition-all">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="font-mono text-[11px] tracking-widest text-ecohubs-primary">ROOM · 01</span>
+          <span class="text-xs text-stone-500">Active now · 12 ppl</span>
+        </div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Shaping the Blueprint</h3>
+        <p class="text-sm text-stone-700 leading-relaxed">
+          Co-design the chapters. Propose patterns. Disagree well. The Blueprint is the spine — and it's still being written.
+        </p>
+        <div class="mt-5 text-[11px] tracking-widest uppercase text-stone-400">Writing · Research · Pattern design</div>
+      </article>
+
+      <!-- 02 -->
+      <article class="bg-white rounded-2xl p-6 lg:p-7 border border-stone-200/70">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="font-mono text-[11px] tracking-widest text-ecohubs-primary">ROOM · 02</span>
+          <span class="text-xs text-stone-500">Active now · 8 ppl</span>
+        </div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Holding the room</h3>
+        <p class="text-sm text-stone-700 leading-relaxed">
+          Facilitate calls, host listening circles, run workshops. The Blueprint only matters if humans can hold it together — these are the humans who do.
+        </p>
+        <div class="mt-5 text-[11px] tracking-widest uppercase text-stone-400">Facilitation · Listening · Conflict repair</div>
+      </article>
+
+      <!-- 03 -->
+      <article class="bg-white rounded-2xl p-6 lg:p-7 border border-stone-200/70">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="font-mono text-[11px] tracking-widest text-ecohubs-primary">ROOM · 03</span>
+          <span class="text-xs text-stone-500">Active now · 6 ppl</span>
+        </div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Telling the story</h3>
+        <p class="text-sm text-stone-700 leading-relaxed">
+          Field notes, member portraits, letters, films. Capture what's happening so others can find their way in.
+        </p>
+        <div class="mt-5 text-[11px] tracking-widest uppercase text-stone-400">Writing · Photography · Editing</div>
+      </article>
+
+      <!-- 04 -->
+      <article class="bg-white rounded-2xl p-6 lg:p-7 border border-stone-200/70">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="font-mono text-[11px] tracking-widest text-ecohubs-primary">ROOM · 04</span>
+          <span class="text-xs text-stone-500">Active now · 5 ppl</span>
+        </div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Building the platform</h3>
+        <p class="text-sm text-stone-700 leading-relaxed">
+          ecohubsOS, integrations, governance tooling. Open-source, opinionated about what we don't build. Engagement loops are not invited.
+        </p>
+        <div class="mt-5 text-[11px] tracking-widest uppercase text-stone-400">Engineering · DevOps · Open source</div>
+      </article>
+
+      <!-- 05 -->
+      <article class="bg-white rounded-2xl p-6 lg:p-7 border border-stone-200/70">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="font-mono text-[11px] tracking-widest text-ecohubs-primary">ROOM · 05</span>
+          <span class="text-xs text-stone-500">Active now · 4 ppl</span>
+        </div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Working the land</h3>
+        <p class="text-sm text-stone-700 leading-relaxed">
+          Permaculture writers, farmers, regenerative practitioners — translating soil into shareable patterns the network can use.
+        </p>
+        <div class="mt-5 text-[11px] tracking-widest uppercase text-stone-400">Permaculture · Stewardship · Field study</div>
+      </article>
+
+      <!-- 06 -->
+      <article class="bg-white rounded-2xl p-6 lg:p-7 border border-stone-200/70">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="font-mono text-[11px] tracking-widest text-ecohubs-primary">ROOM · 06</span>
+          <span class="text-xs text-stone-500">Active now · 7 ppl</span>
+        </div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Translating sideways</h3>
+        <p class="text-sm text-stone-700 leading-relaxed">
+          Move the Blueprint into other languages and cultures. EN ↔ DE, ES, PT, AR, ZH, JA — and the cultural translation that comes with them.
+        </p>
+        <div class="mt-5 text-[11px] tracking-widest uppercase text-stone-400">Translation · Cultural bridging</div>
+      </article>
+
+      <!-- 07 -->
+      <article class="bg-white rounded-2xl p-6 lg:p-7 border border-stone-200/70">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="font-mono text-[11px] tracking-widest text-ecohubs-primary">ROOM · 07</span>
+          <span class="text-xs text-stone-500">Active now · 3 ppl</span>
+        </div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Designing the look</h3>
+        <p class="text-sm text-stone-700 leading-relaxed">
+          Visual identity, web, print, signage for hubs. Make the project look like itself, not like every other movement.
+        </p>
+        <div class="mt-5 text-[11px] tracking-widest uppercase text-stone-400">Design · Typography · Brand</div>
+      </article>
+
+      <!-- 08 -->
+      <article class="bg-white rounded-2xl p-6 lg:p-7 border border-stone-200/70">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="font-mono text-[11px] tracking-widest text-ecohubs-primary">ROOM · 08</span>
+          <span class="text-xs text-stone-500">Active now · 5 ppl</span>
+        </div>
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Watching the money</h3>
+        <p class="text-sm text-stone-700 leading-relaxed">
+          Local economies, contribution accounting, ECO design. How value moves without extraction — researched, not assumed.
+        </p>
+        <div class="mt-5 text-[11px] tracking-widest uppercase text-stone-400">Economy · Accounting · Tokenomics</div>
+      </article>
+
+      <!-- 09 -->
+      <article class="bg-white rounded-2xl p-6 lg:p-7 border border-stone-200/70 bg-ecohubs-deep border-emerald-900/40 text-[#f5f2ea]">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="font-mono text-[11px] tracking-widest text-emerald-300/90">ROOM · ?</span>
+          <span class="text-xs text-stone-300/70">Yours, maybe</span>
+        </div>
+        <h3 class="font-serif text-xl text-[#f5f2ea] mb-2 leading-snug">Something we haven't named yet</h3>
+        <p class="text-sm text-stone-200/80 leading-relaxed">
+          Every member opens a room we didn't know we needed. If you don't see your craft above, that probably means there's a doorway with your name on it.
+        </p>
+        <div class="mt-5 text-[11px] tracking-widest uppercase text-emerald-300/70">Bring your own</div>
+      </article>
+    </div>
+
+    <p class="mt-10 text-sm text-stone-500 max-w-2xl font-story italic">
+      Rooms aren't roles. Most members move between several. Inside, you'll find existing members already at work — reach out, sit in, take a thread.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 6. TRUST BY DESIGN                                                -->
+<!-- ================================================================ -->
+<section class="py-24 md:py-32 bg-[#fbfbf9]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-start">
+    <div class="lg:col-span-5 lg:sticky lg:top-28 self-start">
+      <div class="kicker text-emerald-700 mb-4">How trust gets built here</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight mb-6">
+        We make the <em class="font-story italic font-normal text-stone-500">invisible</em> things<br/>
+        explicit — on purpose.
+      </h2>
+      <p class="text-lg text-stone-700 leading-relaxed mb-5">
+        Most communities die from the things no one wrote down: how decisions get made, how power moves, how someone leaves. We write them down on day one.
+      </p>
+      <p class="text-lg text-stone-700 leading-relaxed">
+        Trust here isn't built on charisma or vibes. It's built on <em class="font-story italic">visibility</em> — of effort, of votes, of process — and the freedom to disagree out loud.
+      </p>
+    </div>
+
+    <div class="lg:col-span-7 space-y-5">
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 md:p-7 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="kicker text-stone-500 mb-1">Decisions</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-2">Member-guided, in the open</h3>
+          <p class="text-stone-700 leading-relaxed text-[15px]">
+            New members, published content, shared direction — decided by transparent, gas-free votes on Snapshot. Voting is the last step, after deliberation. Not the only step.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 md:p-7 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="kicker text-stone-500 mb-1">Authority</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-2">Earned, not assigned</h3>
+          <p class="text-stone-700 leading-relaxed text-[15px]">
+            Permissions and influence grow with contribution. Not financial stake. Not seniority. The people doing the work hold the room — and step back when they need to.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 md:p-7 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="kicker text-stone-500 mb-1">Conversation</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-2">Sense-making before voting</h3>
+          <p class="text-stone-700 leading-relaxed text-[15px]">
+            Proposals are discussed in forums and circles before any vote. Disagreement is welcome. Refining a proposal counts as much as proposing one.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 md:p-7 rounded-2xl bg-[#f5f2ea] border border-stone-200/70">
+        <div class="w-10 h-10 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="kicker text-stone-500 mb-1">Technology</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-2">On-chain where useful, off-chain where human</h3>
+          <p class="text-stone-700 leading-relaxed text-[15px]">
+            EcoHubs is not "fully on-chain" — by choice. Blockchain where transparency and auditability genuinely help; everywhere else, human judgment and care.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-[auto,1fr] gap-5 p-6 md:p-7 rounded-2xl bg-ecohubs-deep border border-emerald-900/40 text-[#f5f2ea]">
+        <div class="w-10 h-10 rounded-full bg-emerald-900/60 text-emerald-300 flex items-center justify-center font-serif">→</div>
+        <div>
+          <div class="kicker text-emerald-300/90 mb-1">ECO &amp; XP — the honest version</div>
+          <h3 class="font-serif text-xl text-[#f5f2ea] mb-2">Recognition, not speculation</h3>
+          <p class="text-stone-200/85 leading-relaxed text-[15px]">
+            ECO and XP are non-transferable, non-tradeable internal units that mark contribution. They unlock access and responsibility inside the community. They are not an investment, not a coin to flip, and never the reason to be here.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 7. MEMBER VOICES                                                  -->
+<!-- ================================================================ -->
+<section class="relative py-24 md:py-28 bg-[#f5f2ea]">
+  <div class="absolute inset-0 grain pointer-events-none opacity-40"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-2xl mb-14">
+      <div class="kicker text-emerald-700 mb-4">In their own words</div>
+      <h2 class="font-serif text-3xl md:text-5xl text-ecohubs-deep leading-tight">
+        Why people decided <em class="font-story italic font-normal text-stone-500">to show up.</em>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      <article class="bg-white rounded-3xl p-7 border border-stone-200/80 soft-shadow flex flex-col">
+        <p class="font-story italic text-xl leading-snug text-ecohubs-deep flex-1">
+          "I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter. No one asked me — I just saw the gap."
+        </p>
+        <div class="mt-6 flex items-center gap-3 pt-6 border-t border-stone-100">
+          <div class="w-11 h-11 rounded-full bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=160&auto=format&fit=crop')"></div>
+          <div>
+            <div class="font-serif text-base text-ecohubs-deep">Anika S.</div>
+            <div class="text-xs text-stone-500">Berlin · Governance writer</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-3xl p-7 border border-stone-200/80 soft-shadow flex flex-col">
+        <p class="font-story italic text-xl leading-snug text-ecohubs-deep flex-1">
+          "I was sceptical of anything with 'community' in the title. The application asks real questions. The answers go to real people. That was the first thing that surprised me."
+        </p>
+        <div class="mt-6 flex items-center gap-3 pt-6 border-t border-stone-100">
+          <div class="w-11 h-11 rounded-full bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=160&auto=format&fit=crop')"></div>
+          <div>
+            <div class="font-serif text-base text-ecohubs-deep">Owen P.</div>
+            <div class="text-xs text-stone-500">Cardiff · Listening circle host</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-3xl p-7 border border-stone-200/80 soft-shadow flex flex-col">
+        <p class="font-story italic text-xl leading-snug text-ecohubs-deep flex-1">
+          "I didn't know if I was 'enough' to apply. I'm a single father, not a permaculturist. They told me on day one that listening counts. It does."
+        </p>
+        <div class="mt-6 flex items-center gap-3 pt-6 border-t border-stone-100">
+          <div class="w-11 h-11 rounded-full bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=160&auto=format&fit=crop')"></div>
+          <div>
+            <div class="font-serif text-base text-ecohubs-deep">Maria L.</div>
+            <div class="text-xs text-stone-500">Cuenca, EC · Permaculture lead</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 8. WHAT YOU GET / DON'T GET                                       -->
+<!-- ================================================================ -->
+<section class="py-24 md:py-32 bg-ecohubs-deep text-[#f5f2ea] relative overflow-hidden">
+  <div class="absolute inset-0 -z-0 opacity-40"
+       style="background-image: radial-gradient(circle at 30% 20%, rgba(16,185,129,0.2), transparent 50%), radial-gradient(circle at 80% 80%, rgba(217,119,6,0.15), transparent 55%);"></div>
+  <div class="max-w-5xl mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-2xl mb-14">
+      <div class="kicker text-emerald-300/80 mb-4">What you get when you're inside</div>
+      <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-[#f5f2ea]">
+        No swag. <em class="font-story italic font-light text-stone-400">No premium tier.</em><br/>
+        Just <em class="font-story italic text-emerald-300 font-normal">a real seat at a real table.</em>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+      <div>
+        <div class="kicker text-emerald-300/80 mb-3">A voice</div>
+        <p class="text-stone-200/85 leading-relaxed">
+          Vote on proposals, shape the Blueprint, decide who joins next. Your weight is your contribution, not your wallet.
+        </p>
+      </div>
+      <div>
+        <div class="kicker text-emerald-300/80 mb-3">A platform</div>
+        <p class="text-stone-200/85 leading-relaxed">
+          Full access to ecohubsOS, the forum, the calls, the working docs. The community's memory, openly held.
+        </p>
+      </div>
+      <div>
+        <div class="kicker text-emerald-300/80 mb-3">A circle</div>
+        <p class="text-stone-200/85 leading-relaxed">
+          People who treat your work seriously and your time as finite. Buddy on day one. Calls when you want them.
+        </p>
+      </div>
+      <div>
+        <div class="kicker text-emerald-300/80 mb-3">A path</div>
+        <p class="text-stone-200/85 leading-relaxed">
+          When pilot hubs (Ecuador first) open to members, you're the people we ask first. Online relationships precede physical ones.
+        </p>
+      </div>
+      <div>
+        <div class="kicker text-emerald-300/80 mb-3">Recognition</div>
+        <p class="text-stone-200/85 leading-relaxed">
+          XP and ECO mark your contribution visibly. Care and craft don't go unseen. They're not a paycheck — they're a record.
+        </p>
+      </div>
+      <div>
+        <div class="kicker text-emerald-300/80 mb-3">An exit, with dignity</div>
+        <p class="text-stone-200/85 leading-relaxed">
+          Membership is voluntary. The Blueprint includes how people step back, leave, and return — without drama.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 9. FAQ                                                            -->
+<!-- ================================================================ -->
+<section id="faq" class="py-24 md:py-32 bg-white">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-14">
+      <div class="kicker text-emerald-700 mb-4">Questions we hear a lot</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        Honest answers <em class="font-story italic font-normal text-stone-500">to the honest questions.</em>
+      </h2>
+    </div>
+
+    <div class="divide-y divide-stone-200 border-t border-b border-stone-200">
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">Is there a fee?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          No. Membership is free and contribution-based. You earn recognition and access through participation, not payment.
+        </div>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">Do I have to be technical, or understand Web3?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          No. We have permaculturists, parents, facilitators, designers, educators, builders, listeners — the technology is meant to support coordination, not gatekeep it. Participation is based on contribution, not on technical fluency.
+        </div>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">Do I have to move somewhere to join?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          No. Most members are online, in their current home base. The community meets, contributes, and co-creates the Blueprint together — from anywhere. Physical hubs like the Ecuador pilot come next, when communities are ready.
+        </div>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">How long does the application take, and what happens after?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          About 20 minutes to fill in. After that, your application goes through a 3-day community review and vote. You'll hear back by email — yes, no, or with follow-up questions.
+        </div>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">What kinds of contribution actually count?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          Research, writing, facilitation, coordination, design, development, translation, listening, hosting, stewardship of shared knowledge. There's no single expected skill set. The question isn't <em class="font-story italic">what you already know</em> — it's <em class="font-story italic">what you want to show up for.</em>
+        </div>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">Is this a crypto project? Why ECO tokens?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          EcoHubs is not a speculative crypto project. ECO is an internal value unit used to recognize contribution — like a transparent ledger for labor and care. It's non-transferable, never traded, and never the reason to join.
+        </div>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">Is joining early risky? What do I gain as a pioneer?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          Yes — early carries uncertainty. Systems are still evolving. In return, you get to shape the Blueprint, hold real influence, and form deeper relationships than a finished community would ever allow. This is a co-creation phase, not a finished product.
+        </div>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">Who controls this today, and how decentralized is it really?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          We're in an early founder-led phase, transitioning toward community governance. Full decentralization is a process, not a switch. Every step is being made in the open, written into the Blueprint, and reviewable.
+        </div>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">Can I leave at any time?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          Yes. Membership is voluntary. Step back, exit, return — the Blueprint includes clear, dignified paths for all of those.
+        </div>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+          <span class="font-serif text-xl text-ecohubs-deep leading-snug">What tools does the community use?</span>
+          <span class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0">+</span>
+        </summary>
+        <div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
+          ecohubsOS for the home base, Snapshot for voting, Flarum and Discord for discussions, and collaborative documents for Blueprint development. We use the smallest set of tools that lets the community see itself.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 10. FINAL CTA                                                     -->
+<!-- ================================================================ -->
+<section class="relative py-28 md:py-40 overflow-hidden">
+  <div class="absolute inset-0 -z-10 bg-ecohubs-deep"></div>
+  <div class="absolute inset-0 -z-10 opacity-40"
+       style="background-image: radial-gradient(circle at 20% 30%, rgba(16,185,129,0.35), transparent 50%), radial-gradient(circle at 80% 70%, rgba(217,119,6,0.2), transparent 55%);"></div>
+
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center text-[#f5f2ea]">
+    <div class="kicker text-emerald-300 mb-5">An invitation, not a funnel</div>
+    <h2 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-8">
+      If you've read this far <span class="font-story italic font-light">—</span><br/>
+      <em class="font-story italic font-normal text-emerald-300">we'd like to read you, too.</em>
+    </h2>
+    <p class="text-lg text-stone-200/85 leading-relaxed mb-10 max-w-xl mx-auto">
+      We're not looking for believers. We're looking for people who are ready
+      to make the invisible things explicit — in their own lives, and with others.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-3">
+      <a href="/join" class="px-8 py-4 bg-[#f5f2ea] text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors">
+        Apply for membership
+      </a>
+      <a href="Blueprint Page.html" class="px-8 py-4 border border-emerald-300/50 text-emerald-100 font-medium rounded-full hover:bg-emerald-900/40 transition-colors">
+        Read the Blueprint first
+      </a>
+    </div>
+    <p class="mt-10 text-xs text-emerald-200/60 tracking-widest uppercase">
+      Free · Contribution-based · Community-decided
+    </p>
+    <p class="mt-4 text-sm text-emerald-100/60 max-w-md mx-auto font-story italic">
+      Completing the application doesn't guarantee membership. The community decides together. We answer everyone, either way.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- FOOTER                                                            -->
+<!-- ================================================================ -->
+<footer class="bg-[#06170f] text-stone-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid grid-cols-2 md:grid-cols-5 gap-10">
+    <div class="col-span-2">
+      <a href="Homepage Redesign.html" class="flex items-center gap-2.5 mb-4">
+        <img src="assets/ecohubs-logo.svg" alt="EcoHubs" class="w-9 h-9" />
+        <span class="font-serif text-xl text-[#f5f2ea]">EcoHubs</span>
+      </a>
+      <p class="text-sm text-stone-400 leading-relaxed max-w-sm">
+        A network of small communities living the questions of belonging,
+        regeneration, and a more honest economy — one place at a time.
+      </p>
+    </div>
+    <div>
+      <div class="kicker text-emerald-300/70 mb-4">Explore</div>
+      <ul class="space-y-3 text-sm">
+        <li><a href="Homepage Redesign.html#story" class="hover:text-[#f5f2ea] transition-colors">The story</a></li>
+        <li><a href="Vision Page.html" class="hover:text-[#f5f2ea] transition-colors">Vision</a></li>
+        <li><a href="Blueprint Page.html" class="hover:text-[#f5f2ea] transition-colors">Blueprint</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="kicker text-emerald-300/70 mb-4">Take part</div>
+      <ul class="space-y-3 text-sm">
+        <li><a href="#apply" class="hover:text-[#f5f2ea] transition-colors">Become a member</a></li>
+        <li><a href="#faq" class="hover:text-[#f5f2ea] transition-colors">FAQ</a></li>
+        <li><a href="#contribute" class="hover:text-[#f5f2ea] transition-colors">Contribute</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="kicker text-emerald-300/70 mb-4">About</div>
+      <ul class="space-y-3 text-sm">
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Manifesto</a></li>
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Open source</a></li>
+        <li><a href="#" class="hover:text-[#f5f2ea] transition-colors">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-emerald-900/40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between gap-3 text-xs text-stone-500">
+      <div>© <span id="footer-year">2026</span> EcoHubs.community · Built in the open, with care.</div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-stone-300">Privacy</a>
+        <a href="#" class="hover:text-stone-300">Imprint</a>
+        <a href="#" class="hover:text-stone-300">Code of Conduct</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>

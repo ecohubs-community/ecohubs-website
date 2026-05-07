@@ -198,7 +198,9 @@
 
 	<button
 		type="submit"
-		disabled={isSubmitting || submitStatus === 'success' || (TURNSTILE_SITE_KEY && !turnstileToken)}
+		disabled={isSubmitting ||
+			submitStatus === 'success' ||
+			Boolean(TURNSTILE_SITE_KEY && !turnstileToken)}
 		class="w-full px-6 py-3 bg-ecohubs-primary text-white font-medium rounded-lg hover:bg-ecohubs-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
 	>
 		{#if isSubmitting}

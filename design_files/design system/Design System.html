@@ -1,0 +1,1259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Design System — EcoHubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Pridi', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          story: ['Fraunces', 'serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          ecohubs: {
+            base: '#fbfbf9',
+            ivory: '#f5f2ea',
+            text: '#1c1917',
+            primary: '#059669',
+            dark: '#064e3b',
+            deep: '#0b2e24',
+            accent: '#d97706',
+            light: '#a7f3d0',
+            soil: '#8b6f47',
+            clay: '#c4a484',
+            muted: '#6b7265',
+          },
+          forest: {
+            900:'#1a3009',800:'#2d5016',700:'#4a7c2a',600:'#6b9f3d',500:'#7fb84a',
+            400:'#9ac966',300:'#b5da82',200:'#d0eb9e',100:'#ebfcba',50:'#f5fde5'
+          },
+          soil: {
+            900:'#4a3d2a',800:'#5d4d35',700:'#8b6f47',600:'#a0826d',500:'#b8957d',
+            400:'#c4a484',300:'#d1b39a',200:'#dec2b0',100:'#ebd1c6',50:'#f8e0dc'
+          },
+          tide: {
+            900:'#1e3a47',800:'#2d4f5c',700:'#4a90a4',600:'#6bb3c7',500:'#7cc5d9',
+            400:'#8dd4e8',300:'#a3dff0',200:'#b9eaf8',100:'#cff5ff',50:'#e5faff'
+          },
+          ember: {
+            900:'#8b5a2a',800:'#a66b3a',700:'#c47d4a',600:'#d4a574',500:'#e0b586',
+            400:'#e8b886',300:'#f0c99a',200:'#f5d4ae',100:'#fae0c2',50:'#ffecd6'
+          }
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    --ecohubs-dark: #064e3b;
+    --ecohubs-deep: #0b2e24;
+    --ecohubs-primary: #059669;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #fbfbf9;
+    color: #1c1917;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-serif { font-family: 'Pridi', serif; }
+  .font-story { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
+  .font-mono  { font-family: 'JetBrains Mono', monospace; }
+
+  /* === Tokens lifted directly from existing pages === */
+  .text-gradient {
+    background: linear-gradient(135deg, #059669, #0b2e24);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .grain { position: relative; }
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .hairline { height: 1px; background: linear-gradient(90deg, transparent, rgba(6,78,59,0.25), transparent); }
+  .kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .soft-shadow { box-shadow: 0 30px 60px -30px rgba(11, 46, 36, 0.25); }
+  .pulse-dot { position: relative; }
+  .pulse-dot::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 9999px;
+    background: currentColor;
+    opacity: 0.25;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.25; }
+    50% { transform: scale(1.6); opacity: 0; }
+  }
+  .placeholder-img {
+    background:
+      repeating-linear-gradient(
+        135deg,
+        rgba(6, 78, 59, 0.05) 0px,
+        rgba(6, 78, 59, 0.05) 12px,
+        rgba(6, 78, 59, 0.10) 12px,
+        rgba(6, 78, 59, 0.10) 24px
+      ),
+      #eef0e7;
+  }
+  .placeholder-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #4b5b51;
+    background: rgba(255,255,255,0.85);
+    padding: 4px 9px;
+    border-radius: 4px;
+  }
+  .drop-cap::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 4.5rem;
+    line-height: 0.9;
+    float: left;
+    padding: 0.35rem 0.7rem 0 0;
+    color: #064e3b;
+    font-style: italic;
+  }
+
+  /* === DS-only helpers === */
+  .ds-card {
+    background: #ffffff;
+    border: 1px solid rgb(231 229 228 / 0.7);
+    border-radius: 1.25rem;
+  }
+  .swatch {
+    border-radius: 14px;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+    transition: transform .25s ease;
+  }
+  .swatch:hover { transform: translateY(-2px); }
+  .swatch .meta {
+    position: absolute; left: 10px; right: 10px; bottom: 10px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    line-height: 1.25;
+    color: #1c1917;
+    backdrop-filter: blur(4px);
+  }
+  .swatch.dark .meta { background: rgba(255,255,255,0.92); color: #1c1917; }
+  .ramp { display: grid; grid-template-columns: repeat(10, minmax(0,1fr)); gap: 6px; }
+  .ramp .swatch { aspect-ratio: auto; height: 78px; border-radius: 10px; }
+  .ramp .swatch .meta {
+    left: 6px; right: 6px; bottom: 6px; padding: 3px 5px;
+    font-size: 9.5px; border-radius: 5px;
+  }
+
+  .tile {
+    border-radius: 14px;
+    border: 1px solid rgb(231 229 228 / 0.8);
+    padding: 18px;
+    background: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #4b5b51;
+  }
+
+  .anatomy-pin {
+    position: absolute;
+    width: 22px; height: 22px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 1px solid #064e3b;
+    color: #064e3b;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 16px -8px rgba(11,46,36,0.45);
+  }
+  .legend-row {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgb(231 229 228);
+  }
+  .legend-row:last-child { border-bottom: none; }
+  .legend-num {
+    width: 22px; height: 22px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 1px solid #064e3b;
+    color: #064e3b;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* code block */
+  pre.code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    background: #0b2e24;
+    color: #d0eb9e;
+    padding: 16px 18px;
+    border-radius: 14px;
+    overflow-x: auto;
+  }
+  pre.code .k { color: #8dd4e8; }
+  pre.code .s { color: #f0c99a; }
+  pre.code .c { color: #6b7265; font-style: italic; }
+
+  /* TOC sticky */
+  .toc a {
+    display: block;
+    padding: 6px 10px;
+    border-radius: 8px;
+    color: #44403c;
+    font-size: 13px;
+    transition: background .15s, color .15s;
+  }
+  .toc a:hover { background: #f5f2ea; color: #064e3b; }
+  .toc a.active { background: #f5f2ea; color: #064e3b; font-weight: 500; }
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- ========== NAV ========== -->
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#fbfbf9]/80 border-b border-stone-200/60">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="Homepage Redesign.html" class="flex items-center gap-2.5 font-serif text-[17px] text-ecohubs-dark">
+      <svg viewBox="0 0 1920 1920" class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" aria-label="EcoHubs"><g><path d="M375.183,374.836c31.204,-31.205 218.513,-64.394 371.175,88.268c91.285,91.286 206.245,429.736 176.537,459.444c-26.768,26.768 -368.158,-85.252 -459.443,-176.538c-164.72,-164.72 -123.097,-336.346 -88.269,-371.174Z" fill="#064e3b"/><path d="M1544.82,1549.04c-31.204,31.204 -218.513,64.393 -371.175,-88.269c-91.285,-91.286 -206.245,-429.736 -176.537,-459.444c26.768,-26.768 368.158,85.252 459.443,176.538c164.72,164.72 123.097,336.346 88.269,371.175Z" fill="#064e3b"/><path d="M1547.1,377.119c31.204,31.204 64.393,218.512 -88.269,371.174c-91.285,91.286 -429.736,206.245 -459.443,176.538c-26.769,-26.768 85.252,-368.158 176.537,-459.444c164.72,-164.72 336.347,-123.097 371.175,-88.268Z" fill="#064e3b"/><path d="M372.9,1546.75c-31.204,-31.205 -64.393,-218.513 88.269,-371.175c91.285,-91.285 429.736,-206.245 459.443,-176.538c26.769,26.769 -85.252,368.158 -176.537,459.444c-164.72,164.72 -336.347,123.097 -371.175,88.269Z" fill="#064e3b"/></g><path d="M958.921,115.51c28.189,0 127.783,69.613 127.783,207.521c0,82.464 -100.947,287.26 -127.783,287.26c-24.181,0 -127.783,-204.796 -127.783,-287.26c0,-148.801 96.321,-207.521 127.783,-207.521Z" fill="#1a8e7b"/><path d="M967.41,1804.49c-28.189,0 -127.783,-69.613 -127.783,-207.521c0,-82.464 100.946,-287.26 127.783,-287.26c24.181,0 127.783,204.796 127.783,287.26c0,148.801 -96.321,207.521 -127.783,207.521Z" fill="#1a8e7b"/><path d="M1808.18,964.093c0,28.189 -69.612,127.783 -207.521,127.783c-82.463,0 -287.259,-100.946 -287.259,-127.783c0,-24.181 204.796,-127.782 287.259,-127.782c148.801,0 207.521,96.32 207.521,127.782Z" fill="#1a8e7b"/><path d="M116.131,957.721c0,-28.189 69.612,-127.783 207.521,-127.783c82.463,0 287.259,100.947 287.259,127.783c0,24.181 -204.796,127.783 -287.259,127.783c-148.801,0 -207.521,-96.321 -207.521,-127.783Z" fill="#1a8e7b"/></svg>
+      EcoHubs
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-stone-700">
+      <a href="Homepage Redesign.html" class="hover:text-ecohubs-dark">Home</a>
+      <a href="Vision Page.html" class="hover:text-ecohubs-dark">Vision</a>
+      <a href="Blueprint Page.html" class="hover:text-ecohubs-dark">Blueprint</a>
+      <a href="Membership Page.html" class="hover:text-ecohubs-dark">Members</a>
+      <a href="Design System.html" class="text-ecohubs-dark font-medium">Design System</a>
+    </nav>
+    <span class="px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-800 text-xs font-mono border border-emerald-100">v1.0 · living doc</span>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5f2ea] via-[#fbfbf9] to-[#fbfbf9]"></div>
+  <div class="absolute -z-10 top-20 -left-40 w-[500px] h-[500px] rounded-full bg-emerald-200/25 blur-3xl"></div>
+  <div class="absolute -z-10 bottom-0 -right-20 w-[420px] h-[420px] rounded-full bg-amber-200/30 blur-3xl"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="kicker text-emerald-700 mb-6 flex items-center gap-3">
+      <span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"></span>
+      Design system · Distilled from the live site
+    </div>
+
+    <h1 class="font-serif text-5xl md:text-6xl lg:text-[68px] leading-[1.04] tracking-tight text-ecohubs-deep max-w-4xl">
+      The way EcoHubs <em class="font-story italic font-normal text-ecohubs-primary">looks</em>,
+      <em class="font-story italic font-normal text-stone-500">sounds</em>,
+      and <em class="font-story italic font-normal text-stone-500">behaves</em>.
+    </h1>
+
+    <p class="mt-7 text-xl text-stone-700 leading-relaxed max-w-2xl font-light">
+      Tokens, type, components and patterns — extracted from the homepage,
+      vision, blueprint and membership pages so the next page you build
+      feels like it grew from the same root.
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="#tokens" class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-all inline-flex items-center justify-center gap-2 group">
+        Jump to tokens
+        <span class="transition-transform group-hover:translate-x-0.5">→</span>
+      </a>
+      <a href="#components" class="px-7 py-3.5 bg-transparent border border-stone-300 text-stone-800 font-medium rounded-full hover:border-ecohubs-dark hover:text-ecohubs-dark transition-all inline-flex items-center justify-center gap-2">
+        See components
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="hairline max-w-4xl mx-auto"></div>
+
+<!-- ========== PRINCIPLES ========== -->
+<section id="principles" class="py-24 md:py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4">
+        <div class="kicker text-emerald-700 mb-4">01 · Principles</div>
+        <h2 class="font-serif text-4xl text-ecohubs-deep leading-tight">
+          Five quiet rules<br/>
+          <em class="font-story italic font-normal text-stone-500">we keep returning to.</em>
+        </h2>
+        <p class="mt-5 text-stone-600 leading-relaxed text-[15px]">
+          When something feels off, it usually broke one of these. We borrow more
+          from a field journal than from a SaaS dashboard.
+        </p>
+      </div>
+
+      <div class="lg:col-span-8 grid sm:grid-cols-2 gap-4">
+        <div class="ds-card p-7">
+          <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-3">P1</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Warm, not bright.</h3>
+          <p class="text-[14.5px] text-stone-700 leading-relaxed">Backgrounds tilt toward ivory and unbleached paper. Pure white is reserved for cards that need to step forward.</p>
+        </div>
+        <div class="ds-card p-7">
+          <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-3">P2</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Two voices in the type.</h3>
+          <p class="text-[14.5px] text-stone-700 leading-relaxed">Pridi for structural truth; Fraunces italic for the human aside. Inter holds everything in between.</p>
+        </div>
+        <div class="ds-card p-7">
+          <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-3">P3</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Pills, not rectangles.</h3>
+          <p class="text-[14.5px] text-stone-700 leading-relaxed">Buttons are <code class="font-mono text-[12.5px] text-emerald-800">rounded-full</code>. Cards round generously (20–28px). Hard corners feel imposed.</p>
+        </div>
+        <div class="ds-card p-7">
+          <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-3">P4</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Honest placeholders.</h3>
+          <p class="text-[14.5px] text-stone-700 leading-relaxed">Missing imagery shows a striped sage placeholder with a mono caption — never a stock fill or AI render pretending to be real.</p>
+        </div>
+        <div class="ds-card p-7 sm:col-span-2">
+          <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-3">P5</div>
+          <h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Italics carry the feeling.</h3>
+          <p class="text-[14.5px] text-stone-700 leading-relaxed max-w-2xl">A Fraunces italic phrase inside a Pridi headline does almost all of the emotional work on this site. Use it where the sentence softens, qualifies, or admits something — not for emphasis in the SEO sense.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hairline max-w-4xl mx-auto"></div>
+
+<!-- ========== COLOR ========== -->
+<section id="tokens" class="py-24 md:py-28 bg-[#f5f2ea] grain relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-3xl mb-14">
+      <div class="kicker text-emerald-800 mb-4">02 · Color</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        Four palettes,<br/>
+        <em class="font-story italic font-normal text-stone-500">one warm world.</em>
+      </h2>
+      <p class="mt-5 text-lg text-stone-700 leading-relaxed">
+        Forest green is the protagonist. Soil grounds it. Tide cools it. Ember warms a single moment
+        per page. The brand layer (<code class="font-mono text-[13px] text-emerald-800">ecohubs.*</code>) names
+        the specific values we reach for most often.
+      </p>
+    </div>
+
+    <!-- Brand row -->
+    <div class="mb-14">
+      <div class="flex items-baseline justify-between mb-4">
+        <h3 class="font-serif text-2xl text-ecohubs-deep">Brand layer</h3>
+        <span class="font-mono text-xs text-stone-500">tailwind.config → colors.ecohubs.*</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+        <!-- base -->
+        <div class="swatch" style="background:#fbfbf9;border:1px solid #e7e5e4">
+          <div class="meta"><div class="font-medium">base</div><div class="opacity-60">#fbfbf9</div></div>
+        </div>
+        <div class="swatch" style="background:#f5f2ea">
+          <div class="meta"><div class="font-medium">ivory</div><div class="opacity-60">#f5f2ea</div></div>
+        </div>
+        <div class="swatch dark" style="background:#1c1917">
+          <div class="meta"><div class="font-medium">text</div><div class="opacity-60">#1c1917</div></div>
+        </div>
+        <div class="swatch dark" style="background:#059669">
+          <div class="meta"><div class="font-medium">primary</div><div class="opacity-60">#059669</div></div>
+        </div>
+        <div class="swatch dark" style="background:#064e3b">
+          <div class="meta"><div class="font-medium">dark</div><div class="opacity-60">#064e3b</div></div>
+        </div>
+        <div class="swatch dark" style="background:#0b2e24">
+          <div class="meta"><div class="font-medium">deep</div><div class="opacity-60">#0b2e24</div></div>
+        </div>
+        <div class="swatch dark" style="background:#d97706">
+          <div class="meta"><div class="font-medium">accent</div><div class="opacity-60">#d97706</div></div>
+        </div>
+        <div class="swatch" style="background:#a7f3d0">
+          <div class="meta"><div class="font-medium">light</div><div class="opacity-60">#a7f3d0</div></div>
+        </div>
+        <div class="swatch dark" style="background:#8b6f47">
+          <div class="meta"><div class="font-medium">soil</div><div class="opacity-60">#8b6f47</div></div>
+        </div>
+        <div class="swatch" style="background:#c4a484">
+          <div class="meta"><div class="font-medium">clay</div><div class="opacity-60">#c4a484</div></div>
+        </div>
+        <div class="swatch dark" style="background:#6b7265">
+          <div class="meta"><div class="font-medium">muted</div><div class="opacity-60">#6b7265</div></div>
+        </div>
+        <div class="rounded-[14px] border border-dashed border-stone-300 p-4 flex items-center justify-center text-center">
+          <span class="font-mono text-[10.5px] text-stone-500 leading-snug">use these names<br/>in copy & PRs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Forest ramp -->
+    <div class="mb-10">
+      <div class="flex items-baseline justify-between mb-3">
+        <div>
+          <h3 class="font-serif text-xl text-ecohubs-deep">Forest <span class="text-stone-500 font-story italic font-normal text-base">— growth, regeneration, primary</span></h3>
+        </div>
+        <span class="font-mono text-xs text-stone-500">forest-50 → forest-900</span>
+      </div>
+      <div class="ramp">
+        <div class="swatch dark" style="background:#f5fde5;color:#1a3009"><div class="meta">50<br/>#f5fde5</div></div>
+        <div class="swatch" style="background:#ebfcba;color:#1a3009"><div class="meta">100<br/>#ebfcba</div></div>
+        <div class="swatch" style="background:#d0eb9e"><div class="meta">200<br/>#d0eb9e</div></div>
+        <div class="swatch" style="background:#b5da82"><div class="meta">300<br/>#b5da82</div></div>
+        <div class="swatch" style="background:#9ac966"><div class="meta">400<br/>#9ac966</div></div>
+        <div class="swatch dark" style="background:#7fb84a"><div class="meta">500<br/>#7fb84a</div></div>
+        <div class="swatch dark" style="background:#6b9f3d"><div class="meta">600<br/>#6b9f3d</div></div>
+        <div class="swatch dark" style="background:#4a7c2a"><div class="meta">700<br/>#4a7c2a</div></div>
+        <div class="swatch dark" style="background:#2d5016"><div class="meta">800<br/>#2d5016</div></div>
+        <div class="swatch dark" style="background:#1a3009"><div class="meta">900<br/>#1a3009</div></div>
+      </div>
+    </div>
+
+    <!-- Soil ramp -->
+    <div class="mb-10">
+      <div class="flex items-baseline justify-between mb-3">
+        <h3 class="font-serif text-xl text-ecohubs-deep">Soil <span class="text-stone-500 font-story italic font-normal text-base">— earth, grounding, secondary</span></h3>
+        <span class="font-mono text-xs text-stone-500">soil-50 → soil-900</span>
+      </div>
+      <div class="ramp">
+        <div class="swatch" style="background:#f8e0dc"><div class="meta">50<br/>#f8e0dc</div></div>
+        <div class="swatch" style="background:#ebd1c6"><div class="meta">100<br/>#ebd1c6</div></div>
+        <div class="swatch" style="background:#dec2b0"><div class="meta">200<br/>#dec2b0</div></div>
+        <div class="swatch" style="background:#d1b39a"><div class="meta">300<br/>#d1b39a</div></div>
+        <div class="swatch" style="background:#c4a484"><div class="meta">400<br/>#c4a484</div></div>
+        <div class="swatch" style="background:#b8957d"><div class="meta">500<br/>#b8957d</div></div>
+        <div class="swatch dark" style="background:#a0826d"><div class="meta">600<br/>#a0826d</div></div>
+        <div class="swatch dark" style="background:#8b6f47"><div class="meta">700<br/>#8b6f47</div></div>
+        <div class="swatch dark" style="background:#5d4d35"><div class="meta">800<br/>#5d4d35</div></div>
+        <div class="swatch dark" style="background:#4a3d2a"><div class="meta">900<br/>#4a3d2a</div></div>
+      </div>
+    </div>
+
+    <!-- Tide ramp -->
+    <div class="mb-10">
+      <div class="flex items-baseline justify-between mb-3">
+        <h3 class="font-serif text-xl text-ecohubs-deep">Tide <span class="text-stone-500 font-story italic font-normal text-base">— water, flow, accent</span></h3>
+        <span class="font-mono text-xs text-stone-500">tide-50 → tide-900</span>
+      </div>
+      <div class="ramp">
+        <div class="swatch" style="background:#e5faff"><div class="meta">50<br/>#e5faff</div></div>
+        <div class="swatch" style="background:#cff5ff"><div class="meta">100<br/>#cff5ff</div></div>
+        <div class="swatch" style="background:#b9eaf8"><div class="meta">200<br/>#b9eaf8</div></div>
+        <div class="swatch" style="background:#a3dff0"><div class="meta">300<br/>#a3dff0</div></div>
+        <div class="swatch" style="background:#8dd4e8"><div class="meta">400<br/>#8dd4e8</div></div>
+        <div class="swatch" style="background:#7cc5d9"><div class="meta">500<br/>#7cc5d9</div></div>
+        <div class="swatch dark" style="background:#6bb3c7"><div class="meta">600<br/>#6bb3c7</div></div>
+        <div class="swatch dark" style="background:#4a90a4"><div class="meta">700<br/>#4a90a4</div></div>
+        <div class="swatch dark" style="background:#2d4f5c"><div class="meta">800<br/>#2d4f5c</div></div>
+        <div class="swatch dark" style="background:#1e3a47"><div class="meta">900<br/>#1e3a47</div></div>
+      </div>
+    </div>
+
+    <!-- Ember ramp -->
+    <div class="mb-12">
+      <div class="flex items-baseline justify-between mb-3">
+        <h3 class="font-serif text-xl text-ecohubs-deep">Ember <span class="text-stone-500 font-story italic font-normal text-base">— warmth, attention, highlight</span></h3>
+        <span class="font-mono text-xs text-stone-500">ember-50 → ember-900</span>
+      </div>
+      <div class="ramp">
+        <div class="swatch" style="background:#ffecd6"><div class="meta">50<br/>#ffecd6</div></div>
+        <div class="swatch" style="background:#fae0c2"><div class="meta">100<br/>#fae0c2</div></div>
+        <div class="swatch" style="background:#f5d4ae"><div class="meta">200<br/>#f5d4ae</div></div>
+        <div class="swatch" style="background:#f0c99a"><div class="meta">300<br/>#f0c99a</div></div>
+        <div class="swatch" style="background:#e8b886"><div class="meta">400<br/>#e8b886</div></div>
+        <div class="swatch" style="background:#e0b586"><div class="meta">500<br/>#e0b586</div></div>
+        <div class="swatch dark" style="background:#d4a574"><div class="meta">600<br/>#d4a574</div></div>
+        <div class="swatch dark" style="background:#c47d4a"><div class="meta">700<br/>#c47d4a</div></div>
+        <div class="swatch dark" style="background:#a66b3a"><div class="meta">800<br/>#a66b3a</div></div>
+        <div class="swatch dark" style="background:#8b5a2a"><div class="meta">900<br/>#8b5a2a</div></div>
+      </div>
+    </div>
+
+    <!-- Pairings -->
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="rounded-2xl p-6" style="background:#fbfbf9;color:#1c1917;border:1px solid #e7e5e4">
+        <div class="font-mono text-[10.5px] tracking-widest uppercase text-emerald-700 mb-3">Body surface</div>
+        <p class="font-serif text-[22px] leading-snug text-ecohubs-deep">Aa — base on text</p>
+        <p class="text-[13px] mt-2 text-stone-600 font-mono">#fbfbf9 / #1c1917 · AAA</p>
+      </div>
+      <div class="rounded-2xl p-6" style="background:#064e3b;color:#fbfbf9">
+        <div class="font-mono text-[10.5px] tracking-widest uppercase text-emerald-200/80 mb-3">CTA / dark band</div>
+        <p class="font-serif text-[22px] leading-snug">Aa — base on dark</p>
+        <p class="text-[13px] mt-2 font-mono text-emerald-200/70">#064e3b / #fbfbf9 · AAA</p>
+      </div>
+      <div class="rounded-2xl p-6" style="background:#f5f2ea;color:#1c1917;border:1px solid #e7e5e4">
+        <div class="font-mono text-[10.5px] tracking-widest uppercase text-emerald-700 mb-3">Section break</div>
+        <p class="font-serif text-[22px] leading-snug text-ecohubs-deep">Aa — ivory on text</p>
+        <p class="text-[13px] mt-2 text-stone-600 font-mono">#f5f2ea / #1c1917 · AAA</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TYPE ========== -->
+<section id="type" class="py-24 md:py-28 bg-[#fbfbf9]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl mb-14">
+      <div class="kicker text-emerald-700 mb-4">03 · Typography</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        Pridi sets the truth.<br/>
+        <em class="font-story italic font-normal text-ecohubs-primary">Fraunces tells the feeling.</em>
+      </h2>
+      <p class="mt-5 text-lg text-stone-700 leading-relaxed">
+        Inter handles the rest. JetBrains Mono labels the seams.
+      </p>
+    </div>
+
+    <!-- Specimens -->
+    <div class="grid lg:grid-cols-2 gap-5 mb-12">
+      <!-- Pridi -->
+      <div class="ds-card p-8 lg:p-10">
+        <div class="flex items-baseline justify-between mb-6">
+          <span class="kicker text-emerald-700">Pridi · Serif</span>
+          <span class="font-mono text-xs text-stone-500">300 / 400 / 500 / 600 / 700</span>
+        </div>
+        <p class="font-serif text-[88px] leading-[0.95] text-ecohubs-deep tracking-tight">Aa</p>
+        <p class="font-serif text-[28px] mt-4 text-ecohubs-deep leading-snug">A regenerative future, designed together.</p>
+        <p class="font-serif text-[15px] mt-4 text-stone-600">The quick brown fox jumps over the lazy dog. 0123456789 — , ; : ? !</p>
+        <div class="mt-6 pt-6 border-t border-stone-200/70 grid grid-cols-2 gap-4 text-[13px] text-stone-600">
+          <div><span class="font-mono text-[11px] tracking-widest uppercase text-stone-500">Use for</span><br/>display headlines, page titles, section H2s</div>
+          <div><span class="font-mono text-[11px] tracking-widest uppercase text-stone-500">Avoid for</span><br/>body copy under 18px, dense data</div>
+        </div>
+      </div>
+
+      <!-- Fraunces -->
+      <div class="ds-card p-8 lg:p-10" style="background:#f5f2ea;border-color:#e7e5e4">
+        <div class="flex items-baseline justify-between mb-6">
+          <span class="kicker text-emerald-700">Fraunces · Story</span>
+          <span class="font-mono text-xs text-stone-500">italic 400 / 500</span>
+        </div>
+        <p class="font-story italic text-[88px] leading-[0.95] text-ecohubs-deep tracking-tight">Aa</p>
+        <p class="font-story italic text-[28px] mt-4 text-stone-700 leading-snug">— maybe it wasn't you.</p>
+        <p class="font-story italic text-[15px] mt-4 text-stone-600">Asides, second thoughts, the half-step where the voice softens.</p>
+        <div class="mt-6 pt-6 border-t border-stone-200/70 grid grid-cols-2 gap-4 text-[13px] text-stone-600">
+          <div><span class="font-mono text-[11px] tracking-widest uppercase text-stone-500">Use for</span><br/>italic phrases inside Pridi heads, drop caps, pull quotes</div>
+          <div><span class="font-mono text-[11px] tracking-widest uppercase text-stone-500">Avoid for</span><br/>any UI label, button, form field</div>
+        </div>
+      </div>
+
+      <!-- Inter -->
+      <div class="ds-card p-8 lg:p-10">
+        <div class="flex items-baseline justify-between mb-6">
+          <span class="kicker text-emerald-700">Inter · Sans</span>
+          <span class="font-mono text-xs text-stone-500">300 / 400 / 500 / 600 / 700</span>
+        </div>
+        <p class="text-[88px] leading-[0.95] text-ecohubs-deep tracking-tight font-medium">Aa</p>
+        <p class="text-[20px] mt-4 text-stone-700 leading-relaxed font-light">A short application, read by real people, with thoughtful answers.</p>
+        <p class="text-[14px] mt-3 text-stone-600">Buttons, navigation, form labels, body copy at 14–20px.</p>
+        <div class="mt-6 pt-6 border-t border-stone-200/70 grid grid-cols-2 gap-4 text-[13px] text-stone-600">
+          <div><span class="font-mono text-[11px] tracking-widest uppercase text-stone-500">Use for</span><br/>everything that isn't a headline or a label</div>
+          <div><span class="font-mono text-[11px] tracking-widest uppercase text-stone-500">Body weight</span><br/>400 default · 300 for opening paragraphs</div>
+        </div>
+      </div>
+
+      <!-- JetBrains Mono -->
+      <div class="ds-card p-8 lg:p-10" style="background:#0b2e24;border-color:#0b2e24">
+        <div class="flex items-baseline justify-between mb-6">
+          <span class="kicker text-emerald-200">JetBrains Mono · Label</span>
+          <span class="font-mono text-xs text-emerald-200/60">400 / 500</span>
+        </div>
+        <p class="font-mono text-[80px] leading-[0.95] text-emerald-100 tracking-tight">Aa</p>
+        <p class="font-mono text-[15px] mt-5 text-emerald-100 tracking-widest uppercase">01 · Read &amp; respond</p>
+        <p class="font-mono text-[12px] mt-3 text-emerald-200/70">field notes · co-writing · ~30 minutes · async</p>
+        <div class="mt-6 pt-6 border-t border-emerald-800/60 grid grid-cols-2 gap-4 text-[13px] text-emerald-200/80">
+          <div><span class="font-mono text-[11px] tracking-widest uppercase text-emerald-200/60">Use for</span><br/>kickers, step numbers, placeholder labels, code</div>
+          <div><span class="font-mono text-[11px] tracking-widest uppercase text-emerald-200/60">Tracking</span><br/>0.2em uppercase for kickers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type scale -->
+    <div class="ds-card p-8 lg:p-10">
+      <div class="flex items-baseline justify-between mb-6 flex-wrap gap-2">
+        <h3 class="font-serif text-2xl text-ecohubs-deep">Display &amp; text scale</h3>
+        <span class="font-mono text-xs text-stone-500">desktop · scales down ~80% on mobile</span>
+      </div>
+
+      <div class="divide-y divide-stone-200/70">
+        <div class="grid grid-cols-12 gap-6 items-baseline py-5">
+          <span class="col-span-2 font-mono text-[11px] tracking-widest uppercase text-stone-500">D1 · 76 / 1.02</span>
+          <span class="col-span-10 font-serif text-[64px] leading-[1.02] text-ecohubs-deep tracking-tight">Maybe it wasn't <em class="font-story italic font-normal text-ecohubs-primary">you</em>.</span>
+        </div>
+        <div class="grid grid-cols-12 gap-6 items-baseline py-5">
+          <span class="col-span-2 font-mono text-[11px] tracking-widest uppercase text-stone-500">D2 · 56 / 1.05</span>
+          <span class="col-span-10 font-serif text-[48px] leading-[1.05] text-ecohubs-deep tracking-tight">A regenerative future, <em class="font-story italic font-normal text-stone-500">designed together.</em></span>
+        </div>
+        <div class="grid grid-cols-12 gap-6 items-baseline py-5">
+          <span class="col-span-2 font-mono text-[11px] tracking-widest uppercase text-stone-500">H2 · 40 / 1.1</span>
+          <span class="col-span-10 font-serif text-[36px] leading-[1.1] text-ecohubs-deep">Three doorways in.</span>
+        </div>
+        <div class="grid grid-cols-12 gap-6 items-baseline py-5">
+          <span class="col-span-2 font-mono text-[11px] tracking-widest uppercase text-stone-500">H3 · 26 / 1.25</span>
+          <span class="col-span-10 font-serif text-[24px] leading-[1.25] text-ecohubs-deep">Critique a chapter of the Blueprint.</span>
+        </div>
+        <div class="grid grid-cols-12 gap-6 items-baseline py-5">
+          <span class="col-span-2 font-mono text-[11px] tracking-widest uppercase text-stone-500">Lede · 20 / 1.6</span>
+          <span class="col-span-10 text-[20px] leading-[1.6] text-stone-700 font-light max-w-2xl">Membership is not a tier you buy or a list you get on. It's a quiet decision to bring your craft.</span>
+        </div>
+        <div class="grid grid-cols-12 gap-6 items-baseline py-5">
+          <span class="col-span-2 font-mono text-[11px] tracking-widest uppercase text-stone-500">Body · 16 / 1.65</span>
+          <span class="col-span-10 text-[16px] leading-[1.65] text-stone-700 max-w-2xl">Plenty of community projects sell a finished thing. We can't — because we're not finished, and that's intentional.</span>
+        </div>
+        <div class="grid grid-cols-12 gap-6 items-baseline py-5">
+          <span class="col-span-2 font-mono text-[11px] tracking-widest uppercase text-stone-500">Caption · 13</span>
+          <span class="col-span-10 text-[13px] leading-snug text-stone-600 font-story italic">an evening a month, ongoing</span>
+        </div>
+        <div class="grid grid-cols-12 gap-6 items-baseline py-5">
+          <span class="col-span-2 font-mono text-[11px] tracking-widest uppercase text-stone-500">Kicker · 11.5 / 0.2em</span>
+          <span class="col-span-10 kicker text-emerald-700">Open for applications · Free · Contribution-based</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SPACING / RADIUS / SHADOW ========== -->
+<section id="spacing" class="py-24 md:py-28 bg-[#f5f2ea] grain relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-3xl mb-14">
+      <div class="kicker text-emerald-800 mb-4">04 · Space, radius &amp; light</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        Generous space.<br/>
+        <em class="font-story italic font-normal text-stone-500">Soft corners.</em>
+        <em class="font-story italic font-normal text-stone-500">Diffuse light.</em>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-5">
+      <!-- Spacing -->
+      <div class="lg:col-span-5 ds-card p-7">
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-1">Spacing scale</h3>
+        <p class="text-[13.5px] text-stone-600 mb-5">8px base. Section padding stays generous — <code class="font-mono text-[12px] text-emerald-800">py-24 md:py-32</code>.</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-3"><span class="font-mono text-[11px] w-12 text-stone-500">xs</span><span class="bg-ecohubs-primary h-3 rounded" style="width:8px"></span><span class="font-mono text-[11px] text-stone-600">8px</span></div>
+          <div class="flex items-center gap-3"><span class="font-mono text-[11px] w-12 text-stone-500">sm</span><span class="bg-ecohubs-primary h-3 rounded" style="width:12px"></span><span class="font-mono text-[11px] text-stone-600">12px</span></div>
+          <div class="flex items-center gap-3"><span class="font-mono text-[11px] w-12 text-stone-500">md</span><span class="bg-ecohubs-primary h-3 rounded" style="width:16px"></span><span class="font-mono text-[11px] text-stone-600">16px</span></div>
+          <div class="flex items-center gap-3"><span class="font-mono text-[11px] w-12 text-stone-500">lg</span><span class="bg-ecohubs-primary h-3 rounded" style="width:24px"></span><span class="font-mono text-[11px] text-stone-600">24px</span></div>
+          <div class="flex items-center gap-3"><span class="font-mono text-[11px] w-12 text-stone-500">xl</span><span class="bg-ecohubs-primary h-3 rounded" style="width:32px"></span><span class="font-mono text-[11px] text-stone-600">32px</span></div>
+          <div class="flex items-center gap-3"><span class="font-mono text-[11px] w-12 text-stone-500">2xl</span><span class="bg-ecohubs-primary h-3 rounded" style="width:48px"></span><span class="font-mono text-[11px] text-stone-600">48px</span></div>
+          <div class="flex items-center gap-3"><span class="font-mono text-[11px] w-12 text-stone-500">3xl</span><span class="bg-ecohubs-primary h-3 rounded" style="width:64px"></span><span class="font-mono text-[11px] text-stone-600">64px</span></div>
+          <div class="flex items-center gap-3"><span class="font-mono text-[11px] w-12 text-stone-500">4xl</span><span class="bg-ecohubs-primary h-3 rounded" style="width:96px"></span><span class="font-mono text-[11px] text-stone-600">96px</span></div>
+        </div>
+      </div>
+
+      <!-- Radius -->
+      <div class="lg:col-span-4 ds-card p-7">
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-1">Radius</h3>
+        <p class="text-[13.5px] text-stone-600 mb-5">Round generously. Cards favor 20–28px.</p>
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <div class="bg-ecohubs-ivory border border-stone-200" style="border-radius:4px;height:60px"></div>
+            <div class="font-mono text-[10.5px] text-stone-500 mt-1.5">sm · 4</div>
+          </div>
+          <div>
+            <div class="bg-ecohubs-ivory border border-stone-200" style="border-radius:8px;height:60px"></div>
+            <div class="font-mono text-[10.5px] text-stone-500 mt-1.5">md · 8</div>
+          </div>
+          <div>
+            <div class="bg-ecohubs-ivory border border-stone-200" style="border-radius:12px;height:60px"></div>
+            <div class="font-mono text-[10.5px] text-stone-500 mt-1.5">lg · 12</div>
+          </div>
+          <div>
+            <div class="bg-ecohubs-ivory border border-stone-200" style="border-radius:16px;height:60px"></div>
+            <div class="font-mono text-[10.5px] text-stone-500 mt-1.5">xl · 16</div>
+          </div>
+          <div>
+            <div class="bg-ecohubs-ivory border border-stone-200" style="border-radius:24px;height:60px"></div>
+            <div class="font-mono text-[10.5px] text-stone-500 mt-1.5">2xl · 24</div>
+          </div>
+          <div>
+            <div class="bg-ecohubs-ivory border border-stone-200" style="border-radius:9999px;height:60px"></div>
+            <div class="font-mono text-[10.5px] text-stone-500 mt-1.5">full · pill</div>
+          </div>
+        </div>
+        <p class="mt-5 text-[12px] text-stone-600 font-story italic leading-snug">
+          Buttons → <span class="font-mono not-italic text-emerald-800 text-[11.5px]">rounded-full</span>.
+          Cards → <span class="font-mono not-italic text-emerald-800 text-[11.5px]">rounded-3xl</span> (24px).
+          Hero mosaics → <span class="font-mono not-italic text-emerald-800 text-[11.5px]">rounded-[28px]</span>.
+        </p>
+      </div>
+
+      <!-- Shadow -->
+      <div class="lg:col-span-3 ds-card p-7">
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-1">Elevation</h3>
+        <p class="text-[13.5px] text-stone-600 mb-5">Single signature shadow, low and warm.</p>
+        <div class="space-y-4">
+          <div>
+            <div class="bg-white rounded-2xl h-20" style="box-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05)"></div>
+            <div class="font-mono text-[10.5px] text-stone-500 mt-1.5">sm</div>
+          </div>
+          <div>
+            <div class="bg-white rounded-2xl h-20" style="box-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"></div>
+            <div class="font-mono text-[10.5px] text-stone-500 mt-1.5">md</div>
+          </div>
+          <div>
+            <div class="bg-white rounded-2xl h-20" style="box-shadow:0 30px 60px -30px rgba(11, 46, 36, 0.25)"></div>
+            <div class="font-mono text-[10.5px] text-emerald-800 mt-1.5">soft-shadow ★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ICONOGRAPHY / LOGO ========== -->
+<section id="brand" class="py-24 md:py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl mb-14">
+      <div class="kicker text-emerald-700 mb-4">05 · Mark</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        One mark.<br/>
+        <em class="font-story italic font-normal text-stone-500">Three contexts.</em>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="ds-card p-10 flex flex-col items-center text-center" style="background:#fbfbf9">
+        <svg viewBox="0 0 1920 1920" class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" aria-label="EcoHubs"><g><path d="M375.183,374.836c31.204,-31.205 218.513,-64.394 371.175,88.268c91.285,91.286 206.245,429.736 176.537,459.444c-26.768,26.768 -368.158,-85.252 -459.443,-176.538c-164.72,-164.72 -123.097,-336.346 -88.269,-371.174Z" fill="#064e3b"/><path d="M1544.82,1549.04c-31.204,31.204 -218.513,64.393 -371.175,-88.269c-91.285,-91.286 -206.245,-429.736 -176.537,-459.444c26.768,-26.768 368.158,85.252 459.443,176.538c164.72,164.72 123.097,336.346 88.269,371.175Z" fill="#064e3b"/><path d="M1547.1,377.119c31.204,31.204 64.393,218.512 -88.269,371.174c-91.285,91.286 -429.736,206.245 -459.443,176.538c-26.769,-26.768 85.252,-368.158 176.537,-459.444c164.72,-164.72 336.347,-123.097 371.175,-88.268Z" fill="#064e3b"/><path d="M372.9,1546.75c-31.204,-31.205 -64.393,-218.513 88.269,-371.175c91.285,-91.285 429.736,-206.245 459.443,-176.538c26.769,26.769 -85.252,368.158 -176.537,459.444c-164.72,164.72 -336.347,123.097 -371.175,88.269Z" fill="#064e3b"/></g><path d="M958.921,115.51c28.189,0 127.783,69.613 127.783,207.521c0,82.464 -100.947,287.26 -127.783,287.26c-24.181,0 -127.783,-204.796 -127.783,-287.26c0,-148.801 96.321,-207.521 127.783,-207.521Z" fill="#1a8e7b"/><path d="M967.41,1804.49c-28.189,0 -127.783,-69.613 -127.783,-207.521c0,-82.464 100.946,-287.26 127.783,-287.26c24.181,0 127.783,204.796 127.783,287.26c0,148.801 -96.321,207.521 -127.783,207.521Z" fill="#1a8e7b"/><path d="M1808.18,964.093c0,28.189 -69.612,127.783 -207.521,127.783c-82.463,0 -287.259,-100.946 -287.259,-127.783c0,-24.181 204.796,-127.782 287.259,-127.782c148.801,0 207.521,96.32 207.521,127.782Z" fill="#1a8e7b"/><path d="M116.131,957.721c0,-28.189 69.612,-127.783 207.521,-127.783c82.463,0 287.259,100.947 287.259,127.783c0,24.181 -204.796,127.783 -287.259,127.783c-148.801,0 -207.521,-96.321 -207.521,-127.783Z" fill="#1a8e7b"/></svg>
+        <div class="mt-5 font-serif text-lg text-ecohubs-dark flex items-center gap-2">
+          <span>EcoHubs</span>
+        </div>
+        <div class="mt-6 pt-5 border-t border-stone-200/70 w-full text-[13px] text-stone-600">
+          <span class="font-mono text-[10.5px] tracking-widest uppercase text-stone-500">On base</span><br/>
+          Default. Wordmark in Pridi 17px alongside the mark.
+        </div>
+      </div>
+      <div class="ds-card p-10 flex flex-col items-center text-center" style="background:#f5f2ea">
+        <svg viewBox="0 0 1920 1920" class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" aria-label="EcoHubs"><g><path d="M375.183,374.836c31.204,-31.205 218.513,-64.394 371.175,88.268c91.285,91.286 206.245,429.736 176.537,459.444c-26.768,26.768 -368.158,-85.252 -459.443,-176.538c-164.72,-164.72 -123.097,-336.346 -88.269,-371.174Z" fill="#064e3b"/><path d="M1544.82,1549.04c-31.204,31.204 -218.513,64.393 -371.175,-88.269c-91.285,-91.286 -206.245,-429.736 -176.537,-459.444c26.768,-26.768 368.158,85.252 459.443,176.538c164.72,164.72 123.097,336.346 88.269,371.175Z" fill="#064e3b"/><path d="M1547.1,377.119c31.204,31.204 64.393,218.512 -88.269,371.174c-91.285,91.286 -429.736,206.245 -459.443,176.538c-26.769,-26.768 85.252,-368.158 176.537,-459.444c164.72,-164.72 336.347,-123.097 371.175,-88.268Z" fill="#064e3b"/><path d="M372.9,1546.75c-31.204,-31.205 -64.393,-218.513 88.269,-371.175c91.285,-91.285 429.736,-206.245 459.443,-176.538c26.769,26.769 -85.252,368.158 -176.537,459.444c-164.72,164.72 -336.347,123.097 -371.175,88.269Z" fill="#064e3b"/></g><path d="M958.921,115.51c28.189,0 127.783,69.613 127.783,207.521c0,82.464 -100.947,287.26 -127.783,287.26c-24.181,0 -127.783,-204.796 -127.783,-287.26c0,-148.801 96.321,-207.521 127.783,-207.521Z" fill="#1a8e7b"/><path d="M967.41,1804.49c-28.189,0 -127.783,-69.613 -127.783,-207.521c0,-82.464 100.946,-287.26 127.783,-287.26c24.181,0 127.783,204.796 127.783,287.26c0,148.801 -96.321,207.521 -127.783,207.521Z" fill="#1a8e7b"/><path d="M1808.18,964.093c0,28.189 -69.612,127.783 -207.521,127.783c-82.463,0 -287.259,-100.946 -287.259,-127.783c0,-24.181 204.796,-127.782 287.259,-127.782c148.801,0 207.521,96.32 207.521,127.782Z" fill="#1a8e7b"/><path d="M116.131,957.721c0,-28.189 69.612,-127.783 207.521,-127.783c82.463,0 287.259,100.947 287.259,127.783c0,24.181 -204.796,127.783 -287.259,127.783c-148.801,0 -207.521,-96.321 -207.521,-127.783Z" fill="#1a8e7b"/></svg>
+        <div class="mt-5 font-serif text-lg text-ecohubs-dark">EcoHubs</div>
+        <div class="mt-6 pt-5 border-t border-stone-200/70 w-full text-[13px] text-stone-600">
+          <span class="font-mono text-[10.5px] tracking-widest uppercase text-stone-500">On ivory</span><br/>
+          Section bands and editorial spreads.
+        </div>
+      </div>
+      <div class="ds-card p-10 flex flex-col items-center text-center" style="background:#0b2e24;border-color:#0b2e24;color:#fbfbf9">
+        <svg viewBox="0 0 1920 1920" class="w-20 h-20 brightness-[1.6]" xmlns="http://www.w3.org/2000/svg" aria-label="EcoHubs"><g><path d="M375.183,374.836c31.204,-31.205 218.513,-64.394 371.175,88.268c91.285,91.286 206.245,429.736 176.537,459.444c-26.768,26.768 -368.158,-85.252 -459.443,-176.538c-164.72,-164.72 -123.097,-336.346 -88.269,-371.174Z" fill="#064e3b"/><path d="M1544.82,1549.04c-31.204,31.204 -218.513,64.393 -371.175,-88.269c-91.285,-91.286 -206.245,-429.736 -176.537,-459.444c26.768,-26.768 368.158,85.252 459.443,176.538c164.72,164.72 123.097,336.346 88.269,371.175Z" fill="#064e3b"/><path d="M1547.1,377.119c31.204,31.204 64.393,218.512 -88.269,371.174c-91.285,91.286 -429.736,206.245 -459.443,176.538c-26.769,-26.768 85.252,-368.158 176.537,-459.444c164.72,-164.72 336.347,-123.097 371.175,-88.268Z" fill="#064e3b"/><path d="M372.9,1546.75c-31.204,-31.205 -64.393,-218.513 88.269,-371.175c91.285,-91.285 429.736,-206.245 459.443,-176.538c26.769,26.769 -85.252,368.158 -176.537,459.444c-164.72,164.72 -336.347,123.097 -371.175,88.269Z" fill="#064e3b"/></g><path d="M958.921,115.51c28.189,0 127.783,69.613 127.783,207.521c0,82.464 -100.947,287.26 -127.783,287.26c-24.181,0 -127.783,-204.796 -127.783,-287.26c0,-148.801 96.321,-207.521 127.783,-207.521Z" fill="#1a8e7b"/><path d="M967.41,1804.49c-28.189,0 -127.783,-69.613 -127.783,-207.521c0,-82.464 100.946,-287.26 127.783,-287.26c24.181,0 127.783,204.796 127.783,287.26c0,148.801 -96.321,207.521 -127.783,207.521Z" fill="#1a8e7b"/><path d="M1808.18,964.093c0,28.189 -69.612,127.783 -207.521,127.783c-82.463,0 -287.259,-100.946 -287.259,-127.783c0,-24.181 204.796,-127.782 287.259,-127.782c148.801,0 207.521,96.32 207.521,127.782Z" fill="#1a8e7b"/><path d="M116.131,957.721c0,-28.189 69.612,-127.783 207.521,-127.783c82.463,0 287.259,100.947 287.259,127.783c0,24.181 -204.796,127.783 -287.259,127.783c-148.801,0 -207.521,-96.321 -207.521,-127.783Z" fill="#1a8e7b"/></svg>
+        <div class="mt-5 font-serif text-lg text-emerald-100">EcoHubs</div>
+        <div class="mt-6 pt-5 border-t border-emerald-900/60 w-full text-[13px] text-emerald-200/70">
+          <span class="font-mono text-[10.5px] tracking-widest uppercase text-emerald-200/50">On deep</span><br/>
+          Footer, full-bleed image overlays, dark CTAs.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hairline max-w-4xl mx-auto"></div>
+
+<!-- ========== COMPONENTS ========== -->
+<section id="components" class="py-24 md:py-28 bg-[#fbfbf9]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl mb-14">
+      <div class="kicker text-emerald-700 mb-4">06 · Components</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        The pieces we keep <em class="font-story italic font-normal text-stone-500">re-using.</em>
+      </h2>
+      <p class="mt-5 text-lg text-stone-700 leading-relaxed">
+        Each one is annotated where the rules are subtle. Copy the markup; don't reinvent.
+      </p>
+    </div>
+
+    <!-- Buttons -->
+    <div class="ds-card p-8 lg:p-10 mb-5">
+      <div class="flex items-baseline justify-between mb-6 flex-wrap gap-2">
+        <h3 class="font-serif text-2xl text-ecohubs-deep">Buttons</h3>
+        <span class="font-mono text-xs text-stone-500">always rounded-full · py-3.5 px-7 for primary</span>
+      </div>
+      <div class="flex flex-wrap gap-3 mb-6">
+        <a href="#" class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-all inline-flex items-center justify-center gap-2 group">
+          Apply to become a member
+          <span class="transition-transform group-hover:translate-x-0.5">→</span>
+        </a>
+        <a href="#" class="px-7 py-3.5 bg-transparent border border-stone-300 text-stone-800 font-medium rounded-full hover:border-ecohubs-dark hover:text-ecohubs-dark transition-all inline-flex items-center justify-center gap-2">
+          What does that mean?
+        </a>
+        <a href="#" class="px-4 py-2 bg-ecohubs-dark text-white text-sm rounded-full hover:bg-ecohubs-deep transition-colors">
+          Become a Member
+        </a>
+        <a href="#" class="text-sm text-ecohubs-dark font-medium inline-flex items-center gap-1.5 px-2 py-2 group">
+          Open the Blueprint
+          <span class="transition-transform group-hover:translate-x-0.5">→</span>
+        </a>
+      </div>
+      <div class="grid sm:grid-cols-4 gap-3 text-[12px] text-stone-600">
+        <div class="tile"><strong class="text-ecohubs-deep block mb-1 font-sans not-italic">Primary</strong>bg-ecohubs-dark · text-white · rounded-full · hover → bg-ecohubs-deep</div>
+        <div class="tile"><strong class="text-ecohubs-deep block mb-1 font-sans not-italic">Secondary</strong>border border-stone-300 · hover → border-ecohubs-dark</div>
+        <div class="tile"><strong class="text-ecohubs-deep block mb-1 font-sans not-italic">Compact (nav)</strong>px-4 py-2 · text-sm · same fill</div>
+        <div class="tile"><strong class="text-ecohubs-deep block mb-1 font-sans not-italic">Inline link</strong>text-ecohubs-dark · arrow translate on hover</div>
+      </div>
+    </div>
+
+    <!-- Kicker / pulse / chips -->
+    <div class="ds-card p-8 lg:p-10 mb-5">
+      <div class="flex items-baseline justify-between mb-6">
+        <h3 class="font-serif text-2xl text-ecohubs-deep">Kickers, badges &amp; the pulse dot</h3>
+        <span class="font-mono text-xs text-stone-500">section eyebrows + status</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-8 gap-y-5">
+        <div class="kicker text-emerald-700 flex items-center gap-3">
+          <span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"></span>
+          Open for applications · Free · Contribution-based
+        </div>
+        <div class="kicker text-emerald-800">Three doorways in</div>
+        <div class="kicker text-amber-700">What it isn't</div>
+        <span class="font-mono text-[11px] tracking-widest uppercase text-emerald-700">01 · Read &amp; respond</span>
+        <span class="px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-800 text-xs font-mono border border-emerald-100">v1.0 · living doc</span>
+      </div>
+      <p class="mt-6 text-[13px] text-stone-600 max-w-2xl">
+        The pulse dot signals "this is alive right now" — pilot live, applications open. Use it sparingly,
+        once per page at most.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid lg:grid-cols-3 gap-5 mb-5">
+      <!-- Doorway card -->
+      <div class="lg:col-span-1">
+        <div class="group bg-white rounded-3xl p-7 md:p-8 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors flex flex-col h-full">
+          <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-5">01 · Read &amp; respond</div>
+          <h3 class="font-serif text-2xl text-ecohubs-deep leading-snug mb-4">Critique a chapter of the Blueprint.</h3>
+          <p class="text-stone-700 leading-relaxed text-[15px] flex-1">No commitment. Read what we have, tell us where it's wrong, where it's missing, where it's naïve.</p>
+          <div class="mt-7 pt-6 border-t border-stone-100 flex items-center justify-between">
+            <span class="text-xs text-stone-500 font-story italic">~30 minutes · async</span>
+            <span class="text-sm text-ecohubs-dark font-medium group-hover:translate-x-0.5 inline-block transition-transform">Open →</span>
+          </div>
+        </div>
+        <div class="font-mono text-[10.5px] text-stone-500 mt-2 pl-1">Doorway card · used in 3-up grid</div>
+      </div>
+
+      <!-- IS card (ivory) -->
+      <div class="lg:col-span-1">
+        <div class="rounded-3xl bg-[#f5f2ea] border border-stone-200/70 p-7 h-full">
+          <div class="kicker text-emerald-700 mb-5">What it is</div>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+              <p class="text-[14.5px] text-stone-800 leading-relaxed"><strong class="text-ecohubs-deep">Free to join.</strong> No fee, no tier, no premium.</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+              <p class="text-[14.5px] text-stone-800 leading-relaxed"><strong class="text-ecohubs-deep">Contribution-based.</strong> Trust grows with what you bring.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="font-mono text-[10.5px] text-stone-500 mt-2 pl-1">Ivory list card · positive framing</div>
+      </div>
+
+      <!-- IS NOT card -->
+      <div class="lg:col-span-1">
+        <div class="rounded-3xl bg-white border border-stone-200/70 p-7 h-full">
+          <div class="kicker text-amber-700 mb-5">What it isn't</div>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0"></span>
+              <p class="text-[14.5px] text-stone-700 leading-relaxed">Not a place to <em class="font-story italic">move to</em> — yet.</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0"></span>
+              <p class="text-[14.5px] text-stone-700 leading-relaxed">Not a <em class="font-story italic">crypto investment</em>.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="font-mono text-[10.5px] text-stone-500 mt-2 pl-1">White list card · qualifying framing (amber)</div>
+      </div>
+    </div>
+
+    <!-- Quote / testimonial -->
+    <div class="ds-card p-8 lg:p-10 mb-5">
+      <div class="flex items-baseline justify-between mb-6">
+        <h3 class="font-serif text-2xl text-ecohubs-deep">Pull quote &amp; floating testimonial</h3>
+        <span class="font-mono text-xs text-stone-500">font-story italic</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <blockquote class="relative">
+          <span class="quote-mark font-story italic absolute -top-2 -left-2 text-7xl text-emerald-700/20 leading-none">&ldquo;</span>
+          <p class="font-story italic text-2xl text-stone-800 leading-snug pl-6">I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter.</p>
+          <p class="mt-4 pl-6 text-[11px] text-stone-500 tracking-wider uppercase font-mono">Anika · governance writer</p>
+        </blockquote>
+        <div class="bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[300px] border border-stone-100">
+          <p class="font-story italic text-[15px] leading-snug text-stone-800">"I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter."</p>
+          <p class="mt-2 text-[11px] text-stone-500 tracking-wider uppercase font-mono">Anika · governance writer</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Placeholder image system -->
+    <div class="ds-card p-8 lg:p-10 mb-5">
+      <div class="flex items-baseline justify-between mb-6 flex-wrap gap-2">
+        <h3 class="font-serif text-2xl text-ecohubs-deep">Placeholder imagery</h3>
+        <span class="font-mono text-xs text-stone-500">.placeholder-img + .placeholder-label</span>
+      </div>
+      <p class="text-[15px] text-stone-700 leading-relaxed max-w-2xl mb-6">
+        Until real photography arrives, every image slot is a sage striped fill with a mono label
+        describing what should land there. Stock fills break the trust contract; placeholders honor it.
+      </p>
+      <div class="grid grid-cols-5 grid-rows-3 gap-3 h-[360px]">
+        <div class="col-span-3 row-span-3 rounded-[28px] overflow-hidden soft-shadow placeholder-img relative">
+          <div class="absolute inset-0 flex items-end justify-start p-4">
+            <span class="placeholder-label">circle / listening session</span>
+          </div>
+        </div>
+        <div class="col-span-2 row-span-2 rounded-[24px] overflow-hidden soft-shadow placeholder-img relative">
+          <div class="absolute inset-0 flex items-end justify-start p-3">
+            <span class="placeholder-label">co-writing</span>
+          </div>
+        </div>
+        <div class="col-span-2 row-span-1 rounded-[24px] overflow-hidden soft-shadow placeholder-img relative">
+          <div class="absolute inset-0 flex items-end justify-start p-3">
+            <span class="placeholder-label">field notes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hairline + section break -->
+    <div class="ds-card p-8 lg:p-10 mb-5">
+      <div class="flex items-baseline justify-between mb-6">
+        <h3 class="font-serif text-2xl text-ecohubs-deep">Hairline divider</h3>
+        <span class="font-mono text-xs text-stone-500">.hairline · max-w-4xl mx-auto</span>
+      </div>
+      <p class="text-[14.5px] text-stone-700 leading-relaxed max-w-2xl mb-6">
+        A 1px gradient that fades emerald-deep into transparency on either side.
+        Used between sections that share a tone — softer than a full ivory band.
+      </p>
+      <div class="hairline max-w-4xl mx-auto"></div>
+    </div>
+
+    <!-- Drop cap & long-form -->
+    <div class="ds-card p-8 lg:p-10 mb-5">
+      <div class="flex items-baseline justify-between mb-6">
+        <h3 class="font-serif text-2xl text-ecohubs-deep">Long-form opener · drop cap</h3>
+        <span class="font-mono text-xs text-stone-500">.drop-cap · Fraunces italic</span>
+      </div>
+      <p class="drop-cap text-[18px] leading-[1.7] text-stone-800 max-w-2xl">
+        Membership is not a tier you buy or a list you get on. It is a quiet decision to bring
+        your craft, your time, or your honest questions to a community that's writing the
+        Blueprint for a different way to live. There's no feed to scroll and no engagement loop —
+        showing up is the entire interaction model.
+      </p>
+    </div>
+
+    <!-- Form (apply) -->
+    <div class="ds-card p-8 lg:p-10">
+      <div class="flex items-baseline justify-between mb-6">
+        <h3 class="font-serif text-2xl text-ecohubs-deep">Form fields</h3>
+        <span class="font-mono text-xs text-stone-500">application · careful, slow</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-3xl">
+        <label class="block">
+          <span class="font-mono text-[11px] tracking-widest uppercase text-emerald-700">Your name</span>
+          <input type="text" placeholder="Anika M." class="mt-2 w-full bg-transparent border-b border-stone-300 focus:border-ecohubs-dark focus:outline-none py-2 text-[16px] text-ecohubs-deep placeholder-stone-400" />
+        </label>
+        <label class="block">
+          <span class="font-mono text-[11px] tracking-widest uppercase text-emerald-700">Where you live</span>
+          <input type="text" placeholder="Quito, Ecuador" class="mt-2 w-full bg-transparent border-b border-stone-300 focus:border-ecohubs-dark focus:outline-none py-2 text-[16px] text-ecohubs-deep placeholder-stone-400" />
+        </label>
+        <label class="md:col-span-2 block">
+          <span class="font-mono text-[11px] tracking-widest uppercase text-emerald-700">What's pulling you toward this?</span>
+          <textarea rows="3" placeholder="Three or four honest sentences. We read every one." class="mt-2 w-full bg-transparent border border-stone-300 rounded-2xl focus:border-ecohubs-dark focus:outline-none p-4 text-[15px] text-ecohubs-deep placeholder-stone-400 leading-relaxed"></textarea>
+        </label>
+        <div class="md:col-span-2 flex items-center justify-between flex-wrap gap-3 pt-2">
+          <span class="text-[12px] text-stone-500 font-story italic">~ 8 minutes · saved as you type</span>
+          <button class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-all inline-flex items-center gap-2 group">
+            Send your application
+            <span class="transition-transform group-hover:translate-x-0.5">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ANATOMY ========== -->
+<section id="anatomy" class="py-24 md:py-28 bg-[#f5f2ea] grain relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-3xl mb-12">
+      <div class="kicker text-emerald-800 mb-4">07 · Anatomy of a hero</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        Every page opens<br/>
+        the <em class="font-story italic font-normal text-stone-500">same way</em>.
+      </h2>
+      <p class="mt-5 text-lg text-stone-700 leading-relaxed">
+        Pulse-dot kicker → Pridi headline with one Fraunces italic phrase → Inter lede → primary + secondary CTA → 4-avatar stack → photo mosaic with floating testimonial.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-8 items-start">
+      <!-- Annotated mock -->
+      <div class="lg:col-span-7 relative">
+        <div class="bg-white rounded-3xl border border-stone-200/70 p-8 md:p-10 relative overflow-hidden">
+          <div class="absolute -z-0 top-0 -left-32 w-[300px] h-[300px] rounded-full bg-emerald-200/25 blur-3xl"></div>
+          <div class="relative">
+            <!-- pin 1 -->
+            <div class="kicker text-emerald-700 mb-5 flex items-center gap-3 relative">
+              <span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"></span>
+              Open for applications · Free · Contribution-based
+              <span class="anatomy-pin" style="left:-32px;top:-4px">1</span>
+            </div>
+
+            <!-- pin 2 -->
+            <h1 class="font-serif text-[40px] leading-[1.05] tracking-tight text-ecohubs-deep relative">
+              You don't <em class="font-story italic font-normal text-stone-500">join</em> EcoHubs.<br/>
+              You start <em class="font-story italic font-normal text-ecohubs-primary">showing up</em> for it.
+              <span class="anatomy-pin" style="left:-32px;top:0">2</span>
+            </h1>
+
+            <!-- pin 3 -->
+            <p class="mt-6 text-[16px] text-stone-700 leading-relaxed font-light max-w-md relative">
+              Membership is not a tier you buy or a list you get on. It's a quiet decision to bring your craft.
+              <span class="anatomy-pin" style="left:-32px;top:0">3</span>
+            </p>
+
+            <!-- pin 4 -->
+            <div class="mt-7 flex flex-col sm:flex-row gap-3 relative">
+              <span class="anatomy-pin" style="left:-32px;top:8px">4</span>
+              <a href="#" class="px-6 py-3 bg-ecohubs-dark text-white font-medium rounded-full text-sm inline-flex items-center gap-2">Apply <span>→</span></a>
+              <a href="#" class="px-6 py-3 border border-stone-300 text-stone-800 font-medium rounded-full text-sm inline-flex items-center">What does that mean?</a>
+            </div>
+
+            <!-- pin 5 -->
+            <div class="mt-9 flex items-start gap-4 max-w-md relative">
+              <span class="anatomy-pin" style="left:-32px;top:6px">5</span>
+              <div class="flex -space-x-2">
+                <div class="w-8 h-8 rounded-full border-2 border-white bg-emerald-700"></div>
+                <div class="w-8 h-8 rounded-full border-2 border-white bg-amber-600"></div>
+                <div class="w-8 h-8 rounded-full border-2 border-white bg-stone-700"></div>
+                <div class="w-8 h-8 rounded-full border-2 border-white bg-tide-700"></div>
+              </div>
+              <div class="text-[12px] text-stone-600 leading-snug pt-1">
+                Permaculturists, governance writers — already inside.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="lg:col-span-5 ds-card p-7">
+        <h3 class="font-serif text-xl text-ecohubs-deep mb-4">The five moves, in order</h3>
+        <div class="legend-row">
+          <span class="legend-num">1</span>
+          <div>
+            <div class="font-medium text-ecohubs-deep text-[14.5px]">Pulse-dot kicker</div>
+            <div class="text-[13px] text-stone-600 leading-snug">Status of the project right now. Lowercase except the dot color matches.</div>
+          </div>
+        </div>
+        <div class="legend-row">
+          <span class="legend-num">2</span>
+          <div>
+            <div class="font-medium text-ecohubs-deep text-[14.5px]">Pridi headline + 1 Fraunces italic</div>
+            <div class="text-[13px] text-stone-600 leading-snug">Two lines. Italic phrase carries the qualifier or the feeling — never the verb.</div>
+          </div>
+        </div>
+        <div class="legend-row">
+          <span class="legend-num">3</span>
+          <div>
+            <div class="font-medium text-ecohubs-deep text-[14.5px]">Inter 20px / 1.6 / weight-300 lede</div>
+            <div class="text-[13px] text-stone-600 leading-snug">~30 words, max-w-xl. Plain. No marketing voice.</div>
+          </div>
+        </div>
+        <div class="legend-row">
+          <span class="legend-num">4</span>
+          <div>
+            <div class="font-medium text-ecohubs-deep text-[14.5px]">Primary + secondary CTA</div>
+            <div class="text-[13px] text-stone-600 leading-snug">Primary is the action; secondary is permission to slow down.</div>
+          </div>
+        </div>
+        <div class="legend-row">
+          <span class="legend-num">5</span>
+          <div>
+            <div class="font-medium text-ecohubs-deep text-[14.5px]">Avatar stack + plain-language descriptor</div>
+            <div class="text-[13px] text-stone-600 leading-snug">Four faces. One italic phrase that names who's already inside.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== VOICE ========== -->
+<section id="voice" class="py-24 md:py-28 bg-[#fbfbf9]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl mb-12">
+      <div class="kicker text-emerald-700 mb-4">08 · Voice</div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
+        Honest, slow,<br/>
+        <em class="font-story italic font-normal text-stone-500">a little tired of marketing.</em>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="rounded-3xl bg-[#f5f2ea] border border-stone-200/70 p-7 md:p-9">
+        <div class="kicker text-emerald-700 mb-5">We say</div>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+            <p class="text-stone-800 leading-relaxed text-[15px]">"You don't <em class="font-story italic">join</em> EcoHubs. You start showing up for it."</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+            <p class="text-stone-800 leading-relaxed text-[15px]">"We'd rather undersell it than have you arrive disappointed."</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+            <p class="text-stone-800 leading-relaxed text-[15px]">"Free to join. No fee, no tier, no premium."</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
+            <p class="text-stone-800 leading-relaxed text-[15px]">"Show up, or don't."</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="rounded-3xl bg-white border border-stone-200/70 p-7 md:p-9">
+        <div class="kicker text-amber-700 mb-5">We don't say</div>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0"></span>
+            <p class="text-stone-700 leading-relaxed text-[15px]">"Unlock your regenerative journey today."</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0"></span>
+            <p class="text-stone-700 leading-relaxed text-[15px]">"Premium tier", "exclusive community", "limited spots"</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0"></span>
+            <p class="text-stone-700 leading-relaxed text-[15px]">"Join the movement" / "Be part of something bigger"</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0"></span>
+            <p class="text-stone-700 leading-relaxed text-[15px]">Hashtags, exclamation marks, emoji in body copy.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 ds-card p-7 max-w-3xl">
+      <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-3">Three rules of thumb</div>
+      <ul class="space-y-3 text-[15px] text-stone-700 leading-relaxed">
+        <li><strong class="text-ecohubs-deep">Lowercase the verbs of urgency.</strong> "now" and "limited" do not appear.</li>
+        <li><strong class="text-ecohubs-deep">Admit the unfinished.</strong> If something doesn't exist yet, say so. Pilot, prototype, draft are real words.</li>
+        <li><strong class="text-ecohubs-deep">One italic phrase per paragraph, max.</strong> The italic is for where the voice softens, not where it sells.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== USAGE / CODE ========== -->
+<section id="snippets" class="py-24 md:py-28 bg-[#0b2e24] text-emerald-100 relative overflow-hidden">
+  <div class="absolute inset-0 grain pointer-events-none opacity-40"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-3xl mb-12">
+      <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-300/80 mb-4">09 · Snippets</div>
+      <h2 class="font-serif text-4xl md:text-5xl leading-tight text-emerald-50">
+        Lift these.<br/>
+        <em class="font-story italic font-normal text-emerald-200/80">Don't reinvent.</em>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-5">
+      <div>
+        <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-300/80 mb-3">Hero kicker with pulse</div>
+<pre class="code"><span class="c">&lt;!-- pulse dot signals "alive right now" --&gt;</span>
+<span class="k">&lt;div</span> class=<span class="s">"kicker text-emerald-700 flex items-center gap-3"</span><span class="k">&gt;</span>
+  <span class="k">&lt;span</span> class=<span class="s">"relative inline-block w-2 h-2 rounded-full
+    bg-emerald-600 text-emerald-600 pulse-dot"</span><span class="k">&gt;&lt;/span&gt;</span>
+  Open for applications · Free · Contribution-based
+<span class="k">&lt;/div&gt;</span></pre>
+      </div>
+
+      <div>
+        <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-300/80 mb-3">Pridi + Fraunces headline</div>
+<pre class="code"><span class="k">&lt;h1</span> class=<span class="s">"font-serif text-[68px] leading-[1.04]
+  tracking-tight text-ecohubs-deep"</span><span class="k">&gt;</span>
+  You don't
+  <span class="k">&lt;em</span> class=<span class="s">"font-story italic font-normal
+    text-stone-500"</span><span class="k">&gt;</span>join<span class="k">&lt;/em&gt;</span> EcoHubs.
+<span class="k">&lt;/h1&gt;</span></pre>
+      </div>
+
+      <div>
+        <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-300/80 mb-3">Primary CTA pill</div>
+<pre class="code"><span class="k">&lt;a</span> href=<span class="s">"#apply"</span> class=<span class="s">"px-7 py-3.5 bg-ecohubs-dark
+  text-white font-medium rounded-full hover:bg-ecohubs-deep
+  transition-all inline-flex items-center gap-2 group"</span><span class="k">&gt;</span>
+  Apply
+  <span class="k">&lt;span</span> class=<span class="s">"transition-transform
+    group-hover:translate-x-0.5"</span><span class="k">&gt;</span>→<span class="k">&lt;/span&gt;</span>
+<span class="k">&lt;/a&gt;</span></pre>
+      </div>
+
+      <div>
+        <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-300/80 mb-3">Placeholder image slot</div>
+<pre class="code"><span class="k">&lt;div</span> class=<span class="s">"rounded-[28px] overflow-hidden soft-shadow
+  placeholder-img relative aspect-[4/3]"</span><span class="k">&gt;</span>
+  <span class="k">&lt;div</span> class=<span class="s">"absolute inset-0 flex items-end p-4"</span><span class="k">&gt;</span>
+    <span class="k">&lt;span</span> class=<span class="s">"placeholder-label"</span><span class="k">&gt;</span>
+      circle / listening session
+    <span class="k">&lt;/span&gt;</span>
+  <span class="k">&lt;/div&gt;</span>
+<span class="k">&lt;/div&gt;</span></pre>
+      </div>
+    </div>
+
+    <p class="mt-12 text-emerald-200/70 text-[14px] max-w-2xl font-story italic">
+      The full token table lives in <span class="font-mono not-italic text-emerald-100">DESIGN_TOKENS.md</span>
+      and the runtime defs are in <span class="font-mono not-italic text-emerald-100">src/lib/styles/theme.css</span>.
+      This page is the visual audit — keep them in sync.
+    </p>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="py-14 bg-[#0b2e24] text-emerald-200/70 border-t border-emerald-900/60">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <svg viewBox="0 0 1920 1920" class="w-8 h-8 brightness-[1.6]" xmlns="http://www.w3.org/2000/svg" aria-label="EcoHubs"><g><path d="M375.183,374.836c31.204,-31.205 218.513,-64.394 371.175,88.268c91.285,91.286 206.245,429.736 176.537,459.444c-26.768,26.768 -368.158,-85.252 -459.443,-176.538c-164.72,-164.72 -123.097,-336.346 -88.269,-371.174Z" fill="#064e3b"/><path d="M1544.82,1549.04c-31.204,31.204 -218.513,64.393 -371.175,-88.269c-91.285,-91.286 -206.245,-429.736 -176.537,-459.444c26.768,-26.768 368.158,85.252 459.443,176.538c164.72,164.72 123.097,336.346 88.269,371.175Z" fill="#064e3b"/><path d="M1547.1,377.119c31.204,31.204 64.393,218.512 -88.269,371.174c-91.285,91.286 -429.736,206.245 -459.443,176.538c-26.769,-26.768 85.252,-368.158 176.537,-459.444c164.72,-164.72 336.347,-123.097 371.175,-88.268Z" fill="#064e3b"/><path d="M372.9,1546.75c-31.204,-31.205 -64.393,-218.513 88.269,-371.175c91.285,-91.285 429.736,-206.245 459.443,-176.538c26.769,26.769 -85.252,368.158 -176.537,459.444c-164.72,164.72 -336.347,123.097 -371.175,88.269Z" fill="#064e3b"/></g><path d="M958.921,115.51c28.189,0 127.783,69.613 127.783,207.521c0,82.464 -100.947,287.26 -127.783,287.26c-24.181,0 -127.783,-204.796 -127.783,-287.26c0,-148.801 96.321,-207.521 127.783,-207.521Z" fill="#1a8e7b"/><path d="M967.41,1804.49c-28.189,0 -127.783,-69.613 -127.783,-207.521c0,-82.464 100.946,-287.26 127.783,-287.26c24.181,0 127.783,204.796 127.783,287.26c0,148.801 -96.321,207.521 -127.783,207.521Z" fill="#1a8e7b"/><path d="M1808.18,964.093c0,28.189 -69.612,127.783 -207.521,127.783c-82.463,0 -287.259,-100.946 -287.259,-127.783c0,-24.181 204.796,-127.782 287.259,-127.782c148.801,0 207.521,96.32 207.521,127.782Z" fill="#1a8e7b"/><path d="M116.131,957.721c0,-28.189 69.612,-127.783 207.521,-127.783c82.463,0 287.259,100.947 287.259,127.783c0,24.181 -204.796,127.783 -287.259,127.783c-148.801,0 -207.521,-96.321 -207.521,-127.783Z" fill="#1a8e7b"/></svg>
+      <div>
+        <div class="font-serif text-lg text-emerald-50">EcoHubs · Design System</div>
+        <div class="font-mono text-[11px] text-emerald-200/60 mt-0.5">v1.0 · Distilled May 2026 · Living document</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-6 text-[13px]">
+      <a href="Homepage Redesign.html" class="hover:text-emerald-50">Homepage</a>
+      <a href="Vision Page.html" class="hover:text-emerald-50">Vision</a>
+      <a href="Blueprint Page.html" class="hover:text-emerald-50">Blueprint</a>
+      <a href="Membership Page.html" class="hover:text-emerald-50">Members</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

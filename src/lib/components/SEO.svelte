@@ -260,8 +260,10 @@
 	<meta name="twitter:site" content={SEO_CONFIG.twitterHandle} />
 	<meta name="twitter:creator" content={SEO_CONFIG.twitterHandle} />
 
-	<!-- JSON-LD Structured Data -->
+	<!-- JSON-LD Structured Data. The closing tag is built from `<` + `/script>`
+	     so ESLint's Svelte parser doesn't see a literal </script> and terminate
+	     the surrounding script context when scanning the file. -->
 	{#each allJsonLd as ld}
-		{@html `<script type="application/ld+json">${JSON.stringify(ld)}</script>`}
+		{@html '<' + 'script type="application/ld+json">' + JSON.stringify(ld) + '<' + '/script>'}
 	{/each}
 </svelte:head>

@@ -9,35 +9,30 @@ on:
 jobs:
   lint-and-type-check:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        # Version is taken from package.json's "packageManager" field.
+        uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version: '22'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      # `svelte-kit sync` (run by `pnpm check`) generates the
+      # $env/static/private and $env/static/public type modules from whatever
+      # keys exist in .env. Without an .env, those modules are empty and
+      # svelte-check fails on every server-side import. Seed it from the
+      # example file — values aren't called, the keys just need to exist.
+      - name: Seed .env from .env.example
+        run: cp .env.example .env
 
       - name: Run linting
         run: pnpm lint
@@ -48,22 +43,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: lint-and-type-check
-    
+
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        # Version is taken from package.json's "packageManager" field.
+        uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+          node-version: '22'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      # SvelteKit's $env/static/private inlines values at build time.
+      # CI doesn't have a real .env, so seed it from the example file —
+      # the build only needs the keys to exist; values aren't called.
+      - name: Seed build-time .env from .env.example
+        run: cp .env.example .env
 
       - name: Build project
         run: pnpm build
@@ -71,7 +72,7 @@ jobs:
           PUBLIC_SITE_URL: https://ecohubs.community
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build
           path: build/
@@ -80,22 +81,25 @@ jobs:
   test:
     runs-on: ubuntu-latest
     needs: build
-    
+
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        # Version is taken from package.json's "packageManager" field.
+        uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+          node-version: '22'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Seed .env from .env.example
+        run: cp .env.example .env
 
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
@@ -104,13 +108,9 @@ jobs:
         run: pnpm test:e2e
 
       - name: Upload test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
           path: playwright-report/
           retention-days: 7
-
-
-
-

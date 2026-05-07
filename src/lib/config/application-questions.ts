@@ -1,6 +1,14 @@
 import { z } from 'zod';
 
-export type QuestionType = 'text' | 'textarea' | 'email' | 'select' | 'radio' | 'checkbox' | 'number' | 'scale';
+export type QuestionType =
+	| 'text'
+	| 'textarea'
+	| 'email'
+	| 'select'
+	| 'radio'
+	| 'checkbox'
+	| 'number'
+	| 'scale';
 
 export interface Question {
 	id: string;
@@ -30,7 +38,7 @@ export const applicationQuestions: Question[] = [
 		question: "What's your full name?",
 		required: true,
 		page: 1,
-		validationSchema: z.string().min(2).max(100),
+		validationSchema: z.string().min(2).max(100)
 	},
 	{
 		id: 'email',
@@ -38,7 +46,7 @@ export const applicationQuestions: Question[] = [
 		question: "What's your email address?",
 		required: true,
 		page: 1,
-		validationSchema: z.string().email(),
+		validationSchema: z.string().email()
 	},
 	{
 		id: 'location',
@@ -47,7 +55,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'e.g., Ecuador, Berlin, Nomadic, Worldwide',
 		required: true,
 		page: 1,
-		validationSchema: z.string().min(2),
+		validationSchema: z.string().min(2)
 	},
 	{
 		id: 'timeAvailability',
@@ -55,14 +63,8 @@ export const applicationQuestions: Question[] = [
 		question: 'Time availability to contribute per week',
 		required: true,
 		page: 1,
-		options: [
-			'1–3 hours',
-			'3–6 hours',
-			'6–10 hours',
-			'10+ hours',
-			'It varies',
-		],
-		validationSchema: z.string().min(1),
+		options: ['1–3 hours', '3–6 hours', '6–10 hours', '10+ hours', 'It varies'],
+		validationSchema: z.string().min(1)
 	},
 	{
 		id: 'languages',
@@ -71,7 +73,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'e.g., English, Spanish, German...',
 		required: true,
 		page: 1,
-		validationSchema: z.string().min(2),
+		validationSchema: z.string().min(2)
 	},
 	{
 		id: 'discovery',
@@ -80,7 +82,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Tell us how you found us...',
 		required: true,
 		page: 1,
-		validationSchema: z.string().min(10),
+		validationSchema: z.string().min(10)
 	},
 
 	// PAGE 2 — Values & Vision
@@ -92,7 +94,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share your thoughts...',
 		required: true,
 		page: 2,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 	{
 		id: 'natureCommunityMeaning',
@@ -102,7 +104,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share your understanding...',
 		required: true,
 		page: 2,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 	{
 		id: 'values',
@@ -124,9 +126,9 @@ export const applicationQuestions: Question[] = [
 			'Shared responsibility',
 			'Resilience',
 			'Cultural evolution',
-			'Inner growth',
+			'Inner growth'
 		],
-		validationSchema: z.array(z.string()).min(1).max(3),
+		validationSchema: z.array(z.string()).min(1).max(3)
 	},
 
 	// PAGE 3 — Emotional Maturity & Communication
@@ -137,7 +139,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share your insights...',
 		required: true,
 		page: 3,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 	{
 		id: 'teamworkMoment',
@@ -146,7 +148,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share a specific example...',
 		required: true,
 		page: 3,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 	{
 		id: 'disagreementResponse',
@@ -161,9 +163,9 @@ export const applicationQuestions: Question[] = [
 			'Try to mediate',
 			'Support one of them',
 			'Step back from the situation',
-			'Other',
+			'Other'
 		],
-		validationSchema: z.string().min(1),
+		validationSchema: z.string().min(1)
 	},
 	{
 		id: 'disagreementResponseOther',
@@ -174,14 +176,15 @@ export const applicationQuestions: Question[] = [
 		page: 3,
 		conditionalOn: {
 			questionId: 'disagreementResponse',
-			value: 'Other',
+			value: 'Other'
 		},
-		validationSchema: z.string().optional(),
+		validationSchema: z.string().optional()
 	},
 	{
 		id: 'ideaNotChosen',
 		type: 'radio',
-		question: 'You propose an idea and the group chooses another direction. What is your usual response?',
+		question:
+			'You propose an idea and the group chooses another direction. What is your usual response?',
 		required: true,
 		page: 3,
 		options: [
@@ -190,9 +193,9 @@ export const applicationQuestions: Question[] = [
 			'I prefer to revisit my idea later',
 			'I push harder to explain my view',
 			'I disengage',
-			'Other',
+			'Other'
 		],
-		validationSchema: z.string().min(1),
+		validationSchema: z.string().min(1)
 	},
 	{
 		id: 'ideaNotChosenOther',
@@ -203,9 +206,9 @@ export const applicationQuestions: Question[] = [
 		page: 3,
 		conditionalOn: {
 			questionId: 'ideaNotChosen',
-			value: 'Other',
+			value: 'Other'
 		},
-		validationSchema: z.string().optional(),
+		validationSchema: z.string().optional()
 	},
 	{
 		id: 'comfortFeedback',
@@ -215,9 +218,9 @@ export const applicationQuestions: Question[] = [
 		page: 3,
 		scaleLabels: {
 			min: 'Very uncomfortable',
-			max: 'Very comfortable',
+			max: 'Very comfortable'
 		},
-		validationSchema: z.number().min(1).max(10),
+		validationSchema: z.number().min(1).max(10)
 	},
 	{
 		id: 'comfortAskingHelp',
@@ -227,9 +230,9 @@ export const applicationQuestions: Question[] = [
 		page: 3,
 		scaleLabels: {
 			min: 'Very uncomfortable',
-			max: 'Very comfortable',
+			max: 'Very comfortable'
 		},
-		validationSchema: z.number().min(1).max(10),
+		validationSchema: z.number().min(1).max(10)
 	},
 	{
 		id: 'adaptToChange',
@@ -239,9 +242,9 @@ export const applicationQuestions: Question[] = [
 		page: 3,
 		scaleLabels: {
 			min: 'Very difficult',
-			max: 'Very easy',
+			max: 'Very easy'
 		},
-		validationSchema: z.number().min(1).max(10),
+		validationSchema: z.number().min(1).max(10)
 	},
 	{
 		id: 'decisionMakingValue',
@@ -250,7 +253,7 @@ export const applicationQuestions: Question[] = [
 		required: true,
 		page: 3,
 		options: ['Harmony', 'Truth', 'Efficiency', 'Inclusion', 'Clarity'],
-		validationSchema: z.string().min(1),
+		validationSchema: z.string().min(1)
 	},
 
 	// PAGE 4 — Motivation, Contribution, Skills
@@ -261,7 +264,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share your motivation...',
 		required: true,
 		page: 4,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 	{
 		id: 'contribution',
@@ -270,7 +273,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share what you can bring...',
 		required: true,
 		page: 4,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 	{
 		id: 'receiveLearn',
@@ -279,7 +282,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share your expectations...',
 		required: true,
 		page: 4,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 	{
 		id: 'experienceAreas',
@@ -299,9 +302,9 @@ export const applicationQuestions: Question[] = [
 			'Education / teaching',
 			'Health / wellness / emotional support',
 			'Art / culture / storytelling',
-			'Other',
+			'Other'
 		],
-		validationSchema: z.array(z.string()).min(1),
+		validationSchema: z.array(z.string()).min(1)
 	},
 	{
 		id: 'experienceAreasOther',
@@ -312,19 +315,18 @@ export const applicationQuestions: Question[] = [
 		page: 4,
 		conditionalOn: {
 			questionId: 'experienceAreas',
-			value: 'Other',
+			value: 'Other'
 		},
-		validationSchema: z.string().optional(),
+		validationSchema: z.string().optional()
 	},
 	{
 		id: 'proudProject',
 		type: 'textarea',
-		question:
-			"Describe a project you've helped build or contribute to that you're proud of.",
+		question: "Describe a project you've helped build or contribute to that you're proud of.",
 		placeholder: 'Share the project and your role...',
 		required: true,
 		page: 4,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 	{
 		id: 'bestWorkEnvironments',
@@ -333,7 +335,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Describe the conditions that support you...',
 		required: true,
 		page: 4,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 
 	// PAGE 5 — Stability, Challenges, Next Steps
@@ -344,7 +346,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share your approach...',
 		required: true,
 		page: 5,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 	{
 		id: 'collaborationChallengesMerged',
@@ -354,7 +356,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share your challenges and strategies...',
 		required: true,
 		page: 5,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 	{
 		id: 'concernsDoubts',
@@ -363,7 +365,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share openly...',
 		required: true,
 		page: 5,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 	{
 		id: 'howStartContributing',
@@ -372,7 +374,7 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Share your ideas...',
 		required: true,
 		page: 5,
-		validationSchema: z.string().min(50),
+		validationSchema: z.string().min(50)
 	},
 	{
 		id: 'anythingElse',
@@ -381,14 +383,17 @@ export const applicationQuestions: Question[] = [
 		placeholder: 'Optional...',
 		required: false,
 		page: 5,
-		validationSchema: z.string().optional(),
-	},
+		validationSchema: z.string().optional()
+	}
 ];
 
 // Create static Zod schema for Superforms (Zod v4 compatible)
 export const applicationSchema = z.object({
 	// PAGE 1 — Basic Information
-	fullName: z.string().min(2, 'Name must be at least 2 characters').max(100, 'Name must be less than 100 characters'),
+	fullName: z
+		.string()
+		.min(2, 'Name must be at least 2 characters')
+		.max(100, 'Name must be less than 100 characters'),
 	email: z.string().email({ message: 'Please enter a valid email address' }),
 	location: z.string().min(2, 'Please enter your location'),
 	timeAvailability: z.string().min(1, 'Please select your time availability'),
@@ -398,7 +403,10 @@ export const applicationSchema = z.object({
 	// PAGE 2 — Values & Vision
 	resonanceCombined: z.string().min(50, 'Please provide at least 50 characters'),
 	natureCommunityMeaning: z.string().min(50, 'Please provide at least 50 characters'),
-	values: z.array(z.string()).min(1, { message: 'Please select at least one value' }).max(3, { message: 'Please select no more than 3 values' }),
+	values: z
+		.array(z.string())
+		.min(1, { message: 'Please select at least one value' })
+		.max(3, { message: 'Please select no more than 3 values' }),
 
 	// PAGE 3 — Emotional Maturity & Communication
 	groupWork: z.string().min(50, 'Please provide at least 50 characters'),
@@ -407,9 +415,18 @@ export const applicationSchema = z.object({
 	disagreementResponseOther: z.string().optional(),
 	ideaNotChosen: z.string().min(1, 'Please select an option'),
 	ideaNotChosenOther: z.string().optional(),
-	comfortFeedback: z.number().min(1, 'Please select a rating').max(10, 'Rating must be between 1 and 10'),
-	comfortAskingHelp: z.number().min(1, 'Please select a rating').max(10, 'Rating must be between 1 and 10'),
-	adaptToChange: z.number().min(1, 'Please select a rating').max(10, 'Rating must be between 1 and 10'),
+	comfortFeedback: z
+		.number()
+		.min(1, 'Please select a rating')
+		.max(10, 'Rating must be between 1 and 10'),
+	comfortAskingHelp: z
+		.number()
+		.min(1, 'Please select a rating')
+		.max(10, 'Rating must be between 1 and 10'),
+	adaptToChange: z
+		.number()
+		.min(1, 'Please select a rating')
+		.max(10, 'Rating must be between 1 and 10'),
 	decisionMakingValue: z.string().min(1, 'Please select an option'),
 
 	// PAGE 4 — Motivation, Contribution, Skills
@@ -426,7 +443,7 @@ export const applicationSchema = z.object({
 	collaborationChallengesMerged: z.string().min(50, 'Please provide at least 50 characters'),
 	concernsDoubts: z.string().min(50, 'Please provide at least 50 characters'),
 	howStartContributing: z.string().min(50, 'Please provide at least 50 characters'),
-	anythingElse: z.string().optional(),
+	anythingElse: z.string().optional()
 });
 
 export type ApplicationFormData = z.infer<typeof applicationSchema>;

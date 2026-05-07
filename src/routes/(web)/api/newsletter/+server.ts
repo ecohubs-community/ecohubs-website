@@ -1,11 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { 
-	LINKMONK_URL,
-	LINKMONK_USERNAME,
-	LINKMONK_PASSWORD,
-	ZAPIER_WEBHOOK_URL 
-} from '$env/static/private';
+import { LINKMONK_URL, LINKMONK_USERNAME, LINKMONK_PASSWORD } from '$env/static/private';
 
 // Simple in-memory rate limiting (for production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -13,19 +8,19 @@ const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 function checkRateLimit(identifier: string): boolean {
 	const now = Date.now();
 	const limit = rateLimitMap.get(identifier);
-	
+
 	if (!limit || now > limit.resetTime) {
 		rateLimitMap.set(identifier, {
 			count: 1,
-			resetTime: now + 60000, // 1 minute window
+			resetTime: now + 60000 // 1 minute window
 		});
 		return true;
 	}
-	
+
 	if (limit.count >= 3) {
 		return false;
 	}
-	
+
 	limit.count++;
 	return true;
 }
@@ -42,7 +37,7 @@ function validateEmail(email: string): boolean {
 export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 	try {
 		const clientIp = getClientAddress();
-		
+
 		// Rate limiting
 		if (!checkRateLimit(clientIp)) {
 			return json(
@@ -62,12 +57,11 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			);
 		}
 
-
 		// If Listmonk is configured, use it
 		// Listmonk uses Basic Auth with username and password
 		const listmonkUsername = LINKMONK_USERNAME || '';
 		const listmonkPassword = LINKMONK_PASSWORD || '';
-		
+
 		// Debug logging
 		console.log('Listmonk config check:', {
 			url: LINKMONK_URL,
@@ -75,27 +69,27 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			hasPassword: !!listmonkPassword,
 			usernameLength: listmonkUsername?.length || 0
 		});
-		
+
 		if (LINKMONK_URL && listmonkUsername) {
 			try {
 				// Listmonk requires Basic Authentication with username:password
 				const authHeader = `Basic ${Buffer.from(`${listmonkUsername}:${listmonkPassword}`).toString('base64')}`;
-				
+
 				console.log('Attempting Listmonk subscription for:', email);
-				
+
 				const response = await fetch(`${LINKMONK_URL}/api/subscribers`, {
 					method: 'POST',
 					headers: {
-						'Authorization': authHeader,
-						'Content-Type': 'application/json',
+						Authorization: authHeader,
+						'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({
 						email,
 						name: email.split('@')[0],
 						status: 'enabled',
 						preconfirm_subscriptions: false,
-						lists: [1],
-					}),
+						lists: [1]
+					})
 				});
 
 				const responseText = await response.text();
@@ -106,7 +100,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 					// Try to parse error response, but handle non-JSON gracefully
 					const contentType = response.headers.get('content-type');
 					let errorData: { message?: string } = {};
-					
+
 					if (contentType && contentType.includes('application/json')) {
 						try {
 							errorData = JSON.parse(responseText) as { message?: string };
@@ -118,7 +112,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 						console.error('Listmonk API error (non-JSON):', responseText);
 						errorData = { message: responseText || 'Unknown error' };
 					}
-					
+
 					console.error('Listmonk API error:', errorData);
 					throw new Error(errorData.message || 'Failed to subscribe via Listmonk');
 				}
@@ -134,7 +128,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 				console.log('Listmonk subscription successful:', responseData);
 				return json({
 					success: true,
-					message: 'Successfully subscribed! Please check your email to confirm.',
+					message: 'Successfully subscribed! Please check your email to confirm.'
 				});
 			} catch (error) {
 				console.error('Listmonk subscription error:', error);
@@ -146,41 +140,16 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			});
 		}
 
-		// Fallback to Zapier webhook if configured
-		if (ZAPIER_WEBHOOK_URL) {
-			try {
-				const response = await fetch(ZAPIER_WEBHOOK_URL, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						email,
-						timestamp: new Date().toISOString(),
-						source: 'website',
-					}),
-				});
-
-				if (!response.ok) {
-					throw new Error('Zapier webhook failed');
-				}
-
-				return json({
-					success: true,
-					message: 'Successfully subscribed! Please check your email to confirm.',
-				});
-			} catch (error) {
-				console.error('Zapier webhook error:', error);
-			}
-		}
-
 		// No integration succeeded
-		console.error('Newsletter subscription failed: no integration configured or all integrations failed for:', email);
+		console.error(
+			'Newsletter subscription failed: no integration configured or all integrations failed for:',
+			email
+		);
 
 		return json(
 			{
 				success: false,
-				message: 'Subscription service is temporarily unavailable. Please try again later.',
+				message: 'Subscription service is temporarily unavailable. Please try again later.'
 			},
 			{ status: 503 }
 		);
@@ -189,11 +158,9 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		return json(
 			{
 				success: false,
-				message: 'An error occurred. Please try again later.',
+				message: 'An error occurred. Please try again later.'
 			},
 			{ status: 500 }
 		);
 	}
 };
-
-

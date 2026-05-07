@@ -7,3 +7,19 @@ bun.lockb
 
 # Miscellaneous
 /static/
+
+# Source-of-truth design mockups (HTML) and email templates — formatting these
+# isn't useful and the v1 mockup has intentional broken HTML that crashes
+# prettier's parser.
+/design_files/
+
+# Generated message bundles
+/messages/
+
+# Build artefacts and tool config
+/.svelte-kit/
+/build/
+.cursor/
+.claude/
+project.inlang/
+vercel.json

@@ -3,6 +3,11 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
+	"engines": {
+		"node": ">=20",
+		"pnpm": ">=10"
+	},
+	"packageManager": "pnpm@10.33.0",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -54,15 +59,10 @@
 	},
 	"dependencies": {
 		"@iconify/svelte": "^5.1.0",
-		"@motionone/svelte": "^10.16.4",
-		"@safe-global/api-kit": "^4.0.1",
-		"@snapshot-labs/snapshot.js": "^0.14.17",
 		"@tryghost/admin-api": "^1.14.2",
 		"@tryghost/content-api": "^1.12.2",
 		"@types/nodemailer": "^7.0.4",
-		"ethers": "^6.15.0",
 		"formsnap": "^2.0.1",
-		"jose": "^6.1.2",
 		"lucide-svelte": "^0.554.0",
 		"marked": "^17.0.4",
 		"motion": "^12.23.24",

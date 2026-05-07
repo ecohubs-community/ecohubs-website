@@ -1,6 +1,4 @@
-import type {
-	GhostPost
-} from './ghost';
+import type { GhostPost } from './ghost';
 
 export interface BlogPost {
 	slug: string;
@@ -29,7 +27,7 @@ function mapGhostPostToBlogPost(ghostPost: GhostPost): BlogPost {
 		date: ghostPost.published_at || ghostPost.updated_at,
 		author: ghostPost.authors?.[0]?.name || 'EcoHubs Team',
 		image: ghostPost.feature_image || undefined,
-		tags: ghostPost.tags?.map(tag => tag.name) || [],
+		tags: ghostPost.tags?.map((tag) => tag.name) || [],
 		readingTime: ghostPost.reading_time || calculateReadingTime(ghostPost.html || '')
 	};
 }
@@ -47,7 +45,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 	const { getAllGhostPosts } = await import('./ghost');
 	const ghostPosts = await getAllGhostPosts();
 	const posts = ghostPosts.map(mapGhostPostToBlogPost);
-	
+
 	// Sort by date, newest first
 	return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
@@ -58,13 +56,13 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 export async function getPost(slug: string): Promise<BlogPostWithContent | null> {
 	const { getGhostPost } = await import('./ghost');
 	const ghostPost = await getGhostPost(slug);
-	
+
 	if (!ghostPost) {
 		return null;
 	}
-	
+
 	const mapped = mapGhostPostToBlogPost(ghostPost);
-	
+
 	return {
 		...mapped,
 		html: ghostPost.html || ''
@@ -83,5 +81,3 @@ export async function getRelatedPosts(
 	const relatedGhostPosts = await getRelatedGhostPosts(currentSlug, currentTags, limit);
 	return relatedGhostPosts.map(mapGhostPostToBlogPost);
 }
-
-

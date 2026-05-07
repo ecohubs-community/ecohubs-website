@@ -34,9 +34,16 @@ type GhostContentAPIClient = {
 
 type GhostAdminAPIClient = {
 	posts: {
-		browse: (options: { limit: string; include: string[]; filter: string }) => Promise<GhostDraft[]>;
+		browse: (options: {
+			limit: string;
+			include: string[];
+			filter: string;
+		}) => Promise<GhostDraft[]>;
 		read: (options: { id: string }, include?: { include: string[] }) => Promise<GhostDraft>;
-		edit: (options: { id: string; status?: string; custom_fields?: Record<string, unknown> }, include?: { include: string[] }) => Promise<GhostPost>;
+		edit: (
+			options: { id: string; status?: string; custom_fields?: Record<string, unknown> },
+			include?: { include: string[] }
+		) => Promise<GhostPost>;
 	};
 };
 
@@ -180,10 +187,13 @@ export async function publishGhostPost(id: string): Promise<GhostPost | null> {
 			throw new Error('Ghost Admin API not configured');
 		}
 
-		const post = await api.posts.edit({
-			id,
-			status: 'published'
-		}, { include: ['authors', 'tags'] });
+		const post = await api.posts.edit(
+			{
+				id,
+				status: 'published'
+			},
+			{ include: ['authors', 'tags'] }
+		);
 
 		return post as GhostPost;
 	} catch (error) {
@@ -205,10 +215,13 @@ export async function updateGhostPostCustomFields(
 			throw new Error('Ghost Admin API not configured');
 		}
 
-		const post = await api.posts.edit({
-			id,
-			custom_fields: fields
-		}, { include: ['authors', 'tags'] });
+		const post = await api.posts.edit(
+			{
+				id,
+				custom_fields: fields
+			},
+			{ include: ['authors', 'tags'] }
+		);
 
 		return post as GhostPost;
 	} catch (error) {
@@ -236,7 +249,7 @@ export async function getRelatedGhostPosts(
 		}
 
 		// Build filter for posts with matching tags
-		const tagSlugs = currentTags.map(tag => tag.toLowerCase().replace(/\s+/g, '-'));
+		const tagSlugs = currentTags.map((tag) => tag.toLowerCase().replace(/\s+/g, '-'));
 		const filter = `status:published+tag:[${tagSlugs.join(',')}]`;
 
 		const posts = await api.posts.browse({
@@ -247,7 +260,7 @@ export async function getRelatedGhostPosts(
 
 		// Filter out current post and limit results
 		const relatedPosts = (posts as GhostPost[])
-			.filter(post => post.slug !== currentSlug)
+			.filter((post) => post.slug !== currentSlug)
 			.slice(0, limit);
 
 		return relatedPosts;
@@ -256,5 +269,3 @@ export async function getRelatedGhostPosts(
 		return [];
 	}
 }
-
-

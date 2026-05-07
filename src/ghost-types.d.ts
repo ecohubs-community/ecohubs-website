@@ -14,10 +14,10 @@ declare module '@tryghost/admin-api' {
 		posts: {
 			browse: (options: { limit: string; include: string[]; filter: string }) => Promise<any[]>;
 			read: (options: { id: string }, include?: { include: string[] }) => Promise<any>;
-			edit: (options: { id: string; status?: string; custom_fields?: Record<string, unknown> }, include?: { include: string[] }) => Promise<any>;
+			edit: (
+				options: { id: string; status?: string; custom_fields?: Record<string, unknown> },
+				include?: { include: string[] }
+			) => Promise<any>;
 		};
 	}
 }
-
-
-

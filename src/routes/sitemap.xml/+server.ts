@@ -3,11 +3,19 @@ import { getAllPosts } from '$lib/server/blog';
 
 const siteUrl = 'https://ecohubs.community';
 
-const routes = [
+interface SitemapRoute {
+	path: string;
+	priority: string;
+	changefreq: string;
+	lastmod?: string;
+}
+
+const routes: SitemapRoute[] = [
 	{ path: '', priority: '1.0', changefreq: 'weekly' },
 	{ path: '/vision', priority: '0.9', changefreq: 'monthly' },
 	{ path: '/blueprint', priority: '0.8', changefreq: 'monthly' },
 	{ path: '/membership', priority: '0.9', changefreq: 'monthly' },
+	{ path: '/faq', priority: '0.7', changefreq: 'monthly' },
 	{ path: '/join', priority: '0.7', changefreq: 'monthly' },
 	{ path: '/contact', priority: '0.7', changefreq: 'yearly' },
 	{ path: '/blog', priority: '0.8', changefreq: 'weekly' },
@@ -19,7 +27,7 @@ export const prerender = true;
 
 export const GET: RequestHandler = async () => {
 	const blogPosts = await getAllPosts();
-	
+
 	const allRoutes = [
 		...routes,
 		...blogPosts.map((post) => ({
@@ -35,8 +43,7 @@ export const GET: RequestHandler = async () => {
 ${allRoutes
 	.map(
 		(route) => `  <url>
-    <loc>${siteUrl}${route.path}</loc>
-    <lastmod>${route.lastmod ? new Date(route.lastmod).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]}</lastmod>
+    <loc>${siteUrl}${route.path}</loc>${route.lastmod ? `\n    <lastmod>${new Date(route.lastmod).toISOString().split('T')[0]}</lastmod>` : ''}
     <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority}</priority>
   </url>`
@@ -50,6 +57,3 @@ ${allRoutes
 		}
 	});
 };
-
-
-
