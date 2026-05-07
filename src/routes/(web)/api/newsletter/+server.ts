@@ -1,10 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import {
-	LINKMONK_URL,
-	LINKMONK_USERNAME,
-	LINKMONK_PASSWORD
-} from '$env/static/private';
+import { LINKMONK_URL, LINKMONK_USERNAME, LINKMONK_PASSWORD } from '$env/static/private';
 
 // Simple in-memory rate limiting (for production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
