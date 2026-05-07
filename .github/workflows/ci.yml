@@ -26,6 +26,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # `svelte-kit sync` (run by `pnpm check`) generates the
+      # $env/static/private and $env/static/public type modules from whatever
+      # keys exist in .env. Without an .env, those modules are empty and
+      # svelte-check fails on every server-side import. Seed it from the
+      # example file — values aren't called, the keys just need to exist.
+      - name: Seed .env from .env.example
+        run: cp .env.example .env
+
       - name: Run linting
         run: pnpm lint
 
