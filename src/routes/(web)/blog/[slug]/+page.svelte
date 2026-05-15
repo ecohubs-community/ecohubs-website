@@ -9,6 +9,38 @@
 	const formattedDate = formatDate(post.date);
 	const siteUrl = 'https://ecohubs.community';
 
+	// Channels from the site footer that support URL-based sharing.
+	// Discord / Instagram / GitHub have no share-intent URL, so we skip them.
+	const shareUrl = `${siteUrl}/blog/${post.slug}`;
+	const shareText = post.title;
+	const shareLinks = [
+		{
+			label: 'X',
+			href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
+			icon: '/social-icons/x.svg'
+		},
+		{
+			label: 'LinkedIn',
+			href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
+			icon: '/social-icons/linkedin.svg'
+		},
+		{
+			label: 'Mastodon',
+			href: `https://mastodon.social/share?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`,
+			icon: '/social-icons/mastodon.svg'
+		},
+		{
+			label: 'Farcaster',
+			href: `https://farcaster.xyz/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(shareUrl)}`,
+			icon: '/social-icons/farcaster.svg'
+		},
+		{
+			label: 'Email',
+			href: `mailto:?subject=${encodeURIComponent(shareText)}&body=${encodeURIComponent(`${shareText}\n\n${shareUrl}`)}`,
+			icon: '/social-icons/email.svg'
+		}
+	];
+
 	// Article JSON-LD schema
 	const articleJsonLd = {
 		'@context': 'https://schema.org',
@@ -222,21 +254,24 @@
 					If this letter found you — it might find someone you know, too.
 				</p>
 			</div>
-			<div class="flex flex-wrap gap-3">
-				<a
-					href="https://twitter.com/intent/tweet?text={encodeURIComponent(
-						post.title
-					)}&url={encodeURIComponent(`${siteUrl}/blog/${post.slug}`)}"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 text-stone-800 text-sm font-medium hover:border-ecohubs-dark hover:text-ecohubs-dark transition-colors"
-				>
-					Share on X
-					<span aria-hidden="true">↗</span>
-				</a>
+			<div class="flex flex-wrap items-center gap-3">
+				<div class="flex flex-wrap items-center gap-2" aria-label="Share this letter">
+					{#each shareLinks as link}
+						<a
+							href={link.href}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="Share on {link.label}"
+							title="Share on {link.label}"
+							class="share-btn inline-flex items-center justify-center w-11 h-11 rounded-full border border-stone-300 text-stone-800 hover:border-ecohubs-dark hover:bg-ecohubs-dark transition-colors"
+						>
+							<img src={link.icon} alt="" width="18" height="18" class="w-[18px] h-[18px]" />
+						</a>
+					{/each}
+				</div>
 				<a
 					href="/blog"
-					class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ecohubs-dark text-white text-sm font-medium hover:bg-ecohubs-deep transition-colors group"
+					class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ecohubs-dark text-white text-sm font-medium hover:bg-ecohubs-deep transition-colors group ml-auto sm:ml-2"
 				>
 					<span class="transition-transform group-hover:-translate-x-0.5">←</span>
 					Back to all letters
@@ -276,6 +311,13 @@
 
 	:global(.soft-shadow) {
 		box-shadow: 0 30px 60px -30px rgba(11, 46, 36, 0.25);
+	}
+
+	.share-btn img {
+		transition: filter 0.2s ease;
+	}
+	.share-btn:hover img {
+		filter: invert(1) brightness(1.2);
 	}
 
 	.hairline {
