@@ -3,7 +3,21 @@
 	"devCommand": "pnpm dev",
 	"installCommand": "pnpm install",
 	"framework": "sveltekit",
-	"outputDirectory": "build"
+	"outputDirectory": "build",
+	"headers": [
+		{
+			"source": "/(.*)\\.(jpg|jpeg|png|webp|avif|svg|ico|woff2)$",
+			"headers": [
+				{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+			]
+		},
+		{
+			"source": "/social-icons/(.*)",
+			"headers": [
+				{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+			]
+		}
+	]
 }
 
 

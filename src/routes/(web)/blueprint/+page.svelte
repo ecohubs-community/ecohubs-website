@@ -1,11 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { generateBreadcrumbs } from '$lib/config/seo';
 	import {
 		initScrollAnimations,
 		initStaggeredScrollAnimations
 	} from '$lib/utils/scroll-animations';
 	import { prefersReducedMotion } from '$lib/utils/animations';
+
+	const breadcrumbs = generateBreadcrumbs('blueprint');
 
 	import {
 		failureModes,
@@ -44,10 +48,7 @@
 	title="The Blueprint — RCOS, the open standard for regenerative communities | EcoHubs"
 	description="The Blueprint (RCOS) is an open standard for designing and operating regenerative communities — modular, forkable, and tested in a live pilot."
 	ogImage="/og-blueprint.jpg"
-	breadcrumbs={[
-		{ name: 'Home', url: 'https://ecohubs.community/' },
-		{ name: 'Blueprint', url: 'https://ecohubs.community/blueprint' }
-	]}
+	{breadcrumbs}
 />
 
 <!-- ═══════════════════════════════════════════════════════════════════
@@ -67,11 +68,14 @@
 	<div class="max-w-7xl mx-auto px-6 lg:px-8">
 		<div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
 			<div class="lg:col-span-7">
-				<div data-scroll-animate class="kicker text-emerald-700 mb-6 flex items-center gap-3">
-					<span
-						class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"
-					></span>
-					The Blueprint · the first tangible outcome of EcoHubs
+				<div data-scroll-animate class="flex items-start justify-between gap-4 flex-wrap mb-6">
+					<div class="kicker text-emerald-700 flex items-center gap-3">
+						<span
+							class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"
+						></span>
+						The Blueprint · the first tangible outcome of EcoHubs
+					</div>
+					<Breadcrumbs items={breadcrumbs} />
 				</div>
 
 				<h1

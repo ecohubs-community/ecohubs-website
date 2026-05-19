@@ -27,6 +27,11 @@
 		},
 		{ href: 'https://x.com/eco_hubs', label: 'X', icon: '/social-icons/x.svg' },
 		{
+			href: 'https://www.youtube.com/@ecohubs',
+			label: 'YouTube',
+			icon: '/social-icons/youtube.svg'
+		},
+		{
 			href: 'https://www.instagram.com/ecohubs_community/',
 			label: 'Instagram',
 			icon: '/social-icons/instagram.svg'

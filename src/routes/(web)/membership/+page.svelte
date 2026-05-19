@@ -1,23 +1,24 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import PersonaIcons from '$lib/components/PersonaIcons.svelte';
 	import EcosystemSection from '$lib/components/EcosystemSection.svelte';
+	import { generateBreadcrumbs } from '$lib/config/seo';
 
 	import { rooms, faqItems, doorways, voices } from './data';
 
 	// FAQPage JSON-LD is emitted only by the dedicated /faq route (canonical
 	// source), so we don't duplicate the schema here even though the same Q&As
 	// appear on this page for human readers.
+
+	const breadcrumbs = generateBreadcrumbs('membership');
 </script>
 
 <SEO
 	title="Become a Member — EcoHubs.community"
 	description="Apply to join EcoHubs — a free, contribution-based online community co-creating the Blueprint for regenerative communities."
 	ogImage="/og-membership.jpg"
-	breadcrumbs={[
-		{ name: 'Home', url: 'https://ecohubs.community/' },
-		{ name: 'Membership', url: 'https://ecohubs.community/membership' }
-	]}
+	{breadcrumbs}
 />
 
 <!-- ═══════════════════════════════════════════════════════════════════
@@ -38,11 +39,14 @@
 		<div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 			<!-- Left -->
 			<div class="lg:col-span-7">
-				<div class="kicker text-emerald-700 mb-6 flex items-center gap-3">
-					<span
-						class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"
-					></span>
-					Open for applications · Free · Contribution-based
+				<div class="flex items-start justify-between gap-4 flex-wrap mb-6">
+					<div class="kicker text-emerald-700 flex items-center gap-3">
+						<span
+							class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"
+						></span>
+						Open for applications · Free · Contribution-based
+					</div>
+					<Breadcrumbs items={breadcrumbs} />
 				</div>
 
 				<h1

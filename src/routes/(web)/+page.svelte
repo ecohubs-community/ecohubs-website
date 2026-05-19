@@ -75,6 +75,10 @@
 	});
 </script>
 
+<svelte:head>
+	<link rel="preload" as="image" href={HeroImage} fetchpriority="high" />
+</svelte:head>
+
 <SEO
 	title="EcoHubs — A Regenerative Future Designed Together"
 	description="A growing network of people building a different way to live together — rooted in nature, honest about conflict, and designed so belonging is built in."
@@ -175,6 +179,11 @@
 						<img
 							src={HeroImage}
 							alt="Community working together"
+							width="1920"
+							height="2899"
+							loading="eager"
+							fetchpriority="high"
+							decoding="async"
 							class="w-full h-full object-cover"
 						/>
 					</div>
@@ -182,16 +191,32 @@
 						<img
 							src={CommunityFamily}
 							alt="Quiet moment in nature"
+							width="700"
+							height="539"
+							loading="lazy"
+							decoding="async"
 							class="w-full h-full object-cover"
 						/>
 					</div>
 					<div class="col-span-2 row-span-3 rounded-[24px] overflow-hidden soft-shadow">
-						<img src={CommunityGroup} alt="Community group" class="w-full h-full object-cover" />
+						<img
+							src={CommunityGroup}
+							alt="Community group"
+							width="700"
+							height="468"
+							loading="lazy"
+							decoding="async"
+							class="w-full h-full object-cover"
+						/>
 					</div>
 					<div class="col-span-3 row-span-2 rounded-[24px] overflow-hidden soft-shadow">
 						<img
 							src={BlueprintImage}
 							alt="Community blueprint"
+							width="1384"
+							height="1040"
+							loading="lazy"
+							decoding="async"
 							class="w-full h-full object-cover"
 						/>
 					</div>

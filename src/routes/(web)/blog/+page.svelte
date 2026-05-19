@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { generateBreadcrumbs } from '$lib/config/seo';
 	import { formatDate } from '$lib/utils/blog';
 	import {
 		initScrollAnimations,
@@ -14,6 +16,8 @@
 	const posts = data.posts || [];
 	const featured = posts[0];
 	const rest = posts.slice(1);
+
+	const breadcrumbs = generateBreadcrumbs('blog');
 
 	onMount(() => {
 		if (prefersReducedMotion()) {
@@ -33,23 +37,11 @@
 	});
 </script>
 
-<svelte:head>
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-		rel="stylesheet"
-	/>
-</svelte:head>
-
 <SEO
 	title="Field notes — EcoHubs blog"
 	description="Letters, field notes, and quiet reflections from the people building the Blueprint for regenerative communities."
 	ogImage="/og-blog.jpg"
-	breadcrumbs={[
-		{ name: 'Home', url: 'https://ecohubs.community' },
-		{ name: 'Blog', url: 'https://ecohubs.community/blog' }
-	]}
+	{breadcrumbs}
 />
 
 <!-- ═══════════════════════════════════════════════════════════════════
@@ -67,7 +59,10 @@
 	></div>
 
 	<div class="max-w-4xl mx-auto px-6 lg:px-8">
-		<div class="kicker text-emerald-700 mb-5">Field notes</div>
+		<div class="flex items-start justify-between gap-4 flex-wrap mb-5">
+			<div class="kicker text-emerald-700">Field notes</div>
+			<Breadcrumbs items={breadcrumbs} />
+		</div>
 		<h1
 			class="font-serif text-5xl md:text-6xl lg:text-[68px] leading-[1.05] tracking-tight text-ecohubs-deep"
 		>
@@ -125,11 +120,12 @@
 						{#if featured.tags && featured.tags.length > 0}
 							<div class="flex flex-wrap gap-2 mb-4">
 								{#each featured.tags.slice(0, 3) as tag}
-									<span
-										class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-medium"
+									<a
+										href="/blog/tag/{tag.slug}"
+										class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-medium hover:bg-emerald-100 transition-colors"
 									>
-										{tag}
-									</span>
+										{tag.name}
+									</a>
 								{/each}
 							</div>
 						{/if}
@@ -199,11 +195,12 @@
 								{#if post.tags && post.tags.length > 0}
 									<div class="flex flex-wrap gap-2 mb-3">
 										{#each post.tags.slice(0, 2) as tag}
-											<span
-												class="px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-[11px] font-medium"
+											<a
+												href="/blog/tag/{tag.slug}"
+												class="px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-[11px] font-medium hover:bg-emerald-100 transition-colors"
 											>
-												{tag}
-											</span>
+												{tag.name}
+											</a>
 										{/each}
 									</div>
 								{/if}

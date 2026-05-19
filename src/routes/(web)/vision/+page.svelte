@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { animate } from 'motion';
 	import SEO from '$lib/components/SEO.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import {
 		initScrollAnimations,
 		initStaggeredScrollAnimations
@@ -9,6 +10,11 @@
 	import { prefersReducedMotion } from '$lib/utils/animations';
 
 	import { principles, notThis, values, loopSteps } from './data';
+
+	const breadcrumbs = [
+		{ name: 'Home', url: 'https://ecohubs.community/' },
+		{ name: 'Vision', url: 'https://ecohubs.community/vision' }
+	];
 
 	onMount(() => {
 		if (prefersReducedMotion()) {
@@ -48,10 +54,7 @@
 	title="Vision — A future small enough to live inside | EcoHubs"
 	description="A growing network of small, human-scale communities — designed to regenerate land, culture, and livelihoods through cooperation and shared responsibility."
 	ogImage="/og-vision.jpg"
-	breadcrumbs={[
-		{ name: 'Home', url: 'https://ecohubs.community/' },
-		{ name: 'Vision', url: 'https://ecohubs.community/vision' }
-	]}
+	{breadcrumbs}
 />
 
 <!-- ═══════════════════════════════════════════════════════════════════
@@ -71,11 +74,14 @@
 	<div class="max-w-7xl mx-auto px-6 lg:px-8">
 		<div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
 			<div class="lg:col-span-7">
-				<div data-hero-step="0.05" class="kicker text-emerald-700 mb-6 flex items-center gap-3">
-					<span
-						class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"
-					></span>
-					The Vision · what we are quietly building toward
+				<div data-hero-step="0.05" class="flex items-start justify-between gap-4 flex-wrap mb-6">
+					<div class="kicker text-emerald-700 flex items-center gap-3">
+						<span
+							class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"
+						></span>
+						The Vision · what we are quietly building toward
+					</div>
+					<Breadcrumbs items={breadcrumbs} />
 				</div>
 
 				<h1

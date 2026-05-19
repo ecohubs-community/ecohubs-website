@@ -1,6 +1,9 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { SEO_CONFIG, generateBreadcrumbs } from '$lib/config/seo';
+
+	const breadcrumbs = generateBreadcrumbs('terms');
 
 	const sections = [
 		{ id: 'acceptance', num: '01', title: 'Acceptance of terms' },
@@ -21,19 +24,10 @@
 	];
 </script>
 
-<svelte:head>
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-		rel="stylesheet"
-	/>
-</svelte:head>
-
 <SEO
 	title={SEO_CONFIG.pages.terms.title}
 	description={SEO_CONFIG.pages.terms.description}
-	breadcrumbs={generateBreadcrumbs('terms')}
+	{breadcrumbs}
 />
 
 <!-- ═══════════════════════════════════════════════════════════════════
@@ -48,7 +42,10 @@
 	></div>
 
 	<div class="max-w-4xl mx-auto px-6 lg:px-8">
-		<div class="kicker text-emerald-700 mb-5">The understanding</div>
+		<div class="flex items-start justify-between gap-4 flex-wrap mb-5">
+			<div class="kicker text-emerald-700">The understanding</div>
+			<Breadcrumbs items={breadcrumbs} />
+		</div>
 		<h1
 			class="font-serif text-4xl md:text-5xl lg:text-[60px] leading-[1.05] tracking-tight text-ecohubs-deep"
 		>

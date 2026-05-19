@@ -1,5 +1,6 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { formatDate } from '$lib/utils/blog';
 	import type { PageData } from './$types';
 
@@ -8,6 +9,23 @@
 	const post = data.post;
 	const formattedDate = formatDate(post.date);
 	const siteUrl = 'https://ecohubs.community';
+
+	// Only surface an "Updated" line when the modification falls on a later
+	// calendar day — Ghost touches `updated_at` minutes after publish for
+	// trivial post-publish edits (image uploads, slug tweaks), which would
+	// otherwise show "Updated <same-day>" right next to the publish date.
+	const showUpdated =
+		!!post.dateModified &&
+		post.dateModified.slice(0, 10) !== post.date.slice(0, 10);
+
+	// Full breadcrumb feeds JSON-LD (SERP rich-result hierarchy); the visible
+	// breadcrumb drops the post title because it would duplicate the H1 below.
+	const jsonLdBreadcrumbs = [
+		{ name: 'Home', url: 'https://ecohubs.community/' },
+		{ name: 'Blog', url: 'https://ecohubs.community/blog' },
+		{ name: post.title, url: `https://ecohubs.community/blog/${post.slug}` }
+	];
+	const visibleBreadcrumbs = jsonLdBreadcrumbs.slice(0, 2);
 
 	// Channels from the site footer that support URL-based sharing.
 	// Discord / Instagram / GitHub have no share-intent URL, so we skip them.
@@ -53,7 +71,7 @@
 				: `${siteUrl}${post.image}`
 			: `${siteUrl}/og-blog.jpg`,
 		datePublished: post.date,
-		dateModified: post.date,
+		dateModified: post.dateModified || post.date,
 		author: {
 			'@type': 'Person',
 			name: post.author
@@ -66,18 +84,11 @@
 				url: `${siteUrl}/logo.png`
 			}
 		},
-		...(post.tags && post.tags.length > 0 ? { articleSection: post.tags.join(', ') } : {})
+		...(post.tags && post.tags.length > 0
+			? { articleSection: post.tags.map((t) => t.name).join(', ') }
+			: {})
 	};
 </script>
-
-<svelte:head>
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-		rel="stylesheet"
-	/>
-</svelte:head>
 
 <SEO
 	title="{post.title} — EcoHubs blog"
@@ -85,11 +96,7 @@
 	type="article"
 	ogImage={post.image || '/og-blog.jpg'}
 	jsonLd={articleJsonLd}
-	breadcrumbs={[
-		{ name: 'Home', url: 'https://ecohubs.community' },
-		{ name: 'Blog', url: 'https://ecohubs.community/blog' },
-		{ name: post.title, url: `https://ecohubs.community/blog/${post.slug}` }
-	]}
+	breadcrumbs={jsonLdBreadcrumbs}
 />
 
 <!-- ═══════════════════════════════════════════════════════════════════
@@ -104,22 +111,19 @@
 	></div>
 
 	<div class="max-w-3xl mx-auto px-6 lg:px-8">
-		<a
-			href="/blog"
-			class="inline-flex items-center gap-2 text-sm text-ecohubs-dark hover:text-ecohubs-deep transition-colors mb-10 group"
-		>
-			<span class="transition-transform group-hover:-translate-x-0.5">←</span>
-			<span class="font-story italic">Back to all letters</span>
-		</a>
+		<div class="mb-10">
+			<Breadcrumbs items={visibleBreadcrumbs} />
+		</div>
 
 		{#if post.tags && post.tags.length > 0}
 			<div class="flex flex-wrap gap-2 mb-6">
 				{#each post.tags as tag}
-					<span
-						class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-medium"
+					<a
+						href="/blog/tag/{tag.slug}"
+						class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-medium hover:bg-emerald-100 transition-colors"
 					>
-						{tag}
-					</span>
+						{tag.name}
+					</a>
 				{/each}
 			</div>
 		{/if}
@@ -137,6 +141,12 @@
 			</span>
 			<span class="text-stone-300">·</span>
 			<time datetime={post.date} class="font-story italic">{formattedDate}</time>
+			{#if showUpdated}
+				<span class="text-stone-300">·</span>
+				<span class="font-story italic">
+					Updated <time datetime={post.dateModified}>{formatDate(post.dateModified!)}</time>
+				</span>
+			{/if}
 			{#if post.readingTime}
 				<span class="text-stone-300">·</span>
 				<span class="font-story italic">{post.readingTime} min read</span>

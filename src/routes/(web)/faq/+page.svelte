@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { generateBreadcrumbs } from '$lib/config/seo';
 	import {
 		initScrollAnimations,
 		initStaggeredScrollAnimations
@@ -11,6 +13,8 @@
 	import { faqItems as visionFaq } from '../vision/data';
 	import { faq as blueprintFaqRaw } from '../blueprint/data';
 	import { faqItems as membershipFaq } from '../membership/data';
+
+	const breadcrumbs = generateBreadcrumbs('faq');
 
 	// Normalise blueprint entries (use `aHtml`) into the same shape as the other FAQ arrays.
 	const blueprintFaq = blueprintFaqRaw.map((item) => ({ q: item.q, a: item.aHtml }));
@@ -87,10 +91,7 @@
 	title="Questions & Answers — EcoHubs"
 	description="The questions we hear most about EcoHubs — the project, the Vision, the Blueprint (RCOS), and Membership — answered plainly, in one place."
 	ogImage="/og-faq.jpg"
-	breadcrumbs={[
-		{ name: 'Home', url: 'https://ecohubs.community/' },
-		{ name: 'FAQ', url: 'https://ecohubs.community/faq' }
-	]}
+	{breadcrumbs}
 	faq={seoFaq}
 />
 
@@ -109,7 +110,10 @@
 	></div>
 
 	<div class="max-w-5xl mx-auto px-6 lg:px-8">
-		<div data-scroll-animate class="kicker text-emerald-700 mb-5">Questions &amp; answers</div>
+		<div data-scroll-animate class="flex items-start justify-between gap-4 flex-wrap mb-5">
+			<div class="kicker text-emerald-700">Questions &amp; answers</div>
+			<Breadcrumbs items={breadcrumbs} />
+		</div>
 		<h1
 			data-scroll-animate
 			class="font-serif text-5xl md:text-6xl lg:text-[68px] leading-[1.05] tracking-tight text-ecohubs-deep"

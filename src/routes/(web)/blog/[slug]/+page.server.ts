@@ -12,7 +12,8 @@ export const load: PageServerLoad = async ({ params }) => {
 	}
 
 	// Get related posts based on tags
-	const relatedPosts = await getRelatedPosts(post.slug, post.tags || [], 3);
+	const tagSlugs = (post.tags ?? []).map((t) => t.slug);
+	const relatedPosts = await getRelatedPosts(post.slug, tagSlugs, 3);
 
 	return {
 		post,

@@ -5,9 +5,10 @@ export interface BlogPost {
 	title: string;
 	excerpt: string;
 	date: string;
+	dateModified?: string;
 	author: string;
 	image?: string;
-	tags?: string[];
+	tags?: { name: string; slug: string }[];
 	readingTime?: number;
 	html?: string; // HTML content from Ghost
 }
@@ -25,9 +26,10 @@ function mapGhostPostToBlogPost(ghostPost: GhostPost): BlogPost {
 		title: ghostPost.title,
 		excerpt: ghostPost.excerpt || ghostPost.custom_excerpt || ghostPost.meta_description || '',
 		date: ghostPost.published_at || ghostPost.updated_at,
+		dateModified: ghostPost.updated_at || undefined,
 		author: ghostPost.authors?.[0]?.name || 'EcoHubs Team',
 		image: ghostPost.feature_image || undefined,
-		tags: ghostPost.tags?.map((tag) => tag.name) || [],
+		tags: ghostPost.tags?.map((tag) => ({ name: tag.name, slug: tag.slug })) || [],
 		readingTime: ghostPost.reading_time || calculateReadingTime(ghostPost.html || '')
 	};
 }

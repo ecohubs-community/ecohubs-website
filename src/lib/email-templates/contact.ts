@@ -335,6 +335,7 @@ export function getContactConfirmationHTML(name: string): string {
 					<a href="https://mastodon.social/@ecohubs" style="color:#064e3b;text-decoration:none;margin:0 6px;">Mastodon</a>·
 					<a href="https://farcaster.xyz/ecohubs" style="color:#064e3b;text-decoration:none;margin:0 6px;">Farcaster</a>·
 					<a href="https://x.com/eco_hubs" style="color:#064e3b;text-decoration:none;margin:0 6px;">X</a>·
+					<a href="https://www.youtube.com/@ecohubs" style="color:#064e3b;text-decoration:none;margin:0 6px;">YouTube</a>·
 					<a href="https://www.instagram.com/ecohubs_community/" style="color:#064e3b;text-decoration:none;margin:0 6px;">Instagram</a>·
 					<a href="https://github.com/ecohubs-community" style="color:#064e3b;text-decoration:none;margin:0 6px;">GitHub</a>
 				</div>
@@ -387,6 +388,7 @@ Website:   https://ecohubs.community
 Mastodon:  https://mastodon.social/@ecohubs
 Farcaster: https://farcaster.xyz/ecohubs
 X:         https://x.com/eco_hubs
+YouTube:   https://www.youtube.com/@ecohubs
 Instagram: https://www.instagram.com/ecohubs_community/
 GitHub:    https://github.com/ecohubs-community
 `;

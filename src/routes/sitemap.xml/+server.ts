@@ -28,6 +28,14 @@ export const prerender = true;
 export const GET: RequestHandler = async () => {
 	const blogPosts = await getAllPosts();
 
+	// Collect unique tag slugs across all posts for tag-archive pages.
+	const tagSlugs = new Set<string>();
+	for (const post of blogPosts) {
+		for (const tag of post.tags ?? []) {
+			tagSlugs.add(tag.slug);
+		}
+	}
+
 	const allRoutes = [
 		...routes,
 		...blogPosts.map((post) => ({
@@ -35,7 +43,14 @@ export const GET: RequestHandler = async () => {
 			priority: '0.7',
 			changefreq: 'monthly' as const,
 			lastmod: post.date
-		}))
+		})),
+		...Array.from(tagSlugs).map(
+			(slug): SitemapRoute => ({
+				path: `/blog/tag/${slug}`,
+				priority: '0.5',
+				changefreq: 'weekly'
+			})
+		)
 	];
 
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

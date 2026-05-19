@@ -6,15 +6,6 @@
 	let { data }: { data: PageData } = $props();
 </script>
 
-<svelte:head>
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-		rel="stylesheet"
-	/>
-</svelte:head>
-
 <SEO
 	title="Apply to join — EcoHubs.community"
 	description="A short application, read by real people, decided in the open. Free, contribution-based, and held together by a community that's writing the Blueprint for a different way to live."

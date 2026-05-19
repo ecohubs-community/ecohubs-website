@@ -36,7 +36,7 @@ export const GET: RequestHandler = async () => {
 			<guid isPermaLink="true">${SITE_URL}/blog/${post.slug}</guid>
 			${post.image ? `<enclosure url="${post.image.startsWith('http') ? post.image : SITE_URL + post.image}" type="image/jpeg" />` : ''}
 			${post.author ? `<author>${escapeXml(post.author)}</author>` : ''}
-			${post.tags && post.tags.length > 0 ? `<category>${post.tags.map(escapeXml).join('</category><category>')}</category>` : ''}
+			${post.tags && post.tags.length > 0 ? `<category>${post.tags.map((t) => escapeXml(t.name)).join('</category><category>')}</category>` : ''}
 		</item>`
 			)
 			.join('')}
