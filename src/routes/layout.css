@@ -107,18 +107,19 @@ details[open] > summary > span:last-child {
 	transform: rotate(45deg);
 }
 
-/* Animation FOUC guard for scroll-triggered reveals. The IntersectionObserver
-   sets the keyframes on first visibility; in reduced-motion mode the override
-   restores immediate visibility. */
-[data-scroll-animate],
-[data-scroll-stagger] > *,
-[data-hero-step] {
+/* Animation FOUC guard for scroll-triggered reveals. Scoped to `html.js` so
+   that crawlers, web clippers, and no-JS readers see the SSR-rendered content
+   at full opacity. The IntersectionObserver sets the keyframes on first
+   visibility; in reduced-motion mode the override restores immediate visibility. */
+html.js [data-scroll-animate],
+html.js [data-scroll-stagger] > *,
+html.js [data-hero-step] {
 	opacity: 0;
 }
 @media (prefers-reduced-motion: reduce) {
-	[data-scroll-animate],
-	[data-scroll-stagger] > *,
-	[data-hero-step] {
+	html.js [data-scroll-animate],
+	html.js [data-scroll-stagger] > *,
+	html.js [data-hero-step] {
 		opacity: 1 !important;
 		transform: none !important;
 	}

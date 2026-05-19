@@ -24,8 +24,6 @@ export function initScrollAnimations(
 		const el = element as HTMLElement;
 		const animationType = el.dataset.scrollAnimate || 'fade-up';
 
-		el.style.opacity = '0';
-
 		const animations: Record<string, Record<string, unknown>> = {
 			'fade-up': { opacity: [0, 1], transform: ['translateY(40px)', 'translateY(0px)'] },
 			'fade-down': { opacity: [0, 1], transform: ['translateY(-40px)', 'translateY(0px)'] },
@@ -72,10 +70,6 @@ export function initStaggeredScrollAnimations(
 
 	parents.forEach((parent) => {
 		const children = parent.children;
-
-		Array.from(children).forEach((child) => {
-			(child as HTMLElement).style.opacity = '0';
-		});
 
 		inView(
 			parent,
