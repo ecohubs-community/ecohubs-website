@@ -11,6 +11,7 @@
 	import CommunityGroup from '$lib/assets/community-group.avif';
 
 	import SEO from '$lib/components/SEO.svelte';
+	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
 	import {
 		initScrollAnimations,
 		initStaggeredScrollAnimations
@@ -1050,6 +1051,36 @@
 						>See all seven layers →</a
 					>
 				</div>
+			</div>
+		</div>
+
+		<!-- Inline video teaser — a softer second invitation for visitors who want
+		     the explainer rather than the spec. The full-length version (with
+		     its own framing copy) lives on the Blueprint page. -->
+		<div
+			data-scroll-animate="fade-up"
+			class="mt-20 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-5xl mx-auto"
+		>
+			<div class="lg:col-span-7">
+				<LiteYouTube videoId="JwTf6BFhdYY" title="Introduction to RCOS — EcoHubs" />
+			</div>
+			<div class="lg:col-span-5">
+				<div class="kicker text-emerald-700 mb-3">A 19-min introduction</div>
+				<h3 class="font-serif text-2xl md:text-3xl text-ecohubs-deep leading-snug">
+					Prefer to <em class="font-story italic font-normal text-stone-500">watch</em> rather than
+					read?
+				</h3>
+				<p class="mt-4 text-stone-700 leading-relaxed">
+					A walk-through of what RCOS is, why it exists, and how the layers fit together. The whole
+					picture in one sitting.
+				</p>
+				<a
+					href="/blueprint#intro-video"
+					class="mt-5 inline-flex items-center gap-2 text-ecohubs-primary hover:text-ecohubs-deep transition-colors font-medium group"
+				>
+					Open it on the Blueprint page
+					<span class="transition-transform group-hover:translate-x-0.5">→</span>
+				</a>
 			</div>
 		</div>
 	</div>

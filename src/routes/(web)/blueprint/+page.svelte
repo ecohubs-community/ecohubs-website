@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
 	import { generateBreadcrumbs } from '$lib/config/seo';
 	import {
 		initScrollAnimations,
@@ -234,6 +235,31 @@
 </section>
 
 <div class="hairline max-w-4xl mx-auto"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     1b. INTRODUCTION VIDEO — 19-min explainer
+═══════════════════════════════════════════════════════════════════ -->
+<section id="intro-video" class="py-20 md:py-28 bg-ecohubs-ivory">
+	<div class="max-w-5xl mx-auto px-6 lg:px-8">
+		<div data-scroll-animate class="max-w-2xl mb-10">
+			<div class="kicker text-emerald-700 mb-4">19-min introduction</div>
+			<h2 class="font-serif text-3xl md:text-4xl text-ecohubs-deep leading-tight">
+				If you have <em class="font-story italic font-normal text-stone-500">nineteen minutes,</em><br
+				/>
+				<em class="font-story italic font-normal text-ecohubs-primary"
+					>here is the whole picture.</em
+				>
+			</h2>
+			<p class="mt-5 text-lg text-stone-700 leading-relaxed">
+				A walk-through of what RCOS is, why it exists, and how the layers fit together. Best watched
+				with a coffee — it covers the ground that the rest of this page only sketches.
+			</p>
+		</div>
+		<div data-scroll-animate>
+			<LiteYouTube videoId="JwTf6BFhdYY" title="Introduction to RCOS — EcoHubs" />
+		</div>
+	</div>
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════════════
      2. WHY STRUCTURE
