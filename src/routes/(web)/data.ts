@@ -4,6 +4,8 @@
 
 import StefanImage from '$lib/assets/stefan.webp';
 import stefanFree from '$lib/assets/stefan-free.webp';
+import LuisaImage from '$lib/assets/luisa.webp';
+import luisaGarden from '$lib/assets/luisa-garden.webp';
 
 // ─── STORIES ──────────────────────────────────────────────────────────────────
 
@@ -80,17 +82,62 @@ export const stories: Story[] = [
 		]
 	},
 	{
-		id: 'boris',
-		name: 'Boris',
-		keyword: 'We are Nature',
-		location: 'EcoHubs Member ·  Ecuador',
-		placeholder: true
-	},
-	{
 		id: 'luisa',
 		name: 'Luisa',
 		keyword: 'Economy',
 		location: 'EcoHubs Member · Italy',
+		img: LuisaImage,
+		beats: [
+			{
+				number: '01',
+				title: 'Born inside a circular life',
+				content: [
+					`For the first eighteen years of my life, I lived inside what people now call a <em class="font-story italic">regenerative community.</em> We didn't have the word. We just had the way.`,
+					`My grandfather's hens. My grandmother's canned vegetables. A drawer of saved string and paper bags. A &ldquo;library of tools&rdquo; passed between neighbors before that was a thing anyone named.`
+				]
+			},
+			{
+				number: '02',
+				title: "The day the seeds wouldn't grow",
+				pullQuote: `My grandfather had tears in his eyes and an open paper bag of peas in his hand. They couldn't grow. The store owner — a farmer himself — had been scammed too: the seeds were <span class="underline decoration-ecohubs-primary/40 decoration-2 underline-offset-4">engineered to be infertile.</span>`,
+				content: [
+					`More than the lost harvest, what I saw breaking that day was something else — <em class="font-story italic">the trust between the people who grow food and the people who sell it.</em>`
+				]
+			},
+			{
+				number: '03',
+				title: 'The food on the shelves was fake',
+				content: [
+					`My first supermarket run, in another city for university. Fruit too shiny. Eggs date-stamped like factory parts. Plastic on everything. Almost nothing with a smell.`,
+					`I walked out with an empty bag and a cold thought: <em class="font-story italic text-ecohubs-deep">if the food here is fake, how am I supposed to feed myself?</em>`
+				]
+			},
+			{
+				number: '04',
+				title: 'We already have what we need',
+				image: luisaGarden,
+				content: [
+					`We've drifted from nature far enough that we now believe we're separate from it. That belief is the thing hurting us.`,
+					`What I grew up inside wasn't backwards, and it isn't a return to the past. It's a way of living that quietly worked — for the people <em class="font-story italic">and</em> for the land. We don't need to invent it. We just need to choose it.`
+				]
+			},
+			{
+				number: '05',
+				title: "Why I'm helping grow this",
+				content: [
+					`What I want is an economy at a human size.`,
+					`One where every person can contribute something the group actually feels. Where difference is treated as richness, not friction. Where nature isn't a backdrop to our work — it's both the source of it and the thing that benefits from it.`,
+					`We keep pretending human life is separate from the living world. That's the biggest delusion of the world I grew into. <em class="font-story italic text-ecohubs-deep">It's the one I'm here to help unmake.</em>`
+				]
+			}
+		]
+	},
+
+	{
+		id: 'boris',
+		name: 'Boris',
+		keyword: 'We are Nature',
+		location: 'EcoHubs Member ·  Ecuador',
 		placeholder: true
 	},
 	{

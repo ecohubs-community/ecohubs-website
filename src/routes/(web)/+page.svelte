@@ -381,6 +381,11 @@
 										{@html beat.pullQuote}
 									</p>
 								</blockquote>
+								{#each beat.content ?? [] as para}
+									<p class="mt-5 text-stone-700 leading-relaxed max-w-xl">
+										{@html para}
+									</p>
+								{/each}
 							</article>
 						{:else if beat.image}
 							<article class="grid md:grid-cols-5 gap-6 items-start">
@@ -422,7 +427,7 @@
 									</p>
 								{/each}
 								{#if beat.number === '05'}
-									<p class="mt-6 text-sm text-stone-500">— Stefan</p>
+									<p class="mt-6 text-sm text-stone-500">— {activeStory.name}</p>
 								{/if}
 							</article>
 						{/if}
