@@ -1,3 +1,19 @@
+/* Self-hosted fonts — variable axes where available so we ship one file per
+   family instead of one per weight. Loaded via @fontsource so they're bundled
+   into _app/immutable/ with the same long-cache header as the rest of the
+   build, and don't hit Google's CDN on cold visits. */
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/fraunces';
+/* Fraunces is almost always used italic via the `.font-story` class — the
+   default index ships only the upright axis, so without this the browser
+   would synthesize fake italic from the roman glyphs or fall back to a
+   system serif. */
+@import '@fontsource-variable/fraunces/wght-italic.css';
+@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource-variable/stack-sans-headline';
+@import '@fontsource/pridi/400.css';
+@import '@fontsource/pridi/500.css';
+
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
@@ -93,11 +109,13 @@
 	--max-width-7xl: 80rem; /* 1280px */
 	--max-width-full: 100%;
 
-	/* Typography */
+	/* Typography — Variable axis families are listed first so the @fontsource
+	   self-hosted file matches; static fallbacks follow for legacy browsers. */
 	--font-serif: 'Pridi', serif;
 	--font-sans:
-		'Stack Sans Headline', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-	--font-story: 'Fraunces', serif;
+		'Stack Sans Headline Variable', 'Stack Sans Headline', -apple-system, BlinkMacSystemFont,
+		'Segoe UI', Roboto, sans-serif;
+	--font-story: 'Fraunces Variable', 'Fraunces', serif;
 
 	/* EcoHubs Colors */
 	--color-ecohubs-base: #fbfbf9;
@@ -297,136 +315,6 @@ html {
 	border-bottom: 1px solid rgba(5, 150, 105, 0.1);
 }
 
-.glass-card {
-	background: rgba(255, 255, 255, 0.7);
-	backdrop-filter: blur(8px);
-	border: 1px solid rgba(5, 150, 105, 0.1);
-	box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.08);
-	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glass-card:hover {
-	background: rgba(255, 255, 255, 0.95);
-	border-color: rgba(5, 150, 105, 0.3);
-	transform: translateY(-5px);
-	box-shadow: 0 15px 30px -10px rgba(5, 150, 105, 0.2);
-}
-
-/* Organic Text Gradient */
-.text-gradient {
-	background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #d97706 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-}
-
-/* Image Masks for Organic Feel */
-.organic-shape {
-	border: 0;
-	border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-	overflow: hidden;
-	transition: border-radius 1s ease;
-}
-.organic-shape:hover {
-	border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-}
-
-.organic-shape-pebble {
-	/* Creating a wider, more grounded base */
-	border: 0;
-	border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-	background: linear-gradient(135deg, #6e8efb, #a777e3);
-	transition:
-		border-radius 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-		transform 0.8s ease;
-}
-
-.organic-shape-pebble:hover {
-	/* Morphs into a more vertical, rounded rectangle look */
-	border: 0;
-	border-radius: 58% 42% 38% 62% / 45% 58% 42% 55%;
-	transform: scale(1.05);
-}
-
-.organic-shape-pebble-animated {
-	border: 0;
-	background: linear-gradient(135deg, #6e8efb, #a777e3);
-	animation: morph-pebble 8s infinite alternate ease-in-out;
-}
-
-@keyframes morph-pebble {
-	0% {
-		border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-		transform: rotate(0deg);
-	}
-	100% {
-		border-radius: 58% 42% 38% 62% / 45% 58% 42% 55%;
-		transform: rotate(3deg); /* Subtle tilt for extra realism */
-	}
-}
-
-.organic-shape-animated {
-	border: 0;
-	border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-	background: #ff7e5f;
-	animation: morphing 8s infinite alternate ease-in-out;
-}
-
-@keyframes morphing {
-	0% {
-		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-	}
-	50% {
-		border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-	}
-	100% {
-		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-	}
-}
-
-/* Optional: Pause the movement on hover for accessibility */
-.organic-shape-animated:hover {
-	animation-play-state: paused;
-}
-
-/* Subtle Leaf Float Animation */
-.floating-leaf {
-	animation: float 6s ease-in-out infinite;
-}
-
-.floating-leaf-delay-2000 {
-	animation-delay: 2000ms;
-}
-.floating-leaf-delay-1000 {
-	animation-delay: 1000ms;
-}
-
-@keyframes float {
-	0% {
-		transform: translateY(0px) rotate(0deg);
-	}
-	50% {
-		transform: translateY(-15px) rotate(5deg);
-	}
-	100% {
-		transform: translateY(0px) rotate(0deg);
-	}
-}
-
-.animate-spin-slow-80 {
-	animation: spin-slow 80s linear infinite;
-}
-
-/* Spin Slow Animation */
-@keyframes spin-slow {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
-}
-
 /* Button Micro-interactions */
 button {
 	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -441,51 +329,3 @@ button:active {
 	transform: scale(0.98);
 }
 
-/* Tailwind Transition Utilities */
-.transition-all-smooth {
-	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Tooltip container */
-.tooltip {
-	position: relative;
-	display: inline-block;
-	border-bottom: 1px dotted black; /* Add dots under the hoverable text */
-	cursor: pointer;
-}
-
-/* Tooltip text */
-.tooltiptext {
-	visibility: hidden; /* Hidden by default */
-	width: 130px;
-	background-color: black;
-	color: #ffffff;
-	text-align: center;
-	padding: 5px 0;
-	border-radius: 6px;
-	position: absolute;
-	z-index: 1; /* Ensure tooltip is displayed above content */
-	font-size: 14px;
-}
-
-.tooltiptext.tooltip-top::after {
-	content: '';
-	position: absolute;
-	top: 100%; /* At the bottom of the tooltip */
-	left: 50%;
-	margin-left: -5px;
-	border-width: 5px;
-	border-style: solid;
-	border-color: black transparent transparent transparent; /* Arrow pointing down */
-}
-
-.tooltiptext.tooltip-top {
-	bottom: 125%; /* Position above the text */
-	left: 50%;
-	margin-left: -65px; /* Center the tooltip */
-}
-
-/* Show the tooltip text on hover */
-.tooltip:hover .tooltiptext {
-	visibility: visible;
-}

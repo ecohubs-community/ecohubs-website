@@ -3,9 +3,13 @@ import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { enhancedImages } from '@sveltejs/enhanced-img';
 
 export default defineConfig({
 	plugins: [
+		// enhancedImages must run before sveltekit so processed assets are picked
+		// up by the SvelteKit build pipeline.
+		enhancedImages(),
 		tailwindcss(),
 		sveltekit(),
 		paraglideVitePlugin({

@@ -7,10 +7,16 @@
 	let width = 0;
 	let height = 0;
 	let particles: Particle[] = [];
-	let animationId: number;
+	let animationId: number | null = null;
+	let running = false;
+	let lastFrame = 0;
 
-	// Configuration - Calmer settings
-	const particleCount = browser && window.innerWidth < 768 ? 30 : 50;
+	// Mobile gets a much smaller particle set — the O(n²) inner loop is the
+	// main reason mobile Lighthouse dropped TBT points. 15 particles ≈ 225
+	// distance checks/frame vs 50 ≈ 2500. Mobile also throttles to 30fps.
+	const isMobile = browser && window.innerWidth < 768;
+	const particleCount = isMobile ? 15 : 50;
+	const frameInterval = isMobile ? 33 : 0; // ~30fps on mobile, uncapped on desktop
 	const connectionDistance = 180;
 	const mouseDistance = 250;
 
@@ -27,11 +33,9 @@
 		constructor() {
 			this.x = Math.random() * width;
 			this.y = Math.random() * height;
-			// Much slower velocity for "calm" effect
 			this.vx = (Math.random() - 0.5) * 0.2;
 			this.vy = (Math.random() - 0.5) * 0.2;
 			this.size = Math.random() * 2 + 1;
-			// Darker green/gray color for visibility on light bg
 			this.color = 'rgba(5, 150, 105, ';
 		}
 
@@ -45,15 +49,14 @@
 			if (this.y > height) this.y = 0;
 
 			if (mouse.x != null && mouse.y != null) {
-				let dx = mouse.x - this.x;
-				let dy = mouse.y - this.y;
-				let distance = Math.sqrt(dx * dx + dy * dy);
+				const dx = mouse.x - this.x;
+				const dy = mouse.y - this.y;
+				const distance = Math.sqrt(dx * dx + dy * dy);
 
 				if (distance < mouseDistance) {
 					const forceDirectionX = dx / distance;
 					const forceDirectionY = dy / distance;
 					const force = (mouseDistance - distance) / mouseDistance;
-					// Gentle push
 					const directionX = forceDirectionX * force * 0.5;
 					const directionY = forceDirectionY * force * 0.5;
 					this.vx -= directionX * 0.1;
@@ -84,8 +87,19 @@
 		}
 	}
 
-	function animate() {
-		if (!ctx) return;
+	function animate(now = 0) {
+		if (!ctx || !running) {
+			animationId = null;
+			return;
+		}
+
+		// Throttle on mobile so we render half as many frames.
+		if (frameInterval && now - lastFrame < frameInterval) {
+			animationId = requestAnimationFrame(animate);
+			return;
+		}
+		lastFrame = now;
+
 		ctx.clearRect(0, 0, width, height);
 
 		for (let i = 0; i < particles.length; i++) {
@@ -93,14 +107,13 @@
 			particles[i].draw();
 
 			for (let j = i; j < particles.length; j++) {
-				let dx = particles[i].x - particles[j].x;
-				let dy = particles[i].y - particles[j].y;
-				let distance = Math.sqrt(dx * dx + dy * dy);
+				const dx = particles[i].x - particles[j].x;
+				const dy = particles[i].y - particles[j].y;
+				const distance = Math.sqrt(dx * dx + dy * dy);
 
 				if (distance < connectionDistance) {
 					ctx.beginPath();
-					let opacity = 1 - distance / connectionDistance;
-					// Very subtle line color
+					const opacity = 1 - distance / connectionDistance;
 					ctx.strokeStyle = 'rgba(5, 150, 105,' + opacity * 0.1 + ')';
 					ctx.lineWidth = 1;
 					ctx.moveTo(particles[i].x, particles[i].y);
@@ -112,17 +125,45 @@
 		animationId = requestAnimationFrame(animate);
 	}
 
+	function start() {
+		if (running) return;
+		running = true;
+		lastFrame = 0;
+		animationId = requestAnimationFrame(animate);
+	}
+
+	function stop() {
+		running = false;
+		if (animationId !== null) {
+			cancelAnimationFrame(animationId);
+			animationId = null;
+		}
+	}
+
 	onMount(() => {
 		if (!browser) return;
 
-		setTimeout(() => {
+		// Respect reduced-motion: draw a single static frame, never animate.
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		const cleanupFns: Array<() => void> = [];
+
+		const init = () => {
 			if (!canvas) return;
 			ctx = canvas.getContext('2d');
 			if (!ctx) return;
 
 			resize();
 			initParticles();
-			animate();
+
+			if (reduceMotion) {
+				// One static frame for visual presence, no rAF loop.
+				ctx.clearRect(0, 0, width, height);
+				for (const p of particles) p.draw();
+				return;
+			}
+
+			start();
 
 			const handleMouseMove = (e: MouseEvent) => {
 				mouse.x = e.clientX;
@@ -132,18 +173,49 @@
 				mouse.x = null;
 				mouse.y = null;
 			};
+			const handleVisibilityChange = () => {
+				if (document.hidden) stop();
+				else if (visible) start();
+			};
+
+			// Track on-screen visibility — when the canvas (or rather its
+			// fixed-positioned spot) is fully out of view, pause the loop.
+			let visible = true;
+			const io = new IntersectionObserver(
+				(entries) => {
+					for (const entry of entries) {
+						visible = entry.isIntersecting;
+						if (!visible) stop();
+						else if (!document.hidden) start();
+					}
+				},
+				{ threshold: 0 }
+			);
+			io.observe(canvas);
 
 			window.addEventListener('resize', resize);
 			window.addEventListener('mousemove', handleMouseMove);
 			window.addEventListener('mouseleave', handleMouseLeave);
+			document.addEventListener('visibilitychange', handleVisibilityChange);
 
-			return () => {
-				cancelAnimationFrame(animationId);
-				window.removeEventListener('resize', resize);
-				window.removeEventListener('mousemove', handleMouseMove);
-				window.removeEventListener('mouseleave', handleMouseLeave);
-			};
-		}, 0);
+			cleanupFns.push(
+				() => stop(),
+				() => io.disconnect(),
+				() => window.removeEventListener('resize', resize),
+				() => window.removeEventListener('mousemove', handleMouseMove),
+				() => window.removeEventListener('mouseleave', handleMouseLeave),
+				() => document.removeEventListener('visibilitychange', handleVisibilityChange)
+			);
+		};
+
+		// Defer init to after first paint so the canvas doesn't compete with
+		// the LCP image for the main thread.
+		const timer = setTimeout(init, 0);
+		cleanupFns.push(() => clearTimeout(timer));
+
+		return () => {
+			for (const fn of cleanupFns) fn();
+		};
 	});
 </script>
 

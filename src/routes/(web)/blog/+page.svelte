@@ -8,7 +8,6 @@
 		initScrollAnimations,
 		initStaggeredScrollAnimations
 	} from '$lib/utils/scroll-animations';
-	import { prefersReducedMotion } from '$lib/utils/animations';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -20,15 +19,6 @@
 	const breadcrumbs = generateBreadcrumbs('blog');
 
 	onMount(() => {
-		if (prefersReducedMotion()) {
-			document
-				.querySelectorAll<HTMLElement>('[data-scroll-animate], [data-scroll-stagger] > *')
-				.forEach((el) => {
-					el.style.opacity = '1';
-					el.style.transform = 'none';
-				});
-			return;
-		}
 		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
 		initStaggeredScrollAnimations('[data-scroll-stagger]', {
 			threshold: 0.15,

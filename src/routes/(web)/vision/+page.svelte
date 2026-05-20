@@ -17,17 +17,7 @@
 	];
 
 	onMount(() => {
-		if (prefersReducedMotion()) {
-			document
-				.querySelectorAll<HTMLElement>(
-					'[data-hero-step], [data-scroll-animate], [data-scroll-stagger] > *'
-				)
-				.forEach((el) => {
-					el.style.opacity = '1';
-					el.style.transform = 'none';
-				});
-			return;
-		}
+		if (prefersReducedMotion()) return;
 
 		const heroKeyframes: Record<string, unknown> = {
 			opacity: [0, 1],

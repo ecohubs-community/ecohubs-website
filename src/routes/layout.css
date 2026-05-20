@@ -13,6 +13,7 @@ main blockquote,
 main span:not([class*='font-']),
 main div:not([class*='font-']) {
 	font-family:
+		'Inter Variable',
 		'Inter',
 		system-ui,
 		-apple-system,
@@ -23,12 +24,13 @@ main div:not([class*='font-']) {
 }
 
 .font-story {
-	font-family: var(--font-story, 'Fraunces', serif);
+	font-family: var(--font-story, 'Fraunces Variable', 'Fraunces', serif);
 	font-optical-sizing: auto;
 }
 
 .font-mono {
-	font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-family:
+		'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 /* Small uppercase eyebrow used on every section header. */
@@ -89,7 +91,7 @@ main div:not([class*='font-']) {
 
 /* Emerald-tinted drop cap on long-form story openings. */
 .drop-cap::first-letter {
-	font-family: var(--font-story, 'Fraunces', serif);
+	font-family: var(--font-story, 'Fraunces Variable', 'Fraunces', serif);
 	font-weight: 500;
 	font-size: 4.5rem;
 	line-height: 0.9;
@@ -107,21 +109,40 @@ details[open] > summary > span:last-child {
 	transform: rotate(45deg);
 }
 
-/* Animation FOUC guard for scroll-triggered reveals. Scoped to `html.js` so
-   that crawlers, web clippers, and no-JS readers see the SSR-rendered content
-   at full opacity. The IntersectionObserver sets the keyframes on first
-   visibility; in reduced-motion mode the override restores immediate visibility. */
+/* Scroll-triggered reveal. All animation now runs on the compositor via CSS
+   transitions — no Motion `inView` + `animate` calls, no per-element rAF.
+   A single shared IntersectionObserver in scroll-animations.ts toggles
+   `.is-visible` when each element enters viewport.
+
+   Hidden by default but only when `html.js` is set (the inline script in
+   app.html flips it before paint). Crawlers, web clippers, and no-JS
+   readers see the SSR-rendered content at full opacity. */
 html.js [data-scroll-animate],
 html.js [data-scroll-stagger] > *,
 html.js [data-hero-step] {
 	opacity: 0;
+	transform: translateY(40px);
+	transition:
+		opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+	will-change: opacity, transform;
 }
+html.js [data-scroll-stagger] > * {
+	transition-delay: calc(var(--stagger-i, 0) * 80ms);
+}
+html.js [data-scroll-animate].is-visible,
+html.js [data-scroll-stagger].is-visible > * {
+	opacity: 1;
+	transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html.js [data-scroll-animate],
 	html.js [data-scroll-stagger] > *,
 	html.js [data-hero-step] {
 		opacity: 1 !important;
 		transform: none !important;
+		transition: none !important;
 	}
 }
 

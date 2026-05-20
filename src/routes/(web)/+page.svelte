@@ -3,12 +3,15 @@
 	import { animate } from 'motion';
 	import ConstellationMap from '$lib/components/ConstellationMap.svelte';
 	import PersonaIcons from '$lib/components/PersonaIcons.svelte';
-	import HeroImage from '$lib/assets/hero.webp';
-	import BlueprintImage from '$lib/assets/blueprint-community.webp';
-	import NetworkImage from '$lib/assets/network-regenerative-ecohubs.webp';
-	import jungleNature from '$lib/assets/jungle-nature.webp';
-	import CommunityFamily from '$lib/assets/community-family.avif';
-	import CommunityGroup from '$lib/assets/community-group.avif';
+	// Hero mosaic images are processed by @sveltejs/enhanced-img — the
+	// `?enhanced` query returns a `Picture` object with srcset for every
+	// format/breakpoint, so mobile gets ~40 KB instead of the 229 KB original.
+	import HeroImage from '$lib/assets/hero.webp?enhanced';
+	import BlueprintImage from '$lib/assets/blueprint-community.webp?enhanced';
+	import NetworkImage from '$lib/assets/network-regenerative-ecohubs.webp?enhanced';
+	import jungleNature from '$lib/assets/jungle-nature.webp?enhanced';
+	import CommunityFamily from '$lib/assets/community-family.avif?enhanced';
+	import CommunityGroup from '$lib/assets/community-group.avif?enhanced';
 
 	import SEO from '$lib/components/SEO.svelte';
 	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
@@ -33,22 +36,12 @@
 	const WOUNDS_PREVIEW_COUNT = 4;
 
 	// ─── ANIMATIONS ─────────────────────────────────────────────────────────────
-	// Hero cascades in on mount; everything below is scroll-triggered via the
-	// `data-scroll-animate` / `data-scroll-stagger` attributes sprinkled through
-	// the markup. Both paths short-circuit when `prefers-reduced-motion: reduce`.
+	// Hero cascades in on mount via Motion; everything below uses CSS
+	// transitions toggled by a single IntersectionObserver in
+	// scroll-animations.ts. When `prefers-reduced-motion: reduce` is set, the
+	// CSS in layout.css reveals everything immediately — JS just bails.
 	onMount(() => {
-		if (prefersReducedMotion()) {
-			// Show every initially-hidden element instantly so the page is usable.
-			document
-				.querySelectorAll<HTMLElement>(
-					'[data-hero-step], [data-scroll-animate], [data-scroll-stagger] > *'
-				)
-				.forEach((el) => {
-					el.style.opacity = '1';
-					el.style.transform = 'none';
-				});
-			return;
-		}
+		if (prefersReducedMotion()) return;
 
 		// Hero — initial-load cascade (not scroll-triggered: it's already in view).
 		// Each step's delay is encoded in `data-hero-step` (in seconds, e.g. "0.30").
@@ -75,10 +68,6 @@
 		});
 	});
 </script>
-
-<svelte:head>
-	<link rel="preload" as="image" href={HeroImage} fetchpriority="high" />
-</svelte:head>
 
 <SEO
 	title="EcoHubs — A Regenerative Future Designed Together"
@@ -177,47 +166,39 @@
 			<div class="lg:col-span-5 relative">
 				<div data-hero-step="0.20" class="grid grid-cols-5 grid-rows-6 gap-3 h-[520px]">
 					<div class="col-span-3 row-span-4 rounded-[28px] overflow-hidden soft-shadow">
-						<img
+						<enhanced:img
 							src={HeroImage}
 							alt="Community working together"
-							width="1920"
-							height="2899"
+							sizes="(max-width: 768px) 60vw, 360px"
 							loading="eager"
 							fetchpriority="high"
-							decoding="async"
 							class="w-full h-full object-cover"
 						/>
 					</div>
 					<div class="col-span-2 row-span-3 rounded-[24px] overflow-hidden soft-shadow mt-8">
-						<img
+						<enhanced:img
 							src={CommunityFamily}
 							alt="Quiet moment in nature"
-							width="700"
-							height="539"
+							sizes="(max-width: 768px) 40vw, 240px"
 							loading="lazy"
-							decoding="async"
 							class="w-full h-full object-cover"
 						/>
 					</div>
 					<div class="col-span-2 row-span-3 rounded-[24px] overflow-hidden soft-shadow">
-						<img
+						<enhanced:img
 							src={CommunityGroup}
 							alt="Community group"
-							width="700"
-							height="468"
+							sizes="(max-width: 768px) 40vw, 240px"
 							loading="lazy"
-							decoding="async"
 							class="w-full h-full object-cover"
 						/>
 					</div>
 					<div class="col-span-3 row-span-2 rounded-[24px] overflow-hidden soft-shadow">
-						<img
+						<enhanced:img
 							src={BlueprintImage}
 							alt="Community blueprint"
-							width="1384"
-							height="1040"
+							sizes="(max-width: 768px) 60vw, 360px"
 							loading="lazy"
-							decoding="async"
 							class="w-full h-full object-cover"
 						/>
 					</div>
@@ -856,14 +837,22 @@
 		<div data-scroll-animate="fade-up" class="relative">
 			<div class="grid grid-cols-2 gap-4">
 				<div class="rounded-2xl overflow-hidden aspect-[3/4] mt-10 soft-shadow">
-					<img
+					<enhanced:img
 						src={NetworkImage}
 						alt="Regenerative community network"
+						sizes="(max-width: 768px) 45vw, 280px"
+						loading="lazy"
 						class="w-full h-full object-cover"
 					/>
 				</div>
 				<div class="rounded-2xl overflow-hidden aspect-[3/4] soft-shadow">
-					<img src={jungleNature} alt="Shared meal" class="w-full h-full object-cover" />
+					<enhanced:img
+						src={jungleNature}
+						alt="Shared meal"
+						sizes="(max-width: 768px) 45vw, 280px"
+						loading="lazy"
+						class="w-full h-full object-cover"
+					/>
 				</div>
 			</div>
 		</div>
@@ -1053,14 +1042,15 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- Inline video teaser — a softer second invitation for visitors who want
-		     the explainer rather than the spec. The full-length version (with
-		     its own framing copy) lives on the Blueprint page. -->
-		<div
-			data-scroll-animate="fade-up"
-			class="mt-20 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-5xl mx-auto"
-		>
+	<!-- Inline video teaser — a softer second invitation for visitors who want
+	     the explainer rather than the spec. Sits in its own full-width container
+	     below the teaser grid so it isn't squeezed into the 12-col layout
+	     above. The full-length version (with its own framing copy) lives on
+	     the Blueprint page. -->
+	<div class="max-w-6xl mx-auto px-6 lg:px-8 relative mt-20">
+		<div data-scroll-animate="fade-up" class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 			<div class="lg:col-span-7">
 				<LiteYouTube videoId="JwTf6BFhdYY" title="Introduction to RCOS — EcoHubs" />
 			</div>

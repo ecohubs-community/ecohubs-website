@@ -8,7 +8,6 @@
 		initScrollAnimations,
 		initStaggeredScrollAnimations
 	} from '$lib/utils/scroll-animations';
-	import { prefersReducedMotion } from '$lib/utils/animations';
 
 	const breadcrumbs = generateBreadcrumbs('blueprint');
 
@@ -24,19 +23,9 @@
 		faq
 	} from './data';
 	import { comparisons } from '../data';
-	import fruitHavenTeam from '$lib/assets/fruithaven-team.webp';
+	import fruitHavenTeam from '$lib/assets/fruithaven-team.webp?enhanced';
 
 	onMount(() => {
-		if (prefersReducedMotion()) {
-			document
-				.querySelectorAll<HTMLElement>('[data-scroll-animate], [data-scroll-stagger] > *')
-				.forEach((el) => {
-					el.style.opacity = '1';
-					el.style.transform = 'none';
-				});
-			return;
-		}
-
 		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
 		initStaggeredScrollAnimations('[data-scroll-stagger]', {
 			threshold: 0.15,
@@ -927,9 +916,11 @@
 	<div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
 		<div data-scroll-animate class="lg:col-span-5 relative">
 			<div class="rounded-[32px] overflow-hidden soft-shadow aspect-[4/5]">
-				<img
+				<enhanced:img
 					src={fruitHavenTeam}
 					alt="FruitHaven Community in Ecuador"
+					sizes="(max-width: 768px) 90vw, 400px"
+					loading="lazy"
 					class="w-full h-full object-cover"
 				/>
 			</div>

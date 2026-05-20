@@ -8,19 +8,8 @@
 			document.documentElement.classList.replace('no-js', 'js');
 		</script>
 
-		<!-- Inter and JetBrains Mono are loaded here so every (web) route gets
-		     them without duplicating the <link> in each page. Pridi, Fraunces
-		     and Stack Sans Headline come in via theme.css's @import. -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-			rel="stylesheet"
-		/>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=Ledger&family=Pridi:wght@200;300;400;500;600;700&family=Stack+Sans+Headline:wght@200..700&display=swap"
-			rel="stylesheet"
-		/>
+		<!-- Fonts are self-hosted via @fontsource imports in src/lib/styles/theme.css;
+		     no Google CDN round-trip needed. -->
 
 		%sveltekit.head%
 	</head>

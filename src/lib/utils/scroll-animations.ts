@@ -1,95 +1,84 @@
-import { inView, animate } from 'motion';
-
 /**
- * Initialize scroll-triggered animations for elements marked with
- * `data-scroll-animate` (or a custom selector). Each element's animation
- * is picked by its `data-scroll-animate` value (defaults to "fade-up").
+ * Scroll-triggered reveal — a single shared IntersectionObserver toggles
+ * `.is-visible` when an element enters the viewport, and CSS handles the
+ * actual animation via GPU-accelerated `transform` + `opacity` transitions.
+ *
+ * Previously this used Motion's `inView` + `animate`, which created one
+ * observer per element (~42 on the homepage) and ran rAF callbacks on the
+ * main thread. The CSS-only approach keeps Lighthouse TBT/INP low on mobile
+ * and lets us drop the Motion dependency from non-hero pages.
  */
-export function initScrollAnimations(
-	selector: string = '[data-scroll-animate]',
-	options: {
-		threshold?: number;
-		once?: boolean;
-	} = {}
-) {
-	const { threshold = 0.2 } = options;
 
-	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-		return;
-	}
+let observer: IntersectionObserver | null = null;
+let prefersReduced = false;
 
-	const elements = document.querySelectorAll(selector);
-
-	elements.forEach((element) => {
-		const el = element as HTMLElement;
-		const animationType = el.dataset.scrollAnimate || 'fade-up';
-
-		const animations: Record<string, Record<string, unknown>> = {
-			'fade-up': { opacity: [0, 1], transform: ['translateY(40px)', 'translateY(0px)'] },
-			'fade-down': { opacity: [0, 1], transform: ['translateY(-40px)', 'translateY(0px)'] },
-			'fade-left': { opacity: [0, 1], transform: ['translateX(40px)', 'translateX(0px)'] },
-			'fade-right': { opacity: [0, 1], transform: ['translateX(-40px)', 'translateX(0px)'] },
-			fade: { opacity: [0, 1] },
-			scale: { opacity: [0, 1], transform: ['scale(0.8)', 'scale(1)'] },
-			rotate: { opacity: [0, 1], transform: ['rotate(-5deg) scale(0.95)', 'rotate(0deg) scale(1)'] }
-		};
-
-		const animation = animations[animationType] ?? animations['fade-up'];
-
-		inView(
-			el,
-			() => {
-				animate(el, animation as never, {
-					duration: 0.8,
-					ease: [0.22, 1, 0.36, 1]
-				});
-			},
-			{ amount: threshold }
-		);
-	});
+function getObserver(threshold: number): IntersectionObserver {
+	// Share one observer for the whole page. Lazily constructed so it picks up
+	// the threshold of whoever wires it up first; if a second caller needs a
+	// different threshold the cost is trivial — observers are cheap once you
+	// stop pooling per-element.
+	if (observer) return observer;
+	observer = new IntersectionObserver(
+		(entries) => {
+			for (const entry of entries) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('is-visible');
+					observer?.unobserve(entry.target);
+				}
+			}
+		},
+		{ threshold, rootMargin: '0px 0px -10% 0px' }
+	);
+	return observer;
 }
 
 /**
- * Stagger-fade the direct children of every element matching `parentSelector`
- * as that parent enters the viewport.
+ * Watch every element matching `selector` and add `.is-visible` when it
+ * enters the viewport. CSS handles the fade-up transition.
  */
-export function initStaggeredScrollAnimations(
-	parentSelector: string,
-	options: {
-		threshold?: number;
-		staggerDelay?: number;
-	} = {}
+export function initScrollAnimations(
+	selector: string = '[data-scroll-animate]',
+	options: { threshold?: number } = {}
 ) {
-	const { threshold = 0.2, staggerDelay = 0.1 } = options;
-
-	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+	if (typeof window === 'undefined') return;
+	prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	if (prefersReduced) {
+		// Reveal everything immediately — CSS guard in layout.css handles
+		// opacity/transform, but mark visible for any consumer that reads it.
+		document.querySelectorAll(selector).forEach((el) => el.classList.add('is-visible'));
 		return;
 	}
 
-	const parents = document.querySelectorAll(parentSelector);
+	const io = getObserver(options.threshold ?? 0.15);
+	document.querySelectorAll(selector).forEach((el) => io.observe(el));
+}
 
-	parents.forEach((parent) => {
-		const children = parent.children;
+/**
+ * Stagger-fade direct children of `parentSelector` as the parent enters the
+ * viewport. The stagger delay is encoded per-child via a `--stagger-i` CSS
+ * custom property (set inline here); CSS multiplies it by the base delay.
+ */
+export function initStaggeredScrollAnimations(
+	parentSelector: string,
+	options: { threshold?: number; staggerDelay?: number } = {}
+) {
+	if (typeof window === 'undefined') return;
+	prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	if (prefersReduced) {
+		document.querySelectorAll(parentSelector).forEach((parent) => {
+			parent.classList.add('is-visible');
+		});
+		return;
+	}
 
-		inView(
-			parent,
-			() => {
-				Array.from(children).forEach((child, index) => {
-					animate(
-						child as HTMLElement,
-						{
-							opacity: [0, 1],
-							transform: ['translateY(30px)', 'translateY(0px)']
-						} as never,
-						{
-							duration: 0.6,
-							delay: index * staggerDelay,
-							ease: [0.22, 1, 0.36, 1]
-						}
-					);
-				});
-			},
-			{ amount: threshold }
-		);
+	// Set the per-child stagger index up-front so the CSS variable is in place
+	// before the parent flips to `.is-visible` and the transition fires.
+	document.querySelectorAll<HTMLElement>(parentSelector).forEach((parent) => {
+		Array.from(parent.children).forEach((child, index) => {
+			(child as HTMLElement).style.setProperty('--stagger-i', String(index));
+		});
 	});
+
+	const io = getObserver(options.threshold ?? 0.15);
+	document.querySelectorAll(parentSelector).forEach((el) => io.observe(el));
 }
