@@ -20,7 +20,10 @@ const routes: SitemapRoute[] = [
 	{ path: '/contact', priority: '0.7', changefreq: 'yearly' },
 	{ path: '/blog', priority: '0.8', changefreq: 'weekly' },
 	{ path: '/privacy', priority: '0.3', changefreq: 'yearly' },
-	{ path: '/terms', priority: '0.3', changefreq: 'yearly' }
+	{ path: '/terms', priority: '0.3', changefreq: 'yearly' },
+
+	// Landing pages
+	{ path: '/community-resilience-assessment', priority: '0.7', changefreq: 'monthly' },
 ];
 
 export const prerender = true;

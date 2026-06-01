@@ -179,6 +179,7 @@
 
 <SEO
 	title="Community Resilience Assessment — Where will your community break first? | EcoHubs"
+	ogImage="/og-resilience-assessment.jpg"
 	description="A free 5-minute assessment for intentional communities. Ten honest questions about your written agreements — followed by a personalised, human-written report mapping where your community is solid and where it's exposed."
 	canonical="/community-resilience-assessment"
 />
