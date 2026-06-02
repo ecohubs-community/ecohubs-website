@@ -13,8 +13,13 @@
 	// Initialize dataLayer and gtag function immediately if in browser
 	if (browser && GA_MEASUREMENT_ID) {
 		window.dataLayer = window.dataLayer || [];
-		window.gtag = function (...args: unknown[]) {
-			window.dataLayer.push(args);
+		// IMPORTANT: gtag must push the `arguments` object itself, exactly as in
+		// Google's canonical snippet. Using rest params + pushing the resulting
+		// array (`push(args)`) changes the entry from an arguments-object to a
+		// plain Array, which gtag.js does not recognise as a command — so config/
+		// consent/js calls are silently dropped and GA receives no data.
+		window.gtag = function () {
+			window.dataLayer.push(arguments);
 		};
 
 		// 1. Set default consent to 'denied' (Google Consent Mode v2)
