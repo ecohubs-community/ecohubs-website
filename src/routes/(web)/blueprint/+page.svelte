@@ -1115,12 +1115,18 @@
 			{/each}
 		</div>
 
-		<div class="mt-8 text-center">
+		<div class="mt-8 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-center sm:gap-8">
 			<a
 				href="/faq#blueprint"
 				class="inline-flex items-center gap-2 text-sm text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1"
 			>
 				See all questions across the project →
+			</a>
+			<a
+				href="/community-resilience-assessment"
+				class="inline-flex items-center gap-2 text-sm text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1"
+			>
+				See how your community measures up — free resilience assessment →
 			</a>
 		</div>
 	</div>

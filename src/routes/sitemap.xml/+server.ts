@@ -23,7 +23,7 @@ const routes: SitemapRoute[] = [
 	{ path: '/terms', priority: '0.3', changefreq: 'yearly' },
 
 	// Landing pages
-	{ path: '/community-resilience-assessment', priority: '0.7', changefreq: 'monthly' },
+	{ path: '/community-resilience-assessment', priority: '0.8', changefreq: 'monthly' },
 ];
 
 export const prerender = true;

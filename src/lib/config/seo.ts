@@ -99,6 +99,12 @@ export const SEO_CONFIG = {
 			description:
 				'The questions we hear most about EcoHubs — the project, the Vision, the Blueprint (RCOS), and Membership — answered plainly, in one place.',
 			ogImage: '/og-faq.jpg'
+		},
+		communityResilienceAssessment: {
+			title: 'Community Resilience Assessment — Free 5-Min Quiz | EcoHubs',
+			description:
+				'A free 5-minute community resilience assessment for intentional communities. Ten honest questions, then a human-written report mapping your gaps.',
+			ogImage: '/og-resilience-assessment.jpg'
 		}
 	}
 } as const;

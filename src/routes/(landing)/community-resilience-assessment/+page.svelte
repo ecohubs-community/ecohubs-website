@@ -6,6 +6,55 @@
 	import { QUESTIONS, OPTIONS, tierFor, type AnswerKey } from './data';
 	import { MAUTIC_RESILIENCE_ASSESSMENT } from '$lib/config/mautic';
 	import { initMauticTracking, getMauticContactId } from '$lib/utils/mautic';
+	import { SEO_CONFIG } from '$lib/config/seo';
+
+	const SEO_PAGE = SEO_CONFIG.pages.communityResilienceAssessment;
+
+	/* ─── Structured data ────────────────────────────────────────── *
+	 * FAQ pairs mirror the three "worries" accordion below; emitting
+	 * FAQPage here (this landing page is a self-contained SEO island)
+	 * makes it eligible for FAQ rich results. The WebPage/Service
+	 * schema describes the free assessment itself.                    */
+	const seoFaq = [
+		{
+			question: 'Our community is small or informal — is this assessment for us?',
+			answer:
+				'If you have more than five people sharing a space, this is for you. Smaller and informal communities often have the most implicit rules — and the most to gain from making them explicit.'
+		},
+		{
+			question: "We've been around for years — are we past this?",
+			answer:
+				'Established communities often discover the deepest gaps. Time conceals what conflict eventually reveals. The longer something has worked informally, the more painful it tends to be when the informal version breaks.'
+		},
+		{
+			question: "We don't want to be judged — what does the report actually do?",
+			answer:
+				"We don't judge. There's no score, no grade, no pass/fail. We support communities — we don't audit them. The report is just a clear map of what's defined and what isn't, so you can decide what to do next."
+		}
+	];
+
+	const assessmentSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'WebPage',
+		name: 'Community Resilience Assessment',
+		url: `${SEO_CONFIG.siteUrl}/community-resilience-assessment`,
+		description:
+			'A free 5-minute self-assessment for intentional communities, measuring how clearly a community’s key agreements are written down, followed by a human-written gap report.',
+		inLanguage: 'en',
+		isPartOf: { '@type': 'WebSite', name: SEO_CONFIG.siteName, url: SEO_CONFIG.siteUrl },
+		about: {
+			'@type': 'Service',
+			name: 'Community Resilience Assessment & Report',
+			serviceType: 'Community governance assessment',
+			provider: {
+				'@type': 'Organization',
+				name: SEO_CONFIG.organization.name,
+				url: SEO_CONFIG.siteUrl
+			},
+			areaServed: 'Worldwide',
+			offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+		}
+	};
 
 	const MAUTIC_FORM_KEY = 'resilience-assessment';
 	const QUIZ_SUMMARY_FIELD = MAUTIC_RESILIENCE_ASSESSMENT.quizSummaryField;
@@ -203,10 +252,13 @@
 </script>
 
 <SEO
-	title="Community Resilience Assessment — Where will your community break first? | EcoHubs"
-	ogImage="/og-resilience-assessment.jpg"
-	description="A free 5-minute assessment for intentional communities. Ten honest questions about your written agreements — followed by a personalised, human-written report mapping where your community is solid and where it's exposed."
+	title={SEO_PAGE.title}
+	description={SEO_PAGE.description}
+	ogImage={SEO_PAGE.ogImage}
+	ogImageAlt="Community resilience assessment — pie chart of explicit, partial, and missing community agreements"
 	canonical="/community-resilience-assessment"
+	faq={seoFaq}
+	jsonLd={assessmentSchema}
 />
 
 <div class="landing-root">
@@ -337,6 +389,19 @@
 					Four answer options per question. Five minutes. Your responses stay in your browser until
 					you ask for the full report.
 				</p>
+			</div>
+
+			<!-- Crawlable full question list. The interactive card below shows one
+			     question at a time (client-side), so only the first reaches the
+			     prerendered HTML; this sr-only block exposes all ten to crawlers
+			     and screen readers without duplicating them visually. -->
+			<div class="sr-only">
+				<h3>The 10 community resilience assessment questions</h3>
+				<ol>
+					{#each QUESTIONS as q}
+						<li><strong>{q.label}:</strong> {q.prompt}</li>
+					{/each}
+				</ol>
 			</div>
 
 			<div class="q-card soft-shadow overflow-hidden">
@@ -954,49 +1019,10 @@
 				</div>
 			{/if}
 
-			<!-- Footer mark — non-clickable brand only -->
+			<!-- Footer mark — a single discreet link home, giving this otherwise
+			     link-free landing page a place in the site's crawl graph. -->
 			<div class="mt-20 flex flex-col items-center gap-3 border-t border-white/10 pt-10 opacity-70">
-				<svg
-					viewBox="0 0 1920 1920"
-					class="h-8 w-8 brightness-[1.6]"
-					xmlns="http://www.w3.org/2000/svg"
-					aria-label="EcoHubs"
-				>
-					<g>
-						<path
-							d="M375.183,374.836c31.204,-31.205 218.513,-64.394 371.175,88.268c91.285,91.286 206.245,429.736 176.537,459.444c-26.768,26.768 -368.158,-85.252 -459.443,-176.538c-164.72,-164.72 -123.097,-336.346 -88.269,-371.174Z"
-							fill="#064e3b"
-						/>
-						<path
-							d="M1544.82,1549.04c-31.204,31.204 -218.513,64.393 -371.175,-88.269c-91.285,-91.286 -206.245,-429.736 -176.537,-459.444c26.768,-26.768 368.158,85.252 459.443,176.538c164.72,164.72 123.097,336.346 88.269,371.175Z"
-							fill="#064e3b"
-						/>
-						<path
-							d="M1547.1,377.119c31.204,31.204 64.393,218.512 -88.269,371.174c-91.285,91.286 -429.736,206.245 -459.443,176.538c-26.769,-26.768 85.252,-368.158 176.537,-459.444c164.72,-164.72 336.347,-123.097 371.175,-88.268Z"
-							fill="#064e3b"
-						/>
-						<path
-							d="M372.9,1546.75c-31.204,-31.205 -64.393,-218.513 88.269,-371.175c91.285,-91.285 429.736,-206.245 459.443,-176.538c26.769,26.769 -85.252,368.158 -176.537,459.444c-164.72,164.72 -336.347,123.097 -371.175,88.269Z"
-							fill="#064e3b"
-						/>
-					</g>
-					<path
-						d="M958.921,115.51c28.189,0 127.783,69.613 127.783,207.521c0,82.464 -100.947,287.26 -127.783,287.26c-24.181,0 -127.783,-204.796 -127.783,-287.26c0,-148.801 96.321,-207.521 127.783,-207.521Z"
-						fill="#1a8e7b"
-					/>
-					<path
-						d="M967.41,1804.49c-28.189,0 -127.783,-69.613 -127.783,-207.521c0,-82.464 100.946,-287.26 127.783,-287.26c24.181,0 127.783,204.796 127.783,287.26c0,148.801 -96.321,207.521 -127.783,207.521Z"
-						fill="#1a8e7b"
-					/>
-					<path
-						d="M1808.18,964.093c0,28.189 -69.612,127.783 -207.521,127.783c-82.463,0 -287.259,-100.946 -287.259,-127.783c0,-24.181 204.796,-127.782 287.259,-127.782c148.801,0 207.521,96.32 207.521,127.782Z"
-						fill="#1a8e7b"
-					/>
-					<path
-						d="M116.131,957.721c0,-28.189 69.612,-127.783 207.521,-127.783c82.463,0 287.259,100.947 287.259,127.783c0,24.181 -204.796,127.783 -287.259,127.783c-148.801,0 -207.521,-96.321 -207.521,-127.783Z"
-						fill="#1a8e7b"
-					/>
-				</svg>
+				<img src={Logo} width="60" alt="EcoHubs" />
 				<div class="font-serif text-[15px] text-stone-300/80">
 					EcoHubs · <em class="font-story italic">a quiet project, in the open</em>
 				</div>
