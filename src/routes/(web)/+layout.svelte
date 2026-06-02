@@ -6,6 +6,7 @@
 	import NavigationProgress from '$lib/components/NavigationProgress.svelte';
 	import Analytics from '$lib/components/Analytics.svelte';
 	import CookieConsent from '$lib/components/CookieConsent.svelte';
+	import NewsletterModal from '$lib/components/NewsletterModal.svelte';
 	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
@@ -38,3 +39,4 @@
 
 <Analytics />
 <CookieConsent />
+<NewsletterModal />

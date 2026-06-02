@@ -3,14 +3,12 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import fruithavenTeam from '$lib/assets/fruithaven-team.webp';
 	import Logo from '$lib/assets/Logo.svg';
-	import {
-		QUESTIONS,
-		OPTIONS,
-		tierFor,
-		MAUTIC,
-		MAUTIC_FORM_ACTION,
-		type AnswerKey
-	} from './data';
+	import { QUESTIONS, OPTIONS, tierFor, type AnswerKey } from './data';
+	import { MAUTIC_RESILIENCE_ASSESSMENT } from '$lib/config/mautic';
+	import { initMauticTracking, getMauticContactId } from '$lib/utils/mautic';
+
+	const MAUTIC_FORM_KEY = 'resilience-assessment';
+	const QUIZ_SUMMARY_FIELD = MAUTIC_RESILIENCE_ASSESSMENT.quizSummaryField;
 
 	/* ─── Quiz state ─────────────────────────────────────────────── */
 	let index = $state(0);
@@ -25,10 +23,14 @@
 	let communityLocation = $state('');
 	let communitySize = $state('');
 	let quizFormDone = $state(false);
+	let quizSubmitting = $state(false);
+	let quizError = $state('');
 
 	/* ─── Final-CTA form state ───────────────────────────────────── */
 	let form2Email = $state('');
 	let form2Done = $state(false);
+	let form2Submitting = $state(false);
+	let form2Error = $state('');
 
 	/* ─── Derived score / breakdown / tier ───────────────────────── */
 	const totalScore = $derived(
@@ -121,20 +123,60 @@
 	}
 
 	/* ─── Form submission ────────────────────────────────────────── *
-	 * Forms POST natively into the hidden iframe (target="mautic_     *
-	 * submit_target"), so the browser handles the cross-origin POST   *
-	 * and we don't touch fetch / CORS. After submission we just flip  *
-	 * a flag to show the success state.                                */
-	function onQuizFormSubmit() {
-		setTimeout(() => {
-			quizFormDone = true;
-		}, 50);
+	 * Both forms POST to `/api/mautic`, which validates against the    *
+	 * server-side allowlist and forwards to Mautic — stitching the     *
+	 * submission onto the tracked visitor via their `mtcId`.           */
+	async function submitToMautic(fields: Record<string, string>): Promise<boolean> {
+		const res = await fetch('/api/mautic', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				form: MAUTIC_FORM_KEY,
+				fields,
+				mtcId: getMauticContactId()
+			})
+		});
+		const data = await res.json().catch(() => null);
+		return res.ok && data?.success === true;
 	}
 
-	function onForm2Submit() {
-		setTimeout(() => {
-			form2Done = true;
-		}, 50);
+	async function onQuizFormSubmit(e: SubmitEvent) {
+		e.preventDefault();
+		if (quizSubmitting) return;
+		quizSubmitting = true;
+		quizError = '';
+		try {
+			const ok = await submitToMautic({
+				email: quizEmail,
+				ccommunity_name: communityName,
+				ccommunity_website: communityWebsite,
+				ccommunity_location: communityLocation,
+				ccommunity_size: communitySize,
+				[QUIZ_SUMMARY_FIELD]: quizSummary
+			});
+			if (ok) quizFormDone = true;
+			else quizError = 'Something went wrong. Please try again.';
+		} catch {
+			quizError = 'Something went wrong. Please try again.';
+		} finally {
+			quizSubmitting = false;
+		}
+	}
+
+	async function onForm2Submit(e: SubmitEvent) {
+		e.preventDefault();
+		if (form2Submitting) return;
+		form2Submitting = true;
+		form2Error = '';
+		try {
+			const ok = await submitToMautic({ email: form2Email });
+			if (ok) form2Done = true;
+			else form2Error = 'Something went wrong. Please try again.';
+		} catch {
+			form2Error = 'Something went wrong. Please try again.';
+		} finally {
+			form2Submitting = false;
+		}
 	}
 
 	/* ─── Pie slices for the result ──────────────────────────────── */
@@ -156,24 +198,7 @@
 
 	/* ─── Mautic tracking pixel ──────────────────────────────────── */
 	onMount(() => {
-		const w = window as unknown as {
-			MauticTrackingObject?: string;
-			mt?: ((...args: unknown[]) => void) & { q?: unknown[][] };
-		};
-		if (w.MauticTrackingObject) {
-			w.mt?.('send', 'pageview');
-			return;
-		}
-		w.MauticTrackingObject = 'mt';
-		const fn = function (...args: unknown[]) {
-			(fn.q = fn.q || []).push(args);
-		} as ((...args: unknown[]) => void) & { q?: unknown[][] };
-		w.mt = fn;
-		const s = document.createElement('script');
-		s.async = true;
-		s.src = `${MAUTIC.baseUrl}/mtc.js`;
-		document.head.appendChild(s);
-		w.mt('send', 'pageview');
+		initMauticTracking();
 	});
 </script>
 
@@ -183,14 +208,6 @@
 	description="A free 5-minute assessment for intentional communities. Ten honest questions about your written agreements — followed by a personalised, human-written report mapping where your community is solid and where it's exposed."
 	canonical="/community-resilience-assessment"
 />
-
-<!-- Hidden iframe target for Mautic form submissions — no CORS, no page nav -->
-<iframe
-	name="mautic_submit_target"
-	title="Mautic form submission target"
-	style="display:none;width:0;height:0;border:0;"
-	aria-hidden="true"
-></iframe>
 
 <div class="landing-root">
 	<!-- ═══════════════════════════════════════════════════════════════
@@ -473,20 +490,12 @@
 									Free. In your inbox within five business days.
 								</p>
 
-								<form
-									method="post"
-									action={MAUTIC_FORM_ACTION}
-									enctype="multipart/form-data"
-									target="mautic_submit_target"
-									autocomplete="false"
-									onsubmit={onQuizFormSubmit}
-								>
+								<form autocomplete="off" onsubmit={onQuizFormSubmit}>
 									<label class="block">
 										<span class="sr-only">Email address</span>
 										<input
 											type="email"
 											required
-											name="mauticform[email]"
 											bind:value={quizEmail}
 											placeholder="your@email.com"
 											class="field"
@@ -502,21 +511,18 @@
 											<div class="grid gap-3 sm:grid-cols-2">
 												<input
 													type="text"
-													name="mauticform[ccommunity_name]"
 													bind:value={communityName}
 													placeholder="Community name"
 													class="field"
 												/>
 												<input
 													type="url"
-													name="mauticform[ccommunity_website]"
 													bind:value={communityWebsite}
 													placeholder="Community website"
 													class="field"
 												/>
 												<input
 													type="text"
-													name="mauticform[ccommunity_location]"
 													bind:value={communityLocation}
 													placeholder="Country / location"
 													class="field sm:col-span-2"
@@ -540,41 +546,28 @@
 														</button>
 													{/each}
 												</div>
-												<input
-													type="hidden"
-													name="mauticform[ccommunity_size]"
-													value={communitySize}
-												/>
 											</div>
 										</div>
 									{/if}
 
-									<!-- Hidden field — full summary lands in Mautic's custom field -->
-									<input
-										type="hidden"
-										name={`mauticform[${MAUTIC.quizSummaryField}]`}
-										value={quizSummary}
-									/>
-
 									<button
 										type="submit"
-										name="mauticform[submit]"
-										value="1"
-										class="bg-ecohubs-dark hover:bg-ecohubs-deep group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-4 text-[15px] font-medium text-white transition-colors sm:w-auto"
+										disabled={quizSubmitting}
+										class="bg-ecohubs-dark hover:bg-ecohubs-deep group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-4 text-[15px] font-medium text-white transition-colors disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
 									>
-										Show me my community's gaps
-										<span class="transition-transform group-hover:translate-x-0.5">→</span>
+										{quizSubmitting ? 'Sending…' : "Show me my community's gaps"}
+										{#if !quizSubmitting}
+											<span class="transition-transform group-hover:translate-x-0.5">→</span>
+										{/if}
 									</button>
+									{#if quizError}
+										<p class="mt-3 text-[13px] text-red-700">{quizError}</p>
+									{/if}
 									<p class="mt-5 max-w-xl text-[13px] leading-relaxed font-light text-stone-600">
 										Free. No payment. No upsell. We read your agreements, write your report, then
 										delete the documents.
 										<em class="font-story text-stone-700 italic">Your rules stay yours.</em>
 									</p>
-
-									<input type="hidden" name="mauticform[formId]" value={MAUTIC.formId} />
-									<input type="hidden" name="mauticform[return]" value="" />
-									<input type="hidden" name="mauticform[formName]" value={MAUTIC.formName} />
-									<input type="hidden" name="mauticform[messenger]" value="1" />
 								</form>
 							{:else}
 								<div class="fade-in rounded-2xl border border-emerald-200/60 bg-white p-6">
@@ -916,11 +909,7 @@
 
 			{#if !form2Done}
 				<form
-					method="post"
-					action={MAUTIC_FORM_ACTION}
-					enctype="multipart/form-data"
-					target="mautic_submit_target"
-					autocomplete="false"
+					autocomplete="off"
 					onsubmit={onForm2Submit}
 					class="mx-auto mt-12 max-w-[550px]"
 				>
@@ -930,27 +919,26 @@
 						<input
 							type="email"
 							required
-							name="mauticform[email]"
 							bind:value={form2Email}
 							placeholder="your@email.com"
 							class="flex-1 bg-transparent px-5 py-3.5 border-0 text-[15px] text-[#f5f2ea] placeholder-stone-400 focus:outline-none"
 						/>
 						<button
 							type="submit"
-							class="text-ecohubs-deep rounded-full bg-emerald-400 px-6 py-3.5 text-[15px] font-medium whitespace-nowrap transition-colors cursor-pointer hover:bg-emerald-300"
+							disabled={form2Submitting}
+							class="text-ecohubs-deep rounded-full bg-emerald-400 px-6 py-3.5 text-[15px] font-medium whitespace-nowrap transition-colors cursor-pointer hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-60"
 						>
-							Send me my resilience report →
+							{form2Submitting ? 'Sending…' : 'Send me my resilience report →'}
 						</button>
 					</div>
+					{#if form2Error}
+						<p class="mt-3 text-[13px] text-red-300">{form2Error}</p>
+					{/if}
 					<p class="mt-5 text-[13px] leading-relaxed font-light text-stone-400/90">
 						Free. No payment. No upsell. We read your agreements, write your report, then delete
 						the documents.
 						<em class="font-story text-stone-300 italic">Your rules stay yours.</em>
 					</p>
-					<input type="hidden" name="mauticform[formId]" value={MAUTIC.formId} />
-					<input type="hidden" name="mauticform[return]" value="" />
-					<input type="hidden" name="mauticform[formName]" value={MAUTIC.formName} />
-					<input type="hidden" name="mauticform[messenger]" value="1" />
 				</form>
 			{:else}
 				<div

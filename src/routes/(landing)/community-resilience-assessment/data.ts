@@ -153,18 +153,3 @@ export function tierFor(score: number): TierInfo {
 		body: 'Your community is more explicit than most. The full report will show you the few remaining gaps that tend to matter most under stress.'
 	};
 }
-
-/** Mautic form endpoint and field config. Centralised so it's swap-easy. */
-export const MAUTIC = {
-	baseUrl: 'https://mautic.ecohubs.community',
-	formId: 1,
-	formName: 'communityresilienceassessment',
-	/**
-	 * Mautic truncated the field alias `resilience_assessment_quiz` to fit its
-	 * column length, dropping the trailing "z". Keep the truncated alias here
-	 * so submissions land in the correct custom field.
-	 */
-	quizSummaryField: 'resilience_assessment_qui'
-} as const;
-
-export const MAUTIC_FORM_ACTION = `${MAUTIC.baseUrl}/form/submit?formId=${MAUTIC.formId}`;

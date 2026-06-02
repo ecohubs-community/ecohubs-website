@@ -1,6 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { LINKMONK_URL, LINKMONK_USERNAME, LINKMONK_PASSWORD } from '$env/static/private';
+import { subscribeToListmonk } from '$lib/server/listmonk';
+import { subscribeNewsletterMautic } from '$lib/server/mautic';
 
 // Simple in-memory rate limiting (for production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -38,7 +39,6 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 	try {
 		const clientIp = getClientAddress();
 
-		// Rate limiting
 		if (!checkRateLimit(clientIp)) {
 			return json(
 				{ success: false, message: 'Too many requests. Please try again later.' },
@@ -49,7 +49,6 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		const body = await request.json();
 		const email = sanitizeEmail(body.email || '');
 
-		// Validate email
 		if (!email || !validateEmail(email)) {
 			return json(
 				{ success: false, message: 'Please provide a valid email address.' },
@@ -57,95 +56,28 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			);
 		}
 
-		// If Listmonk is configured, use it
-		// Listmonk uses Basic Auth with username and password
-		const listmonkUsername = LINKMONK_USERNAME || '';
-		const listmonkPassword = LINKMONK_PASSWORD || '';
+		// Fire both subscriptions in parallel — neither blocks the other.
+		const [listmonkResult, mauticResult] = await Promise.all([
+			subscribeToListmonk(email),
+			subscribeNewsletterMautic(email)
+		]);
 
-		// Debug logging
-		console.log('Listmonk config check:', {
-			url: LINKMONK_URL,
-			hasUsername: !!listmonkUsername,
-			hasPassword: !!listmonkPassword,
-			usernameLength: listmonkUsername?.length || 0
-		});
+		if (!listmonkResult.ok) {
+			console.error('Listmonk subscription failed:', listmonkResult);
+		}
+		if (!mauticResult.ok) {
+			console.error('Mautic subscription failed:', mauticResult);
+		}
 
-		if (LINKMONK_URL && listmonkUsername) {
-			try {
-				// Listmonk requires Basic Authentication with username:password
-				const authHeader = `Basic ${Buffer.from(`${listmonkUsername}:${listmonkPassword}`).toString('base64')}`;
-
-				console.log('Attempting Listmonk subscription for:', email);
-
-				const response = await fetch(`${LINKMONK_URL}/api/subscribers`, {
-					method: 'POST',
-					headers: {
-						Authorization: authHeader,
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({
-						email,
-						name: email.split('@')[0],
-						status: 'enabled',
-						preconfirm_subscriptions: false,
-						lists: [1]
-					})
-				});
-
-				const responseText = await response.text();
-				console.log('Listmonk response status:', response.status);
-				console.log('Listmonk response:', responseText);
-
-				if (!response.ok) {
-					// Try to parse error response, but handle non-JSON gracefully
-					const contentType = response.headers.get('content-type');
-					let errorData: { message?: string } = {};
-
-					if (contentType && contentType.includes('application/json')) {
-						try {
-							errorData = JSON.parse(responseText) as { message?: string };
-						} catch {
-							console.error('Listmonk API error (non-JSON):', responseText);
-							errorData = { message: responseText || 'Unknown error' };
-						}
-					} else {
-						console.error('Listmonk API error (non-JSON):', responseText);
-						errorData = { message: responseText || 'Unknown error' };
-					}
-
-					console.error('Listmonk API error:', errorData);
-					throw new Error(errorData.message || 'Failed to subscribe via Listmonk');
-				}
-
-				// Parse successful response
-				let responseData: { data?: unknown } = {};
-				try {
-					responseData = JSON.parse(responseText);
-				} catch {
-					// Response might be empty, which is fine
-				}
-
-				console.log('Listmonk subscription successful:', responseData);
-				return json({
-					success: true,
-					message: 'Successfully subscribed! Please check your email to confirm.'
-				});
-			} catch (error) {
-				console.error('Listmonk subscription error:', error);
-			}
-		} else {
-			console.warn('Listmonk not configured:', {
-				hasUrl: !!LINKMONK_URL,
-				hasUsername: !!listmonkUsername
+		// Succeed if at least one destination accepted the subscription.
+		if (listmonkResult.ok || mauticResult.ok) {
+			return json({
+				success: true,
+				message: 'Successfully subscribed! Please check your email to confirm.'
 			});
 		}
 
-		// No integration succeeded
-		console.error(
-			'Newsletter subscription failed: no integration configured or all integrations failed for:',
-			email
-		);
-
+		console.error('Newsletter subscription failed for:', email);
 		return json(
 			{
 				success: false,
