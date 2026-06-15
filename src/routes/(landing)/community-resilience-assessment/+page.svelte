@@ -417,15 +417,27 @@
 									></span>
 								{/each}
 							</div>
-							<div class="font-mono text-[11px] tracking-widest text-stone-500 uppercase">
-								Question {index + 1} / {QUESTIONS.length}
-							</div>
+							{#key index}
+								<div class="font-mono text-[11px] tracking-widest text-stone-500 uppercase">
+									Question {index + 1} / {QUESTIONS.length}
+								</div>
+							{/key}
 						</div>
 
-						<div class="kicker mb-3 text-emerald-700">{q.label}</div>
-						<h3 class="text-ecohubs-deep font-serif text-[26px] leading-[1.25] mb-7 md:text-[30px]">
-							{q.prompt}
-						</h3>
+						<!-- Keyed on `index` so each question's label/prompt is a *fresh* DOM
+						     subtree rather than an in-place text update. In-place updates are
+						     silently dropped by page-translation extensions (Google Translate
+						     et al.), which replace our text nodes with their own — leaving the
+						     user staring at the previous (translated) question. Recreating the
+						     element lets the translator re-translate the new text. -->
+						{#key index}
+							<div class="kicker mb-3 text-emerald-700">{q.label}</div>
+							<h3
+								class="text-ecohubs-deep font-serif text-[26px] leading-[1.25] mb-7 md:text-[30px]"
+							>
+								{q.prompt}
+							</h3>
+						{/key}
 
 						<div class="mb-8 space-y-2.5">
 							{#each OPTIONS as o}
