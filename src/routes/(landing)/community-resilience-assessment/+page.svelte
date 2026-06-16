@@ -658,6 +658,32 @@
 								</div>
 							{/if}
 						</div>
+
+						<!-- Walkthrough video — deliberately at the foot of the
+						     result card, below the email form, so the directional
+						     result and the email field keep the focus. A calm,
+						     opt-in extra (click to play, never autoplayed, so no
+						     motion competes for attention) for anyone who wants to
+						     understand the self-diagnosis before sending their
+						     community's agreements. -->
+						<div class="mt-8 border-t border-stone-200/70 pt-8">
+							<div class="mb-3 flex items-center justify-between gap-4">
+								<div class="kicker text-emerald-700">Watch · the self-diagnosis explained</div>
+								<span class="font-mono text-[11px] tracking-widest text-stone-500">4:40</span>
+							</div>
+							<div class="soft-shadow overflow-hidden rounded-3xl border border-stone-200/70">
+								<!-- svelte-ignore a11y_media_has_caption -->
+								<video
+									class="block aspect-video w-full bg-stone-900"
+									controls
+									preload="metadata"
+									playsinline
+								>
+									<source src="/videos/rcos-self-diagnosis-compact.mp4" type="video/mp4" />
+									Your browser doesn't support embedded video.
+								</video>
+							</div>
+						</div>
 					</div>
 				{/if}
 			</div>
