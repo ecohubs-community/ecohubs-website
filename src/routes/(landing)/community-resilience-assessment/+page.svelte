@@ -673,13 +673,19 @@
 							</div>
 							<div class="soft-shadow overflow-hidden rounded-3xl border border-stone-200/70">
 								<!-- svelte-ignore a11y_media_has_caption -->
+								<!-- Hosted on Vercel Blob (not in the repo — see /static/videos/
+								     in .gitignore). Absolute, cross-origin URL served from
+								     Vercel's CDN with range support for seeking. -->
 								<video
 									class="block aspect-video w-full bg-stone-900"
 									controls
 									preload="metadata"
 									playsinline
 								>
-									<source src="/videos/rcos-self-diagnosis-compact.mp4" type="video/mp4" />
+									<source
+										src="https://yytwzszjiiklc6xa.public.blob.vercel-storage.com/rcos-self-diagnosis-compact.mp4"
+										type="video/mp4"
+									/>
 									Your browser doesn't support embedded video.
 								</video>
 							</div>
