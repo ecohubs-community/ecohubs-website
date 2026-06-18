@@ -305,6 +305,7 @@
 	:global(main span:not([class*='font-'])),
 	:global(main div:not([class*='font-'])) {
 		font-family:
+			'Inter Variable',
 			'Inter',
 			system-ui,
 			-apple-system,
@@ -339,6 +340,7 @@
 	:global(.prose-legal) {
 		color: #1c1917;
 		font-family:
+			'Inter Variable',
 			'Inter',
 			system-ui,
 			-apple-system,
@@ -348,7 +350,7 @@
 	}
 
 	:global(.prose-legal .lead) {
-		font-family: 'Fraunces', Georgia, serif;
+		font-family: 'Fraunces Variable', 'Fraunces', Georgia, serif;
 		font-style: italic;
 		font-size: 1.18em;
 		line-height: 1.6;
@@ -372,7 +374,7 @@
 
 	:global(.prose-legal h2 .kicker-num) {
 		display: inline-block;
-		font-family: 'Fraunces', Georgia, serif;
+		font-family: 'Fraunces Variable', 'Fraunces', Georgia, serif;
 		font-style: italic;
 		font-weight: 400;
 		font-size: 0.7em;

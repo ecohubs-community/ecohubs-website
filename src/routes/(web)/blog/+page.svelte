@@ -236,6 +236,7 @@
 	:global(main span:not([class*='font-'])),
 	:global(main div:not([class*='font-'])) {
 		font-family:
+			'Inter Variable',
 			'Inter',
 			system-ui,
 			-apple-system,

@@ -148,6 +148,7 @@
 	:global(main select),
 	:global(main button) {
 		font-family:
+			'Inter Variable',
 			'Inter',
 			system-ui,
 			-apple-system,

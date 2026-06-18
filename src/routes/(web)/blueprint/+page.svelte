@@ -1215,7 +1215,7 @@
 	}
 
 	:global(.layer-num) {
-		font-family: 'Fraunces', serif;
+		font-family: 'Fraunces Variable', 'Fraunces', serif;
 		font-style: italic;
 		font-weight: 400;
 	}

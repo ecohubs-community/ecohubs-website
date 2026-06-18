@@ -298,6 +298,7 @@
 	:global(main span:not([class*='font-'])),
 	:global(main div:not([class*='font-'])) {
 		font-family:
+			'Inter Variable',
 			'Inter',
 			system-ui,
 			-apple-system,
@@ -354,6 +355,7 @@
 	:global(.prose-ecohubs) {
 		color: #1c1917;
 		font-family:
+			'Inter Variable',
 			'Inter',
 			system-ui,
 			-apple-system,
@@ -422,7 +424,7 @@
 	}
 
 	:global(.prose-ecohubs blockquote) {
-		font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+		font-family: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
 		font-style: italic;
 		font-size: 1.2em;
 		line-height: 1.55;
@@ -443,7 +445,7 @@
 
 	:global(.prose-ecohubs em) {
 		font-style: italic;
-		font-family: 'Fraunces', Georgia, serif;
+		font-family: 'Fraunces Variable', 'Fraunces', Georgia, serif;
 	}
 
 	:global(.prose-ecohubs ul),
@@ -482,7 +484,7 @@
 		padding: 0.15em 0.4em;
 		border-radius: 4px;
 		font-size: 0.92em;
-		font-family: 'JetBrains Mono', ui-monospace, monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
 	}
 
 	:global(.prose-ecohubs pre) {
@@ -542,7 +544,7 @@
 	}
 
 	:global(.prose-ecohubs figcaption) {
-		font-family: 'Fraunces', Georgia, serif;
+		font-family: 'Fraunces Variable', 'Fraunces', Georgia, serif;
 		font-style: italic;
 		text-align: center;
 		color: #6b6b62;
