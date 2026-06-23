@@ -6,7 +6,7 @@ export const SEO_CONFIG = {
 	siteUrl: 'https://ecohubs.community',
 	defaultTitle: 'EcoHubs.community - Building Regenerative Communities',
 	defaultDescription:
-		"Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities. Be part of the first 150.",
+		"Join EcoHubs.community in co-creating the world's first open-source standard for regenerative communities. Be part of the first 150.",
 	defaultOgImage: '/og-default.jpg',
 	themeColor: '#4a7c2a',
 	locale: 'en_US',
@@ -44,7 +44,7 @@ export const SEO_CONFIG = {
 		home: {
 			title: 'EcoHubs.community - A Regenerative Future Designed Together',
 			description:
-				"Join EcoHubs.community in co-creating the world's first open-source blueprint for regenerative communities. Be part of the first 150.",
+				"Join EcoHubs.community in co-creating the world's first open-source standard for regenerative communities. Be part of the first 150.",
 			ogImage: '/og-home.jpg'
 		},
 		vision: {
@@ -53,11 +53,11 @@ export const SEO_CONFIG = {
 				'Our vision for a global network of small, regenerative EcoHubs that demonstrate sustainable living and community governance.',
 			ogImage: '/og-vision.jpg'
 		},
-		blueprint: {
-			title: 'The Blueprint - EcoHubs.community',
+		rcos: {
+			title: 'The RCOS Standard - EcoHubs.community',
 			description:
-				'Explore the open-source blueprint for building regenerative communities. A living knowledge system designed for replication and adaptation.',
-			ogImage: '/og-blueprint.jpg'
+				'Explore the open-source standard for building regenerative communities. A living knowledge system designed for replication and adaptation.',
+			ogImage: '/og-rcos.jpg'
 		},
 		membership: {
 			title: 'Become a Member - EcoHubs.community',
@@ -97,7 +97,7 @@ export const SEO_CONFIG = {
 		faq: {
 			title: 'Questions & Answers - EcoHubs.community',
 			description:
-				'The questions we hear most about EcoHubs — the project, the Vision, the Blueprint (RCOS), and Membership — answered plainly, in one place.',
+				'The questions we hear most about EcoHubs — the project, the Vision, the RCOS Standard, and Membership — answered plainly, in one place.',
 			ogImage: '/og-faq.jpg'
 		},
 		communityResilienceAssessment: {
@@ -113,7 +113,7 @@ export const SEO_CONFIG = {
 export const SITE_NAVIGATION = {
 	home: { name: 'Home', path: '/' },
 	vision: { name: 'Vision', path: '/vision', parent: 'home' },
-	blueprint: { name: 'Blueprint', path: '/blueprint', parent: 'home' },
+	rcos: { name: 'RCOS Standard', path: '/rcos', parent: 'home' },
 	membership: { name: 'Membership', path: '/membership', parent: 'home' },
 	join: { name: 'Apply', path: '/join', parent: 'membership' },
 	contact: { name: 'Contact', path: '/contact', parent: 'home' },

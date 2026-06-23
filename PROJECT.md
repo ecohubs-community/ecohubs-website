@@ -12,26 +12,26 @@ EcoHubs is grounded in values such as ecological regeneration, shared responsibi
 
 ⸻
 
-The Blueprint — Purpose and Role
+The RCOS Standard — Purpose and Role
 
-The Blueprint for Regenerative Communities is the core tool that supports the EcoHubs vision. It exists to rebuild, structure, and evolve collective knowledge about community living in a way that is practical, shareable, and adaptable.
+The RCOS Standard for Regenerative Communities is the core tool that supports the EcoHubs vision. It exists to rebuild, structure, and evolve collective knowledge about community living in a way that is practical, shareable, and adaptable.
 
 Historically, knowledge about how to live in communities was passed on locally and informally, often within relatively isolated groups. Today, societies are far more complex, interconnected, regulated, and technologically mediated. Community projects now operate in environments that require legal awareness, economic coordination, conflict resolution skills, governance models, and ecological understanding — all at once. Without shared frameworks, new initiatives repeatedly fail on the same predictable issues.
 
-The Blueprint addresses this gap by acting as a shared foundation: a living, digital knowledge system that captures lessons learned, tested patterns, and evolving practices for building and sustaining communities. It is not a finished product, nor a rigid rulebook. Instead, it is designed to grow, adapt, and improve continuously as new EcoHubs experiment, learn, and contribute back to the network.
+The RCOS Standard addresses this gap by acting as a shared foundation: a living, digital knowledge system that captures lessons learned, tested patterns, and evolving practices for building and sustaining communities. It is not a finished product, nor a rigid rulebook. Instead, it is designed to grow, adapt, and improve continuously as new EcoHubs experiment, learn, and contribute back to the network.
 
 ⸻
 
-What the Blueprint Is (and Is Not)
+What the RCOS Standard Is (and Is Not)
 
-The Blueprint is:
+The RCOS Standard is:
 • A living knowledge base, continuously updated
 • Modular and adaptable to local contexts
 • Open for contribution and review
 • Grounded in real-world experience and experimentation
 • Designed for replication and learning across communities
 
-The Blueprint is not:
+The RCOS Standard is not:
 • A utopian manifesto
 • A one-size-fits-all solution
 • A centralized authority or governance body
@@ -43,7 +43,7 @@ Its role is to provide orientation, structure, and shared language, while explic
 
 Structure and Organization
 
-The Blueprint is organized as a structured catalog of knowledge, designed to be navigable, evolvable, and scalable. Its hierarchy follows a clear structure:
+The RCOS Standard is organized as a structured catalog of knowledge, designed to be navigable, evolvable, and scalable. Its hierarchy follows a clear structure:
 • Domains: Broad areas of community life (e.g. governance, food systems, infrastructure, economy, culture, education)
 • Topics: Specific problem spaces or themes within a domain
 • Modules: Reusable building blocks addressing concrete challenges or patterns
@@ -53,22 +53,22 @@ This structure allows contributors and users to work at different levels of abst
 
 ⸻
 
-How the Blueprint Is Built
+How the RCOS Standard Is Built
 
-The Blueprint is digital-first and built using GitHub-based workflows for versioning, transparency, and review. This ensures that:
+The RCOS Standard is digital-first and built using GitHub-based workflows for versioning, transparency, and review. This ensures that:
 • Changes are traceable
 • Contributions can be discussed and improved collaboratively
 • Knowledge evolves through structured feedback loops
 
 On top of this, a dedicated application supports content creation, review, and curation, making participation accessible beyond traditional developer workflows.
 
-The creation process follows an iterative cycle: 1. Practices and ideas emerge from real-world community experience 2. Content is proposed as articles or modules 3. Contributions are reviewed collaboratively 4. Patterns are tested, refined, or rejected in practice 5. Learnings are integrated back into the Blueprint 6. The system evolves over time
+The creation process follows an iterative cycle: 1. Practices and ideas emerge from real-world community experience 2. Content is proposed as articles or modules 3. Contributions are reviewed collaboratively 4. Patterns are tested, refined, or rejected in practice 5. Learnings are integrated back into the RCOS Standard 6. The system evolves over time
 
 This loop ensures that theory and practice remain tightly connected.
 
 ⸻
 
-Why the Blueprint Is Necessary
+Why the RCOS Standard Is Necessary
 
 Most community initiatives fail due to recurring issues:
 • Unclear governance and decision-making
@@ -77,27 +77,27 @@ Most community initiatives fail due to recurring issues:
 • Burnout and uneven responsibility distribution
 • Legal and structural blind spots
 
-The Blueprint exists to reduce these failure modes by making implicit knowledge explicit, shareable, and improvable. It acts as a collective memory for the EcoHubs network, preventing each new project from starting from zero.
+The RCOS Standard exists to reduce these failure modes by making implicit knowledge explicit, shareable, and improvable. It acts as a collective memory for the EcoHubs network, preventing each new project from starting from zero.
 
-By providing common structures and shared language, the Blueprint also enables cooperation between communities without enforcing uniformity.
+By providing common structures and shared language, the RCOS Standard also enables cooperation between communities without enforcing uniformity.
 
 ⸻
 
 Contribution and Collective Intelligence
 
-The Blueprint is designed as a collective intelligence system. Anyone aligned with the EcoHubs vision can eventually contribute — by writing, reviewing, documenting experiments, or improving existing content.
+The RCOS Standard is designed as a collective intelligence system. Anyone aligned with the EcoHubs vision can eventually contribute — by writing, reviewing, documenting experiments, or improving existing content.
 
 Contribution is intentional and curated:
 • Reading is open
 • Writing and editing require membership
 • Review and iteration are core principles
 
-This balances openness with quality, ensuring the Blueprint remains trustworthy and usable over time.
+This balances openness with quality, ensuring the Standard remains trustworthy and usable over time.
 
 ⸻
 
 Long-Term Perspective
 
-The Blueprint is not meant to be completed. It is a long-term, generational project that evolves alongside the EcoHubs network itself. Its value increases as more communities participate, document their experiences, and learn together.
+The RCOS Standard is not meant to be completed. It is a long-term, generational project that evolves alongside the EcoHubs network itself. Its value increases as more communities participate, document their experiences, and learn together.
 
-In this sense, the Blueprint is both a map and a memory: a shared reference that helps communities build a different future — step by step, place by place — grounded in reality rather than ideology.
+In this sense, the RCOS Standard is both a map and a memory: a shared reference that helps communities build a different future — step by step, place by place — grounded in reality rather than ideology.

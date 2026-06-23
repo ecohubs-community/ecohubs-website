@@ -43,7 +43,7 @@ export const principles: Principle[] = [
 		number: '06',
 		kicker: 'Connected',
 		title: 'Rooted locally, woven globally.',
-		body: 'Each hub is sovereign. None of them are alone. Patterns, tools, and people flow between them through a shared commons — the Blueprint — that gets better every year.'
+		body: 'Each hub is sovereign. None of them are alone. Patterns, tools, and people flow between them through a shared commons — the RCOS Standard — that gets better every year.'
 	}
 ];
 
@@ -61,7 +61,7 @@ export const notThis: NotThis[] = [
 	{
 		title: 'A franchise model',
 		bodyHtml:
-			'There is no central authority that approves a hub. The Blueprint is forkable. Local communities decide what to keep, what to change, and what to throw out. Sameness is not the goal.'
+			'There is no central authority that approves a hub. The RCOS Standard is forkable. Local communities decide what to keep, what to change, and what to throw out. Sameness is not the goal.'
 	},
 	{
 		title: 'A spiritual or political ideology',
@@ -114,7 +114,7 @@ export const values: Value[] = [
 		number: '04',
 		title: 'Learn through real practice.',
 		bodyHtml:
-			'Theory loses to lived experience. Every pattern in the Blueprint earns its place by surviving contact with a real community, real land, real people, real failure. <em class="font-story italic">Small failures are how we get to large truths.</em>'
+			'Theory loses to lived experience. Every pattern in the RCOS Standard earns its place by surviving contact with a real community, real land, real people, real failure. <em class="font-story italic">Small failures are how we get to large truths.</em>'
 	},
 	{
 		number: '05',
@@ -140,11 +140,11 @@ export const faqItems: FaqItem[] = [
 	},
 	{
 		q: 'What does success look like in 10 years?',
-		a: "Many small hubs around the world running the Blueprint in their own way, with a living, well-maintained shared standard between them. Success is not size — it's resilience and honest replication."
+		a: "Many small hubs around the world running the RCOS Standard in their own way, with a living, well-maintained shared standard between them. Success is not size — it's resilience and honest replication."
 	},
 	{
 		q: 'What are your stances on politics, religion, ideology?',
-		a: "We have stances — on ecology, dignity, transparency, non-extraction — and they're written into the Blueprint. We don't have a doctrine you must agree with. We expect disagreement; we ask for honest disagreement."
+		a: "We have stances — on ecology, dignity, transparency, non-extraction — and they're written into the RCOS Standard. We don't have a doctrine you must agree with. We expect disagreement; we ask for honest disagreement."
 	},
 	{
 		q: 'How is this different from intentional communities of the past?',
@@ -152,7 +152,7 @@ export const faqItems: FaqItem[] = [
 	},
 	{
 		q: 'What could go wrong, honestly?',
-		a: 'The Blueprint could ossify; the founder phase could overstay its welcome; pilots could underdeliver. We name these risks in the open and write them into the working notes — being honest about failure modes is part of how we keep them survivable.'
+		a: 'The RCOS Standard could ossify; the founder phase could overstay its welcome; pilots could underdeliver. We name these risks in the open and write them into the working notes — being honest about failure modes is part of how we keep them survivable.'
 	}
 ];
 
@@ -167,13 +167,13 @@ export const loopSteps: LoopStep[] = [
 		number: '01',
 		title: 'Write down what we know.',
 		bodyHtml:
-			'An open, evolving Blueprint covering land, governance, culture, economics, and care — the things every community has to figure out anyway.'
+			'An open, evolving RCOS Standard covering land, governance, culture, economics, and care — the things every community has to figure out anyway.'
 	},
 	{
 		number: '02',
 		title: 'Test it in the real world.',
 		bodyHtml:
-			"A first community in Ecuador is already applying the RCOS Blueprint under real ecological, social and economic constraints. Whether and when a community becomes a fully-fledged EcoHub is a question we're answering as we go."
+			"A first community in Ecuador is already applying the RCOS Standard under real ecological, social and economic constraints. Whether and when a community becomes a fully-fledged EcoHub is a question we're answering as we go."
 	},
 	{
 		number: '03',
@@ -183,7 +183,7 @@ export const loopSteps: LoopStep[] = [
 	},
 	{
 		number: '04',
-		title: 'Refine the Blueprint.',
+		title: 'Refine the RCOS Standard.',
 		bodyHtml:
 			'Lived experience flows back into the patterns. The next community doesn\'t start from zero — they start from <em class="font-story italic">everything we already learned the hard way.</em>'
 	},
@@ -191,12 +191,12 @@ export const loopSteps: LoopStep[] = [
 		number: '05',
 		title: 'Replicate, locally.',
 		bodyHtml:
-			"New hubs fork the Blueprint. They keep what fits their land, their culture, their people — and they change what doesn't. None of them are clones."
+			"New hubs fork the RCOS Standard. They keep what fits their land, their culture, their people — and they change what doesn't. None of them are clones."
 	},
 	{
 		number: '06',
 		title: 'Loop, in the open.',
 		bodyHtml:
-			'The cycle keeps running. Every hub strengthens the network. Every year the Blueprint is a little truer, a little kinder, a little harder to break.'
+			'The cycle keeps running. Every hub strengthens the network. Every year the RCOS Standard is a little truer, a little kinder, a little harder to break.'
 	}
 ];

@@ -9,7 +9,7 @@
 		{ id: 'acceptance', num: '01', title: 'Acceptance of terms' },
 		{ id: 'description', num: '02', title: 'Description of service' },
 		{ id: 'responsibilities', num: '03', title: 'User responsibilities' },
-		{ id: 'open-source', num: '04', title: 'Open-source Blueprint' },
+		{ id: 'open-source', num: '04', title: 'Open-source Standard' },
 		{ id: 'ip', num: '05', title: 'Intellectual property' },
 		{ id: 'submissions', num: '06', title: 'User submissions' },
 		{ id: 'warranties', num: '07', title: 'Disclaimer of warranties' },
@@ -100,7 +100,7 @@
 				<p>EcoHubs.community is a platform dedicated to:</p>
 				<ul>
 					<li>
-						Co-creating and sharing an open-source blueprint for regenerative intentional
+						Co-creating and sharing an open-source standard for regenerative intentional
 						communities.
 					</li>
 					<li>Connecting individuals interested in sustainable community living.</li>
@@ -119,18 +119,18 @@
 					<li>Comply with all applicable laws and regulations.</li>
 				</ul>
 
-				<h2 id="open-source"><span class="kicker-num">04</span> Open-source Blueprint</h2>
+				<h2 id="open-source"><span class="kicker-num">04</span> Open-source Standard</h2>
 				<p>
-					The EcoHubs Blueprint and associated documentation are released under open-source
+					The EcoHubs RCOS Standard and associated documentation are released under open-source
 					principles:
 				</p>
 				<ul>
-					<li>The Blueprint is freely available for use, modification, and distribution.</li>
+					<li>The RCOS Standard is freely available for use, modification, and distribution.</li>
 					<li>Derivative works should acknowledge EcoHubs.community as the original source.</li>
 					<li>
-						Commercial use of the Blueprint is permitted, provided proper attribution is given.
+						Commercial use of the RCOS Standard is permitted, provided proper attribution is given.
 					</li>
-					<li>We encourage contributions back to the community to improve the Blueprint.</li>
+					<li>We encourage contributions back to the community to improve the RCOS Standard.</li>
 				</ul>
 				<p>
 					Specific licensing terms for individual components may be detailed in their respective

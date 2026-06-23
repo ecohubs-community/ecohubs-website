@@ -3,16 +3,16 @@
 [![CI](https://github.com/ecohubs/ecohubs.community/actions/workflows/ci.yml/badge.svg)](https://github.com/ecohubs/ecohubs.community/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-The public website for EcoHubs — a growing network of people writing the open-source Blueprint (RCOS) for regenerative communities. Built with SvelteKit + Svelte 5 (runes) + Tailwind v4.
+The public website for EcoHubs — a growing network of people writing the open-source RCOS Standard for regenerative communities. Built with SvelteKit + Svelte 5 (runes) + Tailwind v4.
 
 ## 🌟 What this site is
 
-- **Marketing & explanation site** for the EcoHubs project — Vision, Blueprint (RCOS), Membership, FAQ, and Blog.
+- **Marketing & explanation site** for the EcoHubs project — Vision, RCOS Standard, Membership, FAQ, and Blog.
 - **Application form** that posts into [ecohubsOS](https://os.ecohubs.community) (the separate community platform).
 - **Member constellation** that pulls real members from the ecohubsOS public API and gracefully hides itself when the API is empty.
 - **Manifesto + email + newsletter** plumbing (Linkmonk, Nodemailer, Cloudflare Turnstile).
 
-This repo is the public face. Membership, governance, voting, ECO contribution accounting, and the Blueprint editor all live in **ecohubsOS** (separate codebase).
+This repo is the public face. Membership, governance, voting, ECO contribution accounting, and the RCOS Standard editor all live in **ecohubsOS** (separate codebase).
 
 ## 🚀 Quick Start
 
@@ -104,7 +104,7 @@ src/
 │   ├── (web)/                     # Public site (uses Navbar + Footer)
 │   │   ├── +page.svelte           # Home
 │   │   ├── vision/
-│   │   ├── blueprint/
+│   │   ├── rcos/
 │   │   ├── membership/
 │   │   ├── faq/
 │   │   ├── blog/

@@ -9,7 +9,7 @@
 		initStaggeredScrollAnimations
 	} from '$lib/utils/scroll-animations';
 
-	const breadcrumbs = generateBreadcrumbs('blueprint');
+	const breadcrumbs = generateBreadcrumbs('rcos');
 
 	import {
 		failureModes,
@@ -35,9 +35,9 @@
 </script>
 
 <SEO
-	title="The Blueprint — RCOS, the open standard for regenerative communities | EcoHubs"
-	description="The Blueprint (RCOS) is an open standard for designing and operating regenerative communities — modular, forkable, and tested in a live pilot."
-	ogImage="/og-blueprint.jpg"
+	title="The Standard — RCOS, the open standard for regenerative communities | EcoHubs"
+	description="The RCOS Standard is an open standard for designing and operating regenerative communities — modular, forkable, and tested in a live pilot."
+	ogImage="/og-rcos.jpg"
 	{breadcrumbs}
 />
 
@@ -63,7 +63,7 @@
 						<span
 							class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"
 						></span>
-						The Blueprint · the first tangible outcome of EcoHubs
+						The Standard · the first tangible outcome of EcoHubs
 					</div>
 					<Breadcrumbs items={breadcrumbs} />
 				</div>
@@ -80,7 +80,7 @@
 					data-scroll-animate
 					class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light"
 				>
-					The Blueprint — formally
+					The Standard — formally
 					<strong class="text-ecohubs-deep">RCOS</strong> (Regenerative Community Operating System)
 					— is an open standard for designing and operating regenerative communities. Not software,
 					not an ideology — a shared way to make community structure
@@ -94,12 +94,12 @@
 
 				<div data-scroll-animate class="mt-10 flex flex-col sm:flex-row gap-3">
 					<a
-						href="https://blueprint.ecohubs.community"
+						href="https://rcos.ecohubs.community"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-all inline-flex items-center justify-center gap-2 group"
 					>
-						Open the live Blueprint
+						Open the live RCOS Standard
 						<span class="transition-transform group-hover:translate-x-0.5">↗</span>
 					</a>
 					<a
@@ -202,11 +202,11 @@
 					>
 						<span>Open · Forkable · Adaptable</span>
 						<a
-							href="https://blueprint.ecohubs.community"
+							href="https://rcos.ecohubs.community"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="text-ecohubs-primary hover:underline font-medium"
-							>blueprint.ecohubs.community ↗</a
+							>rcos.ecohubs.community ↗</a
 						>
 					</div>
 				</div>
@@ -266,7 +266,7 @@
 				It's estimated that <strong class="text-ecohubs-deep"
 					>80–90% of intentional communities collapse</strong
 				> — not because the vision was wrong, but because the same handful of invisible things were never
-				made explicit. The Blueprint is built around those failure points, so a community can name them
+				made explicit. The Standard is built around those failure points, so a community can name them
 				before they break.
 			</p>
 		</div>
@@ -285,7 +285,7 @@
 			data-scroll-animate
 			class="mt-12 max-w-2xl text-stone-600 leading-relaxed font-story italic text-lg"
 		>
-			The Blueprint doesn't promise harmony. It just refuses to leave these things unsaid.
+			The Standard doesn't promise harmony. It just refuses to leave these things unsaid.
 		</p>
 	</div>
 </section>
@@ -301,12 +301,12 @@
 
 	<div class="max-w-6xl mx-auto px-6 lg:px-8 relative">
 		<div data-scroll-animate class="max-w-3xl mb-16">
-			<div class="kicker text-emerald-300/80 mb-5">What the Blueprint is, and isn't</div>
+			<div class="kicker text-emerald-300/80 mb-5">What the Standard is, and isn't</div>
 			<h2 class="font-serif text-4xl md:text-6xl leading-[1.05] text-ecohubs-ivory">
 				Clarity, <em class="font-story italic font-normal text-emerald-300">not persuasion.</em>
 			</h2>
 			<p class="mt-6 text-lg md:text-xl text-stone-200/80 leading-relaxed max-w-2xl">
-				The Blueprint can be misread as a lot of things it isn't. Before going further, here is the
+				The Standard can be misread as a lot of things it isn't. Before going further, here is the
 				line we hold — carefully, on purpose.
 			</p>
 		</div>
@@ -411,7 +411,7 @@
 
 			<!-- Explore CTA -->
 			<a
-				href="https://blueprint.ecohubs.community"
+				href="https://rcos.ecohubs.community"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="layer-card bg-ecohubs-deep text-white rounded-2xl p-6 border border-emerald-900/40 group flex flex-col justify-between"
@@ -421,7 +421,7 @@
 						<span class="layer-num text-2xl text-emerald-300">↗</span>
 						<span class="text-xs tracking-widest uppercase text-emerald-300/80">Explore</span>
 					</div>
-					<h3 class="font-serif text-xl mb-2 leading-snug">Open the full Blueprint</h3>
+					<h3 class="font-serif text-xl mb-2 leading-snug">Open the full RCOS Standard</h3>
 					<p class="text-sm text-stone-300 leading-relaxed">
 						It's freely readable. Editable by members. Evolving with every pilot.
 					</p>
@@ -506,7 +506,7 @@
 					font-size="20"
 					fill="#fbfbf9"
 				>
-					Blueprint
+					RCOS Standard
 				</text>
 
 				<g font-family="Pridi, serif" font-size="11" fill="#064e3b" text-anchor="middle">
@@ -658,7 +658,7 @@
 			</h2>
 			<p class="mt-6 text-lg md:text-xl text-stone-200/85 leading-relaxed max-w-2xl">
 				We are not the first to try this — and that is the point. Most intentional communities fail
-				in the same handful of ways. The Blueprint is built around those failure points, not around
+				in the same handful of ways. The RCOS Standard is built around those failure points, not around
 				anyone's ideology.
 			</p>
 		</div>
@@ -708,12 +708,12 @@
 
 		<div data-scroll-animate class="mt-14 flex flex-col sm:flex-row gap-3 items-start">
 			<a
-				href="https://blueprint.ecohubs.community"
+				href="https://rcos.ecohubs.community"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="px-7 py-3.5 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors inline-flex items-center justify-center gap-2"
 			>
-				See how the Blueprint avoids each one
+				See how the RCOS avoids each one
 				<span class="text-sm">↗</span>
 			</a>
 			<a
@@ -732,16 +732,16 @@
 <section class="py-24 md:py-36 bg-ecohubs-base relative">
 	<div class="max-w-7xl mx-auto px-6 lg:px-8">
 		<div data-scroll-animate class="max-w-3xl mb-16">
-			<div class="kicker text-emerald-700 mb-4">Where the Blueprint sits in the EcoHubs vision</div>
+			<div class="kicker text-emerald-700 mb-4">Where the RCOS sits in the EcoHubs vision</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
 				The vision is the
 				<em class="font-story italic font-normal text-stone-500">why.</em><br />
-				The Blueprint is
+				The RCOS is
 				<em class="font-story italic font-normal">the first thing you can hold.</em>
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
 				EcoHubs is a long-horizon project — small, human-scale communities, woven into a global
-				commons. The Blueprint is the first concrete piece of that. The bridge between intention and
+				commons. The RCOS is the first concrete piece of that. The bridge between intention and
 				ground.
 			</p>
 		</div>
@@ -767,7 +767,7 @@
 				class="relative bg-ecohubs-deep text-ecohubs-ivory rounded-3xl p-8 border border-emerald-900/40 lg:rounded-none -mt-2 lg:-mt-6 lg:mb-2 shadow-[0_30px_60px_-30px_rgba(11,46,36,0.5)]"
 			>
 				<div class="kicker text-emerald-300/80 mb-3">
-					02 · Blueprint <span class="text-amber-300/80">· you are here</span>
+					02 · RCOS <span class="text-amber-300/80">· you are here</span>
 				</div>
 				<h3 class="font-serif text-2xl text-white mb-3">An open standard any hub can pick up.</h3>
 				<p class="text-stone-200/85 text-[15px] leading-relaxed">
@@ -775,11 +775,11 @@
 					membership, governance, or repair from scratch.
 				</p>
 				<a
-					href="https://blueprint.ecohubs.community"
+					href="https://rcos.ecohubs.community"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="mt-5 inline-flex items-center gap-1.5 text-sm text-emerald-300 font-medium hover:underline"
-					>Open the Blueprint ↗</a
+					>Open the RCOS Standard ↗</a
 				>
 			</article>
 
@@ -789,7 +789,7 @@
 				<div class="kicker text-emerald-700 mb-3">03 · Pilots</div>
 				<h3 class="font-serif text-2xl text-ecohubs-deep mb-3">Real communities, applying it.</h3>
 				<p class="text-stone-700 text-[15px] leading-relaxed">
-					A first community in Ecuador is already running the Blueprint under real ecological,
+					A first community in Ecuador is already running the RCOS Standard under real ecological,
 					social, and economic constraints — feeding what they learn back into the standard.
 				</p>
 				<a
@@ -816,12 +816,12 @@
 		<div data-scroll-animate class="max-w-3xl mb-16">
 			<div class="kicker text-emerald-800 mb-4">From idea to ground, and back</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
-				How the Blueprint
+				How the RCOS Standard
 				<em class="font-story italic font-normal text-stone-500">actually gets applied.</em>
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed max-w-2xl">
 				It is built as a loop, not a launch. Every community that runs it teaches the next one
-				something — and the Blueprint that comes after is a little truer than the one that came
+				something — and the RCOS Standard that comes after is a little truer than the one that came
 				before.
 			</p>
 		</div>
@@ -901,7 +901,7 @@
 				</div>
 				<p class="mt-5 text-sm text-stone-500 leading-relaxed">
 					Every line above is a real choice the pilot is documenting in the open — the same way any
-					community that adopts the Blueprint can.
+					community that adopts the RCOS Standard can.
 				</p>
 			</div>
 		</div>
@@ -938,7 +938,7 @@
 					FruitHaven community in Ecuador
 				</div>
 				<div class="text-xs text-stone-500 mt-1.5">
-					Applying RCOS Blueprint practice since March 2026
+					Applying RCOS Standard practice since March 2026
 				</div>
 			</div>
 		</div>
@@ -950,12 +950,12 @@
 				<em class="font-story italic font-normal text-stone-500">— and it's working.</em>
 			</h2>
 			<p class="text-lg text-stone-700 leading-relaxed mb-5">
-				In March 2026, we introduced the Blueprint to a community in Ecuador facing complex,
+				In March 2026, we introduced the RCOS Standard to a community in Ecuador facing complex,
 				long-standing divisions. These were people deeply committed to healing, yet they needed a
 				new path forward to bridge the gaps that had persisted for so long.
 			</p>
 			<p class="text-lg text-stone-700 leading-relaxed mb-8">
-				The Blueprint doesn't magic away the pain. It does something quieter: it
+				The RCOS Standard doesn't magic away the pain. It does something quieter: it
 				<em class="font-story italic">names the thing that's hard</em>, and gives the community a
 				shared language to work on it together.
 			</p>
@@ -1005,7 +1005,7 @@
 		<div data-scroll-animate class="max-w-3xl mb-16">
 			<div class="kicker text-emerald-700 mb-4">Who picks this up</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
-				The Blueprint is useful
+				The RCOS Standard is useful
 				<em class="font-story italic font-normal text-stone-500"
 					>to more than one kind of person.</em
 				>
@@ -1052,7 +1052,7 @@
 				<em class="font-story italic font-normal text-stone-500">That is the point.</em>
 			</h2>
 			<p class="mt-5 text-lg text-stone-700 leading-relaxed">
-				The Blueprint gets better with every person who reads it carefully, disagrees with a
+				The RCOS Standard gets better with every person who reads it carefully, disagrees with a
 				chapter, runs an experiment, or comes back with what they learned. There are four ways in.
 			</p>
 		</div>
@@ -1093,7 +1093,7 @@
 		<div data-scroll-animate class="max-w-2xl mb-14">
 			<div class="kicker text-emerald-700 mb-4">Honest questions, honest answers</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
-				About the Blueprint,
+				About the RCOS Standard,
 				<em class="font-story italic font-normal text-stone-500">specifically.</em>
 			</h2>
 		</div>
@@ -1117,7 +1117,7 @@
 
 		<div class="mt-8 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-center sm:gap-8">
 			<a
-				href="/faq#blueprint"
+				href="/faq#rcos"
 				class="inline-flex items-center gap-2 text-sm text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1"
 			>
 				See all questions across the project →
@@ -1144,7 +1144,7 @@
 
 	<div class="max-w-4xl mx-auto px-6 lg:px-8 text-center text-ecohubs-ivory">
 		<div data-scroll-animate class="kicker text-emerald-300 mb-6">
-			The Blueprint is freely readable
+			The RCOS Standard is freely readable
 		</div>
 
 		<h2
@@ -1167,12 +1167,12 @@
 
 		<div data-scroll-animate class="flex flex-col sm:flex-row justify-center gap-3">
 			<a
-				href="https://blueprint.ecohubs.community"
+				href="https://rcos.ecohubs.community"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="px-8 py-4 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors inline-flex items-center justify-center gap-2"
 			>
-				Open the live Blueprint
+				Open the live RCOS Standard
 				<span class="text-sm">↗</span>
 			</a>
 			<a
@@ -1190,7 +1190,7 @@
 </section>
 
 <style>
-	/* Page-local: pill chip and "layer card" lift used by the Blueprint hero/spec. */
+	/* Page-local: pill chip and "layer card" lift used by the RCOS Standard hero/spec. */
 	:global(.pill) {
 		display: inline-flex;
 		align-items: center;

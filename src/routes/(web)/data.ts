@@ -78,7 +78,7 @@ export const stories: Story[] = [
 				content: [
 					"That's how EcoHubs began. Not as a product. As a direction.",
 					`Intentional communities held <em class="font-story italic">everything</em> I was looking for — and yet some sources claim that <strong class="text-ecohubs-deep">80–90% of them fail.</strong> Not because the vision is wrong. Because we were never taught how to live this close together — how to make decisions, resolve conflict, make the invisible things explicit.`,
-					`So I wrote the guidebook I wished someone had handed me. It is not an ideology. It is a handful of patterns that say: <em class="font-story italic">make this explicit. Talk about this before it breaks. This is what's usually left unsaid.</em> We call it the RCOS Blueprint.`
+					`So I wrote the guidebook I wished someone had handed me. It is not an ideology. It is a handful of patterns that say: <em class="font-story italic">make this explicit. Talk about this before it breaks. This is what's usually left unsaid.</em> We call it the RCOS Standard.`
 				]
 			}
 		]
@@ -384,19 +384,19 @@ export const faqItems = [
 	// Foundational / factual (migrated from the previous homepage)
 	{
 		q: 'What is EcoHubs?',
-		a: 'EcoHubs is a growing network of people building an open-source blueprint for regenerative communities — a way of life that puts belonging, ecology, and shared decision-making back at the centre. It is online today and place-based tomorrow, with the first physical pilot already running in Ecuador.'
+		a: 'EcoHubs is a growing network of people building an open-source standard for regenerative communities — a way of life that puts belonging, ecology, and shared decision-making back at the centre. It is online today and place-based tomorrow, with the first physical pilot already running in Ecuador.'
 	},
 	{
-		q: 'What is the Blueprint (RCOS)?',
+		q: 'What is the RCOS Standard?',
 		a: 'RCOS — Regenerative Community Operating System — is the open standard at the heart of EcoHubs. It writes down the things communities usually leave unsaid: how decisions get made, how people join and leave, how resources are managed, how conflict is repaired. Not an ideology. A shared language.'
 	},
 	{
 		q: 'Is EcoHubs a real project, or just a vision?',
-		a: "Real. The blueprint is being written, the community is active, and the first blueprint pilot is running in Ecuador. The project is structured in phases — community formation → blueprint development → pilot hubs — and we're in all three at once."
+		a: "Real. The standard is being developed, the community is active, and the first standard pilot is running in Ecuador. The project is structured in phases — community formation → standard development → pilot hubs — and we're in all three at once."
 	},
 	{
 		q: 'How is this different from existing ecovillages or intentional communities?',
-		a: 'Three things. First, the blueprint is open-source — most communities run on undocumented systems; we write ours down so it can be replicated and improved. Second, it integrates ecology, governance, economy and culture as one design, not separate departments. Third, there is a digital coordination layer so dozens of communities can learn from each other instead of each starting from zero.'
+		a: 'Three things. First, the standard is open-source — most communities run on undocumented systems; we write ours down so it can be replicated and improved. Second, it integrates ecology, governance, economy and culture as one design, not separate departments. Third, there is a digital coordination layer so dozens of communities can learn from each other instead of each starting from zero.'
 	},
 	{
 		q: 'Is the goal to replace existing society, or to build an alternative within it?',
@@ -408,7 +408,7 @@ export const faqItems = [
 	},
 	{
 		q: 'Is this only for idealistic people, or is it practical and grounded?',
-		a: 'Both, in that order. The vision is ambitious, but the methods are tested: permaculture, water and energy systems, structured governance, conflict-repair patterns. Most past communities failed for lack of structure, not lack of vision. The blueprint is here to fix that.'
+		a: 'Both, in that order. The vision is ambitious, but the methods are tested: permaculture, water and energy systems, structured governance, conflict-repair patterns. Most past communities failed for lack of structure, not lack of vision. The standard is here to fix that.'
 	},
 	{
 		q: 'How is EcoHubs funded?',
@@ -416,13 +416,13 @@ export const faqItems = [
 	},
 	{
 		q: 'Can I donate to EcoHubs?',
-		a: "Yes. Donations help fund the open-source platform, blueprint development, pilot hubs, and day-to-day operations. As the project grows we're setting up clearer donation channels and public tracking. If money isn't an option, time and skills are equally welcome — the community runs on both."
+		a: "Yes. Donations help fund the open-source platform, RCOS standard development, pilot hubs, and day-to-day operations. As the project grows we're setting up clearer donation channels and public tracking. If money isn't an option, time and skills are equally welcome — the community runs on both."
 	},
 
 	// Voice / posture
 	{
 		q: 'Do I have to move somewhere to join?',
-		a: 'No. Most members are online, in their current home base. The community meets, contributes, and co-creates the Blueprint together — from anywhere. Physical hubs like the Ecuador pilot come next, when communities are ready.'
+		a: 'No. Most members are online, in their current home base. The community meets, contributes, and co-creates the RCOS Standard together — from anywhere. Physical hubs like the Ecuador pilot come next, when communities are ready.'
 	},
 	{
 		q: 'What does "regenerative" mean here?',
@@ -438,6 +438,6 @@ export const faqItems = [
 	},
 	{
 		q: 'What does joining cost, and what do I get?',
-		a: "Application is free and based on alignment, not payment. Members get access to the community platform, the full Blueprint, the voice to shape it, and — when you're ready — a path into the physical pilot hubs."
+		a: "Application is free and based on alignment, not payment. Members get access to the community platform, the full RCOS Standard, the voice to shape it, and — when you're ready — a path into the physical pilot hubs."
 	}
 ];

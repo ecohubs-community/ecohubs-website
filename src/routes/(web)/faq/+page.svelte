@@ -10,13 +10,13 @@
 
 	import { faqItems as generalFaq } from '../data';
 	import { faqItems as visionFaq } from '../vision/data';
-	import { faq as blueprintFaqRaw } from '../blueprint/data';
+	import { faq as rcosFaqRaw } from '../rcos/data';
 	import { faqItems as membershipFaq } from '../membership/data';
 
 	const breadcrumbs = generateBreadcrumbs('faq');
 
-	// Normalise blueprint entries (use `aHtml`) into the same shape as the other FAQ arrays.
-	const blueprintFaq = blueprintFaqRaw.map((item) => ({ q: item.q, a: item.aHtml }));
+	// Normalise RCOS Standard entries (use `aHtml`) into the same shape as the other FAQ arrays.
+	const rcosFaq = rcosFaqRaw.map((item) => ({ q: item.q, a: item.aHtml }));
 
 	const sections = [
 		{
@@ -38,13 +38,13 @@
 			items: visionFaq
 		},
 		{
-			id: 'blueprint',
+			id: 'rcos',
 			num: '03',
-			tag: 'BLUEPRINT',
+			tag: 'RCOS STANDARD',
 			title: 'The shared document,',
 			titleEm: 'how it actually works.',
 			lead: "What's in it, who edits it, and how to fork it.",
-			items: blueprintFaq
+			items: rcosFaq
 		},
 		{
 			id: 'membership',
@@ -78,7 +78,7 @@
 
 <SEO
 	title="Questions & Answers — EcoHubs"
-	description="The questions we hear most about EcoHubs — the project, the Vision, the Blueprint (RCOS), and Membership — answered plainly, in one place."
+	description="The questions we hear most about EcoHubs — the project, the Vision, the RCOS Standard, and Membership — answered plainly, in one place."
 	ogImage="/og-faq.jpg"
 	{breadcrumbs}
 	faq={seoFaq}
@@ -117,7 +117,7 @@
 			class="mt-7 text-lg md:text-xl text-stone-700 leading-relaxed max-w-2xl font-light"
 		>
 			Four sections, written plainly. If your question isn't here, it probably belongs in the
-			Blueprint — and we'd like to hear it.
+			RCOS Standard — and we'd like to hear it.
 		</p>
 
 		<div data-scroll-animate class="mt-10 flex flex-wrap gap-2 text-sm">

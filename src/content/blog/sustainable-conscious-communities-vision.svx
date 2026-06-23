@@ -221,5 +221,5 @@ Are you ready?
 
 ---
 
-*[Apply to join the first 150](/join) or [explore the blueprint](/blueprint) to learn more.*
+*[Apply to join the first 150](/join) or [explore the blueprint](/rcos) to learn more.*
 

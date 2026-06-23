@@ -107,10 +107,10 @@
 						<span class="transition-transform group-hover:translate-x-0.5">↓</span>
 					</a>
 					<a
-						href="/blueprint"
+						href="/rcos"
 						class="px-7 py-3.5 bg-transparent border border-stone-300 text-stone-800 font-medium rounded-full hover:border-ecohubs-dark hover:text-ecohubs-dark transition-all inline-flex items-center justify-center gap-2"
 					>
-						See the Blueprint
+						See the RCOS Standard
 					</a>
 				</div>
 			</div>
@@ -432,7 +432,7 @@
 					Download the manifesto
 				</a>
 				<a
-					href="/blueprint"
+					href="/rcos"
 					class="px-7 py-3.5 border border-amber-200/40 text-amber-100 font-medium rounded-full hover:bg-amber-200/10 transition-colors inline-flex items-center justify-center gap-2"
 				>
 					See how we make it practical →
@@ -475,7 +475,7 @@
 
 		<div data-scroll-animate class="mt-12 flex flex-col sm:flex-row gap-3">
 			<a
-				href="/blueprint"
+				href="/rcos"
 				class="px-6 py-3 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-colors inline-flex items-center justify-center gap-2 group"
 			>
 				See the principles, written down
@@ -586,7 +586,7 @@
 				<h3 class="font-serif text-3xl text-ecohubs-deep leading-tight mb-4">A network.</h3>
 				<p class="font-story italic text-lg text-stone-700 leading-snug mb-6">
 					Many hubs, in many climates and cultures, sharing what they learn through a living,
-					open-source Blueprint.
+					open-source RCOS Standard.
 				</p>
 				<ul class="space-y-2.5 text-[15px] text-stone-700 mb-8">
 					<li class="flex gap-3">
@@ -680,7 +680,7 @@
 				<span class="transition-transform group-hover:translate-x-0.5">→</span>
 			</a>
 			<a
-				href="/blueprint#pilot"
+				href="/rcos#pilot"
 				class="inline-flex items-center gap-2 text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1"
 			>
 				Where horizon 01 is happening →
@@ -743,7 +743,7 @@
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
 				Most beautiful visions never leave the page. We have built the work as a loop, not a launch
 				— so that every hub teaches the network something, and the next hub starts from a slightly
-				stronger Blueprint than the last.
+				stronger RCOS Standard than the last.
 			</p>
 		</div>
 
@@ -830,7 +830,7 @@
 						font-family="Fraunces, serif"
 						font-style="italic"
 						font-size="20"
-						fill="#fbfbf9">Blueprint</text
+						fill="#fbfbf9">Standard</text
 					>
 				</svg>
 			</div>
@@ -900,10 +900,10 @@
 				Become a founding member
 			</a>
 			<a
-				href="/blueprint"
+				href="/rcos"
 				class="px-8 py-4 border border-emerald-300/50 text-emerald-100 font-medium rounded-full hover:bg-emerald-900/40 transition-colors"
 			>
-				Read the Blueprint
+				Read the RCOS Standard
 			</a>
 		</div>
 

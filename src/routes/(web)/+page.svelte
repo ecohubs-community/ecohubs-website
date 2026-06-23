@@ -7,7 +7,7 @@
 	// `?enhanced` query returns a `Picture` object with srcset for every
 	// format/breakpoint, so mobile gets ~40 KB instead of the 229 KB original.
 	import HeroImage from '$lib/assets/hero.webp?enhanced';
-	import BlueprintImage from '$lib/assets/blueprint-community.webp?enhanced';
+	import RcosImage from '$lib/assets/rcos-community.webp?enhanced';
 	import NetworkImage from '$lib/assets/network-regenerative-ecohubs.webp?enhanced';
 	import jungleNature from '$lib/assets/jungle-nature.webp?enhanced';
 	import CommunityFamily from '$lib/assets/community-family.avif?enhanced';
@@ -195,8 +195,8 @@
 					</div>
 					<div class="col-span-3 row-span-2 rounded-[24px] overflow-hidden soft-shadow">
 						<enhanced:img
-							src={BlueprintImage}
-							alt="Community blueprint"
+							src={RcosImage}
+							alt="RCOS Community Standard"
 							sizes="(max-width: 768px) 60vw, 360px"
 							loading="lazy"
 							class="w-full h-full object-cover"
@@ -727,7 +727,7 @@
 				accessible, and replicable.
 			</p>
 			<div data-scroll-stagger class="grid sm:grid-cols-3 gap-4">
-				{#each [{ label: 'Local', desc: 'Rooted in a place, adapted to its culture and climate.' }, { label: 'Connected', desc: 'Sharing patterns, failures, and tools through the Blueprint.' }, { label: 'Replicable', desc: 'Forkable. Not franchised. Every hub stays its own place.' }] as item}
+				{#each [{ label: 'Local', desc: 'Rooted in a place, adapted to its culture and climate.' }, { label: 'Connected', desc: 'Sharing patterns, failures, and tools through the RCOS Standard.' }, { label: 'Replicable', desc: 'Forkable. Not franchised. Every hub stays its own place.' }] as item}
 					<div class="p-4 rounded-xl bg-white border border-stone-200/70">
 						<div class="font-story italic text-2xl text-ecohubs-primary">{item.label}</div>
 						<p class="text-sm text-stone-600 mt-1">{item.desc}</p>
@@ -778,7 +778,7 @@
 		</div>
 
 		<div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-			{#each [{ num: '01', tag: 'Practice', title: 'Applying the RCOS Blueprint to our own community.', body: 'We are the first test of the Blueprint. Membership, governance, conflict, and decision pathways are written down and used by us, on us — refined as the community grows.', cta: 'Read our RCOS specs ↗', href: 'https://specs.ecohubs.community', external: true, accent: 'emerald' }, { num: '02', tag: 'Pilot', title: 'FruitHaven Community RCOS pilot.', body: 'In Ecuador, an existing community has been applying the Blueprint since March 2026 — under real ecological, social and economic constraints. Lessons feed straight back into the standard.', cta: 'See the pilot →', href: '/blueprint#pilot', accent: 'amber' }, { num: '03', tag: 'Research', title: 'Studying what works (and what breaks) in intentional communities.', body: 'We read the literature, talk to elders of past projects, and document the failure patterns that keep coming back. The Blueprint earns its place by surviving those patterns — not by ignoring them.', cta: 'Open the research →', href: '/blueprint', accent: 'emerald' }, { num: '04', tag: 'Design', title: 'New ways to make community more accessible & replicable.', body: 'Lower the bar to entry. Make adoption modular. Make resilience the default. We are designing the patterns, tools, and onboarding paths that turn intentional community from rare into normal.', cta: 'See where we need help →', href: '/membership', accent: 'emerald' }, { num: '05', tag: 'Community', title: 'Growing the online community — members, events, partnerships.', body: 'Weekly calls, member onboarding, partner conversations, public events. The network gets stronger every time someone shows up — and every relationship made here is a thread that holds.', cta: 'Become a member →', href: '/membership', accent: 'amber' }] as item}
+			{#each [{ num: '01', tag: 'Practice', title: 'Applying the RCOS Standard to our own community.', body: 'We are the first test of the Standard. Membership, governance, conflict, and decision pathways are written down and used by us, on us — refined as the community grows.', cta: 'Read our RCOS specs ↗', href: 'https://specs.ecohubs.community', external: true, accent: 'emerald' }, { num: '02', tag: 'Pilot', title: 'FruitHaven Community RCOS pilot.', body: 'In Ecuador, an existing community has been applying the RCOS Standard since March 2026 — under real ecological, social and economic constraints. Lessons feed straight back into the standard.', cta: 'See the pilot →', href: '/rcos#pilot', accent: 'amber' }, { num: '03', tag: 'Research', title: 'Studying what works (and what breaks) in intentional communities.', body: 'We read the literature, talk to elders of past projects, and document the failure patterns that keep coming back. The RCOS Standard earns its place by surviving those patterns — not by ignoring them.', cta: 'Open the research →', href: '/rcos', accent: 'emerald' }, { num: '04', tag: 'Design', title: 'New ways to make community more accessible & replicable.', body: 'Lower the bar to entry. Make adoption modular. Make resilience the default. We are designing the patterns, tools, and onboarding paths that turn intentional community from rare into normal.', cta: 'See where we need help →', href: '/membership', accent: 'emerald' }, { num: '05', tag: 'Community', title: 'Growing the online community — members, events, partnerships.', body: 'Weekly calls, member onboarding, partner conversations, public events. The network gets stronger every time someone shows up — and every relationship made here is a thread that holds.', cta: 'Become a member →', href: '/membership', accent: 'amber' }] as item}
 				<article
 					class="group bg-white rounded-3xl p-7 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors flex flex-col"
 				>
@@ -893,7 +893,7 @@
 					<span class="transition-transform group-hover:translate-x-0.5">→</span>
 				</a>
 				<a
-					href="#blueprint"
+					href="#rcos"
 					class="inline-flex items-center gap-2 text-ecohubs-dark font-medium border-b border-ecohubs-dark/40
                   hover:border-ecohubs-dark pb-1"
 				>
@@ -905,9 +905,9 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════
-     5. BLUEPRINT — teaser
+     5. RCOS STANDARD — teaser
 ═══════════════════════════════════════════════════════════════════ -->
-<section id="blueprint" class="relative py-24 md:py-36 bg-ecohubs-ivory overflow-hidden">
+<section id="rcos" class="relative py-24 md:py-36 bg-ecohubs-ivory overflow-hidden">
 	<div
 		class="absolute -z-0 -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-emerald-200/30 blur-3xl pointer-events-none"
 	></div>
@@ -921,14 +921,14 @@
 				<span
 					class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 text-emerald-600 pulse-dot"
 				></span>
-				The Blueprint · RCOS
+				The Standard · RCOS
 			</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight mb-6">
 				<em class="font-story italic font-normal">The guidebook</em> we wished<br />
 				had existed.
 			</h2>
 			<p class="text-lg text-stone-700 leading-relaxed mb-5">
-				The Blueprint — formally <strong class="text-ecohubs-deep">RCOS</strong> (Regenerative
+				The Standard — formally <strong class="text-ecohubs-deep">RCOS</strong> (Regenerative
 				Community Operating System) — is an open standard for designing and operating regenerative
 				communities. Not software. Not an ideology. A shared way to make community structure
 				<em class="font-story italic">explicit, testable, and improvable.</em>
@@ -940,14 +940,14 @@
 
 			<div class="flex flex-col sm:flex-row gap-3">
 				<a
-					href="/blueprint"
+					href="/rcos"
 					class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-colors inline-flex items-center justify-center gap-2 group"
 				>
-					Explore the Blueprint
+					Explore the RCOS Standard
 					<span class="transition-transform group-hover:translate-x-0.5">→</span>
 				</a>
 				<a
-					href="https://blueprint.ecohubs.community"
+					href="https://rcos.ecohubs.community"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="no-external-decoration px-7 py-3.5 bg-transparent border border-stone-300 text-stone-800 font-medium rounded-full hover:border-ecohubs-dark hover:text-ecohubs-dark transition-colors inline-flex items-center justify-center gap-2"
@@ -1036,7 +1036,7 @@
 					class="mt-6 pt-5 border-t border-stone-200 flex items-center justify-between text-xs text-stone-500"
 				>
 					<span>Open · Forkable · Adaptable</span>
-					<a href="/blueprint" class="text-ecohubs-primary hover:underline font-medium"
+					<a href="/rcos" class="text-ecohubs-primary hover:underline font-medium"
 						>See all seven layers →</a
 					>
 				</div>
@@ -1048,7 +1048,7 @@
 	     the explainer rather than the spec. Sits in its own full-width container
 	     below the teaser grid so it isn't squeezed into the 12-col layout
 	     above. The full-length version (with its own framing copy) lives on
-	     the Blueprint page. -->
+	     the RCOS standard page. -->
 	<div class="max-w-6xl mx-auto px-6 lg:px-8 relative mt-20">
 		<div data-scroll-animate="fade-up" class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 			<div class="lg:col-span-7">
@@ -1065,10 +1065,10 @@
 					picture in one sitting.
 				</p>
 				<a
-					href="/blueprint#intro-video"
+					href="/rcos#intro-video"
 					class="mt-5 inline-flex items-center gap-2 text-ecohubs-primary hover:text-ecohubs-deep transition-colors font-medium group"
 				>
-					Open it on the Blueprint page
+					Open it on the RCOS Standard page
 					<span class="transition-transform group-hover:translate-x-0.5">→</span>
 				</a>
 			</div>
@@ -1131,11 +1131,11 @@
 				</p>
 				<div class="mt-8 flex flex-col sm:flex-row gap-3">
 					<a
-						href="/blueprint"
+						href="/rcos"
 						class="px-6 py-3 bg-ecohubs-dark text-white font-medium rounded-full
                     hover:bg-ecohubs-deep transition-colors inline-flex items-center justify-center gap-2 group"
 					>
-						How tech sits in the Blueprint
+						How tech sits in the Standard
 						<span class="transition-transform group-hover:translate-x-0.5">→</span>
 					</a>
 					<a
@@ -1265,7 +1265,7 @@
 			</h2>
 		</div>
 		<div data-scroll-stagger class="space-y-6">
-			{#each [{ n: '01', color: 'bg-ecohubs-deep', title: 'Gather the people', body: 'First 150 aligned members. Shared values. Foundation of the Blueprint co-created, not dictated.' }, { n: '02', color: 'bg-ecohubs-primary', title: 'Grow the Blueprint', body: 'Open-source, evolving — shaped by practice across ecology, governance, economy, culture, and care.' }, { n: '03', color: 'bg-amber-600', title: 'Pilot, learn, share', body: 'Apply the Blueprint in real communities. Ecuador is the first. Document every scar, every win, openly.' }] as step}
+			{#each [{ n: '01', color: 'bg-ecohubs-deep', title: 'Gather the people', body: 'First 150 aligned members. Shared values. Foundation of the RCOS standard co-created, not dictated.' }, { n: '02', color: 'bg-ecohubs-primary', title: 'Grow the RCOS standard', body: 'Open-source, evolving — shaped by practice across ecology, governance, economy, culture, and care.' }, { n: '03', color: 'bg-amber-600', title: 'Pilot, learn, share', body: 'Apply the RCOS standard in real communities. Ecuador is the first. Document every scar, every win, openly.' }] as step}
 				<div class="grid md:grid-cols-[auto_1fr] gap-6 items-start">
 					<div
 						class="w-14 h-14 rounded-full {step.color} text-white font-serif text-xl flex items-center justify-center shrink-0"
@@ -1313,14 +1313,14 @@
 				<em class="font-story italic font-normal text-stone-500">That is the point.</em>
 			</h2>
 			<p class="mt-5 text-lg text-stone-700 leading-relaxed">
-				EcoHubs is not a product you sign up to. It's a Blueprint that gets better with every person
+				EcoHubs is not a product you sign up to. RCOS is a standard that gets better with every person
 				who reads it carefully, disagrees with a chapter, runs an experiment, comes back with what
 				they learned. There are many ways in.
 			</p>
 		</div>
 
 		<div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-			{#each [{ tag: 'On the ground', title: 'Apply RCOS in your community.', body: 'Already part of (or starting) a local community? Try a Blueprint chapter on the ground. We help you adapt it, you bring back what you learn.', cta: 'Tell us about it →', href: '/contact' }, { tag: 'Bring a skill', title: 'Contribute what you already do well.', body: 'Permaculture, governance, facilitation, code, listening, storytelling. We need every one of these.', cta: 'See where we need help →', href: '/membership' }, { tag: 'Partner with us', title: 'Become an EcoHubs partner.', body: 'Organisations, foundations, communities and projects working in adjacent terrain — we co-design, fund pilots, and share what we learn.', cta: 'Start a conversation →', href: '/contact' }] as card}
+			{#each [{ tag: 'On the ground', title: 'Apply RCOS in your community.', body: 'Already part of (or starting) a local community? Try a RCOS standard chapter on the ground. We help you adapt it, you bring back what you learn.', cta: 'Tell us about it →', href: '/contact' }, { tag: 'Bring a skill', title: 'Contribute what you already do well.', body: 'Permaculture, governance, facilitation, code, listening, storytelling. We need every one of these.', cta: 'See where we need help →', href: '/membership' }, { tag: 'Partner with us', title: 'Become an EcoHubs partner.', body: 'Organisations, foundations, communities and projects working in adjacent terrain — we co-design, fund pilots, and share what we learn.', cta: 'Start a conversation →', href: '/contact' }] as card}
 				<a
 					href={card.href}
 					class="group bg-white rounded-3xl p-7 border border-stone-200/80

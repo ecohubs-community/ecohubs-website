@@ -29,7 +29,7 @@
 
 <SEO
 	title="Field notes — EcoHubs blog"
-	description="Letters, field notes, and quiet reflections from the people building the Blueprint for regenerative communities."
+	description="Letters, field notes, and quiet reflections from the people building the RCOS Standard for regenerative communities."
 	ogImage="/og-blog.jpg"
 	{breadcrumbs}
 />
@@ -61,7 +61,7 @@
 		</h1>
 		<p class="mt-7 text-lg text-stone-700 leading-relaxed max-w-2xl font-light">
 			Reflections, lessons learned in the open, and quiet updates from inside the community — about
-			regenerative practice, governance, the Blueprint, and the everyday work of building a
+			regenerative practice, governance, the RCOS Standard, and the everyday work of building a
 			different way to live.
 		</p>
 	</div>

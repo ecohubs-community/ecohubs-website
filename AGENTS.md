@@ -2,7 +2,7 @@
 
 This file orients AI coding assistants (Claude Code, Cursor, etc.) working in this repo. **Read this before making non-trivial changes.**
 
-> **What this repo is:** the public marketing/explanation site for EcoHubs (Vision, Blueprint/RCOS, Membership, FAQ, Blog, Contact). Membership data, governance, voting, and the Blueprint editor live in a **separate** product called **ecohubsOS** (`https://os.ecohubs.community`). This site posts applications into ecohubsOS and pulls public member data from it for the constellation map. Anything not user-facing on the public site does **not** belong here.
+> **What this repo is:** the public marketing/explanation site for EcoHubs (Vision, RCOS Standard, Membership, FAQ, Blog, Contact). Membership data, governance, voting, and the RCOS Standard editor live in a **separate** product called **ecohubsOS** (`https://os.ecohubs.community`). This site posts applications into ecohubsOS and pulls public member data from it for the constellation map. Anything not user-facing on the public site does **not** belong here.
 
 ## Stack
 
@@ -25,11 +25,11 @@ Public site lives under the `(web)` route group so it shares Navbar + Footer + t
 
 | Route                       | File                                            | Notes                                                                                                                                                                                                                                                |
 | --------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/`                         | `src/routes/(web)/+page.svelte`                 | Homepage. Long, narrative — hero, stories, wounds, manifesto moment, answers, network, "what we are already doing", vision teaser, blueprint teaser, members constellation, tech, who-this-is-for, FAQ teaser, roadmap, "before you join", final CTA |
+| `/`                         | `src/routes/(web)/+page.svelte`                 | Homepage. Long, narrative — hero, stories, wounds, manifesto moment, answers, network, "what we are already doing", vision teaser, RCOS Standard teaser, members constellation, tech, who-this-is-for, FAQ teaser, roadmap, "before you join", final CTA |
 | `/vision`                   | `src/routes/(web)/vision/+page.svelte`          | Vision page with manifesto moment, six principles, three horizons, values, loop diagram                                                                                                                                                              |
-| `/blueprint`                | `src/routes/(web)/blueprint/+page.svelte`       | Blueprint (RCOS) page — failure modes, what-it-is/isn't, seven core layers, modules, comparisons, pilot, contribute, FAQ                                                                                                                             |
+| `/rcos`                | `src/routes/(web)/rcos/+page.svelte`       | RCOS Standard page — failure modes, what-it-is/isn't, seven core layers, modules, comparisons, pilot, contribute, FAQ                                                                                                                             |
 | `/membership`               | `src/routes/(web)/membership/+page.svelte`      | Membership page — what it is/isn't, doorways, application process, rooms, trust-by-design, EcosystemSection, voices, FAQ                                                                                                                             |
-| `/faq`                      | `src/routes/(web)/faq/+page.svelte`             | **Canonical FAQ page**. Aggregates FAQs from `(web)/data.ts`, `vision/data.ts`, `blueprint/data.ts`, `membership/data.ts`. Only this route emits `FAQPage` JSON-LD                                                                                   |
+| `/faq`                      | `src/routes/(web)/faq/+page.svelte`             | **Canonical FAQ page**. Aggregates FAQs from `(web)/data.ts`, `vision/data.ts`, `rcos/data.ts`, `membership/data.ts`. Only this route emits `FAQPage` JSON-LD                                                                                   |
 | `/blog`, `/blog/[slug]`     | `src/routes/(web)/blog/...`                     | Ghost-backed blog                                                                                                                                                                                                                                    |
 | `/join`                     | `src/routes/(web)/join/+page.svelte`            | Multi-step application form (`ApplicationForm.svelte`)                                                                                                                                                                                               |
 | `/contact`                  | `src/routes/(web)/contact/+page.svelte`         | Channels + `ContactForm.svelte`                                                                                                                                                                                                                      |
@@ -172,7 +172,7 @@ Anything not in that list is either dead or should be reviewed before reuse.
 Before opening a PR for non-trivial UI work:
 
 - [ ] `pnpm check` passes (no new TS errors)
-- [ ] All five main routes (`/`, `/vision`, `/blueprint`, `/membership`, `/faq`) return 200
+- [ ] All five main routes (`/`, `/vision`, `/rcos`, `/membership`, `/faq`) return 200
 - [ ] H1 count = 1 per page; no `<svelte:component>` introduced
 - [ ] New pages emit `<SEO>` with `ogImage` + `breadcrumbs`
 - [ ] External `target="_blank"` links carry `rel="noopener noreferrer"`

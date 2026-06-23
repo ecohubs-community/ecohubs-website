@@ -1,4 +1,4 @@
-// Static content for the redesigned Blueprint page.
+// Static content for the redesigned RCOS Standard page.
 // Lifted out of `+page.svelte` to keep the markup readable.
 
 export interface FailureMode {
@@ -71,7 +71,7 @@ export const whatItIsNot: Stance[] = [
 	},
 	{
 		title: 'A DAO product or token scheme.',
-		body: "A DAO — a rule-based organization where authority is defined by agreed processes — can sit on top, but the Blueprint isn't crypto, isn't tradeable, isn't speculative."
+		body: "A DAO — a rule-based organization where authority is defined by agreed processes — can sit on top, but the RCOS Standard isn't crypto, isn't tradeable, isn't speculative."
 	},
 	{
 		title: 'A fixed ideology or "the right way" to live.',
@@ -139,7 +139,7 @@ export const coreLayers: CoreLayer[] = [
 		id: 'L6',
 		kicker: 'Evolution & Adaptation',
 		title: 'How the whole system changes — safely, in the open.',
-		body: 'Amendments, experiments, retrospectives, and versioning — so the Blueprint can keep getting truer without collapsing on its own changes.',
+		body: 'Amendments, experiments, retrospectives, and versioning — so the RCOS Standard can keep getting truer without collapsing on its own changes.',
 		tags: ['Amendments', 'Retrospectives', 'Versioning']
 	}
 ];
@@ -194,7 +194,7 @@ export const applicationSteps: ApplicationStep[] = [
 	{
 		number: '01',
 		title: 'Read & locate yourself.',
-		body: 'A community reads the Blueprint and identifies which layers are already explicit, which are implicit, and which are missing entirely.'
+		body: 'A community reads the RCOS Standard and identifies which layers are already explicit, which are implicit, and which are missing entirely.'
 	},
 	{
 		number: '02',
@@ -219,7 +219,7 @@ export const applicationSteps: ApplicationStep[] = [
 	{
 		number: '06',
 		title: 'Feed it back into the standard.',
-		body: 'Lessons travel back into the Blueprint through proposals, reviews, and version notes. The standard evolves through Layer 6 — safely, in the open, on a cadence the network can keep up with.',
+		body: 'Lessons travel back into the RCOS Standard through proposals, reviews, and version notes. The standard evolves through Layer 6 — safely, in the open, on a cadence the network can keep up with.',
 		accent: 'amber'
 	}
 ];
@@ -269,8 +269,8 @@ export const contributePaths: ContributePath[] = [
 		kicker: 'Write or improve',
 		title: 'Draft new articles or refine existing ones.',
 		body: 'Pattern descriptions, examples, stress tests, edge cases. The standard is text — and text gets better with editors.',
-		cta: 'Open the Blueprint ↗',
-		href: 'https://blueprint.ecohubs.community',
+		cta: 'Open the RCOS Standard ↗',
+		href: 'https://rcos.ecohubs.community',
 		external: true
 	},
 	{
@@ -279,7 +279,7 @@ export const contributePaths: ContributePath[] = [
 		title: 'Argue with a chapter, in public.',
 		body: 'The best critiques become co-authors. If something feels wrong, that signal is exactly what the standard needs.',
 		cta: 'Read & respond ↗',
-		href: 'https://blueprint.ecohubs.community',
+		href: 'https://rcos.ecohubs.community',
 		external: true
 	},
 	{
@@ -294,9 +294,9 @@ export const contributePaths: ContributePath[] = [
 		number: '04',
 		kicker: 'Propose a module',
 		title: "Apply RCOS to a domain we haven't yet.",
-		body: 'Modules sit on top of the core. If you know a domain — health, ritual, climate — that the Blueprint should reach, write the module.',
-		cta: 'Open the Blueprint ↗',
-		href: 'https://blueprint.ecohubs.community',
+		body: 'Modules sit on top of the core. If you know a domain — health, ritual, climate — that the RCOS should reach, write the module.',
+		cta: 'Open the RCOS Standard ↗',
+		href: 'https://rcos.ecohubs.community',
 		external: true
 	}
 ];
@@ -308,14 +308,14 @@ export interface FaqEntry {
 
 export const faq: FaqEntry[] = [
 	{
-		q: 'What’s the difference between "the Blueprint" and "RCOS"?',
+		q: 'What’s the difference between "the RCOS Standard" and "RCOS"?',
 		aHtml:
-			'They are the same thing. <strong class="text-ecohubs-deep">RCOS</strong> (Regenerative Community Operating System) is the formal name. <em class="font-story italic">Blueprint</em> is the friendly, human-facing name we use during the transition phase. You’ll see both — they always refer to the same standard.'
+			'They are the same thing. <strong class="text-ecohubs-deep">RCOS</strong> (Regenerative Community Operating System) is the formal name. <em class="font-story italic">RCOS Standard</em> is the friendly, human-facing name we use during the transition phase. You’ll see both — they always refer to the same standard.'
 	},
 	{
 		q: 'Do I have to use the whole thing?',
 		aHtml:
-			'No. The Blueprint is designed for partial adoption. Most communities start with one or two layers — usually the one that’s currently broken — and grow into the others over time. Modules are optional on top of that.'
+			'No. The RCOS is designed for partial adoption. Most communities start with one or two layers — usually the one that’s currently broken — and grow into the others over time. Modules are optional on top of that.'
 	},
 	{
 		q: 'Is this software? A DAO? A token?',
@@ -325,16 +325,16 @@ export const faq: FaqEntry[] = [
 	{
 		q: 'How do I trust this won’t fail like other community models?',
 		aHtml:
-			'Honestly: we don’t promise it won’t. What we do is treat each community as a learning system, document failures and adaptations openly, and iterate the standard rather than assuming the first version is the right one. The Blueprint is built around known failure modes — not around someone’s belief that they’ve solved community.'
+			'Honestly: we don’t promise it won’t. What we do is treat each community as a learning system, document failures and adaptations openly, and iterate the standard rather than assuming the first version is the right one. The RCOS Standard is built around known failure modes — not around someone’s belief that they’ve solved community.'
 	},
 	{
 		q: 'Can I use it for a community that isn’t an EcoHub?',
 		aHtml:
-			'Yes. The Blueprint is open-source and structurally agnostic. A co-op, a co-living house, a research collective, a neighborhood association — any group that needs to make membership, governance, conflict, or resources explicit can adopt parts of it.'
+			'Yes. The RCOS Standard is open-source and structurally agnostic. A co-op, a co-living house, a research collective, a neighborhood association — any group that needs to make membership, governance, conflict, or resources explicit can adopt parts of it.'
 	},
 	{
 		q: 'Where do I actually read it?',
 		aHtml:
-			'The current version lives at <a href="https://blueprint.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">blueprint.ecohubs.community</a>. It’s a public draft, evolving in the open — read it, fork it, argue with it.'
+			'The current version lives at <a href="https://rcos.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">rcos.ecohubs.community</a>. It’s a public draft, evolving in the open — read it, fork it, argue with it.'
 	}
 ];

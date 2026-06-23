@@ -552,7 +552,7 @@ ${FONTS_LINK}
 								<td valign="top" style="padding:0 0 0 22px;">
 									<div style="font-family:${FF_SERIF};font-size:18px;color:${C_DEEP};font-weight:500;line-height:1.3;margin-bottom:6px;">We begin, together</div>
 									<div style="font-family:${FF_SERIF};font-size:15px;line-height:1.6;color:${C_TEXT};">
-										If it's a yes, we'll share next steps for joining the founding circle and shaping the Blueprint with us.
+										If it's a yes, we'll share next steps for joining the founding circle and shaping the Standard with us.
 									</div>
 								</td>
 							</tr>
@@ -574,8 +574,8 @@ ${FONTS_LINK}
 				<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 					<tr>
 						<td valign="top" width="50%" style="padding:6px 8px 6px 0;">
-							<a href="https://blueprint.ecohubs.community" style="display:block;background:${C_IVORY};border:1px solid ${C_LINE};border-radius:14px;padding:18px 20px;text-decoration:none;">
-								<div style="font-family:${FF_SANS};font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:${C_MUTED};font-weight:600;margin-bottom:6px;">The Blueprint</div>
+							<a href="https://rcos.ecohubs.community" style="display:block;background:${C_IVORY};border:1px solid ${C_LINE};border-radius:14px;padding:18px 20px;text-decoration:none;">
+								<div style="font-family:${FF_SANS};font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:${C_MUTED};font-weight:600;margin-bottom:6px;">The RCOS Standard</div>
 								<div style="font-family:${FF_SERIF};font-size:17px;color:${C_DEEP};font-weight:500;line-height:1.3;">Read the open-source guidebook <span style="color:${C_PRIMARY};">→</span></div>
 							</a>
 						</td>
@@ -665,12 +665,12 @@ WHAT HAPPENS NEXT
    We're choosing the first 500 founding members for this cohort. Whatever the answer, you'll hear it from a human, with care.
 
 03 · We begin, together
-   If it's a yes, we'll share next steps for joining the founding circle and shaping the Blueprint with us.
+   If it's a yes, we'll share next steps for joining the founding circle and shaping the RCOS Standard with us.
 
 
 WHILE YOU WAIT
 --------------
-The Blueprint:  https://blueprint.ecohubs.community
+The RCOS:  		https://rcos.ecohubs.community
 Discord:        https://discord.gg/Xnh7247Nq3
 The Vision:     https://ecohubs.community/vision
 Share EcoHubs:  https://ecohubs.community

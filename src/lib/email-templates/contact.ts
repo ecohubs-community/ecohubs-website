@@ -275,8 +275,8 @@ export function getContactConfirmationHTML(name: string): string {
 				<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 					<tr>
 						<td valign="top" width="50%" style="padding:6px 8px 6px 0;">
-							<a href="https://blueprint.ecohubs.community" style="display:block;background:#f5f2ea;border:1px solid #e7e2d4;border-radius:14px;padding:18px 20px;text-decoration:none;">
-								<div style="font-family:${FONT_INTER};font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#6b7265;font-weight:600;margin-bottom:6px;">The Blueprint</div>
+							<a href="https://rcos.ecohubs.community" style="display:block;background:#f5f2ea;border:1px solid #e7e2d4;border-radius:14px;padding:18px 20px;text-decoration:none;">
+								<div style="font-family:${FONT_INTER};font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#6b7265;font-weight:600;margin-bottom:6px;">The RCOS Standard</div>
 								<div style="font-family:${FONT_PRIDI};font-size:17px;color:#0b2e24;font-weight:500;line-height:1.3;">Read the open-source guidebook <span style="color:#059669;">→</span></div>
 							</a>
 						</td>
@@ -367,7 +367,7 @@ WHAT HAPPENS NEXT — A day or two, then a real reply.
 
 WHILE YOU WAIT — A few doors that are already open.
 
-· The Blueprint — read the open-source guidebook: https://blueprint.ecohubs.community
+· The RCOS — read the open-source guidebook: https://rcos.ecohubs.community
 · Discord — join the conversation already underway: https://discord.gg/Xnh7247Nq3
 · The Vision — why we believe small, rooted places matter: https://ecohubs.community/vision
 · Join us — apply to the founding circle: https://ecohubs.community/join

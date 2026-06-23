@@ -79,10 +79,10 @@
 			hoverBorderColor: 'border-teal-200',
 			hoverRingColor: 'ring-teal-200',
 			hoverTextColor: 'text-teal-600',
-			title: 'Blueprint App',
+			title: 'RCOS App',
 			description:
 				'Git-based collaboration for structuring and writing articles. GitHub workflows with PRs and approvals for quality control.',
-			link: { href: 'https://blueprint.ecohubs.community', target: '_self' },
+			link: { href: 'https://rcos.ecohubs.community', target: '_self' },
 			category: 'action'
 		},
 		{

@@ -4,7 +4,7 @@ How we write on the website, in newsletters, on social media, and anywhere EcoHu
 
 ## 1. Brand essence
 
-EcoHubs is an open, online community co-creating a **living blueprint** (the RCOS — Regenerative Community Operating System) for regenerative intentional communities. We combine ecological wisdom, transparent governance, and practical systems design — and we test what we publish in real pilot hubs.
+EcoHubs is an open, online community co-creating a **living standard** (the RCOS — Regenerative Community Operating System) for regenerative intentional communities. We combine ecological wisdom, transparent governance, and practical systems design — and we test what we publish in real pilot hubs.
 
 ## 2. Voice — five fixed traits
 
@@ -24,7 +24,7 @@ The voice stays constant; the tone adapts to context.
 | ---------------- | --------------------------- | -------------------------------------------------------------------------- |
 | Homepage         | Warm + invitational         | Name the problem briefly, pivot fast to agency and an invitation.          |
 | Vision page      | Visionary + philosophical   | Allow longer sentences and bigger framing — still tied to concrete layers. |
-| Blueprint / RCOS | Formal + pragmatic          | Most cerebral. Define terms; contrast "what it is" vs "what it isn't".     |
+| RCOS Standard    | Formal + pragmatic          | Most cerebral. Define terms; contrast "what it is" vs "what it isn't".     |
 | Membership       | Invitational + transparent  | Empowerment ("you can…") + clarity ("here's how…").                        |
 | Join / forms     | Direct + reassuring         | Remove friction. "No wallet needed. No credit card ever required."         |
 | Social posts     | Warm + concrete             | One idea per post. Lead with a tangible image or finding, not a manifesto. |
@@ -32,7 +32,7 @@ The voice stays constant; the tone adapts to context.
 
 ## 4. Vocabulary
 
-**Use:** regenerative, stewardship, blueprint, co-create, shape together, contribute / contribution, network, transparent, explicit, legible, grounded, practical, pilot, living laboratory, community.
+**Use:** regenerative, stewardship, RCOS Standard, co-create, shape together, contribute / contribution, network, transparent, explicit, legible, grounded, practical, pilot, living laboratory, community.
 
 **Avoid:** revolutionary, disrupt, utopia, guaranteed, perfect, synergy, leverage, ecosystem (in the metaphorical sense), crypto/tokenomics framing, "moon", spiritual or New Age phrasing without structure, "members" alone (prefer _community_), framing any individual as "the visionary".
 
@@ -54,7 +54,7 @@ The voice stays constant; the tone adapts to context.
 
 CTAs are warm, directional, and frame the action as participation, not consumption.
 
-- ✅ "Join the First 150", "Shape the blueprint", "Explore the Blueprint", "Become a Founding Member", "Start your application"
+- ✅ "Join the First 150", "Shape the RCOS Standard", "Explore the RCOS Standard", "Become a Founding Member", "Start your application"
 - ❌ "Sign up now!", "Don't miss out", "Unlock", "Buy in", "Claim your spot"
 
 ## 7. Anti-patterns — do not ship copy that does any of this
@@ -73,7 +73,7 @@ CTAs are warm, directional, and frame the action as participation, not consumpti
 - "Structure before ideology."
 - "Practice, not speculation."
 - "From vision to reality."
-- "A living blueprint, tested in real conditions."
+- "A living standard, tested in real conditions."
 - "Make the implicit explicit."
 
 ## 9. Quick checklist before publishing

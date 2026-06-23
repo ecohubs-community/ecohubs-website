@@ -8,7 +8,7 @@
 
 <SEO
 	title="Apply to join — EcoHubs.community"
-	description="A short application, read by real people, decided in the open. Free, contribution-based, and held together by a community that's writing the Blueprint for a different way to live."
+	description="A short application, read by real people, decided in the open. Free, contribution-based, and held together by a community that's writing the RCOS Standard for a different way to live."
 	ogImage="/og-join.jpg"
 	breadcrumbs={[
 		{ name: 'Home', url: 'https://ecohubs.community' },
@@ -130,9 +130,9 @@
 			>
 			or the
 			<a
-				href="/blueprint"
+				href="/rcos"
 				class="text-ecohubs-primary not-italic hover:text-ecohubs-deep underline decoration-ecohubs-primary/40 underline-offset-4 hover:decoration-ecohubs-primary"
-				>Blueprint</a
+				>RCOS Standard</a
 			>
 			first — applying when you're ready works better for everyone.
 		</p>

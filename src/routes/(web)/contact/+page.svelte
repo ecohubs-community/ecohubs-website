@@ -29,7 +29,7 @@
 		{
 			Icon: Users,
 			kicker: 'Membership',
-			title: 'Help write the Blueprint with us',
+			title: 'Help write the RCOS Standard with us',
 			body: 'If your question is really an arrival — apply for membership. The community itself reads each one.',
 			cta: 'Apply now',
 			href: '/membership',

@@ -76,8 +76,8 @@ export const rooms: Room[] = [
 	{
 		num: '05',
 		icon: Compass,
-		title: 'Shape the RCOS Blueprint',
-		body: 'Co-design the chapters of the Regenerative Community Operating System. Propose patterns. Disagree well. The Blueprint is the spine — and it is still being written.',
+		title: 'Shape the RCOS Standard',
+		body: 'Co-design the chapters of the Regenerative Community Operating System. Propose patterns. Disagree well. The RCOS Standard is the spine — and it is still being written.',
 		tags: 'Writing · Research · Pattern design',
 		iconColor: 'text-emerald-600',
 		iconBg: 'bg-emerald-50',
@@ -107,7 +107,7 @@ export const rooms: Room[] = [
 		num: '08',
 		icon: BookOpen,
 		title: 'Research regenerative models',
-		body: 'Investigate practices, analyse existing communities, contribute evidence-based insights so the Blueprint stands on something real.',
+		body: 'Investigate practices, analyse existing communities, contribute evidence-based insights so the RCOS Standard stands on something real.',
 		tags: 'Research · Synthesis · Knowledge',
 		iconColor: 'text-orange-600',
 		iconBg: 'bg-orange-50',
@@ -117,7 +117,7 @@ export const rooms: Room[] = [
 		num: '09',
 		icon: Sprout,
 		title: 'Apply RCOS in your community',
-		body: 'Already part of (or starting) a local community? Try a Blueprint chapter on the ground. We help you adapt it, you bring back what you learn.',
+		body: 'Already part of (or starting) a local community? Try a RCOS Standard chapter on the ground. We help you adapt it, you bring back what you learn.',
 		tags: 'Pilot · Stewardship · Local practice',
 		iconColor: 'text-emerald-700',
 		iconBg: 'bg-emerald-50',
@@ -158,7 +158,7 @@ export interface FaqItem {
 export const faqItems: FaqItem[] = [
 	{
 		q: 'What does membership actually involve?',
-		a: 'Membership is participation in an <strong>online community</strong> — contributing to the Blueprint (RCOS), joining discussions, voting on proposals, and collaborating on shared tools. It is not a physical community membership, and not a place to move to.'
+		a: 'Membership is participation in an <strong>online community</strong> — contributing to the RCOS Standard, joining discussions, voting on proposals, and collaborating on shared tools. It is not a physical community membership, and not a place to move to.'
 	},
 	{
 		q: 'Is there a fee?',
@@ -170,7 +170,7 @@ export const faqItems: FaqItem[] = [
 	},
 	{
 		q: 'Do I have to move somewhere to join?',
-		a: 'No. Most members are online, in their current home base. The community meets, contributes, and co-creates the Blueprint together — from anywhere.'
+		a: 'No. Most members are online, in their current home base. The community meets, contributes, and co-creates the RCOS Standard together — from anywhere.'
 	},
 	{
 		q: 'How long does the application take, and what happens after?',
@@ -190,19 +190,19 @@ export const faqItems: FaqItem[] = [
 	},
 	{
 		q: 'Is joining early risky? What do I gain as a pioneer?',
-		a: 'Yes — early carries uncertainty. Systems are still evolving. In return, you get to <strong>shape the Blueprint</strong>, hold real influence, form deeper relationships, and unlock access to roles before they are formally defined. This is a co-creation phase, not a finished product.'
+		a: 'Yes — early carries uncertainty. Systems are still evolving. In return, you get to <strong>shape the RCOS Standard</strong>, hold real influence, form deeper relationships, and unlock access to roles before they are formally defined. This is a co-creation phase, not a finished product.'
 	},
 	{
 		q: 'Who controls this today, and how decentralized is it really?',
-		a: 'We are in an <strong>early founder-led phase</strong>, transitioning toward community governance. Full decentralization is a process, not a switch. Every step is being made in the open, written into the Blueprint, and reviewable.'
+		a: 'We are in an <strong>early founder-led phase</strong>, transitioning toward community governance. Full decentralization is a process, not a switch. Every step is being made in the open, written into the RCOS Standard, and reviewable.'
 	},
 	{
 		q: 'Can I leave at any time?',
-		a: 'Yes. Membership is voluntary. Step back, exit, return — the Blueprint includes clear, dignified paths for all of those.'
+		a: 'Yes. Membership is voluntary. Step back, exit, return — the RCOS Standard includes clear, dignified paths for all of those.'
 	},
 	{
 		q: 'What tools does the community use?',
-		a: '<a href="https://os.ecohubs.community" target="_blank" rel="noopener noreferrer">ecohubsOS</a> as the home base — including its internal voting system for applications and decisions. Discord and a forum for discussion. Collaborative documents for the Blueprint. The smallest set of tools that lets the community see itself.'
+		a: '<a href="https://os.ecohubs.community" target="_blank" rel="noopener noreferrer">ecohubsOS</a> as the home base — including its internal voting system for applications and decisions. Discord and a forum for discussion. Collaborative documents for the RCOS Standard. The smallest set of tools that lets the community see itself.'
 	}
 ];
 
@@ -222,11 +222,11 @@ export const doorways: Doorway[] = [
 	{
 		num: '01',
 		tag: 'Read & respond',
-		title: 'Critique a chapter of the Blueprint.',
+		title: 'Critique a chapter of the RCOS Standard.',
 		body: 'No commitment. Read what we have, tell us where it is wrong, where it is missing, where it is naïve. The best critiques become co-authors.',
 		meta: '~30 minutes · async',
-		cta: 'Open the Blueprint →',
-		href: '/blueprint'
+		cta: 'Open the RCOS Standard →',
+		href: '/rcos'
 	},
 	{
 		num: '02',
@@ -260,7 +260,7 @@ export interface Voice {
 export const voices: Voice[] = [
 	{
 		quote:
-			'I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter. No one asked me — I just saw the gap.',
+			'I joined to read the RCOS Standard. Three months in, I was the one writing the conflict-repair chapter. No one asked me — I just saw the gap.',
 		name: 'Anika S.',
 		location: 'Berlin · Governance writer'
 	},

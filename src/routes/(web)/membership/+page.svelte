@@ -16,7 +16,7 @@
 
 <SEO
 	title="Become a Member — EcoHubs.community"
-	description="Apply to join EcoHubs — a free, contribution-based online community co-creating the Blueprint for regenerative communities."
+	description="Apply to join EcoHubs — a free, contribution-based online community co-creating the RCOS Standard for regenerative communities."
 	ogImage="/og-membership.jpg"
 	{breadcrumbs}
 />
@@ -62,7 +62,7 @@
 				<p class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light">
 					Membership is not a tier you buy or a list you get on. It is a quiet decision to bring
 					your craft, your time, or your honest questions to a community that is writing the
-					Blueprint for a different way to live.
+					RCOS Standard for a different way to live.
 				</p>
 
 				<div class="mt-10 flex flex-col sm:flex-row gap-3">
@@ -93,7 +93,7 @@
 			</div>
 
 			<!-- Right: a "membership card" — a fillable dossier that you grow into.
-           Echoes the Blueprint's structured aesthetic, but personal — reinforcing
+           Echoes the RCOS Standard's structured aesthetic, but personal — reinforcing
            "you don't join, you start showing up". -->
 			<div class="lg:col-span-5 relative">
 				<!-- the card itself, slightly rotated for a paper-on-desk feel -->
@@ -192,7 +192,7 @@
 									</li>
 									<li class="flex items-center gap-2.5">
 										<span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span>
-										Influence on the Blueprint
+										Influence on the RCOS Standard
 									</li>
 									<li class="flex items-center gap-2.5 text-stone-500">
 										<span class="w-1.5 h-1.5 rounded-full bg-stone-300"></span>
@@ -249,7 +249,7 @@
 				<!-- floating quote chip — same voice family as other pages, distinct from card 
 				<div class="absolute -left-4 -bottom-6 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow max-w-[270px] border border-stone-100 hidden md:block">
 					<p class="font-story italic text-[15px] leading-snug text-stone-800">
-						"I joined to read the Blueprint. Three months in, I was the one writing the conflict-repair chapter."
+						"I joined to read the RCOS Standard. Three months in, I was the one writing the conflict-repair chapter."
 					</p>
 					<p class="mt-2 text-[11px] text-stone-500 tracking-wider uppercase">Anika · governance writer</p>
 				</div>-->
@@ -285,7 +285,7 @@
 			>
 				<div class="kicker text-emerald-700 mb-6">What it is</div>
 				<ul class="space-y-5">
-					{#each [{ strong: 'An online community', rest: '— held together by tools, calls, and a shared document called the Blueprint.' }, { strong: 'Free to join.', rest: 'No fee, no tier, no premium. Application is based on alignment, not payment.' }, { strong: 'Contribution-based.', rest: 'Trust, access, and influence grow with what you bring — research, writing, listening, code, care.' }, { strong: 'A voice in the work.', rest: 'Members shape the Blueprint, vote on proposals, and decide together who joins next.' }, { strong: 'A starting point for RCOS.', rest: 'The first place where the Regenerative Community Operating System gets tried, refined, and improved together.' }] as item}
+					{#each [{ strong: 'An online community', rest: '— held together by tools, calls, and a shared document called the RCOS Standard.' }, { strong: 'Free to join.', rest: 'No fee, no tier, no premium. Application is based on alignment, not payment.' }, { strong: 'Contribution-based.', rest: 'Trust, access, and influence grow with what you bring — research, writing, listening, code, care.' }, { strong: 'A voice in the work.', rest: 'Members shape the RCOS Standard, vote on proposals, and decide together who joins next.' }, { strong: 'A starting point for RCOS.', rest: 'The first place where the Regenerative Community Operating System gets tried, refined, and improved together.' }] as item}
 						<li class="flex items-start gap-4">
 							<span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
 							<p class="text-stone-800 leading-relaxed">
@@ -541,7 +541,7 @@
 							</span>
 							<span class="inline-flex items-center gap-2 text-stone-700">
 								<span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span>
-								Open Blueprint, full voice
+								Open RCOS Standard, full voice
 							</span>
 						</div>
 					</div>
@@ -789,7 +789,7 @@
 		</div>
 
 		<div class="grid md:grid-cols-2 gap-x-12 gap-y-8">
-			{#each [{ k: 'A voice', body: 'Vote on proposals, shape the Blueprint, decide who joins next. Your weight is your contribution, not your wallet.' }, { k: 'A platform', body: "Full access to ecohubsOS, the forum, the calls, the working docs. The community's memory, openly held." }, { k: 'A circle', body: 'People who treat your work seriously and your time as finite. Calls, threads, real people on the other end.' }, { k: 'A practice ground', body: 'A place to try the Blueprint where it counts least and learns most — online first, with the people who are writing it. The pilot work happens elsewhere, in RCOS-led communities.' }, { k: 'Recognition', body: 'XP and ECO mark your contribution visibly. Care and craft do not go unseen. They are not a paycheck — they are a record.' }, { k: 'An exit, with dignity', body: 'Membership is voluntary. The Blueprint includes how people step back, leave, and return — without drama.' }] as item}
+			{#each [{ k: 'A voice', body: 'Vote on proposals, shape the RCOS Standard, decide who joins next. Your weight is your contribution, not your wallet.' }, { k: 'A platform', body: "Full access to ecohubsOS, the forum, the calls, the working docs. The community's memory, openly held." }, { k: 'A circle', body: 'People who treat your work seriously and your time as finite. Calls, threads, real people on the other end.' }, { k: 'A practice ground', body: 'A place to try the RCOS Standard where it counts least and learns most — online first, with the people who are writing it. The pilot work happens elsewhere, in RCOS-led communities.' }, { k: 'Recognition', body: 'XP and ECO mark your contribution visibly. Care and craft do not go unseen. They are not a paycheck — they are a record.' }, { k: 'An exit, with dignity', body: 'Membership is voluntary. The RCOS Standard includes how people step back, leave, and return — without drama.' }] as item}
 				<div>
 					<div class="kicker text-emerald-300/80 mb-3">{item.k}</div>
 					<p class="text-stone-200/85 leading-relaxed">{item.body}</p>
