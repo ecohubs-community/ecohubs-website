@@ -6,6 +6,8 @@ import StefanImage from '$lib/assets/stefan.webp';
 import stefanFree from '$lib/assets/stefan-free.webp';
 import LuisaImage from '$lib/assets/luisa.webp';
 import luisaGarden from '$lib/assets/luisa-garden.webp';
+import BorisImage from '$lib/assets/boris.webp';
+import borisFruit from '$lib/assets/boris-fruit.webp';
 
 // ─── STORIES ──────────────────────────────────────────────────────────────────
 
@@ -137,8 +139,52 @@ export const stories: Story[] = [
 		id: 'boris',
 		name: 'Boris',
 		keyword: 'We are Nature',
-		location: 'EcoHubs Member ·  Ecuador',
-		placeholder: true
+		location: 'EcoHubs Member · Ecuador',
+		img: BorisImage,
+		beats: [
+			{
+				number: '01',
+				title: 'Something was missing',
+				content: [
+					`Growing up, I felt like something was missing. Not in the obvious sense — I had food, shelter, education, the things people spend a life pursuing. The feeling underneath was quieter: <em class="font-story italic">the world around me wasn't the world humans were meant for.</em>`,
+					`I was born in the Soviet Union and moved through Israel to Canada. Each new country taught me how to adapt. It also showed me that modern life feels disconnected almost everywhere you land.`
+				]
+			},
+			{
+				number: '02',
+				title: 'A rhythm that never fit',
+				pullQuote: `Most people around me accepted a rhythm I couldn't: wake up, commute, work, consume, repeat. Nature became something you <span class="underline decoration-ecohubs-primary/40 decoration-2 underline-offset-4">visited on weekends.</span> Food came wrapped in plastic. Neighbors didn't know each other. Success was measured by income, not by wellbeing.`,
+				content: [
+					`I couldn't name it back then, but I felt increasingly separated from something fundamental.`
+				]
+			},
+			{
+				number: '03',
+				title: 'One root, many wounds',
+				content: [
+					`Like many people, I first tried to solve the feeling inside the system. Better jobs. Different places. Different philosophies. I traveled. I learned. I questioned.`,
+					`Over time I noticed that the problems we usually treat as separate — loneliness, anxiety, environmental damage, lost community, poor health — seemed to share a single root. We had forgotten something simple: <em class="font-story italic text-ecohubs-deep">we are not separate from nature. We are nature.</em>`
+				]
+			},
+			{
+				number: '04',
+				title: 'The illusion of separation',
+				image: borisFruit,
+				content: [
+					`Modern life teaches us that nature is "out there." A park. A forest. A weekend destination. Something to manage, protect, or exploit.`,
+					`For most of human history, people lived the opposite truth — food, water, shelter, and daily life ran through the living world around them. Today we spend our days indoors, eating food produced by systems we never see. That separation doesn't only harm the environment. <em class="font-story italic">It harms us.</em>`
+				]
+			},
+			{
+				number: '05',
+				title: 'Coming home to nature',
+				content: [
+					`Eventually that search brought me to Ecuador. Not with a perfect plan — I came to try a different way of living, where food could grow around me, where community mattered, where rain, soil, and seasons could shape daily life again.`,
+					`Together with others I helped start <strong class="text-ecohubs-deep">Fruit Haven</strong>, a food forest and ecovillage in the Ecuadorian Amazon. Life here isn't easy. There are disagreements, hard work, setbacks. But there is also a sense of belonging I rarely found elsewhere — not because everything works, but because life feels real.`,
+					`The deeper lesson isn't that everyone should move to an ecovillage. It's simpler than that. <em class="font-story italic text-ecohubs-deep">We don't need to create a connection to nature. We need to remember it.</em>`
+				]
+			}
+		]
 	},
 	{
 		id: 'share',
