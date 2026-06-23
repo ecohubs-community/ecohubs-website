@@ -17,7 +17,8 @@
 		Repeat,
 		Clock,
 		CalendarPlus,
-		Download
+		Download,
+		FileText
 	} from 'lucide-svelte';
 	import { onMount } from 'svelte';
 	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
@@ -71,6 +72,7 @@
 
 	// 1 · About us
 	const aboutUs: LinkItem[] = [
+		{ icon: FileText, title: 'EcoHubs Manifesto', desc: 'Why we are building a regenerative future — read the PDF.', href: 'https://ecohubs.community/EcoHubs_Manifesto.pdf' },
 		{ icon: Globe, title: 'EcoHubs Website', desc: 'Our home base — projects, vision and community.', href: '/' },
 		{ icon: Eye, title: 'Our Vision', desc: 'Where we are headed and why it matters.', href: '/vision' },
 		{ icon: Sprout, title: 'About RCOS', desc: 'The open-source standard for regenerative communities.', href: '/rcos' },
@@ -80,10 +82,10 @@
 	// 2 · Our Ecosystem
 	const ecosystem: LinkItem[] = [
 		{ icon: LayoutGrid, title: 'RCOS Standard', desc: 'The open-source operating system for intentional communities.', href: 'https://rcos.ecohubs.community' },
+		{ icon: ShieldCheck, title: 'Community Resilience Assessment', desc: 'Measure and strengthen your community’s resilience.', href: '/community-resilience-assessment' },
+		{ icon: ShieldCheck, title: 'Stress-Test Self-Assessment', desc: 'Reveal your community’s hidden weaknesses & resilience gaps before they become real-world failures', href: 'https://rcos.ecohubs.community/articles/rcos-stress-tests/self-assessment' },
 		{ icon: Compass, title: 'Community Suitability Index', desc: 'Find out where a regenerative community could thrive.', href: 'https://csi.ecohubs.community', tag: 'New' },
 		{ icon: Vote, title: 'VoteCast', desc: 'Collective decision-making, made transparent.', href: 'https://votecast.ecohubs.community' },
-		{ icon: ShieldCheck, title: 'Community Resilience Assessment', desc: 'Measure and strengthen your community’s resilience.', href: '/community-resilience-assessment' },
-		{ icon: ShieldCheck, title: 'Stress-Test Self-Assessment', desc: 'Reveal your community’s hidden weaknesses & resilience gaps before they become real-world failures', href: 'https://rcos.ecohubs.community/articles/rcos-stress-tests/self-assessment' }
 	];
 
 	// 3 · Podcast — listen-on channels rendered with each platform's favicon.
@@ -279,13 +281,15 @@
 			<Icon size={22} strokeWidth={1.7} />
 		</span>
 		<span class="flex min-w-0 flex-1 flex-col">
-			{#if item.tag}
-				<span class="text-[10px] font-bold uppercase tracking-[0.12em] {item.feature ? 'text-ecohubs-light' : 'text-ecohubs-accent'}">
-					{item.tag}
+			<span class="flex items-center gap-2">
+				<span class="text-[15px] font-semibold leading-tight {item.feature ? 'text-ecohubs-base' : 'text-ecohubs-deep'}">
+					{item.title}
 				</span>
-			{/if}
-			<span class="text-[15px] font-semibold leading-tight {item.feature ? 'text-ecohubs-base' : 'text-ecohubs-deep'}">
-				{item.title}
+				{#if item.tag}
+					<span class="text-[10px] font-bold uppercase tracking-[0.12em] px-2 rounded-full text-white {item.feature ? 'bg-ecohubs-light' : 'bg-ecohubs-accent'}">
+						{item.tag}
+					</span>
+				{/if}
 			</span>
 			<!-- Description forced onto its own line beneath the title. -->
 			<span class="mt-1 text-[12.5px] leading-snug {item.feature ? 'text-ecohubs-base/70' : 'text-ecohubs-muted'}">
