@@ -60,19 +60,6 @@
 			category: 'dialogue'
 		},
 		{
-			icon: 'tabler:message-share',
-			iconColor: 'text-purple-600',
-			iconBg: 'bg-purple-100',
-			hoverBorderColor: 'border-purple-200',
-			hoverRingColor: 'ring-purple-200',
-			hoverTextColor: 'text-purple-600',
-			title: 'Flarum Forum',
-			description:
-				'Structured discussions for proposals, decisions, and sense-making. Where ideas mature before voting. [Third-party tool]',
-			link: { href: 'https://flarum.org', target: '_blank' },
-			category: 'dialogue'
-		},
-		{
 			icon: 'tabler:target',
 			iconColor: 'text-orange-600',
 			iconBg: 'bg-orange-100',
