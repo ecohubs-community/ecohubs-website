@@ -286,7 +286,7 @@
 					{item.title}
 				</span>
 				{#if item.tag}
-					<span class="text-[10px] font-bold uppercase tracking-[0.12em] px-2 rounded-full text-white {item.feature ? 'bg-ecohubs-light' : 'bg-ecohubs-accent'}">
+					<span class="text-[10px] font-bold uppercase tracking-[0.12em] px-2 rounded-full text-white {item.feature ? 'bg-white/10' : 'bg-ecohubs-accent'}">
 						{item.tag}
 					</span>
 				{/if}
