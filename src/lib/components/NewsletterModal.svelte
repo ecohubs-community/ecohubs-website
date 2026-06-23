@@ -149,7 +149,7 @@
 					width="18"
 					height="18"
 					fill="none"
-					stroke="currentColor"
+					stroke="black"
 					stroke-width="1.6"
 					stroke-linecap="round"
 				>
