@@ -18,8 +18,13 @@
 		Clock,
 		CalendarPlus,
 		Download,
-		FileText
+		FileText,
+		QrCode,
+		Link2,
+		Check,
+		X
 	} from 'lucide-svelte';
+	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
 	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
 	import SEO from '$lib/components/SEO.svelte';
@@ -27,6 +32,7 @@
 	import { SEO_CONFIG } from '$lib/config/seo';
 	import { formatDate } from '$lib/utils/blog';
 	import logo from '$lib/assets/Logo.svg';
+	import qrCode from '$lib/assets/links-qr.png';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -243,7 +249,41 @@
 			publisher: { '@type': 'Organization', name: SEO_CONFIG.organization.name, url: site }
 		}
 	];
+
+	/* ── Share this page ─────────────────────────────────────────────────── */
+	const shareUrl = `${site}/links`;
+	const shareText = 'EcoHubs Community — links, tools & podcast';
+	const enc = encodeURIComponent;
+	// Brand glyphs via Iconify simple-icons (monochrome, inherit currentColor).
+	const shareTargets = [
+		{ label: 'WhatsApp', icon: 'simple-icons:whatsapp', href: `https://wa.me/?text=${enc(`${shareText} ${shareUrl}`)}` },
+		{ label: 'Telegram', icon: 'simple-icons:telegram', href: `https://t.me/share/url?url=${enc(shareUrl)}&text=${enc(shareText)}` },
+		{ label: 'X', icon: 'simple-icons:x', href: `https://twitter.com/intent/tweet?url=${enc(shareUrl)}&text=${enc(shareText)}` },
+		{ label: 'Facebook', icon: 'simple-icons:facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${enc(shareUrl)}` },
+		{ label: 'LinkedIn', icon: 'simple-icons:linkedin', href: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(shareUrl)}` },
+		{ label: 'Email', icon: 'lucide:mail', href: `mailto:?subject=${enc('EcoHubs Community')}&body=${enc(`${shareText}\n${shareUrl}`)}` }
+	];
+
+	let copied = $state(false);
+	async function copyLink() {
+		try {
+			await navigator.clipboard.writeText(shareUrl);
+			copied = true;
+			track('Share: Copy link', shareUrl);
+			setTimeout(() => (copied = false), 2000);
+		} catch {
+			/* clipboard unavailable — no-op */
+		}
+	}
+
+	let qrOpen = $state(false);
+	function openQr() {
+		qrOpen = true;
+		track('Share: QR code', shareUrl);
+	}
 </script>
+
+<svelte:window onkeydown={(e) => e.key === 'Escape' && (qrOpen = false)} />
 
 <SEO
 	title={pageTitle}
@@ -608,6 +648,51 @@
 			</p>
 		{/if}
 
+		<!-- 8 · SHARE THIS PAGE -->
+		{@render sectionLabel('Share this page')}
+		<div class="flex flex-wrap items-center justify-center gap-2.5">
+			{#each shareTargets as s (s.label)}
+				<a
+					href={s.href}
+					target="_blank"
+					rel="noopener"
+					aria-label="Share on {s.label}"
+					title="Share on {s.label}"
+					onclick={() => track(`Share: ${s.label}`, shareUrl)}
+					class="grid h-[42px] w-[42px] place-items-center rounded-xl border border-white/10 bg-white/[0.07] text-ecohubs-base transition hover:-translate-y-0.5 hover:border-ecohubs-light/50 hover:bg-white/[0.16]"
+				>
+					<Icon icon={s.icon} width="19" height="19" />
+				</a>
+			{/each}
+
+			<!-- Copy link -->
+			<button
+				type="button"
+				onclick={copyLink}
+				aria-label="Copy link"
+				title={copied ? 'Copied!' : 'Copy link'}
+				class="grid h-[42px] w-[42px] place-items-center rounded-xl border border-white/10 bg-white/[0.07] transition hover:-translate-y-0.5 hover:border-ecohubs-light/50 hover:bg-white/[0.16] {copied
+					? 'text-ecohubs-light'
+					: 'text-ecohubs-base'}"
+			>
+				{#if copied}
+					<Check size={19} strokeWidth={2.2} />
+				{:else}
+					<Link2 size={19} strokeWidth={1.9} />
+				{/if}
+			</button>
+		</div>
+
+		<!-- QR code -->
+		<button
+			type="button"
+			onclick={openQr}
+			class="mt-3 flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.07] px-4 py-3 text-[13px] font-semibold text-ecohubs-base transition hover:border-ecohubs-light/50 hover:bg-white/[0.16]"
+		>
+			<QrCode size={18} strokeWidth={1.9} />
+			Show QR code — scan to open on another phone
+		</button>
+
 		<!-- FOOTER -->
 		<footer class="mt-11 text-center">
 			<img src={logo} alt="" class="mx-auto mb-3 block h-[30px] w-[30px] opacity-50" style="filter: brightness(0) invert(1);" />
@@ -618,6 +703,34 @@
 		</footer>
 	</div>
 </div>
+
+<!-- QR lightbox -->
+{#if qrOpen}
+	<div class="fixed inset-0 z-50 flex items-center justify-center p-6">
+		<button
+			type="button"
+			aria-label="Close QR code"
+			onclick={() => (qrOpen = false)}
+			class="absolute inset-0 bg-black/80 backdrop-blur-sm"
+		></button>
+		<div class="relative z-10 flex flex-col items-center">
+			<img
+				src={qrCode}
+				alt="QR code — scan to open this page"
+				class="h-auto w-[min(78vw,360px)] rounded-2xl bg-white p-4 shadow-2xl"
+			/>
+			<p class="mt-4 text-center text-[13px] text-white/80">Scan to open this page on another phone</p>
+			<button
+				type="button"
+				onclick={() => (qrOpen = false)}
+				aria-label="Close"
+				class="absolute -right-3 -top-3 grid h-9 w-9 place-items-center rounded-full bg-white text-ecohubs-deep shadow-lg transition hover:bg-ecohubs-light"
+			>
+				<X size={18} strokeWidth={2.4} />
+			</button>
+		</div>
+	</div>
+{/if}
 
 <style>
 	/* Subtle film grain over the dark stage — the one texture Tailwind can't
