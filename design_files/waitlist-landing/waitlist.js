@@ -23,6 +23,48 @@
     const errorEl = form.querySelector('[data-form-error]');
     const successEl = form.querySelector('[data-form-success]');
     const fieldsEl = form.querySelector('[data-form-fields]');
+    const step2El = form.querySelector('[data-step2]');
+
+    // Collected across both steps. Field `name` attributes (full_name, location,
+    // skills, reason) are chosen to map onto Mautic field aliases.
+    const captured = { email: '' };
+
+    function showSuccess() {
+      if (step2El) step2El.classList.add('hidden');
+      if (successEl) {
+        successEl.classList.remove('hidden');
+        const se = successEl.querySelector('[data-success-email]');
+        if (se) se.textContent = captured.email;
+      }
+    }
+
+    // Step 1 — email captured. In production: create/upsert the contact in
+    // Mautic + listmonk HERE so the email is saved even if step 2 is skipped.
+    function submitEmail(value) {
+      captured.email = value;
+      // TODO: POST { email: value } to your endpoint (Mautic + listmonk).
+      if (fieldsEl) fieldsEl.classList.add('hidden');
+      if (step2El) {
+        step2El.classList.remove('hidden');
+        const first = step2El.querySelector('[name="full_name"]');
+        if (first) first.focus();
+      } else {
+        showSuccess();
+      }
+    }
+
+    // Step 2 — optional profile. In production: PATCH the same contact with
+    // these progressive-profiling fields.
+    function submitProfile() {
+      if (step2El) {
+        step2El.querySelectorAll('[name]').forEach(function (el) {
+          captured[el.name] = (el.value || '').trim();
+        });
+      }
+      // TODO: PATCH `captured` to your endpoint (Mautic progressive profiling).
+      console.log('[waitlist] signup', captured);
+      showSuccess();
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -35,14 +77,15 @@
       }
       if (errorEl) errorEl.classList.add('hidden');
       input.classList.remove('input-error');
-      // Inline success state — no real network call in the prototype.
-      if (fieldsEl) fieldsEl.classList.add('hidden');
-      if (successEl) {
-        successEl.classList.remove('hidden');
-        successEl.querySelector('[data-success-email]') &&
-          (successEl.querySelector('[data-success-email]').textContent = value);
-      }
+      submitEmail(value);
     });
+
+    if (step2El) {
+      const sub = step2El.querySelector('[data-step2-submit]');
+      const skip = step2El.querySelector('[data-step2-skip]');
+      if (sub) sub.addEventListener('click', submitProfile);
+      if (skip) skip.addEventListener('click', showSuccess);
+    }
 
     if (input) {
       input.addEventListener('input', function () {
