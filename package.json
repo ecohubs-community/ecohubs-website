@@ -69,6 +69,7 @@
 		"@tryghost/admin-api": "^1.14.2",
 		"@tryghost/content-api": "^1.12.2",
 		"@types/nodemailer": "^7.0.4",
+		"@vercel/analytics": "^2.0.1",
 		"formsnap": "^2.0.1",
 		"lucide-svelte": "^0.554.0",
 		"marked": "^17.0.4",
