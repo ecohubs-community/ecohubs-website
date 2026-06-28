@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EcoHubs — Join the Waitlist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Pridi', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          story: ['Fraunces', 'serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          ecohubs: {
+            base: '#fbfbf9', ivory: '#f5f2ea', text: '#1c1917',
+            primary: '#059669', dark: '#064e3b', deep: '#0b2e24',
+            accent: '#d97706', light: '#a7f3d0', soil: '#8b6f47',
+            clay: '#c4a484', muted: '#6b7265',
+          },
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    --ecohubs-dark: #064e3b;
+    --ecohubs-deep: #0b2e24;
+    --ecohubs-primary: #059669;
+    --hero-scrim: 0.55; /* tweakable: hero overlay darkness 0..1 */
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #fbfbf9; color: #1c1917;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-serif { font-family: 'Pridi', serif; }
+  .font-story { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
+  .font-mono  { font-family: 'JetBrains Mono', monospace; }
+
+  .kicker { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
+  .hairline { height: 1px; background: linear-gradient(90deg, transparent, rgba(6,78,59,0.25), transparent); }
+  .soft-shadow { box-shadow: 0 30px 60px -30px rgba(11, 46, 36, 0.25); }
+
+  .grain { position: relative; }
+  .grain::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    opacity: 0.5; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .pulse-dot { position: relative; }
+  .pulse-dot::before {
+    content: ""; position: absolute; inset: -6px; border-radius: 9999px;
+    background: currentColor; opacity: 0.25; animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { transform: scale(1); opacity:.25; } 50% { transform: scale(1.6); opacity:0; } }
+
+  .placeholder-img {
+    background:
+      repeating-linear-gradient(135deg, rgba(6,78,59,0.05) 0, rgba(6,78,59,0.05) 12px, rgba(6,78,59,0.10) 12px, rgba(6,78,59,0.10) 24px),
+      #eef0e7;
+  }
+  .placeholder-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .1em;
+    color: #4b5b51; background: rgba(255,255,255,0.85); padding: 4px 9px; border-radius: 4px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; min-height: 100svh; display: flex; --h-fg:#fbfbf9; --h-soft: rgba(245,242,234,0.82); --h-kicker:#6ee7b7; }
+  /* full-bleed hero now uses dark text over a white bottom-left wash */
+  .hero[data-hero="fullbleed"] { --h-fg:#0b2e24; --h-soft:#44403c; --h-kicker:#047857; }
+  .hero-media { position: absolute; inset: 0; z-index: 0; }
+  .hero-media image-slot { width: 100%; height: 100%; display: block; }
+  .hero-scrim {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    /* Soft WHITE wash anchored to the bottom-left (where the headline sits),
+       fading to transparent toward the bright right side of the image. Lifts
+       dark hero text off the busy background without darkening the photo. */
+    background:
+      /* large soft halo centered on the text column — lifts the whole block,
+         including the kicker/headline near the top */
+      radial-gradient(30% 80% at 28% 52%,
+        rgba(251,251,249, 0.95) 0%,
+        rgba(251,251,249, 0.88) 30%,
+        rgba(251,251,249, 0.55) 52%,
+        rgba(251,251,249, 0.00) 78%),
+      /* bottom-left anchor wash */
+      radial-gradient(140% 125% at 0% 100%,
+        rgba(251,251,249, 0.97) 0%,
+        rgba(251,251,249, 0.90) 22%,
+        rgba(251,251,249, 0.62) 42%,
+        rgba(251,251,249, 0.28) 57%,
+        rgba(251,251,249, 0.00) 72%);
+  }
+  .hero-content {
+    position: relative; z-index: 2; pointer-events: none;
+    width: 100%; max-width: 80rem; margin: 0 auto;
+    padding: 7rem 1.5rem 8.5rem; display: flex; flex-direction: column; justify-content: flex-end;
+    color: var(--h-fg);
+  }
+  .hero-content a, .hero-content button, .hero-content input, .hero-content form, .hero-content label { pointer-events: auto; }
+  .hero-content .h-soft { color: var(--h-soft); }
+  .hero-content .kicker { color: var(--h-kicker); }
+
+  /* centered treatment */
+  .hero[data-hero="centered"] .hero-scrim { background: rgba(11,46,36, calc(var(--hero-scrim) + 0.05)); }
+  .hero[data-hero="centered"] .hero-content { justify-content: center; align-items: center; text-align: center; padding-top: 8rem; }
+  .hero[data-hero="centered"] .hero-cta-wrap { align-items: center; }
+
+  /* full-bleed hero on mobile: text on solid bg, image stacked BELOW it */
+  @media (max-width: 1023px) {
+    .hero[data-hero="fullbleed"] {
+      min-height: 0; display: flex; flex-direction: column; background: #fbfbf9;
+    }
+    .hero[data-hero="fullbleed"] .hero-content {
+      order: 1; position: static; justify-content: flex-start;
+      padding: 6rem 1.5rem 2.5rem;
+    }
+    .hero[data-hero="fullbleed"] .hero-media {
+      order: 2; position: relative; inset: auto;
+      width: 100%; height: 62vw; min-height: 230px; max-height: 440px;
+    }
+    .hero[data-hero="fullbleed"] .hero-scrim { display: none; }
+  }
+
+  /* split treatment — desktop only; mobile falls back to full-bleed */
+  @media (min-width: 1024px) {
+    .hero[data-hero="split"] { display: grid; grid-template-columns: 1.05fr 1fr; --h-fg:#0b2e24; --h-soft:#52525b; --h-kicker:#047857; }
+    .hero[data-hero="split"] .hero-media { position: relative; inset: auto; grid-column: 2; grid-row: 1; }
+    .hero[data-hero="split"] .hero-scrim { display: none; }
+    .hero[data-hero="split"] .hero-content {
+      grid-column: 1; grid-row: 1; background: #f5f2ea; max-width: none;
+      padding: 8rem 4rem 8rem 6vw; justify-content: center;
+    }
+  }
+
+  /* email field */
+  .email-field {
+    background: rgba(255,255,255,0.96); border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 9999px; color: #1c1917;
+  }
+  .email-field::placeholder { color: #78716c; }
+  .email-field:focus { outline: none; border-color: var(--ecohubs-primary); box-shadow: 0 0 0 3px rgba(5,150,105,0.25); }
+  .input-error { border-color: #dc2626 !important; box-shadow: 0 0 0 3px rgba(220,38,38,0.2) !important; }
+
+  /* accordion */
+  [data-accordion-panel] { max-height: 0; overflow: hidden; transition: max-height .38s cubic-bezier(.4,0,.2,1); }
+  [data-accordion-item][data-open] [data-accordion-chevron] { transform: rotate(45deg); }
+  [data-accordion-chevron] { transition: transform .3s ease; }
+
+  /* sticky mobile CTA */
+  #sticky-cta { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+  #sticky-cta.sticky-hidden { transform: translateY(120%); opacity: 0; pointer-events: none; }
+
+  /* timeline */
+  .step-rail { background: linear-gradient(to bottom, transparent, rgba(6,78,59,0.30) 12%, rgba(6,78,59,0.30) 88%, transparent); }
+  @media (min-width: 1024px) {
+    .step-rail-h { background: linear-gradient(to right, transparent, rgba(6,78,59,0.30) 8%, rgba(6,78,59,0.30) 92%, transparent); }
+  }
+
+  /* reveal on scroll */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-40 backdrop-blur-md bg-[#fbfbf9]/80 border-b border-stone-200/60">
+  <div class="flex items-center justify-between h-16 px-5 mx-auto max-w-7xl lg:px-8">
+    <a href="#hero" class="flex items-center gap-2.5 font-serif text-[17px] text-ecohubs-dark">
+      <svg viewBox="0 0 1920 1920" class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" aria-label="EcoHubs"><g><path d="M375.183,374.836c31.204,-31.205 218.513,-64.394 371.175,88.268c91.285,91.286 206.245,429.736 176.537,459.444c-26.768,26.768 -368.158,-85.252 -459.443,-176.538c-164.72,-164.72 -123.097,-336.346 -88.269,-371.174Z" fill="#064e3b"/><path d="M1544.82,1549.04c-31.204,31.204 -218.513,64.393 -371.175,-88.269c-91.285,-91.286 -206.245,-429.736 -176.537,-459.444c26.768,-26.768 368.158,85.252 459.443,176.538c164.72,164.72 123.097,336.346 88.269,371.175Z" fill="#064e3b"/><path d="M1547.1,377.119c31.204,31.204 64.393,218.512 -88.269,371.174c-91.285,91.286 -429.736,206.245 -459.443,176.538c-26.769,-26.768 85.252,-368.158 176.537,-459.444c164.72,-164.72 336.347,-123.097 371.175,-88.268Z" fill="#064e3b"/><path d="M372.9,1546.75c-31.204,-31.205 -64.393,-218.513 88.269,-371.175c91.285,-91.285 429.736,-206.245 459.443,-176.538c26.769,26.769 -85.252,368.158 -176.537,459.444c-164.72,164.72 -336.347,123.097 -371.175,88.269Z" fill="#064e3b"/></g><path d="M958.921,115.51c28.189,0 127.783,69.613 127.783,207.521c0,82.464 -100.947,287.26 -127.783,287.26c-24.181,0 -127.783,-204.796 -127.783,-287.26c0,-148.801 96.321,-207.521 127.783,-207.521Z" fill="#1a8e7b"/><path d="M967.41,1804.49c-28.189,0 -127.783,-69.613 -127.783,-207.521c0,-82.464 100.946,-287.26 127.783,-287.26c24.181,0 127.783,204.796 127.783,287.26c0,148.801 -96.321,207.521 -127.783,207.521Z" fill="#1a8e7b"/><path d="M1808.18,964.093c0,28.189 -69.612,127.783 -207.521,127.783c-82.463,0 -287.259,-100.946 -287.259,-127.783c0,-24.181 204.796,-127.782 287.259,-127.782c148.801,0 207.521,96.32 207.521,127.782Z" fill="#1a8e7b"/><path d="M116.131,957.721c0,-28.189 69.612,-127.783 207.521,-127.783c82.463,0 287.259,100.947 287.259,127.783c0,24.181 -204.796,127.783 -287.259,127.783c-148.801,0 -207.521,-96.321 -207.521,-127.783Z" fill="#1a8e7b"/></svg>
+      EcoHubs
+    </a>
+    <nav class="items-center hidden gap-8 text-sm md:flex text-stone-700">
+      <a href="#why" class="transition-colors hover:text-ecohubs-dark">The why</a>
+      <a href="#what" class="transition-colors hover:text-ecohubs-dark">What it is</a>
+      <a href="#system" class="transition-colors hover:text-ecohubs-dark">The system</a>
+      <a href="#journey" class="transition-colors hover:text-ecohubs-dark">The journey</a>
+      <a href="#faq" class="transition-colors hover:text-ecohubs-dark">FAQ</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="#join" class="hidden px-4 py-2 text-sm text-white transition-colors rounded-full sm:inline-flex bg-ecohubs-dark hover:bg-ecohubs-deep" data-cta-label>Join the founding community</a>
+      <button id="nav-toggle" class="flex items-center justify-center w-10 h-10 border rounded-full md:hidden border-stone-300 text-ecohubs-dark" aria-label="Menu">
+        <span class="block w-4 h-px bg-current relative before:content-[''] before:absolute before:-top-1.5 before:left-0 before:w-4 before:h-px before:bg-current after:content-[''] after:absolute after:top-1.5 after:left-0 after:w-4 after:h-px after:bg-current"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-stone-200/60 bg-[#fbfbf9]/95 backdrop-blur-md">
+    <nav class="px-5 py-4 flex flex-col gap-1 text-[15px] text-stone-700">
+      <a href="#why" class="py-2">The why</a>
+      <a href="#what" class="py-2">What it is</a>
+      <a href="#system" class="py-2">The system</a>
+      <a href="#journey" class="py-2">The journey</a>
+      <a href="#faq" class="py-2">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ 1 · HERO ============ -->
+<section id="hero" data-hero="fullbleed" class="hero" data-screen-label="Hero">
+  <div class="hero-media">
+    <image-slot id="hero-bg" src="assets/hero-ecohub.png" fit="cover" shape="rect"
+                placeholder="Drop your 16:9 hero image or video still"></image-slot>
+  </div>
+  <div class="hero-scrim"></div>
+
+  <div class="hero-content">
+    <div class="max-w-2xl">
+      <div class="flex items-center gap-3 mb-6 kicker">
+        <span class="relative inline-block w-2 h-2 bg-current rounded-full pulse-dot"></span>
+        Building the first EcoHub · Waitlist open
+      </div>
+
+      <h1 id="hero-headline" class="font-serif text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[68px] lg:leading-[1.04] tracking-tight">
+        A new way of living — with nature, <em class="italic font-normal font-story text-ecohubs-primary">and each other</em>.
+      </h1>
+
+      <p class="max-w-xl mt-6 text-lg font-light leading-relaxed h-soft sm:text-xl">
+        We're building EcoHub 1 — a regenerative community designed so people thrive together, and the land does too. It starts with a small founding circle. The first step is just saying you're in.
+      </p>
+
+      <!-- Inline email capture -->
+      <form data-waitlist-form class="flex flex-col max-w-lg gap-3 mt-8 hero-cta-wrap">
+        <div data-form-fields class="flex flex-col gap-3 sm:flex-row">
+          <label class="flex-1 min-w-0">
+            <span class="sr-only">Email address</span>
+            <input type="email" required autocomplete="email" placeholder="you@email.com"
+                   class="email-field w-full px-5 py-3.5 text-[16px]" />
+          </label>
+          <button type="submit"
+                  class="shrink-0 px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-all inline-flex items-center justify-center gap-2 group">
+            <span data-cta-label>Join the founding community</span>
+            <span class="transition-transform group-hover:translate-x-0.5">→</span>
+          </button>
+        </div>
+        <p data-form-error class="hidden text-[13.5px] text-red-100 bg-red-900/40 border border-red-300/40 rounded-xl px-4 py-2 w-fit">
+          Hmm — that doesn't look like an email. Mind checking it?
+        </p>
+        <div data-form-success class="hidden">
+          <div class="flex items-start max-w-md gap-3 px-5 py-4 bg-white/95 text-ecohubs-deep rounded-2xl soft-shadow">
+            <span class="mt-0.5 shrink-0 w-6 h-6 rounded-full bg-ecohubs-primary text-white flex items-center justify-center text-sm">✓</span>
+            <div>
+              <p class="font-medium text-[15px]">You're on the list — check your inbox.</p>
+              <p class="text-[13.5px] text-stone-600 mt-0.5">We sent a note to <span data-success-email class="font-medium text-ecohubs-dark">you</span>. We'll ask a couple of quick questions next.</p>
+            </div>
+          </div>
+        </div>
+        <p data-cta-micro class="h-soft text-[13.5px] font-light">Free to join. No commitment — just the first step.</p>
+      </form>
+
+      <!-- Optional social-proof slot — honest placeholder, real data only -->
+      <div class="flex items-center gap-4 mt-9">
+        <div class="flex -space-x-2.5">
+          <span class="border-2 rounded-full w-9 h-9 border-white/80 bg-emerald-700"></span>
+          <span class="border-2 rounded-full w-9 h-9 border-white/80 bg-amber-600"></span>
+          <span class="border-2 rounded-full w-9 h-9 border-white/80 bg-stone-600"></span>
+          <span class="border-2 rounded-full w-9 h-9 border-white/80 bg-tide-700" style="background:#4a90a4"></span>
+        </div>
+        <p class="h-soft text-[13px] leading-snug max-w-[15rem]">
+          Permaculturists, economists, builders &amp; developers — already shaping it.
+          <span class="block font-mono text-[10.5px] opacity-70 mt-1">[ live member counter — shown only with real data ]</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 · THE WHY ============ -->
+<section id="why" class="py-24 md:py-32 bg-[#f5f2ea] grain relative overflow-hidden">
+  <div class="relative max-w-4xl px-5 mx-auto lg:px-8 reveal">
+    <div class="mb-5 kicker text-emerald-800">The why</div>
+    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ecohubs-deep leading-[1.12]">
+      Most of us feel a little disconnected —
+      <em class="italic font-normal font-story text-stone-500">from nature, from each other, from work that matters.</em>
+    </h2>
+    <div class="grid gap-8 mt-8 md:grid-cols-2 md:gap-12">
+      <p class="text-[17px] leading-[1.75] text-stone-700">
+        We're not the first to dream of living differently. People have tried for decades. And most intentional communities don't fail on solar panels or vegetable beds — they fail on the hard, human part: conflict, unclear decisions, burnout, who-does-what.
+      </p>
+      <p class="text-[17px] leading-[1.75] text-stone-700">
+        <strong class="font-medium text-ecohubs-deep">EcoHubs starts with that hard part.</strong> Clear human structure first, then the land, the buildings, the business. So belonging isn't a hope — it's something the community is actually built to hold.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 · WHAT IS AN ECOHUB ============ -->
+<section id="what" class="py-24 md:py-32 bg-[#fbfbf9]">
+  <div class="px-5 mx-auto max-w-7xl lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div class="reveal">
+        <div class="mb-5 kicker text-emerald-700">What is an EcoHub?</div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-[44px] text-ecohubs-deep leading-[1.12]">
+          A small community that lives well together —
+          <em class="italic font-normal font-story text-ecohubs-primary">and gives more to the land than it takes.</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-[1.75] text-stone-700 max-w-xl">
+          Picture a handful of households on regenerating land: shared gardens and kitchens, low-impact homes, real work and real income, and a way of making decisions together that actually holds. Not a commune, not an eco-resort — a living place designed to be repeated.
+        </p>
+
+        <!-- guiding principles -->
+        <div class="grid gap-3 mt-9 sm:grid-cols-2">
+          <div class="rounded-2xl bg-[#f5f2ea] border border-stone-200/70 p-5">
+            <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-1.5">01</div>
+            <p class="text-[14.5px] text-stone-800 leading-snug"><strong class="text-ecohubs-deep">Regenerate, don't sustain.</strong> Leave soil, water and people better.</p>
+          </div>
+          <div class="rounded-2xl bg-[#f5f2ea] border border-stone-200/70 p-5">
+            <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-1.5">02</div>
+            <p class="text-[14.5px] text-stone-800 leading-snug"><strong class="text-ecohubs-deep">People before infrastructure.</strong> Settle the human system first.</p>
+          </div>
+          <div class="rounded-2xl bg-[#f5f2ea] border border-stone-200/70 p-5">
+            <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-1.5">03</div>
+            <p class="text-[14.5px] text-stone-800 leading-snug"><strong class="text-ecohubs-deep">Belonging by design.</strong> Clear roles, fair repair, real voice.</p>
+          </div>
+          <div class="rounded-2xl bg-[#f5f2ea] border border-stone-200/70 p-5">
+            <div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-1.5">04</div>
+            <p class="text-[14.5px] text-stone-800 leading-snug"><strong class="text-ecohubs-deep">Replicable, not precious.</strong> Built so the next hub is easier.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- video -->
+      <div class="reveal">
+        <div class="rounded-[28px] overflow-hidden soft-shadow relative aspect-video bg-black">
+          <iframe class="absolute inset-0 w-full h-full"
+                  src="https://www.youtube-nocookie.com/embed/7tby1xZzMMk?rel=0"
+                  title="A Day in an EcoHub"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen></iframe>
+        </div>
+        <p class="mt-3 text-[13px] text-stone-500 font-story italic">Three minutes inside the vision — morning to evening in a working hub.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · THE SYSTEM — 4 PILLARS ============ -->
+<section id="system" class="py-24 md:py-32 bg-[#0b2e24] text-emerald-50 relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none grain opacity-40"></div>
+  <div class="relative px-5 mx-auto max-w-7xl lg:px-8">
+    <div class="max-w-2xl mb-12 md:mb-16 reveal">
+      <div class="mb-5 kicker text-emerald-300/80">The system</div>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.12] text-emerald-50">
+        Four pillars hold an EcoHub up.
+        <em class="italic font-normal font-story text-emerald-200/80">Miss one and it tilts.</em>
+      </h2>
+      <p class="mt-5 text-[17px] leading-relaxed text-emerald-100/80">
+        This is the part that's usually skipped — so it's the part we built first.
+      </p>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+      <!-- Pillar 1 -->
+      <a href="https://rcos.ecohubs.community" target="_blank" rel="noopener"
+         class="group bg-emerald-50/[0.04] border border-emerald-100/15 rounded-3xl p-7 flex flex-col hover:bg-emerald-50/[0.07] hover:border-emerald-100/30 transition-colors reveal">
+        <span class="flex items-center justify-center mb-6 border rounded-full w-11 h-11 border-emerald-300/50">
+          <span class="w-4 h-4 border-2 rounded-full border-emerald-300"></span>
+        </span>
+        <h3 class="mb-2 font-serif text-xl leading-snug text-emerald-50">Human structure <span class="font-mono text-[12px] text-emerald-300/70">(RCOS)</span></h3>
+        <p class="text-[14.5px] text-emerald-100/75 leading-relaxed flex-1">Explicit, agreed rules for decisions, roles and repair — so communities don't fail on conflict.</p>
+        <span class="mt-5 text-[13px] text-emerald-200 font-medium inline-flex items-center gap-1.5 group-hover:translate-x-0.5 transition-transform">Explore RCOS →</span>
+      </a>
+      <!-- Pillar 2 -->
+      <a href="https://csi.ecohubs.community" target="_blank" rel="noopener"
+         class="group bg-emerald-50/[0.04] border border-emerald-100/15 rounded-3xl p-7 flex flex-col hover:bg-emerald-50/[0.07] hover:border-emerald-100/30 transition-colors reveal">
+        <span class="flex items-center justify-center mb-6 border rounded-full w-11 h-11 border-emerald-300/50">
+          <span class="w-4 h-4 rotate-45 border-2 border-emerald-300"></span>
+        </span>
+        <h3 class="mb-2 font-serif text-xl leading-snug text-emerald-50">The right place</h3>
+        <p class="text-[14.5px] text-emerald-100/75 leading-relaxed flex-1">A map weighing 29+ data sources — water, climate, soil, community — to find where an EcoHub will actually thrive.</p>
+        <span class="mt-5 text-[13px] text-emerald-200 font-medium inline-flex items-center gap-1.5 group-hover:translate-x-0.5 transition-transform">Open the map →</span>
+      </a>
+      <!-- Pillar 3 -->
+      <div class="bg-emerald-50/[0.04] border border-emerald-100/15 rounded-3xl p-7 flex flex-col reveal">
+        <span class="flex items-center justify-center mb-6 border rounded-full w-11 h-11 border-emerald-300/50">
+          <span class="w-4 h-4 border-2 border-emerald-300 rounded-[3px]"></span>
+        </span>
+        <h3 class="mb-2 font-serif text-xl leading-snug text-emerald-50">A real business</h3>
+        <p class="text-[14.5px] text-emerald-100/75 leading-relaxed flex-1">Every EcoHub is also a regenerative enterprise — so it pays for itself instead of running on goodwill and grants.</p>
+        <span class="mt-5 text-[12px] font-mono text-emerald-300/60">income, not subsidy</span>
+      </div>
+      <!-- Pillar 4 -->
+      <div class="bg-emerald-50/[0.04] border border-emerald-100/15 rounded-3xl p-7 flex flex-col reveal">
+        <span class="relative flex items-center justify-center mb-6 border rounded-full w-11 h-11 border-emerald-300/50">
+          <span class="w-3.5 h-3.5 rounded-full border-2 border-emerald-300 absolute left-2.5"></span>
+          <span class="w-3.5 h-3.5 rounded-full border-2 border-emerald-300 absolute right-2.5"></span>
+        </span>
+        <h3 class="mb-2 font-serif text-xl leading-snug text-emerald-50">A network, not an island</h3>
+        <p class="text-[14.5px] text-emerald-100/75 leading-relaxed flex-1">Hubs connect and share. A regenerative finance model lets one healthy hub help fund the next.</p>
+        <span class="mt-5 text-[12px] font-mono text-emerald-300/60">one funds the next</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MID-PAGE CTA ============ -->
+<section class="py-16 md:py-20 bg-[#fbfbf9]">
+  <div class="max-w-3xl px-5 mx-auto text-center lg:px-8 reveal">
+    <h2 class="font-serif text-2xl leading-snug sm:text-3xl text-ecohubs-deep">
+      Like the way this is being built?
+      <em class="italic font-normal font-story text-stone-500">Stand near the door while it's open.</em>
+    </h2>
+    <div class="flex flex-col items-center justify-center gap-3 mt-7">
+      <a href="#join" class="px-8 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full hover:bg-ecohubs-deep transition-all inline-flex items-center gap-2 group">
+        <span data-cta-label>Join the founding community</span>
+        <span class="transition-transform group-hover:translate-x-0.5">→</span>
+      </a>
+      <div data-cta-micro class="text-[13.5px] text-stone-500">Free to join. No commitment — just the first step.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · BUILDING IT FOR REAL — JAVIER'S DOMES ============ -->
+<section id="build" class="py-24 md:py-32 bg-[#f5f2ea] grain relative overflow-hidden">
+  <div class="relative px-5 mx-auto max-w-7xl lg:px-8">
+    <div class="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
+      <div class="lg:col-span-5 reveal">
+        <div class="mb-5 kicker text-emerald-800">Building it for real</div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-[44px] text-ecohubs-deep leading-[1.12]">
+          The homes already exist —
+          <em class="italic font-normal font-story text-stone-500">and they're buildable almost anywhere.</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-[1.75] text-stone-700">
+          This isn't a render. Natural builder Javier Yanez has developed an affordable, replicable geodesic dome system: CNC-cut frames assembled with local, natural materials. A 7-metre dome runs roughly <strong class="font-medium text-ecohubs-deep">$10k–$20k</strong> — strong, beautiful, and within reach.
+        </p>
+
+        <!-- portrait + attribution -->
+        <div class="flex items-center gap-4 mt-8">
+          <div class="relative w-16 h-16 overflow-hidden rounded-full shrink-0 soft-shadow">
+            <img src="assets/javier-profile.jpg" alt="Javier Yanez" class="absolute inset-0 object-cover w-full h-full" />
+          </div>
+          <div>
+            <p class="font-medium text-ecohubs-deep text-[15px]">Javier Yanez</p>
+            <p class="text-[13px] text-stone-600 font-story italic">natural builder · HUB open construction system</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Javier's dome work -->
+      <div class="grid grid-cols-2 gap-3 lg:col-span-7 sm:gap-4 reveal">
+        <div class="col-span-2 rounded-[28px] overflow-hidden soft-shadow relative aspect-[16/10] bg-[#f5f2ea]">
+          <img src="assets/javier-hub.png" alt="HUB — open construction for a regenerative future" class="absolute inset-0 object-cover w-full h-full" />
+        </div>
+        <div class="rounded-[24px] overflow-hidden soft-shadow relative aspect-square bg-[#f5f2ea]">
+          <img src="assets/javier-dome.jpg" alt="Geodesic dome frame under construction" class="absolute inset-0 object-cover w-full h-full" />
+          <div class="absolute inset-0 flex items-end p-3 bg-gradient-to-t from-black/35 to-transparent"><span class="text-white text-[12px] font-medium drop-shadow">Dome frame in the field</span></div>
+        </div>
+        <div class="rounded-[24px] overflow-hidden soft-shadow relative aspect-square bg-[#f5f2ea]">
+          <img src="assets/javier-greenhouse.jpg" alt="Finished dome interior used as a greenhouse" class="absolute inset-0 object-cover w-full h-full" />
+          <div class="absolute inset-0 flex items-end p-3 bg-gradient-to-t from-black/35 to-transparent"><span class="text-white text-[12px] font-medium drop-shadow">Living interior</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 · THE JOURNEY ============ -->
+<section id="journey" class="py-24 md:py-32 bg-[#fbfbf9]">
+  <div class="px-5 mx-auto max-w-7xl lg:px-8">
+    <div class="max-w-2xl mb-12 md:mb-16 reveal">
+      <div class="mb-5 kicker text-emerald-700">The journey</div>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ecohubs-deep leading-[1.12]">
+        A long, intentional process —
+        <em class="italic font-normal font-story text-ecohubs-primary">that starts with one no-pressure step.</em>
+      </h2>
+    </div>
+
+    <!-- desktop horizontal / mobile vertical -->
+    <div class="relative">
+      <div class="absolute left-0 right-0 hidden h-px lg:block step-rail-h top-5"></div>
+      <ol class="grid gap-8 lg:grid-cols-5 lg:gap-5">
+        <li class="relative pl-12 lg:pl-0 reveal">
+          <div class="step-rail lg:hidden absolute left-[10px] top-6 bottom-[-2rem] w-px"></div>
+          <span class="absolute left-0 top-0.5 lg:static w-[22px] h-[22px] lg:w-10 lg:h-10 rounded-full bg-ecohubs-primary text-white font-mono text-[11px] lg:text-[13px] flex items-center justify-center lg:mb-5 z-10">1</span>
+          <h3 class="font-serif text-lg leading-snug text-ecohubs-deep lg:mt-0">Join the waitlist</h3>
+          <p class="mt-1.5 text-[14px] text-stone-600 leading-relaxed">Free, today. One email. Nothing owed.</p>
+          <span class="mt-2 inline-block font-mono text-[10.5px] tracking-wider uppercase text-emerald-700">you are here</span>
+        </li>
+        <li class="relative pl-12 lg:pl-0 reveal">
+          <div class="step-rail lg:hidden absolute left-[10px] top-6 bottom-[-2rem] w-px"></div>
+          <span class="absolute left-0 top-0.5 lg:static w-[22px] h-[22px] lg:w-10 lg:h-10 rounded-full bg-white border border-ecohubs-dark text-ecohubs-dark font-mono text-[11px] lg:text-[13px] flex items-center justify-center lg:mb-5 z-10">2</span>
+          <h3 class="font-serif text-lg leading-snug text-ecohubs-deep">Get to know each other</h3>
+          <p class="mt-1.5 text-[14px] text-stone-600 leading-relaxed">Calls, conversations, the Blueprint. No pressure, both ways.</p>
+        </li>
+        <li class="relative pl-12 lg:pl-0 reveal">
+          <div class="step-rail lg:hidden absolute left-[10px] top-6 bottom-[-2rem] w-px"></div>
+          <span class="absolute left-0 top-0.5 lg:static w-[22px] h-[22px] lg:w-10 lg:h-10 rounded-full bg-white border border-ecohubs-dark text-ecohubs-dark font-mono text-[11px] lg:text-[13px] flex items-center justify-center lg:mb-5 z-10">3</span>
+          <h3 class="font-serif text-lg leading-snug text-ecohubs-deep">Selection</h3>
+          <p class="mt-1.5 text-[14px] text-stone-600 leading-relaxed">Deliberately strict — for the health of the community and your own fit.</p>
+        </li>
+        <li class="relative pl-12 lg:pl-0 reveal">
+          <div class="step-rail lg:hidden absolute left-[10px] top-6 bottom-[-2rem] w-px"></div>
+          <span class="absolute left-0 top-0.5 lg:static w-[22px] h-[22px] lg:w-10 lg:h-10 rounded-full bg-white border border-ecohubs-dark text-ecohubs-dark font-mono text-[11px] lg:text-[13px] flex items-center justify-center lg:mb-5 z-10">4</span>
+          <h3 class="font-serif text-lg leading-snug text-ecohubs-deep">Pioneer training</h3>
+          <p class="mt-1.5 text-[14px] text-stone-600 leading-relaxed">6–12 months: business, self-governance, permaculture, energy, water, ecological building, no-waste, legal, human systems.</p>
+        </li>
+        <li class="relative pl-12 lg:pl-0 reveal">
+          <span class="absolute left-0 top-0.5 lg:static w-[22px] h-[22px] lg:w-10 lg:h-10 rounded-full bg-ecohubs-dark text-white font-mono text-[11px] lg:text-[13px] flex items-center justify-center lg:mb-5 z-10">5</span>
+          <h3 class="font-serif text-lg leading-snug text-ecohubs-deep">Make the leap</h3>
+          <p class="mt-1.5 text-[14px] text-stone-600 leading-relaxed">Move in, build, and begin living the thing you helped design.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 · CREDIBILITY ============ -->
+<section id="credibility" class="py-20 md:py-24 bg-[#f5f2ea] grain relative overflow-hidden">
+  <div class="relative max-w-5xl px-5 mx-auto text-center lg:px-8 reveal">
+    <div class="mb-5 kicker text-emerald-800">Who's behind it</div>
+    <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-ecohubs-deep leading-[1.15] max-w-3xl mx-auto">
+      Not one founder with a dream —
+      <em class="italic font-normal font-story text-stone-500">a working network of people who've done the parts before.</em>
+    </h2>
+    <p class="mt-5 text-[16px] text-stone-700 leading-relaxed max-w-2xl mx-auto">
+      Permaculturists, economists, software developers and ecological builders, designing this together in the open.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-5 mt-10">
+      <figure class="flex flex-col items-center gap-2">
+        <div class="relative w-16 h-16 overflow-hidden rounded-full soft-shadow"><img src="assets/stefan.jpg" alt="Stefan" class="absolute inset-0 w-full h-full object-cover" /></div>
+        <figcaption class="text-[12px] text-stone-600">Stefan</figcaption>
+      </figure>
+      <figure class="flex flex-col items-center gap-2">
+        <div class="relative w-16 h-16 overflow-hidden rounded-full soft-shadow"><img src="assets/luisa.jpg" alt="Luisa" class="absolute inset-0 w-full h-full object-cover" /></div>
+        <figcaption class="text-[12px] text-stone-600">Luisa</figcaption>
+      </figure>
+      <figure class="flex flex-col items-center gap-2">
+        <div class="relative w-16 h-16 overflow-hidden rounded-full soft-shadow"><img src="assets/calebe.jpg" alt="Calebe" class="absolute inset-0 w-full h-full object-cover" /></div>
+        <figcaption class="text-[12px] text-stone-600">Calebe</figcaption>
+      </figure>
+      <figure class="flex flex-col items-center gap-2">
+        <div class="relative w-16 h-16 overflow-hidden rounded-full soft-shadow"><img src="assets/javier-profile.jpg" alt="Javier Yanez" class="absolute inset-0 w-full h-full object-cover" /></div>
+        <figcaption class="text-[12px] text-stone-600">Javier</figcaption>
+      </figure>
+      <a href="https://ecohubs.community/contact" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 h-12 px-6 rounded-full border border-ecohubs-dark/30 text-ecohubs-dark text-[13px] font-medium hover:bg-ecohubs-dark hover:text-white transition-colors group">
+        Looking for further partners
+        <span class="transition-transform group-hover:translate-x-0.5">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 · FAQ ============ -->
+<section id="faq" class="py-24 md:py-32 bg-[#fbfbf9]">
+  <div class="max-w-3xl px-5 mx-auto lg:px-8">
+    <div class="mb-12 reveal">
+      <div class="mb-5 kicker text-emerald-700">Honest answers</div>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ecohubs-deep leading-[1.12]">
+        The questions <em class="italic font-normal font-story text-stone-500">people actually ask.</em>
+      </h2>
+    </div>
+
+    <div class="divide-y divide-stone-200">
+      <!-- item -->
+      <div data-accordion-item data-open class="py-1">
+        <button data-accordion-trigger aria-expanded="true" class="flex items-start justify-between w-full gap-6 py-5 text-left">
+          <span class="font-serif text-lg leading-snug sm:text-xl text-ecohubs-deep">Is joining a commitment?</span>
+          <span data-accordion-chevron class="mt-1.5 shrink-0 w-3.5 h-3.5 relative before:content-[''] before:absolute before:top-1/2 before:left-0 before:w-3.5 before:h-px before:bg-ecohubs-dark after:content-[''] after:absolute after:left-1/2 after:top-0 after:h-3.5 after:w-px after:bg-ecohubs-dark"></span>
+        </button>
+        <div data-accordion-panel>
+          <p class="pb-6 text-[16px] leading-[1.7] text-stone-700">No. The waitlist is free and completely non-binding. You're saying "tell me more, keep me posted" — nothing else. You can leave any time, and joining never obligates you to move, pay, or decide anything.</p>
+        </div>
+      </div>
+      <!-- item -->
+      <div data-accordion-item class="py-1">
+        <button data-accordion-trigger aria-expanded="false" class="flex items-start justify-between w-full gap-6 py-5 text-left">
+          <span class="font-serif text-lg leading-snug sm:text-xl text-ecohubs-deep">Will it cost money later?</span>
+          <span data-accordion-chevron class="mt-1.5 shrink-0 w-3.5 h-3.5 relative before:content-[''] before:absolute before:top-1/2 before:left-0 before:w-3.5 before:h-px before:bg-ecohubs-dark after:content-[''] after:absolute after:left-1/2 after:top-0 after:h-3.5 after:w-px after:bg-ecohubs-dark"></span>
+        </button>
+        <div data-accordion-panel>
+          <p class="pb-6 text-[16px] leading-[1.7] text-stone-700">We'll be transparent: nothing is owed by joining. Much later, pioneers who move forward contribute a fixed amount to a foundation that buys the land — which they then co-steward. It's shared regenerative assets you have a stake in, not a payment to us. No tiers, no subscription, no surprise fees.</p>
+        </div>
+      </div>
+      <!-- item -->
+      <div data-accordion-item class="py-1">
+        <button data-accordion-trigger aria-expanded="false" class="flex items-start justify-between w-full gap-6 py-5 text-left">
+          <span class="font-serif text-lg leading-snug sm:text-xl text-ecohubs-deep">Do I need to be an expert, or move now?</span>
+          <span data-accordion-chevron class="mt-1.5 shrink-0 w-3.5 h-3.5 relative before:content-[''] before:absolute before:top-1/2 before:left-0 before:w-3.5 before:h-px before:bg-ecohubs-dark after:content-[''] after:absolute after:left-1/2 after:top-0 after:h-3.5 after:w-px after:bg-ecohubs-dark"></span>
+        </button>
+        <div data-accordion-panel>
+          <p class="pb-6 text-[16px] leading-[1.7] text-stone-700">No to both. The path is gradual and there's training built in. What matters far more than existing skills is curiosity, care, and a willingness to learn alongside others. Plenty of people on the list are simply paying attention for now.</p>
+        </div>
+      </div>
+      <!-- item -->
+      <div data-accordion-item class="py-1">
+        <button data-accordion-trigger aria-expanded="false" class="flex items-start justify-between w-full gap-6 py-5 text-left">
+          <span class="font-serif text-lg leading-snug sm:text-xl text-ecohubs-deep">Can I help even if I don't move in?</span>
+          <span data-accordion-chevron class="mt-1.5 shrink-0 w-3.5 h-3.5 relative before:content-[''] before:absolute before:top-1/2 before:left-0 before:w-3.5 before:h-px before:bg-ecohubs-dark after:content-[''] after:absolute after:left-1/2 after:top-0 after:h-3.5 after:w-px after:bg-ecohubs-dark"></span>
+        </button>
+        <div data-accordion-panel>
+          <p class="pb-6 text-[16px] leading-[1.7] text-stone-700">Yes. Most of the people shaping EcoHubs aren't moving in — they're advising, designing, testing the Blueprint, or simply cheering it on. Belonging here isn't only about residence; it's about contribution, in whatever form fits your life.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9 · FINAL CTA ============ -->
+<section id="join" class="py-24 md:py-36 bg-[#0b2e24] text-emerald-50 relative overflow-hidden" data-screen-label="Final CTA">
+  <div class="absolute inset-0 pointer-events-none grain opacity-40"></div>
+  <div class="absolute -z-0 top-10 -left-32 w-[480px] h-[480px] rounded-full bg-emerald-700/20 blur-3xl"></div>
+  <div class="absolute -z-0 bottom-0 -right-24 w-[420px] h-[420px] rounded-full bg-amber-700/15 blur-3xl"></div>
+
+  <div class="relative max-w-3xl px-5 mx-auto text-center lg:px-8 reveal">
+    <div class="flex items-center justify-center gap-3 mb-6 kicker text-emerald-300/80">
+      <span class="relative inline-block w-2 h-2 rounded-full bg-emerald-400 text-emerald-400 pulse-dot"></span>
+      The first cohort is forming
+    </div>
+    <h2 class="font-serif text-3xl sm:text-5xl md:text-[56px] leading-[1.08] text-emerald-50">
+      A new way of living is being built.
+      <em class="italic font-normal font-story text-emerald-200/85">Belong to it from the start.</em>
+    </h2>
+    <p class="max-w-xl mx-auto mt-6 text-lg font-light leading-relaxed text-emerald-100/80">
+      One email puts you in the room while EcoHub 1 takes shape — no commitment, no cost, just the first step.
+    </p>
+
+    <form data-waitlist-form class="flex flex-col max-w-lg gap-3 mx-auto mt-9">
+      <div data-form-fields class="flex flex-col gap-3 sm:flex-row">
+        <label class="flex-1 min-w-0">
+          <span class="sr-only">Email address</span>
+          <input type="email" required autocomplete="email" placeholder="you@email.com"
+                 class="email-field w-full px-5 py-3.5 text-[16px]" />
+        </label>
+        <button type="submit"
+                class="shrink-0 px-7 py-3.5 bg-ecohubs-primary text-white font-medium rounded-full hover:bg-emerald-500 transition-all inline-flex items-center justify-center gap-2 group">
+          <span data-cta-label>Join the founding community</span>
+          <span class="transition-transform group-hover:translate-x-0.5">→</span>
+        </button>
+      </div>
+      <p data-form-error class="hidden text-[13.5px] text-red-100 bg-red-900/40 border border-red-300/40 rounded-xl px-4 py-2 mx-auto w-fit">
+        Hmm — that doesn't look like an email. Mind checking it?
+      </p>
+      <div data-form-success class="hidden">
+        <div class="flex items-start gap-3 bg-emerald-50/[0.08] border border-emerald-300/30 rounded-2xl px-5 py-4 max-w-md mx-auto text-left">
+          <span class="mt-0.5 shrink-0 w-6 h-6 rounded-full bg-ecohubs-primary text-white flex items-center justify-center text-sm">✓</span>
+          <div>
+            <p class="font-medium text-[15px] text-emerald-50">You're on the list — check your inbox.</p>
+            <p class="text-[13.5px] text-emerald-100/75 mt-0.5">We sent a note to <span data-success-email class="font-medium text-emerald-200">you</span>. We'll ask a couple of quick questions next.</p>
+          </div>
+        </div>
+      </div>
+      <p data-cta-micro class="text-[13.5px] text-emerald-100/70 font-light">Free to join. No commitment — just the first step.</p>
+    </form>
+
+    <p class="mt-7 font-story italic text-[15px] text-emerald-200/70">We're only selecting a small first cohort — so the people in it can truly know each other.</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="py-14 bg-[#0b2e24] text-emerald-200/70 border-t border-emerald-900/60">
+  <div class="flex flex-col items-start justify-between gap-6 px-5 mx-auto max-w-7xl lg:px-8 md:flex-row md:items-center">
+    <div class="flex items-center gap-3">
+      <svg viewBox="0 0 1920 1920" class="w-8 h-8 brightness-[1.6]" xmlns="http://www.w3.org/2000/svg" aria-label="EcoHubs"><g><path d="M375.183,374.836c31.204,-31.205 218.513,-64.394 371.175,88.268c91.285,91.286 206.245,429.736 176.537,459.444c-26.768,26.768 -368.158,-85.252 -459.443,-176.538c-164.72,-164.72 -123.097,-336.346 -88.269,-371.174Z" fill="#064e3b"/><path d="M1544.82,1549.04c-31.204,31.204 -218.513,64.393 -371.175,-88.269c-91.285,-91.286 -206.245,-429.736 -176.537,-459.444c26.768,-26.768 368.158,85.252 459.443,176.538c164.72,164.72 123.097,336.346 88.269,371.175Z" fill="#064e3b"/><path d="M1547.1,377.119c31.204,31.204 64.393,218.512 -88.269,371.174c-91.285,91.286 -429.736,206.245 -459.443,176.538c-26.769,-26.768 85.252,-368.158 176.537,-459.444c164.72,-164.72 336.347,-123.097 371.175,-88.268Z" fill="#064e3b"/><path d="M372.9,1546.75c-31.204,-31.205 -64.393,-218.513 88.269,-371.175c91.285,-91.285 429.736,-206.245 459.443,-176.538c26.769,26.769 -85.252,368.158 -176.537,459.444c-164.72,164.72 -336.347,123.097 -371.175,88.269Z" fill="#064e3b"/></g><path d="M958.921,115.51c28.189,0 127.783,69.613 127.783,207.521c0,82.464 -100.947,287.26 -127.783,287.26c-24.181,0 -127.783,-204.796 -127.783,-287.26c0,-148.801 96.321,-207.521 127.783,-207.521Z" fill="#1a8e7b"/><path d="M967.41,1804.49c-28.189,0 -127.783,-69.613 -127.783,-207.521c0,-82.464 100.946,-287.26 127.783,-287.26c24.181,0 127.783,204.796 127.783,287.26c0,148.801 -96.321,207.521 -127.783,207.521Z" fill="#1a8e7b"/><path d="M1808.18,964.093c0,28.189 -69.612,127.783 -207.521,127.783c-82.463,0 -287.259,-100.946 -287.259,-127.783c0,-24.181 204.796,-127.782 287.259,-127.782c148.801,0 207.521,96.32 207.521,127.782Z" fill="#1a8e7b"/><path d="M116.131,957.721c0,-28.189 69.612,-127.783 207.521,-127.783c82.463,0 287.259,100.947 287.259,127.783c0,24.181 -204.796,127.783 -287.259,127.783c-148.801,0 -207.521,-96.321 -207.521,-127.783Z" fill="#1a8e7b"/></svg>
+      <div>
+        <div class="font-serif text-lg text-emerald-50">EcoHubs</div>
+        <div class="font-mono text-[11px] text-emerald-200/60 mt-0.5">A regenerative future, designed together.</div>
+      </div>
+    </div>
+    <a href="#join" class="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white transition-colors rounded-full bg-ecohubs-primary hover:bg-emerald-500 group">
+      <span data-cta-label>Join the founding community</span>
+      <span class="transition-transform group-hover:translate-x-0.5">→</span>
+    </a>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE CTA ============ -->
+<div id="sticky-cta" class="sticky-hidden md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#fbfbf9]/95 backdrop-blur-md border-t border-stone-200 px-4 py-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] flex items-center gap-3">
+  <div class="flex-1 min-w-0">
+    <p class="text-[13px] font-medium text-ecohubs-deep leading-tight">Be part of EcoHub 1</p>
+    <p data-cta-micro class="text-[11px] text-stone-500 leading-tight truncate">Free to join. No commitment — just the first step.</p>
+  </div>
+  <a href="#join" class="px-5 py-3 text-sm font-medium text-white rounded-full shrink-0 bg-ecohubs-dark" data-cta-label>Join the founding community</a>
+</div>
+
+<!-- ============ TWEAKS ISLAND ============ -->
+<div id="tweaks-root"></div>
+
+<script src="image-slot.js"></script>
+<script src="waitlist.js"></script>
+
+<!-- reveal on scroll -->
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (e) { e.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+
+<!-- React + Babel for the Tweaks panel only -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
