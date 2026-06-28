@@ -105,6 +105,12 @@ export const SEO_CONFIG = {
 			description:
 				'A free 5-minute community resilience assessment for intentional communities. Ten honest questions, then a human-written report mapping your gaps.',
 			ogImage: '/og-resilience-assessment.jpg'
+		},
+		waitlist: {
+			title: 'Join the Waitlist — Co-found EcoHub One | EcoHubs',
+			description:
+				'Be part of the founding circle of EcoHub One, a regenerative community designed so people thrive together and the land does too. Free to join, no commitment — just the first step.',
+			ogImage: '/og-waitlist-ecohub-1.jpg'
 		}
 	}
 } as const;

@@ -34,17 +34,30 @@ export const MAUTIC_RESILIENCE_ASSESSMENT = {
 export const MAUTIC_NEWSLETTER_EMAIL_FIELD = 'signup_email';
 
 /**
- * Registry of multi-field landing-page forms submitted through `/api/mautic`.
+ * Registry of multi-field landing-page forms submitted server-side.
  *
- * The endpoint looks a form up by key and uses `allowedFields` as a strict
- * allowlist, so the browser can never write to fields a form doesn't expose.
- * Add a new entry here (plus a matching Mautic form) to wire up another
- * landing page — no endpoint changes required.
+ * One entry per form is the single source of truth for its Mautic form id,
+ * field allowlist, and (optionally) a Listmonk list to dual-subscribe to.
+ * `allowedFields` is a strict allowlist, so the browser can never write to
+ * fields a form doesn't expose. Add a new entry here (plus a matching Mautic
+ * form) to wire up another landing page.
+ *
+ * The form id is either static (`formId`, e.g. the resilience quiz) or read
+ * from a private env var at request time (`formIdEnv`, e.g. the waitlist) —
+ * resolved server-side via `resolveMauticFormId()` so the id never ships to
+ * the client.
  */
 export interface MauticFormDef {
-	formId: number;
+	/** Static Mautic form id, when it's safe to commit. */
+	formId?: number;
+	/** Name of the private env var holding the form id, resolved server-side. */
+	formIdEnv?: string;
 	formName: string;
+	/** Alias of the email field within `allowedFields` (defaults to `email`). */
+	emailField?: string;
 	allowedFields: readonly string[];
+	/** When set, signups also subscribe to this Listmonk list. */
+	listmonk?: { listIdEnv?: string; defaultListId: number };
 }
 
 export const MAUTIC_FORMS = {
@@ -59,6 +72,20 @@ export const MAUTIC_FORMS = {
 			'ccommunity_size',
 			MAUTIC_RESILIENCE_ASSESSMENT.quizSummaryField
 		]
+	},
+	/**
+	 * EcoHub One waitlist — the /join-the-waitlist landing page, submitted via
+	 * /api/waitlist. Two-step progressive profiling against a single Mautic form
+	 * (Mautic upserts by email, so step 2 updates the contact step 1 created):
+	 *   - Step 1 "create": just `email` — also subscribes the address to Listmonk.
+	 *   - Step 2 "update": the optional profile fields.
+	 */
+	waitlist: {
+		formIdEnv: 'MAUTIC_WAITLIST_FORM_ID',
+		formName: 'waitlist',
+		emailField: 'email',
+		allowedFields: ['email', 'f_name', 'location', 'skillsprofession', 'why_do_you_want_to_join'],
+		listmonk: { listIdEnv: 'LISTMONK_WAITLIST_LIST_ID', defaultListId: 1 }
 	}
 } as const satisfies Record<string, MauticFormDef>;
 

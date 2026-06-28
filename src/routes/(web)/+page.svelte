@@ -756,8 +756,52 @@
 	</div>
 </section>
 
+
 <!-- ═══════════════════════════════════════════════════════════════════
-     3e. WHAT WE ARE ALREADY DOING
+	3e. ECOHUB 1 WAITLIST — promo band
+═══════════════════════════════════════════════════════════════════ -->
+<section class="py-20 md:py-28 bg-ecohubs-deep text-emerald-50 relative overflow-hidden">
+	<div class="absolute inset-0 grain pointer-events-none opacity-40"></div>
+	<div
+		class="absolute -z-0 top-0 -right-24 w-[420px] h-[420px] rounded-full bg-emerald-700/25 blur-3xl"
+	></div>
+	<div
+		class="absolute -z-0 bottom-0 -left-24 w-[360px] h-[360px] rounded-full bg-amber-700/15 blur-3xl"
+	></div>
+	<div
+		data-scroll-animate="fade-up"
+		class="relative max-w-6xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12"
+	>
+		<div class="lg:flex-1">
+			<div class="kicker text-emerald-300/80 mb-4 flex items-center gap-3">
+				<span class="relative inline-block w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+				Now forming · EcoHub One
+			</div>
+			<h2 class="font-serif text-3xl md:text-5xl leading-[1.1] text-emerald-50">
+				Co-found the first EcoHub.
+				<em class="font-story italic font-normal text-emerald-200/85">Join the waitlist.</em>
+			</h2>
+			<p class="mt-5 text-lg text-emerald-100/80 leading-relaxed max-w-xl font-light">
+				EcoHub One is a regenerative community designed so people thrive together, and the land does
+				too. It starts with a small founding circle — and the first step is just saying you're in.
+			</p>
+		</div>
+		<div class="shrink-0 flex flex-col items-start lg:items-end gap-3">
+			<a
+				href="/join-the-waitlist"
+				class="px-8 py-4 bg-ecohubs-primary text-white font-medium rounded-full hover:bg-emerald-500 transition-all inline-flex items-center gap-2 group"
+			>
+				Join the founding community
+				<span class="transition-transform group-hover:translate-x-0.5">→</span>
+			</a>
+			<span class="text-[13px] text-emerald-200/70">Free · no commitment · just the first step.</span>
+		</div>
+	</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     3f. WHAT WE ARE ALREADY DOING
 ═══════════════════════════════════════════════════════════════════ -->
 <section id="already-doing" class="relative py-24 md:py-36 bg-ecohubs-base overflow-hidden">
 	<div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
@@ -1252,6 +1296,7 @@
 		</div>
 	</div>
 </section>
+
 
 <!-- ═══════════════════════════════════════════════════════════════════
      8. ROADMAP

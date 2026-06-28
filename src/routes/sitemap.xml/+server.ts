@@ -24,6 +24,7 @@ const routes: SitemapRoute[] = [
 
 	// Landing pages
 	{ path: '/community-resilience-assessment', priority: '0.8', changefreq: 'monthly' },
+	{ path: '/join-the-waitlist', priority: '0.9', changefreq: 'weekly' },
 ];
 
 export const prerender = true;

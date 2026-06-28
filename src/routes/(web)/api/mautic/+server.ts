@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { MAUTIC_FORMS, type MauticFormKey } from '$lib/config/mautic';
-import { submitMauticForm } from '$lib/server/mautic';
+import { resolveMauticFormId, submitMauticForm } from '$lib/server/mautic';
 
 // Simple in-memory rate limiting (for production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -75,7 +75,16 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 
 		const mtcId = typeof body.mtcId === 'string' ? body.mtcId : undefined;
 
-		const result = await submitMauticForm(def.formId, fields, {
+		const formId = resolveMauticFormId(def);
+		if (!formId) {
+			console.error(`Mautic form id for "${formKey}" not configured`);
+			return json(
+				{ success: false, message: 'Submission service is temporarily unavailable.' },
+				{ status: 503 }
+			);
+		}
+
+		const result = await submitMauticForm(formId, fields, {
 			formName: def.formName,
 			mtcId,
 			clientIp

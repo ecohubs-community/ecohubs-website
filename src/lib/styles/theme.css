@@ -303,8 +303,13 @@ html {
 	background: #059669;
 	border-radius: 4px;
 }
+/* Forcing a dark-green selection text colour (not just the background) keeps
+   highlighted text legible on BOTH light and dark sections. Previously only the
+   background was set, so white text on the deep-green sections became
+   white-on-light-green when selected — almost unreadable. */
 ::selection {
 	background: var(--color-forest-200);
+	color: var(--color-forest-900);
 }
 
 /* Organic Glassmorphism (Light) */

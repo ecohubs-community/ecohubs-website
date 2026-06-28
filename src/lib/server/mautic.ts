@@ -7,7 +7,13 @@
  * users to Mautic AND Listmonk in a single round-trip.
  */
 
-import { MAUTIC_BASE_URL, MAUTIC_NEWSLETTER_EMAIL_FIELD, mauticFormAction } from '$lib/config/mautic';
+import {
+	MAUTIC_BASE_URL,
+	MAUTIC_NEWSLETTER_EMAIL_FIELD,
+	MAUTIC_FORMS,
+	mauticFormAction,
+	type MauticFormDef
+} from '$lib/config/mautic';
 import { env } from '$env/dynamic/private';
 
 export interface MauticSubmitResult {
@@ -89,6 +95,37 @@ export async function subscribeNewsletterMautic(email: string): Promise<MauticSu
 		return { ok: false, error: 'MAUTIC_NEWSLETTER_FORM_ID not configured' };
 	}
 	return submitMauticForm(formId, { [MAUTIC_NEWSLETTER_EMAIL_FIELD]: email });
+}
+
+/**
+ * Resolve a registry form's Mautic id — static `formId`, or read from the
+ * private env var named by `formIdEnv`. Returns `undefined` when neither is
+ * configured so callers can fail gracefully.
+ */
+export function resolveMauticFormId(def: MauticFormDef): number | undefined {
+	if (def.formId) return def.formId;
+	if (def.formIdEnv) return Number(env[def.formIdEnv]) || undefined;
+	return undefined;
+}
+
+/**
+ * Submit a registry form to Mautic by its key. The form's id and name come from
+ * `MAUTIC_FORMS`; `mtcId`/`clientIp` are forwarded so the submission stitches
+ * onto the tracked visitor, exactly as the browser iframe flow would. The same
+ * form serves repeated submissions (e.g. the waitlist's create then update) —
+ * Mautic upserts by email, so a later submission updates the existing contact.
+ */
+export async function submitRegistryForm(
+	formKey: keyof typeof MAUTIC_FORMS,
+	fields: Record<string, string>,
+	opts: Pick<MauticSubmitOptions, 'mtcId' | 'clientIp'> = {}
+): Promise<MauticSubmitResult> {
+	const def = MAUTIC_FORMS[formKey];
+	const formId = resolveMauticFormId(def);
+	if (!formId) {
+		return { ok: false, error: `Form id for "${formKey}" not configured` };
+	}
+	return submitMauticForm(formId, fields, { formName: def.formName, ...opts });
 }
 
 export { MAUTIC_BASE_URL };
