@@ -15,6 +15,10 @@ import {
 	Palette,
 	Coins
 } from 'lucide-svelte';
+// Member-voice portraits — the same profile shots used on the waitlist page.
+import CalebeAvatar from '$lib/assets/waitlist/calebe.webp?enhanced';
+import JavierAvatar from '$lib/assets/waitlist/javier-profile.webp?enhanced';
+import LuisaAvatar from '$lib/assets/waitlist/luisa.webp?enhanced';
 
 // ─── ROOMS / CONTRIBUTION AREAS ───────────────────────────────────────────────
 // Adapted from the legacy membership page's "Ways You Can Contribute".
@@ -254,26 +258,31 @@ export interface Voice {
 	quote: string;
 	name: string;
 	location: string;
-	avatar?: string;
+	// Enhanced-image (Picture) import; typed off one of the avatars so we don't
+	// need a direct dependency on vite-imagetools' types.
+	avatar?: typeof CalebeAvatar;
 }
 
 export const voices: Voice[] = [
 	{
 		quote:
-			'I joined to read the RCOS Standard. Three months in, I was the one writing the conflict-repair chapter. No one asked me — I just saw the gap.',
-		name: 'Anika S.',
-		location: 'Berlin · Governance writer'
+			'I resonate with the need to live differently. I believe we need to try different systems. Many will fail but eventually we will find an alternative. I resonate with learning from one another, testing out alternatives in practice, only then we will have a lived experience.',
+		name: 'Calebe',
+		location: 'Brazil · Regenerative Economist',
+		avatar: CalebeAvatar
 	},
 	{
 		quote:
-			"I was sceptical of anything with 'community' in the title. The application asks real questions. The answers go to real people. That was the first thing that surprised me.",
-		name: 'Owen P.',
-		location: 'Cardiff · Listening circle host'
+			'EcoHubs resonates with me because it centers community and nature—collective decisions, regenerative practices, and a living system that evolves through contribution.',
+		name: 'Javier',
+		location: 'Peru · Natural builder',
+		avatar: JavierAvatar
 	},
 	{
 		quote:
-			"I didn't know if I was 'enough' to apply. I'm a single father, not a permaculturist. They told me on day one that listening counts. It does.",
-		name: 'Maria L.',
-		location: 'Cuenca, EC · Permaculture lead'
+			'I believe that regenerative, community-based living is not only the wisest choice for human beings to live from now onward, but it is also the one that’s originally designed to suit us best.',
+		name: 'Luisa',
+		location: 'Italy · Consultant & Trusted Advisor',
+		avatar: LuisaAvatar
 	}
 ];

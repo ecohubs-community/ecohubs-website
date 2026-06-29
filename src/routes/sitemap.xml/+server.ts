@@ -25,6 +25,8 @@ const routes: SitemapRoute[] = [
 	// Landing pages
 	{ path: '/community-resilience-assessment', priority: '0.8', changefreq: 'monthly' },
 	{ path: '/join-the-waitlist', priority: '0.9', changefreq: 'weekly' },
+	{ path: '/links', priority: '0.6', changefreq: 'weekly' },
+	// Note: /welcome is intentionally omitted — it's a noindex interstitial.
 ];
 
 export const prerender = true;

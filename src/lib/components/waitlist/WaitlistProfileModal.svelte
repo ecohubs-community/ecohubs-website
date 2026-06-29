@@ -231,6 +231,14 @@
 						<p class="mt-4 text-[15px] leading-[1.6] text-stone-700 font-light">
 							Your profile is saved. Keep an eye on your inbox — the next step comes to you.
 						</p>
+						<p class="mt-4 text-[13px] leading-[1.6] text-stone-500">
+							Something is not working as it should?
+							<a
+								href="/contact"
+								class="text-ecohubs-dark font-medium underline underline-offset-2 hover:text-ecohubs-primary transition-colors"
+								>Please let us know</a
+							>.
+						</p>
 						<button
 							type="button"
 							onclick={close}

@@ -740,7 +740,7 @@
 
 <!-- ═══════════════════════════════════════════════════════════════════
 		8. MEMBER VOICES
-═══════════════════════════════════════════════════════════════════ 
+═══════════════════════════════════════════════════════════════════ -->
 <section class="relative py-24 md:py-28 bg-ecohubs-ivory">
 	<div class="absolute inset-0 grain pointer-events-none opacity-40"></div>
 	<div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
@@ -756,9 +756,20 @@
 				<article class="bg-white rounded-3xl p-7 border border-stone-200/80 soft-shadow flex flex-col">
 					<p class="font-story italic text-xl leading-snug text-ecohubs-deep flex-1">"{v.quote}"</p>
 					<div class="mt-6 flex items-center gap-3 pt-6 border-t border-stone-100">
-						<div class="w-11 h-11 rounded-full bg-stone-200 border border-stone-200 flex items-center justify-center text-stone-500 font-serif text-base select-none">
-							{v.name.charAt(0)}
-						</div>
+						{#if v.avatar}
+							<div class="w-11 h-11 rounded-full overflow-hidden border border-stone-200 shrink-0">
+								<enhanced:img
+									src={v.avatar}
+									alt={v.name}
+									sizes="44px"
+									class="w-full h-full object-cover"
+								/>
+							</div>
+						{:else}
+							<div class="w-11 h-11 rounded-full bg-stone-200 border border-stone-200 flex items-center justify-center text-stone-500 font-serif text-base select-none">
+								{v.name.charAt(0)}
+							</div>
+						{/if}
 						<div>
 							<div class="font-serif text-base text-ecohubs-deep">{v.name}</div>
 							<div class="text-xs text-stone-500">{v.location}</div>
@@ -768,7 +779,7 @@
 			{/each}
 		</div>
 	</div>
-</section>-->
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════════════
 		9. WHAT YOU GET WHEN YOU'RE INSIDE
