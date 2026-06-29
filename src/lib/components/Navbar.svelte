@@ -55,15 +55,15 @@
 			title: 'Regenerative Community Operating System',
 			desc: 'The open-source standard — a living set of patterns that makes the invisible explicit: how decisions get made, conflict gets repaired, care is shared.',
 			primary: {
-				label: 'About the RCOS standard',
-				href: '/rcos',
-				external: false
-			},
-			secondary: [
-				{
-					label: 'Blueprint overview',
+					label: 'Open RCOS',
 					href: 'https://rcos.ecohubs.community',
 					external: true
+				},
+			secondary: [
+				{
+					label: 'What is RCOS?',
+					href: '/rcos',
+					external: false
 				},
 				{
 					label: 'Community Resilience Assessment',
@@ -82,7 +82,7 @@
 			icon: '/app-icons/csi.svg',
 			ogImage: 'https://csi.ecohubs.community/og-image.png',
 			title: 'Community Suitability Index',
-			desc: 'A self-assessment of how ready you — and a place — are for community living, and where the real gaps are before you commit.',
+			desc: 'A working map of where a regenerative, sovereign community has room to begin — read against the law, the land, the water and the welcome. Honest about what we don’t yet know.',
 			primary: { label: 'Open CSI', href: 'https://csi.ecohubs.community', external: true },
 			secondary: [
 				{ label: 'csi.ecohubs.community', href: 'https://csi.ecohubs.community', external: true }
