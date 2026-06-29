@@ -747,7 +747,7 @@
 		<div class="max-w-2xl mb-14">
 			<div class="kicker text-emerald-700 mb-4">In their own words</div>
 			<h2 class="font-serif text-3xl md:text-5xl text-ecohubs-deep leading-tight">
-				Why people decided <em class="font-story italic font-normal text-stone-500">to show up.</em>
+				Why EcoHubs <em class="font-story italic font-normal text-stone-500">resonates.</em>
 			</h2>
 		</div>
 
