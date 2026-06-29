@@ -2,6 +2,7 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { MAUTIC_FORMS, type MauticFormKey } from '$lib/config/mautic';
 import { resolveMauticFormId, submitMauticForm } from '$lib/server/mautic';
+import { notifyDiscordError } from '$lib/server/discord';
 
 // Simple in-memory rate limiting (for production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -78,6 +79,11 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		const formId = resolveMauticFormId(def);
 		if (!formId) {
 			console.error(`Mautic form id for "${formKey}" not configured`);
+			await notifyDiscordError({
+				source: `Mautic form · ${formKey}`,
+				summary: `Mautic form "${formKey}" is misconfigured — no form id resolved.`,
+				context: { form: formKey }
+			});
 			return json(
 				{ success: false, message: 'Submission service is temporarily unavailable.' },
 				{ status: 503 }
@@ -92,6 +98,12 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 
 		if (!result.ok) {
 			console.error('Mautic form submission failed:', result);
+			await notifyDiscordError({
+				source: `Mautic form · ${formKey}`,
+				summary: `A "${formKey}" Mautic form submission failed.`,
+				error: result.error,
+				context: { form: formKey, email: fields.email, status: result.status }
+			});
 			return json(
 				{ success: false, message: 'Submission service is temporarily unavailable.' },
 				{ status: 503 }
@@ -101,6 +113,11 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		return json({ success: true });
 	} catch (error) {
 		console.error('Mautic form submission error:', error);
+		await notifyDiscordError({
+			source: 'Mautic form',
+			summary: 'A Mautic form submission failed unexpectedly (500).',
+			error
+		});
 		return json({ success: false, message: 'An error occurred. Please try again later.' }, {
 			status: 500
 		});

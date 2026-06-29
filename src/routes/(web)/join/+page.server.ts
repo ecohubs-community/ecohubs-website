@@ -4,6 +4,7 @@ import { applicationSchema, type ApplicationFormData } from '$lib/config/applica
 import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { sendEmail } from '$lib/server/email';
+import { notifyDiscordError } from '$lib/server/discord';
 import {
 	getApplicationEmailHTML,
 	getApplicationEmailText,
@@ -124,6 +125,16 @@ export const actions: Actions = {
 
 						// Handle other API errors
 						console.error('ecohubsOS API error:', response.status, errorData, errorText);
+						await notifyDiscordError({
+							source: 'Application · ecohubsOS',
+							summary: 'An application was rejected by the ecohubsOS API.',
+							error: errorData.message || errorText,
+							context: {
+								name: data.fullName,
+								email: data.email,
+								status: response.status
+							}
+						});
 						return fail(response.status, {
 							form,
 							error: errorData.message || 'Failed to submit application. Please try again.'
@@ -132,6 +143,12 @@ export const actions: Actions = {
 					console.log('ecohubsOS API submission successful');
 				} catch (error) {
 					console.error('ecohubsOS API request failed:', error);
+					await notifyDiscordError({
+						source: 'Application · ecohubsOS',
+						summary: 'The ecohubsOS API was unreachable — an application may be lost.',
+						error,
+						context: { name: data.fullName, email: data.email }
+					});
 					return fail(500, {
 						form,
 						error: 'Unable to submit application. Please try again later.'
@@ -197,7 +214,14 @@ export const actions: Actions = {
 				});
 			} catch (error) {
 				console.error('Failed to send admin notification email:', error);
-				// Don't fail the form submission if email fails
+				// Don't fail the form submission if email fails — but do alert, since a
+				// lost admin notification means an application could go unseen.
+				await notifyDiscordError({
+					source: 'Application · admin email',
+					summary: 'Admin notification email failed — an application may go unseen.',
+					error,
+					context: { name: data.fullName, email: data.email }
+				});
 			}
 
 			try {
@@ -215,6 +239,11 @@ export const actions: Actions = {
 			return { form, success: true };
 		} catch (error) {
 			console.error('Application submission error:', error);
+			await notifyDiscordError({
+				source: 'Application form',
+				summary: 'An application submission failed unexpectedly (500).',
+				error
+			});
 			const detail = error instanceof Error ? `${error.name}: ${error.message}` : String(error);
 			return fail(500, {
 				form,

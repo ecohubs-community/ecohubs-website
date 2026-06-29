@@ -1,6 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { sendEmail } from '$lib/server/email';
+import { notifyDiscordError } from '$lib/server/discord';
 import {
 	getContactEmailHTML,
 	getContactEmailText,
@@ -187,10 +188,30 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 				message: message.substring(0, 50)
 			});
 
-			throw new Error('Failed to send message. Please try again or contact us directly.');
+			// This is the exact failure that once went unnoticed — a visitor's
+			// message silently lost. Alert so we can reach back out to them.
+			await notifyDiscordError({
+				source: 'Contact form',
+				summary: 'Email delivery failed — a visitor message may have been lost.',
+				error: emailError,
+				context: { name, email, ip: clientIp }
+			});
+
+			return json(
+				{
+					success: false,
+					message: 'Failed to send message. Please try again or contact us directly.'
+				},
+				{ status: 500 }
+			);
 		}
 	} catch (error) {
 		console.error('Contact form error:', error);
+		await notifyDiscordError({
+			source: 'Contact form',
+			summary: 'A contact form submission failed unexpectedly (500).',
+			error
+		});
 		return json(
 			{
 				success: false,

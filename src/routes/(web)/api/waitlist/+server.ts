@@ -3,6 +3,7 @@ import type { RequestHandler } from './$types';
 import { MAUTIC_FORMS } from '$lib/config/mautic';
 import { submitRegistryForm } from '$lib/server/mautic';
 import { subscribeToListmonk } from '$lib/server/listmonk';
+import { notifyDiscordError, isConfigGap } from '$lib/server/discord';
 import { env } from '$env/dynamic/private';
 
 const WAITLIST = MAUTIC_FORMS.waitlist;
@@ -92,6 +93,12 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			const result = await submitRegistryForm('waitlist', fields, { mtcId, clientIp });
 			if (!result.ok) {
 				console.error('Waitlist profile update failed:', result);
+				await notifyDiscordError({
+					source: 'Waitlist · profile update (Mautic)',
+					summary: 'A waitlist profile update (step 2) failed to save to Mautic.',
+					error: result.error,
+					context: { email, status: result.status }
+				});
 				return json(
 					{ success: false, message: 'Submission service is temporarily unavailable.' },
 					{ status: 503 }
@@ -111,15 +118,53 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		if (!listmonkResult.ok) console.error('Waitlist Listmonk signup failed:', listmonkResult);
 
 		if (mauticResult.ok || listmonkResult.ok) {
+			// Partial failure — the signup still succeeds for the user, but one
+			// destination is silently dropping it. Alert on each genuine failure
+			// (skip integrations that are intentionally unconfigured).
+			if (!mauticResult.ok && !isConfigGap(mauticResult.error)) {
+				await notifyDiscordError({
+					source: 'Waitlist · Mautic',
+					summary: 'Waitlist Mautic signup failed (Listmonk still accepted it).',
+					error: mauticResult.error,
+					context: { email, status: mauticResult.status }
+				});
+			}
+			if (!listmonkResult.ok && !isConfigGap(listmonkResult.error)) {
+				await notifyDiscordError({
+					source: 'Waitlist · Listmonk',
+					summary: 'Waitlist Listmonk signup failed (Mautic still accepted it).',
+					error: listmonkResult.error,
+					context: { email, status: listmonkResult.status }
+				});
+			}
 			return json({ success: true });
 		}
 
+		await notifyDiscordError({
+			source: 'Waitlist signup',
+			summary: 'Waitlist signup failed — both Mautic and Listmonk rejected it.',
+			// Prefer a genuine runtime error over a config-gap message.
+			error:
+				[listmonkResult, mauticResult].find((r) => !isConfigGap(r.error))?.error ??
+				mauticResult.error ??
+				listmonkResult.error,
+			context: {
+				email,
+				mauticStatus: mauticResult.status,
+				listmonkStatus: listmonkResult.status
+			}
+		});
 		return json(
 			{ success: false, message: 'Submission service is temporarily unavailable.' },
 			{ status: 503 }
 		);
 	} catch (error) {
 		console.error('Waitlist submission error:', error);
+		await notifyDiscordError({
+			source: 'Waitlist signup',
+			summary: 'Waitlist signup failed unexpectedly (500).',
+			error
+		});
 		return json(
 			{ success: false, message: 'An error occurred. Please try again later.' },
 			{ status: 500 }

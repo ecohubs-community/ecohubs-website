@@ -2,6 +2,7 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { subscribeToListmonk } from '$lib/server/listmonk';
 import { subscribeNewsletterMautic } from '$lib/server/mautic';
+import { notifyDiscordError, isConfigGap } from '$lib/server/discord';
 
 // Simple in-memory rate limiting (for production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -71,6 +72,25 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 
 		// Succeed if at least one destination accepted the subscription.
 		if (listmonkResult.ok || mauticResult.ok) {
+			// Partial failure — the user still succeeds, but one destination is
+			// silently dropping signups. Alert so it doesn't go unnoticed (but not
+			// for an intentionally-disabled integration, e.g. no Mautic form id).
+			if (!mauticResult.ok && !isConfigGap(mauticResult.error)) {
+				await notifyDiscordError({
+					source: 'Newsletter · Mautic',
+					summary: 'Mautic newsletter signup failed (Listmonk still accepted it).',
+					error: mauticResult.error,
+					context: { email, status: mauticResult.status }
+				});
+			}
+			if (!listmonkResult.ok && !isConfigGap(listmonkResult.error)) {
+				await notifyDiscordError({
+					source: 'Newsletter · Listmonk',
+					summary: 'Listmonk newsletter signup failed (Mautic still accepted it).',
+					error: listmonkResult.error,
+					context: { email, status: listmonkResult.status }
+				});
+			}
 			return json({
 				success: true,
 				message: 'Successfully subscribed! Please check your email to confirm.'
@@ -78,6 +98,20 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		}
 
 		console.error('Newsletter subscription failed for:', email);
+		await notifyDiscordError({
+			source: 'Newsletter signup',
+			summary: 'Newsletter signup failed — both Mautic and Listmonk rejected it.',
+			// Prefer a genuine runtime error over a config-gap message.
+			error:
+				[listmonkResult, mauticResult].find((r) => !isConfigGap(r.error))?.error ??
+				mauticResult.error ??
+				listmonkResult.error,
+			context: {
+				email,
+				mauticStatus: mauticResult.status,
+				listmonkStatus: listmonkResult.status
+			}
+		});
 		return json(
 			{
 				success: false,
@@ -87,6 +121,11 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		);
 	} catch (error) {
 		console.error('Newsletter subscription error:', error);
+		await notifyDiscordError({
+			source: 'Newsletter signup',
+			summary: 'Newsletter signup failed unexpectedly (500).',
+			error
+		});
 		return json(
 			{
 				success: false,
