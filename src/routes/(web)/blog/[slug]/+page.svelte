@@ -6,32 +6,38 @@
 
 	let { data }: { data: PageData } = $props();
 
-	const post = data.post;
-	const formattedDate = formatDate(post.date);
+	// `$derived`, not plain `const`: navigating between two /blog/[slug] posts
+	// reuses this component instance (same route), so `data` updates but a
+	// captured `const post = data.post` would stay pinned to the first article —
+	// leaving `{@html post.html}` stale while the URL and scroll reset. Every
+	// value read off `post` below must stay reactive for the same reason.
+	const post = $derived(data.post);
+	const formattedDate = $derived(formatDate(post.date));
 	const siteUrl = 'https://ecohubs.community';
 
 	// Only surface an "Updated" line when the modification falls on a later
 	// calendar day — Ghost touches `updated_at` minutes after publish for
 	// trivial post-publish edits (image uploads, slug tweaks), which would
 	// otherwise show "Updated <same-day>" right next to the publish date.
-	const showUpdated =
+	const showUpdated = $derived(
 		!!post.dateModified &&
-		post.dateModified.slice(0, 10) !== post.date.slice(0, 10);
+			post.dateModified.slice(0, 10) !== post.date.slice(0, 10)
+	);
 
 	// Full breadcrumb feeds JSON-LD (SERP rich-result hierarchy); the visible
 	// breadcrumb drops the post title because it would duplicate the H1 below.
-	const jsonLdBreadcrumbs = [
+	const jsonLdBreadcrumbs = $derived([
 		{ name: 'Home', url: 'https://ecohubs.community/' },
 		{ name: 'Blog', url: 'https://ecohubs.community/blog' },
 		{ name: post.title, url: `https://ecohubs.community/blog/${post.slug}` }
-	];
-	const visibleBreadcrumbs = jsonLdBreadcrumbs.slice(0, 2);
+	]);
+	const visibleBreadcrumbs = $derived(jsonLdBreadcrumbs.slice(0, 2));
 
 	// Channels from the site footer that support URL-based sharing.
 	// Discord / Instagram / GitHub have no share-intent URL, so we skip them.
-	const shareUrl = `${siteUrl}/blog/${post.slug}`;
-	const shareText = post.title;
-	const shareLinks = [
+	const shareUrl = $derived(`${siteUrl}/blog/${post.slug}`);
+	const shareText = $derived(post.title);
+	const shareLinks = $derived([
 		{
 			label: 'X',
 			href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
@@ -57,10 +63,10 @@
 			href: `mailto:?subject=${encodeURIComponent(shareText)}&body=${encodeURIComponent(`${shareText}\n\n${shareUrl}`)}`,
 			icon: '/social-icons/email.svg'
 		}
-	];
+	]);
 
 	// Article JSON-LD schema
-	const articleJsonLd = {
+	const articleJsonLd = $derived({
 		'@context': 'https://schema.org',
 		'@type': 'Article',
 		headline: post.title,
@@ -87,7 +93,7 @@
 		...(post.tags && post.tags.length > 0
 			? { articleSection: post.tags.map((t) => t.name).join(', ') }
 			: {})
-	};
+	});
 </script>
 
 <SEO
