@@ -39,7 +39,7 @@
 		secondary: EcoLink[];
 	};
 
-	// The three live products (Seeking is intentionally omitted for now).
+	// The live products in the ecosystem.
 	const ecosystem: EcoProject[] = [
 		{
 			key: 'rcos',
@@ -106,6 +106,22 @@
 					href: 'https://votecast.ecohubs.community',
 					external: true
 				}
+			]
+		},
+		{
+			key: 'seeking',
+			code: 'Seeking',
+			sub: 'Community Matchmaking',
+			href: 'https://seeking.community',
+			external: true,
+			domain: 'seeking.community',
+			icon: '/app-icons/seeking.png',
+			ogImage: 'https://seeking.community/og-default.jpg',
+			title: 'Seeking',
+			desc: 'A soft landing for people stepping off the track. Tell us what you’re leaving and what you’re seeking, and a real person hand-picks a few genuinely active, aligned communities — honest notes and all — within 24 hours. Free, no account.',
+			primary: { label: 'Open Seeking', href: 'https://seeking.community', external: true },
+			secondary: [
+				{ label: 'seeking.community', href: 'https://seeking.community', external: true }
 			]
 		}
 	];
