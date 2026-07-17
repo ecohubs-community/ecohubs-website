@@ -441,3 +441,38 @@ export const faqItems = [
 		a: "Application is free and based on alignment, not payment. Members get access to the community platform, the full RCOS Standard, the voice to shape it, and — when you're ready — a path into the physical pilot hubs."
 	}
 ];
+
+export const ecosystemFaq = [
+	{
+		q: 'What is the EcoHubs ecosystem?',
+		a: 'A set of distinct tools that each serve the wider EcoHubs purpose: making regenerative communities more accessible, resilient, replicable, and normal. They don’t depend on one another — each fulfils its own job. Seeking.Community helps people find aligned, existing communities; CSI (https://csi.ecohubs.community) helps founders find the best place in the world to start a new one; VoteCast (https://votecast.ecohubs.community) aims to make community governance easier; and RCOS is a standard for the human structures inside a community. The Community Resilience Assessment complements them as a way for a group to see where it’s strong and where it’s fragile.'
+	},
+	{
+		q: 'What is RCOS?',
+		a: 'RCOS — the Regenerative Community Operating System — is an open standard for the human structures inside a community: a living set of patterns that makes the invisible explicit, from how decisions get made to how conflict gets repaired and how care is shared. It’s our best outcome so far, though it stands on its own rather than driving the other tools. You can read it at https://rcos.ecohubs.community.'
+	},
+	{
+		q: 'What is CSI (the Community Suitability Index)?',
+		a: 'CSI is a working map of where a regenerative, sovereign community has room to begin — read against the law, the land, the water and the welcome of each place. It is honest about what we don’t yet know, and lives at https://csi.ecohubs.community.'
+	},
+	{
+		q: 'What is VoteCast?',
+		a: 'VoteCast is the decision-making tool: transparent, consent-based governance with proposals, deliberation and votes that everyone can see and trust. It puts the governance patterns in RCOS into practice, and lives at https://votecast.ecohubs.community.'
+	},
+	{
+		q: 'What is Seeking.Community?',
+		a: 'Seeking is a soft landing for people stepping off the track. Tell it what you’re leaving and what you’re seeking, and a real person hand-picks a few genuinely active, aligned communities — honest notes and all — within 24 hours. Free, no account, at https://seeking.community.'
+	},
+	{
+		q: 'What is the Community Resilience Assessment?',
+		a: 'A short, self-guided assessment that helps a group see where it is strong and where it is fragile across the dimensions RCOS cares about — governance, ecology, economy, and culture. It’s a starting point for a conversation, not a score to chase. You can take it at https://ecohubs.community/community-resilience-assessment.'
+	},
+	{
+		q: 'Do I need to use all of these tools?',
+		a: 'No. Each tool stands on its own — you can read RCOS, take the resilience assessment, or use Seeking.Community without touching the rest. They share a common language so they work well together, but there’s no all-or-nothing requirement.'
+	},
+	{
+		q: 'Are the ecosystem tools open-source and free?',
+		a: 'The RCOS Standard is open-source by design, and the public tools above are free to use. The goal is shared infrastructure that any community can adopt, fork, and improve — not a walled product.'
+	}
+];
