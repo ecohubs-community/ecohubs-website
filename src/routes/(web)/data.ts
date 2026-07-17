@@ -461,7 +461,7 @@ export const ecosystemFaq = [
 	},
 	{
 		q: 'What is Seeking.Community?',
-		a: 'Seeking is a soft landing for people stepping off the track. Tell it what you’re leaving and what you’re seeking, and a real person hand-picks a few genuinely active, aligned communities — honest notes and all — within 24 hours. Free, no account, at https://seeking.community.'
+		a: 'Seeking.Community is a soft landing for people stepping off the track. Tell it what you’re leaving and what you’re seeking, and a real person hand-picks a few genuinely active, aligned communities — honest notes and all — within 24 hours. Free, no account, at https://seeking.community.'
 	},
 	{
 		q: 'What is the Community Resilience Assessment?',
