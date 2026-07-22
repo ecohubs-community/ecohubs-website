@@ -35,7 +35,7 @@
 
 	const popularPaths = [
 		{ href: '/vision', label: 'Our vision' },
-		{ href: '/rcos', label: 'The blueprint' },
+		{ href: '/rcos', label: 'RCOS Standard' },
 		{ href: '/membership', label: 'Become a member' },
 		{ href: '/blog', label: 'Read the stories' }
 	];

@@ -9,6 +9,9 @@ interface ApiMember {
 	contribution: string | null;
 	xp: number;
 	eco: number;
+	// Optional — only some ecohubsOS deployments expose a member level, and it
+	// may arrive as a number (3) or an already-named tier ("Steward").
+	level?: number | string | null;
 	showOnWebsite?: boolean;
 }
 
@@ -21,6 +24,23 @@ export interface ConstellationMember {
 	bio: string;
 	contrib: string;
 	img?: string;
+	/** Display-ready level label, omitted when the API doesn't provide one. */
+	level?: string;
+}
+
+/**
+ * Normalise the optional `level` field into something printable. Bare numbers
+ * get a "Level " prefix; named tiers are used as-is; anything empty is dropped
+ * so the UI can simply check for presence.
+ */
+function formatLevel(level: ApiMember['level']): string | undefined {
+	if (level === null || level === undefined) return undefined;
+	if (typeof level === 'number') {
+		return Number.isFinite(level) ? `Level ${level}` : undefined;
+	}
+	const trimmed = String(level).trim();
+	if (!trimmed) return undefined;
+	return /^\d+$/.test(trimmed) ? `Level ${trimmed}` : trimmed;
 }
 
 const CACHE_TTL_MS = 12 * 60 * 60 * 1000; // 12 hours
@@ -75,7 +95,8 @@ function mapMember(m: ApiMember): ConstellationMember {
 		langs,
 		bio: m.bio ?? '',
 		contrib: m.contribution ?? '',
-		img: m.avatarUrl ?? undefined
+		img: m.avatarUrl ?? undefined,
+		level: formatLevel(m.level)
 	};
 }
 

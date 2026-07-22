@@ -8,6 +8,7 @@
 		bio: string;
 		contrib: string;
 		img?: string;
+		level?: string;
 	}
 
 	let { members = [] as Member[] } = $props();
@@ -256,9 +257,19 @@
 							</div>
 						{/if}
 					</div>
-					<div>
+					<div class="min-w-0">
 						<div class="font-serif text-lg text-white leading-tight">{m.name}</div>
-						<div class="text-xs text-stone-300/70 mt-0.5">{m.loc}</div>
+						<div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
+							<span class="text-xs text-stone-300/70">{m.loc}</span>
+							{#if m.level}
+								<span
+									class="text-[10px] leading-none tracking-wide text-emerald-300/80
+									       border border-emerald-400/25 rounded-full px-1.5 py-0.5"
+								>
+									{m.level}
+								</span>
+							{/if}
+						</div>
 					</div>
 				</div>
 

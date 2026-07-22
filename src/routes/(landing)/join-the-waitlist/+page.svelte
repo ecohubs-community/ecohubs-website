@@ -637,6 +637,24 @@
 					</figure>
 				{/each}
 			</div>
+			<div class="mt-14">
+				<div class="mb-5 kicker text-emerald-800">Partners</div>
+				<a
+					href="https://www.heartofecovillages.org/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-flex flex-col items-center gap-2.5 group"
+				>
+					<img
+						src="/partners/heart-of-ecovillages.webp"
+						alt="Heart of Ecovillages logo"
+						loading="lazy"
+						class="h-14 w-auto transition-transform group-hover:scale-[1.03]"
+					/>
+					<span class="text-[14px] font-medium text-ecohubs-deep">Heart of Ecovillages</span>
+				</a>
+			</div>
+
 			<div class="mt-10">
 				<a
 					href="/contact"

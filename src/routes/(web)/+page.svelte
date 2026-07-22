@@ -1152,6 +1152,55 @@
 	</section>
 {/if}
 <!-- ═══════════════════════════════════════════════════════════════════
+     6b-2. PARTNERS
+═══════════════════════════════════════════════════════════════════ -->
+<section id="partners" class="relative py-20 md:py-24 bg-ecohubs-base overflow-hidden">
+	<div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+		<div data-scroll-animate="fade-up" class="max-w-2xl">
+			<div class="kicker text-emerald-800 mb-4">Partners</div>
+			<h2 class="font-serif text-3xl md:text-4xl text-ecohubs-deep leading-tight">
+				We don't build this alone.<br />
+				<em class="font-story italic font-normal text-stone-500">Good work travels in company.</em>
+			</h2>
+			<p class="mt-5 text-lg text-stone-700 leading-relaxed">
+				Organisations and networks working in adjacent terrain — sharing what they've learned so
+				nobody has to start from zero.
+			</p>
+		</div>
+
+		<div data-scroll-animate="fade-up" class="mt-10 flex flex-wrap gap-5">
+			{#each [{ name: 'Heart of Ecovillages', href: 'https://www.heartofecovillages.org/', logo: '/partners/heart-of-ecovillages.webp' }] as partner}
+				<a
+					href={partner.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="group inline-flex items-center gap-5 rounded-2xl border border-stone-200 bg-white
+                  px-6 py-5 transition-colors hover:border-ecohubs-primary/40"
+				>
+					<img
+						src={partner.logo}
+						alt="{partner.name} logo"
+						loading="lazy"
+						class="h-12 w-auto transition-transform group-hover:scale-[1.03]"
+					/>
+					<span class="font-medium text-ecohubs-deep">{partner.name}</span>
+				</a>
+			{/each}
+
+			<!-- Open invitation, sized to sit alongside the partner cards. -->
+			<a
+				href="/contact"
+				class="group inline-flex items-center justify-center gap-2 rounded-2xl border border-dashed
+                  border-stone-300 px-6 py-5 font-medium text-stone-500 transition-colors
+                  hover:border-stone-400 hover:text-stone-700"
+			>
+				Become EcoHubs partner
+				<span class="transition-transform group-hover:translate-x-0.5">→</span>
+			</a>
+		</div>
+	</div>
+</section>
+<!-- ═══════════════════════════════════════════════════════════════════
      6c. TECH SERVES LIFE
 ═══════════════════════════════════════════════════════════════════ -->
 <section class="relative py-24 md:py-32 bg-ecohubs-ivory overflow-hidden">
