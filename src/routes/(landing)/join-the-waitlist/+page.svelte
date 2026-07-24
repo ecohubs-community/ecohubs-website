@@ -95,8 +95,8 @@
 
 	const team = [
 		{ img: StefanImg, name: 'Stefan Lessle', role: 'EcoHubs initiator · Web Developer' },
-		{ img: LuisaImg, name: 'Luisa', role: 'EcoHubs co-founder · Consultant & Trusted Advisor' },
-		{ img: CalebeImg, name: 'Calebe', role: 'EcoHubs contributor · Regenerative Economist' },
+		{ img: LuisaImg, name: 'Luisa Meneghetti', role: 'EcoHubs co-founder · Consultant & Trusted Advisor' },
+		{ img: CalebeImg, name: 'Calebe de Roure', role: 'EcoHubs contributor · Regenerative Economist' },
 		{ img: JavierProfile, name: 'Javier Yanez', role: 'Natural builder · open-source dome systems' }
 	];
 
