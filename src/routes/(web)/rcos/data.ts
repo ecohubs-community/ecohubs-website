@@ -303,38 +303,33 @@ export const contributePaths: ContributePath[] = [
 
 export interface FaqEntry {
 	q: string;
-	aHtml: string;
+	/** Answer markup — rendered with `{@html}` by `FaqAccordion`. */
+	a: string;
 }
 
 export const faq: FaqEntry[] = [
 	{
 		q: 'What’s the difference between "the RCOS Standard" and "RCOS"?',
-		aHtml:
-			'They are the same thing. <strong class="text-ecohubs-deep">RCOS</strong> (Regenerative Community Operating System) is the formal name. <em class="font-story italic">RCOS Standard</em> is the friendly, human-facing name we use during the transition phase. You’ll see both — they always refer to the same standard.'
+		a: 'They are the same thing. <strong class="text-ecohubs-deep">RCOS</strong> (Regenerative Community Operating System) is the formal name. <em class="font-story italic">RCOS Standard</em> is the friendly, human-facing name we use during the transition phase. You’ll see both — they always refer to the same standard.'
 	},
 	{
 		q: 'Do I have to use the whole thing?',
-		aHtml:
-			'No. The RCOS is designed for partial adoption. Most communities start with one or two layers — usually the one that’s currently broken — and grow into the others over time. Modules are optional on top of that.'
+		a: 'No. The RCOS is designed for partial adoption. Most communities start with one or two layers — usually the one that’s currently broken — and grow into the others over time. Modules are optional on top of that.'
 	},
 	{
 		q: 'Is this software? A DAO? A token?',
-		aHtml:
-			'None of those. RCOS is a written standard — a set of patterns, layer boundaries, and stress tests. Tools (governance software, contribution ledgers, even a DAO) can sit on top of it, but the standard itself is non-speculative, non-tradeable, and non-technical. You can run it on paper.'
+		a: 'None of those. RCOS is a written standard — a set of patterns, layer boundaries, and stress tests. Tools (governance software, contribution ledgers, even a DAO) can sit on top of it, but the standard itself is non-speculative, non-tradeable, and non-technical. You can run it on paper.'
 	},
 	{
 		q: 'How do I trust this won’t fail like other community models?',
-		aHtml:
-			'Honestly: we don’t promise it won’t. What we do is treat each community as a learning system, document failures and adaptations openly, and iterate the standard rather than assuming the first version is the right one. The RCOS Standard is built around known failure modes — not around someone’s belief that they’ve solved community.'
+		a: 'Honestly: we don’t promise it won’t. What we do is treat each community as a learning system, document failures and adaptations openly, and iterate the standard rather than assuming the first version is the right one. The RCOS Standard is built around known failure modes — not around someone’s belief that they’ve solved community.'
 	},
 	{
 		q: 'Can I use it for a community that isn’t an EcoHub?',
-		aHtml:
-			'Yes. The RCOS Standard is open-source and structurally agnostic. A co-op, a co-living house, a research collective, a neighborhood association — any group that needs to make membership, governance, conflict, or resources explicit can adopt parts of it.'
+		a: 'Yes. The RCOS Standard is open-source and structurally agnostic. A co-op, a co-living house, a research collective, a neighborhood association — any group that needs to make membership, governance, conflict, or resources explicit can adopt parts of it.'
 	},
 	{
 		q: 'Where do I actually read it?',
-		aHtml:
-			'The current version lives at <a href="https://rcos.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">rcos.ecohubs.community</a>. It’s a public draft, evolving in the open — read it, fork it, argue with it.'
+		a: 'The current version lives at <a href="https://rcos.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">rcos.ecohubs.community</a>. It’s a public draft, evolving in the open — read it, fork it, argue with it.'
 	}
 ];

@@ -3,6 +3,10 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
+	import FaqAccordion from '$lib/components/FaqAccordion.svelte';
+	import ClosingCta from '$lib/components/sections/ClosingCta.svelte';
+	import StanceColumns from '$lib/components/sections/StanceColumns.svelte';
+	import PositionTriptych from '$lib/components/sections/PositionTriptych.svelte';
 	import { generateBreadcrumbs } from '$lib/config/seo';
 	import {
 		initScrollAnimations,
@@ -205,8 +209,7 @@
 							href="https://rcos.ecohubs.community"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-ecohubs-primary hover:underline font-medium"
-							>rcos.ecohubs.community ↗</a
+							class="text-ecohubs-primary hover:underline font-medium">rcos.ecohubs.community ↗</a
 						>
 					</div>
 				</div>
@@ -233,8 +236,8 @@
 		<div data-scroll-animate class="max-w-2xl mb-10">
 			<div class="kicker text-emerald-700 mb-4">19-min introduction</div>
 			<h2 class="font-serif text-3xl md:text-4xl text-ecohubs-deep leading-tight">
-				If you have <em class="font-story italic font-normal text-stone-500">nineteen minutes,</em><br
-				/>
+				If you have <em class="font-story italic font-normal text-stone-500">nineteen minutes,</em
+				><br />
 				<em class="font-story italic font-normal text-ecohubs-primary"
 					>here is the whole picture.</em
 				>
@@ -293,67 +296,18 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      3. WHAT IT IS / WHAT IT IS NOT
 ═══════════════════════════════════════════════════════════════════ -->
-<section class="relative py-24 md:py-32 bg-ecohubs-deep text-ecohubs-ivory overflow-hidden">
-	<div
-		class="absolute inset-0 -z-0 opacity-40"
-		style="background-image: radial-gradient(circle at 30% 20%, rgba(16,185,129,0.18), transparent 50%), radial-gradient(circle at 80% 80%, rgba(217,119,6,0.12), transparent 55%);"
-	></div>
-
-	<div class="max-w-6xl mx-auto px-6 lg:px-8 relative">
-		<div data-scroll-animate class="max-w-3xl mb-16">
-			<div class="kicker text-emerald-300/80 mb-5">What the Standard is, and isn't</div>
-			<h2 class="font-serif text-4xl md:text-6xl leading-[1.05] text-ecohubs-ivory">
-				Clarity, <em class="font-story italic font-normal text-emerald-300">not persuasion.</em>
-			</h2>
-			<p class="mt-6 text-lg md:text-xl text-stone-200/80 leading-relaxed max-w-2xl">
-				The Standard can be misread as a lot of things it isn't. Before going further, here is the
-				line we hold — carefully, on purpose.
-			</p>
-		</div>
-
-		<div class="grid md:grid-cols-2 gap-10 md:gap-14">
-			<div data-scroll-animate>
-				<div class="flex items-center gap-3 mb-7">
-					<span class="pill bg-emerald-500/15 text-emerald-200 border border-emerald-400/30"
-						>It is</span
-					>
-					<span class="text-stone-300/70 text-sm">A formal, open standard.</span>
-				</div>
-				<ul class="space-y-5">
-					{#each whatItIs as item}
-						<li class="grid grid-cols-[28px_1fr] gap-3">
-							<span class="font-story italic text-emerald-300 text-xl">✓</span>
-							<div>
-								<div class="font-serif text-lg text-white">{item.title}</div>
-								<p class="text-sm text-stone-300/80 mt-1 leading-relaxed">{item.body}</p>
-							</div>
-						</li>
-					{/each}
-				</ul>
-			</div>
-
-			<div data-scroll-animate>
-				<div class="flex items-center gap-3 mb-7">
-					<span class="pill bg-amber-300/10 text-amber-200 border border-amber-300/30"
-						>It is not</span
-					>
-					<span class="text-stone-300/70 text-sm">And never quietly will be.</span>
-				</div>
-				<ul class="space-y-5">
-					{#each whatItIsNot as item}
-						<li class="grid grid-cols-[28px_1fr] gap-3">
-							<span class="font-story italic text-amber-300/80 text-xl">×</span>
-							<div>
-								<div class="font-serif text-lg text-white">{item.title}</div>
-								<p class="text-sm text-stone-300/80 mt-1 leading-relaxed">{item.body}</p>
-							</div>
-						</li>
-					{/each}
-				</ul>
-			</div>
-		</div>
-	</div>
-</section>
+<StanceColumns
+	kicker="What the Standard is, and isn't"
+	lead="The Standard can be misread as a lot of things it isn't. Before going further, here is the line we hold — carefully, on purpose."
+	isItems={whatItIs}
+	isNote="A formal, open standard."
+	isNotItems={whatItIsNot}
+	isNotNote="And never quietly will be."
+>
+	{#snippet headline()}
+		Clarity, <em class="font-story italic font-normal text-emerald-300">not persuasion.</em>
+	{/snippet}
+</StanceColumns>
 
 <!-- ═══════════════════════════════════════════════════════════════════
      4. CORE LAYERS
@@ -658,8 +612,8 @@
 			</h2>
 			<p class="mt-6 text-lg md:text-xl text-stone-200/85 leading-relaxed max-w-2xl">
 				We are not the first to try this — and that is the point. Most intentional communities fail
-				in the same handful of ways. The RCOS Standard is built around those failure points, not around
-				anyone's ideology.
+				in the same handful of ways. The RCOS Standard is built around those failure points, not
+				around anyone's ideology.
 			</p>
 		</div>
 
@@ -729,83 +683,43 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      6. HOW IT CONNECTS TO THE VISION
 ═══════════════════════════════════════════════════════════════════ -->
-<section class="py-24 md:py-36 bg-ecohubs-base relative">
-	<div class="max-w-7xl mx-auto px-6 lg:px-8">
-		<div data-scroll-animate class="max-w-3xl mb-16">
-			<div class="kicker text-emerald-700 mb-4">Where the RCOS sits in the EcoHubs vision</div>
-			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
-				The vision is the
-				<em class="font-story italic font-normal text-stone-500">why.</em><br />
-				The RCOS is
-				<em class="font-story italic font-normal">the first thing you can hold.</em>
-			</h2>
-			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
-				EcoHubs is a long-horizon project — small, human-scale communities, woven into a global
-				commons. The RCOS is the first concrete piece of that. The bridge between intention and
-				ground.
-			</p>
-		</div>
-
-		<div data-scroll-stagger class="grid lg:grid-cols-3 gap-6 lg:gap-0 relative">
-			<article
-				class="relative bg-ecohubs-ivory rounded-3xl p-8 border border-stone-200/70 lg:rounded-r-none lg:border-r-0"
-			>
-				<div class="kicker text-emerald-700 mb-3">01 · Vision</div>
-				<h3 class="font-serif text-2xl text-ecohubs-deep mb-3">A network of regenerative hubs.</h3>
-				<p class="text-stone-700 text-[15px] leading-relaxed">
-					Small, place-based communities, each adapted to its land and culture, woven into a shared
-					commons that gets stronger over time.
-				</p>
-				<a
-					href="/vision"
-					class="mt-5 inline-flex items-center gap-1.5 text-sm text-ecohubs-dark font-medium hover:underline"
-					>Read the vision →</a
-				>
-			</article>
-
-			<article
-				class="relative bg-ecohubs-deep text-ecohubs-ivory rounded-3xl p-8 border border-emerald-900/40 lg:rounded-none -mt-2 lg:-mt-6 lg:mb-2 shadow-[0_30px_60px_-30px_rgba(11,46,36,0.5)]"
-			>
-				<div class="kicker text-emerald-300/80 mb-3">
-					02 · RCOS <span class="text-amber-300/80">· you are here</span>
-				</div>
-				<h3 class="font-serif text-2xl text-white mb-3">An open standard any hub can pick up.</h3>
-				<p class="text-stone-200/85 text-[15px] leading-relaxed">
-					RCOS makes the structure of community life explicit — so a hub doesn't have to invent
-					membership, governance, or repair from scratch.
-				</p>
-				<a
-					href="https://rcos.ecohubs.community"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="mt-5 inline-flex items-center gap-1.5 text-sm text-emerald-300 font-medium hover:underline"
-					>Open the RCOS Standard ↗</a
-				>
-			</article>
-
-			<article
-				class="relative bg-ecohubs-ivory rounded-3xl p-8 border border-stone-200/70 lg:rounded-l-none lg:border-l-0"
-			>
-				<div class="kicker text-emerald-700 mb-3">03 · Pilots</div>
-				<h3 class="font-serif text-2xl text-ecohubs-deep mb-3">Real communities, applying it.</h3>
-				<p class="text-stone-700 text-[15px] leading-relaxed">
-					A first community in Ecuador is already running the RCOS Standard under real ecological,
-					social, and economic constraints — feeding what they learn back into the standard.
-				</p>
-				<a
-					href="#pilot"
-					class="mt-5 inline-flex items-center gap-1.5 text-sm text-ecohubs-dark font-medium hover:underline"
-					>See the Ecuador pilot →</a
-				>
-			</article>
-		</div>
-
-		<p class="mt-12 text-center text-sm text-stone-500 font-story italic max-w-xl mx-auto">
-			Every pilot teaches the standard. Every standard improvement helps the next pilot. That loop
-			is the project.
-		</p>
-	</div>
-</section>
+<PositionTriptych
+	kicker="Where the RCOS sits in the EcoHubs vision"
+	lead="EcoHubs is a long-horizon project — small, human-scale communities, woven into a global commons. The RCOS is the first concrete piece of that. The bridge between intention and ground."
+	cards={[
+		{
+			kicker: '01 · Vision',
+			title: 'A network of regenerative hubs.',
+			body: 'Small, place-based communities, each adapted to its land and culture, woven into a shared commons that gets stronger over time.',
+			cta: 'Read the vision →',
+			href: '/vision'
+		},
+		{
+			kicker: '02 · RCOS',
+			title: 'An open standard any hub can pick up.',
+			body: "RCOS makes the structure of community life explicit — so a hub doesn't have to invent membership, governance, or repair from scratch.",
+			cta: 'Open the RCOS Standard ↗',
+			href: 'https://rcos.ecohubs.community',
+			external: true,
+			here: true
+		},
+		{
+			kicker: '03 · Pilots',
+			title: 'Real communities, applying it.',
+			body: 'A first community in Ecuador is already running the RCOS Standard under real ecological, social, and economic constraints — feeding what they learn back into the standard.',
+			cta: 'See the Ecuador pilot →',
+			href: '#pilot'
+		}
+	]}
+	footnote="Every pilot teaches the standard. Every standard improvement helps the next pilot. That loop is the project."
+>
+	{#snippet headline()}
+		The vision is the
+		<em class="font-story italic font-normal text-stone-500">why.</em><br />
+		The RCOS is
+		<em class="font-story italic font-normal">the first thing you can hold.</em>
+	{/snippet}
+</PositionTriptych>
 
 <!-- ═══════════════════════════════════════════════════════════════════
      7. HOW IT'S APPLIED — the loop
@@ -1098,24 +1012,11 @@
 			</h2>
 		</div>
 
-		<div data-scroll-animate class="divide-y divide-stone-200 border-t border-b border-stone-200">
-			{#each faq as item}
-				<details class="group py-6">
-					<summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
-						<span class="font-serif text-xl text-ecohubs-deep leading-snug">{item.q}</span>
-						<span
-							class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0"
-							>+</span
-						>
-					</summary>
-					<div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">
-						{@html item.aHtml}
-					</div>
-				</details>
-			{/each}
-		</div>
+		<FaqAccordion items={faq} data-scroll-animate />
 
-		<div class="mt-8 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-center sm:gap-8">
+		<div
+			class="mt-8 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-center sm:gap-8"
+		>
 			<a
 				href="/faq#rcos"
 				class="inline-flex items-center gap-2 text-sm text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1"
@@ -1135,74 +1036,40 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      11. CLOSING CTA
 ═══════════════════════════════════════════════════════════════════ -->
-<section class="relative py-28 md:py-40 overflow-hidden">
-	<div class="absolute inset-0 -z-10 bg-ecohubs-deep"></div>
-	<div
-		class="absolute inset-0 -z-10 opacity-40"
-		style="background-image: radial-gradient(circle at 20% 30%, rgba(16,185,129,0.32), transparent 50%), radial-gradient(circle at 80% 70%, rgba(217,119,6,0.18), transparent 55%);"
-	></div>
-
-	<div class="max-w-4xl mx-auto px-6 lg:px-8 text-center text-ecohubs-ivory">
-		<div data-scroll-animate class="kicker text-emerald-300 mb-6">
-			The RCOS Standard is freely readable
-		</div>
-
-		<h2
-			data-scroll-animate
-			class="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.05] mb-10"
+<ClosingCta
+	kicker="The RCOS Standard is freely readable"
+	divider
+	footnote="Open standard · Modular · Forkable · Built in the open"
+>
+	{#snippet headline()}
+		Read it. Argue with it. <br class="hidden md:block" />
+		<em class="font-story italic font-normal text-emerald-300">Run it.</em>
+	{/snippet}
+	{#snippet lead()}
+		The standard is open. The pilots are live. The next version is shaped by whoever shows up and
+		edits it well.
+	{/snippet}
+	{#snippet actions()}
+		<a
+			href="https://rcos.ecohubs.community"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="no-external-decoration px-8 py-4 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors inline-flex items-center justify-center gap-2"
 		>
-			Read it. Argue with it. <br class="hidden md:block" />
-			<em class="font-story italic font-normal text-emerald-300">Run it.</em>
-		</h2>
-
-		<p
-			data-scroll-animate
-			class="font-serif text-xl md:text-2xl leading-snug text-stone-200/90 max-w-2xl mx-auto mb-14"
+			Open the live RCOS Standard
+			<span class="text-sm">↗</span>
+		</a>
+		<a
+			href="/#join"
+			class="px-8 py-4 border border-emerald-300/50 text-emerald-100 font-medium rounded-full hover:bg-emerald-900/40 transition-colors"
 		>
-			The standard is open. The pilots are live. The next version is shaped by whoever shows up and
-			edits it well.
-		</p>
-
-		<div class="mx-auto w-16 h-px bg-emerald-500/40 mb-12"></div>
-
-		<div data-scroll-animate class="flex flex-col sm:flex-row justify-center gap-3">
-			<a
-				href="https://rcos.ecohubs.community"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="px-8 py-4 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors inline-flex items-center justify-center gap-2"
-			>
-				Open the live RCOS Standard
-				<span class="text-sm">↗</span>
-			</a>
-			<a
-				href="/#join"
-				class="px-8 py-4 border border-emerald-300/50 text-emerald-100 font-medium rounded-full hover:bg-emerald-900/40 transition-colors"
-			>
-				Become a member &amp; contribute
-			</a>
-		</div>
-
-		<p class="mt-12 text-xs text-emerald-200/60 tracking-widest uppercase">
-			Open standard · Modular · Forkable · Built in the open
-		</p>
-	</div>
-</section>
+			Become a member &amp; contribute
+		</a>
+	{/snippet}
+</ClosingCta>
 
 <style>
-	/* Page-local: pill chip and "layer card" lift used by the RCOS Standard hero/spec. */
-	:global(.pill) {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4rem;
-		padding: 0.3rem 0.7rem;
-		border-radius: 9999px;
-		font-size: 0.72rem;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		font-weight: 600;
-	}
-
+	/* Page-local: the "layer card" lift used by the seven-layer grid. */
 	:global(.layer-card) {
 		transition:
 			transform 0.35s ease,

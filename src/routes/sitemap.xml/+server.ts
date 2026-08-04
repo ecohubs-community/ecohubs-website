@@ -14,6 +14,7 @@ const routes: SitemapRoute[] = [
 	{ path: '', priority: '1.0', changefreq: 'weekly' },
 	{ path: '/vision', priority: '0.9', changefreq: 'monthly' },
 	{ path: '/rcos', priority: '0.8', changefreq: 'monthly' },
+	{ path: '/csi', priority: '0.8', changefreq: 'monthly' },
 	{ path: '/membership', priority: '0.9', changefreq: 'monthly' },
 	{ path: '/faq', priority: '0.7', changefreq: 'monthly' },
 	{ path: '/join', priority: '0.7', changefreq: 'monthly' },
@@ -25,7 +26,7 @@ const routes: SitemapRoute[] = [
 	// Landing pages
 	{ path: '/community-resilience-assessment', priority: '0.8', changefreq: 'monthly' },
 	{ path: '/join-the-waitlist', priority: '0.9', changefreq: 'weekly' },
-	{ path: '/links', priority: '0.6', changefreq: 'weekly' },
+	{ path: '/links', priority: '0.6', changefreq: 'weekly' }
 	// Note: /welcome is intentionally omitted — it's a noindex interstitial.
 ];
 

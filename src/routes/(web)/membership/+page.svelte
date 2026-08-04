@@ -3,6 +3,8 @@
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import PersonaIcons from '$lib/components/PersonaIcons.svelte';
 	import EcosystemSection from '$lib/components/EcosystemSection.svelte';
+	import FaqAccordion from '$lib/components/FaqAccordion.svelte';
+	import ClosingCta from '$lib/components/sections/ClosingCta.svelte';
 	import { generateBreadcrumbs } from '$lib/config/seo';
 
 	import { rooms, faqItems, doorways, voices } from './data';
@@ -61,8 +63,8 @@
 
 				<p class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light">
 					Membership is not a tier you buy or a list you get on. It is a quiet decision to bring
-					your craft, your time, or your honest questions to a community that is writing the
-					RCOS Standard for a different way to live.
+					your craft, your time, or your honest questions to a community that is writing the RCOS
+					Standard for a different way to live.
 				</p>
 
 				<div class="mt-10 flex flex-col sm:flex-row gap-3">
@@ -753,7 +755,9 @@
 
 		<div class="grid md:grid-cols-3 gap-6 lg:gap-8">
 			{#each voices as v}
-				<article class="bg-white rounded-3xl p-7 border border-stone-200/80 soft-shadow flex flex-col">
+				<article
+					class="bg-white rounded-3xl p-7 border border-stone-200/80 soft-shadow flex flex-col"
+				>
 					<p class="font-story italic text-xl leading-snug text-ecohubs-deep flex-1">"{v.quote}"</p>
 					<div class="mt-6 flex items-center gap-3 pt-6 border-t border-stone-100">
 						{#if v.avatar}
@@ -766,7 +770,9 @@
 								/>
 							</div>
 						{:else}
-							<div class="w-11 h-11 rounded-full bg-stone-200 border border-stone-200 flex items-center justify-center text-stone-500 font-serif text-base select-none">
+							<div
+								class="w-11 h-11 rounded-full bg-stone-200 border border-stone-200 flex items-center justify-center text-stone-500 font-serif text-base select-none"
+							>
 								{v.name.charAt(0)}
 							</div>
 						{/if}
@@ -841,20 +847,7 @@
 			</h2>
 		</div>
 
-		<div class="divide-y divide-stone-200 border-t border-b border-stone-200">
-			{#each faqItems as item}
-				<details class="group py-6">
-					<summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
-						<span class="font-serif text-xl text-ecohubs-deep leading-snug">{item.q}</span>
-						<span
-							class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0 select-none"
-							>+</span
-						>
-					</summary>
-					<div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">{@html item.a}</div>
-				</details>
-			{/each}
-		</div>
+		<FaqAccordion items={faqItems} />
 
 		<div class="mt-8 text-center">
 			<a
@@ -870,44 +863,37 @@
 <!-- ═══════════════════════════════════════════════════════════════════
 		11. FINAL CTA
 ═══════════════════════════════════════════════════════════════════ -->
-<section class="relative py-28 md:py-40 overflow-hidden">
-	<div class="absolute inset-0 -z-10 bg-ecohubs-deep"></div>
-	<div
-		class="absolute inset-0 -z-10 opacity-40"
-		style="background-image: radial-gradient(circle at 20% 30%, rgba(16,185,129,0.35), transparent 50%), radial-gradient(circle at 80% 70%, rgba(217,119,6,0.2), transparent 55%);"
-	></div>
-
-	<div class="max-w-3xl mx-auto px-6 lg:px-8 text-center text-ecohubs-ivory">
-		<div class="kicker text-emerald-300 mb-5">An invitation, not a funnel</div>
-		<h2 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-8">
-			If you've read this far <span class="font-story italic font-light">—</span><br />
-			<em class="font-story italic font-normal text-emerald-300">we'd like to read you, too.</em>
-		</h2>
-		<p class="text-lg text-stone-200/85 leading-relaxed mb-10 max-w-xl mx-auto">
-			We are not looking for believers. We are looking for people who are ready to make the
-			invisible things explicit — in their own lives, and with others.
-		</p>
-		<div class="flex flex-col sm:flex-row justify-center gap-3">
-			<a
-				href="/join"
-				class="px-8 py-4 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors"
-				data-sveltekit-preload-data="hover"
-			>
-				Apply for membership
-			</a>
-			<a
-				href="/vision"
-				class="px-8 py-4 border border-emerald-300/50 text-emerald-100 font-medium rounded-full hover:bg-emerald-900/40 transition-colors"
-			>
-				Read the vision first
-			</a>
-		</div>
-		<p class="mt-10 text-xs text-emerald-200/60 tracking-widest uppercase">
-			Free · Contribution-based · Community-decided
-		</p>
-		<p class="mt-4 text-sm text-emerald-100/60 max-w-md mx-auto font-story italic">
-			Completing the application doesn't guarantee membership. The community decides together. We
-			answer everyone, either way.
-		</p>
-	</div>
-</section>
+<ClosingCta
+	kicker="An invitation, not a funnel"
+	leadStyle="body"
+	width="narrow"
+	footnote="Free · Contribution-based · Community-decided"
+>
+	{#snippet headline()}
+		If you've read this far <span class="font-story italic font-light">—</span><br />
+		<em class="font-story italic font-normal text-emerald-300">we'd like to read you, too.</em>
+	{/snippet}
+	{#snippet lead()}
+		We are not looking for believers. We are looking for people who are ready to make the invisible
+		things explicit — in their own lives, and with others.
+	{/snippet}
+	{#snippet actions()}
+		<a
+			href="/join"
+			class="px-8 py-4 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full hover:bg-white transition-colors"
+			data-sveltekit-preload-data="hover"
+		>
+			Apply for membership
+		</a>
+		<a
+			href="/vision"
+			class="px-8 py-4 border border-emerald-300/50 text-emerald-100 font-medium rounded-full hover:bg-emerald-900/40 transition-colors"
+		>
+			Read the vision first
+		</a>
+	{/snippet}
+	{#snippet note()}
+		Completing the application doesn't guarantee membership. The community decides together. We
+		answer everyone, either way.
+	{/snippet}
+</ClosingCta>

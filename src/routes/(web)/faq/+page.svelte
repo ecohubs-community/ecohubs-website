@@ -10,13 +10,15 @@
 
 	import { faqItems as generalFaq, ecosystemFaq } from '../data';
 	import { faqItems as visionFaq } from '../vision/data';
-	import { faq as rcosFaqRaw } from '../rcos/data';
+	import { faq as rcosFaq } from '../rcos/data';
+	import { faq as csiFaq } from '../csi/data';
 	import { faqItems as membershipFaq } from '../membership/data';
 
 	const breadcrumbs = generateBreadcrumbs('faq');
 
-	// Normalise RCOS Standard entries (use `aHtml`) into the same shape as the other FAQ arrays.
-	const rcosFaq = rcosFaqRaw.map((item) => ({ q: item.q, a: item.aHtml }));
+	// The ecosystem section carries the tool overviews plus the CSI-specific
+	// questions from `/csi`, so the map's answers are searchable here too.
+	const ecosystemItems = [...ecosystemFaq, ...csiFaq];
 
 	const rawSections = [
 		{
@@ -53,7 +55,7 @@
 			title: 'The tools we build,',
 			titleEm: 'and how they fit.',
 			lead: 'The shared apps behind EcoHubs — RCOS, CSI, VoteCast, and the resilience assessment.',
-			items: ecosystemFaq
+			items: ecosystemItems
 		},
 		{
 			id: 'membership',
@@ -321,7 +323,8 @@
 					{:else}
 						<p class="text-stone-700 leading-relaxed">
 							No questions match that. Try different words, or
-							<a href="/contact" class="text-ecohubs-primary hover:underline">send us the question</a
+							<a href="/contact" class="text-ecohubs-primary hover:underline"
+								>send us the question</a
 							>.
 						</p>
 					{/if}

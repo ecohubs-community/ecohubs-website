@@ -59,6 +59,13 @@ export const SEO_CONFIG = {
 				'Explore the open-source standard for building regenerative communities. A living knowledge system designed for replication and adaptation.',
 			ogImage: '/og-rcos.jpg'
 		},
+		csi: {
+			title: 'CSI — the Community Suitability Index | EcoHubs',
+			description:
+				'An open map of where a regenerative, sovereign community has room to begin — read against the law, the land, the water and the welcome.',
+			// Borrowed from the CSI app until a local /og-csi.jpg is produced.
+			ogImage: 'https://csi.ecohubs.community/og-image.png'
+		},
 		membership: {
 			title: 'Become a Member - EcoHubs.community',
 			description:
@@ -120,6 +127,7 @@ export const SITE_NAVIGATION = {
 	home: { name: 'Home', path: '/' },
 	vision: { name: 'Vision', path: '/vision', parent: 'home' },
 	rcos: { name: 'RCOS Standard', path: '/rcos', parent: 'home' },
+	csi: { name: 'CSI', path: '/csi', parent: 'home' },
 	membership: { name: 'Membership', path: '/membership', parent: 'home' },
 	join: { name: 'Apply', path: '/join', parent: 'membership' },
 	contact: { name: 'Contact', path: '/contact', parent: 'home' },

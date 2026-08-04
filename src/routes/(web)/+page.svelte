@@ -15,6 +15,7 @@
 
 	import SEO from '$lib/components/SEO.svelte';
 	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
+	import FaqAccordion from '$lib/components/FaqAccordion.svelte';
 	import {
 		initScrollAnimations,
 		initStaggeredScrollAnimations
@@ -764,7 +765,6 @@
 	</div>
 </section>
 
-
 <!-- ═══════════════════════════════════════════════════════════════════
 	3e. ECOHUB 1 WAITLIST — promo band
 ═══════════════════════════════════════════════════════════════════ -->
@@ -802,11 +802,12 @@
 				Join the founding community
 				<span class="transition-transform group-hover:translate-x-0.5">→</span>
 			</a>
-			<span class="text-[13px] text-emerald-200/70">Free · no commitment · just the first step.</span>
+			<span class="text-[13px] text-emerald-200/70"
+				>Free · no commitment · just the first step.</span
+			>
 		</div>
 	</div>
 </section>
-
 
 <!-- ═══════════════════════════════════════════════════════════════════
      3f. WHAT WE ARE ALREADY DOING
@@ -1109,8 +1110,7 @@
 			<div class="lg:col-span-5">
 				<div class="kicker text-emerald-700 mb-3">A 19-min introduction</div>
 				<h3 class="font-serif text-2xl md:text-3xl text-ecohubs-deep leading-snug">
-					Prefer to <em class="font-story italic font-normal text-stone-500">watch</em> rather than
-					read?
+					Prefer to <em class="font-story italic font-normal text-stone-500">watch</em> rather than read?
 				</h3>
 				<p class="mt-4 text-stone-700 leading-relaxed">
 					A walk-through of what RCOS is, why it exists, and how the layers fit together. The whole
@@ -1328,20 +1328,7 @@
 			</h2>
 		</div>
 
-		<div data-scroll-stagger class="divide-y divide-stone-200 border-t border-b border-stone-200">
-			{#each faqItems.slice(0, 6) as item}
-				<details class="group py-6">
-					<summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
-						<span class="font-serif text-xl text-ecohubs-deep leading-snug">{item.q}</span>
-						<span
-							class="mt-1 text-2xl text-ecohubs-primary font-story italic transition-transform group-open:rotate-45 shrink-0 select-none"
-							>+</span
-						>
-					</summary>
-					<div class="mt-4 text-stone-700 leading-relaxed max-w-2xl">{item.a}</div>
-				</details>
-			{/each}
-		</div>
+		<FaqAccordion items={faqItems.slice(0, 6)} data-scroll-stagger />
 
 		<div class="mt-8 text-center">
 			<a
@@ -1353,7 +1340,6 @@
 		</div>
 	</div>
 </section>
-
 
 <!-- ═══════════════════════════════════════════════════════════════════
      8. ROADMAP
@@ -1415,9 +1401,9 @@
 				<em class="font-story italic font-normal text-stone-500">That is the point.</em>
 			</h2>
 			<p class="mt-5 text-lg text-stone-700 leading-relaxed">
-				EcoHubs is not a product you sign up to. RCOS is a standard that gets better with every person
-				who reads it carefully, disagrees with a chapter, runs an experiment, comes back with what
-				they learned. There are many ways in.
+				EcoHubs is not a product you sign up to. RCOS is a standard that gets better with every
+				person who reads it carefully, disagrees with a chapter, runs an experiment, comes back with
+				what they learned. There are many ways in.
 			</p>
 		</div>
 

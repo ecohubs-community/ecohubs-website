@@ -35,7 +35,11 @@
 		ogImage: string | null;
 		title: string;
 		desc: string;
+		/** "Open X ↗" — the app itself. Sits on the right of the action row. */
 		primary: EcoLink;
+		/** Link to this project's on-site landing page, left of `primary` in the same
+		 *  row. Omitted for projects that don't have a landing page yet. */
+		readMore?: EcoLink;
 		secondary: EcoLink[];
 	};
 
@@ -55,20 +59,21 @@
 			title: 'Regenerative Community Operating System',
 			desc: 'The open-source standard — a living set of patterns that makes the invisible explicit: how decisions get made, conflict gets repaired, care is shared.',
 			primary: {
-					label: 'Open RCOS',
-					href: 'https://rcos.ecohubs.community',
-					external: true
-				},
+				label: 'Open RCOS',
+				href: 'https://rcos.ecohubs.community',
+				external: true
+			},
+			readMore: { label: 'Read more', href: '/rcos', external: false },
 			secondary: [
-				{
-					label: 'What is RCOS?',
-					href: '/rcos',
-					external: false
-				},
 				{
 					label: 'Community Resilience Assessment',
 					href: '/community-resilience-assessment',
 					external: false
+				},
+				{
+					label: 'Specs — RCOS applied to itself',
+					href: 'https://specs.ecohubs.community',
+					external: true
 				}
 			]
 		},
@@ -76,17 +81,16 @@
 			key: 'csi',
 			code: 'CSI',
 			sub: 'Community Suitability Index',
-			href: 'https://csi.ecohubs.community',
-			external: true,
+			href: '/csi',
+			external: false,
 			domain: 'csi.ecohubs.community',
 			icon: '/app-icons/csi.svg',
 			ogImage: 'https://csi.ecohubs.community/og-image.png',
 			title: 'Community Suitability Index',
 			desc: 'A working map of where a regenerative, sovereign community has room to begin — read against the law, the land, the water and the welcome. Honest about what we don’t yet know.',
 			primary: { label: 'Open CSI', href: 'https://csi.ecohubs.community', external: true },
-			secondary: [
-				{ label: 'csi.ecohubs.community', href: 'https://csi.ecohubs.community', external: true }
-			]
+			readMore: { label: 'Read more', href: '/csi', external: false },
+			secondary: []
 		},
 		{
 			key: 'votecast',
@@ -99,7 +103,11 @@
 			ogImage: 'https://votecast.ecohubs.community/og-default.jpg',
 			title: 'VoteCast',
 			desc: 'Transparent, consent-based decision-making — proposals, deliberation and votes everyone can see and trust.',
-			primary: { label: 'Open VoteCast', href: 'https://votecast.ecohubs.community', external: true },
+			primary: {
+				label: 'Open VoteCast',
+				href: 'https://votecast.ecohubs.community',
+				external: true
+			},
 			secondary: [
 				{
 					label: 'votecast.ecohubs.community',
@@ -128,7 +136,8 @@
 	let ecoOpen = $state(false);
 	let activeProj = $state('rcos');
 	let closeTimer: ReturnType<typeof setTimeout> | undefined;
-	const ecoActive = $derived(page.url.pathname.startsWith('/rcos'));
+	// Highlight "Ecosystem" whenever the reader is on one of the projects' landing pages.
+	const ecoActive = $derived(['/rcos', '/csi'].some((path) => page.url.pathname.startsWith(path)));
 
 	function openEco() {
 		clearTimeout(closeTimer);
@@ -179,7 +188,9 @@
 
 			<!-- Desktop Navigation -->
 			<div class="hidden md:block">
-				<div class="ml-10 flex items-baseline space-x-8 font-sans font-medium text-sm text-stone-600">
+				<div
+					class="ml-10 flex items-baseline space-x-8 font-sans font-medium text-sm text-stone-600"
+				>
 					{#each navLinks as link (link.href)}
 						{#if link.href === '__ecosystem__'}
 							<!-- ── ECOSYSTEM MEGA MENU ── -->
@@ -250,14 +261,18 @@
 																	onerror={hideBrokenImage}
 																/>
 																<span class="min-w-0">
-																	<span class="block font-serif text-[1.02rem] text-ecohubs-deep leading-tight"
+																	<span
+																		class="block font-serif text-[1.02rem] text-ecohubs-deep leading-tight"
 																		>{p.code}</span
 																	>
-																	<span class="block text-[0.74rem] text-stone-500 truncate">{p.sub}</span>
+																	<span class="block text-[0.74rem] text-stone-500 truncate"
+																		>{p.sub}</span
+																	>
 																</span>
 															</span>
 															<span
-																class="flex-none text-ecohubs-primary transition {activeProj === p.key
+																class="flex-none text-ecohubs-primary transition {activeProj ===
+																p.key
 																	? 'opacity-100 translate-x-0'
 																	: 'opacity-0 -translate-x-1'}">→</span
 															>
@@ -279,21 +294,47 @@
 																onerror={hideBrokenImage}
 															/>
 														{/if}
-														<h3 class="font-serif text-lg text-ecohubs-deep leading-snug">{p.title}</h3>
+														<h3 class="font-serif text-lg text-ecohubs-deep leading-snug">
+															{p.title}
+														</h3>
 														<p class="mt-2 text-sm text-stone-600 leading-relaxed">{p.desc}</p>
-														<a
-															href={p.primary.href}
-															target={p.primary.external ? '_blank' : undefined}
-															rel={p.primary.external ? 'noopener' : undefined}
-															data-sveltekit-preload-data={p.primary.external ? undefined : 'hover'}
-															class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium pb-0.5 {p.primary
-																.green
-																? 'text-ecohubs-primary underline underline-offset-4 decoration-ecohubs-primary/60 hover:decoration-ecohubs-primary'
-																: 'text-ecohubs-dark border-b border-ecohubs-dark/40 hover:border-ecohubs-dark'}"
+														<!-- Action row: landing page on the left, the app itself on the right.
+														     Projects without a landing page keep the single left-aligned link. -->
+														<div
+															class="mt-4 flex items-center gap-4 {p.readMore
+																? 'justify-between'
+																: ''}"
 														>
-															{p.primary.label}
-															{#if p.primary.external}<span aria-hidden="true">↗</span>{/if}
-														</a>
+															{#if p.readMore}
+																<a
+																	href={p.readMore.href}
+																	target={p.readMore.external ? '_blank' : undefined}
+																	rel={p.readMore.external ? 'noopener' : undefined}
+																	data-sveltekit-preload-data={p.readMore.external
+																		? undefined
+																		: 'hover'}
+																	class="inline-flex items-center gap-1 text-sm font-medium text-stone-600 hover:text-ecohubs-dark transition-colors"
+																>
+																	{p.readMore.label}
+																	<span aria-hidden="true">→</span>
+																</a>
+															{/if}
+															<a
+																href={p.primary.href}
+																target={p.primary.external ? '_blank' : undefined}
+																rel={p.primary.external ? 'noopener' : undefined}
+																data-sveltekit-preload-data={p.primary.external
+																	? undefined
+																	: 'hover'}
+																class="inline-flex items-center gap-1.5 text-sm font-medium pb-0.5 {p
+																	.primary.green
+																	? 'text-ecohubs-primary underline underline-offset-4 decoration-ecohubs-primary/60 hover:decoration-ecohubs-primary'
+																	: 'text-ecohubs-dark border-b border-ecohubs-dark/40 hover:border-ecohubs-dark'}"
+															>
+																{p.primary.label}
+																{#if p.primary.external}<span aria-hidden="true">↗</span>{/if}
+															</a>
+														</div>
 														{#if p.secondary.length}
 															<div class="mt-4 flex flex-col gap-1.5 text-sm">
 																{#each p.secondary as s (s.href)}
@@ -304,7 +345,9 @@
 																		data-sveltekit-preload-data={s.external ? undefined : 'hover'}
 																		class="text-stone-600 hover:text-ecohubs-dark"
 																	>
-																		{s.label}{#if s.external}<span aria-hidden="true"> ↗</span>{/if}
+																		{s.label}{#if s.external}<span aria-hidden="true">
+																				↗</span
+																			>{/if}
 																	</a>
 																{/each}
 															</div>
@@ -399,7 +442,9 @@
 										/>
 										<span class="min-w-0">
 											<span class="block font-medium text-ecohubs-deep leading-tight"
-												>{p.code}{#if p.external}<span class="text-stone-400 text-xs"> ↗</span>{/if}</span
+												>{p.code}{#if p.external}<span class="text-stone-400 text-xs">
+														↗</span
+													>{/if}</span
 											>
 											<span class="block text-xs text-stone-500 truncate">{p.sub}</span>
 										</span>
