@@ -33,8 +33,11 @@
 		description?: string;
 		canonical?: string;
 		ogImage?: string;
-		ogImageWidth?: number;
-		ogImageHeight?: number;
+		/** Pass `null` when the image is dynamic and its size isn't known — the
+		 *  tags are then omitted so crawlers measure the file instead of
+		 *  trusting a wrong hint. */
+		ogImageWidth?: number | null;
+		ogImageHeight?: number | null;
 		ogImageAlt?: string;
 		twitterCard?: 'summary' | 'summary_large_image' | 'app' | 'player';
 		type?: 'website' | 'article';
@@ -237,8 +240,10 @@
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta property="og:image" content={ogImageUrl} />
-	<meta property="og:image:width" content={String(ogImageWidth)} />
-	<meta property="og:image:height" content={String(ogImageHeight)} />
+	{#if ogImageWidth && ogImageHeight}
+		<meta property="og:image:width" content={String(ogImageWidth)} />
+		<meta property="og:image:height" content={String(ogImageHeight)} />
+	{/if}
 	<meta property="og:image:alt" content={ogImageAlt ?? title} />
 	<meta property="og:site_name" content={SEO_CONFIG.siteName} />
 	<meta property="og:locale" content={SEO_CONFIG.locale} />

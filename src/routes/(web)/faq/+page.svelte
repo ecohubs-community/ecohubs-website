@@ -156,12 +156,12 @@
 <!-- Reusable question row — shared by the section view and the search results. -->
 {#snippet qa(item: { id: string; q: string; a: string }, sectionTag: string | null)}
 	<details id={item.id} class="group py-6 scroll-mt-28">
-		<summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+		<summary class="flex justify-between items-center gap-6 cursor-pointer list-none">
 			<span class="flex items-start gap-2 min-w-0">
 				<button
 					type="button"
 					onclick={(e) => copyLink(item.id, e)}
-					class="mt-2 shrink-0 opacity-40 group-hover:opacity-100 hover:!opacity-100 text-stone-400 hover:text-ecohubs-primary transition-opacity"
+					class="mt-0.5 shrink-0 opacity-40 group-hover:opacity-100 hover:!opacity-100 text-stone-400 hover:text-ecohubs-primary transition-opacity"
 					title="Copy link to this question"
 					aria-label="Copy link to this question"
 				>

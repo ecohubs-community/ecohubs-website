@@ -15,13 +15,22 @@
 	const formattedDate = $derived(formatDate(post.date));
 	const siteUrl = 'https://ecohubs.community';
 
+	// A one-entry contents list is just the first heading repeated, so the nav
+	// only earns its space from two sections up.
+	const showToc = $derived(post.headings.length > 1);
+
+	// Ghost feature images are unreachable to social crawlers and often WebP;
+	// `socialImage` is the proxied JPEG. Its dimensions vary with the source,
+	// so we only claim 1200x630 for the static fallback.
+	const ogImage = $derived(post.socialImage ?? '/og-blog.jpg');
+	const ogImageSized = $derived(!post.socialImage);
+
 	// Only surface an "Updated" line when the modification falls on a later
 	// calendar day — Ghost touches `updated_at` minutes after publish for
 	// trivial post-publish edits (image uploads, slug tweaks), which would
 	// otherwise show "Updated <same-day>" right next to the publish date.
 	const showUpdated = $derived(
-		!!post.dateModified &&
-			post.dateModified.slice(0, 10) !== post.date.slice(0, 10)
+		!!post.dateModified && post.dateModified.slice(0, 10) !== post.date.slice(0, 10)
 	);
 
 	// Full breadcrumb feeds JSON-LD (SERP rich-result hierarchy); the visible
@@ -71,11 +80,7 @@
 		'@type': 'Article',
 		headline: post.title,
 		description: post.excerpt,
-		image: post.image
-			? post.image.startsWith('http')
-				? post.image
-				: `${siteUrl}${post.image}`
-			: `${siteUrl}/og-blog.jpg`,
+		image: ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`,
 		datePublished: post.date,
 		dateModified: post.dateModified || post.date,
 		author: {
@@ -94,13 +99,69 @@
 			? { articleSection: post.tags.map((t) => t.name).join(', ') }
 			: {})
 	});
+
+	// ── Heading permalinks ────────────────────────────────────────────────
+	// The "#" links are injected into the post HTML server-side (see
+	// `withHeadingAnchors`), so they can't carry Svelte handlers — one
+	// delegated listener on the article covers them all, and survives the
+	// component being reused across posts.
+	let articleEl = $state<HTMLElement | null>(null);
+	let copyAnnouncement = $state('');
+
+	async function copyToClipboard(text: string): Promise<boolean> {
+		try {
+			await navigator.clipboard.writeText(text);
+			return true;
+		} catch {
+			return false;
+		}
+	}
+
+	function handleArticleClick(event: MouseEvent) {
+		if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+			return; // let "open in new tab" and friends behave normally
+		}
+
+		const anchor = (event.target as Element | null)?.closest('[data-heading-anchor]');
+		if (!(anchor instanceof HTMLAnchorElement)) return;
+
+		const hash = anchor.getAttribute('href') ?? '';
+		// Built from origin + pathname rather than anchor.href so tracking
+		// params on the current URL don't ride along into the copied link.
+		const url = `${location.origin}${location.pathname}${hash}`;
+
+		event.preventDefault();
+		copyToClipboard(url).then((copied) => {
+			if (!copied) {
+				// No clipboard access (insecure context, denied permission) —
+				// put it in the address bar so it can be copied by hand.
+				location.hash = hash;
+				return;
+			}
+			anchor.dataset.copied = '';
+			copyAnnouncement = 'Link copied to clipboard';
+			setTimeout(() => {
+				delete anchor.dataset.copied;
+				copyAnnouncement = '';
+			}, 1600);
+		});
+	}
+
+	$effect(() => {
+		const el = articleEl;
+		if (!el) return;
+		el.addEventListener('click', handleArticleClick);
+		return () => el.removeEventListener('click', handleArticleClick);
+	});
 </script>
 
 <SEO
 	title="{post.title} — EcoHubs blog"
 	description={post.excerpt}
 	type="article"
-	ogImage={post.image || '/og-blog.jpg'}
+	{ogImage}
+	ogImageWidth={ogImageSized ? 1200 : null}
+	ogImageHeight={ogImageSized ? 630 : null}
 	jsonLd={articleJsonLd}
 	breadcrumbs={jsonLdBreadcrumbs}
 />
@@ -190,9 +251,34 @@
 ═══════════════════════════════════════════════════════════════════ -->
 <article class="pb-20 md:pb-28 bg-ecohubs-base">
 	<div class="max-w-3xl mx-auto px-6 lg:px-8">
-		<div class="prose prose-lg prose-ecohubs max-w-none">
+		{#if showToc}
+			<nav
+				aria-labelledby="toc-label"
+				class="mb-12 md:mb-14 rounded-2xl border border-stone-200/70 bg-ecohubs-ivory px-6 py-6 md:px-7 md:py-7"
+			>
+				<h2 id="toc-label" class="kicker text-emerald-700 mb-4">In this letter</h2>
+				<ol class="space-y-2.5">
+					{#each post.headings as heading, i (heading.id)}
+						<li class="flex gap-3 items-baseline">
+							<span class="font-mono text-[0.7rem] text-stone-400 tabular-nums shrink-0">
+								{String(i + 1).padStart(2, '0')}
+							</span>
+							<a
+								href="#{heading.id}"
+								class="text-[0.95rem] leading-snug text-ecohubs-deep hover:text-ecohubs-primary transition-colors"
+							>
+								{heading.text}
+							</a>
+						</li>
+					{/each}
+				</ol>
+			</nav>
+		{/if}
+
+		<div bind:this={articleEl} class="prose prose-lg prose-ecohubs max-w-none">
 			{@html post.html}
 		</div>
+		<div aria-live="polite" class="sr-only">{copyAnnouncement}</div>
 	</div>
 </article>
 
@@ -394,6 +480,65 @@
 		margin-top: 2em;
 		margin-bottom: 0.8em;
 		line-height: 1.2;
+		/* Anchor for the absolutely-positioned "#" permalink, and clearance for
+		   the fixed 5rem navbar when a contents link scrolls us here. */
+		position: relative;
+		scroll-margin-top: 7rem;
+	}
+
+	/* ────────────────────────────────────────────────────────────────────
+	   Heading permalinks — a light-gray "#" in the column gutter that
+	   appears on hover and copies the section's URL. Injected server-side
+	   by `withHeadingAnchors`, so it's styled globally.
+	──────────────────────────────────────────────────────────────────── */
+
+	:global(.prose-ecohubs .heading-anchor) {
+		position: absolute;
+		/* Sits inside the article column's own 1.5rem padding, so it never
+		   pushes the page into horizontal scroll on narrow screens. */
+		left: -1.4rem;
+		width: 1.4rem;
+		top: 0.12em;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+		font-size: 0.95rem;
+		font-weight: 400;
+		line-height: 1.6;
+		color: #c4c1b8;
+		text-decoration: none;
+		opacity: 0;
+		transition:
+			opacity 0.18s ease,
+			color 0.18s ease;
+	}
+
+	:global(.prose-ecohubs h2:hover .heading-anchor),
+	:global(.prose-ecohubs .heading-anchor:focus-visible),
+	:global(.prose-ecohubs .heading-anchor[data-copied]) {
+		opacity: 1;
+	}
+
+	:global(.prose-ecohubs .heading-anchor:hover),
+	:global(.prose-ecohubs .heading-anchor[data-copied]) {
+		color: #059669;
+	}
+
+	:global(.prose-ecohubs .heading-anchor[data-copied])::after {
+		content: 'Copied';
+		position: absolute;
+		left: 50%;
+		bottom: calc(100% + 6px);
+		transform: translateX(-50%);
+		padding: 0.25rem 0.55rem;
+		border-radius: 9999px;
+		background: #0b2e24;
+		color: #f5f2ea;
+		font-family: 'Inter Variable', 'Inter', system-ui, sans-serif;
+		font-size: 0.6rem;
+		font-weight: 600;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		white-space: nowrap;
+		pointer-events: none;
 	}
 
 	:global(.prose-ecohubs h3) {

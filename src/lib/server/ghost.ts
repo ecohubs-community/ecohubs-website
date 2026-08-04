@@ -47,6 +47,69 @@ type GhostAdminAPIClient = {
 	};
 };
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Social preview images
+
+   Feature images can't be handed to LinkedIn / Facebook as-is:
+
+   1. The Ghost host serves `robots.txt` with `Disallow: /` (deliberate — it
+      keeps the CMS out of search results, since ecohubs.community is the
+      canonical surface). Social crawlers honour that for images too, so
+      anything on blog.ecohubs.community is unfetchable to them.
+   2. Ghost stores whatever the author uploaded — often WebP, which
+      LinkedIn's crawler cannot decode, or 2 MB+ PNGs.
+
+   Both go away by pointing `og:image` at our own `/og-image/…` route, which
+   proxies Ghost's "1200px wide, re-encoded as JPEG" transform from a host
+   crawlers are allowed to read.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/** Ghost lays content images out as `/content/images/YYYY/MM/<file>`. */
+const GHOST_IMAGE_PATH = /^\/content\/images\/(\d{4}\/\d{2}\/[A-Za-z0-9._-]+)$/;
+
+/**
+ * Rewrite a Ghost `feature_image` into something a social crawler can
+ * actually fetch and render. Non-Ghost images are passed through (Unsplash
+ * gets its own resize/format params); anything unrecognised returns
+ * `undefined` so the caller can fall back to a static OG image.
+ */
+export function toSocialImageUrl(featureImage?: string): string | undefined {
+	if (!featureImage) return undefined;
+
+	let url: URL;
+	try {
+		url = new URL(featureImage, GHOST_URL || 'https://ecohubs.community');
+	} catch {
+		return undefined;
+	}
+
+	if (GHOST_URL) {
+		let ghostOrigin: string | undefined;
+		try {
+			ghostOrigin = new URL(GHOST_URL).origin;
+		} catch {
+			ghostOrigin = undefined;
+		}
+		if (ghostOrigin && url.origin === ghostOrigin) {
+			const path = url.pathname.match(GHOST_IMAGE_PATH)?.[1];
+			// Relative on purpose — <SEO> prefixes it with the canonical site URL.
+			return path ? `/og-image/${path}` : undefined;
+		}
+	}
+
+	if (url.hostname.endsWith('images.unsplash.com')) {
+		url.searchParams.set('w', '1200');
+		url.searchParams.set('fm', 'jpg');
+		url.searchParams.set('q', '80');
+		return url.toString();
+	}
+
+	// Some other absolute URL — SVG is not a valid OG image anywhere, and a
+	// WebP we can't transform would fail on LinkedIn, so both fall back.
+	if (/\.(svg|webp)$/i.test(url.pathname)) return undefined;
+	return url.toString();
+}
+
 // Lazy initialization of API clients to avoid errors when env vars are missing
 let contentApi: GhostContentAPIClient | null = null;
 let adminApi: GhostAdminAPIClient | null = null;

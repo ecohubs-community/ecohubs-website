@@ -8,6 +8,7 @@ import LuisaImage from '$lib/assets/luisa.webp';
 import luisaGarden from '$lib/assets/luisa-garden.webp';
 import BorisImage from '$lib/assets/boris.webp';
 import borisFruit from '$lib/assets/boris-fruit.webp';
+import danImagination from '$lib/assets/dan-imagination.webp';
 
 // ─── STORIES ──────────────────────────────────────────────────────────────────
 
@@ -37,7 +38,7 @@ export const stories: Story[] = [
 		id: 'stefan',
 		name: 'Stefan',
 		keyword: 'Loneliness',
-		location: 'Founder · Ecuador',
+		location: 'Initiator · Ecuador',
 		img: StefanImage,
 		beats: [
 			{
@@ -87,7 +88,7 @@ export const stories: Story[] = [
 		id: 'luisa',
 		name: 'Luisa',
 		keyword: 'Economy',
-		location: 'EcoHubs Member · Italy',
+		location: 'EcoHubs Steward · Italy',
 		img: LuisaImage,
 		beats: [
 			{
@@ -182,6 +183,56 @@ export const stories: Story[] = [
 					`Eventually that search brought me to Ecuador. Not with a perfect plan — I came to try a different way of living, where food could grow around me, where community mattered, where rain, soil, and seasons could shape daily life again.`,
 					`Together with others I helped start <strong class="text-ecohubs-deep">Fruit Haven</strong>, a food forest and ecovillage in the Ecuadorian Amazon. Life here isn't easy. There are disagreements, hard work, setbacks. But there is also a sense of belonging I rarely found elsewhere — not because everything works, but because life feels real.`,
 					`The deeper lesson isn't that everyone should move to an ecovillage. It's simpler than that. <em class="font-story italic text-ecohubs-deep">We don't need to create a connection to nature. We need to remember it.</em>`
+				]
+			}
+		]
+	},
+	{
+		id: 'dan',
+		name: 'Dan',
+		keyword: 'Imagination',
+		location: 'EcoHubs Member · Germany',
+		beats: [
+			{
+				number: '01',
+				title: 'I used to know this',
+				content: [
+					`As a child, the world felt like a playground. Life seemed rich and precious, and I drew, dreamed, and built things with my hands without needing a reason.`,
+					`Then the promises of modern culture — a job, security, a career — took hold, and I got caught in the hustle. Somewhere along the way, I lost touch with the parts of myself that made me feel most alive. I drew less. The dreaming grew quieter.`
+				]
+			},
+			{
+				number: '02',
+				title: 'When something returned',
+				content: [
+					`A ringing in my ear suddenly appeared, and over time I came to understand it as a reminder to listen more deeply — to my own needs and the boundaries between effort and rest. Around the same time, I found myself grieving an old tree I had climbed as a child after it was cut down.`,
+					`Both moments stayed with me. What unsettled me most wasn't simply the loss, but the depth of feeling they revealed — and how differently these experiences seemed to be held by those around me. They led me to wonder about the relationship between our inner worlds and the living systems we are part of — what shapes our perception, and why we so often lose connection with both.`
+				]
+			},
+			{
+				number: '03',
+				title: 'Following the questions',
+				image: danImagination,
+				content: [
+					`That curiosity led me into years of exploration. Why do so many of us struggle to see the effects of how we live? What moves whole cultures? I followed the questions wherever they led — into Indigenous cultures, shamanism, the work of Jung, permaculture, food forests, systems thinking, the I Ching, and many other fields and ways of seeing the world.`,
+					`What I found kept returning to certain patterns: the importance of <em class="font-story italic">listening deeply</em> — to the self, to each other, and to the land — and the courage to dream and trust in the possibility of change. The more I explored, the more it seemed that existence isn't purely chaos, but an unfolding process of becoming.`,
+					`Slowly, the drawing came back. The dreaming too. And with them, I realized something important: imagination doesn't just help us envision different futures — it expands our capacity to act upon those visions with more confidence, aliveness, and trust. To me, imagination and change are deeply connected.`
+				]
+			},
+			{
+				number: '04',
+				title: 'What I came to see',
+				pullQuote: `Modern culture often drains human potential instead of nurturing it — keeping us so deep in stress and competition that imagining another way becomes hard. And without imagination, <span class="underline decoration-ecohubs-primary/40 decoration-2 underline-offset-4">how do we build better futures?</span>`,
+				content: [
+					`Better ways already exist. More connected ways of living can be lived out loud and embodied by those who can picture them, giving others a glimpse of a different future and waking up their imagination to build it.`
+				]
+			},
+			{
+				number: '05',
+				title: "Why I'm here",
+				content: [
+					`When I first encountered EcoHubs, I felt an immediate sense of recognition. So much of what the community was putting into words matched how I already saw the world.`,
+					`I'm here to bring ideas, energy, and whatever practical help is needed — to gather the people, stories, and tools that let nature-connected ways of living take root. <em class="font-story italic text-ecohubs-deep">Supporting and amplifying projects that nourish better futures feels deeply meaningful to me.</em>`
 				]
 			}
 		]
@@ -384,7 +435,7 @@ export const faqItems = [
 	// Foundational / factual (migrated from the previous homepage)
 	{
 		q: 'What is EcoHubs?',
-		a: 'EcoHubs is a growing network of people building an open-source standard for regenerative communities — a way of life that puts belonging, ecology, and shared decision-making back at the centre. It is online today and place-based tomorrow, with the first physical pilot already running in Ecuador.'
+		a: 'EcoHubs is a growing network of people building an open-source standard for regenerative communities — a way of life that puts belonging, ecology, and shared decision-making back at the centre. It is online today and place-based tomorrow — the RCOS Standard is already being piloted with the <a href="https://fruithaven.land/" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">Fruit Haven</a> community in Ecuador, and the first EcoHub is now being formed.'
 	},
 	{
 		q: 'What is the RCOS Standard?',
@@ -392,11 +443,11 @@ export const faqItems = [
 	},
 	{
 		q: 'Is EcoHubs a real project, or just a vision?',
-		a: "Real. The standard is being developed, the community is active, and the first standard pilot is running in Ecuador. The project is structured in phases — community formation → standard development → pilot hubs — and we're in all three at once."
+		a: 'Real. The standard is being developed, the community is active, and RCOS is already being piloted with the <a href="https://fruithaven.land/" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">Fruit Haven</a> community in Ecuador. The project is structured in phases — community formation → standard development → pilot hubs — with the first two well underway and the first EcoHub now taking shape.'
 	},
 	{
 		q: 'How is this different from existing ecovillages or intentional communities?',
-		a: 'Three things. First, the standard is open-source — most communities run on undocumented systems; we write ours down so it can be replicated and improved. Second, it integrates ecology, governance, economy and culture as one design, not separate departments. Third, there is a digital coordination layer so dozens of communities can learn from each other instead of each starting from zero.'
+		a: 'Three things. First, the standard is open-source — most communities run on undocumented systems; we write ours down so it can be replicated and improved. Second, it integrates ecology, governance, economy and culture as one design, not separate departments. Third, there is a digital coordination layer — shared tools like the RCOS Standard, the Community Suitability Index (CSI), and VoteCast — so dozens of communities can learn from each other instead of each starting from zero.'
 	},
 	{
 		q: 'Is the goal to replace existing society, or to build an alternative within it?',
@@ -422,15 +473,19 @@ export const faqItems = [
 	// Voice / posture
 	{
 		q: 'Do I have to move somewhere to join?',
-		a: 'No. Most members are online, in their current home base. The community meets, contributes, and co-creates the RCOS Standard together — from anywhere. Physical hubs like the Ecuador pilot come next, when communities are ready.'
+		a: 'No. Most members are online, in their current home base. The community meets, contributes, and co-creates the RCOS Standard together — from anywhere. Physical hubs come next, when communities are ready — the RCOS Standard is already being piloted with the <a href="https://fruithaven.land/" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">Fruit Haven</a> community in Ecuador, and the first EcoHub is now being formed.'
+	},
+	{
+		q: 'How do I get involved in the first physical EcoHub?',
+		a: 'The first hub — EcoHub One — is being formed now, and the waitlist is open. Joining is free and non-binding: you are saying "keep me posted," nothing more. From there it is a gradual path — conversations and community calls, a deliberately careful selection, then pioneer training — before anyone moves in. <a href="/join-the-waitlist" class="text-ecohubs-primary hover:underline font-medium">Join the waitlist →</a>'
 	},
 	{
 		q: 'What does "regenerative" mean here?',
 		a: 'That a community gives back more than it takes — to the land, to its people, and to the wider world. Regeneration is about building soil, trust, skill, and resilience over time. Not sustainability in the sense of "do less damage," but a way of life that actively leaves things healthier than it found them.'
 	},
 	{
-		q: 'Is this a crypto project? Why ECO tokens?',
-		a: "EcoHubs is not a speculative crypto project. ECO is an internal value unit used inside the community to recognize contributions — like a transparent ledger for labor and care. It's not traded, not promoted as an investment, and never the reason to join. The reason to join is the people and the work."
+		q: 'Is this a crypto project? What is ECO?',
+		a: "No. ECO is not a cryptocurrency or a tradable coin — there is nothing to buy, sell, or speculate on. It is purely an internal unit we use to make contribution visible, measurable and transparent: a shared ledger for the labour and care people put in. It is never traded, never promoted as an investment, and never the reason to join. The reason to join is the people and the work."
 	},
 	{
 		q: "I don't have skills in permaculture or governance. Am I still welcome?",
@@ -439,10 +494,30 @@ export const faqItems = [
 	{
 		q: 'What does joining cost, and what do I get?',
 		a: "Application is free and based on alignment, not payment. Members get access to the community platform, the full RCOS Standard, the voice to shape it, and — when you're ready — a path into the physical pilot hubs."
+	},
+	{
+		q: 'I want to get involved — where do I start?',
+		a: 'It depends on where you are. Drawn to the first physical hub, or just want to follow along? <a href="/join-the-waitlist" class="text-ecohubs-primary hover:underline font-medium">Join the waitlist</a> — free and non-binding. Ready to contribute to the community and help shape the RCOS Standard? <a href="/membership" class="text-ecohubs-primary hover:underline font-medium">Apply for membership</a>. Already part of an existing community? Start with the free <a href="/community-resilience-assessment" class="text-ecohubs-primary hover:underline font-medium">Community Resilience Assessment</a>. And if you are still just reading — that is a perfectly good place to be, too.'
 	}
 ];
 
+// ─── ECOSYSTEM / TOOLS FAQ ────────────────────────────────────────────────────
+// The shared apps in the EcoHubs ecosystem, mirrored from the Navbar's Ecosystem
+// menu. Kept as its own FAQ section so the tools are grouped, not scattered.
+
 export const ecosystemFaq = [
+	{
+		q: 'What tools make up the EcoHubs ecosystem?',
+		a: 'Four, for now — and they are all open to explore. The <a href="https://rcos.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">RCOS Standard</a> is the shared document at the centre: the patterns a community runs on. The <a href="https://csi.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">Community Suitability Index (CSI)</a> maps where a regenerative community has room to begin. <a href="https://votecast.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">VoteCast</a> handles transparent, consent-based decisions. And the <a href="/community-resilience-assessment" class="text-ecohubs-primary hover:underline font-medium">Community Resilience Assessment</a> is a free self-check for any community. You will find them all in the Ecosystem menu.'
+	},
+	{
+		q: 'What are CSI and VoteCast?',
+		a: '<strong class="text-ecohubs-deep">CSI</strong>, the Community Suitability Index, is a working map of where a regenerative, sovereign community has room to begin — read against the law, the land, the water and the welcome of a place, and honest about what we don\'t yet know (<a href="https://csi.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">csi.ecohubs.community</a>). <strong class="text-ecohubs-deep">VoteCast</strong> is our transparent, consent-based decision-making platform: proposals, deliberation and votes everyone can see and trust (<a href="https://votecast.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">votecast.ecohubs.community</a>).'
+	},
+	{
+		q: 'We already have a community — is there anything here for us?',
+		a: 'Yes. The <strong class="text-ecohubs-deep">Community Resilience Assessment</strong> is a free, five-minute self-check for any intentional community, new or long-established. It maps how clearly your key agreements are written down — how decisions get made, how people join and leave, how conflict is repaired. There is no score and no pass/fail, just an honest picture of what is explicit and what is still unsaid, followed by a human-written gap report. <a href="/community-resilience-assessment" class="text-ecohubs-primary hover:underline font-medium">Take the assessment →</a>'
+	},
 	{
 		q: 'What is the EcoHubs ecosystem?',
 		a: 'A set of distinct tools that each serve the wider EcoHubs purpose: making regenerative communities more accessible, resilient, replicable, and normal. They don’t depend on one another — each fulfils its own job. Seeking.Community helps people find aligned, existing communities; CSI (https://csi.ecohubs.community) helps founders find the best place in the world to start a new one; VoteCast (https://votecast.ecohubs.community) aims to make community governance easier; and RCOS is a standard for the human structures inside a community. The Community Resilience Assessment complements them as a way for a group to see where it’s strong and where it’s fragile.'

@@ -244,7 +244,7 @@
 
 		<!-- Tab navigation -->
 		<div class="flex flex-col sm:flex-row gap-3 mb-16">
-			{#each stories as story}
+			{#each stories as story (story.id)}
 				<button
 					class="flex items-center gap-4 px-5 py-4 rounded-2xl border transition-all text-left
                  {activeStoryId === story.id
@@ -274,7 +274,7 @@
 							<div
 								class="w-full h-full flex items-center justify-center text-stone-400 font-serif text-lg select-none"
 							>
-								?
+								{story.name.charAt(0)}
 							</div>
 						{/if}
 					</div>
@@ -341,11 +341,19 @@
 				<aside class="lg:col-span-4 lg:sticky lg:top-28 self-start">
 					<div class="relative">
 						<div class="rounded-[32px] overflow-hidden soft-shadow aspect-[4/5]">
-							<img
-								src={activeStory.img}
-								alt={activeStory.name}
-								class="w-full h-full object-cover"
-							/>
+							{#if activeStory.img}
+								<img
+									src={activeStory.img}
+									alt={activeStory.name}
+									class="w-full h-full object-cover"
+								/>
+							{:else}
+								<div
+									class="w-full h-full flex items-center justify-center bg-stone-100 text-stone-300 font-serif text-7xl select-none"
+								>
+									{activeStory.name.charAt(0)}
+								</div>
+							{/if}
 						</div>
 						<div
 							class="absolute -bottom-5 left-6 right-6 bg-ecohubs-base rounded-2xl p-5 border border-stone-200 shadow-sm"
@@ -361,7 +369,7 @@
 					<div class="mt-14 pl-1">
 						<div class="kicker text-stone-500 mb-3">Chapters</div>
 						<ol class="space-y-2 text-sm text-stone-600">
-							{#each activeStory.beats as beat}
+							{#each activeStory.beats as beat (beat.number)}
 								<li class="flex gap-3">
 									<span class="font-story italic text-ecohubs-primary shrink-0">{beat.number}</span>
 									{beat.title}
@@ -373,7 +381,7 @@
 
 				<!-- Right: story beats -->
 				<div class="lg:col-span-8 space-y-16">
-					{#each activeStory.beats as beat}
+					{#each activeStory.beats as beat (beat.number)}
 						{#if beat.pullQuote}
 							<article class="relative">
 								<div class="kicker text-stone-500 mb-4">{beat.number} · {beat.title}</div>
@@ -488,7 +496,7 @@
 		</div>
 
 		<div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-			{#each wounds.slice(0, WOUNDS_PREVIEW_COUNT) as w}
+			{#each wounds.slice(0, WOUNDS_PREVIEW_COUNT) as w (w.title)}
 				<div
 					class="p-6 rounded-2xl border border-emerald-900/40"
 					style="background: rgba(10,61,46,0.5);"
@@ -500,7 +508,7 @@
 			{/each}
 
 			{#if showAllWounds}
-				{#each wounds.slice(WOUNDS_PREVIEW_COUNT) as w}
+				{#each wounds.slice(WOUNDS_PREVIEW_COUNT) as w (w.title)}
 					<div
 						class="reveal-fade-in p-6 rounded-2xl border border-emerald-900/40"
 						style="background: rgba(10,61,46,0.5);"

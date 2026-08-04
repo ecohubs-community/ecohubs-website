@@ -34,7 +34,7 @@ export const GET: RequestHandler = async () => {
 			<description>${escapeXml(post.excerpt)}</description>
 			<pubDate>${new Date(post.date).toUTCString()}</pubDate>
 			<guid isPermaLink="true">${SITE_URL}/blog/${post.slug}</guid>
-			${post.image ? `<enclosure url="${post.image.startsWith('http') ? post.image : SITE_URL + post.image}" type="image/jpeg" />` : ''}
+			${post.socialImage ? `<enclosure url="${post.socialImage.startsWith('http') ? post.socialImage : SITE_URL + post.socialImage}" type="image/jpeg" />` : ''}
 			${post.author ? `<author>${escapeXml(post.author)}</author>` : ''}
 			${post.tags && post.tags.length > 0 ? `<category>${post.tags.map((t) => escapeXml(t.name)).join('</category><category>')}</category>` : ''}
 		</item>`
