@@ -371,14 +371,8 @@ export const sources: Source[] = [
 ];
 
 /* ── Why EcoHubs built it ────────────────────────────────────────── */
-
-/** Verbatim from the Purpose Charter — RCOS Layer 0, published on specs.ecohubs.community. */
-export const purposeCharter = {
-	quote:
-		'To make regenerative community living — rooted in care for people, land, and life — structurally accessible, resilient, and replicable, reducing humanity’s dependency on extractive systems one community at a time.',
-	source: 'EcoHubs Purpose Charter · RCOS Layer 0 · Identity',
-	href: 'https://specs.ecohubs.community/layers/0-identity/01-purpose-charter'
-} as const;
+/* The Purpose Charter quote that opens this section is shared with
+   `/votecast` — see `$lib/config/purpose-charter`. */
 
 export interface Reason {
 	number: string;

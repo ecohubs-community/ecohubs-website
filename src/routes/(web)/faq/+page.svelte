@@ -12,13 +12,14 @@
 	import { faqItems as visionFaq } from '../vision/data';
 	import { faq as rcosFaq } from '../rcos/data';
 	import { faq as csiFaq } from '../csi/data';
+	import { faq as votecastFaq } from '../votecast/data';
 	import { faqItems as membershipFaq } from '../membership/data';
 
 	const breadcrumbs = generateBreadcrumbs('faq');
 
-	// The ecosystem section carries the tool overviews plus the CSI-specific
-	// questions from `/csi`, so the map's answers are searchable here too.
-	const ecosystemItems = [...ecosystemFaq, ...csiFaq];
+	// The ecosystem section carries the tool overviews plus the per-tool
+	// questions from `/csi` and `/votecast`, so those answers are searchable here too.
+	const ecosystemItems = [...ecosystemFaq, ...csiFaq, ...votecastFaq];
 
 	const rawSections = [
 		{

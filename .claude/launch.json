@@ -6,6 +6,12 @@
       "runtimeExecutable": "/Users/el_stefano/.nvm/versions/node/v22.22.1/bin/node",
       "runtimeArgs": ["./node_modules/vite/bin/vite.js", "dev", "--port", "5180", "--strictPort"],
       "port": 5180
+    },
+    {
+      "name": "dev-alt",
+      "runtimeExecutable": "/Users/el_stefano/.nvm/versions/node/v22.22.1/bin/node",
+      "runtimeArgs": ["./node_modules/vite/bin/vite.js", "dev", "--port", "5201", "--strictPort"],
+      "port": 5201
     }
   ]
 }

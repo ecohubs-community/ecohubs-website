@@ -6,7 +6,9 @@
 	import ClosingCta from '$lib/components/sections/ClosingCta.svelte';
 	import StanceColumns from '$lib/components/sections/StanceColumns.svelte';
 	import PositionTriptych from '$lib/components/sections/PositionTriptych.svelte';
+	import WhyWeBuiltIt from '$lib/components/sections/WhyWeBuiltIt.svelte';
 	import { generateBreadcrumbs } from '$lib/config/seo';
+	import { purposeCharter } from '$lib/config/purpose-charter';
 	import {
 		initScrollAnimations,
 		initStaggeredScrollAnimations
@@ -31,7 +33,6 @@
 		confidenceGrades,
 		unchecked,
 		sources,
-		purposeCharter,
 		reasons,
 		personas,
 		faq
@@ -633,78 +634,17 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      7b. WHY ECOHUBS BUILT IT
 ═══════════════════════════════════════════════════════════════════ -->
-<section class="relative py-24 md:py-36 bg-ecohubs-deep text-ecohubs-ivory overflow-hidden">
-	<div
-		class="absolute inset-0 -z-0 opacity-50"
-		style="background-image: radial-gradient(circle at 15% 20%, rgba(16,185,129,0.22), transparent 55%), radial-gradient(circle at 85% 75%, rgba(217,119,6,0.16), transparent 55%);"
-	></div>
-	<div class="absolute inset-0 grain pointer-events-none opacity-40"></div>
-
-	<div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
-		<div data-scroll-animate class="max-w-3xl mb-12">
-			<div class="kicker text-emerald-300/80 mb-5 flex items-center gap-3">
-				<span class="h-px w-8 bg-emerald-300/40"></span>
-				Why EcoHubs built a map
-			</div>
-			<h2 class="font-serif text-4xl md:text-6xl leading-[1.05] text-ecohubs-ivory">
-				We needed this ourselves.<br />
-				<em class="font-story italic font-normal text-emerald-300">So we made it public.</em>
-			</h2>
-			<p class="mt-6 text-lg md:text-xl text-stone-200/85 leading-relaxed max-w-2xl">
-				CSI is not a side project. It falls straight out of what EcoHubs is for — and out of a
-				question we are actively trying to answer for our own first hub.
-			</p>
-		</div>
-
-		<!-- The purpose, quoted rather than paraphrased -->
-		<figure
-			data-scroll-animate
-			class="mb-14 max-w-4xl border-l-2 border-emerald-400/40 pl-6 md:pl-8"
-		>
-			<blockquote class="font-story italic text-xl md:text-2xl leading-snug text-emerald-50">
-				"{purposeCharter.quote}"
-			</blockquote>
-			<figcaption class="mt-4 text-sm text-stone-300/70">
-				<a
-					href={purposeCharter.href}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="no-external-decoration hover:text-emerald-300 transition-colors"
-				>
-					{purposeCharter.source} <span aria-hidden="true">↗</span>
-				</a>
-			</figcaption>
-		</figure>
-
-		<div data-scroll-stagger class="grid md:grid-cols-3 gap-5 lg:gap-6">
-			{#each reasons as reason (reason.number)}
-				<article
-					class="group relative rounded-3xl border border-emerald-900/40 overflow-hidden bg-gradient-to-br from-[#0a3d2e]/70 to-[#0b2e24]/80 hover:border-emerald-400/40 transition-colors p-7 flex flex-col"
-				>
-					<div
-						class="absolute top-0 right-0 font-story italic text-[80px] leading-none text-emerald-300/10 pr-5 pt-3 select-none"
-					>
-						{reason.number}
-					</div>
-					<div class="kicker text-emerald-300/80 mb-3 relative">{reason.kicker}</div>
-					<h3 class="font-serif text-2xl text-ecohubs-ivory leading-snug mb-3 relative">
-						{reason.title}
-					</h3>
-					<p class="text-[15px] text-stone-200/85 leading-relaxed mb-6 relative">{reason.body}</p>
-					<a
-						href={reason.href}
-						target={reason.external ? '_blank' : undefined}
-						rel={reason.external ? 'noopener noreferrer' : undefined}
-						data-sveltekit-preload-data={reason.external ? undefined : 'hover'}
-						class="no-external-decoration mt-auto text-sm font-medium text-emerald-300 hover:underline relative"
-					>
-						{reason.cta}
-					</a>
-				</article>
-			{/each}
-		</div>
-	</div>
-</section>
+<WhyWeBuiltIt
+	kicker="Why EcoHubs built a map"
+	lead="CSI is not a side project. It falls straight out of what EcoHubs is for — and out of a question we are actively trying to answer for our own first hub."
+	quote={purposeCharter}
+	{reasons}
+>
+	{#snippet headline()}
+		We needed this ourselves.<br />
+		<em class="font-story italic font-normal text-emerald-300">So we made it public.</em>
+	{/snippet}
+</WhyWeBuiltIt>
 
 <!-- ═══════════════════════════════════════════════════════════════════
      8. WHO PICKS THIS UP

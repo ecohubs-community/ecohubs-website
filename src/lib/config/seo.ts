@@ -66,6 +66,13 @@ export const SEO_CONFIG = {
 			// Borrowed from the CSI app until a local /og-csi.jpg is produced.
 			ogImage: 'https://csi.ecohubs.community/og-image.png'
 		},
+		votecast: {
+			title: 'VoteCast — decisions a community can trust | EcoHubs',
+			description:
+				'A transparent way for a community to propose, deliberate and decide — six voting methods, from a simple poll to consent, and a record that holds.',
+			// Borrowed from the VoteCast app until a local /og-votecast.jpg is produced.
+			ogImage: 'https://votecast.ecohubs.community/og-default.jpg'
+		},
 		membership: {
 			title: 'Become a Member - EcoHubs.community',
 			description:
@@ -128,6 +135,7 @@ export const SITE_NAVIGATION = {
 	vision: { name: 'Vision', path: '/vision', parent: 'home' },
 	rcos: { name: 'RCOS Standard', path: '/rcos', parent: 'home' },
 	csi: { name: 'CSI', path: '/csi', parent: 'home' },
+	votecast: { name: 'VoteCast', path: '/votecast', parent: 'home' },
 	membership: { name: 'Membership', path: '/membership', parent: 'home' },
 	join: { name: 'Apply', path: '/join', parent: 'membership' },
 	contact: { name: 'Contact', path: '/contact', parent: 'home' },

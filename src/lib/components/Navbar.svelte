@@ -96,8 +96,8 @@
 			key: 'votecast',
 			code: 'VoteCast',
 			sub: 'Community Voting Platform',
-			href: 'https://votecast.ecohubs.community',
-			external: true,
+			href: '/votecast',
+			external: false,
 			domain: 'votecast.ecohubs.community',
 			icon: '/app-icons/votecast.svg',
 			ogImage: 'https://votecast.ecohubs.community/og-default.jpg',
@@ -108,13 +108,8 @@
 				href: 'https://votecast.ecohubs.community',
 				external: true
 			},
-			secondary: [
-				{
-					label: 'votecast.ecohubs.community',
-					href: 'https://votecast.ecohubs.community',
-					external: true
-				}
-			]
+			readMore: { label: 'Read more', href: '/votecast', external: false },
+			secondary: []
 		},
 		{
 			key: 'seeking',
@@ -137,7 +132,9 @@
 	let activeProj = $state('rcos');
 	let closeTimer: ReturnType<typeof setTimeout> | undefined;
 	// Highlight "Ecosystem" whenever the reader is on one of the projects' landing pages.
-	const ecoActive = $derived(['/rcos', '/csi'].some((path) => page.url.pathname.startsWith(path)));
+	const ecoActive = $derived(
+		['/rcos', '/csi', '/votecast'].some((path) => page.url.pathname.startsWith(path))
+	);
 
 	function openEco() {
 		clearTimeout(closeTimer);
