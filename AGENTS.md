@@ -30,8 +30,9 @@ Public site lives under the `(web)` route group so it shares Navbar + Footer + t
 | `/rcos`                | `src/routes/(web)/rcos/+page.svelte`       | RCOS Standard page — failure modes, what-it-is/isn't, seven core layers, modules, comparisons, pilot, contribute, FAQ                                                                                                                             |
 | `/csi`                      | `src/routes/(web)/csi/+page.svelte`             | CSI (Community Suitability Index) page — pendant to `/rcos` for `csi.ecohubs.community`. Constraints, what-it-is/isn't, the three gates, seven domains, how to read a score, sources, personas, FAQ                                                    |
 | `/votecast`                 | `src/routes/(web)/votecast/+page.svelte`        | VoteCast page — pendant to `/rcos` and `/csi` for `votecast.ecohubs.community`. Interactive consent-ballot hero demo, why decisions break, what-it-is/isn't, six voting methods, decision lifecycle, the settings that decide fairness, personas, FAQ  |
+| `/seeking`                  | `src/routes/(web)/seeking/+page.svelte`         | Seeking.Community page — the one ecosystem page for people who want to **join** a community rather than build one. Example-match hero, why people look, what stops them, how it works, the ten intake questions, what comes back, FAQ                 |
 | `/membership`               | `src/routes/(web)/membership/+page.svelte`      | Membership page — what it is/isn't, doorways, application process, rooms, trust-by-design, EcosystemSection, voices, FAQ                                                                                                                             |
-| `/faq`                      | `src/routes/(web)/faq/+page.svelte`             | **Canonical FAQ page**. Aggregates FAQs from `(web)/data.ts`, `vision/data.ts`, `rcos/data.ts`, `csi/data.ts`, `votecast/data.ts`, `membership/data.ts`. Only this route emits `FAQPage` JSON-LD                                                                                   |
+| `/faq`                      | `src/routes/(web)/faq/+page.svelte`             | **Canonical FAQ page**. Aggregates FAQs from `(web)/data.ts`, `vision/data.ts`, `rcos/data.ts`, `csi/data.ts`, `votecast/data.ts`, `seeking/data.ts`, `membership/data.ts`. Only this route emits `FAQPage` JSON-LD                                                                                   |
 | `/blog`, `/blog/[slug]`     | `src/routes/(web)/blog/...`                     | Ghost-backed blog                                                                                                                                                                                                                                    |
 | `/join`                     | `src/routes/(web)/join/+page.svelte`            | Multi-step application form (`ApplicationForm.svelte`)                                                                                                                                                                                               |
 | `/contact`                  | `src/routes/(web)/contact/+page.svelte`         | Channels + `ContactForm.svelte`                                                                                                                                                                                                                      |
@@ -140,7 +141,8 @@ src/lib/components/
   ContactForm.svelte         Contact form (Turnstile + SMTP)
   CookieConsent.svelte
   EcosystemSection.svelte    "Operating system" section (used on /membership)
-  FaqAccordion.svelte        <details> FAQ list — /, /rcos, /csi, /votecast, /membership
+  CaveatPanel.svelte         Dark "what we don't know" panel — /csi, /votecast, /seeking
+  FaqAccordion.svelte        <details> FAQ list — /, /rcos, /csi, /votecast, /seeking, /membership
   Footer.svelte
   Logo.svelte
   Navbar.svelte
@@ -150,10 +152,10 @@ src/lib/components/
   SEO.svelte                 Meta + canonical + JSON-LD
 
 src/lib/components/sections/   Whole page sections shared between long pages.
-  ClosingCta.svelte          Dark closing CTA — /rcos, /csi, /votecast, /membership
-  PositionTriptych.svelte    Three cards, middle flagged "you are here" — /rcos, /csi, /votecast
-  StanceColumns.svelte       Dark "what it is / what it isn't" — /rcos, /csi, /votecast
-  WhyWeBuiltIt.svelte        Dark purpose pull-quote + three numbered reason cards — /csi, /votecast
+  ClosingCta.svelte          Dark closing CTA — /rcos, /csi, /votecast, /seeking, /membership
+  PositionTriptych.svelte    Three cards, middle flagged "you are here" — /rcos, /csi, /votecast, /seeking
+  StanceColumns.svelte       Dark "what it is / what it isn't" — /rcos, /csi, /votecast, /seeking
+  WhyWeBuiltIt.svelte        Dark purpose pull-quote + three numbered reason cards — /csi, /votecast, /seeking
 ```
 
 Cross-page *content* gets the same treatment: the Purpose Charter quote that opens
@@ -188,7 +190,7 @@ each page keeps its own emphasis.
 Before opening a PR for non-trivial UI work:
 
 - [ ] `pnpm check` passes (no new TS errors)
-- [ ] All main routes (`/`, `/vision`, `/rcos`, `/csi`, `/votecast`, `/membership`, `/faq`) return 200
+- [ ] All main routes (`/`, `/vision`, `/rcos`, `/csi`, `/votecast`, `/seeking`, `/membership`, `/faq`) return 200
 - [ ] H1 count = 1 per page; no `<svelte:component>` introduced
 - [ ] New pages emit `<SEO>` with `ogImage` + `breadcrumbs`
 - [ ] External `target="_blank"` links carry `rel="noopener noreferrer"`

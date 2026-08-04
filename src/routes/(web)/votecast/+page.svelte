@@ -3,6 +3,7 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import FaqAccordion from '$lib/components/FaqAccordion.svelte';
+	import CaveatPanel from '$lib/components/CaveatPanel.svelte';
 	import ClosingCta from '$lib/components/sections/ClosingCta.svelte';
 	import StanceColumns from '$lib/components/sections/StanceColumns.svelte';
 	import PositionTriptych from '$lib/components/sections/PositionTriptych.svelte';
@@ -840,26 +841,13 @@
 			before you set it.
 		</p>
 
-		<div
-			data-scroll-animate
-			class="mt-8 rounded-3xl bg-ecohubs-deep text-ecohubs-ivory border border-emerald-900/40 p-7 md:p-9"
-		>
-			<div class="kicker text-amber-200/80 mb-5">What no setting fixes</div>
-			<ul class="grid md:grid-cols-2 gap-x-10 gap-y-3">
-				{#each settingsCannot as item (item)}
-					<li class="grid grid-cols-[18px_1fr] gap-3 items-start">
-						<span class="text-emerald-300/70 text-sm mt-0.5">○</span>
-						<span class="text-[15px] text-stone-200/90 leading-snug">{item}</span>
-					</li>
-				{/each}
-			</ul>
-			<p
-				class="mt-6 pt-5 border-t border-emerald-900/50 text-sm text-stone-300/70 leading-relaxed max-w-2xl"
-			>
-				A voting tool can make a group's rules explicit and hold it to them. Everything above still
-				depends on the people in the room, and we would rather write that down than let the
-				interface imply otherwise.
-			</p>
+		<div data-scroll-animate class="mt-8">
+			<CaveatPanel
+				kicker="What no setting fixes"
+				items={settingsCannot}
+				columns={2}
+				note="A voting tool can make a group's rules explicit and hold it to them. Everything above still depends on the people in the room, and we would rather write that down than let the interface imply otherwise."
+			/>
 		</div>
 	</div>
 </section>

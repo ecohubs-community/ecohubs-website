@@ -40,7 +40,6 @@
 	];
 </script>
 
-
 <SEO
 	title="Get in touch — EcoHubs.community"
 	description="Write to us, join the conversation on Discord, or apply for membership. We answer everyone, with care."
@@ -206,14 +205,11 @@
 </section>
 
 <style>
-	:global(main p),
-	:global(main li),
+	/* Form controls do not inherit a font; layout.css covers everything else. */
 	:global(main label),
 	:global(main input),
 	:global(main textarea),
-	:global(main button),
-	:global(main span:not([class*='font-'])),
-	:global(main div:not([class*='font-'])) {
+	:global(main button) {
 		font-family:
 			'Inter Variable',
 			'Inter',

@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
+	import { Search, X } from 'lucide-svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { generateBreadcrumbs } from '$lib/config/seo';
@@ -13,13 +14,14 @@
 	import { faq as rcosFaq } from '../rcos/data';
 	import { faq as csiFaq } from '../csi/data';
 	import { faq as votecastFaq } from '../votecast/data';
+	import { faq as seekingFaq } from '../seeking/data';
 	import { faqItems as membershipFaq } from '../membership/data';
 
 	const breadcrumbs = generateBreadcrumbs('faq');
 
-	// The ecosystem section carries the tool overviews plus the per-tool
-	// questions from `/csi` and `/votecast`, so those answers are searchable here too.
-	const ecosystemItems = [...ecosystemFaq, ...csiFaq, ...votecastFaq];
+	// The ecosystem section carries the tool overviews plus the per-tool questions
+	// from `/csi`, `/votecast` and `/seeking`, so those answers are searchable here too.
+	const ecosystemItems = [...ecosystemFaq, ...csiFaq, ...votecastFaq, ...seekingFaq];
 
 	const rawSections = [
 		{
@@ -125,9 +127,36 @@
 		copyTimer = setTimeout(() => (copiedId = ''), 1500);
 	}
 
+	let searchInput = $state<HTMLInputElement | null>(null);
+
 	function clearSearch() {
 		query = '';
+		searchInput?.focus();
 	}
+
+	/**
+	 * Searching swaps the section list out for the results list, so clearing the
+	 * search mounts brand-new nodes that the `onMount` IntersectionObserver never
+	 * saw — they keep the FOUC guard's `opacity: 0` and the page reads as empty.
+	 *
+	 * These are revealed outright rather than re-observed: the reader has already
+	 * seen this content, replaying the entrance choreography is noise, and an
+	 * observer that never fires (a backgrounded tab, say) would hide the whole
+	 * page. The first mount is left alone so the initial animation still runs.
+	 */
+	let hasSearched = false;
+	$effect(() => {
+		if (searching) {
+			hasSearched = true;
+			return;
+		}
+		if (!hasSearched) return;
+		tick().then(() => {
+			document
+				.querySelectorAll('[data-scroll-animate], [data-scroll-stagger]')
+				.forEach((el) => el.classList.add('is-visible'));
+		});
+	});
 
 	onMount(() => {
 		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
@@ -230,19 +259,33 @@
 
 		<!-- Search -->
 		<div data-scroll-animate class="mt-8 max-w-xl">
-			<label class="relative block">
-				<span class="sr-only">Search questions</span>
+			<div class="relative">
+				<label for="faq-search" class="sr-only">Search questions</label>
+				<Search
+					class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-stone-400 pointer-events-none"
+					strokeWidth={1.8}
+					aria-hidden="true"
+				/>
 				<input
+					id="faq-search"
+					bind:this={searchInput}
 					type="search"
 					bind:value={query}
+					onkeydown={(e) => e.key === 'Escape' && clearSearch()}
 					placeholder="Search the questions…"
-					class="w-full rounded-full border border-stone-300 bg-white/80 backdrop-blur px-5 py-3 pr-11 text-stone-800 placeholder:text-stone-400 focus:border-ecohubs-primary focus:outline-none focus:ring-2 focus:ring-ecohubs-primary/20 transition-colors"
+					class="faq-search w-full rounded-full border border-stone-300 bg-white/80 backdrop-blur pl-12 pr-12 py-3 text-stone-800 placeholder:text-stone-400 focus:border-ecohubs-primary focus:outline-none focus:ring-2 focus:ring-ecohubs-primary/20 transition-colors"
 				/>
-				<span
-					class="absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none select-none"
-					aria-hidden="true">⌕</span
-				>
-			</label>
+				{#if query}
+					<button
+						type="button"
+						onclick={clearSearch}
+						aria-label="Clear search"
+						class="absolute right-3 top-1/2 -translate-y-1/2 grid h-8 w-8 place-items-center rounded-full text-stone-400 hover:bg-stone-100 hover:text-ecohubs-dark focus-visible:ring-2 focus-visible:ring-ecohubs-primary/40 focus:outline-none transition-colors"
+					>
+						<X class="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+					</button>
+				{/if}
+			</div>
 		</div>
 
 		{#if !searching}
@@ -393,3 +436,12 @@
 		</div>
 	</div>
 </section>
+
+<style>
+	/* WebKit renders its own clear affordance on type="search"; hide it so the
+	   field shows only our own clear button. */
+	.faq-search::-webkit-search-cancel-button {
+		-webkit-appearance: none;
+		appearance: none;
+	}
+</style>

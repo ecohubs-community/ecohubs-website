@@ -3,6 +3,7 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import FaqAccordion from '$lib/components/FaqAccordion.svelte';
+	import CaveatPanel from '$lib/components/CaveatPanel.svelte';
 	import ClosingCta from '$lib/components/sections/ClosingCta.svelte';
 	import StanceColumns from '$lib/components/sections/StanceColumns.svelte';
 	import PositionTriptych from '$lib/components/sections/PositionTriptych.svelte';
@@ -556,26 +557,12 @@
 			</div>
 
 			<!-- What we haven't checked -->
-			<div
+			<CaveatPanel
 				data-scroll-animate
-				class="bg-ecohubs-deep text-ecohubs-ivory rounded-3xl p-7 border border-emerald-900/40"
-			>
-				<div class="kicker text-amber-200/80 mb-4">What we haven't checked</div>
-				<ul class="space-y-3">
-					{#each unchecked as item (item)}
-						<li class="grid grid-cols-[18px_1fr] gap-3 items-start">
-							<span class="text-emerald-300/70 text-sm mt-0.5">○</span>
-							<span class="text-[15px] text-stone-200/90 leading-snug">{item}</span>
-						</li>
-					{/each}
-				</ul>
-				<p
-					class="mt-5 pt-4 border-t border-emerald-900/50 text-xs text-stone-300/70 leading-relaxed"
-				>
-					These are desk numbers from open data. The visit decides the rest — we would rather say so
-					than pretend otherwise.
-				</p>
-			</div>
+				kicker="What we haven't checked"
+				items={unchecked}
+				note="These are desk numbers from open data. The visit decides the rest — we would rather say so than pretend otherwise."
+			/>
 		</div>
 	</div>
 </section>

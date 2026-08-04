@@ -73,6 +73,13 @@ export const SEO_CONFIG = {
 			// Borrowed from the VoteCast app until a local /og-votecast.jpg is produced.
 			ogImage: 'https://votecast.ecohubs.community/og-default.jpg'
 		},
+		seeking: {
+			title: 'Seeking.Community — find a community that fits | EcoHubs',
+			description:
+				"You don't have to start a community to live in one. Write where you want to land, a real person reads it by hand, and honest matches come back within 24 hours.",
+			// Borrowed from the Seeking app until a local /og-seeking.jpg is produced.
+			ogImage: 'https://seeking.community/og-default.jpg'
+		},
 		membership: {
 			title: 'Become a Member - EcoHubs.community',
 			description:
@@ -136,6 +143,7 @@ export const SITE_NAVIGATION = {
 	rcos: { name: 'RCOS Standard', path: '/rcos', parent: 'home' },
 	csi: { name: 'CSI', path: '/csi', parent: 'home' },
 	votecast: { name: 'VoteCast', path: '/votecast', parent: 'home' },
+	seeking: { name: 'Seeking', path: '/seeking', parent: 'home' },
 	membership: { name: 'Membership', path: '/membership', parent: 'home' },
 	join: { name: 'Apply', path: '/join', parent: 'membership' },
 	contact: { name: 'Contact', path: '/contact', parent: 'home' },

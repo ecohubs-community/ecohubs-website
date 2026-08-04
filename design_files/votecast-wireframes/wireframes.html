@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>VoteCast wireframes</title>
+		<style>
+			@font-face {
+				font-family: 'Inter Variable';
+				src: url('REPO/node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2')
+					format('woff2');
+				font-weight: 100 900;
+			}
+			@font-face {
+				font-family: 'Fraunces Variable';
+				src: url('REPO/node_modules/@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2')
+					format('woff2');
+				font-weight: 100 900;
+			}
+			@font-face {
+				font-family: 'JetBrains Mono Variable';
+				src: url('REPO/node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2')
+					format('woff2');
+				font-weight: 100 800;
+			}
+
+			:root {
+				--base: #fbfbf9;
+				--ivory: #f5f2ea;
+				--surface: #ffffff;
+				--ink: #1c1917;
+				--deep: #0b2e24;
+				--muted: #6b7265;
+				--faint: #9a9689;
+				--line: #e7e2d6;
+				--line2: #d6d0c1;
+				--emerald: #059669;
+				--emerald-soft: #e8f5ef;
+				--amber: #d97706;
+				--amber-soft: #fdf3e4;
+			}
+
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				background: #d9d9d4;
+				font-family: 'Inter Variable', system-ui, sans-serif;
+				-webkit-font-smoothing: antialiased;
+			}
+
+			.frame {
+				width: 1600px;
+				height: 1000px;
+				background: var(--base);
+				position: relative;
+				overflow: hidden;
+				color: var(--ink);
+			}
+
+			/* ── app chrome ─────────────────────────────────────────── */
+			.bar {
+				height: 96px;
+				background: var(--surface);
+				border-bottom: 1.5px solid var(--line);
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 0 64px;
+			}
+			.brand {
+				display: flex;
+				align-items: center;
+				gap: 14px;
+				font-family: 'Fraunces Variable', Georgia, serif;
+				font-size: 27px;
+				color: var(--deep);
+			}
+			.nav {
+				display: flex;
+				align-items: center;
+				gap: 40px;
+				font-size: 16px;
+				color: var(--muted);
+			}
+			.btn {
+				background: var(--deep);
+				color: #fff;
+				border-radius: 999px;
+				padding: 11px 26px;
+				font-size: 15px;
+				font-weight: 500;
+			}
+
+			.body {
+				padding: 44px 64px 0;
+			}
+
+			/* ── type ───────────────────────────────────────────────── */
+			.crumb {
+				font-family: 'JetBrains Mono Variable', ui-monospace, monospace;
+				font-size: 13px;
+				letter-spacing: 0.1em;
+				color: var(--muted);
+				text-transform: uppercase;
+			}
+			h1 {
+				font-family: 'Fraunces Variable', Georgia, serif;
+				font-weight: 400;
+				color: var(--deep);
+				letter-spacing: -0.015em;
+			}
+			.h-prop {
+				font-size: 46px;
+				margin: 14px 0 22px;
+			}
+			.h-comm {
+				font-size: 54px;
+				margin: 2px 0 8px;
+			}
+			.mono {
+				font-family: 'JetBrains Mono Variable', ui-monospace, monospace;
+				font-size: 13px;
+				letter-spacing: 0.09em;
+				text-transform: uppercase;
+				color: var(--faint);
+			}
+			.note {
+				font-size: 15px;
+				color: var(--faint);
+			}
+			.sec {
+				font-size: 15px;
+				font-weight: 600;
+				color: var(--muted);
+			}
+
+			/* ── pills ──────────────────────────────────────────────── */
+			.pills {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+			.pill {
+				border-radius: 999px;
+				padding: 7px 16px;
+				font-size: 14px;
+				font-weight: 500;
+				background: var(--ivory);
+				color: var(--muted);
+			}
+			.pill.open {
+				background: var(--emerald-soft);
+				color: var(--emerald);
+			}
+			.pill.up {
+				background: var(--amber-soft);
+				color: var(--amber);
+			}
+			.pill.dark {
+				background: var(--deep);
+				color: #fff;
+			}
+			.pill.ghost {
+				background: var(--surface);
+				border: 1.5px solid var(--line2);
+			}
+
+			/* ── phase stepper ──────────────────────────────────────── */
+			.steps {
+				display: flex;
+				align-items: center;
+				gap: 20px;
+				margin: 16px 0 14px;
+			}
+			.step {
+				width: 250px;
+				border-radius: 14px;
+				border: 1.5px solid var(--line);
+				background: var(--surface);
+				padding: 15px 18px;
+				position: relative;
+			}
+			.step.on {
+				background: var(--emerald-soft);
+				border-color: var(--emerald);
+			}
+			.step b {
+				display: block;
+				font-size: 16px;
+				font-weight: 600;
+				color: var(--muted);
+			}
+			.step.on b {
+				color: var(--deep);
+			}
+			.step span {
+				font-size: 14px;
+				color: var(--faint);
+			}
+			.step .tick {
+				position: absolute;
+				right: 16px;
+				top: 16px;
+				color: var(--emerald);
+			}
+			.arrow {
+				color: var(--line2);
+			}
+
+			/* ── tabs ───────────────────────────────────────────────── */
+			.tabs {
+				display: flex;
+				gap: 8px;
+				border-bottom: 1.5px solid var(--line);
+				margin: 34px 0 30px;
+			}
+			.tab {
+				padding: 10px 22px;
+				font-size: 16px;
+				color: var(--muted);
+				border-bottom: 2.5px solid transparent;
+				margin-bottom: -1.5px;
+			}
+			.tab.on {
+				color: var(--deep);
+				font-weight: 600;
+				border-bottom-color: var(--deep);
+			}
+
+			/* ── two-column proposal body ───────────────────────────── */
+			.cols {
+				display: grid;
+				grid-template-columns: 1fr 636px;
+				gap: 56px;
+				align-items: start;
+			}
+			.skeleton p {
+				height: 11px;
+				border-radius: 6px;
+				background: var(--line);
+				margin-bottom: 22px;
+			}
+			.skeleton p.gap {
+				background: none;
+				height: 12px;
+			}
+
+			.card {
+				background: var(--surface);
+				border: 1.5px solid var(--line);
+				border-radius: 22px;
+				padding: 28px;
+			}
+			.card-head {
+				display: flex;
+				align-items: baseline;
+				justify-content: space-between;
+				margin-bottom: 20px;
+			}
+			.card-head h2 {
+				font-family: 'Fraunces Variable', Georgia, serif;
+				font-weight: 400;
+				font-size: 28px;
+				color: var(--deep);
+			}
+
+			.banner {
+				background: var(--emerald-soft);
+				color: var(--emerald);
+				border-radius: 12px;
+				padding: 12px 16px;
+				font-size: 15px;
+				font-weight: 600;
+				margin-bottom: 16px;
+			}
+
+			.opt {
+				position: relative;
+				display: flex;
+				align-items: center;
+				gap: 14px;
+				border: 1.5px solid var(--line);
+				border-radius: 14px;
+				padding: 17px 18px;
+				margin-bottom: 12px;
+				background: var(--surface);
+				overflow: hidden;
+			}
+			.opt.on {
+				border-color: var(--emerald);
+				background: var(--emerald-soft);
+			}
+			.opt .fill {
+				position: absolute;
+				inset: 0 auto 0 0;
+				background: var(--ivory);
+			}
+			.opt.on .fill {
+				background: #d9efe4;
+			}
+			.opt .radio {
+				position: relative;
+				width: 18px;
+				height: 18px;
+				border-radius: 999px;
+				border: 1.6px solid var(--line2);
+				flex: none;
+				display: grid;
+				place-items: center;
+			}
+			.opt.on .radio {
+				border-color: var(--emerald);
+			}
+			.opt.on .radio::after {
+				content: '';
+				width: 8px;
+				height: 8px;
+				border-radius: 999px;
+				background: var(--emerald);
+			}
+			.opt .lbl {
+				position: relative;
+				flex: 1;
+				font-size: 16px;
+				font-weight: 500;
+			}
+			.opt .det {
+				position: relative;
+				font-family: 'JetBrains Mono Variable', ui-monospace, monospace;
+				font-size: 13px;
+				color: var(--muted);
+			}
+			.opt.on .det {
+				color: var(--emerald);
+			}
+			.opt .rank {
+				position: relative;
+				width: 26px;
+				height: 26px;
+				border-radius: 8px;
+				background: var(--emerald-soft);
+				color: var(--emerald);
+				font-family: 'JetBrains Mono Variable', ui-monospace, monospace;
+				font-size: 13px;
+				display: grid;
+				place-items: center;
+				flex: none;
+			}
+
+			.cta {
+				background: var(--deep);
+				color: #fff;
+				border-radius: 999px;
+				padding: 15px;
+				text-align: center;
+				font-size: 16px;
+				font-weight: 500;
+				margin-top: 20px;
+			}
+
+			.meter {
+				border-top: 1.5px solid var(--line);
+				margin-top: 20px;
+				padding-top: 18px;
+			}
+			.meter .row {
+				display: flex;
+				justify-content: space-between;
+				font-size: 14px;
+				color: var(--muted);
+				margin-bottom: 10px;
+			}
+			.meter .track {
+				height: 8px;
+				border-radius: 4px;
+				background: var(--ivory);
+			}
+			.meter .track i {
+				display: block;
+				height: 8px;
+				border-radius: 4px;
+				background: var(--emerald);
+			}
+
+			/* ── community rows ─────────────────────────────────────── */
+			.rows {
+				display: flex;
+				flex-direction: column;
+				gap: 13px;
+				margin-top: 20px;
+			}
+			.row {
+				background: var(--surface);
+				border: 1.5px solid var(--line);
+				border-left-width: 4px;
+				border-radius: 16px;
+				padding: 16px 26px;
+				display: flex;
+				align-items: flex-start;
+				justify-content: space-between;
+				gap: 24px;
+			}
+			.row h3 {
+				font-family: 'Fraunces Variable', Georgia, serif;
+				font-weight: 400;
+				font-size: 24px;
+				color: var(--deep);
+				margin-bottom: 6px;
+			}
+			.row p {
+				font-size: 15px;
+				color: var(--muted);
+				margin-bottom: 10px;
+			}
+
+			/* ── stamp ──────────────────────────────────────────────── */
+			.stamp {
+				position: absolute;
+				left: 64px;
+				bottom: 34px;
+				font-size: 14px;
+				color: var(--faint);
+			}
+			.stamp b {
+				font-family: 'JetBrains Mono Variable', ui-monospace, monospace;
+				letter-spacing: 0.1em;
+				font-weight: 500;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- ═══════════ 1. A proposal, open ═══════════ -->
+		<div class="frame" id="screen-proposal">
+			<div class="bar">
+				<div class="brand">
+					<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+						<g stroke="#059669" stroke-width="2.6" stroke-linecap="round">
+							<path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9" />
+						</g>
+					</svg>
+					VoteCast
+				</div>
+				<div class="nav">
+					<span>Browse</span><span>Sign in</span><span class="btn">Get started</span>
+				</div>
+			</div>
+
+			<div class="body">
+				<div class="crumb">← &nbsp;Sandbox</div>
+				<h1 class="h-prop">Adopt a rotating work-share schedule</h1>
+
+				<div class="pills">
+					<span class="pill open">Open</span>
+					<span class="pill">Public</span>
+					<span class="pill">All members vote</span>
+					<span class="mono" style="margin-left: 8px">Closes in 2 days</span>
+					<span class="pill ghost" style="margin-left: auto">Share</span>
+				</div>
+
+				<div class="sec" style="margin-top: 30px">Consent</div>
+				<div class="steps">
+					<div class="step on"><b>Voting</b><span>Opened 12 March</span></div>
+					<svg class="arrow" width="30" height="14" viewBox="0 0 30 14">
+						<path
+							d="M0 7h27m0 0-6-5m6 5-6 5"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
+						/>
+					</svg>
+					<div class="step"><b>Result</b><span>Closes 19 March</span></div>
+				</div>
+				<div class="note">Results become visible when voting closes</div>
+
+				<div class="cols">
+					<div>
+						<div class="tabs">
+							<span class="tab on">Rationale</span><span class="tab">Method</span
+							><span class="tab">Voters · 28</span>
+						</div>
+						<div class="skeleton">
+							<p style="width: 96%"></p>
+							<p style="width: 88%"></p>
+							<p style="width: 93%"></p>
+							<p style="width: 70%"></p>
+							<p class="gap"></p>
+							<p style="width: 90%"></p>
+							<p style="width: 84%"></p>
+						</div>
+					</div>
+
+					<div class="card" style="margin-top: 34px">
+						<div class="card-head">
+							<h2>Your vote</h2>
+							<span class="mono">One person, one vote</span>
+						</div>
+						<div class="opt on">
+							<span class="radio"></span><span class="lbl">Agree</span>
+						</div>
+						<div class="opt"><span class="radio"></span><span class="lbl">Stand aside</span></div>
+						<div class="opt">
+							<span class="radio"></span><span class="lbl">Object — with a reason</span>
+						</div>
+						<div class="cta">Cast vote</div>
+						<div class="note" style="text-align: center; margin-top: 14px">
+							You can change your vote until voting closes
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="stamp"><b>WIREFRAME</b> — an illustration of the real page, not a screenshot</div>
+		</div>
+
+		<!-- ═══════════ 2. A decision, closed ═══════════ -->
+		<div class="frame" id="screen-result">
+			<div class="bar">
+				<div class="brand">
+					<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+						<g stroke="#059669" stroke-width="2.6" stroke-linecap="round">
+							<path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9" />
+						</g>
+					</svg>
+					VoteCast
+				</div>
+				<div class="nav">
+					<span>Browse</span><span>Sign in</span><span class="btn">Get started</span>
+				</div>
+			</div>
+
+			<div class="body">
+				<div class="crumb">← &nbsp;Sandbox</div>
+				<h1 class="h-prop">Adopt a rotating work-share schedule</h1>
+
+				<div class="pills">
+					<span class="pill">Closed</span>
+					<span class="pill">Public</span>
+					<span class="pill">All members vote</span>
+					<span class="mono" style="margin-left: 8px">Voting closed 3 days ago</span>
+					<span class="pill ghost" style="margin-left: auto">Share</span>
+				</div>
+
+				<div class="sec" style="margin-top: 30px">Consent</div>
+				<div class="steps">
+					<div class="step">
+						<b>Voting</b><span>Closed 19 March</span>
+						<svg class="tick" width="17" height="17" viewBox="0 0 20 20">
+							<path
+								d="M4 10.5 8 14.5 16 5.5"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2.4"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</div>
+					<svg class="arrow" width="30" height="14" viewBox="0 0 30 14">
+						<path
+							d="M0 7h27m0 0-6-5m6 5-6 5"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
+						/>
+					</svg>
+					<div class="step on"><b>Result</b><span>Final</span></div>
+				</div>
+				<div class="note">
+					Decided under: consent · a facilitator reviews objections · 40% must take part
+				</div>
+
+				<div class="cols">
+					<div>
+						<div class="tabs">
+							<span class="tab on">Rationale</span><span class="tab">Method</span
+							><span class="tab">Voters · 29</span>
+						</div>
+						<div class="skeleton">
+							<p style="width: 96%"></p>
+							<p style="width: 88%"></p>
+							<p style="width: 93%"></p>
+							<p style="width: 62%"></p>
+							<p class="gap"></p>
+							<p style="width: 90%"></p>
+						</div>
+					</div>
+
+					<div class="card" style="margin-top: 34px">
+						<div class="card-head">
+							<h2>Result</h2>
+							<span class="mono">29 votes</span>
+						</div>
+						<div class="banner">Adopted — no objection upheld</div>
+						<div class="opt on">
+							<i class="fill" style="width: 66%"></i><span class="radio"></span
+							><span class="lbl">Agree</span><span class="det">19 · 66%</span>
+						</div>
+						<div class="opt">
+							<i class="fill" style="width: 24%"></i><span class="radio"></span
+							><span class="lbl">Stand aside</span><span class="det">7 · 24%</span>
+						</div>
+						<div class="opt">
+							<i class="fill" style="width: 10%"></i><span class="radio"></span
+							><span class="lbl">Object — with a reason</span><span class="det">3 · 10%</span>
+						</div>
+						<div class="meter">
+							<div class="row" style="padding: 0; border: 0; background: none">
+								<span>Took part</span><span>29 of 41 · quorum met</span>
+							</div>
+							<div class="track"><i style="width: 71%"></i></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="stamp"><b>WIREFRAME</b> — an illustration of the real page, not a screenshot</div>
+		</div>
+
+		<!-- ═══════════ 3. A community, over time ═══════════ -->
+		<div class="frame" id="screen-community">
+			<div class="bar">
+				<div class="brand">
+					<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+						<g stroke="#059669" stroke-width="2.6" stroke-linecap="round">
+							<path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9" />
+						</g>
+					</svg>
+					VoteCast
+				</div>
+				<div class="nav">
+					<span>Browse</span><span>Sign in</span><span class="btn">Get started</span>
+				</div>
+			</div>
+
+			<div class="body">
+				<h1 class="h-comm">Your community</h1>
+				<div class="note" style="font-size: 16px; color: var(--muted)">
+					41 members · 18 decisions on the record
+				</div>
+
+				<div class="tabs" style="margin-top: 22px; margin-bottom: 24px">
+					<span class="tab on">Votes</span><span class="tab">Members</span
+					><span class="tab">Settings</span>
+				</div>
+
+				<div class="pills">
+					<span class="pill dark">All</span>
+					<span class="pill">Open</span>
+					<span class="pill">Upcoming</span>
+					<span class="pill">Closed</span>
+				</div>
+
+				<div class="rows">
+					<div class="row" style="border-left-color: var(--emerald)">
+						<div>
+							<h3>Adopt a rotating work-share schedule</h3>
+							<p>The spring rota, with two people on each block.</p>
+							<span class="mono">Consent &nbsp;·&nbsp; Closes in 2 days</span>
+						</div>
+						<div class="pills">
+							<span class="pill">Public</span><span class="pill open">Open</span>
+						</div>
+					</div>
+
+					<div class="row" style="border-left-color: var(--line2)">
+						<div>
+							<h3>Which beds do we plant first?</h3>
+							<p>Four options, no pass or fail — just where the group stands.</p>
+							<span class="mono">Poll &nbsp;·&nbsp; Closed 5 days ago</span>
+						</div>
+						<div class="pills">
+							<span class="pill">Public</span><span class="pill">Closed</span>
+						</div>
+					</div>
+
+					<div class="row" style="border-left-color: var(--line2)">
+						<div>
+							<h3>Facilitator for the next season</h3>
+							<p>Five candidates, ranked. Instant-runoff.</p>
+							<span class="mono">Ranked &nbsp;·&nbsp; Closed 2 weeks ago</span>
+						</div>
+						<div class="pills">
+							<span class="pill">Members only</span><span class="pill">Closed</span>
+						</div>
+					</div>
+
+					<div class="row" style="border-left-color: var(--amber)">
+						<div>
+							<h3>Visitor policy — where do we already agree?</h3>
+							<p>Six linked questions, each tallied on its own.</p>
+							<span class="mono">Common Ground &nbsp;·&nbsp; Opens in 3 days</span>
+						</div>
+						<div class="pills">
+							<span class="pill">Public</span><span class="pill up">Upcoming</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="stamp"><b>WIREFRAME</b> — an illustration of the real page, not a screenshot</div>
+		</div>
+	</body>
+</html>

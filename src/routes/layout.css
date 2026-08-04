@@ -5,11 +5,18 @@
    Lifted out of per-page <style> blocks so they live in one place.
    ───────────────────────────────────────────────────────────────────── */
 
-/* Body copy in main routes uses Inter; .font-serif and .font-story override
-   this where they appear in markup. */
-main p,
-main li,
-main blockquote,
+/* Body copy in main routes uses Inter, unless the markup asks for another
+   family. The exemption matters: this rule is UNLAYERED, and unlayered CSS
+   beats Tailwind's layered utilities whatever their specificity — so without
+   it, `class="font-serif"` on a <p>/<li>/<blockquote> silently renders Inter.
+   (`.font-story` / `.font-mono` are declared below, unlayered, so they already
+   won on specificity; they are listed anyway so the intent reads plainly.)
+   p/li/blockquote name the four family utilities rather than using the
+   `[class*='font-']` wildcard that span/div use, because that wildcard also
+   matches weight utilities like `font-light` and would exempt them by accident. */
+main p:not(.font-serif):not(.font-sans):not(.font-story):not(.font-mono),
+main li:not(.font-serif):not(.font-sans):not(.font-story):not(.font-mono),
+main blockquote:not(.font-serif):not(.font-sans):not(.font-story):not(.font-mono),
 main span:not([class*='font-']),
 main div:not([class*='font-']) {
 	font-family:

@@ -16,6 +16,7 @@ const routes: SitemapRoute[] = [
 	{ path: '/rcos', priority: '0.8', changefreq: 'monthly' },
 	{ path: '/csi', priority: '0.8', changefreq: 'monthly' },
 	{ path: '/votecast', priority: '0.8', changefreq: 'monthly' },
+	{ path: '/seeking', priority: '0.8', changefreq: 'monthly' },
 	{ path: '/membership', priority: '0.9', changefreq: 'monthly' },
 	{ path: '/faq', priority: '0.7', changefreq: 'monthly' },
 	{ path: '/join', priority: '0.7', changefreq: 'monthly' },

@@ -385,21 +385,6 @@
 
 <style>
 	/* Body & UI typography mirrors the rest of the v2 site. */
-	:global(main p),
-	:global(main li),
-	:global(main span:not([class*='font-'])),
-	:global(main div:not([class*='font-'])) {
-		font-family:
-			'Inter Variable',
-			'Inter',
-			system-ui,
-			-apple-system,
-			BlinkMacSystemFont,
-			'Segoe UI',
-			Roboto,
-			sans-serif;
-	}
-
 	:global(.font-story) {
 		font-family: var(--font-story, 'Fraunces', serif);
 		font-optical-sizing: auto;

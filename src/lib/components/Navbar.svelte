@@ -115,14 +115,15 @@
 			key: 'seeking',
 			code: 'Seeking',
 			sub: 'Community Matchmaking',
-			href: 'https://seeking.community',
-			external: true,
+			href: '/seeking',
+			external: false,
 			domain: 'seeking.community',
 			icon: '/app-icons/seeking.png',
 			ogImage: 'https://seeking.community/og-default.jpg',
 			title: 'Seeking.Community',
 			desc: 'A soft landing for people stepping off the track. Tell us what you’re leaving and what you’re seeking, and a real person hand-picks a few genuinely active, aligned communities — honest notes and all — within 24 hours. Free, no account.',
 			primary: { label: 'Open Seeking', href: 'https://seeking.community', external: true },
+			readMore: { label: 'Read more', href: '/seeking', external: false },
 			secondary: []
 		}
 	];
@@ -133,7 +134,7 @@
 	let closeTimer: ReturnType<typeof setTimeout> | undefined;
 	// Highlight "Ecosystem" whenever the reader is on one of the projects' landing pages.
 	const ecoActive = $derived(
-		['/rcos', '/csi', '/votecast'].some((path) => page.url.pathname.startsWith(path))
+		['/rcos', '/csi', '/votecast', '/seeking'].some((path) => page.url.pathname.startsWith(path))
 	);
 
 	function openEco() {
@@ -316,6 +317,9 @@
 																	<span aria-hidden="true">→</span>
 																</a>
 															{/if}
+															<!-- `no-external-decoration`: this row renders its own ↗ and colour, so it
+															     must opt out of theme.css's automatic underline + " ↗" — which only
+															     fires for projects on a non-ecohubs.community domain (Seeking). -->
 															<a
 																href={p.primary.href}
 																target={p.primary.external ? '_blank' : undefined}
@@ -323,7 +327,7 @@
 																data-sveltekit-preload-data={p.primary.external
 																	? undefined
 																	: 'hover'}
-																class="inline-flex items-center gap-1.5 text-sm font-medium pb-0.5 {p
+																class="no-external-decoration inline-flex items-center gap-1.5 text-sm font-medium pb-0.5 {p
 																	.primary.green
 																	? 'text-ecohubs-primary underline underline-offset-4 decoration-ecohubs-primary/60 hover:decoration-ecohubs-primary'
 																	: 'text-ecohubs-dark border-b border-ecohubs-dark/40 hover:border-ecohubs-dark'}"
@@ -340,7 +344,7 @@
 																		target={s.external ? '_blank' : undefined}
 																		rel={s.external ? 'noopener' : undefined}
 																		data-sveltekit-preload-data={s.external ? undefined : 'hover'}
-																		class="text-stone-600 hover:text-ecohubs-dark"
+																		class="no-external-decoration text-stone-600 hover:text-ecohubs-dark"
 																	>
 																		{s.label}{#if s.external}<span aria-hidden="true">
 																				↗</span
