@@ -1,4 +1,5 @@
 import { mdsvex } from 'mdsvex';
+import mdsvexConfig from './mdsvex.config.js';
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
@@ -9,7 +10,8 @@ const config = {
 	// `.md` is added alongside `.svx` so Learning Hub content in src/content can
 	// be authored as plain markdown. mdsvex exposes each file's frontmatter as
 	// `metadata`, which is what src/lib/learning/index.ts builds its index from.
-	preprocess: [vitePreprocess(), mdsvex({ extensions: ['.svx', '.md'] })],
+	// See mdsvex.config.js for the component auto-import.
+	preprocess: [vitePreprocess(), mdsvex(mdsvexConfig)],
 	kit: {
 		adapter: adapter({
 			fallback: undefined,

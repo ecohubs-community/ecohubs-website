@@ -138,6 +138,17 @@ Adding a page is three edits, not one. A page missing from either file is a page
   ```
   Submit deleted URLs too — a 404 tells them to drop it. Never bulk-submit the whole site; that is the sitemap's job, and the protocol explicitly discourages it. The key lives at `static/<key>.txt` and must match `INDEXNOW_KEY`.
 
+## Learning Hub content
+
+Content lives in `src/content/learning/**/*.md` — markdown with frontmatter, indexed at build time by [`src/lib/learning/index.ts`](./src/lib/learning/index.ts). There is no database.
+
+- **Frontmatter is the schema.** Types in `learning/types.ts`; `learning/validate.ts` fails the build on a broken `guide:`, `terms:`, `topic:`, `related:` or path step. Fix the reference — do not weaken the validator.
+- **No import block in content files.** `<Quick>`, `<Deep>`, `<Gloss>`, `<Callout>`, `<Sources>` are injected by the remark plugin in [`mdsvex.config.js`](./mdsvex.config.js). Adding a component means exporting it from `$lib/components/learning` **and** listing it in that plugin's `AUTO_IMPORT`.
+- **Three depth layers.** `<Quick>` is a separate short version, the body is the standard read, `<Deep>` is additive detail. All three ship in the HTML; the switch only reduces what a *returning* reader sees.
+- **Never hide content by default.** Hiding is `html[data-depth=…]` set by the pre-paint script in `app.html`, and only from an explicitly stored choice. `getDepth()` returns `null` when unset for exactly this reason — a `|| 'standard'` fallback would hide the deep layer from Googlebot, which runs JS with empty storage. Same rule as the cookie banner and the hero cascade.
+- **`isIndexable()` gates the sitemap and page meta**, so thin or draft content stays reachable but unindexed. Drafts must be filtered in all four places: route, listings, sitemap, search index.
+- **All `localStorage` goes through `learning/storage.ts`** — versioned keys, every access wrapped, because storage throws in private mode.
+
 ## External links
 
 External `target="_blank"` links use `rel="noopener noreferrer"`. CTA-style external links (pill buttons, card links) opt out of the global underline+arrow with `class="no-external-decoration"` — see the rule in `theme.css`.

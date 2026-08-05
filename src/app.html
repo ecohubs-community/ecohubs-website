@@ -21,6 +21,21 @@
 			} catch (e) {
 				// localStorage throws when storage is blocked; showing the banner is the safe default.
 			}
+			// Learning Hub reading depth, applied before first paint so a returning
+			// reader sees no flash and never has to re-pick.
+			//
+			// Deliberately no `|| 'standard'` fallback: with no stored choice the
+			// attribute stays absent and every depth layer renders. Googlebot runs
+			// JavaScript with empty storage, so defaulting here would hide the deep
+			// content — the most quotable material on the page — from the crawler.
+			try {
+				var d = localStorage.getItem('ecohubs.learning.depth');
+				if (d === 'quick' || d === 'standard' || d === 'deep') {
+					document.documentElement.setAttribute('data-depth', d);
+				}
+			} catch (e) {
+				// Storage blocked — showing everything is the safe default.
+			}
 		</script>
 
 		<!-- Fonts are self-hosted via @fontsource imports in src/lib/styles/theme.css;
