@@ -8,7 +8,7 @@
  * Only facts the page actually states are asserted here — the same rule
  * applied to the VoteCast and CSI schema.
  */
-import type { TermFrontmatter } from './types';
+import type { CompareFrontmatter, TermFrontmatter } from './types';
 
 const SITE = 'https://ecohubs.community';
 const GLOSSARY_URL = `${SITE}/learn/glossary`;
@@ -57,6 +57,33 @@ export function definedTerm(term: TermFrontmatter) {
 			url: GLOSSARY_URL
 		},
 		publisher: PUBLISHER
+	};
+}
+
+/**
+ * A comparison page.
+ *
+ * Plain `Article` rather than anything cleverer: schema.org has no comparison
+ * type, and the value here comes from the `<table>` in the body being real
+ * markup that a snippet or an AI answer can extract — not from the JSON-LD.
+ */
+export function comparisonArticle(compare: CompareFrontmatter) {
+	const url = `${SITE}/learn/compare/${compare.slug}`;
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		'@id': url,
+		headline: compare.title,
+		description: compare.summary,
+		url,
+		dateModified: compare.updated,
+		isPartOf: {
+			'@type': 'WebSite',
+			name: 'EcoHubs.community',
+			url: SITE
+		},
+		publisher: PUBLISHER,
+		mainEntityOfPage: { '@type': 'WebPage', '@id': url }
 	};
 }
 

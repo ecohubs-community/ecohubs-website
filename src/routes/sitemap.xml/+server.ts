@@ -118,8 +118,33 @@ export const GET: RequestHandler = async () => {
 		// Learning Hub. `sitemapEntries()` already applies `isIndexable`, so
 		// drafts and stubs are filtered at the source rather than here — one
 		// gate driving both the sitemap and each page's robots meta.
+		//
+		// The hub and glossary index are listed only once there is something
+		// behind them; an empty section should not be offered to a crawler.
+		// `lastmod` is the newest thing they contain, which is truthful and
+		// updates itself.
 		...(learningEntries().length
-			? [{ path: '/learn/glossary', priority: '0.6', changefreq: 'weekly' } as SitemapRoute]
+			? ([
+					{
+						path: '/learn',
+						priority: '0.7',
+						changefreq: 'weekly',
+						lastmod: learningEntries()
+							.map((e) => e.lastmod)
+							.sort()
+							.at(-1)
+					},
+					{
+						path: '/learn/glossary',
+						priority: '0.6',
+						changefreq: 'weekly',
+						lastmod: learningEntries()
+							.filter((e) => e.url.startsWith('/learn/glossary/'))
+							.map((e) => e.lastmod)
+							.sort()
+							.at(-1)
+					}
+				] as SitemapRoute[])
 			: []),
 		...learningEntries().map(
 			({ url, lastmod }): SitemapRoute => ({

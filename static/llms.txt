@@ -21,7 +21,9 @@ EcoHubs is a working project, not a think tank: the standard is tested against a
 
 ## Learning
 
+- [Learning Hub](https://ecohubs.community/learn): plain explanations of how intentional communities actually work — governance, money, land, conflict and daily life.
 - [Glossary](https://ecohubs.community/learn/glossary): plain definitions of the words this field uses — intentional community, ecovillage, consent, sociocracy, common purse, community land trust — each with an example and what it is often confused with.
+- [Cohousing vs ecovillage](https://ecohubs.community/learn/compare/cohousing-vs-ecovillage): the two most-confused forms told apart — one describes a housing arrangement, the other a purpose.
 
 ## Writing
 

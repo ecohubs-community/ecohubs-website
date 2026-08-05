@@ -38,6 +38,22 @@ describe('content index', () => {
 		expect(term!.words).toBeGreaterThan(0);
 		expect(readingMinutes(term!)).toBeGreaterThanOrEqual(1);
 	});
+
+	it('counts prose written inside component props, such as a Compare table', () => {
+		// Stripping tags naively would score a comparison page near zero, since
+		// its table lives in `<Compare rows={…} />` — and there the table is the
+		// content. Undercounting would keep a substantial page out of the index.
+		const compare = [...allEntries].find((e) => e.frontmatter.slug === 'cohousing-vs-ecovillage');
+		expect(compare).toBeDefined();
+		expect(compare!.words).toBeGreaterThan(800);
+	});
+
+	it('does not count URLs as prose', () => {
+		// `Sources` carries links; those must not inflate the count towards the
+		// indexability threshold.
+		const compare = [...allEntries].find((e) => e.frontmatter.slug === 'cohousing-vs-ecovillage');
+		expect(compare!.words).toBeLessThan(1200);
+	});
 });
 
 describe('derived views', () => {

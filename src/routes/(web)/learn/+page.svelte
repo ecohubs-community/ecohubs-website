@@ -48,6 +48,32 @@
 
 <section class="py-14 md:py-20">
 	<div class="mx-auto max-w-4xl px-6 lg:px-8">
+		{#if data.comparisons.length}
+			<div class="mb-14">
+				<h2 class="kicker mb-5 text-emerald-700">Told apart</h2>
+				<p class="mb-6 max-w-2xl font-serif text-2xl text-ecohubs-deep">
+					The words people use interchangeably, and why they shouldn't.
+				</p>
+				<ul class="grid gap-5 sm:grid-cols-2">
+					{#each data.comparisons as item (item.slug)}
+						<li>
+							<a
+								href="/learn/compare/{item.slug}"
+								class="group block h-full rounded-2xl border border-stone-200/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:soft-shadow"
+							>
+								<h3
+									class="font-serif text-xl text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
+								>
+									{item.title}
+								</h3>
+								<p class="mt-2 text-sm leading-relaxed text-stone-700">{item.summary}</p>
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</div>
+		{/if}
+
 		{#if data.glossaryCount}
 			<a
 				href="/learn/glossary"
@@ -65,10 +91,10 @@
 					what it is often confused with.
 				</p>
 			</a>
-		{:else}
-			<p class="font-story text-lg text-stone-500 italic">
-				The first entries are being written.
-			</p>
+		{/if}
+
+		{#if !data.comparisons.length && !data.glossaryCount}
+			<p class="font-story text-lg text-stone-500 italic">The first entries are being written.</p>
 		{/if}
 	</div>
 </section>

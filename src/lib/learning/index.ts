@@ -37,14 +37,31 @@ const sources = import.meta.glob<string>('/src/content/learning/**/*.md', {
 	import: 'default'
 });
 
-/** Word count of the body, with frontmatter and mdsvex component tags removed. */
+/**
+ * Word count of the reader-visible body.
+ *
+ * Naively stripping tags would score a comparison page near zero, because its
+ * table lives in `<Compare rows={…} />` props — and on that kind of page the
+ * table *is* the content. So prose written inside component props is counted
+ * too: quoted strings of more than two words, excluding URLs and paths.
+ *
+ * Drives reading time and the `isIndexable` threshold, so undercounting here
+ * would keep genuinely substantial pages out of the sitemap.
+ */
 function countWords(raw: string): number {
-	const body = raw.replace(/^---\r?\n[\s\S]*?\r?\n---/, '');
-	const prose = body
-		.replace(/```[\s\S]*?```/g, ' ')
-		.replace(/<[^>]+>/g, ' ')
-		.replace(/[#*_>`|-]/g, ' ');
-	return prose.split(/\s+/).filter(Boolean).length;
+	const body = raw.replace(/^---\r?\n[\s\S]*?\r?\n---/, '').replace(/```[\s\S]*?```/g, ' ');
+
+	// Prose written as component props, e.g. a Compare row or a Sources title.
+	const inProps: string[] = [];
+	for (const tag of body.match(/<[A-Z][^>]*>/gs) ?? []) {
+		for (const [, quoted] of tag.matchAll(/['"]([^'"]{6,})['"]/g)) {
+			const looksLikeUrl = /^(https?:|\/|#|mailto:)/.test(quoted) || !quoted.includes(' ');
+			if (!looksLikeUrl) inProps.push(quoted);
+		}
+	}
+
+	const prose = body.replace(/<[^>]+>/g, ' ').replace(/[#*_>`|-]/g, ' ');
+	return [...prose.split(/\s+/), ...inProps.join(' ').split(/\s+/)].filter(Boolean).length;
 }
 
 /**
