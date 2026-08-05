@@ -12,6 +12,7 @@ import type {
 	CompareFrontmatter,
 	GuideFrontmatter,
 	LessonFrontmatter,
+	PathFrontmatter,
 	TermFrontmatter,
 	TopicFrontmatter
 } from './types';
@@ -152,6 +153,42 @@ export function lessonArticle(
 			name: guide.title,
 			url: guideUrl
 		}
+	};
+}
+
+/**
+ * A learning path as a `Course`.
+ *
+ * `Course` fits: an ordered sequence of instructional content on one subject.
+ * `courseMode: 'online'` and a zero-price offer are stated because Google
+ * requires provider, mode and price for course rich results — and all three
+ * are simply true here. No `hasCourseInstance` with dates: nothing is
+ * scheduled, and inventing a schedule to satisfy a rich result would be
+ * misrepresentation.
+ */
+export function courseSchema(
+	path: PathFrontmatter,
+	steps: { guide: string; slug: string; title: string }[]
+) {
+	const url = `${SITE}/learn/paths/${path.slug}`;
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'Course',
+		'@id': url,
+		name: path.title,
+		description: path.summary,
+		url,
+		provider: PUBLISHER,
+		isAccessibleForFree: true,
+		offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', category: 'Free' },
+		courseMode: 'online',
+		numberOfCredits: 0,
+		hasPart: steps.map((step, i) => ({
+			'@type': 'LearningResource',
+			position: i + 1,
+			name: step.title,
+			url: `${SITE}/learn/guides/${step.guide}/${step.slug}`
+		}))
 	};
 }
 

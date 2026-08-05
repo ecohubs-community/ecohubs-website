@@ -1,5 +1,13 @@
 import type { PageServerLoad } from './$types';
-import { contentOfTopic, isIndexable, publishedComparisons, publishedTerms, publishedTopics } from '$lib/learning';
+import {
+	contentOfTopic,
+	isIndexable,
+	lessonBySlug,
+	publishedComparisons,
+	publishedPaths,
+	publishedTerms,
+	publishedTopics
+} from '$lib/learning';
 
 export const prerender = true;
 
@@ -30,6 +38,19 @@ export const load: PageServerLoad = async () => {
 		.filter((t) => t.total > 0)
 		.sort((a, b) => a.title.localeCompare(b.title));
 
+	// Paths are curation, so they are listed once they have published lessons
+	// behind them rather than on word count.
+	const paths = publishedPaths
+		.map((p) => ({
+			slug: p.frontmatter.slug,
+			title: p.frontmatter.title,
+			summary: p.frontmatter.summary,
+			steps: p.frontmatter.steps.filter(
+				(s) => lessonBySlug.get(s.lesson)?.frontmatter.status === 'published'
+			).length
+		}))
+		.filter((p) => p.steps > 1);
+
 	const comparisons = publishedComparisons
 		.filter(isIndexable)
 		.map((c) => ({
@@ -42,8 +63,9 @@ export const load: PageServerLoad = async () => {
 	return {
 		glossaryCount,
 		topics,
+		paths,
 		comparisons,
 		// Nothing published yet means nothing worth offering to a search engine.
-		indexable: glossaryCount + comparisons.length + topics.length > 0
+		indexable: glossaryCount + comparisons.length + topics.length + paths.length > 0
 	};
 };

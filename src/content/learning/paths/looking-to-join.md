@@ -3,7 +3,7 @@ type: path
 title: I want to join a community
 slug: looking-to-join
 summary: For people who want to live in one rather than start one.
-status: draft
+status: published
 updated: 2026-08-05
 steps:
   - guide: intentional-communities

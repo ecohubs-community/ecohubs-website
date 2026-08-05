@@ -145,6 +145,16 @@ export const GET: RequestHandler = async () => {
 							.at(-1)
 					},
 					{
+						path: '/learn/paths',
+						priority: '0.6',
+						changefreq: 'weekly',
+						lastmod: learningEntries()
+							.filter((e) => e.url.startsWith('/learn/paths/'))
+							.map((e) => e.lastmod)
+							.sort()
+							.at(-1)
+					},
+					{
 						path: '/learn/topics',
 						priority: '0.6',
 						changefreq: 'weekly',

@@ -82,6 +82,41 @@
 			</div>
 		{/if}
 
+		{#if data.paths.length}
+			<div class="mb-14">
+				<h2 class="kicker mb-5 text-emerald-700">Learning paths</h2>
+				<p class="mb-6 max-w-2xl font-serif text-2xl text-ecohubs-deep">
+					A sequence, when you don't know where to start.
+				</p>
+				<ul class="grid gap-5 sm:grid-cols-2">
+					{#each data.paths as path (path.slug)}
+						<li>
+							<a
+								href="/learn/paths/{path.slug}"
+								class="group block h-full rounded-2xl border border-stone-200/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:soft-shadow"
+							>
+								<h3
+									class="font-serif text-xl text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
+								>
+									{path.title}
+								</h3>
+								<p class="mt-2 text-sm leading-relaxed text-stone-700">{path.summary}</p>
+								<p class="mt-3 text-xs text-stone-500">{path.steps} lessons</p>
+							</a>
+						</li>
+					{/each}
+				</ul>
+				<p class="mt-5">
+					<a
+						href="/learn/paths"
+						class="text-sm text-ecohubs-dark underline decoration-emerald-300 underline-offset-2 hover:decoration-emerald-600"
+					>
+						All paths →
+					</a>
+				</p>
+			</div>
+		{/if}
+
 		{#if data.comparisons.length}
 			<div class="mb-14">
 				<h2 class="kicker mb-5 text-emerald-700">Told apart</h2>
@@ -127,7 +162,7 @@
 			</a>
 		{/if}
 
-		{#if !data.topics.length && !data.comparisons.length && !data.glossaryCount}
+		{#if !data.topics.length && !data.paths.length && !data.comparisons.length && !data.glossaryCount}
 			<p class="font-story text-lg text-stone-500 italic">The first entries are being written.</p>
 		{/if}
 	</div>
