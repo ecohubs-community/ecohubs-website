@@ -87,7 +87,7 @@
 					The Standard — formally
 					<strong class="text-ecohubs-deep">RCOS</strong> (Regenerative Community Operating System)
 					— is an open standard for designing and operating regenerative communities. Not software,
-					not an ideology — a shared way to make community structure
+					not an ideology — a shared way to make community governance and structure
 					<em class="font-story italic">explicit, testable, and improvable.</em>
 				</p>
 

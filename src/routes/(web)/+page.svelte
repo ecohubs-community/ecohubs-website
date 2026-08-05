@@ -103,9 +103,9 @@
 					data-hero-step="0.30" style="--hero-delay: 0.30s"
 					class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light"
 				>
-					EcoHubs is a growing network of people building a different way to live together — rooted
-					in nature, honest about conflict, and designed so that belonging is built in, not left to
-					chance.
+					EcoHubs is a growing network of people building regenerative intentional communities — a
+					different way to live together, rooted in nature, honest about conflict, and designed so
+					that belonging is built in, not left to chance.
 				</p>
 
 				<div data-hero-step="0.42" style="--hero-delay: 0.42s" class="mt-10 flex flex-col sm:flex-row flex-wrap gap-3">

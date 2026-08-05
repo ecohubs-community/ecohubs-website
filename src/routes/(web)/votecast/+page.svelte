@@ -198,9 +198,10 @@
 				</p>
 
 				<p data-scroll-animate class="mt-5 text-lg text-stone-600 leading-relaxed max-w-xl">
-					Six ways to decide, from a simple poll to full consent. One person, one vote. Public
-					proposals or members-only. Plain enough that nobody has to learn a governance vocabulary
-					before they can take part.
+					Six ways to decide, from a simple poll to consent decision making — the sociocracy
+					standard of no paramount objections. One person, one vote. Public proposals or
+					members-only. Plain enough that nobody has to learn a governance vocabulary before they
+					can take part.
 				</p>
 
 				<div data-scroll-animate class="mt-10 flex flex-col sm:flex-row gap-3">

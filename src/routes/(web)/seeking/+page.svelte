@@ -89,8 +89,9 @@
 					class="mt-8 max-w-xl text-xl leading-relaxed font-light text-stone-700"
 				>
 					<strong class="text-ecohubs-deep">Seeking.Community</strong> is a free matchmaker for
-					people who want to join a community rather than start one. You write, in your own words,
-					where you want to land.
+					people who want to join an existing intentional community — an ecovillage, a cohousing
+					group, a land project — rather than start one. You write, in your own words, where you
+					want to land.
 					<em class="font-story italic">A real person reads it</em> and points you toward places that
 					are real, open, and an actual fit.
 				</p>

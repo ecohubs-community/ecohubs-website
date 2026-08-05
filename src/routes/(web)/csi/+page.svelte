@@ -114,8 +114,8 @@
 					class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light"
 				>
 					The <strong class="text-ecohubs-deep">Community Suitability Index</strong> — CSI — is an
-					open map of where a regenerative, sovereign community has room to begin. It reads a place
-					against
+					open map of where a regenerative, sovereign community — an ecovillage or land project —
+					has room to begin. It reads a place against
 					<em class="font-story italic">the law, the land, the water and the welcome</em>, in that
 					order, and marks what it does not yet know.
 				</p>

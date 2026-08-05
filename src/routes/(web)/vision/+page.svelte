@@ -87,8 +87,9 @@
 					data-hero-step="0.30"
 					class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light"
 				>
-					Not a utopia. Not a retreat from the world. A patient, honest answer to a question many of
-					us already carry —
+					Not a utopia. Not a retreat from the world. A network of small, human-scale ecovillages —
+					intentional communities designed to regenerate the land they sit on. And underneath it, a
+					patient, honest answer to a question many of us already carry —
 					<em class="font-story italic">what would a life worth being inside actually look like?</em
 					>
 				</p>
