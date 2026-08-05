@@ -1,0 +1,180 @@
+/**
+ * Build-time validation for Learning Hub content.
+ *
+ * Without a database there is no referential integrity, so this is the
+ * substitute: a `guide:` pointing at nothing, a `terms:` entry with no
+ * glossary file, a duplicate `order` — all should break the build, not render
+ * a dead link. `index.ts` calls this eagerly, so `npm run build` fails loudly.
+ *
+ * Deliberately pure: it takes already-parsed entries and returns issues, so it
+ * can be unit-tested without touching the filesystem or Vite.
+ */
+import type { ContentEntry, Frontmatter, LessonFrontmatter, PathFrontmatter, ValidationIssue } from './types';
+import { CONTENT_TYPES } from './types';
+
+const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+/** Minimum body length before a piece may be indexed — see `isIndexable`. */
+export const MIN_WORDS = {
+	term: 250,
+	lesson: 900,
+	topic: 600,
+	compare: 800,
+	case: 800,
+	guide: 200, // a guide is mostly its lessons
+	path: 0 // curation only, no prose
+} as const;
+
+/**
+ * Whether a published piece is substantial enough to index.
+ *
+ * Mirrors `MIN_POSTS_FOR_INDEXABLE_TAG` on the blog: thin pages stay reachable
+ * for readers but are marked `noindex` and kept out of the sitemap. One helper
+ * drives both so page meta and sitemap can never disagree.
+ */
+export function isIndexable(entry: ContentEntry): boolean {
+	const fm = entry.frontmatter;
+	if (fm.status !== 'published') return false;
+	if (entry.words < MIN_WORDS[fm.type]) return false;
+	// A term without its one-line definition is unusable in tooltips and schema.
+	if (fm.type === 'term' && !fm.short?.trim()) return false;
+	return true;
+}
+
+function checkBase(fm: Frontmatter, path: string, issues: ValidationIssue[]) {
+	if (!CONTENT_TYPES.includes(fm.type)) {
+		issues.push({ path, message: `unknown type "${fm.type}"` });
+	}
+	for (const field of ['title', 'slug', 'summary', 'status', 'updated'] as const) {
+		if (!fm[field]) issues.push({ path, message: `missing required field "${field}"` });
+	}
+	if (fm.slug && !SLUG_RE.test(fm.slug)) {
+		issues.push({ path, message: `slug "${fm.slug}" must be lowercase kebab-case` });
+	}
+	if (fm.updated && !DATE_RE.test(fm.updated)) {
+		issues.push({ path, message: `updated "${fm.updated}" must be YYYY-MM-DD` });
+	}
+	if (fm.status && fm.status !== 'draft' && fm.status !== 'published') {
+		issues.push({ path, message: `status must be "draft" or "published", got "${fm.status}"` });
+	}
+}
+
+/**
+ * Validate a whole content set.
+ *
+ * References are checked against *all* entries, not just published ones: a
+ * lesson may legitimately point at a term that is still in draft, and we want
+ * that to be a working link the day the term publishes — not a build failure
+ * today and a silent dead link later.
+ */
+export function validateContent(entries: ContentEntry[]): ValidationIssue[] {
+	const issues: ValidationIssue[] = [];
+	const byType = new Map<string, Set<string>>();
+	const seen = new Map<string, string>(); // "type:slug" -> path
+
+	for (const entry of entries) {
+		const { frontmatter: fm, path } = entry;
+		checkBase(fm, path, issues);
+
+		const key = `${fm.type}:${fm.slug}`;
+		const previous = seen.get(key);
+		if (previous) {
+			issues.push({ path, message: `duplicate ${fm.type} slug "${fm.slug}" (also in ${previous})` });
+		} else {
+			seen.set(key, path);
+		}
+
+		if (!byType.has(fm.type)) byType.set(fm.type, new Set());
+		byType.get(fm.type)!.add(fm.slug);
+	}
+
+	const has = (type: string, slug: string) => byType.get(type)?.has(slug) ?? false;
+
+	// Cross-references, once every slug is known.
+	for (const entry of entries) {
+		const { frontmatter: fm, path } = entry;
+
+		for (const term of (fm as { terms?: string[] }).terms ?? []) {
+			if (!has('term', term)) {
+				issues.push({ path, message: `terms: references unknown glossary term "${term}"` });
+			}
+		}
+
+		if ('topic' in fm && fm.topic && !has('topic', fm.topic)) {
+			issues.push({ path, message: `topic: references unknown topic "${fm.topic}"` });
+		}
+
+		if (fm.type === 'lesson') {
+			if (!has('guide', fm.guide)) {
+				issues.push({ path, message: `guide: references unknown guide "${fm.guide}"` });
+			}
+			if (!Number.isInteger(fm.order) || fm.order < 1) {
+				issues.push({ path, message: `order must be a positive integer, got ${fm.order}` });
+			}
+		}
+
+		if (fm.type === 'path') {
+			if (!Array.isArray(fm.steps) || fm.steps.length === 0) {
+				issues.push({ path, message: 'path has no steps' });
+			}
+			for (const [i, step] of (fm.steps ?? []).entries()) {
+				if (!has('guide', step.guide)) {
+					issues.push({ path, message: `step ${i + 1}: unknown guide "${step.guide}"` });
+				}
+				if (!has('lesson', step.lesson)) {
+					issues.push({ path, message: `step ${i + 1}: unknown lesson "${step.lesson}"` });
+				}
+			}
+		}
+
+		// `related` may point at any content type, so accept a match anywhere.
+		for (const rel of (fm as { related?: string[] }).related ?? []) {
+			const found = [...byType.values()].some((slugs) => slugs.has(rel));
+			if (!found) issues.push({ path, message: `related: references unknown slug "${rel}"` });
+		}
+	}
+
+	// Lesson ordering must be unique within a guide, or prev/next is ambiguous.
+	const lessonsByGuide = new Map<string, Map<number, string>>();
+	for (const entry of entries) {
+		if (entry.frontmatter.type !== 'lesson') continue;
+		const fm = entry.frontmatter as LessonFrontmatter;
+		if (!lessonsByGuide.has(fm.guide)) lessonsByGuide.set(fm.guide, new Map());
+		const orders = lessonsByGuide.get(fm.guide)!;
+		const clash = orders.get(fm.order);
+		if (clash) {
+			issues.push({
+				path: entry.path,
+				message: `order ${fm.order} already used in guide "${fm.guide}" by ${clash}`
+			});
+		} else {
+			orders.set(fm.order, entry.path);
+		}
+	}
+
+	// A published path whose steps are all drafts would render as an empty
+	// sequence — worth catching, since it looks fine in the source.
+	const publishedLessons = new Set(
+		entries
+			.filter((e) => e.frontmatter.type === 'lesson' && e.frontmatter.status === 'published')
+			.map((e) => e.frontmatter.slug)
+	);
+	for (const entry of entries) {
+		if (entry.frontmatter.type !== 'path' || entry.frontmatter.status !== 'published') continue;
+		const fm = entry.frontmatter as PathFrontmatter;
+		if ((fm.steps ?? []).length && !fm.steps.some((s) => publishedLessons.has(s.lesson))) {
+			issues.push({ path: entry.path, message: 'published path has no published lessons' });
+		}
+	}
+
+	return issues;
+}
+
+/** Format issues into one readable error message for a failed build. */
+export function formatIssues(issues: ValidationIssue[]): string {
+	const lines = issues.map((i) => `  ${i.path}\n    → ${i.message}`);
+	return `Learning Hub content is invalid (${issues.length} issue${
+		issues.length === 1 ? '' : 's'
+	}):\n\n${lines.join('\n')}\n`;
+}
