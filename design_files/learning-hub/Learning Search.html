@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Search — EcoHubs Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="learning-hub.js"></script>
+<link rel="stylesheet" href="learning-hub.css" />
+</head>
+<body data-section="learning">
+<div data-siteheader></div>
+<div class="pt-16">
+<div class="max-w-[1360px] mx-auto px-5"><div class="railtabs" data-railtabs></div></div>
+<div class="shell">
+
+<aside class="rail rail-desktop">
+  <div class="rail-group"><div class="rail-label">Learning</div><div data-railnav></div></div>
+  <div class="rail-group">
+    <div class="rail-label">Results by kind</div>
+    <div class="tree" id="kinds"></div>
+  </div>
+  <div class="rail-group">
+    <div class="rail-label">Try</div>
+    <div class="tree">
+      <a href="Learning Search.html?q=consensus">consensus</a>
+      <a href="Learning Search.html?q=land">land</a>
+      <a href="Learning Search.html?q=money">money</a>
+      <a href="Learning Search.html?q=conflict">conflict</a>
+      <a href="Learning Search.html?q=ecovillage">ecovillage</a>
+    </div>
+  </div>
+</aside>
+
+<main class="pb-8 max-w-[860px]">
+  <header class="pt-9">
+    <nav class="breadcrumb mb-6"><a href="Learning Hub.html">Learning</a><span>/</span><span class="text-stone-500">Search</span></nav>
+    <h1 class="font-serif text-[34px] md:text-[40px] leading-[1.1] tracking-tight text-ecohubs-deep">Search the hub</h1>
+    <form data-search2 class="searchbig mt-6">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a8a29e" stroke-width="1.8"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+      <input type="search" id="q" placeholder="What would you like to learn?" aria-label="Search" />
+      <button class="btn btn-primary btn-sm py-3 px-6">Search</button>
+    </form>
+    <div class="mt-4 meta" id="summary">Topics, guides, glossary, learning paths and communities.</div>
+  </header>
+
+  <div id="results" class="mt-10 flex flex-col gap-12"></div>
+</main>
+</div></div>
+<div data-footer></div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const params=new URLSearchParams(location.search);
+  const q=(params.get('q')||'').trim();
+  document.getElementById('q').value=q;
+  document.querySelector('form[data-search2]').addEventListener('submit',e=>{
+    e.preventDefault();
+    location.href='Learning Search.html?q='+encodeURIComponent(document.getElementById('q').value.trim());
+  });
+
+  const idx=EH.index();
+  const hits=!q?idx:idx.filter(r=>(r.title+' '+r.desc).toLowerCase().includes(q.toLowerCase()));
+  const order=['Topic','Guide','Learning Path','Glossary','Community'];
+  const groups={}; hits.forEach(h=>{(groups[h.kind]=groups[h.kind]||[]).push(h)});
+
+  document.getElementById('summary').textContent = q
+    ? hits.length+' result'+(hits.length===1?'':'s')+' for “'+q+'”'
+    : idx.length+' entries across the hub — type to narrow';
+
+  document.getElementById('kinds').innerHTML=order.filter(k=>groups[k]).map(k=>
+    `<a href="#g-${EH.slugify(k)}">${k}<span class="rail-count">${groups[k].length}</span></a>`).join('')||'<a href="Learning Hub.html">Back to the hub</a>';
+
+  const mark=(s)=>q?s.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark style="background:rgba(167,243,208,.55);color:inherit">$1</mark>'):s;
+
+  document.getElementById('results').innerHTML=order.filter(k=>groups[k]).map(k=>`
+    <section id="g-${EH.slugify(k)}">
+      <div class="flex items-baseline justify-between mb-4">
+        <div class="kicker text-emerald-700">${k}${groups[k].length>1?'s':''}</div>
+        <span class="meta">${groups[k].length}</span>
+      </div>
+      <div class="flex flex-col gap-3">
+        ${groups[k].map(r=>`<a href="${r.href}" class="card p-5 flex items-start gap-4">
+          <span class="tag mt-0.5">${r.kind}</span>
+          <span class="flex-1 min-w-0"><span class="block font-serif text-[18px] text-ecohubs-deep leading-snug">${mark(r.title)}</span>
+          <span class="block text-[14px] text-stone-600 mt-1.5 leading-relaxed">${mark(r.desc)}</span></span>
+          <span class="text-ecohubs-dark text-sm">→</span>
+        </a>`).join('')}
+      </div>
+    </section>`).join('')||`
+    <div class="card p-8">
+      <div class="font-serif text-[22px] text-ecohubs-deep">Nothing matched “${q}”.</div>
+      <p class="mt-3 text-[15px] text-stone-600 leading-relaxed max-w-lg">Try a shorter word, or browse the <a href="Learning Map.html">knowledge map</a> — it is the fastest way to find something whose name you don't know yet.</p>
+    </div>`;
+});
+</script>
+</body>
+</html>

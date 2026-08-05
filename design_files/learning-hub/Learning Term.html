@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Glossary term — EcoHubs Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="learning-hub.js"></script>
+<link rel="stylesheet" href="learning-hub.css" />
+</head>
+<body data-section="glossary">
+<div data-siteheader></div>
+<div class="pt-16">
+<div class="max-w-[1360px] mx-auto px-5"><div class="railtabs" data-railtabs></div></div>
+<div class="shell">
+
+<aside class="rail rail-desktop">
+  <div class="rail-group"><div class="rail-label">Learning</div><div data-railnav></div></div>
+  <div class="rail-group">
+    <div class="rail-label">Nearby terms</div>
+    <div class="tree" id="nearby"></div>
+  </div>
+</aside>
+
+<main class="pb-8 max-w-[820px]">
+  <header class="pt-9">
+    <nav class="breadcrumb mb-6"><a href="Learning Hub.html">Learning</a><span>/</span><a href="Learning Glossary.html">Glossary</a><span>/</span><span class="text-stone-500" id="crumb">Term</span></nav>
+    <div class="kicker text-emerald-700 mb-4" id="topictag">Term</div>
+    <h1 class="font-serif text-[40px] md:text-[46px] leading-[1.08] tracking-tight text-ecohubs-deep" id="term">—</h1>
+    <p class="lede mt-5" id="def">—</p>
+  </header>
+
+  <section class="mt-10 card p-7 bg-[#f5f2ea]">
+    <div class="kicker text-emerald-700 mb-3">In practice</div>
+    <p class="text-[15.5px] leading-relaxed text-stone-700" id="practice">—</p>
+  </section>
+
+  <section class="mt-12">
+    <div class="kicker text-emerald-700 mb-5">Related terms</div>
+    <div id="related" class="grid sm:grid-cols-2 gap-3"></div>
+  </section>
+
+  <section class="mt-12">
+    <div class="kicker text-emerald-700 mb-5">Where it appears</div>
+    <div class="grid sm:grid-cols-2 gap-3">
+      <a href="Learning Topic.html" class="card p-5"><div class="meta mb-2">Topic</div><div class="font-serif text-[17px] text-ecohubs-deep leading-snug" id="topiclink">—</div></a>
+      <a href="Learning Guide.html" class="card p-5"><div class="meta mb-2">Guide</div><div class="font-serif text-[17px] text-ecohubs-deep leading-snug" id="guidelink">—</div><div class="meta mt-2" id="guidemeta">—</div></a>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <div class="kicker text-emerald-700 mb-5">Communities where you can see it</div>
+    <div id="comms" class="grid sm:grid-cols-2 gap-3"></div>
+  </section>
+
+  <section class="mt-12">
+    <div class="kicker text-emerald-700 mb-5">Further reading</div>
+    <ul class="flex flex-col gap-3 text-[15px] text-stone-700" id="reading"></ul>
+  </section>
+
+  <section class="mt-12 pt-8 border-t border-stone-200 flex flex-wrap items-center justify-between gap-4">
+    <a href="Learning Glossary.html" class="btn btn-ghost text-[15px]">← All terms</a>
+    <a id="nextterm" href="#" class="btn btn-primary text-[15px]">Next term <span>→</span></a>
+  </section>
+</main>
+</div></div>
+<div data-footer></div>
+
+<script>
+const PRACTICE={
+  'community-governance':'Governance terms only mean something once they are written into agreements with a named process. Ask a community to show you the paragraph — and the last time it was reviewed. If a group can describe the feeling but not point to the text, treat this as an intention rather than a working system.',
+  'intentional-communities':'This is a word people use loosely, so check it against what is actually held in common: land, income, decisions, or only good will. Communities that use the term precisely will tell you, unprompted, which of those they share and which they do not.',
+  'community-economy':'Money terms are where romance meets arithmetic. Ask which account this touches, who may spend from it, and what happens to it when a member leaves — the last question is the one that ends up in front of lawyers.',
+  'legal-structures':'A legal term is only as good as the document behind it. Ask to read the statutes or lease, and ask a member who is not on the board to explain them; if nobody outside leadership can, the structure is not yet shared knowledge.',
+  'land':'Land terms describe things you can walk to. Ask to be shown the feature on the ground rather than on a map, in the season when it is least flattering — after heavy rain, or at the end of the dry.',
+  'permaculture':'Design vocabulary is easy to adopt and hard to maintain. Ask what has been built, when it was last repaired, and what failed — a project that can name a failed swale understands the term better than one that cannot.',
+  'community-building':'Culture terms describe repeated behaviour, not values on a wall. Ask how often it happens, who holds it, and what happened the last time nobody had the energy for it.',
+  'conflict-resolution':'Repair vocabulary matters most before it is needed. Ask when the process was last used, by whom it can be triggered, and whether it required permission from leadership — if it did, it is not really available.',
+  'case-studies':'Read this term through a specific place rather than in the abstract. The same word describes very different daily lives at fifty residents and at three thousand.',
+  'software':'Tools change more often than agreements do. Ask what the community used before this, why it moved, and where the decisions made in the old tool now live.'
+};
+const GUIDE_FOR={
+  'community-governance':['Ultimate Guide to Community Governance','8 lessons · 66 min'],
+  'software':['Ultimate Guide to Community Governance','8 lessons · 66 min'],
+  'community-economy':['Ultimate Guide to Community Finance','7 lessons · 58 min'],
+  'legal-structures':['Ultimate Guide to Community Finance','7 lessons · 58 min'],
+  'land':['Starting an Ecovillage','11 lessons · 98 min'],
+  'permaculture':['Regenerative Living','6 lessons · 44 min'],
+  'intentional-communities':['Ultimate Guide to Intentional Communities','9 lessons · 74 min'],
+  'community-building':['Ultimate Guide to Intentional Communities','9 lessons · 74 min'],
+  'conflict-resolution':['Ultimate Guide to Community Governance','8 lessons · 66 min'],
+  'case-studies':['Ultimate Guide to Intentional Communities','9 lessons · 74 min']
+};
+const COMMS_FOR={
+  'community-governance':['Sieben Linden','Auroville'],
+  'software':['Auroville','Cloughjordan Ecovillage'],
+  'community-economy':['Twin Oaks','Damanhur'],
+  'legal-structures':['Cloughjordan Ecovillage','Damanhur'],
+  'land':['Tamera','Cloughjordan Ecovillage'],
+  'permaculture':['Tamera','Dancing Rabbit'],
+  'intentional-communities':['Findhorn','Twin Oaks'],
+  'community-building':['Findhorn','Sieben Linden'],
+  'conflict-resolution':['Sieben Linden','Tamera'],
+  'case-studies':['Auroville','Dancing Rabbit']
+};
+const READING={
+  'community-governance':['Rau &amp; Koch-Gonzalez — <em>Many Voices One Song</em> (2018), sociocratic practice','Ostrom, E. — <em>Governing the Commons</em> (1990)'],
+  'software':['Loomio — published cooperative decision-making handbook','Rau &amp; Koch-Gonzalez — <em>Many Voices One Song</em> (2018)'],
+  'community-economy':['Federation of Egalitarian Communities — income-sharing documentation','Twin Oaks — published labour-credit system notes'],
+  'legal-structures':['Diggers &amp; Dreamers — legal structures for communal living','Community Land Trust Network — model leases and statutes'],
+  'land':['Yeomans, P. A. — <em>Water for Every Farm</em> (1965), keyline planning','Ostrom, E. — <em>Governing the Commons</em> (1990)'],
+  'permaculture':['Mollison, B. — <em>Permaculture: A Designers’ Manual</em> (1988)','Global Ecovillage Network — Community Sustainability Assessment'],
+  'intentional-communities':['Christian, D. L. — <em>Creating a Life Together</em> (2003)','Foundation for Intentional Community — directory &amp; formation data'],
+  'community-building':['Christian, D. L. — <em>Creating a Life Together</em> (2003)','Global Ecovillage Network — community profiles'],
+  'conflict-resolution':['Rosenberg, M. — <em>Nonviolent Communication</em> (2003)','Zehr, H. — <em>The Little Book of Restorative Justice</em> (2002)'],
+  'case-studies':['Global Ecovillage Network — community profiles','Foundation for Intentional Community — directory data']
+};
+document.addEventListener('DOMContentLoaded',()=>{
+  const want=new URLSearchParams(location.search).get('t')||'Consensus';
+  const list=[...EH.glossary].sort((a,b)=>a.t.localeCompare(b.t));
+  const found=list.findIndex(g=>g.t.toLowerCase()===want.toLowerCase());
+  const i=found>-1?found:list.findIndex(g=>g.t==='Consensus');
+  const g=list[i];
+  const tname=s=>(EH.topics.find(t=>t.slug===s)||{name:s}).name;
+
+  document.title=g.t+' — EcoHubs Glossary';
+  document.getElementById('crumb').textContent=g.t;
+  document.getElementById('term').textContent=g.t;
+  document.getElementById('def').textContent=g.d;
+  document.getElementById('topictag').textContent=tname(g.topic)+' · glossary';
+  document.getElementById('topiclink').textContent=tname(g.topic);
+  document.getElementById('practice').innerHTML=PRACTICE[g.topic]||PRACTICE['intentional-communities'];
+
+  const near=list.filter(x=>x.topic===g.topic&&x!==g).slice(0,6);
+  document.getElementById('nearby').innerHTML=near.map(x=>`<a href="Learning Term.html?t=${encodeURIComponent(x.t)}">${x.t}</a>`).join('')||'<a href="Learning Glossary.html">All terms</a>';
+  document.getElementById('related').innerHTML=(near.length?near:list.slice(0,4)).slice(0,4).map(x=>
+    `<a href="Learning Term.html?t=${encodeURIComponent(x.t)}" class="card p-5"><div class="font-serif text-[17px] text-ecohubs-deep">${x.t}</div><p class="mt-2 text-[13.5px] leading-relaxed text-stone-600">${x.d}</p></a>`).join('');
+  document.getElementById('comms').innerHTML=(COMMS_FOR[g.topic]||['Findhorn','Twin Oaks']).map(n=>EH.communities.find(c=>c.name===n)).filter(Boolean).map(c=>
+    `<div class="card p-5 flex gap-4"><span class="placeholder-img w-16 h-16 rounded-xl shrink-0"></span><span><span class="block font-serif text-[17px] text-ecohubs-deep">${c.name}</span><span class="meta block mt-1">${c.loc}</span><span class="block text-[13.5px] text-stone-600 mt-2 leading-relaxed">${c.gov} · ${c.pop}</span></span></div>`).join('');
+
+  const gd=GUIDE_FOR[g.topic]||GUIDE_FOR['intentional-communities'];
+  document.getElementById('guidelink').textContent=gd[0];
+  document.getElementById('guidemeta').textContent=gd[1];
+  document.getElementById('reading').innerHTML=[...(READING[g.topic]||READING['intentional-communities']),
+    'Global Ecovillage Network — community profiles &amp; assessments',
+    '<a href="Blueprint Page.html">RCOS Blueprint</a> — the pattern this term belongs to']
+    .map(r=>`<li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span><span>${r}</span></li>`).join('');
+
+  const nxt=list[(i+1)%list.length];
+  const nb=document.getElementById('nextterm');
+  nb.href='Learning Term.html?t='+encodeURIComponent(nxt.t);
+  nb.firstChild.textContent=nxt.t+' ';
+});
+</script>
+</body>
+</html>

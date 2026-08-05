@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Knowledge Map — EcoHubs Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="learning-hub.js"></script>
+<link rel="stylesheet" href="learning-hub.css" />
+</head>
+<body data-section="map">
+<div data-siteheader></div>
+<div class="pt-16">
+<div class="max-w-[1360px] mx-auto px-5"><div class="railtabs" data-railtabs></div></div>
+<div class="shell">
+
+<aside class="rail rail-desktop">
+  <div class="rail-group"><div class="rail-label">Learning</div><div data-railnav></div></div>
+  <div class="rail-group">
+    <div class="rail-label">Clusters</div>
+    <div class="tree" id="clusterlist"></div>
+  </div>
+  <div class="rail-group">
+    <div class="rail-label">Reading the map</div>
+    <p class="px-2 text-[13px] text-stone-500 leading-relaxed">Dotted rings are clusters. Dot size is how much has been written on a topic. Click any topic to open it.</p>
+  </div>
+</aside>
+
+<main class="pb-8">
+  <header class="pt-9">
+    <nav class="breadcrumb mb-6"><a href="Learning Hub.html">Learning</a><span>/</span><span class="text-stone-500">Knowledge map</span></nav>
+    <h1 class="font-serif text-[40px] md:text-[46px] leading-[1.08] tracking-tight text-ecohubs-deep">Knowledge map</h1>
+    <p class="lede mt-5">The whole hub as one picture: four clusters, ten topics, and the paths between them. Useful when you don't yet know the name of the thing you're looking for.</p>
+  </header>
+
+  <div class="mapwrap mt-8 p-6 relative">
+    <svg id="bigmap" class="w-full" style="height:min(74vh,760px)" role="img" aria-label="Clickable map of all learning topics"></svg>
+  </div>
+
+  <section class="mt-12">
+    <div class="kicker text-emerald-700 mb-5">The four clusters</div>
+    <div id="clustercards" class="grid sm:grid-cols-2 gap-4"></div>
+  </section>
+
+  <section class="mt-14 card p-7 bg-[#f5f2ea]" data-rabbit>
+    <div class="flex items-center justify-between mb-4">
+      <span class="kicker text-emerald-700">A rabbit hole for you</span>
+      <button data-rabbit-reroll class="meta hover:text-ecohubs-dark">↻ another</button>
+    </div>
+    <div class="flex flex-wrap items-start gap-6 justify-between">
+      <div class="max-w-xl">
+        <span class="tag" data-rabbit-kind>—</span>
+        <h3 class="font-serif text-[21px] leading-snug text-ecohubs-deep mt-3" data-rabbit-title>—</h3>
+        <p class="text-[14.5px] text-stone-600 leading-relaxed mt-2" data-rabbit-desc>—</p>
+      </div>
+      <a class="btn btn-ghost btn-sm" data-rabbit-link href="#">Follow it →</a>
+    </div>
+  </section>
+</main>
+</div></div>
+<div data-footer></div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  EH.renderMap(document.getElementById('bigmap'),{w:920,h:700});
+  document.getElementById('clusterlist').innerHTML=Object.entries(EH.clusters).map(([k,n])=>`<a href="#c-${k}">${n}</a>`).join('');
+  document.getElementById('clustercards').innerHTML=Object.entries(EH.clusters).map(([k,n])=>{
+    const items=EH.topics.filter(t=>t.cluster===k);
+    return `<div class="card p-7" id="c-${k}">
+      <div class="font-serif text-[22px] text-ecohubs-deep">${n}</div>
+      <div class="meta mt-1.5">${items.length} topics · ${items.reduce((a,t)=>a+t.count,0)} articles</div>
+      <div class="mt-5 flex flex-col gap-2.5">${items.map(t=>
+        `<a href="Learning Topic.html" class="flex items-baseline gap-3 text-[14.5px] text-stone-700 hover:text-ecohubs-dark"><span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span><span class="flex-1">${t.name}</span><span class="meta">${t.count}</span></a>`).join('')}</div>
+    </div>`;}).join('');
+});
+</script>
+</body>
+</html>

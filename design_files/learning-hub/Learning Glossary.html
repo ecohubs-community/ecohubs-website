@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Glossary — EcoHubs Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="learning-hub.js"></script>
+<link rel="stylesheet" href="learning-hub.css" />
+<style>
+.alpha{display:flex;flex-wrap:wrap;gap:4px}
+.alpha a{width:30px;height:30px;display:grid;place-items:center;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#57534e;border:1px solid #ece9e2;background:#fff}
+.alpha a:hover{border-color:#064e3b;color:#064e3b}
+.alpha a.off{opacity:.32;pointer-events:none}
+.letterhead{font-family:'Pridi',serif;font-size:34px;color:#0b2e24;line-height:1;padding-top:4px}
+</style>
+</head>
+<body data-section="glossary">
+<div data-siteheader></div>
+<div class="pt-16">
+<div class="max-w-[1360px] mx-auto px-5"><div class="railtabs" data-railtabs></div></div>
+<div class="shell">
+
+<aside class="rail rail-desktop">
+  <div class="rail-group"><div class="rail-label">Learning</div><div data-railnav></div></div>
+  <div class="rail-group">
+    <div class="rail-label">Jump to letter</div>
+    <div class="alpha px-1" id="alpha"></div>
+  </div>
+  <div class="rail-group">
+    <div class="rail-label">Most looked up</div>
+    <div class="tree">
+      <a href="Learning Term.html?t=Consensus">Consensus</a>
+      <a href="Learning Term.html?t=Sociocracy">Sociocracy</a>
+      <a href="Learning Term.html?t=Ecovillage">Ecovillage</a>
+      <a href="Learning Term.html?t=Community%20land%20trust">Community land trust</a>
+      <a href="Learning Term.html?t=Income%20sharing">Income sharing</a>
+    </div>
+  </div>
+</aside>
+
+<main class="pb-8">
+
+<header class="pt-9">
+  <nav class="breadcrumb mb-6"><a href="Learning Hub.html">Learning</a><span>/</span><span class="text-stone-500">Glossary</span></nav>
+  <h1 class="font-serif text-[40px] md:text-[46px] leading-[1.08] tracking-tight text-ecohubs-deep">Glossary</h1>
+  <p class="lede mt-5">Every word this world uses, said plainly. Each term links to the concepts near it, the guides that use it, and communities where you can see it working.</p>
+
+  <div class="mt-8 flex flex-col gap-4">
+    <div class="searchbig max-w-xl">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a8a29e" stroke-width="1.8"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+      <input type="search" id="q" placeholder="Search 43 terms" aria-label="Search glossary" />
+    </div>
+    <div class="flex flex-wrap gap-2" id="filters"></div>
+    <div class="meta" id="count">43 terms</div>
+  </div>
+</header>
+
+<div id="groups" class="mt-10 flex flex-col gap-10"></div>
+
+<section class="mt-16 rounded-[24px] bg-[#f5f2ea] grain relative overflow-hidden p-8 md:p-10">
+  <div class="relative max-w-2xl">
+    <div class="kicker text-emerald-800 mb-3">Missing a word?</div>
+    <h2 class="font-serif text-[26px] leading-tight text-ecohubs-deep">If you had to look it up somewhere else, <em class="font-story italic font-normal text-stone-500">that's our bug.</em></h2>
+    <p class="mt-3 text-[15px] text-stone-700 leading-relaxed">Tell us the term and where you met it. Definitions are written by members and reviewed by two others before they go in.</p>
+    <div class="mt-5 flex flex-wrap gap-3">
+      <a href="Membership Page.html" class="btn btn-primary text-[15px]">Suggest a term <span>→</span></a>
+      <a href="Learning Map.html" class="btn btn-ghost text-[15px]">See the concept map</a>
+    </div>
+  </div>
+</section>
+
+</main>
+</div></div>
+<div data-footer></div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const topics=[...new Set(EH.glossary.map(g=>g.topic))];
+  const tname=s=>(EH.topics.find(t=>t.slug===s)||{name:s}).name;
+  let active='all', query='';
+
+  document.getElementById('filters').innerHTML=
+    `<button class="tag is-on" data-f="all">All topics</button>`+
+    topics.map(s=>`<button class="tag" data-f="${s}">${tname(s)}</button>`).join('');
+
+  const render=()=>{
+    const list=EH.glossary
+      .filter(g=>active==='all'||g.topic===active)
+      .filter(g=>!query||g.t.toLowerCase().includes(query)||g.d.toLowerCase().includes(query))
+      .sort((a,b)=>a.t.localeCompare(b.t));
+    const byLetter={};
+    list.forEach(g=>{const L=g.t[0].toUpperCase();(byLetter[L]=byLetter[L]||[]).push(g)});
+    document.getElementById('count').textContent=list.length+(list.length===1?' term':' terms')+(active==='all'?'':' in '+tname(active));
+    document.getElementById('groups').innerHTML=Object.keys(byLetter).map(L=>`
+      <section id="L-${L}">
+        <div class="grid lg:grid-cols-[64px_1fr] gap-5">
+          <div class="letterhead">${L}</div>
+          <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-3">
+            ${byLetter[L].map(g=>`<a href="Learning Term.html?t=${encodeURIComponent(g.t)}" class="card p-5 flex flex-col">
+              <div class="font-serif text-[17.5px] text-ecohubs-deep leading-snug">${g.t}</div>
+              <p class="mt-2 text-[13.5px] leading-relaxed text-stone-600 flex-1">${g.d}</p>
+              <div class="mt-4 flex items-center justify-between"><span class="tag">${tname(g.topic)}</span><span class="text-[13px] text-ecohubs-dark">→</span></div>
+            </a>`).join('')}
+          </div>
+        </div>
+      </section>`).join('')||`<p class="text-[15px] text-stone-500">No term matches that. Try a shorter word, or <a href="Membership Page.html">suggest it</a>.</p>`;
+
+    const present=new Set(Object.keys(byLetter));
+    document.getElementById('alpha').innerHTML='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(L=>
+      `<a href="#L-${L}" class="${present.has(L)?'':'off'}">${L}</a>`).join('');
+  };
+
+  document.getElementById('filters').addEventListener('click',e=>{
+    const b=e.target.closest('[data-f]'); if(!b)return;
+    active=b.dataset.f;
+    document.querySelectorAll('#filters .tag').forEach(t=>t.classList.toggle('is-on',t===b));
+    render();
+  });
+  document.getElementById('q').addEventListener('input',e=>{query=e.target.value.trim().toLowerCase();render();});
+  render();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Learning Hub — EcoHubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="learning-hub.js"></script>
+<link rel="stylesheet" href="learning-hub.css" />
+</head>
+<body data-section="learning">
+<div data-siteheader></div>
+<div class="pt-16">
+<div class="max-w-[1360px] mx-auto px-5"><div class="railtabs" data-railtabs></div></div>
+<div class="shell">
+
+<!-- ================= RAIL ================= -->
+<aside class="rail rail-desktop">
+  <div class="rail-group"><div class="rail-label">Learning</div><div data-railnav></div></div>
+  <div class="rail-group">
+    <div class="rail-label">Start here</div>
+    <div class="tree">
+      <a href="Learning Topic.html">What is an intentional community?</a>
+      <a href="Learning Guide.html">Pick a guide</a>
+      <a href="Learning Hub.html#paths">Follow a path</a>
+      <a href="Learning Glossary.html">Look up a word</a>
+    </div>
+  </div>
+</aside>
+
+<!-- ================= MAIN ================= -->
+<main class="pb-8">
+
+<!-- HERO -->
+<section class="pt-10 md:pt-16 grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+  <div>
+    <div class="kicker text-emerald-700 mb-5">Learning Hub · free &amp; open</div>
+    <h1 class="font-serif text-[40px] md:text-[52px] leading-[1.06] tracking-tight text-ecohubs-deep">
+      Learn everything about<br /><em class="font-story italic font-normal text-ecohubs-primary">regenerative communities</em>.
+    </h1>
+    <p class="lede mt-6">
+      Guides, concepts, case studies and practical knowledge for joining or creating
+      thriving communities — written by people who are building them, and corrected by people who have.
+    </p>
+    <form data-search class="searchbig mt-8 max-w-xl">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a8a29e" stroke-width="1.8"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+      <input type="search" placeholder="What would you like to learn?" aria-label="Search the Learning Hub" />
+      <button class="btn btn-primary btn-sm py-3 px-6">Search</button>
+    </form>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="Learning Guide.html" class="btn btn-primary text-[15px]">Browse guides <span>→</span></a>
+      <a href="#topics" class="btn btn-ghost text-[15px]">Browse topics</a>
+      <a href="#communities" class="btn btn-ghost text-[15px]">Find communities</a>
+    </div>
+    <div class="mt-8 flex flex-wrap items-center gap-x-7 gap-y-2 meta">
+      <span>114 articles</span><span>·</span><span>5 guides</span><span>·</span><span>43 glossary terms</span><span>·</span><span>no account needed</span>
+    </div>
+  </div>
+  <div class="mapwrap p-4 relative">
+    <div class="absolute top-5 left-6 meta">the whole hub, at a glance</div>
+    <svg id="heromap" class="w-full" style="height:430px" role="img" aria-label="Clickable map of learning topics"></svg>
+    <a href="Learning Map.html" class="absolute bottom-5 right-6 text-[13px] text-ecohubs-dark">Open full map →</a>
+  </div>
+</section>
+
+<div class="hairline my-16"></div>
+
+<!-- FEATURED GUIDES -->
+<section id="guides">
+  <div class="flex items-end justify-between gap-6 flex-wrap mb-7">
+    <div>
+      <div class="kicker text-emerald-700 mb-3">Featured guides</div>
+      <h2 class="font-serif text-[32px] leading-tight text-ecohubs-deep">Long reads that <em class="font-story italic font-normal text-stone-500">finish the subject.</em></h2>
+    </div>
+    <a href="Learning Guide.html" class="text-sm text-ecohubs-dark">All guides →</a>
+  </div>
+  <div class="grid md:grid-cols-2 gap-5">
+    <a href="Learning Guide.html" class="card overflow-hidden md:row-span-2 flex flex-col">
+      <div class="motif h-56 md:h-72" data-motif="rings"><span class="m-label">guide · foundational</span></div>
+      <div class="p-7 flex-1 flex flex-col">
+        <h3 class="font-serif text-[26px] leading-snug text-ecohubs-deep">Ultimate Guide to Intentional Communities</h3>
+        <p class="mt-3 text-[15.5px] leading-relaxed text-stone-600 flex-1">The whole landscape in one read: what these places are, the forms they take, what they ask of you, and how to tell whether one is right for you.</p>
+        <div class="mt-6 pt-5 border-t border-stone-100 flex flex-wrap gap-x-5 gap-y-2 meta"><span>9 lessons</span><span>74 min</span><span>Foundational</span></div>
+      </div>
+    </a>
+    <a href="Learning Guide.html" class="card overflow-hidden flex">
+      <div class="motif w-32 shrink-0" data-motif="grid"></div>
+      <div class="p-6">
+        <h3 class="font-serif text-[19px] leading-snug text-ecohubs-deep">Ultimate Guide to Community Governance</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-stone-600">Decision-making that survives disagreement, fatigue and ten years of turnover.</p>
+        <div class="mt-4 flex flex-wrap gap-x-4 gap-y-1 meta"><span>8 lessons</span><span>66 min</span><span>Intermediate</span></div>
+      </div>
+    </a>
+    <a href="Learning Guide.html" class="card overflow-hidden flex">
+      <div class="motif w-32 shrink-0" data-motif="strata"></div>
+      <div class="p-6">
+        <h3 class="font-serif text-[19px] leading-snug text-ecohubs-deep">Starting an Ecovillage</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-stone-600">Vision, founding group, land, money, legal form — the sequence most projects get wrong.</p>
+        <div class="mt-4 flex flex-wrap gap-x-4 gap-y-1 meta"><span>11 lessons</span><span>98 min</span><span>Advanced</span></div>
+      </div>
+    </a>
+    <a href="Learning Guide.html" class="card overflow-hidden flex">
+      <div class="motif w-32 shrink-0" data-motif="seed"></div>
+      <div class="p-6">
+        <h3 class="font-serif text-[19px] leading-snug text-ecohubs-deep">Ultimate Guide to Community Finance</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-stone-600">Common purses, contributions, loans and labour credits — paying for a place without becoming a business.</p>
+        <div class="mt-4 flex flex-wrap gap-x-4 gap-y-1 meta"><span>7 lessons</span><span>58 min</span><span>Intermediate</span></div>
+      </div>
+    </a>
+    <a href="Learning Guide.html" class="card overflow-hidden flex">
+      <div class="motif w-32 shrink-0" data-motif="tide"></div>
+      <div class="p-6">
+        <h3 class="font-serif text-[19px] leading-snug text-ecohubs-deep">Regenerative Living</h3>
+        <p class="mt-2 text-[14.5px] leading-relaxed text-stone-600">Water, soil, food and energy at the scale of a settlement rather than a household.</p>
+        <div class="mt-4 flex flex-wrap gap-x-4 gap-y-1 meta"><span>6 lessons</span><span>44 min</span><span>Foundational</span></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section id="topics" class="mt-20">
+  <div class="flex items-end justify-between gap-6 flex-wrap mb-7">
+    <div>
+      <div class="kicker text-emerald-700 mb-3">Browse by topic</div>
+      <h2 class="font-serif text-[32px] leading-tight text-ecohubs-deep">Ten doors into the same house.</h2>
+    </div>
+    <a href="Learning Map.html" class="text-sm text-ecohubs-dark">See how they connect →</a>
+  </div>
+  <div id="topicgrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+</section>
+
+<!-- PATHS -->
+<section id="paths" class="mt-20">
+  <div class="kicker text-emerald-700 mb-3">Learning paths</div>
+  <h2 class="font-serif text-[32px] leading-tight text-ecohubs-deep mb-2">A sequence, when you don't know <em class="font-story italic font-normal text-stone-500">where to start.</em></h2>
+  <p class="text-[15.5px] text-stone-600 max-w-2xl mb-7">Each path is an ordered set of lessons drawn from across the hub. Your place is remembered in this browser — no account, no email.</p>
+  <div id="pathgrid" class="grid md:grid-cols-2 gap-4"></div>
+</section>
+
+<!-- COMMUNITIES -->
+<section id="communities" class="mt-20">
+  <div class="flex items-end justify-between gap-6 flex-wrap mb-7">
+    <div>
+      <div class="kicker text-emerald-700 mb-3">Community examples</div>
+      <h2 class="font-serif text-[32px] leading-tight text-ecohubs-deep">Places that already did it.</h2>
+    </div>
+    <span class="meta">directory coming later · these are study cases</span>
+  </div>
+  <div id="commgrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+</section>
+
+<!-- RECENT + POPULAR + RABBIT HOLE -->
+<section class="mt-20 grid lg:grid-cols-3 gap-5">
+  <div class="card p-7">
+    <div class="kicker text-emerald-700 mb-5">Recently updated</div>
+    <div class="flex flex-col divide-y divide-stone-100">
+      <a href="Learning Topic.html" class="py-3.5 first:pt-0 group"><div class="text-[15px] text-ecohubs-deep leading-snug group-hover:text-ecohubs-primary">Consensus and its failure modes</div><div class="meta mt-1.5">Governance · updated 2 days ago</div></a>
+      <a href="Learning Topic.html" class="py-3.5 group"><div class="text-[15px] text-ecohubs-deep leading-snug group-hover:text-ecohubs-primary">Buying land as a group: five structures</div><div class="meta mt-1.5">Legal · updated 5 days ago</div></a>
+      <a href="Learning Topic.html" class="py-3.5 group"><div class="text-[15px] text-ecohubs-deep leading-snug group-hover:text-ecohubs-primary">What a common purse actually costs</div><div class="meta mt-1.5">Economy · updated 1 week ago</div></a>
+      <a href="Learning Topic.html" class="py-3.5 pb-0 group"><div class="text-[15px] text-ecohubs-deep leading-snug group-hover:text-ecohubs-primary">Reading water before you read price</div><div class="meta mt-1.5">Land · updated 1 week ago</div></a>
+    </div>
+  </div>
+  <div class="card p-7">
+    <div class="kicker text-emerald-700 mb-5">Popular this week</div>
+    <div class="flex flex-col divide-y divide-stone-100">
+      <a href="Learning Topic.html" class="py-3.5 first:pt-0 group flex gap-4"><span class="font-mono text-[11px] text-stone-400 pt-0.5">01</span><span><span class="block text-[15px] text-ecohubs-deep leading-snug group-hover:text-ecohubs-primary">What is an intentional community?</span><span class="meta block mt-1.5">4,120 readers</span></span></a>
+      <a href="Learning Topic.html" class="py-3.5 group flex gap-4"><span class="font-mono text-[11px] text-stone-400 pt-0.5">02</span><span><span class="block text-[15px] text-ecohubs-deep leading-snug group-hover:text-ecohubs-primary">Sociocracy in plain language</span><span class="meta block mt-1.5">2,880 readers</span></span></a>
+      <a href="Learning Topic.html" class="py-3.5 group flex gap-4"><span class="font-mono text-[11px] text-stone-400 pt-0.5">03</span><span><span class="block text-[15px] text-ecohubs-deep leading-snug group-hover:text-ecohubs-primary">How much does joining cost?</span><span class="meta block mt-1.5">2,410 readers</span></span></a>
+      <a href="Learning Topic.html" class="py-3.5 pb-0 group flex gap-4"><span class="font-mono text-[11px] text-stone-400 pt-0.5">04</span><span><span class="block text-[15px] text-ecohubs-deep leading-snug group-hover:text-ecohubs-primary">Why communities break up</span><span class="meta block mt-1.5">2,050 readers</span></span></a>
+    </div>
+  </div>
+  <div class="card p-7 bg-[#f5f2ea] flex flex-col" data-rabbit>
+    <div class="flex items-center justify-between mb-5">
+      <span class="kicker text-emerald-700">A rabbit hole for you</span>
+      <button data-rabbit-reroll class="meta hover:text-ecohubs-dark" aria-label="Show another">↻ another</button>
+    </div>
+    <span class="tag self-start" data-rabbit-kind>Case study</span>
+    <h3 class="font-serif text-[21px] leading-snug text-ecohubs-deep mt-4" data-rabbit-title>—</h3>
+    <p class="text-[14.5px] text-stone-600 leading-relaxed mt-3 flex-1" data-rabbit-desc>—</p>
+    <a class="text-sm text-ecohubs-dark mt-5" data-rabbit-link href="#">Follow it →</a>
+  </div>
+</section>
+
+<!-- GLOSSARY PREVIEW -->
+<section class="mt-20 rounded-[24px] bg-[#f5f2ea] grain relative overflow-hidden p-8 md:p-11">
+  <div class="relative grid lg:grid-cols-[1fr_1.2fr] gap-10 items-start">
+    <div>
+      <div class="kicker text-emerald-800 mb-3">Glossary</div>
+      <h2 class="font-serif text-[30px] leading-tight text-ecohubs-deep">Every word this world uses, <em class="font-story italic font-normal text-stone-500">said plainly.</em></h2>
+      <p class="mt-4 text-[15.5px] text-stone-700 leading-relaxed max-w-md">43 terms, each with related concepts, the guides that use them, and communities that live them. Terms appearing in an article are underlined — hover to read the definition without losing your place.</p>
+      <form data-search class="searchbig mt-6 max-w-sm">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#a8a29e" stroke-width="1.8"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+        <input type="search" placeholder="Look up a term" aria-label="Search glossary" />
+      </form>
+      <a href="Learning Glossary.html" class="inline-block mt-5 text-sm text-ecohubs-dark">Open the glossary →</a>
+    </div>
+    <div id="glosspreview" class="grid sm:grid-cols-2 gap-3"></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="mt-20 rounded-[24px] bg-[#0b2e24] text-emerald-100 p-8 md:p-12 grid md:grid-cols-2 gap-10 items-center">
+  <div>
+    <div class="kicker text-emerald-300/80 mb-3">Stay updated</div>
+    <h2 class="font-serif text-[30px] leading-tight text-emerald-50">New lessons, <em class="font-story italic font-normal text-emerald-300">once a month.</em></h2>
+    <p class="mt-3 text-[15px] text-emerald-200/80 leading-relaxed max-w-md">What we published, what we corrected, and which community let us look at their books. No course upsell — there is no course.</p>
+  </div>
+  <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('button').textContent='Thank you ✓';">
+    <input type="email" required placeholder="your@email.com" class="flex-1 px-5 py-3.5 rounded-full bg-[#0f3a2c] border border-emerald-900/60 text-[#f5f2ea] placeholder:text-emerald-200/40 focus:outline-none focus:border-emerald-400/60" />
+    <button class="px-6 py-3.5 bg-emerald-500 text-[#06170f] font-medium rounded-full hover:bg-emerald-400 transition-colors whitespace-nowrap">Subscribe</button>
+  </form>
+</section>
+
+</main>
+</div></div>
+<div data-footer></div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  EH.renderMap(document.getElementById('heromap'),{w:560,h:470});
+
+  document.getElementById('topicgrid').innerHTML = EH.topics.map(t=>`
+    <a href="Learning Topic.html" class="card p-6 flex flex-col">
+      <div class="motif rounded-xl h-16 mb-5" data-motif="${t.motif}"></div>
+      <h3 class="font-serif text-[19px] leading-snug text-ecohubs-deep">${t.name}</h3>
+      <p class="mt-2 text-[14px] leading-relaxed text-stone-600 flex-1">${t.blurb}</p>
+      <div class="mt-5 meta">${t.count} articles</div>
+    </a>`).join('');
+
+  document.getElementById('pathgrid').innerHTML = EH.paths.map(p=>{
+    const ids=p.steps.map((s,i)=>p.slug+':'+i);
+    return `<a href="Learning Hub.html#paths" class="card p-7 block">
+      <div class="flex items-start justify-between gap-4">
+        <h3 class="font-serif text-[21px] leading-snug text-ecohubs-deep">${p.title}</h3>
+        <span class="tag">${p.hours} h</span>
+      </div>
+      <p class="mt-3 text-[14.5px] leading-relaxed text-stone-600">${p.blurb}</p>
+      <ol class="mt-5 flex flex-col gap-2">${p.steps.slice(0,3).map((s,i)=>`<li class="flex gap-3 text-[13.5px] text-stone-500"><span class="font-mono text-[11px] text-stone-400 pt-0.5">0${i+1}</span>${s}</li>`).join('')}<li class="text-[13px] text-stone-400 pl-8">+ ${p.steps.length-3} more steps</li></ol>
+      <div class="mt-6 pt-5 border-t border-stone-100">
+        <div class="flex items-center justify-between mb-2 meta"><span>${p.lessons} lessons</span><span data-progress-label>0% complete</span></div>
+        <div class="bar" data-progress-of="${ids.join(',')}"><i style="width:0"></i></div>
+      </div>
+    </a>`;}).join('');
+
+  document.getElementById('commgrid').innerHTML = EH.communities.slice(0,6).map(c=>`
+    <div class="card overflow-hidden flex flex-col">
+      <div class="placeholder-img h-36 relative"><div class="absolute inset-0 flex items-end p-3"><span class="placeholder-label">photo · ${c.name.toLowerCase()}</span></div></div>
+      <div class="p-6 flex-1 flex flex-col">
+        <h3 class="font-serif text-[19px] text-ecohubs-deep leading-snug">${c.name}</h3>
+        <div class="meta mt-1.5">${c.loc} · est. ${c.founded}</div>
+        <p class="mt-3 text-[14px] leading-relaxed text-stone-600 flex-1">${c.blurb}</p>
+        <div class="mt-4 flex flex-wrap gap-2"><span class="tag">${c.gov}</span><span class="tag">${c.pop}</span></div>
+        <a href="Learning Topic.html" class="mt-5 text-sm text-ecohubs-dark">View community →</a>
+      </div>
+    </div>`).join('');
+
+  const popular=['Consensus','Sociocracy','Ecovillage','Community land trust','Income sharing','Common purse'];
+  document.getElementById('glosspreview').innerHTML = popular.map(t=>{
+    const g=EH.glossary.find(x=>x.t===t);
+    return `<a href="Learning Term.html?t=${encodeURIComponent(g.t)}" class="card p-5 bg-white/80">
+      <div class="font-serif text-[17px] text-ecohubs-deep">${g.t}</div>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-stone-600">${g.d}</p>
+    </a>`;}).join('');
+
+  if(EH.paint)EH.paint();
+});
+</script>
+</body>
+</html>

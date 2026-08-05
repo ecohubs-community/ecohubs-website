@@ -130,6 +130,13 @@ Adding a page is three edits, not one. A page missing from either file is a page
 - **Meaningful content change** → bump that route's `lastmod` to the date of the change. Cosmetic tweaks don't count.
 - `lastmod` is the only hint here Google actually reads (`priority` and `changefreq` are ignored), and it only works while it stays truthful — never stamp it with the build date, or crawlers learn to ignore the field.
 - A tag archive is `noindex` and stays out of the sitemap until it has `MIN_POSTS_FOR_INDEXABLE_TAG` posts (see [`blog.ts`](./src/lib/server/blog.ts)). One shared constant drives both, so they can't disagree — change it there, not in two places.
+- **IndexNow** ([`indexnow.ts`](./src/lib/server/indexnow.ts)) pings Bing/Yandex/Seznam/Naver/Yep the moment a page changes. Ghost webhooks handle blog posts automatically. For a **static page** you added or meaningfully changed, ping it after deploy — the same trigger as bumping `lastmod`:
+  ```bash
+  curl -X POST "https://ecohubs.community/api/indexnow?token=$INDEXNOW_WEBHOOK_TOKEN" \
+    -H 'Content-Type: application/json' \
+    -d '{"urls":["https://ecohubs.community/your-page"]}'
+  ```
+  Submit deleted URLs too — a 404 tells them to drop it. Never bulk-submit the whole site; that is the sitemap's job, and the protocol explicitly discourages it. The key lives at `static/<key>.txt` and must match `INDEXNOW_KEY`.
 
 ## External links
 

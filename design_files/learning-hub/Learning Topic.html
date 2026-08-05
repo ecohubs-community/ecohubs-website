@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Intentional Communities — EcoHubs Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="learning-hub.js"></script>
+<link rel="stylesheet" href="learning-hub.css" />
+</head>
+<body data-section="topics">
+<div class="scrollline"></div>
+<div data-siteheader></div>
+<div class="pt-16">
+<div class="max-w-[1360px] mx-auto px-5"><div class="railtabs" data-railtabs></div></div>
+<div class="shell">
+
+<!-- ================= RAIL ================= -->
+<aside class="rail rail-desktop">
+  <div class="rail-group"><div class="rail-label">Learning</div><div data-railnav></div></div>
+  <div class="rail-group">
+    <div class="rail-label">Intentional Communities</div>
+    <div class="tree" data-spy id="sectiontree">
+      <a href="#what" data-lesson="topic:ic#what"><span class="tick"></span>What is an intentional community?</a>
+      <a href="#types" data-lesson="topic:ic#types"><span class="tick"></span>Types</a>
+      <a href="#governance" data-lesson="topic:ic#governance"><span class="tick"></span>Governance</a>
+      <a href="#economy" data-lesson="topic:ic#economy"><span class="tick"></span>Economy</a>
+      <a href="#daily-life" data-lesson="topic:ic#daily-life"><span class="tick"></span>Daily life</a>
+      <a href="#benefits" data-lesson="topic:ic#benefits"><span class="tick"></span>Benefits</a>
+      <a href="#challenges" data-lesson="topic:ic#challenges"><span class="tick"></span>Challenges</a>
+      <a href="#examples" data-lesson="topic:ic#examples"><span class="tick"></span>Examples</a>
+      <a href="#faq" data-lesson="topic:ic#faq"><span class="tick"></span>FAQ</a>
+      <a href="#related" data-lesson="topic:ic#related"><span class="tick"></span>Related topics</a>
+    </div>
+    <div class="mt-4 px-2">
+      <div class="flex items-center justify-between mb-2 meta"><span>Sections read</span><span data-progress-label>0%</span></div>
+      <div class="bar" id="secbar" data-progress-of=""><i style="width:0"></i></div>
+    </div>
+  </div>
+</aside>
+
+<!-- ================= MAIN ================= -->
+<main class="pb-8 max-w-[820px]">
+
+<!-- HERO -->
+<header class="pt-9">
+  <nav class="breadcrumb mb-6">
+    <a href="Learning Hub.html">Learning</a><span>/</span>
+    <a href="Learning Hub.html#topics">Topics</a><span>/</span>
+    <span class="text-stone-500">Intentional Communities</span>
+  </nav>
+  <h1 class="font-serif text-[40px] md:text-[46px] leading-[1.08] tracking-tight text-ecohubs-deep">Intentional Communities</h1>
+  <p class="lede mt-5">Learn what intentional communities are, how they actually work day to day, and how to find or build one without repeating the mistakes that end most attempts.</p>
+
+  <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 meta">
+    <span>18 min read</span><span>·</span><span>Foundational</span><span>·</span><span>Updated 2 August 2026</span><span>·</span><span>~40 min to complete with links</span>
+  </div>
+
+  <div class="mt-6 flex flex-wrap items-center gap-3">
+    <div class="depth" role="group" aria-label="Reading depth">
+      <button data-depth="quick">Quick</button><button data-depth="standard">Standard</button><button data-depth="deep">Deep</button>
+    </div>
+    <button class="readbtn" data-read="topic:intentional-communities"><span class="box"></span><span data-read-label>Mark as read</span></button>
+    <button class="readbtn" id="bookmark"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 4h10v16l-5-4-5 4z"/></svg><span>Bookmark</span></button>
+    <button class="readbtn" id="share"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="17" cy="6" r="2.5"/><circle cx="7" cy="12" r="2.5"/><circle cx="17" cy="18" r="2.5"/><path d="M9.2 10.8l5.6-3.6M9.2 13.2l5.6 3.6"/></svg><span>Share</span></button>
+  </div>
+</header>
+
+<!-- QUICK DIGEST -->
+<section class="d-quick mt-10 card p-8 bg-[#f5f2ea]">
+  <div class="kicker text-emerald-700 mb-5">The short version</div>
+  <ul class="flex flex-col gap-3.5">
+    <li class="flex gap-3 text-[15.5px] leading-relaxed text-stone-700"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>An intentional community is a group who chose to live together around shared values and <strong class="text-ecohubs-deep">explicit written agreements</strong>. The agreements are what separate it from a nice neighbourhood.</li>
+    <li class="flex gap-3 text-[15.5px] leading-relaxed text-stone-700"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>The main forms are <strong class="text-ecohubs-deep">cohousing</strong> (private homes, shared facilities), <strong class="text-ecohubs-deep">ecovillages</strong> (settlement-scale ecological design), <strong class="text-ecohubs-deep">communes</strong> (shared income), and <strong class="text-ecohubs-deep">co-ops and land trusts</strong> (shared ownership only).</li>
+    <li class="flex gap-3 text-[15.5px] leading-relaxed text-stone-700"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>Most communities fail on <strong class="text-ecohubs-deep">governance and money</strong>, not on idealism. Decide how you decide before you buy anything.</li>
+    <li class="flex gap-3 text-[15.5px] leading-relaxed text-stone-700"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>Joining costs somewhere between a rental deposit and a house deposit, depending on whether members own, lease or rent.</li>
+    <li class="flex gap-3 text-[15.5px] leading-relaxed text-stone-700"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>Visit before you commit. Every established community has a guest track; use it twice, in different seasons.</li>
+  </ul>
+  <p class="mt-6 text-[13.5px] text-stone-500 font-story italic">Switch to Standard for the full article, or Deep for case data, comparison tables and sources.</p>
+</section>
+
+<!-- TOC -->
+<div class="d-standard mt-10 toc-card">
+  <div class="flex items-center justify-between mb-4">
+    <span class="kicker text-emerald-700">On this page</span>
+    <span class="meta">10 sections</span>
+  </div>
+  <div class="toc-list" data-spy>
+    <a href="#what"><span>01</span>What is an intentional community?</a>
+    <a href="#types"><span>02</span>Types</a>
+    <a href="#governance"><span>03</span>Governance</a>
+    <a href="#economy"><span>04</span>Economy</a>
+    <a href="#daily-life"><span>05</span>Daily life</a>
+    <a href="#benefits"><span>06</span>Benefits</a>
+    <a href="#challenges"><span>07</span>Challenges</a>
+    <a href="#examples"><span>08</span>Examples</a>
+    <a href="#faq"><span>09</span>FAQ</a>
+    <a href="#related"><span>10</span>Related topics</a>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<article class="prose d-standard">
+
+<h2 id="what">What is an intentional community?</h2>
+<p>An <span class="gloss">intentional community</span> is a group of people who have chosen to live together, or close to one another, around shared values and a set of explicit agreements. The word doing the work is <em>intentional</em>: the arrangement is deliberate, and the terms of it are written down.</p>
+<p>That last part is what separates a community from a friendly street. Neighbours share a place. A community shares a place <strong>and</strong> a decision-making process, a way of holding money, and an agreed answer to what happens when someone stops carrying their share.</p>
+
+<div class="defbox">
+  <div class="d-term">Intentional community</div>
+  <p>A group of people who have chosen to live together, or in close proximity, around shared values and explicit agreements — including how decisions are made and what happens when they are broken.</p>
+</div>
+
+<p>Communities differ enormously in how much they share. At one end, a cohousing project shares a garden, a common house and a monthly meeting, while every household keeps its own income and front door. At the other, an income-sharing <span class="gloss">commune</span> holds everything in a <span class="gloss" data-term="common purse">common purse</span> and decides collectively what each person needs. Both are intentional communities. The distance between them is the interesting part.</p>
+
+<div class="callout">
+  <div class="c-label">A useful test</div>
+  <p>If the group disappeared tomorrow, what would you lose? A community answers with infrastructure — decisions, money, land, care. A social circle answers with company. Both are worth having; only one needs governance.</p>
+</div>
+
+<h2 id="types">The forms they take</h2>
+<p>There is no official taxonomy, but four forms cover most of what exists. Groups routinely mix them: a legally constituted co-op running an ecovillage with a cohousing cluster inside it is entirely normal.</p>
+
+<table class="ctable">
+  <thead><tr><th>Form</th><th>Shares</th><th>Keeps private</th><th>Typical size</th></tr></thead>
+  <tbody>
+    <tr><td>Cohousing</td><td>Common house, outdoor space, some meals, governance</td><td>Homes, income, most possessions</td><td>15–40 households</td></tr>
+    <tr><td>Ecovillage</td><td>Land, infrastructure, ecological design, governance</td><td>Usually homes and income</td><td>30–300 residents</td></tr>
+    <tr><td>Commune</td><td>Income, property, labour, often meals</td><td>Personal effects, relationships</td><td>10–100 members</td></tr>
+    <tr><td>Co-op / land trust</td><td>Ownership of land or buildings</td><td>Daily life, money, decisions beyond property</td><td>Any</td></tr>
+  </tbody>
+</table>
+
+<p>An <span class="gloss">ecovillage</span> is defined less by its buildings than by its intent: it consciously designs its social, ecological, economic and cultural systems to regenerate the place it sits in. A <span class="gloss">community land trust</span>, by contrast, is a legal instrument — it can hold the land under any of the other three forms.</p>
+
+<div class="d-deep callout" data-tone="warn">
+  <div class="c-label">Deep · where the labels mislead</div>
+  <p>"Ecovillage" is often used for projects with a permaculture garden and conventional governance, and withheld from dense urban co-ops with far lower per-capita footprints. Judge a project by its water, energy and decision systems, not by its category or its website.</p>
+</div>
+
+<h2 id="governance">How decisions get made</h2>
+<p>Ask any long-running community what nearly killed it and you will hear about meetings. <span class="gloss">Governance</span> is the system by which a group makes, records, reviews and enforces decisions — including how it changes that system. Most groups adopt one of three families.</p>
+
+<ol>
+  <li><strong><span class="gloss">Consensus</span></strong> — a proposal passes only if everyone agrees. Excellent for trust and shared ownership; brutal at scale, and vulnerable to whoever is most willing to keep talking.</li>
+  <li><strong><span class="gloss">Consent</span></strong> — a proposal passes if no one has a reasoned, paramount objection. The bar moves from "is this the best idea?" to "is this safe enough to try?", which is why decisions actually close.</li>
+  <li><strong><span class="gloss">Sociocracy</span></strong> — consent decisions inside nested <span class="gloss" data-term="circle">circles</span>, joined by <span class="gloss" data-term="double link">double links</span>, with roles elected by open nomination and fixed terms.</li>
+</ol>
+
+<div class="pullquote">
+  <p>We didn't have a governance problem. We had a governance vacuum, and the loudest person filled it.</p>
+  <cite>Founding member · a project that dissolved after six years</cite>
+</div>
+
+<p>Whichever family you pick, the details that decide whether it survives are unglamorous: who may raise a <span class="gloss" data-term="blocking concern">blocking concern</span> and on what grounds, what your <span class="gloss">quorum</span> is, how long a role lasts before <span class="gloss">rotation</span>, and where the written <span class="gloss">agreements</span> live so that a member of two months can read them.</p>
+
+<details class="acc d-standard">
+  <summary>How long should a community meeting be?</summary>
+  <div class="acc-body">Communities that report meeting satisfaction tend to run one 90-minute plenary a month with a published agenda and a hard stop, plus short circle meetings that handle domain decisions without plenary involvement. The failure pattern is the opposite: a three-hour weekly meeting where everything is decided by everyone, which burns out exactly the people who are most reliable.</div>
+</details>
+<details class="acc d-standard">
+  <summary>Do we need a facilitator?</summary>
+  <div class="acc-body">Yes, and preferably a rotating one. <span class="gloss">Facilitation</span> is a role that serves the process rather than the outcome; when the person holding it also holds a strong position on the proposal, both jobs suffer. Small groups often trade facilitation between three or four trained members.</div>
+</details>
+
+<div class="d-deep">
+<h3>Deep · what the governance research supports</h3>
+<p>Elinor Ostrom's fieldwork on long-enduring commons found a consistent set of design principles: clearly defined boundaries and membership, rules matched to local conditions, participation by those affected in changing the rules, monitoring by the members themselves, graduated sanctions, accessible conflict resolution, and recognition of the group's right to organise. Every one of those maps directly onto a community agreement most projects skip.</p>
+<table class="ctable">
+  <thead><tr><th>Design principle</th><th>What it looks like in a community</th></tr></thead>
+  <tbody>
+    <tr><td>Defined boundaries</td><td>A written membership process with a decision point, not open-ended guesthood</td></tr>
+    <tr><td>Graduated sanctions</td><td>A first conversation, then a circle, then a formal review — not silence, then expulsion</td></tr>
+    <tr><td>Accessible conflict resolution</td><td>A named repair process anyone can trigger without permission from leadership</td></tr>
+    <tr><td>Monitoring by members</td><td>Transparent budgets and work logs, read by the people they describe</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="economy">Money, and who holds it</h2>
+<p>Community economics runs on a spectrum from fully separate to fully shared. Most projects sit in the middle: private income, a monthly contribution to a shared budget, and one or two collectively owned assets.</p>
+<ul>
+  <li><strong>Separate income, shared costs.</strong> Members pay a monthly fee covering land, maintenance, insurance and reserves. Simplest to start, easiest to leave, weakest at redistributing.</li>
+  <li><strong><span class="gloss" data-term="labour credit">Labour credits</span>.</strong> Work for the community is counted in a shared unit so that cooking, accounting and roof repair are commensurable. Removes the quiet hierarchy of paid versus unpaid work.</li>
+  <li><strong><span class="gloss" data-term="income sharing">Income sharing</span>.</strong> All outside earnings enter a <span class="gloss" data-term="common purse">common purse</span>; needs are met from it. Eliminates internal wealth gaps and demands a very high level of trust and transparency.</li>
+  <li><strong><span class="gloss" data-term="sweat equity">Sweat equity</span>.</strong> Labour credited towards a member's financial stake — the usual way people without capital join a build-out.</li>
+</ul>
+<div class="callout">
+  <div class="c-label">Before the romance</div>
+  <p>Write the exit terms in the same meeting as the entry terms. What a leaving member is owed, over what period, and out of which account is the single most common cause of legal conflict in communities over ten years old.</p>
+</div>
+
+<h2 id="daily-life">What daily life is actually like</h2>
+<p>Most days are ordinary. People go to work — increasingly from a desk on site — cook, garden, argue about the compost, put children to bed. The differences are structural rather than dramatic: shared meals two or three times a week, a work quota measured in hours, a calendar with everyone's commitments on it, and a monthly meeting that is either the best or worst evening of the month.</p>
+<p>The recurring surprise for newcomers is not the labour, it is the visibility. In a community your absence is noticed, your moods are read, and your decisions affect people who will still be there next year. Most people find this a relief. A minority find it unbearable, and that is legitimate — the trial period exists to find out which you are.</p>
+
+<div class="grid sm:grid-cols-2 gap-4 my-8">
+  <div class="card p-6"><div class="kicker text-emerald-700 mb-3">A typical week</div><ul class="flex flex-col gap-2 text-[14.5px] text-stone-600 leading-relaxed"><li>2–3 shared dinners</li><li>4–10 hours of community work</li><li>1 circle meeting for your domain</li><li>1 plenary a month</li></ul></div>
+  <div class="card p-6"><div class="kicker text-amber-700 mb-3">What it is not</div><ul class="flex flex-col gap-2 text-[14.5px] text-stone-600 leading-relaxed"><li>A retreat centre with residents</li><li>An escape from paid work</li><li>A place without conflict</li><li>Cheaper by default</li></ul></div>
+</div>
+
+<h2 id="benefits">What people gain</h2>
+<ul>
+  <li><strong>Fewer things, more capacity.</strong> One workshop, one set of tools, three cars instead of twenty. Shared infrastructure is the main reason community footprints measure far below national averages.</li>
+  <li><strong>Care that does not depend on family.</strong> Illness, childcare, ageing and grief are held by more than one household.</li>
+  <li><strong>Practical skill.</strong> People learn building, growing, facilitation and finance because the community needs them to, not as a hobby.</li>
+  <li><strong>Belonging with terms.</strong> Membership you can read, question and change is a rarer thing than it sounds.</li>
+</ul>
+
+<h2 id="challenges">What breaks them</h2>
+<p>Honest accounting matters more here than encouragement. The recurring causes of collapse are consistent across decades and continents:</p>
+<ol>
+  <li><strong>No agreed way to decide</strong> before the first hard decision arrives.</li>
+  <li><strong>Founder dependency</strong> — one person holding the vision, the money and the keys.</li>
+  <li><strong>Money entering as friendship</strong>, with loans and gifts undocumented.</li>
+  <li><strong>Unspoken labour expectations</strong>, usually falling on the same three people.</li>
+  <li><strong>No repair process</strong>, so a single unaddressed conflict quietly becomes the culture.</li>
+</ol>
+<div class="callout" data-tone="warn">
+  <div class="c-label">The honest number</div>
+  <p>Most forming groups never reach land, and a large share of those that do dissolve within their first decade. The projects that last are rarely the most idealistic ones — they are the ones that wrote things down early and reviewed them often.</p>
+</div>
+
+<h2 id="examples">Communities worth studying</h2>
+<p>Read these as evidence, not aspiration. Each solved a specific problem in a way you can examine.</p>
+<div id="commgrid" class="grid sm:grid-cols-2 gap-4 my-6"></div>
+
+<h2 id="faq">Frequently asked</h2>
+<details class="acc"><summary>How much does it cost to join?</summary><div class="acc-body">Anywhere from a rental deposit to a house deposit. Rental-model communities ask for a deposit and monthly rent; equity models ask members to buy a share, commonly in the tens of thousands; land trusts lease at below-market rates with a small entry fee. Ask for the last three years of accounts before you commit anything.</div></details>
+<details class="acc"><summary>Do I have to share my income?</summary><div class="acc-body">Almost never. Fully income-sharing communities are a small minority. Most ask for a monthly contribution and a work quota, and are entirely uninterested in what you earn outside.</div></details>
+<details class="acc"><summary>Can I bring children? Pets? A partner?</summary><div class="acc-body">Children, usually yes and often gladly. Pets are a common source of written policy — ask early. Partners who have not been through the membership process are the more delicate case; most communities require both people to join as members.</div></details>
+<details class="acc"><summary>What if I want to leave?</summary><div class="acc-body">A well-run community has written exit terms: notice period, what you are repaid, over how long, and who buys your share. If a group cannot answer this in one paragraph, treat it as a warning.</div></details>
+<details class="acc"><summary>Is this just for people who can afford it?</summary><div class="acc-body">Not necessarily, but capital-heavy models do filter by wealth. <span class="gloss" data-term="sweat equity">Sweat equity</span>, staged buy-in, community land trusts and rental membership all exist specifically to widen the door. Ask which of them a project uses — the answer tells you what it believes.</div></details>
+
+<div class="d-deep mt-10">
+  <h3>Sources &amp; further reading</h3>
+  <ul>
+    <li>Ostrom, E. — <em>Governing the Commons</em> (1990), design principles for long-enduring commons.</li>
+    <li>Christian, D. L. — <em>Creating a Life Together</em> (2003), on forming-group failure patterns.</li>
+    <li>Global Ecovillage Network — community profiles and the Community Sustainability Assessment.</li>
+    <li>Foundation for Intentional Community — directory data on community formation and longevity.</li>
+  </ul>
+</div>
+</article>
+
+<!-- RELATED CONCEPTS -->
+<section id="related" class="mt-16">
+  <div class="kicker text-emerald-700 mb-5">Related concepts</div>
+  <div id="concepts" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+</section>
+
+<!-- DOWNLOADS -->
+<section class="mt-14">
+  <div class="kicker text-emerald-700 mb-5">Downloads</div>
+  <div class="grid sm:grid-cols-2 gap-3">
+    <a href="#" class="card p-5 flex items-center gap-4">
+      <span class="w-10 h-10 rounded-xl bg-[#f5f2ea] grid place-items-center shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#064e3b" stroke-width="1.6"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg></span>
+      <span><span class="block text-[15px] text-ecohubs-deep">Visiting checklist</span><span class="meta">PDF · 2 pages · what to ask on a first visit</span></span>
+    </a>
+    <a href="#" class="card p-5 flex items-center gap-4">
+      <span class="w-10 h-10 rounded-xl bg-[#f5f2ea] grid place-items-center shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#064e3b" stroke-width="1.6"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg></span>
+      <span><span class="block text-[15px] text-ecohubs-deep">Founding agreements template</span><span class="meta">DOCX · editable · 9 clauses</span></span>
+    </a>
+    <a href="#" class="card p-5 flex items-center gap-4">
+      <span class="w-10 h-10 rounded-xl bg-[#f5f2ea] grid place-items-center shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#064e3b" stroke-width="1.6"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg></span>
+      <span><span class="block text-[15px] text-ecohubs-deep">Membership cost worksheet</span><span class="meta">XLSX · model entry, monthly and exit</span></span>
+    </a>
+    <a href="Resilience Assessment.html" class="card p-5 flex items-center gap-4">
+      <span class="w-10 h-10 rounded-xl bg-[#f5f2ea] grid place-items-center shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#064e3b" stroke-width="1.6"><circle cx="12" cy="12" r="7.5"/><path d="M12 8v4l3 2"/></svg></span>
+      <span><span class="block text-[15px] text-ecohubs-deep">Community Resilience Assessment</span><span class="meta">interactive · 12 minutes</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- RABBIT HOLE -->
+<section class="mt-14 card p-7 bg-[#f5f2ea]" data-rabbit>
+  <div class="flex items-center justify-between mb-4">
+    <span class="kicker text-emerald-700">A rabbit hole for you</span>
+    <button data-rabbit-reroll class="meta hover:text-ecohubs-dark">↻ another</button>
+  </div>
+  <div class="flex flex-wrap items-start gap-6 justify-between">
+    <div class="max-w-xl">
+      <span class="tag" data-rabbit-kind>—</span>
+      <h3 class="font-serif text-[21px] leading-snug text-ecohubs-deep mt-3" data-rabbit-title>—</h3>
+      <p class="text-[14.5px] text-stone-600 leading-relaxed mt-2" data-rabbit-desc>—</p>
+    </div>
+    <a class="btn btn-ghost btn-sm" data-rabbit-link href="#">Follow it →</a>
+  </div>
+</section>
+
+<!-- LEARNING JOURNEY -->
+<section class="mt-14 pt-8 border-t border-stone-200">
+  <div class="kicker text-emerald-700 mb-5">Your learning journey</div>
+  <div class="grid sm:grid-cols-2 gap-3">
+    <a href="Learning Hub.html" class="card p-6"><div class="meta mb-2">← Previous</div><div class="font-serif text-[18px] text-ecohubs-deep leading-snug">Why community, now?</div></a>
+    <a href="Learning Lesson.html" class="card p-6 text-right"><div class="meta mb-2">Next →</div><div class="font-serif text-[18px] text-ecohubs-deep leading-snug">The forms: village, cohousing, commune</div></a>
+  </div>
+  <div class="mt-4 flex flex-wrap items-center gap-3">
+    <a href="Learning Guide.html" class="btn btn-primary text-[15px]">Continue in the guide <span>→</span></a>
+    <a href="Learning Hub.html#paths" class="btn btn-ghost text-[15px]">See this in a learning path</a>
+  </div>
+</section>
+
+<!-- RELATED GUIDES -->
+<section class="mt-14">
+  <div class="kicker text-emerald-700 mb-5">Related guides</div>
+  <div class="grid sm:grid-cols-3 gap-3">
+    <a href="Learning Guide.html" class="card overflow-hidden"><div class="motif h-20" data-motif="rings"></div><div class="p-5"><div class="font-serif text-[16.5px] text-ecohubs-deep leading-snug">Ultimate Guide to Intentional Communities</div><div class="meta mt-2">9 lessons · 74 min</div></div></a>
+    <a href="Learning Guide.html" class="card overflow-hidden"><div class="motif h-20" data-motif="grid"></div><div class="p-5"><div class="font-serif text-[16.5px] text-ecohubs-deep leading-snug">Ultimate Guide to Community Governance</div><div class="meta mt-2">8 lessons · 66 min</div></div></a>
+    <a href="Learning Guide.html" class="card overflow-hidden"><div class="motif h-20" data-motif="strata"></div><div class="p-5"><div class="font-serif text-[16.5px] text-ecohubs-deep leading-snug">Starting an Ecovillage</div><div class="meta mt-2">11 lessons · 98 min</div></div></a>
+  </div>
+</section>
+
+</main>
+</div></div>
+<div data-footer></div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('commgrid').innerHTML = ['Twin Oaks','Sieben Linden','Cloughjordan Ecovillage','Auroville'].map(n=>{
+    const c=EH.communities.find(x=>x.name===n);
+    return `<div class="card overflow-hidden flex flex-col">
+      <div class="placeholder-img h-32 relative"><div class="absolute inset-0 flex items-end p-3"><span class="placeholder-label">photo · ${c.name.toLowerCase()}</span></div></div>
+      <div class="p-5 flex-1 flex flex-col">
+        <div class="font-serif text-[18px] text-ecohubs-deep leading-snug">${c.name}</div>
+        <div class="meta mt-1.5">${c.loc} · ${c.pop}</div>
+        <p class="mt-2.5 text-[13.5px] leading-relaxed text-stone-600 flex-1">${c.blurb}</p>
+        <div class="mt-3 flex flex-wrap gap-2"><span class="tag">${c.gov}</span></div>
+        <a href="#" class="mt-4 text-[13.5px] text-ecohubs-dark">View community →</a>
+      </div></div>`;}).join('');
+
+  document.getElementById('concepts').innerHTML = ['Ecovillage','Cohousing','Commune','Community land trust','Consensus','Sociocracy'].map(t=>{
+    const g=EH.glossary.find(x=>x.t===t);
+    return `<a href="Learning Term.html?t=${encodeURIComponent(g.t)}" class="card p-5">
+      <div class="font-serif text-[17px] text-ecohubs-deep">${g.t}</div>
+      <p class="mt-2 text-[13.5px] leading-relaxed text-stone-600">${g.d}</p>
+    </a>`;}).join('');
+
+  const sec=[...document.querySelectorAll('#sectiontree a[data-lesson]')];
+  const ids=sec.map(a=>a.dataset.lesson);
+  document.getElementById('secbar').dataset.progressOf=ids.join(',');
+  const anchors=sec.map(a=>document.querySelector(a.getAttribute('href')));
+  const sweep=()=>{
+    let changed=false;
+    anchors.forEach((el,i)=>{
+      if(!el||!el.offsetParent)return;
+      const next=anchors[i+1];
+      const passed = next ? next.getBoundingClientRect().top<160
+        : (scrollY+innerHeight)>(document.documentElement.scrollHeight-260);
+      if(passed&&!EH.progress.done(ids[i])){EH.progress.set(ids[i],true);changed=true;}
+    });
+    if(changed&&EH.paint)EH.paint();
+  };
+  sweep(); addEventListener('scroll',()=>{clearTimeout(window.__sw);window.__sw=setTimeout(sweep,180)},{passive:true});
+  if(EH.paint)EH.paint();
+
+  const bm=document.getElementById('bookmark');
+  bm.addEventListener('click',()=>{bm.classList.toggle('is-done');bm.querySelector('span:last-child').textContent=bm.classList.contains('is-done')?'Bookmarked':'Bookmark';});
+  const sh=document.getElementById('share');
+  sh.addEventListener('click',()=>{navigator.clipboard&&navigator.clipboard.writeText(location.href);sh.querySelector('span:last-child').textContent='Link copied';setTimeout(()=>sh.querySelector('span:last-child').textContent='Share',1800);});
+});
+</script>
+</body>
+</html>

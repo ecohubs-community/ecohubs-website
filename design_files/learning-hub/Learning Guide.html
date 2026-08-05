@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ultimate Guide to Intentional Communities — EcoHubs Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="learning-hub.js"></script>
+<link rel="stylesheet" href="learning-hub.css" />
+</head>
+<body data-section="guides">
+<div data-siteheader></div>
+<div class="pt-16">
+<div class="max-w-[1360px] mx-auto px-5"><div class="railtabs" data-railtabs></div></div>
+<div class="shell">
+
+<aside class="rail rail-desktop">
+  <div class="rail-group"><div class="rail-label">Learning</div><div data-railnav></div></div>
+  <div class="rail-group">
+    <div class="rail-label">This guide · 9 lessons</div>
+    <div class="tree" id="railtree"></div>
+  </div>
+  <div class="rail-group">
+    <div class="rail-label">Other guides</div>
+    <div class="rail-nav">
+      <a class="rail-link" href="Learning Guide.html"><span>Community Governance</span></a>
+      <a class="rail-link" href="Learning Guide.html"><span>Starting an Ecovillage</span></a>
+      <a class="rail-link" href="Learning Guide.html"><span>Community Finance</span></a>
+      <a class="rail-link" href="Learning Guide.html"><span>Regenerative Living</span></a>
+    </div>
+  </div>
+</aside>
+
+<main class="pb-8">
+
+<!-- GUIDE HERO -->
+<header class="pt-9 grid lg:grid-cols-[1.15fr_.85fr] gap-10 items-start">
+  <div>
+    <nav class="breadcrumb mb-6"><a href="Learning Hub.html">Learning</a><span>/</span><a href="Learning Guide.html">Guides</a><span>/</span><span class="text-stone-500">Intentional Communities</span></nav>
+    <div class="kicker text-emerald-700 mb-4">Guide · foundational</div>
+    <h1 class="font-serif text-[38px] md:text-[44px] leading-[1.08] tracking-tight text-ecohubs-deep">Ultimate Guide to Intentional Communities</h1>
+    <p class="lede mt-5">Nine lessons that take you from "I've been thinking about this for years" to a clear, unsentimental picture of what living in community would actually require of you.</p>
+    <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 meta">
+      <span>9 lessons</span><span>·</span><span>74 min total</span><span>·</span><span>no prerequisites</span><span>·</span><span>updated August 2026</span>
+    </div>
+    <div class="mt-7">
+      <div class="flex items-center justify-between mb-2 meta"><span>Your progress</span><span data-progress-label>0% complete</span></div>
+      <div class="bar" id="guidebar" data-progress-of=""><i style="width:0"></i></div>
+    </div>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="Learning Lesson.html" class="btn btn-primary text-[15px]" id="startbtn">Start lesson 01 <span>→</span></a>
+      <a href="#lessons" class="btn btn-ghost text-[15px]">See all lessons</a>
+    </div>
+  </div>
+  <div class="motif rounded-[24px] h-[300px] lg:h-[380px]" data-motif="rings"><span class="m-label">guide cover · intentional communities</span></div>
+</header>
+
+<div class="hairline my-14"></div>
+
+<!-- WHAT YOU'LL LEARN -->
+<section class="grid lg:grid-cols-[.9fr_1.1fr] gap-10">
+  <div>
+    <div class="kicker text-emerald-700 mb-3">What this guide covers</div>
+    <h2 class="font-serif text-[30px] leading-tight text-ecohubs-deep">The whole subject, <em class="font-story italic font-normal text-stone-500">once, properly.</em></h2>
+    <p class="mt-4 text-[15.5px] text-stone-600 leading-relaxed">Read it in order or jump to what you need — the rail keeps your place. Every lesson ends with the questions to ask a real community before you trust it.</p>
+  </div>
+  <div class="grid sm:grid-cols-2 gap-3">
+    <div class="card p-6"><div class="font-mono text-[11px] text-emerald-700 mb-2">01</div><p class="text-[14.5px] text-stone-700 leading-relaxed">Tell the four main forms apart, and know which one fits your life.</p></div>
+    <div class="card p-6"><div class="font-mono text-[11px] text-emerald-700 mb-2">02</div><p class="text-[14.5px] text-stone-700 leading-relaxed">Read a community's governance from the outside, in one visit.</p></div>
+    <div class="card p-6"><div class="font-mono text-[11px] text-emerald-700 mb-2">03</div><p class="text-[14.5px] text-stone-700 leading-relaxed">Estimate what joining costs — entry, monthly, and on exit.</p></div>
+    <div class="card p-6"><div class="font-mono text-[11px] text-emerald-700 mb-2">04</div><p class="text-[14.5px] text-stone-700 leading-relaxed">Recognise the five patterns that end most projects, early.</p></div>
+  </div>
+</section>
+
+<!-- LESSONS -->
+<section id="lessons" class="mt-16">
+  <div class="flex items-end justify-between gap-6 flex-wrap mb-6">
+    <div>
+      <div class="kicker text-emerald-700 mb-3">Lessons</div>
+      <h2 class="font-serif text-[30px] leading-tight text-ecohubs-deep">Nine, in order.</h2>
+    </div>
+    <button id="resetprog" class="meta hover:text-ecohubs-dark">reset my progress</button>
+  </div>
+  <div id="lessonlist" class="flex flex-col gap-3"></div>
+</section>
+
+<!-- DOWNLOADS + FAQ -->
+<section class="mt-16 grid lg:grid-cols-2 gap-10">
+  <div>
+    <div class="kicker text-emerald-700 mb-5">Guide downloads</div>
+    <div class="flex flex-col gap-3">
+      <a href="#" class="card p-5 flex items-center gap-4"><span class="w-10 h-10 rounded-xl bg-[#f5f2ea] grid place-items-center shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#064e3b" stroke-width="1.6"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg></span><span><span class="block text-[15px] text-ecohubs-deep">The whole guide as one PDF</span><span class="meta">PDF · 38 pages · printable</span></span></a>
+      <a href="#" class="card p-5 flex items-center gap-4"><span class="w-10 h-10 rounded-xl bg-[#f5f2ea] grid place-items-center shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#064e3b" stroke-width="1.6"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg></span><span><span class="block text-[15px] text-ecohubs-deep">Questions to ask on a visit</span><span class="meta">PDF · 1 page · 24 questions</span></span></a>
+      <a href="#" class="card p-5 flex items-center gap-4"><span class="w-10 h-10 rounded-xl bg-[#f5f2ea] grid place-items-center shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#064e3b" stroke-width="1.6"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg></span><span><span class="block text-[15px] text-ecohubs-deep">Cost model worksheet</span><span class="meta">XLSX · entry / monthly / exit</span></span></a>
+    </div>
+  </div>
+  <div>
+    <div class="kicker text-emerald-700 mb-5">About this guide</div>
+    <details class="acc" open><summary>Who wrote it?</summary><div class="acc-body">EcoHubs members who live in or have visited the communities cited, with review from two governance facilitators. Every factual claim about a named community is checked against that community's own published material.</div></details>
+    <details class="acc"><summary>Is it free?</summary><div class="acc-body">Yes, and it stays free. No account, no email wall, no course upsell. If it helps you, correcting an error is the contribution we would rather have.</div></details>
+    <details class="acc"><summary>How is progress stored?</summary><div class="acc-body">In this browser only. Nothing is sent anywhere, and clearing your browser data clears your progress. There is no login to lose.</div></details>
+    <details class="acc"><summary>Can I use it in my own group?</summary><div class="acc-body">Yes — the text is published under a permissive licence. Print it, translate it, argue with it in your forming group's meeting. Attribution and corrections welcome.</div></details>
+  </div>
+</section>
+
+<!-- NEXT GUIDES -->
+<section class="mt-16">
+  <div class="kicker text-emerald-700 mb-5">After this guide</div>
+  <div class="grid sm:grid-cols-3 gap-3">
+    <a href="Learning Guide.html" class="card overflow-hidden"><div class="motif h-24" data-motif="grid"></div><div class="p-5"><div class="font-serif text-[17px] text-ecohubs-deep leading-snug">Ultimate Guide to Community Governance</div><div class="meta mt-2">8 lessons · 66 min</div></div></a>
+    <a href="Learning Guide.html" class="card overflow-hidden"><div class="motif h-24" data-motif="strata"></div><div class="p-5"><div class="font-serif text-[17px] text-ecohubs-deep leading-snug">Starting an Ecovillage</div><div class="meta mt-2">11 lessons · 98 min</div></div></a>
+    <a href="Learning Hub.html#paths" class="card overflow-hidden"><div class="motif h-24" data-motif="seed"></div><div class="p-5"><div class="font-serif text-[17px] text-ecohubs-deep leading-snug">Path: Become a Community Founder</div><div class="meta mt-2">24 lessons · 14 h</div></div></a>
+  </div>
+</section>
+
+</main>
+</div></div>
+<div data-footer></div>
+
+<script>
+const LESSONS=[
+  {t:'What is an intentional community?',m:7,d:'The definition, and the one thing that separates a community from a nice street.'},
+  {t:'The forms: village, cohousing, commune',m:9,d:'Four forms, what each shares, and the sizes at which they work.'},
+  {t:'Deciding how you will decide',m:11,d:'Consensus, consent and sociocracy — with the failure modes of each.'},
+  {t:'Money: contributions, purses and equity',m:10,d:'How communities pay for land, maintenance and each other.'},
+  {t:'Land: reading a place before buying it',m:9,d:'Water, soil, access, zoning — and the questions a seller will not volunteer.'},
+  {t:'Membership: joining and being joined',m:8,d:'Guest tracks, trial periods, and what a fair membership agreement contains.'},
+  {t:'Conflict and repair',m:8,d:'Why the process must exist before the conflict does.'},
+  {t:'When communities end',m:7,d:'Five recurring causes of dissolution, and what to watch for.'},
+  {t:'Deciding whether this is for you',m:5,d:'An honest self-assessment, including reasons not to do it.'}
+];
+document.addEventListener('DOMContentLoaded',()=>{
+  const ids=LESSONS.map((l,i)=>'ug-ic:'+i);
+  const bar=document.getElementById('guidebar');
+  bar.dataset.progressOf=ids.join(',');
+
+  document.getElementById('lessonlist').innerHTML=LESSONS.map((l,i)=>`
+    <a href="Learning Lesson.html" class="card p-5 flex items-center gap-5" data-lessonrow="${ids[i]}">
+      <span class="w-11 h-11 rounded-xl bg-[#f5f2ea] grid place-items-center font-mono text-[12px] text-emerald-800 shrink-0" data-num>0${i+1}</span>
+      <span class="flex-1 min-w-0">
+        <span class="block font-serif text-[18px] text-ecohubs-deep leading-snug">${l.t}</span>
+        <span class="block text-[14px] text-stone-600 mt-1 leading-relaxed">${l.d}</span>
+      </span>
+      <span class="meta whitespace-nowrap hidden sm:block">${l.m} min</span>
+      <span class="text-ecohubs-dark text-sm">→</span>
+    </a>`).join('');
+
+  document.getElementById('railtree').innerHTML=LESSONS.map((l,i)=>
+    `<a href="Learning Lesson.html" data-lesson="${ids[i]}"><span class="tick"></span>${l.t}</a>`).join('');
+
+  const paintDone=()=>{
+    document.querySelectorAll('[data-lessonrow]').forEach(row=>{
+      const done=EH.progress.done(row.dataset.lessonrow);
+      const num=row.querySelector('[data-num]');
+      if(!num.dataset.n)num.dataset.n=num.textContent.trim();
+      num.innerHTML=done?'✓':num.dataset.n;
+      num.style.background=done?'#059669':'#f5f2ea';
+      num.style.color=done?'#fff':'#065f46';
+    });
+    document.querySelectorAll('.tree a[data-lesson]').forEach(a=>a.classList.toggle('is-done',EH.progress.done(a.dataset.lesson)));
+    const p=EH.progress.pct(ids);
+    bar.querySelector('i').style.width=p+'%';
+    document.querySelector('[data-progress-label]').textContent=p+'% complete';
+    const first=ids.findIndex(id=>!EH.progress.done(id));
+    const btn=document.getElementById('startbtn');
+    btn.firstChild.textContent = first<=0 ? 'Start lesson 01 ' : (first===-1 ? 'Guide complete — reread ' : 'Continue lesson 0'+(first+1)+' ');
+  };
+  paintDone();
+  document.getElementById('resetprog').addEventListener('click',()=>{ids.forEach(id=>EH.progress.set(id,false));paintDone();});
+});
+</script>
+</body>
+</html>
