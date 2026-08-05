@@ -8,7 +8,7 @@
 import { describe, expect, it } from 'vitest';
 import { render } from 'svelte/server';
 import type { Component } from 'svelte';
-import { lessonBySlug } from '$lib/learning';
+import { lessonBySlug, topicBySlug } from '$lib/learning';
 
 const lesson = lessonBySlug.get('what-is-an-intentional-community');
 
@@ -132,5 +132,44 @@ describe('Sources', () => {
 		const body = html();
 		expect(body).toContain('<ol');
 		expect(body).toContain('https://www.ic.org/');
+	});
+});
+
+describe('Quiz — indexability survives one-question-at-a-time', () => {
+	const topic = topicBySlug.get('intentional-communities');
+
+	function quizHtml(): string {
+		expect(topic, 'fixture topic is missing').toBeDefined();
+		return render(topic!.component as Component).body;
+	}
+
+	it('renders every question in the server HTML, none hidden', () => {
+		// Stepping is applied only after hydration. If a question were hidden
+		// server-side, a crawler would see one question out of five.
+		const body = quizHtml();
+		const fieldsets = [...body.matchAll(/<fieldset([^>]*)>/g)].map((m) => m[1]);
+
+		expect(fieldsets.length).toBeGreaterThan(1);
+		for (const attrs of fieldsets) {
+			expect(attrs, 'a question is hidden in the server HTML').not.toMatch(/\bhidden\b/);
+		}
+	});
+
+	it('renders every option as a real input with visible text', () => {
+		const body = quizHtml();
+		expect((body.match(/type="radio"/g) ?? []).length).toBeGreaterThan(4);
+		expect(body).toContain('<legend');
+	});
+
+	it('renders every outcome description, so the quiz is worth indexing alone', () => {
+		const body = quizHtml();
+		expect(body).toContain('What each result means');
+		expect(body).toContain('lowest-risk form here');
+	});
+
+	it('omits the interactive controls server-side rather than shipping dead buttons', () => {
+		const body = quizHtml();
+		expect(body).not.toContain('See the result');
+		expect(body).not.toContain('>Next<');
 	});
 });

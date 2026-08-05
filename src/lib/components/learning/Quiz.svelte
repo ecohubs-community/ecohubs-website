@@ -28,8 +28,11 @@
 
 	let answers = $state<Answers>({});
 	let submitted = $state(false);
-	/** Server renders the reference list expanded; the client collapses it. */
+	/** Server renders everything expanded; the client collapses it. */
 	let enhanced = $state(false);
+	/** Which question is on screen once JavaScript takes over. Before that —
+	 *  and for a crawler — every question is rendered at once. */
+	let step = $state(0);
 
 	onMount(() => {
 		enhanced = true;
@@ -43,6 +46,23 @@
 
 	const result = $derived(definition ? score(definition, answers) : null);
 	const complete = $derived(definition ? isComplete(definition, answers) : false);
+	const lastStep = $derived((definition?.questions.length ?? 1) - 1);
+
+	/** Whether the question currently on screen has an answer yet. */
+	const currentAnswered = $derived.by(() => {
+		const question = definition?.questions[step];
+		if (!question) return false;
+		const raw = answers[question.id];
+		return Array.isArray(raw) ? raw.length > 0 : Boolean(raw);
+	});
+
+	function go(delta: number) {
+		if (!definition) return;
+		step = Math.min(lastStep, Math.max(0, step + delta));
+		// Move focus with the question, or a keyboard and screen-reader user is
+		// left reading the question that just disappeared.
+		requestAnimationFrame(() => document.getElementById(`${definition.id}-q${step}`)?.focus());
+	}
 
 	function choose(questionId: string, optionId: string, multiple: boolean) {
 		if (!multiple) {
@@ -71,6 +91,7 @@
 	function reset() {
 		answers = {};
 		submitted = false;
+		step = 0;
 	}
 </script>
 
@@ -87,12 +108,25 @@
 	</h2>
 	<p class="mt-2 text-stone-700">{definition.intro}</p>
 
-	<!-- ── Questions ─────────────────────────────────────────────────────── -->
-	<div class="mt-8 space-y-8">
+	{#if enhanced && !submitted}
+		<p class="mt-6 font-story text-sm text-stone-500 italic" aria-live="polite">
+			Question {step + 1} of {definition.questions.length}
+		</p>
+	{/if}
+
+	<!-- ── Questions ─────────────────────────────────────────────────────────
+	     Every question is rendered. Once hydrated, all but the current one are
+	     hidden — so a crawler and a no-JS reader get the whole set as a plain
+	     form, while a reader with JavaScript gets one question at a time. -->
+	<div class="mt-4 space-y-8">
 		{#each definition.questions as question, qi (question.id)}
 			{@const picked = isChosen}
-			<fieldset>
-				<legend class="font-serif text-lg text-ecohubs-deep">
+			<fieldset class={enhanced && !submitted && qi !== step ? 'hidden' : ''}>
+				<legend
+					id="{definition.id}-q{qi}"
+					class="font-serif text-lg text-ecohubs-deep"
+					tabindex="-1"
+				>
 					<span class="font-story text-stone-400 italic">{qi + 1}.</span>
 					{question.prompt}
 				</legend>
@@ -149,17 +183,40 @@
 		{/each}
 	</div>
 
-	<!-- ── Controls ──────────────────────────────────────────────────────── -->
+	<!-- ── Controls ──────────────────────────────────────────────────────────
+	     JavaScript-only. Without it the form above stands on its own. -->
 	{#if enhanced}
 		<div class="mt-8 flex flex-wrap items-center gap-3">
-			<button
-				type="button"
-				onclick={submit}
-				disabled={!complete}
-				class="rounded-full bg-ecohubs-dark px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-ecohubs-deep disabled:cursor-not-allowed disabled:opacity-40"
-			>
-				{definition.mode === 'check' ? 'Check my answers' : 'See the result'}
-			</button>
+			{#if !submitted && step > 0}
+				<button
+					type="button"
+					onclick={() => go(-1)}
+					class="rounded-full border border-stone-300 px-5 py-2.5 text-sm text-stone-600 transition-colors hover:border-ecohubs-dark hover:text-ecohubs-deep"
+				>
+					Back
+				</button>
+			{/if}
+
+			{#if !submitted && step < lastStep}
+				<button
+					type="button"
+					onclick={() => go(1)}
+					disabled={!currentAnswered}
+					class="rounded-full bg-ecohubs-dark px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-ecohubs-deep disabled:cursor-not-allowed disabled:opacity-40"
+				>
+					Next
+				</button>
+			{:else if !submitted}
+				<button
+					type="button"
+					onclick={submit}
+					disabled={!complete}
+					class="rounded-full bg-ecohubs-dark px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-ecohubs-deep disabled:cursor-not-allowed disabled:opacity-40"
+				>
+					{definition.mode === 'check' ? 'Check my answers' : 'See the result'}
+				</button>
+			{/if}
+
 			{#if submitted}
 				<button
 					type="button"
@@ -168,11 +225,6 @@
 				>
 					Start again
 				</button>
-			{/if}
-			{#if !complete}
-				<span class="text-sm text-stone-500">
-					{result?.answered} of {result?.total} answered
-				</span>
 			{/if}
 		</div>
 	{/if}
