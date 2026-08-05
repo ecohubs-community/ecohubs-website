@@ -8,7 +8,7 @@
  * Only facts the page actually states are asserted here — the same rule
  * applied to the VoteCast and CSI schema.
  */
-import type { CompareFrontmatter, TermFrontmatter } from './types';
+import type { CompareFrontmatter, TermFrontmatter, TopicFrontmatter } from './types';
 
 const SITE = 'https://ecohubs.community';
 const GLOSSARY_URL = `${SITE}/learn/glossary`;
@@ -82,6 +82,23 @@ export function comparisonArticle(compare: CompareFrontmatter) {
 			name: 'EcoHubs.community',
 			url: SITE
 		},
+		publisher: PUBLISHER,
+		mainEntityOfPage: { '@type': 'WebPage', '@id': url }
+	};
+}
+
+/** A topic page — the hub for one subject. */
+export function topicArticle(topic: TopicFrontmatter) {
+	const url = `${SITE}/learn/topics/${topic.slug}`;
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		'@id': url,
+		headline: topic.title,
+		description: topic.summary,
+		url,
+		dateModified: topic.updated,
+		isPartOf: { '@type': 'WebSite', name: 'EcoHubs.community', url: SITE },
 		publisher: PUBLISHER,
 		mainEntityOfPage: { '@type': 'WebPage', '@id': url }
 	};

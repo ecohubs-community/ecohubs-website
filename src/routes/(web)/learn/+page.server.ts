@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { isIndexable, publishedComparisons, publishedTerms } from '$lib/learning';
+import { contentOfTopic, isIndexable, publishedComparisons, publishedTerms, publishedTopics } from '$lib/learning';
 
 export const prerender = true;
 
@@ -10,6 +10,25 @@ export const prerender = true;
  */
 export const load: PageServerLoad = async () => {
 	const glossaryCount = publishedTerms.filter(isIndexable).length;
+
+	// A topic only appears once it has something beneath it — the same rule the
+	// topics index applies, so the two can never disagree.
+	const topics = publishedTopics
+		.filter(isIndexable)
+		.map((t) => {
+			const c = contentOfTopic(t.frontmatter.slug);
+			return {
+				slug: t.frontmatter.slug,
+				title: t.frontmatter.title,
+				summary: t.frontmatter.summary,
+				total:
+					c.guides.filter(isIndexable).length +
+					c.comparisons.filter(isIndexable).length +
+					c.terms.filter(isIndexable).length
+			};
+		})
+		.filter((t) => t.total > 0)
+		.sort((a, b) => a.title.localeCompare(b.title));
 
 	const comparisons = publishedComparisons
 		.filter(isIndexable)
@@ -22,8 +41,9 @@ export const load: PageServerLoad = async () => {
 
 	return {
 		glossaryCount,
+		topics,
 		comparisons,
 		// Nothing published yet means nothing worth offering to a search engine.
-		indexable: glossaryCount + comparisons.length > 0
+		indexable: glossaryCount + comparisons.length + topics.length > 0
 	};
 };
