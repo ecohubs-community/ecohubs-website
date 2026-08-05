@@ -48,6 +48,18 @@ describe('indexability — every depth layer is in the server HTML', () => {
 		expect(html()).toContain('vary by an order of magnitude');
 	});
 
+	it('keeps the quick summary visible at every depth, because depth only adds', () => {
+		// The golden rule: quick → standard → deep never removes anything. A
+		// reader who found the summary useful must not lose it by asking for
+		// more detail, so <Quick> carries no hiding utility at all.
+		const body = html();
+		const quick = body.match(/data-depth-layer="quick" class="([^"]*)"/);
+		expect(quick, 'no quick layer rendered').toBeTruthy();
+
+		const hides = quick![1].split(/\s+/).filter((c) => c === 'hidden' || c.endsWith(':hidden'));
+		expect(hides, 'quick layer hides at some depth').toEqual([]);
+	});
+
 	it('never lets a depth layer hide an ancestor of another layer', () => {
 		// This shipped broken: <Prose layer="standard"> hid *itself* in quick
 		// mode, and because <Quick> is authored inside the markdown it renders

@@ -37,6 +37,32 @@ Four labels do most of the work, and they answer different questions.
 
 Two of these get confused constantly, because an ecovillage often *uses* cohousing architecture. [Cohousing and ecovillage told apart](/learn/compare/cohousing-vs-ecovillage) is the longer answer.
 
+<Deep title="Deep · the wider field, for reference">
+
+Those four cover most of what you will meet, but the field is broader. Roughly by how often you encounter them: cohousing, ecovillages, housing co-operatives, spiritual communities, communes, co-living, and community land trusts — though the last is usually a legal structure a community *uses* rather than an identity it claims.
+
+Beyond that: student co-operatives, senior cohousing, ashrams and monasteries, retreat centres, agrarian communities and homestead clusters, permaculture projects, artist communities, co-working-and-living houses, maker spaces, and eco-industrial parks. Several of these are only loosely intentional communities — a co-living building run by a company and a monastery share almost nothing beyond proximity — which is exactly why the labels are a poor place to start.
+
+</Deep>
+
+## A better way to tell them apart
+
+Labels describe what a place calls itself. These five dimensions describe what it actually *is*, and they predict daily life far better:
+
+<Compare
+	columns={['Ranges from', 'to']}
+	rows={[
+		{ label: 'Purpose', values: ['A single focus — farming, faith, affordability', 'Broad regeneration of land, culture and livelihood'] },
+		{ label: 'Economic model', values: ['Independent households sharing costs', 'Full income pooling'] },
+		{ label: 'Governance', values: ['A founder who decides', 'Consent or consensus among everyone'] },
+		{ label: 'Land ownership', values: ['Individually owned homes', 'A trust or foundation that owns everything'] },
+		{ label: 'Lifestyle', values: ['Urban, on-grid, secular, come and go', 'Rural, off-grid, shared practice, deeply committed'] }
+	]}
+	caption="Any real community sits somewhere along each of these, and the combination is what you are actually choosing."
+/>
+
+Two places calling themselves ecovillages can sit at opposite ends of every row. Two places with different labels can be nearly identical. Ask about the five, not the name.
+
 ## How decisions actually get made
 
 This is the part that decides whether a place lasts. Most communities run on some form of <Gloss term="consensus" /> or <Gloss term="consent">consent</Gloss>, and the difference matters more than newcomers expect: consensus asks everyone to agree, consent asks whether anyone has a reasoned objection. The first is warmer and, past a certain size, hands a quiet veto to whoever is most persistent.
@@ -65,6 +91,8 @@ The costs are consistent too: less privacy, slower decisions, and conflict you c
 
 Rarely the thing people expect. Not usually money and almost never the composting. Communities break on unexamined power, on conflict nobody was willing to name, on founders who could not let go, and on rules that were never written down and so could never be changed.
 
+These patterns repeat closely enough to be written down and tested for. The [RCOS stress tests](https://rcos.ecohubs.community/articles/rcos-stress-tests) do exactly that — around twenty documented failure modes, each with the conditions that produce it and what a community would have to have in place to survive it. Founder capture, invisible care labour, the privatisation of commons, [emergency measures that quietly become permanent](/blog/emergency-rule-bypass-precedent): if you are assessing a place, they are a more useful checklist than any list of green credentials.
+
 <Callout type="caveat">
 Nobody has reliable failure statistics for this field. The often-quoted "90% fail" figure has no sound source we can find. What is well documented is the *pattern* of failure, which is why the RCOS stress tests describe failure modes rather than probabilities.
 </Callout>
@@ -73,6 +101,11 @@ Nobody has reliable failure statistics for this field. The often-quoted "90% fai
 	items={[
 		{ title: 'Foundation for Intentional Community', url: 'https://www.ic.org/', note: 'directory and definitions' },
 		{ title: 'Global Ecovillage Network', url: 'https://ecovillage.org/', note: 'ecovillage framing and network' },
-		{ title: 'RCOS Core v0.1', url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/', note: 'the standard behind this hub' }
+		{ title: 'RCOS Core v0.1', url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/', note: 'the standard behind this hub' },
+		{
+			title: 'RCOS stress tests',
+			url: 'https://rcos.ecohubs.community/articles/rcos-stress-tests',
+			note: 'documented failure modes, with pass and fail criteria'
+		}
 	]}
 />
