@@ -5,6 +5,12 @@ export interface BlogPost {
 	slug: string;
 	title: string;
 	excerpt: string;
+	/** Ghost's SEO title, when set. Lets an editor give a long headline a short
+	 *  search-results form without shortening the headline itself. */
+	metaTitle?: string;
+	/** Ghost's SEO description, when set — otherwise the excerpt is used, which
+	 *  is often longer than the ~160 chars Google will show. */
+	metaDescription?: string;
 	date: string;
 	dateModified?: string;
 	author: string;
@@ -27,6 +33,19 @@ export interface BlogPostWithContent extends BlogPost {
 }
 
 /**
+ * A tag archive earns a place in the index once it collects this many posts.
+ *
+ * Below it the page is a heading and a single card — near-duplicate of the post
+ * it links to, and the kind of thin, overlapping page search engines discount
+ * (and which drags on how the rest of the blog is assessed). Such tags stay
+ * reachable and useful for readers; they are just kept out of the sitemap and
+ * marked `noindex` until they have enough behind them.
+ *
+ * Shared by the tag route and the sitemap so the two can never disagree.
+ */
+export const MIN_POSTS_FOR_INDEXABLE_TAG = 2;
+
+/**
  * Map Ghost post to BlogPost interface
  */
 function mapGhostPostToBlogPost(ghostPost: GhostPost): BlogPost {
@@ -34,6 +53,8 @@ function mapGhostPostToBlogPost(ghostPost: GhostPost): BlogPost {
 		slug: ghostPost.slug,
 		title: ghostPost.title,
 		excerpt: ghostPost.excerpt || ghostPost.custom_excerpt || ghostPost.meta_description || '',
+		metaTitle: ghostPost.meta_title || undefined,
+		metaDescription: ghostPost.meta_description || undefined,
 		date: ghostPost.published_at || ghostPost.updated_at,
 		dateModified: ghostPost.updated_at || undefined,
 		author: ghostPost.authors?.[0]?.name || 'EcoHubs Team',

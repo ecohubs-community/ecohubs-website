@@ -67,8 +67,8 @@
 </script>
 
 <SEO
-	title="CSI — the Community Suitability Index, mapping where a community can begin | EcoHubs"
-	description="An open map of where a regenerative, sovereign community has room to begin — read against the law, the land, the water and the welcome. Free, and honest about its gaps."
+	title="CSI — the Community Suitability Index | EcoHubs"
+	description="An open map of where a regenerative community has room to begin — read against the law, the land, the water and the welcome."
 	ogImage="https://csi.ecohubs.community/og-image.png"
 	ogImageAlt="The Community Suitability Index world map, regions shaded by suitability"
 	{breadcrumbs}
@@ -340,7 +340,7 @@
 		<div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
 			{#each snags as snag (snag.number)}
 				<article class="p-7 rounded-2xl bg-ecohubs-ivory border border-stone-200/70">
-					<div class="kicker text-stone-500 mb-3">Constraint · {snag.number}</div>
+					<div class="kicker text-stone-600 mb-3">Constraint · {snag.number}</div>
 					<h3 class="font-serif text-xl text-ecohubs-deep mb-2">{snag.title}</h3>
 					<p class="text-stone-700 text-[15px] leading-relaxed">{snag.body}</p>
 				</article>
@@ -405,7 +405,7 @@
 						>
 							{gate.number}
 						</div>
-						<div class="kicker text-stone-500 mt-2">{gate.kicker}</div>
+						<div class="kicker text-stone-600 mt-2">{gate.kicker}</div>
 					</div>
 					<div>
 						<h3 class="font-serif text-2xl md:text-3xl text-ecohubs-deep mb-3 leading-snug">
@@ -502,7 +502,7 @@
 		<div class="grid lg:grid-cols-3 gap-6">
 			<!-- Suitability classes -->
 			<div data-scroll-animate class="bg-ecohubs-ivory rounded-3xl p-7 border border-stone-200/70">
-				<div class="kicker text-stone-500 mb-4">Suitability class</div>
+				<div class="kicker text-stone-600 mb-4">Suitability class</div>
 				<ul class="space-y-3">
 					{#each suitabilityClasses as grade (grade.code)}
 						<li class="grid grid-cols-[34px_1fr] gap-3 items-start">
@@ -530,7 +530,7 @@
 
 			<!-- Confidence -->
 			<div data-scroll-animate class="bg-ecohubs-ivory rounded-3xl p-7 border border-stone-200/70">
-				<div class="kicker text-stone-500 mb-4">Confidence, per signal</div>
+				<div class="kicker text-stone-600 mb-4">Confidence, per signal</div>
 				<ul class="space-y-3">
 					{#each confidenceGrades as grade (grade.code)}
 						<li class="grid grid-cols-[34px_1fr] gap-3 items-start">
@@ -649,7 +649,7 @@
 		<div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
 			{#each personas as persona (persona.kicker)}
 				<div class="p-7 rounded-2xl bg-ecohubs-ivory border border-stone-200/70">
-					<div class="kicker text-stone-500 mb-3">{persona.kicker}</div>
+					<div class="kicker text-stone-600 mb-3">{persona.kicker}</div>
 					<h3 class="font-serif text-xl text-ecohubs-deep mb-2">{persona.title}</h3>
 					<p class="text-stone-700 text-[15px] leading-relaxed">{persona.body}</p>
 				</div>

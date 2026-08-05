@@ -4,12 +4,37 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="fediverse:creator" content="@ecohubs@mastodon.social" />
+		<!-- The cookie banner ships in the server-rendered HTML so it paints with
+		     the page. Anyone who has already chosen gets it hidden here, before
+		     first paint, rather than after hydration. -->
+		<style>
+			html.cookie-consent-known [data-cookie-banner] {
+				display: none !important;
+			}
+		</style>
 		<script>
 			document.documentElement.classList.replace('no-js', 'js');
+			try {
+				if (localStorage.getItem('cookie_consent') !== null) {
+					document.documentElement.classList.add('cookie-consent-known');
+				}
+			} catch (e) {
+				// localStorage throws when storage is blocked; showing the banner is the safe default.
+			}
 		</script>
 
 		<!-- Fonts are self-hosted via @fontsource imports in src/lib/styles/theme.css;
 		     no Google CDN round-trip needed. -->
+
+		<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+		<link rel="preconnect" href="https://api.iconify.design" crossorigin />
+
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="EcoHubs — field notes"
+			href="/feed.xml"
+		/>
 
 		%sveltekit.head%
 	</head>

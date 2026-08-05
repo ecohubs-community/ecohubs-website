@@ -140,7 +140,7 @@
 
 						<!-- name slot -->
 						<div class="px-7 pt-5">
-							<div class="kicker text-stone-500 mb-2">Member · name</div>
+							<div class="kicker text-stone-600 mb-2">Member · name</div>
 							<div class="flex items-end gap-3">
 								<div class="font-story italic text-3xl text-stone-300 leading-none pb-1">
 									your name,
@@ -155,7 +155,7 @@
 						<!-- two columns: what you bring / what grows -->
 						<div class="px-7 py-6 grid grid-cols-2 gap-6">
 							<div>
-								<div class="kicker text-stone-500 mb-3">What you bring</div>
+								<div class="kicker text-stone-600 mb-3">What you bring</div>
 								<ul class="space-y-2.5 text-[13.5px] text-stone-700">
 									<li class="flex items-center gap-2.5">
 										<span
@@ -182,7 +182,7 @@
 								</ul>
 							</div>
 							<div>
-								<div class="kicker text-stone-500 mb-3">What grows</div>
+								<div class="kicker text-stone-600 mb-3">What grows</div>
 								<ul class="space-y-2.5 text-[13.5px] text-stone-700">
 									<li class="flex items-center gap-2.5">
 										<span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span>
@@ -229,7 +229,7 @@
 							class="px-7 py-5 bg-[#f5f2ea] border-t border-dashed border-stone-300/80 flex items-end justify-between gap-4"
 						>
 							<div class="flex-1">
-								<div class="kicker text-stone-500 mb-2">Signed, by showing up</div>
+								<div class="kicker text-stone-600 mb-2">Signed, by showing up</div>
 								<svg viewBox="0 0 220 36" class="w-full max-w-[220px] h-9 opacity-50">
 									<path
 										d="M4 24 C 14 6, 28 28, 42 18 S 70 8, 86 22 S 116 30, 134 14 S 162 4, 184 20 S 210 28, 218 18"
@@ -241,7 +241,7 @@
 								</svg>
 							</div>
 							<div class="text-right shrink-0">
-								<div class="kicker text-stone-500 mb-1">Date</div>
+								<div class="kicker text-stone-600 mb-1">Date</div>
 								<div class="font-story italic text-stone-700 text-[15px]">when you're ready</div>
 							</div>
 						</div>
@@ -437,7 +437,7 @@
 						<div class="mt-3 w-px flex-1 bg-stone-200 min-h-[40px]"></div>
 					</div>
 					<div>
-						<div class="kicker text-stone-500 mb-2">Step one</div>
+						<div class="kicker text-stone-600 mb-2">Step one</div>
 						<h3 class="font-serif text-2xl md:text-[28px] text-ecohubs-deep leading-snug mb-3">
 							Tell us who you are, in your own words.
 						</h3>
@@ -469,7 +469,7 @@
 						<div class="mt-3 w-px flex-1 bg-stone-200 min-h-[40px]"></div>
 					</div>
 					<div>
-						<div class="kicker text-stone-500 mb-2">Step two</div>
+						<div class="kicker text-stone-600 mb-2">Step two</div>
 						<h3 class="font-serif text-2xl md:text-[28px] text-ecohubs-deep leading-snug mb-3">
 							The community reads it. The community decides.
 						</h3>
@@ -514,7 +514,7 @@
 						</div>
 					</div>
 					<div>
-						<div class="kicker text-stone-500 mb-2">Step three</div>
+						<div class="kicker text-stone-600 mb-2">Step three</div>
 						<h3 class="font-serif text-2xl md:text-[28px] text-ecohubs-deep leading-snug mb-3">
 							You walk in. The way to find your path is to show up.
 						</h3>
@@ -706,7 +706,7 @@
 						→
 					</div>
 					<div>
-						<div class="kicker text-stone-500 mb-1">{item.kicker}</div>
+						<div class="kicker text-stone-600 mb-1">{item.kicker}</div>
 						<h3 class="font-serif text-xl text-ecohubs-deep mb-2">{item.title}</h3>
 						<p class="text-stone-700 leading-relaxed text-[15px]">{item.body}</p>
 					</div>

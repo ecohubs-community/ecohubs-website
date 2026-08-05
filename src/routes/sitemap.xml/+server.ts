@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { getAllPosts } from '$lib/server/blog';
+import { getAllPosts, MIN_POSTS_FOR_INDEXABLE_TAG } from '$lib/server/blog';
 
 const siteUrl = 'https://ecohubs.community';
 
@@ -10,25 +10,39 @@ interface SitemapRoute {
 	lastmod?: string;
 }
 
+/*
+ * `lastmod` is the one hint here Google actually reads (priority and changefreq
+ * are ignored). It is only useful while it stays truthful, so these are real
+ * last-substantive-change dates, not the build date — stamping every page with
+ * "today" on each deploy teaches crawlers to distrust the field entirely.
+ *
+ * Update the date on a page when you meaningfully change its content.
+ * Blog posts and tag pages get theirs from Ghost automatically, below.
+ */
 const routes: SitemapRoute[] = [
-	{ path: '', priority: '1.0', changefreq: 'weekly' },
-	{ path: '/vision', priority: '0.9', changefreq: 'monthly' },
-	{ path: '/rcos', priority: '0.8', changefreq: 'monthly' },
-	{ path: '/csi', priority: '0.8', changefreq: 'monthly' },
-	{ path: '/votecast', priority: '0.8', changefreq: 'monthly' },
-	{ path: '/seeking', priority: '0.8', changefreq: 'monthly' },
-	{ path: '/membership', priority: '0.9', changefreq: 'monthly' },
-	{ path: '/faq', priority: '0.7', changefreq: 'monthly' },
-	{ path: '/join', priority: '0.7', changefreq: 'monthly' },
-	{ path: '/contact', priority: '0.7', changefreq: 'yearly' },
-	{ path: '/blog', priority: '0.8', changefreq: 'weekly' },
-	{ path: '/privacy', priority: '0.3', changefreq: 'yearly' },
-	{ path: '/terms', priority: '0.3', changefreq: 'yearly' },
+	{ path: '', priority: '1.0', changefreq: 'weekly', lastmod: '2026-08-04' },
+	{ path: '/vision', priority: '0.9', changefreq: 'monthly', lastmod: '2026-06-23' },
+	{ path: '/rcos', priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-04' },
+	{ path: '/csi', priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-04' },
+	{ path: '/votecast', priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-04' },
+	{ path: '/seeking', priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-04' },
+	{ path: '/membership', priority: '0.9', changefreq: 'monthly', lastmod: '2026-08-04' },
+	{ path: '/faq', priority: '0.7', changefreq: 'monthly', lastmod: '2026-08-04' },
+	{ path: '/join', priority: '0.7', changefreq: 'monthly', lastmod: '2026-06-28' },
+	{ path: '/contact', priority: '0.7', changefreq: 'yearly', lastmod: '2026-08-04' },
+	{ path: '/blog', priority: '0.8', changefreq: 'weekly', lastmod: '2026-08-04' },
+	{ path: '/privacy', priority: '0.3', changefreq: 'yearly', lastmod: '2026-08-04' },
+	{ path: '/terms', priority: '0.3', changefreq: 'yearly', lastmod: '2026-08-04' },
 
 	// Landing pages
-	{ path: '/community-resilience-assessment', priority: '0.8', changefreq: 'monthly' },
-	{ path: '/join-the-waitlist', priority: '0.9', changefreq: 'weekly' },
-	{ path: '/links', priority: '0.6', changefreq: 'weekly' }
+	{
+		path: '/community-resilience-assessment',
+		priority: '0.8',
+		changefreq: 'monthly',
+		lastmod: '2026-06-16'
+	},
+	{ path: '/join-the-waitlist', priority: '0.9', changefreq: 'weekly', lastmod: '2026-07-24' },
+	{ path: '/links', priority: '0.6', changefreq: 'weekly', lastmod: '2026-06-23' }
 	// Note: /welcome is intentionally omitted — it's a noindex interstitial.
 ];
 
@@ -37,12 +51,21 @@ export const prerender = true;
 export const GET: RequestHandler = async () => {
 	const blogPosts = await getAllPosts();
 
-	// Collect unique tag slugs across all posts for tag-archive pages.
-	const tagSlugs = new Set<string>();
+	// Collect tag slugs, remembering the newest post date behind each one so the
+	// tag archive can carry a truthful `lastmod` rather than none at all.
+	// `getAllPosts` returns newest-first, so the first sighting of a tag wins.
+	// Tags too thin to be indexable are left out entirely — the route marks them
+	// `noindex`, and listing a noindex URL in the sitemap sends mixed signals.
+	const tagLastmod = new Map<string, string>();
+	const tagCount = new Map<string, number>();
 	for (const post of blogPosts) {
 		for (const tag of post.tags ?? []) {
-			tagSlugs.add(tag.slug);
+			if (!tagLastmod.has(tag.slug)) tagLastmod.set(tag.slug, post.date);
+			tagCount.set(tag.slug, (tagCount.get(tag.slug) ?? 0) + 1);
 		}
+	}
+	for (const [slug, count] of tagCount) {
+		if (count < MIN_POSTS_FOR_INDEXABLE_TAG) tagLastmod.delete(slug);
 	}
 
 	const allRoutes = [
@@ -53,13 +76,12 @@ export const GET: RequestHandler = async () => {
 			changefreq: 'monthly' as const,
 			lastmod: post.date
 		})),
-		...Array.from(tagSlugs).map(
-			(slug): SitemapRoute => ({
-				path: `/blog/tag/${slug}`,
-				priority: '0.5',
-				changefreq: 'weekly'
-			})
-		)
+		...Array.from(tagLastmod, ([slug, lastmod]): SitemapRoute => ({
+			path: `/blog/tag/${slug}`,
+			priority: '0.5',
+			changefreq: 'weekly',
+			lastmod
+		}))
 	];
 
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

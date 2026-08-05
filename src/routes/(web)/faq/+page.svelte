@@ -334,7 +334,7 @@
 			</ol>
 
 			<div class="mt-10 p-5 rounded-2xl bg-ecohubs-ivory border border-stone-200/70">
-				<div class="kicker text-stone-500 mb-2">Didn't find it?</div>
+				<div class="kicker text-stone-600 mb-2">Didn't find it?</div>
 				<p class="text-sm text-stone-700 leading-relaxed mb-4">
 					Send the question. If it's a good one, it ends up here.
 				</p>

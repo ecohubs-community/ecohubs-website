@@ -34,6 +34,7 @@
 	description="Letters from the work, filed under {tag.name}."
 	ogImage="/og-blog.jpg"
 	{breadcrumbs}
+	noindex={!data.indexable}
 />
 
 <!-- ═══════════════════════════════════════════════════════════════════

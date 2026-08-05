@@ -22,10 +22,14 @@
 <div class="flex items-start gap-4 {className}">
 	<div class="flex -space-x-2 shrink-0">
 		{#each items as { Icon, label }}
+			<!-- role="img" is what makes aria-label legal here: on a bare <div> the
+			     label is a prohibited ARIA attribute and screen readers drop it,
+			     leaving the icon row silent. -->
 			<div
 				class="w-10 h-10 rounded-full border-2 border-ecohubs-base bg-white
                shadow-[0_2px_6px_rgba(11,46,36,0.08)] flex items-center justify-center
                text-emerald-700"
+				role="img"
 				title={label}
 				aria-label={label}
 			>

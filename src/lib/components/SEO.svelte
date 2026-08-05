@@ -163,9 +163,18 @@
 		};
 	});
 
+	/** True when the caller already supplied their own Article/BlogPosting node,
+	 *  in which case `article` is being passed only for the OG meta tags and we
+	 *  must not emit a second, competing schema for the same page. */
+	const hasCustomArticleSchema = $derived.by(() => {
+		if (!jsonLd) return false;
+		const nodes = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+		return nodes.some((n) => n?.['@type'] === 'Article' || n?.['@type'] === 'BlogPosting');
+	});
+
 	// Article schema (for blog posts)
 	const articleSchema = $derived.by(() => {
-		if (!article) return null;
+		if (!article || hasCustomArticleSchema) return null;
 		return {
 			'@context': 'https://schema.org',
 			'@type': 'Article',

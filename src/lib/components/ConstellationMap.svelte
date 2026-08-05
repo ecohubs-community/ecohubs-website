@@ -214,7 +214,18 @@
 				onclick={() => (selectedIdx = selectedIdx === i ? null : i)}
 			>
 				{#if member.img}
-					<img src={member.img} alt={member.name} class="w-full h-full object-cover" />
+					<!-- The map sits well below the fold and the avatar service serves
+					     full-size originals (it ignores width/size query params), so
+					     these must not compete for bandwidth during the initial paint. -->
+					<img
+						src={member.img}
+						alt={member.name}
+						width={size}
+						height={size}
+						loading="lazy"
+						decoding="async"
+						class="w-full h-full object-cover"
+					/>
 				{:else}
 					<div
 						class="w-full h-full flex items-center justify-center bg-emerald-950
@@ -247,7 +258,15 @@
                    bg-emerald-950 shrink-0"
 					>
 						{#if m.img}
-							<img src={m.img} alt={m.name} class="w-full h-full object-cover" />
+							<img
+								src={m.img}
+								alt={m.name}
+								width="48"
+								height="48"
+								loading="lazy"
+								decoding="async"
+								class="w-full h-full object-cover"
+							/>
 						{:else}
 							<div
 								class="w-full h-full flex items-center justify-center

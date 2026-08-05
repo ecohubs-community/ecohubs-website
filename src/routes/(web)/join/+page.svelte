@@ -8,7 +8,7 @@
 
 <SEO
 	title="Apply to join — EcoHubs.community"
-	description="A short application, read by real people, decided in the open. Free, contribution-based, and held together by a community that's writing the RCOS Standard for a different way to live."
+	description="A short application, read by real people and decided in the open. Free, contribution-based, and held together by the community writing the RCOS Standard."
 	ogImage="/og-join.jpg"
 	breadcrumbs={[
 		{ name: 'Home', url: 'https://ecohubs.community' },

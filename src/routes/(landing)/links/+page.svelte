@@ -211,7 +211,7 @@
 	const site = SEO_CONFIG.siteUrl;
 	const pageTitle = 'Links — EcoHubs Community';
 	const pageDescription =
-		'Every EcoHubs link in one place — watch the intro, explore our ecosystem tools (RCOS, CSI, VoteCast), listen to The Regenerative Future Podcast, and read the latest from the regenerative-communities movement.';
+		'Every EcoHubs link in one place — the intro film, our tools (RCOS, CSI, VoteCast), The Regenerative Future Podcast, and the latest field notes.';
 	const abs = (href: string) => (href.startsWith('http') ? href : `${site}${href}`);
 
 	const breadcrumbs = [

@@ -72,7 +72,7 @@
 			<ol class="space-y-2.5 text-sm">
 				{#each sections as s}
 					<li class="flex gap-3">
-						<span class="font-story italic text-ecohubs-primary shrink-0 w-6">{s.num}</span>
+						<span class="font-story italic text-ecohubs-dark shrink-0 w-6">{s.num}</span>
 						<a href="#{s.id}" class="text-stone-600 hover:text-ecohubs-deep transition-colors"
 							>{s.title}</a
 						>

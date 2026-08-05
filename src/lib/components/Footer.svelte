@@ -174,7 +174,7 @@
 		<!-- Brand column -->
 		<div class="col-span-2">
 			<div class="mb-4">
-				<Logo />
+				<Logo surface="dark" />
 			</div>
 			<p class="text-sm text-stone-400 leading-relaxed max-w-sm">
 				We are co-creating the RCOS Standard for regenerative living. Join us to design communities that
@@ -235,7 +235,7 @@
 	<!-- Bottom strip -->
 	<div class="border-t border-emerald-900/40">
 		<div
-			class="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between gap-3 text-xs text-stone-500"
+			class="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between gap-3 text-xs text-stone-400"
 		>
 			<div>
 				&copy; {currentYear} EcoHubs.community · Built in the open, with care and regenerative principles.

@@ -130,7 +130,7 @@ export const SEO_CONFIG = {
 		waitlist: {
 			title: 'Join the Waitlist — Co-found EcoHub One | EcoHubs',
 			description:
-				'Be part of the founding circle of EcoHub One, a regenerative community designed so people thrive together and the land does too. Free to join, no commitment — just the first step.',
+				'Join the founding circle of EcoHub One, a regenerative community designed so people thrive together and the land does too. Free, and no commitment.',
 			ogImage: '/og-waitlist-ecohub-1.jpg'
 		}
 	}

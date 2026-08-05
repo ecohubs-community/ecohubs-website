@@ -465,7 +465,7 @@
 				<article class="bg-ecohubs-ivory rounded-3xl p-7 border border-stone-200/70 flex flex-col">
 					<div class="flex items-baseline justify-between mb-6">
 						<span class="font-story italic text-3xl text-ecohubs-primary">{p.number}</span>
-						<span class="kicker text-stone-500">{p.kicker}</span>
+						<span class="kicker text-stone-600">{p.kicker}</span>
 					</div>
 					<h3 class="font-serif text-2xl text-ecohubs-deep mb-3 leading-snug">{p.title}</h3>
 					<p class="text-stone-700 leading-relaxed text-[15px]">{p.body}</p>
@@ -714,7 +714,7 @@
 					class="grid md:grid-cols-[180px_1fr] gap-6 md:gap-10 items-start p-6 md:p-8 rounded-2xl bg-white border border-stone-200/70 hover:border-emerald-700/40 transition-colors"
 				>
 					<div>
-						<div class="kicker text-stone-500 mb-2">Value {v.number}</div>
+						<div class="kicker text-stone-600 mb-2">Value {v.number}</div>
 						<div class="font-story italic text-2xl text-ecohubs-primary leading-tight">
 							{v.title}
 						</div>

@@ -39,7 +39,7 @@
 </script>
 
 <SEO
-	title="The Standard — RCOS, the open standard for regenerative communities | EcoHubs"
+	title="RCOS — the open standard for regenerative communities"
 	description="The RCOS Standard is an open standard for designing and operating regenerative communities — modular, forkable, and tested in a live pilot."
 	ogImage="/og-rcos.jpg"
 	{breadcrumbs}
@@ -277,7 +277,7 @@
 		<div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
 			{#each failureModes as mode}
 				<article class="p-7 rounded-2xl bg-ecohubs-ivory border border-stone-200/70">
-					<div class="kicker text-stone-500 mb-3">Failure mode · {mode.number}</div>
+					<div class="kicker text-stone-600 mb-3">Failure mode · {mode.number}</div>
 					<h3 class="font-serif text-xl text-ecohubs-deep mb-2">{mode.title}</h3>
 					<p class="text-stone-700 text-[15px] leading-relaxed">{mode.body}</p>
 				</article>
@@ -929,7 +929,7 @@
 		<div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
 			{#each personas as p}
 				<div class="p-7 rounded-2xl bg-ecohubs-ivory border border-stone-200/70">
-					<div class="kicker text-stone-500 mb-3">{p.kicker}</div>
+					<div class="kicker text-stone-600 mb-3">{p.kicker}</div>
 					<h3 class="font-serif text-xl text-ecohubs-deep mb-2">{p.title}</h3>
 					<p class="text-stone-700 text-[15px] leading-relaxed">{p.body}</p>
 				</div>

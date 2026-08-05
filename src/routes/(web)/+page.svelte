@@ -286,7 +286,10 @@
 						>
 							{story.keyword}
 						</div>
-						<div class="text-xs mt-0.5 {story.cta ? 'text-emerald-600/70' : 'text-stone-500'}">
+						<!-- emerald-700/stone-600 rather than emerald-600/70 and stone-500:
+					     at this size the lighter pair measured 2.7:1 and 4.5:1 against
+					     the ivory background, below the 4.5:1 minimum. -->
+					<div class="text-xs mt-0.5 {story.cta ? 'text-emerald-700' : 'text-stone-600'}">
 							{story.name} · {story.location}
 						</div>
 						{#if story.placeholder}
@@ -368,11 +371,11 @@
 					</div>
 
 					<div class="mt-14 pl-1">
-						<div class="kicker text-stone-500 mb-3">Chapters</div>
+						<div class="kicker text-stone-600 mb-3">Chapters</div>
 						<ol class="space-y-2 text-sm text-stone-600">
 							{#each activeStory.beats as beat (beat.number)}
 								<li class="flex gap-3">
-									<span class="font-story italic text-ecohubs-primary shrink-0">{beat.number}</span>
+									<span class="font-story italic text-ecohubs-dark shrink-0">{beat.number}</span>
 									{beat.title}
 								</li>
 							{/each}
@@ -385,7 +388,7 @@
 					{#each activeStory.beats as beat (beat.number)}
 						{#if beat.pullQuote}
 							<article class="relative">
-								<div class="kicker text-stone-500 mb-4">{beat.number} · {beat.title}</div>
+								<div class="kicker text-stone-600 mb-4">{beat.number} · {beat.title}</div>
 								<blockquote
 									class="relative bg-white rounded-[28px] p-8 md:p-12 border border-stone-200/80"
 								>
@@ -414,7 +417,7 @@
 									<div
 										class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-ecohubs-primary"
 									></div>
-									<div class="kicker text-stone-500 mb-3">{beat.number} · {beat.title}</div>
+									<div class="kicker text-stone-600 mb-3">{beat.number} · {beat.title}</div>
 									{#each beat.content ?? [] as para, pi}
 										<p
 											class={pi === 0
@@ -432,7 +435,7 @@
 									class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full
                            {beat.color === 'amber' ? 'bg-amber-600' : 'bg-ecohubs-primary'}"
 								></div>
-								<div class="kicker text-stone-500 mb-3">{beat.number} · {beat.title}</div>
+								<div class="kicker text-stone-600 mb-3">{beat.number} · {beat.title}</div>
 								{#each beat.content ?? [] as para, pi}
 									<p
 										class={pi === 0
@@ -443,7 +446,7 @@
 									</p>
 								{/each}
 								{#if beat.number === '05'}
-									<p class="mt-6 text-sm text-stone-500">— {activeStory.name}</p>
+									<p class="mt-6 text-sm text-stone-600">— {activeStory.name}</p>
 								{/if}
 							</article>
 						{/if}
@@ -841,7 +844,7 @@
 								? 'text-amber-700'
 								: 'text-ecohubs-primary'}">{item.num}</span
 						>
-						<span class="kicker text-stone-500">{item.tag}</span>
+						<span class="kicker text-stone-600">{item.tag}</span>
 					</div>
 					<h3 class="font-serif text-xl text-ecohubs-deep mb-3 leading-snug">{item.title}</h3>
 					<p class="text-sm text-stone-700 leading-relaxed mb-6 flex-1">{item.body}</p>

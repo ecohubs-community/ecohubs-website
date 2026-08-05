@@ -156,14 +156,20 @@
 </script>
 
 <SEO
-	title="{post.title} — EcoHubs blog"
-	description={post.excerpt}
+	title={post.metaTitle ?? `${post.title} — EcoHubs blog`}
+	description={post.metaDescription ?? post.excerpt}
 	type="article"
 	{ogImage}
 	ogImageWidth={ogImageSized ? 1200 : null}
 	ogImageHeight={ogImageSized ? 630 : null}
 	jsonLd={articleJsonLd}
 	breadcrumbs={jsonLdBreadcrumbs}
+	article={{
+		publishedTime: post.date,
+		modifiedTime: post.dateModified || post.date,
+		author: post.author,
+		...(post.tags?.length ? { tags: post.tags.map((t) => t.name) } : {})
+	}}
 />
 
 <!-- ═══════════════════════════════════════════════════════════════════

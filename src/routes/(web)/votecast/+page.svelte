@@ -145,7 +145,7 @@
 {/snippet}
 
 <SEO
-	title="VoteCast — proposals, deliberation and votes a community can trust | EcoHubs"
+	title="VoteCast — community decisions you can trust | EcoHubs"
 	description="The step after the meeting: a transparent way to record what a community decided — six voting methods, from a simple poll to consent, and a record that holds."
 	ogImage="https://votecast.ecohubs.community/og-default.jpg"
 	ogImageAlt="VoteCast — community governance, simplified"
@@ -513,7 +513,7 @@
 					<span class="text-ecohubs-primary mt-1">{@render methodIcon(method.id)}</span>
 					<div>
 						<h3 class="font-serif text-3xl text-ecohubs-deep leading-tight">{method.name}</h3>
-						<div class="kicker text-stone-500 mt-1.5">{method.tagline}</div>
+						<div class="kicker text-stone-600 mt-1.5">{method.tagline}</div>
 					</div>
 				</div>
 
@@ -883,7 +883,7 @@
 		<div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
 			{#each personas as persona (persona.kicker)}
 				<div class="p-7 rounded-2xl bg-ecohubs-ivory border border-stone-200/70">
-					<div class="kicker text-stone-500 mb-3">{persona.kicker}</div>
+					<div class="kicker text-stone-600 mb-3">{persona.kicker}</div>
 					<h3 class="font-serif text-xl text-ecohubs-deep mb-2">{persona.title}</h3>
 					<p class="text-stone-700 text-[15px] leading-relaxed">{persona.body}</p>
 				</div>

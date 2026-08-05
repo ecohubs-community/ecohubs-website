@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import { getAllPosts } from '$lib/server/blog';
+import { getAllPosts, MIN_POSTS_FOR_INDEXABLE_TAG } from '$lib/server/blog';
 
 export const prerender = false; // Mirrors parent /blog dynamic rendering
 
@@ -18,6 +18,7 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	return {
 		posts,
-		tag: { name: tagName, slug: params.tag }
+		tag: { name: tagName, slug: params.tag },
+		indexable: posts.length >= MIN_POSTS_FOR_INDEXABLE_TAG
 	};
 };

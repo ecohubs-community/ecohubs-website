@@ -1,0 +1,37 @@
+# EcoHubs.community
+
+> A network of people designing regenerative intentional communities — and publishing the standard, the tools and the failures in the open. EcoHubs maintains RCOS (the Regenerative Community Operating System), an open standard for how a community governs itself, admits and releases members, handles conflict, and changes its own rules.
+
+EcoHubs is a working project, not a think tank: the standard is tested against a live pilot, and what does not work is published alongside what does. Content is written for people either starting a community or trying to keep one from failing.
+
+## Core pages
+
+- [Home](https://ecohubs.community/): what EcoHubs is, who it is for, and the founder's account of why it exists.
+- [Vision](https://ecohubs.community/vision): the case for small, human-scale communities that regenerate land, culture and livelihoods.
+- [The RCOS Standard](https://ecohubs.community/rcos): an open, modular, forkable standard for designing and operating a regenerative community. The full specification lives at https://rcos.ecohubs.community.
+- [Membership](https://ecohubs.community/membership): how to join the online community co-writing the standard. Free and contribution-based.
+- [FAQ](https://ecohubs.community/faq): plain answers about the project, the standard, and membership.
+
+## Tools
+
+- [VoteCast](https://ecohubs.community/votecast): a tool for community decisions — proposals, deliberation, and six voting methods from a simple poll through to consent, with a durable record of what was decided. App at https://votecast.ecohubs.community.
+- [CSI — Community Suitability Index](https://ecohubs.community/csi): an open map of where a regenerative, sovereign community has room to begin, read against law, land, water and local welcome. App at https://csi.ecohubs.community.
+- [Community Resilience Assessment](https://ecohubs.community/community-resilience-assessment): a free ten-question assessment of how a community holds up under conflict, returned as a human-written report.
+- [Ecohub One](https://ecohubs.community/join-the-waitlist): First land-based project to join the waitlist for.
+
+## Writing
+
+- [Field notes (blog)](https://ecohubs.community/blog): essays on governance, membership, conflict and regenerative living.
+- [Why emergency decisions quietly become permanent](https://ecohubs.community/blog/emergency-rule-bypass-precedent): how communities lose their way back from crisis rules, with historical and organizational-research precedent.
+- [The exit clause: designing a community you're allowed to leave](https://ecohubs.community/blog/the-exit-clause-designing-a-community-youre-allowed-to-leave): ownership models, the money-on-exit problem, and why a clear exit makes commitment possible.
+- [Beyond the one-size-fits-all vote](https://ecohubs.community/blog/mastering-the-voting-type-strategy-for-intentional-communities): matching the decision-making method to the weight of the decision.
+- [Beyond the vote: replacing consensus with consent](https://ecohubs.community/blog/beyond-the-vote-why-the-most-resilient-communities-are-replacing-consensus-with-consent): sociocracy, paramount objections, and escaping consensus paralysis.
+- [The extraction trap: why sustainability isn't enough](https://ecohubs.community/blog/extraction-trap-why-sustainability-isnt-enough): the shift from doing less harm to active regeneration.
+- [RCOS Core v0.1 is live](https://ecohubs.community/blog/rcos-core-v0-1-is-live-a-practical-operating-system-for-community-living): what the standard covers, who it is for, and how its stress tests work.
+
+## Optional
+
+- [Contact](https://ecohubs.community/contact)
+- [All links, podcast and social](https://ecohubs.community/links)
+- [Privacy policy](https://ecohubs.community/privacy)
+- [Terms](https://ecohubs.community/terms)
