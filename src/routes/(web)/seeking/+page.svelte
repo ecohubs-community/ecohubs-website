@@ -44,7 +44,7 @@
 <SEO
 	title="Seeking.Community — a free, human way to find a community that fits | EcoHubs"
 	description="You don't have to start a community to live in one. Write where you want to land, a real person reads it by hand, and honest matches come back within 24 hours. Free."
-	ogImage="https://seeking.community/og-default.jpg"
+	ogImage="/og-seeking.jpg"
 	ogImageAlt="Seeking.Community — a soft landing for people stepping off the track"
 	{breadcrumbs}
 />

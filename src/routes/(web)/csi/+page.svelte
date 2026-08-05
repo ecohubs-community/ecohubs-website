@@ -69,7 +69,7 @@
 <SEO
 	title="CSI — the Community Suitability Index | EcoHubs"
 	description="An open map of where a regenerative community has room to begin — read against the law, the land, the water and the welcome."
-	ogImage="https://csi.ecohubs.community/og-image.png"
+	ogImage="/og-csi.jpg"
 	ogImageAlt="The Community Suitability Index world map, regions shaded by suitability"
 	{breadcrumbs}
 />

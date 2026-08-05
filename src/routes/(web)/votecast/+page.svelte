@@ -147,7 +147,7 @@
 <SEO
 	title="VoteCast — community decisions you can trust | EcoHubs"
 	description="The step after the meeting: a transparent way to record what a community decided — six voting methods, from a simple poll to consent, and a record that holds."
-	ogImage="https://votecast.ecohubs.community/og-default.jpg"
+	ogImage="/og-votecast.jpg"
 	ogImageAlt="VoteCast — community governance, simplified"
 	{breadcrumbs}
 />

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { animate } from 'motion';
 	import ConstellationMap from '$lib/components/ConstellationMap.svelte';
 	import PersonaIcons from '$lib/components/PersonaIcons.svelte';
 	// Hero mosaic images are processed by @sveltejs/enhanced-img — the
@@ -37,31 +36,18 @@
 	const WOUNDS_PREVIEW_COUNT = 4;
 
 	// ─── ANIMATIONS ─────────────────────────────────────────────────────────────
-	// Hero cascades in on mount via Motion; everything below uses CSS
-	// transitions toggled by a single IntersectionObserver in
-	// scroll-animations.ts. When `prefers-reduced-motion: reduce` is set, the
-	// CSS in layout.css reveals everything immediately — JS just bails.
+	// The hero cascade is pure CSS (`hero-rise` in layout.css, delayed per step
+	// by the inline `--hero-delay`). It deliberately does not run from here:
+	// driving it with Motion meant the first screenful stayed blank until the
+	// bundle had hydrated — roughly 2.5s on a slow mobile connection, and the
+	// dominant cause of a failing LCP.
+	//
+	// Everything below the fold still animates from JS, which is fine: the
+	// reader has to scroll to reach it. When `prefers-reduced-motion: reduce`
+	// is set, the CSS reveals everything immediately and JS just bails.
 	onMount(() => {
 		if (prefersReducedMotion()) return;
 
-		// Hero — initial-load cascade (not scroll-triggered: it's already in view).
-		// Each step's delay is encoded in `data-hero-step` (in seconds, e.g. "0.30").
-		// The keyframes object is widened to match `motion`'s loose internal type;
-		// the runtime accepts `opacity` + `transform` keyframes verbatim.
-		const heroKeyframes: Record<string, unknown> = {
-			opacity: [0, 1],
-			transform: ['translateY(16px)', 'translateY(0px)']
-		};
-		document.querySelectorAll<HTMLElement>('[data-hero-step]').forEach((el) => {
-			const delay = parseFloat(el.dataset.heroStep ?? '0') || 0;
-			animate(el, heroKeyframes as never, {
-				duration: 0.7,
-				delay,
-				ease: [0.22, 1, 0.36, 1]
-			});
-		});
-
-		// Everything else — scroll-triggered.
 		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
 		initStaggeredScrollAnimations('[data-scroll-stagger]', {
 			threshold: 0.15,
@@ -95,13 +81,13 @@
 		<div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 			<!-- Left: copy -->
 			<div class="lg:col-span-7">
-				<div data-hero-step="0.05" class="kicker text-emerald-700 mb-6 flex items-center gap-3">
+				<div data-hero-step="0.05" style="--hero-delay: 0.05s" class="kicker text-emerald-700 mb-6 flex items-center gap-3">
 					<span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 pulse-dot"></span>
 					A living project · Pilot hub active in Ecuador
 				</div>
 
 				<h1
-					data-hero-step="0.15"
+					data-hero-step="0.15" style="--hero-delay: 0.15s"
 					class="font-serif text-5xl md:text-6xl lg:text-[76px] leading-[1.02] tracking-tight text-ecohubs-deep"
 				>
 					Maybe it isn't <br class="hidden md:block" />
@@ -114,7 +100,7 @@
 				</h1>
 
 				<p
-					data-hero-step="0.30"
+					data-hero-step="0.30" style="--hero-delay: 0.30s"
 					class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light"
 				>
 					EcoHubs is a growing network of people building a different way to live together — rooted
@@ -122,7 +108,7 @@
 					chance.
 				</p>
 
-				<div data-hero-step="0.42" class="mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
+				<div data-hero-step="0.42" style="--hero-delay: 0.42s" class="mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
 					<a
 						href="#story"
 						class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full
@@ -152,7 +138,7 @@
 					</a>
 				</div>
 
-				<div data-hero-step="0.52" class="mt-14 max-w-md">
+				<div data-hero-step="0.52" style="--hero-delay: 0.52s" class="mt-14 max-w-md">
 					<PersonaIcons>
 						{#snippet caption()}
 							Permaculturists, community builders, systems thinkers and
@@ -165,7 +151,7 @@
 
 			<!-- Right: image mosaic -->
 			<div class="lg:col-span-5 relative">
-				<div data-hero-step="0.20" class="grid grid-cols-5 grid-rows-6 gap-3 h-[520px]">
+				<div data-hero-step="0.20" style="--hero-delay: 0.20s" class="grid grid-cols-5 grid-rows-6 gap-3 h-[520px]">
 					<div class="col-span-3 row-span-4 rounded-[28px] overflow-hidden soft-shadow">
 						<enhanced:img
 							src={HeroImage}
@@ -206,7 +192,7 @@
 				</div>
 				<!-- Floating quote chip — pulled down/out so only its top-right corner overlaps -->
 				<div
-					data-hero-step="0.65"
+					data-hero-step="0.65" style="--hero-delay: 0.65s"
 					class="absolute -left-8 lg:-left-12 -bottom-8 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow
                     max-w-[260px] border border-stone-100 hidden md:block"
 				>

@@ -122,6 +122,15 @@ Every page **must** use the [`SEO.svelte`](./src/lib/components/SEO.svelte) comp
 
 `FAQPage` JSON-LD lives **only** on `/faq`. Per-page FAQ sections elsewhere are visible to humans but don't emit duplicate schema. Per-page FAQ sections link out via "See all questions →" → `/faq#…`.
 
+### Discoverability files — keep these in sync
+
+Adding a page is three edits, not one. A page missing from either file is a page search engines and AI assistants may never find.
+
+- **New page** → add it to the `routes` array in [`sitemap.xml/+server.ts`](./src/routes/sitemap.xml/+server.ts) **and** to [`static/llms.txt`](./static/llms.txt) (one line: link plus a sentence saying what it is). Blog posts and tag archives are pulled from Ghost automatically — don't list those by hand.
+- **Meaningful content change** → bump that route's `lastmod` to the date of the change. Cosmetic tweaks don't count.
+- `lastmod` is the only hint here Google actually reads (`priority` and `changefreq` are ignored), and it only works while it stays truthful — never stamp it with the build date, or crawlers learn to ignore the field.
+- A tag archive is `noindex` and stays out of the sitemap until it has `MIN_POSTS_FOR_INDEXABLE_TAG` posts (see [`blog.ts`](./src/lib/server/blog.ts)). One shared constant drives both, so they can't disagree — change it there, not in two places.
+
 ## External links
 
 External `target="_blank"` links use `rel="noopener noreferrer"`. CTA-style external links (pill buttons, card links) opt out of the global underline+arrow with `class="no-external-decoration"` — see the rule in `theme.css`.
@@ -193,6 +202,7 @@ Before opening a PR for non-trivial UI work:
 - [ ] All main routes (`/`, `/vision`, `/rcos`, `/csi`, `/votecast`, `/seeking`, `/membership`, `/faq`) return 200
 - [ ] H1 count = 1 per page; no `<svelte:component>` introduced
 - [ ] New pages emit `<SEO>` with `ogImage` + `breadcrumbs`
+- [ ] New pages added to **both** `sitemap.xml/+server.ts` and `static/llms.txt`; `lastmod` bumped on any page whose content meaningfully changed
 - [ ] External `target="_blank"` links carry `rel="noopener noreferrer"`
 - [ ] No new `bg-[#…]` hex unless you're prototyping; otherwise use a token
 - [ ] No new commented-out blocks (use git history instead)
