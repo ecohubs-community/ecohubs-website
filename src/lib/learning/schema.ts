@@ -87,11 +87,27 @@ export function comparisonArticle(compare: CompareFrontmatter) {
 	};
 }
 
-/** Breadcrumbs shared by every hub page. */
+/**
+ * Breadcrumbs shared by every hub page.
+ *
+ * Deduplicated by URL, keeping the first occurrence. A repeated URL is always a
+ * mistake — an intermediate crumb pointing at a section index that does not
+ * exist — and it has two consequences worth guarding against: `Breadcrumbs.svelte`
+ * keys its `each` on the URL, so a duplicate throws `each_key_duplicate` and
+ * kills client-side navigation to that page, and the BreadcrumbList schema
+ * would claim the same URL sits at two positions in the trail.
+ */
 export function learningBreadcrumbs(trail: { name: string; path: string }[]) {
-	return [
+	const crumbs = [
 		{ name: 'Home', url: `${SITE}/` },
 		{ name: 'Learn', url: `${SITE}/learn` },
 		...trail.map((t) => ({ name: t.name, url: `${SITE}${t.path}` }))
 	];
+
+	const seen = new Set<string>();
+	return crumbs.filter((crumb) => {
+		if (seen.has(crumb.url)) return false;
+		seen.add(crumb.url);
+		return true;
+	});
 }

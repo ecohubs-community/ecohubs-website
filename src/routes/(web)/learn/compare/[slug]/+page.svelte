@@ -11,11 +11,11 @@
 	const compare = $derived(data.compare);
 	const Content = $derived(data.content as Component);
 
+	// No intermediate "Compare" crumb: there is no /learn/compare index, so it
+	// would have pointed back at /learn — a duplicate URL in the trail, and a
+	// misleading BreadcrumbList in the schema.
 	const breadcrumbs = $derived(
-		learningBreadcrumbs([
-			{ name: 'Compare', path: '/learn' },
-			{ name: compare.title, path: `/learn/compare/${compare.slug}` }
-		])
+		learningBreadcrumbs([{ name: compare.title, path: `/learn/compare/${compare.slug}` }])
 	);
 	const jsonLd = $derived(comparisonArticle(compare));
 </script>
