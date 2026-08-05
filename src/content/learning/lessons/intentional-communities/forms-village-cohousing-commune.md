@@ -6,7 +6,7 @@ guide: intentional-communities
 order: 2
 summary: One question sorts them.
 targetQuery: types of intentional communities
-status: draft
+status: published
 updated: 2026-08-05
 terms: [cohousing, ecovillage, commune]
 related: [what-is-an-intentional-community]

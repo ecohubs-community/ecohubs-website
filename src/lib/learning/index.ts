@@ -21,6 +21,7 @@ import type {
 	TopicFrontmatter
 } from './types';
 import { formatIssues, isIndexable, validateContent } from './validate';
+import { extractHeadings } from './headings.js';
 
 /* ── Loading ─────────────────────────────────────────────────────────────── */
 
@@ -85,7 +86,8 @@ const entries: ContentEntry[] = Object.entries(modules).map(([path, module]) => 
 	frontmatter: normalise(module.metadata),
 	component: module.default,
 	path,
-	words: countWords(sources[path] ?? '')
+	words: countWords(sources[path] ?? ''),
+	headings: extractHeadings(sources[path] ?? '')
 }));
 
 /* ── Validation ──────────────────────────────────────────────────────────── */

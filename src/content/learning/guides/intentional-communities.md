@@ -6,7 +6,7 @@ topic: intentional-communities
 level: foundational
 summary: The whole landscape in one read — what these places are, what they ask of you, and how to tell whether one is right for you.
 targetQuery: intentional community
-status: draft
+status: published
 updated: 2026-08-05
 ---
 

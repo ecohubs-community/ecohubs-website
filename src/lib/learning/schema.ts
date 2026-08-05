@@ -8,7 +8,13 @@
  * Only facts the page actually states are asserted here — the same rule
  * applied to the VoteCast and CSI schema.
  */
-import type { CompareFrontmatter, TermFrontmatter, TopicFrontmatter } from './types';
+import type {
+	CompareFrontmatter,
+	GuideFrontmatter,
+	LessonFrontmatter,
+	TermFrontmatter,
+	TopicFrontmatter
+} from './types';
 
 const SITE = 'https://ecohubs.community';
 const GLOSSARY_URL = `${SITE}/learn/glossary`;
@@ -84,6 +90,68 @@ export function comparisonArticle(compare: CompareFrontmatter) {
 		},
 		publisher: PUBLISHER,
 		mainEntityOfPage: { '@type': 'WebPage', '@id': url }
+	};
+}
+
+/**
+ * A guide, plus its lessons as an ordered `ItemList`.
+ *
+ * Deliberately not `HowTo`: these are explanations of how communities work,
+ * not steps that produce a result, and marking them up as instructions would
+ * misrepresent them. The lesson order is real information, so it is expressed
+ * as an ItemList instead.
+ */
+export function guideArticle(
+	guide: GuideFrontmatter,
+	lessons: { slug: string; title: string }[]
+) {
+	const url = `${SITE}/learn/guides/${guide.slug}`;
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		'@id': url,
+		headline: guide.title,
+		description: guide.summary,
+		url,
+		dateModified: guide.updated,
+		publisher: PUBLISHER,
+		mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+		hasPart: {
+			'@type': 'ItemList',
+			numberOfItems: lessons.length,
+			itemListElement: lessons.map((lesson, i) => ({
+				'@type': 'ListItem',
+				position: i + 1,
+				name: lesson.title,
+				url: `${url}/${lesson.slug}`
+			}))
+		}
+	};
+}
+
+/** A lesson, tied back to the guide that contains it. */
+export function lessonArticle(
+	lesson: LessonFrontmatter,
+	guide: { slug: string; title: string }
+) {
+	const guideUrl = `${SITE}/learn/guides/${guide.slug}`;
+	const url = `${guideUrl}/${lesson.slug}`;
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		'@id': url,
+		headline: lesson.title,
+		description: lesson.summary,
+		url,
+		dateModified: lesson.updated,
+		publisher: PUBLISHER,
+		mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+		isPartOf: {
+			'@type': 'Article',
+			'@id': guideUrl,
+			name: guide.title,
+			url: guideUrl
+		}
 	};
 }
 

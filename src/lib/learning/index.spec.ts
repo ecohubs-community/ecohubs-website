@@ -57,18 +57,44 @@ describe('content index', () => {
 });
 
 describe('derived views', () => {
-	it('orders lessons within a guide, and links neighbours', () => {
-		const guide = guideBySlug.get('intentional-communities');
-		expect(guide).toBeDefined();
-
-		// Fixture lessons are drafts, so ask for them explicitly.
-		const ordered = lessonsOfGuide('intentional-communities', true);
+	it('orders lessons within a guide', () => {
+		expect(guideBySlug.get('intentional-communities')).toBeDefined();
+		const ordered = lessonsOfGuide('intentional-communities');
 		expect(ordered.map((l) => l.frontmatter.order)).toEqual([1, 2]);
+	});
 
-		const { previous, next } = guideNeighbours('intentional-communities', ordered[0].frontmatter.slug);
-		expect(previous).toBeNull();
-		// Neighbours skip drafts, so with draft-only fixtures there is no next.
-		expect(next).toBeNull();
+	it('links neighbours within a guide', () => {
+		const ordered = lessonsOfGuide('intentional-communities');
+
+		const first = guideNeighbours('intentional-communities', ordered[0].frontmatter.slug);
+		expect(first.previous).toBeNull();
+		expect(first.next?.frontmatter.slug).toBe(ordered[1].frontmatter.slug);
+
+		const last = guideNeighbours('intentional-communities', ordered.at(-1)!.frontmatter.slug);
+		expect(last.previous?.frontmatter.slug).toBe(ordered.at(-2)!.frontmatter.slug);
+		expect(last.next).toBeNull();
+	});
+
+	it('skips drafts when linking neighbours, so a reader never hits a gap', () => {
+		// Only published lessons are offered as prev/next.
+		const ordered = lessonsOfGuide('intentional-communities');
+		for (const lesson of ordered) {
+			const { previous, next } = guideNeighbours('intentional-communities', lesson.frontmatter.slug);
+			for (const neighbour of [previous, next]) {
+				if (neighbour) expect(neighbour.frontmatter.status).toBe('published');
+			}
+		}
+	});
+
+	it('extracts a table of contents whose ids match the rendered headings', () => {
+		// Both come from headings.js, so a contents link can never point at an
+		// anchor that does not exist.
+		const topic = [...allEntries].find((e) => e.frontmatter.slug === 'intentional-communities' && e.frontmatter.type === 'topic');
+		expect(topic!.headings.length).toBeGreaterThan(2);
+		for (const heading of topic!.headings) {
+			expect(heading.id).toMatch(/^[a-z0-9-]+$/);
+			expect(heading.text.length).toBeGreaterThan(0);
+		}
 	});
 
 	it('builds a term definition map usable by tooltips', () => {

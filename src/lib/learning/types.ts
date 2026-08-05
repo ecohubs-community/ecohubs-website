@@ -114,6 +114,15 @@ export interface ContentEntry<F extends Frontmatter = Frontmatter> {
 	path: string;
 	/** Word count of the source body, used for reading time. */
 	words: number;
+	/** Top-level (`##`) sections, for the table of contents. Ids match the ones
+	 *  stamped onto the rendered headings — both come from `headings.js`. */
+	headings: TocHeading[];
+}
+
+/** One entry in a page's table of contents. */
+export interface TocHeading {
+	id: string;
+	text: string;
 }
 
 /** A problem found by the validator. */

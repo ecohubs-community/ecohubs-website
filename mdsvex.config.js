@@ -1,4 +1,5 @@
 import { defineMDSveXConfig as defineConfig } from 'mdsvex';
+import { slugifyHeading } from './src/lib/learning/headings.js';
 
 /**
  * Components an author may use in Learning Hub markdown without importing
@@ -44,9 +45,44 @@ function autoImportComponents() {
 	};
 }
 
+/**
+ * Stamps an `id` onto every `<h2>` so the table of contents can link to it.
+ *
+ * Uses the same slug function the index uses to build that contents list, so
+ * the two cannot disagree — see src/lib/learning/headings.js.
+ */
+function slugHeadings() {
+	return (tree) => {
+		const used = new Set();
+		const walk = (node) => {
+			if (node.tagName === 'h2') {
+				const text = collectText(node).trim();
+				if (text) {
+					let id = slugifyHeading(text);
+					if (used.has(id)) {
+						let n = 2;
+						while (used.has(`${id}-${n}`)) n++;
+						id = `${id}-${n}`;
+					}
+					used.add(id);
+					node.properties = { ...node.properties, id };
+				}
+			}
+			for (const child of node.children ?? []) walk(child);
+		};
+		walk(tree);
+	};
+}
+
+function collectText(node) {
+	if (node.type === 'text') return node.value ?? '';
+	return (node.children ?? []).map(collectText).join('');
+}
+
 const config = defineConfig({
 	extensions: ['.svx', '.md'],
-	remarkPlugins: [autoImportComponents]
+	remarkPlugins: [autoImportComponents],
+	rehypePlugins: [slugHeadings]
 });
 
 export default config;
