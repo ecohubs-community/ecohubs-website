@@ -48,6 +48,28 @@ describe('indexability — every depth layer is in the server HTML', () => {
 		expect(html()).toContain('vary by an order of magnitude');
 	});
 
+	it('never lets a depth layer hide an ancestor of another layer', () => {
+		// This shipped broken: <Prose layer="standard"> hid *itself* in quick
+		// mode, and because <Quick> is authored inside the markdown it renders
+		// as a child of that container — so choosing "quick" produced an empty
+		// page. A container may hide its children selectively; it may not hide
+		// itself while containing another layer.
+		const body = html();
+
+		const containers = [
+			...body.matchAll(/data-depth-layer="(\w+)" class="([^"]*)"([\s\S]*?)(?=data-depth-layer=|$)/g)
+		];
+
+		for (const [, name, classes, rest] of containers) {
+			const containsAnotherLayer = /data-depth-layer=/.test(rest);
+			if (!containsAnotherLayer) continue;
+			const hidesItself = classes
+				.split(/\s+/)
+				.some((c) => /^\[html\[data-depth=\w+\]_&\]:hidden$/.test(c));
+			expect(hidesItself, `${name} layer hides itself while wrapping another layer`).toBe(false);
+		}
+	});
+
 	it('hides depth layers only via an html[data-depth] ancestor, never by default', () => {
 		const body = html();
 

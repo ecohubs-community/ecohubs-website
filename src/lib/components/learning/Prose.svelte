@@ -7,10 +7,16 @@
 	 * equivalent as ~200 lines of scoped CSS inside its page component; that is
 	 * not reusable here and is not worth duplicating.)
 	 *
-	 * `layer` marks this as the standard depth layer, so a reader who chose
-	 * "quick" sees the short card instead of the body. Pass `layer={null}` for
-	 * content outside the depth system — a glossary term, for instance, which
-	 * has only one version.
+	 * When `layer` is `'standard'` this is the depth-aware article body.
+	 *
+	 * It must never hide *itself*: `<Quick>` and `<Deep>` are authored inside
+	 * the markdown, so they render as children of this container, and hiding the
+	 * container would hide the quick card along with the prose — which is
+	 * exactly the bug that shipped. Instead, in quick mode it hides its own
+	 * direct children *except* the quick card.
+	 *
+	 * Pass `layer={null}` for content outside the depth system — a glossary
+	 * term, for instance, which has only one version.
 	 */
 	import type { Snippet } from 'svelte';
 
@@ -19,6 +25,14 @@
 		class: className = '',
 		children
 	}: { layer?: 'standard' | null; class?: string; children: Snippet } = $props();
+
+	// Quick mode: everything in the body goes except the short-version card.
+	// Standard and deep are handled by the layer components themselves.
+	const depthRules =
+		layer === 'standard'
+			? '[html[data-depth=quick]_&>*:not([data-depth-layer=quick])]:hidden ' +
+				'print:[&>*]:block!'
+			: '';
 </script>
 
 <div
@@ -39,7 +53,7 @@
 	       prose-blockquote:text-ecohubs-deep prose-blockquote:not-italic
 	       prose-table:text-[0.95rem] prose-th:text-ecohubs-deep prose-th:font-medium
 	       prose-img:rounded-2xl
-	       {layer === 'standard' ? '[html[data-depth=quick]_&]:hidden print:block!' : ''}
+	       {depthRules}
 	       {className}"
 >
 	{@render children()}
