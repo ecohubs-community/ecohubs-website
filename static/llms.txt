@@ -22,6 +22,7 @@ EcoHubs is a working project, not a think tank: the standard is tested against a
 ## Writing
 
 - [Field notes (blog)](https://ecohubs.community/blog): essays on governance, membership, conflict and regenerative living.
+- [Authors](https://ecohubs.community/blog/authors): who writes the field notes, and every piece each of them has published.
 - [Why emergency decisions quietly become permanent](https://ecohubs.community/blog/emergency-rule-bypass-precedent): how communities lose their way back from crisis rules, with historical and organizational-research precedent.
 - [The exit clause: designing a community you're allowed to leave](https://ecohubs.community/blog/the-exit-clause-designing-a-community-youre-allowed-to-leave): ownership models, the money-on-exit problem, and why a clear exit makes commitment possible.
 - [Beyond the one-size-fits-all vote](https://ecohubs.community/blog/mastering-the-voting-type-strategy-for-intentional-communities): matching the decision-making method to the weight of the decision.

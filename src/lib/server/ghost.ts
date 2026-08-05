@@ -24,11 +24,36 @@ export interface GhostDraft extends GhostPost {
 	status: 'draft';
 }
 
+/**
+ * A Ghost staff user, as exposed publicly.
+ *
+ * Note the Content API only returns authors who have at least one *published*
+ * post — someone added in Ghost but not yet published is invisible here. That
+ * is the behaviour we want: it makes an empty author page impossible.
+ */
+export interface GhostAuthor {
+	name: string;
+	slug: string;
+	bio?: string | null;
+	profile_image?: string | null;
+	cover_image?: string | null;
+	website?: string | null;
+	location?: string | null;
+	twitter?: string | null;
+	facebook?: string | null;
+	meta_title?: string | null;
+	meta_description?: string | null;
+}
+
 // Type definitions for Ghost API clients
 type GhostContentAPIClient = {
 	posts: {
 		browse: (options: { limit: string; include: string[]; filter: string }) => Promise<GhostPost[]>;
 		read: (options: { slug: string }, include?: { include: string[] }) => Promise<GhostPost>;
+	};
+	authors: {
+		browse: (options: { limit: string }) => Promise<GhostAuthor[]>;
+		read: (options: { slug: string }) => Promise<GhostAuthor>;
 	};
 };
 
@@ -165,6 +190,38 @@ export async function getAllGhostPosts(): Promise<GhostPost[]> {
 	} catch (error) {
 		console.error('Error fetching Ghost posts:', error);
 		return [];
+	}
+}
+
+/**
+ * Fetch every author with at least one published post.
+ */
+export async function getAllGhostAuthors(): Promise<GhostAuthor[]> {
+	try {
+		const api = await getContentApi();
+		if (!api) {
+			console.warn('Ghost Content API not configured');
+			return [];
+		}
+		return (await api.authors.browse({ limit: 'all' })) as GhostAuthor[];
+	} catch (error) {
+		console.error('Error fetching Ghost authors:', error);
+		return [];
+	}
+}
+
+/**
+ * Fetch single author by slug. Returns null when the slug is unknown — which
+ * includes staff users who have not published anything yet.
+ */
+export async function getGhostAuthor(slug: string): Promise<GhostAuthor | null> {
+	try {
+		const api = await getContentApi();
+		if (!api) return null;
+		return ((await api.authors.read({ slug })) as GhostAuthor) ?? null;
+	} catch {
+		// The client throws a NotFoundError for unknown slugs; absence is not an error here.
+		return null;
 	}
 }
 

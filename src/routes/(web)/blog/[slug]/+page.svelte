@@ -83,9 +83,15 @@
 		image: ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`,
 		datePublished: post.date,
 		dateModified: post.dateModified || post.date,
+		// `@id`/`url` point at the author page so this Person resolves to a real
+		// entity Google can attach expertise to, instead of a bare name.
 		author: {
 			'@type': 'Person',
-			name: post.author
+			name: post.author,
+			...(post.authorSlug && {
+				'@id': `${siteUrl}/blog/authors/${post.authorSlug}`,
+				url: `${siteUrl}/blog/authors/${post.authorSlug}`
+			})
 		},
 		publisher: {
 			'@type': 'Organization',
@@ -210,7 +216,17 @@
 		<div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-stone-600">
 			<span class="inline-flex items-center gap-2">
 				<span class="w-1.5 h-1.5 rounded-full bg-ecohubs-primary"></span>
-				<span class="font-medium text-ecohubs-deep">{post.author}</span>
+				{#if post.authorSlug}
+					<a
+						href="/blog/authors/{post.authorSlug}"
+						rel="author"
+						class="font-medium text-ecohubs-deep hover:text-ecohubs-primary transition-colors"
+					>
+						{post.author}
+					</a>
+				{:else}
+					<span class="font-medium text-ecohubs-deep">{post.author}</span>
+				{/if}
 			</span>
 			<span class="text-stone-300">·</span>
 			<time datetime={post.date} class="font-story italic">{formattedDate}</time>

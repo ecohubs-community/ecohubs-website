@@ -1,4 +1,4 @@
-import type { GhostPost } from './ghost';
+import type { GhostAuthor, GhostPost } from './ghost';
 import { toSocialImageUrl } from './ghost';
 
 export interface BlogPost {
@@ -17,9 +17,26 @@ export interface BlogPost {
 	image?: string;
 	/** Crawler-safe variant of `image` — see `toSocialImageUrl` in ./ghost. */
 	socialImage?: string;
+	/** Slug of the first author, for linking the byline to their page. */
+	authorSlug?: string;
 	tags?: { name: string; slug: string }[];
 	readingTime?: number;
 	html?: string; // HTML content from Ghost
+}
+
+/** A blog author, as shown on `/blog/authors` and `/blog/authors/[slug]`. */
+export interface Author {
+	name: string;
+	slug: string;
+	bio?: string;
+	image?: string;
+	website?: string;
+	location?: string;
+	twitter?: string;
+	facebook?: string;
+	/** Absolute profile URLs for schema.org `sameAs`. */
+	sameAs: string[];
+	postCount: number;
 }
 
 export interface TocHeading {
@@ -58,6 +75,7 @@ function mapGhostPostToBlogPost(ghostPost: GhostPost): BlogPost {
 		date: ghostPost.published_at || ghostPost.updated_at,
 		dateModified: ghostPost.updated_at || undefined,
 		author: ghostPost.authors?.[0]?.name || 'EcoHubs Team',
+		authorSlug: ghostPost.authors?.[0]?.slug || undefined,
 		image: ghostPost.feature_image || undefined,
 		socialImage: toSocialImageUrl(ghostPost.feature_image),
 		tags: ghostPost.tags?.map((tag) => ({ name: tag.name, slug: tag.slug })) || [],
@@ -219,6 +237,70 @@ export async function getPost(slug: string): Promise<BlogPostWithContent | null>
 		html,
 		headings
 	};
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Authors
+
+   Ghost's Content API only exposes authors who have published something, so
+   the listing and the per-author pages can never be empty. Post counts are
+   derived from the posts themselves rather than Ghost's `count.posts`, so the
+   number always matches the archive rendered underneath it.
+   ───────────────────────────────────────────────────────────────────────── */
+
+function mapGhostAuthor(a: GhostAuthor, postCount: number): Author {
+	// Ghost stores these as bare handles or full URLs depending on how they
+	// were entered; schema.org `sameAs` needs absolute URLs either way.
+	const twitter = a.twitter?.replace(/^@/, '') || undefined;
+	const facebook = a.facebook || undefined;
+	const sameAs = [
+		twitter && `https://x.com/${twitter}`,
+		facebook && (facebook.startsWith('http') ? facebook : `https://facebook.com/${facebook}`),
+		a.website || undefined
+	].filter((x): x is string => Boolean(x));
+
+	return {
+		name: a.name,
+		slug: a.slug,
+		bio: a.bio || undefined,
+		image: a.profile_image || undefined,
+		website: a.website || undefined,
+		location: a.location || undefined,
+		twitter,
+		facebook,
+		sameAs,
+		postCount
+	};
+}
+
+/** Every author with at least one published post, most prolific first. */
+export async function getAllAuthors(): Promise<Author[]> {
+	const { getAllGhostAuthors } = await import('./ghost');
+	const [ghostAuthors, posts] = await Promise.all([getAllGhostAuthors(), getAllPosts()]);
+
+	const counts = new Map<string, number>();
+	for (const post of posts) {
+		if (post.authorSlug) counts.set(post.authorSlug, (counts.get(post.authorSlug) ?? 0) + 1);
+	}
+
+	return ghostAuthors
+		.map((a) => mapGhostAuthor(a, counts.get(a.slug) ?? 0))
+		.filter((a) => a.postCount > 0)
+		.sort((a, b) => b.postCount - a.postCount || a.name.localeCompare(b.name));
+}
+
+/** One author plus their posts, or null when the slug has nothing behind it. */
+export async function getAuthor(
+	slug: string
+): Promise<{ author: Author; posts: BlogPost[] } | null> {
+	const { getGhostAuthor } = await import('./ghost');
+	const [ghostAuthor, allPosts] = await Promise.all([getGhostAuthor(slug), getAllPosts()]);
+	if (!ghostAuthor) return null;
+
+	const posts = allPosts.filter((p) => p.authorSlug === slug);
+	if (posts.length === 0) return null;
+
+	return { author: mapGhostAuthor(ghostAuthor, posts.length), posts };
 }
 
 /**

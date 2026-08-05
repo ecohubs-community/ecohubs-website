@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { getAllPosts, MIN_POSTS_FOR_INDEXABLE_TAG } from '$lib/server/blog';
+import { getAllAuthors, getAllPosts, MIN_POSTS_FOR_INDEXABLE_TAG } from '$lib/server/blog';
 
 const siteUrl = 'https://ecohubs.community';
 
@@ -68,6 +68,16 @@ export const GET: RequestHandler = async () => {
 		if (count < MIN_POSTS_FOR_INDEXABLE_TAG) tagLastmod.delete(slug);
 	}
 
+	// Author archives. Ghost only exposes authors who have published, so every
+	// one of these has posts behind it; `lastmod` is their newest post.
+	const authorLastmod = new Map<string, string>();
+	for (const post of blogPosts) {
+		if (post.authorSlug && !authorLastmod.has(post.authorSlug)) {
+			authorLastmod.set(post.authorSlug, post.date);
+		}
+	}
+	const authors = await getAllAuthors();
+
 	const allRoutes = [
 		...routes,
 		...blogPosts.map((post) => ({
@@ -81,7 +91,29 @@ export const GET: RequestHandler = async () => {
 			priority: '0.5',
 			changefreq: 'weekly',
 			lastmod
-		}))
+		})),
+		...(authors.length
+			? [
+					{
+						path: '/blog/authors',
+						priority: '0.5',
+						changefreq: 'monthly',
+						lastmod: authors
+							.map((a) => authorLastmod.get(a.slug))
+							.filter((d): d is string => Boolean(d))
+							.sort()
+							.at(-1)
+					} as SitemapRoute
+				]
+			: []),
+		...authors.map(
+			(a): SitemapRoute => ({
+				path: `/blog/authors/${a.slug}`,
+				priority: '0.6',
+				changefreq: 'monthly',
+				lastmod: authorLastmod.get(a.slug)
+			})
+		)
 	];
 
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
