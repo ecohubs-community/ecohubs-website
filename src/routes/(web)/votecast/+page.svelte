@@ -18,6 +18,32 @@
 
 	const breadcrumbs = generateBreadcrumbs('votecast');
 
+	// `price: 0` reflects the tier the page actually advertises — "free for small
+	// groups". Verification lifts the caps; it is not a paid plan.
+	const softwareJsonLd = {
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareApplication',
+		name: 'VoteCast',
+		applicationCategory: 'BusinessApplication',
+		applicationSubCategory: 'Governance and decision-making',
+		operatingSystem: 'Web browser',
+		url: 'https://votecast.ecohubs.community/',
+		description:
+			'A transparent way for a community to propose, deliberate and decide — six voting methods, from a simple poll to consent decision making, with a durable record of what was decided and the rules it was decided under.',
+		isAccessibleForFree: true,
+		offers: {
+			'@type': 'Offer',
+			price: '0',
+			priceCurrency: 'USD',
+			description: 'Free for small groups'
+		},
+		publisher: {
+			'@type': 'Organization',
+			name: 'EcoHubs.community',
+			url: 'https://ecohubs.community'
+		}
+	};
+
 	import {
 		votecastStats,
 		glossary,
@@ -150,6 +176,7 @@
 	ogImage="/og-votecast.jpg"
 	ogImageAlt="VoteCast — community governance, simplified"
 	{breadcrumbs}
+	jsonLd={softwareJsonLd}
 />
 
 <!-- ═══════════════════════════════════════════════════════════════════

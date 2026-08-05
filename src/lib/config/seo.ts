@@ -63,22 +63,19 @@ export const SEO_CONFIG = {
 			title: 'CSI — the Community Suitability Index | EcoHubs',
 			description:
 				'An open map of where a regenerative, sovereign community has room to begin — read against the law, the land, the water and the welcome.',
-			// Borrowed from the CSI app until a local /og-csi.jpg is produced.
-			ogImage: 'https://csi.ecohubs.community/og-image.png'
+			ogImage: '/og-csi.jpg'
 		},
 		votecast: {
 			title: 'VoteCast — decisions a community can trust | EcoHubs',
 			description:
 				'A transparent way for a community to propose, deliberate and decide — six voting methods, from a simple poll to consent, and a record that holds.',
-			// Borrowed from the VoteCast app until a local /og-votecast.jpg is produced.
-			ogImage: 'https://votecast.ecohubs.community/og-default.jpg'
+			ogImage: '/og-votecast.jpg'
 		},
 		seeking: {
 			title: 'Seeking.Community — find a community that fits | EcoHubs',
 			description:
 				"You don't have to start a community to live in one. Write where you want to land, a real person reads it by hand, and honest matches come back within 24 hours.",
-			// Borrowed from the Seeking app until a local /og-seeking.jpg is produced.
-			ogImage: 'https://seeking.community/og-default.jpg'
+			ogImage: '/og-seeking.jpg'
 		},
 		membership: {
 			title: 'Become a Member - EcoHubs.community',

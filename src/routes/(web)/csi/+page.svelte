@@ -17,6 +17,51 @@
 
 	const breadcrumbs = generateBreadcrumbs('csi');
 
+	// CSI is two things at once, so it gets two entities: the map you use, and
+	// the open data behind it. Only facts stated on the page are asserted —
+	// notably no `license`, because the page does not name one.
+	const csiJsonLd = [
+		{
+			'@context': 'https://schema.org',
+			'@type': 'SoftwareApplication',
+			name: 'CSI — the Community Suitability Index',
+			applicationCategory: 'ReferenceApplication',
+			operatingSystem: 'Web browser',
+			url: 'https://csi.ecohubs.community/',
+			description:
+				'An open map of where a regenerative community — an ecovillage or land project — has room to begin, reading a place against the law, the land, the water and the welcome.',
+			isAccessibleForFree: true,
+			offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+			publisher: {
+				'@type': 'Organization',
+				name: 'EcoHubs.community',
+				url: 'https://ecohubs.community'
+			}
+		},
+		{
+			'@context': 'https://schema.org',
+			'@type': 'Dataset',
+			name: 'Community Suitability Index',
+			description:
+				'Suitability signals for starting a regenerative community across 3,309 regions worldwide — thirty signals covering legal, land, water and social conditions, each traceable to a public dataset, with gaps marked rather than filled.',
+			url: 'https://ecohubs.community/csi',
+			sameAs: 'https://csi.ecohubs.community/',
+			isAccessibleForFree: true,
+			spatialCoverage: { '@type': 'Place', name: 'Worldwide' },
+			creator: {
+				'@type': 'Organization',
+				name: 'EcoHubs.community',
+				url: 'https://ecohubs.community'
+			},
+			keywords: [
+				'intentional community',
+				'ecovillage',
+				'land suitability',
+				'regenerative communities'
+			]
+		}
+	];
+
 	import {
 		csiStats,
 		csiPalette,
@@ -72,6 +117,7 @@
 	ogImage="/og-csi.jpg"
 	ogImageAlt="The Community Suitability Index world map, regions shaded by suitability"
 	{breadcrumbs}
+	jsonLd={csiJsonLd}
 />
 
 <!-- ═══════════════════════════════════════════════════════════════════

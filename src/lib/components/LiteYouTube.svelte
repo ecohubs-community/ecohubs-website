@@ -4,15 +4,20 @@
 	// cookies only load after the user clicks play. Uses youtube-nocookie
 	// so a pre-click impression doesn't drop tracking cookies either.
 
+	import { VIDEO_METADATA, toIsoDuration } from '$lib/config/videos';
+
 	interface Props {
 		videoId: string;
 		title: string;
 		posterUrl?: string;
 		/** When true (default), prefer the higher-resolution maxres poster. */
 		highRes?: boolean;
+		/** Set false to suppress VideoObject schema — e.g. when the same video is
+		 *  embedded twice on one page and only one copy should describe it. */
+		schema?: boolean;
 	}
 
-	let { videoId, title, posterUrl, highRes = true }: Props = $props();
+	let { videoId, title, posterUrl, highRes = true, schema = true }: Props = $props();
 
 	let activated = $state(false);
 	let warmed = false;
@@ -54,7 +59,42 @@
 		const fallback = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 		if (img.src !== fallback) img.src = fallback;
 	}
+
+	// The facade means no iframe exists until the user clicks, so crawlers would
+	// otherwise see only a poster image. VideoObject tells them what is here.
+	// Only emitted for videos we hold real metadata for — see config/videos.ts.
+	const meta = $derived(VIDEO_METADATA[videoId]);
+	const videoJsonLd = $derived(
+		meta && schema
+			? {
+					'@context': 'https://schema.org',
+					'@type': 'VideoObject',
+					name: meta.name,
+					description: meta.description,
+					thumbnailUrl: [
+						`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+						`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+					],
+					uploadDate: meta.uploadDate,
+					duration: toIsoDuration(meta.durationSeconds),
+					embedUrl: `https://www.youtube.com/embed/${videoId}`,
+					contentUrl: `https://www.youtube.com/watch?v=${videoId}`,
+					publisher: {
+						'@type': 'Organization',
+						name: 'EcoHubs.community',
+						url: 'https://ecohubs.community'
+					}
+				}
+			: null
+	);
 </script>
+
+<svelte:head>
+	{#if videoJsonLd}
+		<!-- Closing tag split so the Svelte parser doesn't end the script context. -->
+		{@html '<' + 'script type="application/ld+json">' + JSON.stringify(videoJsonLd) + '<' + '/script>'}
+	{/if}
+</svelte:head>
 
 <div class="relative aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 soft-shadow border-4 border-stone-200">
 	{#if activated}
