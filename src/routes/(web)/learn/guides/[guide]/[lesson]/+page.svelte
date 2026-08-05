@@ -2,7 +2,7 @@
 	import type { Component } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import { DepthSwitch, LearnRail, Prose } from '$lib/components/learning';
+	import { BookmarkButton, DepthSwitch, LearnRail, Prose, ReadToggle } from '$lib/components/learning';
 	import { learningBreadcrumbs, lessonArticle } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -57,6 +57,8 @@
 
 			<div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-stone-500">
 				<span class="font-story italic">{data.readingMinutes} min read</span>
+				<ReadToggle id={lesson.slug} />
+				<BookmarkButton id={lesson.slug} type="lesson" title={lesson.title} />
 				<span class="ml-auto"><DepthSwitch /></span>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 import type { LayoutServerLoad } from './$types';
-import { terms } from '$lib/learning';
+import { allEntries, terms, urlFor } from '$lib/learning';
 
 export const prerender = true;
 
@@ -26,6 +26,25 @@ export const load: LayoutServerLoad = async () => {
 			term: t.frontmatter.term,
 			short: t.frontmatter.short,
 			published: t.frontmatter.status === 'published'
-		}))
+		})),
+
+		/**
+		 * A light catalogue of everything published, so `/learn/saved` can turn
+		 * stored ids back into titles and links.
+		 *
+		 * Resolving here rather than storing titles alongside the bookmark is
+		 * deliberate: a title edited in markdown would otherwise stay stale in
+		 * someone's saved list forever, and content that is deleted or
+		 * unpublished simply drops out instead of becoming a dead link.
+		 */
+		catalogue: allEntries
+			.filter((e) => e.frontmatter.status === 'published')
+			.map((e) => ({
+				slug: e.frontmatter.slug,
+				type: e.frontmatter.type,
+				title: e.frontmatter.title,
+				summary: e.frontmatter.summary,
+				url: urlFor(e)
+			}))
 	};
 };

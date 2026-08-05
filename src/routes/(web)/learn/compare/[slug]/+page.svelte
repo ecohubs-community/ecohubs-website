@@ -2,7 +2,7 @@
 	import type { Component } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import { DepthSwitch, Prose } from '$lib/components/learning';
+	import { BookmarkButton, DepthSwitch, Prose } from '$lib/components/learning';
 	import { comparisonArticle, learningBreadcrumbs } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -64,6 +64,7 @@
 				{:else}
 					<span>{data.topicTitle}</span>
 				{/if}
+				<BookmarkButton id={compare.slug} type="comparison" title={compare.title} />
 				<span class="ml-auto"><DepthSwitch /></span>
 			</div>
 		</div>

@@ -2,7 +2,7 @@
 	import type { Component } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import { DepthSwitch, LearnRail, Prose } from '$lib/components/learning';
+	import { BookmarkButton, DepthSwitch, LearnRail, Prose } from '$lib/components/learning';
 	import { learningBreadcrumbs, topicArticle } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -65,6 +65,7 @@
 						RCOS Layer {topic.rcosLayer}
 					</a>
 				{/if}
+				<BookmarkButton id={topic.slug} type="topic" title={topic.title} />
 				<span class="ml-auto"><DepthSwitch /></span>
 			</div>
 		</div>
