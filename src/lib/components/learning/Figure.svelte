@@ -24,7 +24,9 @@
 	let { src, alt, width, height, caption, priority = false }: Props = $props();
 </script>
 
-<figure class="my-10">
+<!-- `not-prose` because everything here is styled explicitly, including the
+     image margins the typography plugin would otherwise impose. -->
+<figure class="not-prose my-10">
 	<img
 		{src}
 		{alt}

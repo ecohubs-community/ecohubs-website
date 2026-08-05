@@ -26,7 +26,14 @@
 	let { videoId, title, caption, schema = true }: Props = $props();
 </script>
 
-<figure class="my-10">
+<!--
+	`not-prose` matters here. Tailwind's typography plugin gives images inside
+	prose `margin: 2em 0`, and the facade's poster is `position: absolute;
+	inset-0` — so that margin pushed it 32px down inside its own frame and left
+	the dark container background showing along the top edge. Opting out of prose
+	styling is correct anyway: everything in this figure is styled explicitly.
+-->
+<figure class="not-prose my-10">
 	<LiteYouTube {videoId} {title} {schema} />
 	{#if caption}
 		<figcaption class="mt-3 text-sm leading-relaxed text-stone-500">

@@ -23,7 +23,9 @@
 	}: { columns: string[]; rows: CompareRow[]; caption?: string } = $props();
 </script>
 
-<div class="my-10 -mx-6 overflow-x-auto px-6 sm:mx-0 sm:px-0">
+<!-- `not-prose` so the typography plugin's own table styling does not fight the
+     explicit styling below; the table markup here is fully controlled. -->
+<div class="not-prose my-10 -mx-6 overflow-x-auto px-6 sm:mx-0 sm:px-0">
 	<table class="w-full min-w-[34rem] border-collapse text-left text-[0.95rem]">
 		{#if caption}
 			<caption class="mb-3 text-left font-story text-sm text-stone-500 italic">
