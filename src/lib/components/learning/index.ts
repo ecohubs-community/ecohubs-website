@@ -11,6 +11,7 @@ export { default as Deep } from './Deep.svelte';
 export { default as Figure } from './Figure.svelte';
 export { default as DepthSwitch } from './DepthSwitch.svelte';
 export { default as Gloss } from './Gloss.svelte';
+export { default as LearnRail } from './LearnRail.svelte';
 export { default as Prose } from './Prose.svelte';
 export { default as Quick } from './Quick.svelte';
 export { default as Quiz } from './Quiz.svelte';
@@ -18,4 +19,5 @@ export { default as Sources } from './Sources.svelte';
 export { default as Video } from './Video.svelte';
 
 export type { CompareRow } from './Compare.svelte';
+export type { RailItem } from './LearnRail.svelte';
 export type { Source } from './Sources.svelte';

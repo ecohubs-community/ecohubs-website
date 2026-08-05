@@ -2,7 +2,7 @@
 	import type { Component } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import { DepthSwitch, Prose } from '$lib/components/learning';
+	import { DepthSwitch, LearnRail, Prose } from '$lib/components/learning';
 	import { learningBreadcrumbs, topicArticle } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -76,7 +76,11 @@
 			2. BODY
 	═══════════════════════════════════════════════════════════════ -->
 	<section class="pt-12">
-		<div class="mx-auto max-w-3xl px-6 lg:px-8">
+		<!-- Article first in source order; the rail is placed left by grid order. -->
+		<div
+			class="mx-auto grid max-w-3xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		>
+			<div class="min-w-0 lg:order-2">
 			<Prose>
 				<Content />
 			</Prose>
@@ -168,6 +172,16 @@
 					<span class="font-story italic">All topics</span>
 				</a>
 			</div>
+			</div>
+
+			<!-- A topic's "within" is its own sections; a lesson's is its siblings. -->
+			<LearnRail
+				withinTitle="On this page"
+				within={data.headings.map((h) => ({ href: `#${h.id}`, label: h.text }))}
+				sidewaysTitle="Related topics"
+				sideways={data.relatedTopics}
+				backLink={{ href: '/learn/topics', label: 'All topics' }}
+			/>
 		</div>
 	</section>
 </article>

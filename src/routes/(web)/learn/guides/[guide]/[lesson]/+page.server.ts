@@ -50,9 +50,20 @@ export const load: PageServerLoad = async ({ params }) => {
 		.filter((t) => t && t.frontmatter.status === 'published')
 		.map((t) => ({ slug: t!.frontmatter.slug, term: t!.frontmatter.term, short: t!.frontmatter.short }));
 
+	// The whole guide, for the left rail: a lesson page's primary navigation is
+	// its siblings, not its own headings.
+	const siblings = ordered.map((l, i) => ({
+		href: `/learn/guides/${params.guide}/${l.frontmatter.slug}`,
+		label: l.frontmatter.title,
+		marker: String(i + 1).padStart(2, '0'),
+		current: l.frontmatter.slug === fm.slug,
+		minutes: readingMinutes(l)
+	}));
+
 	return {
 		lesson: fm,
 		headings: entry.headings,
+		siblings,
 		guide: {
 			slug: guide.frontmatter.slug,
 			title: guide.frontmatter.title

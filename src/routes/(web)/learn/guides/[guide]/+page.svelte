@@ -2,7 +2,7 @@
 	import type { Component } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import { Prose } from '$lib/components/learning';
+	import { LearnRail, Prose } from '$lib/components/learning';
 	import { guideArticle, learningBreadcrumbs } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -64,7 +64,11 @@
 	<div class="hairline mx-auto max-w-3xl"></div>
 
 	<section class="pt-12">
-		<div class="mx-auto max-w-3xl px-6 lg:px-8">
+		<!-- Article first in source order; the rail is placed left by grid order. -->
+		<div
+			class="mx-auto grid max-w-3xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		>
+			<div class="min-w-0 lg:order-2">
 			<Prose layer={null}>
 				<Content />
 			</Prose>
@@ -111,6 +115,19 @@
 					<span class="font-story italic">The learning hub</span>
 				</a>
 			</div>
+			</div>
+
+			<LearnRail
+				withinTitle="This guide"
+				within={data.lessons.map((l) => ({
+					href: `/learn/guides/${guide.slug}/${l.slug}`,
+					label: l.title,
+					marker: String(l.number).padStart(2, '0'),
+					note: `${l.minutes} min`
+				}))}
+				sidewaysTitle="Other guides"
+				sideways={data.otherGuides}
+			/>
 		</div>
 	</section>
 </article>

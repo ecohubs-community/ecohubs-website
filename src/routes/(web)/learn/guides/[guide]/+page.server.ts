@@ -32,9 +32,16 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	const topic = topicBySlug.get(fm.topic);
 
+	// Lower half of the rail: sideways to sibling guides.
+	const otherGuides = publishedGuides
+		.filter((g) => g.frontmatter.slug !== fm.slug)
+		.filter((g) => lessonsOfGuide(g.frontmatter.slug).length > 0)
+		.map((g) => ({ href: `/learn/guides/${g.frontmatter.slug}`, label: g.frontmatter.title }));
+
 	return {
 		guide: fm,
 		lessons,
+		otherGuides,
 		totalMinutes: lessons.reduce((sum, l) => sum + l.minutes, 0),
 		topicTitle: topic?.frontmatter.title ?? fm.topic,
 		topicPublished: topic?.frontmatter.status === 'published',

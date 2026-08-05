@@ -2,7 +2,7 @@
 	import type { Component } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import { DepthSwitch, Prose } from '$lib/components/learning';
+	import { DepthSwitch, LearnRail, Prose } from '$lib/components/learning';
 	import { learningBreadcrumbs, lessonArticle } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -65,7 +65,13 @@
 	<div class="hairline mx-auto max-w-3xl"></div>
 
 	<section class="pt-12">
-		<div class="mx-auto max-w-3xl px-6 lg:px-8">
+		<!-- Article first in source order; the rail is moved left by grid
+		     ordering. Otherwise every lesson page would open, for a crawler,
+		     with the same list of links. -->
+		<div
+			class="mx-auto grid max-w-3xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		>
+			<div class="min-w-0 lg:order-2">
 			{#if data.headings.length > 2}
 				<!-- Plain anchors, so the contents work before hydration and for a
 				     reader with no JavaScript. Hidden in quick mode along with the
@@ -165,6 +171,19 @@
 					</a>
 				{/if}
 			</nav>
+			</div>
+
+			<LearnRail
+				withinTitle="This guide"
+				within={data.siblings.map((s) => ({
+					href: s.href,
+					label: s.label,
+					marker: s.marker,
+					current: s.current,
+					note: `${s.minutes} min`
+				}))}
+				backLink={{ href: `/learn/guides/${data.guide.slug}`, label: 'Guide overview' }}
+			/>
 		</div>
 	</section>
 </article>

@@ -17,7 +17,8 @@
 		{ href: '__ecosystem__', label: 'Ecosystem' },
 		{ href: '/membership', label: 'Membership' },
 		{ href: '/faq', label: 'FAQ' },
-		{ href: '/blog', label: 'Blog' }
+		{ href: '/blog', label: 'Blog' },
+		{ href: '/learn', label: 'Learning Hub' }
 	];
 
 	type EcoLink = { label: string; href: string; external: boolean; green?: boolean };

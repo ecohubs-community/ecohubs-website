@@ -1,6 +1,12 @@
 import { error } from '@sveltejs/kit';
 import type { EntryGenerator, PageServerLoad } from './$types';
-import { contentOfTopic, isIndexable, publishedTopics, readingMinutes, topicBySlug } from '$lib/learning';
+import {
+	contentOfTopic,
+	isIndexable,
+	publishedTopics,
+	readingMinutes,
+	topicBySlug
+} from '$lib/learning';
 
 export const prerender = true;
 
@@ -42,8 +48,19 @@ export const load: PageServerLoad = async ({ params }) => {
 		summary: c.frontmatter.summary
 	}));
 
+	// Lower half of the rail: sideways to other topics that have content.
+	const relatedTopics = publishedTopics
+		.filter((t) => t.frontmatter.slug !== fm.slug)
+		.filter((t) => {
+			const c = contentOfTopic(t.frontmatter.slug);
+			return c.guides.length + c.comparisons.length + c.terms.length > 0;
+		})
+		.map((t) => ({ href: `/learn/topics/${t.frontmatter.slug}`, label: t.frontmatter.title }));
+
 	return {
 		topic: fm,
+		headings: entry.headings,
+		relatedTopics,
 		guides,
 		comparisons,
 		terms,
