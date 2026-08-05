@@ -1,5 +1,6 @@
 import type { RequestHandler } from './$types';
 import { getAllAuthors, getAllPosts, MIN_POSTS_FOR_INDEXABLE_TAG } from '$lib/server/blog';
+import { sitemapEntries as learningEntries } from '$lib/learning';
 
 const siteUrl = 'https://ecohubs.community';
 
@@ -112,6 +113,20 @@ export const GET: RequestHandler = async () => {
 				priority: '0.6',
 				changefreq: 'monthly',
 				lastmod: authorLastmod.get(a.slug)
+			})
+		),
+		// Learning Hub. `sitemapEntries()` already applies `isIndexable`, so
+		// drafts and stubs are filtered at the source rather than here — one
+		// gate driving both the sitemap and each page's robots meta.
+		...(learningEntries().length
+			? [{ path: '/learn/glossary', priority: '0.6', changefreq: 'weekly' } as SitemapRoute]
+			: []),
+		...learningEntries().map(
+			({ url, lastmod }): SitemapRoute => ({
+				path: url,
+				priority: '0.5',
+				changefreq: 'monthly',
+				lastmod
 			})
 		)
 	];

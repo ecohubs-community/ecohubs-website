@@ -1,0 +1,74 @@
+<script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { learningBreadcrumbs } from '$lib/learning/schema';
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
+
+	const breadcrumbs = learningBreadcrumbs([]);
+</script>
+
+<SEO
+	title="Learning Hub — regenerative communities, explained"
+	description="Plain explanations of how intentional communities work — governance, money, land, conflict and daily life — written by people building one."
+	ogImage="/og-default.jpg"
+	{breadcrumbs}
+	noindex={!data.indexable}
+/>
+
+<section class="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20">
+	<div
+		class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
+	></div>
+	<div
+		class="absolute -z-10 top-20 -left-40 h-[420px] w-[420px] rounded-full bg-emerald-200/25 blur-3xl"
+	></div>
+
+	<div class="mx-auto max-w-4xl px-6 lg:px-8">
+		<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
+			<div class="kicker text-emerald-700">Learning hub</div>
+			<Breadcrumbs items={breadcrumbs} />
+		</div>
+		<h1
+			class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl lg:text-[64px]"
+		>
+			Learn everything about
+			<em class="font-story font-normal italic text-ecohubs-primary">regenerative communities.</em>
+		</h1>
+		<p class="mt-6 max-w-2xl text-lg leading-relaxed font-light text-stone-700">
+			How these places actually work — how they decide, how they hold money and land, how they handle
+			conflict, and why they break. Written by people building one, and honest about what we don't
+			yet know.
+		</p>
+	</div>
+</section>
+
+<div class="hairline mx-auto max-w-4xl"></div>
+
+<section class="py-14 md:py-20">
+	<div class="mx-auto max-w-4xl px-6 lg:px-8">
+		{#if data.glossaryCount}
+			<a
+				href="/learn/glossary"
+				class="group block rounded-2xl border border-stone-200/70 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:soft-shadow"
+			>
+				<div class="kicker mb-3 text-emerald-700">Glossary</div>
+				<h2
+					class="font-serif text-2xl text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
+				>
+					Every word this world uses, said plainly.
+				</h2>
+				<p class="mt-3 text-stone-700">
+					{data.glossaryCount}
+					{data.glossaryCount === 1 ? 'term' : 'terms'} — what each one means, where it applies, and
+					what it is often confused with.
+				</p>
+			</a>
+		{:else}
+			<p class="font-story text-lg text-stone-500 italic">
+				The first entries are being written.
+			</p>
+		{/if}
+	</div>
+</section>

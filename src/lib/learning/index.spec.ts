@@ -58,12 +58,23 @@ describe('derived views', () => {
 	it('builds a term definition map usable by tooltips', () => {
 		const consent = termDefinitions.get('consent');
 		expect(consent?.short).toContain('paramount objection');
-		expect(consent?.published).toBe(false); // fixtures ship as drafts
+		expect(consent?.published).toBe(true);
+	});
+
+	it('includes drafts in the definition map, so a tooltip still works', () => {
+		// A lesson may reference a term whose page is unfinished; showing the
+		// definition beats showing nothing. `published` decides the link.
+		const sociocracy = termDefinitions.get('sociocracy');
+		expect(sociocracy?.short).toBeTruthy();
+		expect(sociocracy?.published).toBe(false);
 	});
 
 	it('builds reverse usage only from published content', () => {
-		// Every fixture is a draft, so nothing counts as "used" yet.
-		expect(termUsage.size).toBe(0);
+		// Only published pages count as "using" a term, so the list on a term
+		// page never points at an unpublished lesson. Asserted over the flattened
+		// list so the expectation holds even while the map is still empty.
+		const users = [...termUsage.values()].flat();
+		expect(users.every((u) => u.frontmatter.status === 'published')).toBe(true);
 	});
 });
 
@@ -86,8 +97,21 @@ describe('urls', () => {
 });
 
 describe('sitemap', () => {
-	it('excludes drafts entirely', () => {
-		// All fixtures are drafts; nothing should be offered to the sitemap.
-		expect(sitemapEntries()).toEqual([]);
+	it('offers published, substantial content', () => {
+		expect(sitemapEntries().map((e) => e.url)).toContain('/learn/glossary/consent');
+	});
+
+	it('excludes every draft', () => {
+		const urls = sitemapEntries().map((e) => e.url);
+		const drafts = allEntries
+			.filter((e) => e.frontmatter.status !== 'published')
+			.map((e) => urlFor(e));
+		for (const url of drafts) expect(urls).not.toContain(url);
+	});
+
+	it('carries a lastmod for every entry, since that is the field Google reads', () => {
+		for (const entry of sitemapEntries()) {
+			expect(entry.lastmod, entry.url).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+		}
 	});
 });

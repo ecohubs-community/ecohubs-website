@@ -13,11 +13,15 @@
 	 * so prose never points at an unpublished page.
 	 */
 	import type { Snippet } from 'svelte';
-	import { termDefinitions } from '$lib/learning';
+	// From context, not an import: this component hydrates on the client, and
+	// the content index eagerly globs every compiled content module — importing
+	// it here would ship the whole hub to the browser on every page.
+	import { getDefinitions } from '$lib/learning/context';
 
 	let { term, children }: { term: string; children?: Snippet } = $props();
 
-	const entry = $derived(termDefinitions.get(term));
+	const definitions = getDefinitions();
+	const entry = $derived(definitions.get(term));
 	const href = $derived(entry?.published ? `/learn/glossary/${term}` : null);
 </script>
 
@@ -54,8 +58,9 @@
 		</span>
 	</span>
 {:else}
-	<!-- Unknown term: the build validator fails on these, so reaching here means
-	     the reference was added without a glossary file. Degrade to plain text
-	     rather than breaking the sentence. -->
-	{#if children}{@render children()}{:else}{term}{/if}
+	<!-- No definition available — either the reference has no glossary file (the
+	     build validator catches that) or this rendered outside the /learn layout,
+	     which supplies definitions via context. Degrade to readable prose rather
+	     than breaking the sentence: the slug de-hyphenated, not the raw slug. -->
+	{#if children}{@render children()}{:else}{term.replace(/-/g, ' ')}{/if}
 {/if}

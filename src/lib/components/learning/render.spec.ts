@@ -68,15 +68,27 @@ describe('indexability — every depth layer is in the server HTML', () => {
 });
 
 describe('Gloss', () => {
-	it('pulls the definition from the index rather than the prose', () => {
-		expect(html()).toContain('chosen to live together');
+	// Definitions arrive through context from `/learn/+layout.server.ts`, so
+	// that the content index never reaches the client bundle. Rendered here in
+	// isolation there is no context, which exercises the fallback path.
+	it('degrades to readable prose outside the /learn layout instead of throwing', () => {
+		const body = html();
+		// Read as text: Svelte interleaves hydration markers, so the rendered
+		// sentence is not one contiguous string in the markup.
+		const text = body.replace(/<!--[\s\S]*?-->/g, '').replace(/<[^>]+>/g, '');
+
+		// De-hyphenated, so the sentence still reads properly rather than
+		// exposing the raw slug.
+		expect(text).toContain('An intentional community is not defined by');
+		expect(text).not.toContain('intentional-community');
+		expect(body).not.toContain('role="tooltip"');
 	});
 
-	it('does not link a term whose page is still a draft', () => {
+	it('never links a term while rendering without definitions', () => {
 		expect(html()).not.toContain('href="/learn/glossary/intentional-community"');
 	});
 
-	it('renders custom link text when given', () => {
+	it('keeps the author\'s own link text', () => {
 		expect(html()).toContain('cohousing');
 	});
 });

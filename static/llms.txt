@@ -19,6 +19,10 @@ EcoHubs is a working project, not a think tank: the standard is tested against a
 - [Community Resilience Assessment](https://ecohubs.community/community-resilience-assessment): a free ten-question assessment of how a community holds up under conflict, returned as a human-written report.
 - [Ecohub One](https://ecohubs.community/join-the-waitlist): First land-based project to join the waitlist for.
 
+## Learning
+
+- [Glossary](https://ecohubs.community/learn/glossary): plain definitions of the words this field uses — intentional community, ecovillage, consent, sociocracy, common purse, community land trust — each with an example and what it is often confused with.
+
 ## Writing
 
 - [Field notes (blog)](https://ecohubs.community/blog): essays on governance, membership, conflict and regenerative living.
