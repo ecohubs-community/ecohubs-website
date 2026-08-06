@@ -29,7 +29,9 @@ The convention comes with the older consensus traditions rather than being a mod
 Some groups add a threshold: if more than a set number stand aside, the proposal returns for rework regardless of whether anyone blocked. That converts a scattering of quiet doubts into a signal, instead of leaving it to whoever is willing to be the difficult one.
 
 <Callout type="caveat">
+
 Watch for standing aside becoming the default. If most decisions pass with several stand-asides, the group is not reaching agreement — it is passing things over the objections of people who have given up arguing. That is a different problem, and adding process will not fix it.
+
 </Callout>
 
 <Sources

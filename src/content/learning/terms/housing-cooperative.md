@@ -29,7 +29,9 @@ This is a legal shell rather than a social form. A co-op can be a close intentio
 The limited-equity model is the one to understand, because it makes the trade-off explicit: members give up the prospect of a windfall in exchange for a home that costs less to enter and stays affordable after they leave. Whether that is a sacrifice or the entire point depends on what the co-op was formed to do — and a co-op that has never written down which of the two it is will eventually have a painful meeting about it.
 
 <Callout type="caveat">
+
 "Co-operative" is a legal designation with specific meanings that differ by country. Before comparing two projects, check what the word means in each jurisdiction rather than assuming the arrangements match.
+
 </Callout>
 
 <Sources

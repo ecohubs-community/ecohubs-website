@@ -45,7 +45,9 @@ Under holacracy, the person leading a circle is appointed by the broader circle 
 The second real difference is what happens to disagreement about the rules themselves. Sociocracy expects a group to modify the practice. Holacracy's constitution is the product, and adopting it means agreeing to be governed by it, including its process for changing it.
 
 <Callout type="caveat">
+
 Holacracy's best-known adoption, at the online retailer Zappos from 2013, is often cited in both directions. What is documented is that the company offered buyouts to employees who did not want to continue and that a substantial minority took them, and that the company later moved away from the system. It is a data point about a large employer, not about a community of forty people, and it is worth less than either camp usually claims.
+
 </Callout>
 
 ## What communities actually take from either

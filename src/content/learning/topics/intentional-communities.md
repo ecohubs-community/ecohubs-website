@@ -99,7 +99,9 @@ Rarely the thing people expect. Not usually money and almost never the compostin
 These patterns repeat closely enough to be written down and tested for. The [RCOS stress tests](https://rcos.ecohubs.community/articles/rcos-stress-tests) do exactly that — around twenty documented failure modes, each with the conditions that produce it and what a community would have to have in place to survive it. Founder capture, invisible care labour, the privatisation of commons, [emergency measures that quietly become permanent](/blog/emergency-rule-bypass-precedent): if you are assessing a place, they are a more useful checklist than any list of green credentials.
 
 <Callout type="caveat">
+
 Nobody has reliable failure statistics for this field. The often-quoted "90% fail" figure has no sound source we can find. What is well documented is the *pattern* of failure, which is why the RCOS stress tests describe failure modes rather than probabilities.
+
 </Callout>
 
 <Sources

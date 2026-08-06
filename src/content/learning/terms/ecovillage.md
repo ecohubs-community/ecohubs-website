@@ -25,7 +25,9 @@ An ecovillage is a *purpose*, not a building type or an ownership model. It says
 Findhorn in northern Scotland is the most studied case, largely because it did the unusual thing of measuring itself: a 2006 ecological footprint study, conducted with the Sustainable Development Research Centre, put the community's footprint at roughly half the UK average — the lowest recorded for a settlement in the industrialised world at the time. Sieben Linden in Germany and Tamera in Portugal are similarly well documented, each on a different axis: construction and water respectively.
 
 <Callout type="caveat">
+
 Findhorn's footprint figure is twenty years old and specific to one community, and it is quoted far more often than it is checked. Treat it as evidence that the ambition is achievable, not as a benchmark any new project should expect to hit.
+
 </Callout>
 
 ## What it is often confused with

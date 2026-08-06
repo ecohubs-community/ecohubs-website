@@ -48,7 +48,9 @@ The word carries a picture — American and West German experiments of the late 
 The result is a persistent mismatch. Someone reads about <Gloss term="cohousing" /> in the paper, pictures a commune, and either dismisses it as impractical or arrives with expectations of a shared economy that does not exist. Community groups spend a surprising share of their public communication correcting this.
 
 <Callout type="caveat">
+
 The reverse error is worth watching too. Because "commune" sounds dated, some communities that genuinely do pool income avoid the word and describe themselves only as an intentional community. That is accurate, but it makes the most consequential fact about joining them harder to find. Ask directly.
+
 </Callout>
 
 ## When each word is the right one

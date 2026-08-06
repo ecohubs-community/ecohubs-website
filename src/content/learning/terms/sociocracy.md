@@ -27,7 +27,9 @@ Three parts do the work, and a group that adopts only one of them has not adopte
 Sociocracy was developed in the Netherlands in the 1970s by Gerard Endenburg, who applied it to his family's electrical engineering firm, building on the earlier educational work of Kees Boeke. Its spread into intentional communities is much more recent, and largely traceable to the work of Sociocracy For All and to *Many Voices One Song* by Ted Rau and Jerry Koch-Gonzalez, which rewrote the corporate framing for groups without shareholders.
 
 <Callout type="caveat">
+
 The workplace origin is worth holding onto. Sociocracy assumes people can be asked to leave a circle, and that someone owns an outcome. Communities are voluntary and neighbourly, and often flinch from both. Adopting the circle diagram without that willingness produces the paperwork of sociocracy and none of its clarity.
+
 </Callout>
 
 ## What it is often confused with

@@ -25,7 +25,9 @@ Two patterns dominate. Some communities pool all outside income and distribute a
 Twin Oaks in Virginia is the longest-running documented case, founded in 1967 and running income sharing continuously since, at a scale of roughly ninety to a hundred adults. It uses a labour-credit system that counts domestic and caring work at the same rate as income-generating work — a deliberate choice, and one that quietly makes it a more equal arrangement than most workplaces. It is a member of the Federation of Egalitarian Communities, which sets income sharing as a condition of membership.
 
 <Callout type="caveat">
+
 The commune is the rarest of the main forms and the hardest to join, and both facts follow from the same cause: pooling income requires a degree of trust that takes years to build and can be broken by one person's undisclosed debt. Very few new communities start here.
+
 </Callout>
 
 ## What it is often confused with

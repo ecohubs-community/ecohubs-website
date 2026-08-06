@@ -41,7 +41,9 @@ Every community has a rota, and every community has a second, invisible layer of
 This work is real, it is time-consuming, and it distributes itself unevenly — very often along the same lines it does everywhere else. Communities that are honest about it name it and try to count it. Communities that are not describe it as someone "just being good at that", which is how a person ends up doing it for eleven years.
 
 <Callout type="note" title="A question worth asking twice">
+
 Ask who does the invisible work, and then ask the same question of somebody else. The answers rarely match, and the gap between them tells you more about how a community runs than its constitution does.
+
 </Callout>
 
 ## Noise, doors and the privacy gradient
@@ -77,16 +79,20 @@ Fewer things and more capacity — one workshop, one set of tools, three cars in
 And the one that people who leave say they miss most: a default answer to the question *who would I call?*
 
 <Callout type="caveat">
+
 None of this arrives automatically. A community with the architecture and none of the practice — a beautiful common house and no cooking rota — delivers almost none of it. What produces the texture described here is habit, maintained deliberately, usually for years.
+
 </Callout>
 
 ## What to ask on a visit
 
 <Callout type="note" title="Take these with you">
+
 1. **How many hours did you spend in meetings last month?** Ask three people. The variance is the answer.
 2. **When did someone last do a job nobody wanted, and who was it?** You are listening for a name, and for whether the same name comes up twice.
 3. **What is the most recent thing the community decided that you personally disagreed with?** A community where nobody can answer this is either very new or not telling you something.
 4. **Where can I be, here, where nobody can see me?** Asked lightly. The answer is usually a place, and sometimes a pause.
+
 </Callout>
 
 <Deep title="Deep · the numbers behind shared living">
@@ -98,7 +104,9 @@ The Global Ecovillage Network and its members have published a good deal on reso
 The most-cited single figure is the Findhorn ecological footprint study, conducted in 2006 with the Sustainable Development Research Centre, which put the community's footprint at roughly half the UK average — reported at the time as the lowest recorded for a settlement in the industrialised world.
 
 <Callout type="caveat">
+
 That figure is twenty years old, describes one community, and is quoted far more often than it is checked. Treat it as evidence that the ambition is achievable, not as a benchmark to expect. We have not found a comparable study repeated at scale since, and anyone citing a general footprint reduction for "ecovillages" as a category is extrapolating.
+
 </Callout>
 
 The honest summary: sharing infrastructure demonstrably reduces resource use, the effect is large, and the field's supporting data is thinner and older than its confidence suggests.

@@ -48,7 +48,9 @@ Crucially, **households keep their own money.** People pay a share of the common
 That breadth is why the word covers such different places. A three-household land project in Portugal and a settlement of several hundred both use it, honestly. It is also why the label carries less information than people expect when they search for it — knowing a place calls itself an ecovillage tells you what it is aiming at, not what living there is like.
 
 <Callout type="caveat">
+
 Neither term is certified or protected. Nobody audits a project before it calls itself an ecovillage, and "eco" appears in a good deal of ordinary property marketing. Treat both words as a starting question rather than an answer, and ask what is actually shared.
+
 </Callout>
 
 ## When each is the right answer

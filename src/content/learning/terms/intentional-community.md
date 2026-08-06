@@ -25,7 +25,9 @@ Not values. Values are easy to agree and impossible to enforce. The agreements t
 The umbrella term as used today is largely the Foundation for Intentional Community's, which has catalogued communities in North America since 1937 and deliberately covers everything from <Gloss term="cohousing" /> to <Gloss term="commune" /> to housing co-ops and <Gloss term="ecovillage" />s. That breadth is the point: the label describes a *legal and social arrangement*, not a lifestyle or an ideology. Two communities both accurately called intentional can share nothing beyond having written their rules down.
 
 <Callout type="caveat">
+
 "Intentional community" is not a synonym for commune, though it is often used as one in the press. Sharing income is one option within the category, and a minority one. Most intentional communities have private finances and private homes.
+
 </Callout>
 
 ## Where the term gets stretched

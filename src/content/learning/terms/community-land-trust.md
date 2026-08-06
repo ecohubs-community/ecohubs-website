@@ -29,7 +29,9 @@ The model is usually traced to New Communities Inc., founded in 1969 near Albany
 The best-documented modern case is the Champlain Housing Trust in Burlington, Vermont, established in 1984 and now among the largest CLTs anywhere. It received a World Habitat Award in 2008, and its resale data is published — which makes it one of the few places you can check the affordability claim over decades rather than take it on trust.
 
 <Callout type="caveat">
+
 A CLT is a structure for holding land, not a way of living together. It says nothing about how a community decides, shares or admits people — those still have to be written. Groups sometimes adopt a trust expecting it to answer governance questions it was never designed to touch.
+
 </Callout>
 
 <Sources

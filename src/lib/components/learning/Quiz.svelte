@@ -135,30 +135,54 @@
 						{#each question.options as option (option.id)}
 							{@const chosen = picked(question.id, option.id)}
 							{@const reveal = submitted && definition.mode === 'check'}
+							{@const wrong = reveal && chosen && !option.correct}
+							{@const right = reveal && chosen && option.correct}
+							{@const missed = reveal && !chosen && option.correct}
 							<label
-								class="flex cursor-pointer gap-3 rounded-xl border p-3 transition-colors
-							       {chosen
-									? 'border-ecohubs-dark bg-emerald-50/50'
-									: 'border-stone-200 hover:border-stone-300'}"
+								class="flex gap-3 rounded-xl border p-3 transition-colors
+							       {submitted ? 'cursor-default' : 'cursor-pointer'}
+							       {wrong
+									? 'border-red-300 bg-red-50/60'
+									: right || missed
+										? 'border-ecohubs-primary bg-emerald-50/60'
+										: chosen
+											? 'border-ecohubs-dark bg-emerald-50/50'
+											: submitted
+												? 'border-stone-200'
+												: 'border-stone-200 hover:border-stone-300'}"
 							>
 								<input
 									type={question.multiple ? 'checkbox' : 'radio'}
 									name="{definition.id}-{question.id}"
 									value={option.id}
 									checked={chosen}
+									disabled={submitted}
 									onchange={() => choose(question.id, option.id, Boolean(question.multiple))}
-									class="mt-1 shrink-0 accent-ecohubs-dark"
+									class="mt-1 shrink-0 accent-ecohubs-dark disabled:opacity-60"
 								/>
 								<span class="min-w-0">
-									<span class="block text-stone-800">{option.label}</span>
+									<span class="flex flex-wrap items-baseline gap-x-2">
+										<span class="text-stone-800">{option.label}</span>
+										{#if wrong}
+											<span class="text-xs font-medium text-red-700">not this one</span>
+										{:else if right}
+											<span class="text-xs font-medium text-emerald-700">correct</span>
+										{:else if missed}
+											<span class="text-xs font-medium text-emerald-700">the answer</span>
+										{/if}
+									</span>
 									{#if option.explanation}
-										<!-- Always in the DOM; only styled as feedback once answered. -->
+										<!--
+											Explanations for *every* option are in the server HTML, which is
+											what makes the quiz worth indexing. Once JavaScript takes over,
+											only the explanation for the option the reader actually chose is
+											shown: the correct option's text is written as confirmation
+											("Right. …") and reads as a taunt to someone who picked wrong.
+											The wrong options carry their own teaching, so nothing is lost.
+										-->
 										<span
-											class="mt-1 block text-sm {reveal
-												? option.correct
-													? 'text-emerald-700'
-													: 'text-stone-500'
-												: 'text-stone-500'} {enhanced && !reveal ? 'hidden' : ''}"
+											class="mt-1 block text-sm {wrong ? 'text-red-800' : 'text-stone-600'}
+											       {enhanced && !(reveal && chosen) ? 'hidden' : ''}"
 										>
 											{option.explanation}
 										</span>
@@ -235,7 +259,9 @@
 					<p class="font-serif text-xl text-ecohubs-deep">
 						{result?.correct} of {result?.total} right
 					</p>
-					<p class="mt-2 text-sm text-stone-600">The explanation under each option says why.</p>
+					<p class="mt-2 text-sm text-stone-600">
+						The note under each answer you chose says why. Start again to change them.
+					</p>
 				{:else if definition.mode === 'weighted'}
 					{@const top = result?.outcomes[0]}
 					{#if top && top.score > 0}

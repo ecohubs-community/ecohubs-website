@@ -79,16 +79,20 @@ You cannot audit a community's governance in an afternoon. You can learn a surpr
 **Ask a newer member.** Someone in their first year will tell you how the process felt to learn. Someone in their twelfth has forgotten there was anything to learn.
 
 <Callout type="caveat">
+
 No method fixes a group that cannot talk to each other. All of these change how a decision is *closed*, not whether the underlying disagreement was heard. A community with an unresolved power problem will produce bad decisions under any of them — and will usually blame the method.
+
 </Callout>
 
 ## What to ask on a visit
 
 <Callout type="note" title="Take these with you">
+
 1. **Who may block a decision, and on what grounds?** If the answer is vague, everything else about their governance is decoration.
 2. **Show me a decision that was reversed.** You are testing whether review is real.
 3. **Who facilitated your last meeting, and who facilitated the one before?** Two different names is a good sign.
 4. **What happens when someone does not do what they agreed to?** The answer is usually the most honest thing you will hear all day.
+
 </Callout>
 
 <Deep title="Deep · what the research actually supports">

@@ -25,7 +25,9 @@ Shared income. Shared politics. Shared meals, even — most communities eat toge
 The form began in Denmark in the early 1970s — *bofællesskab*, "living community" — with Sættedammen, near Hillerød, generally cited as the first. It reached English-speaking countries largely through Kathryn McCamant and Charles Durrett, whose 1988 book gave the model its English name. Typical projects run to twenty or forty households, a size chosen deliberately: large enough that the common house is busy, small enough that everyone knows everyone.
 
 <Callout type="caveat">
+
 Cohousing is the most expensive form to start, because it means building or converting real housing to a shared design. It is also the easiest to join later, for the same reason — you buy or rent a home rather than being admitted to a shared economy.
+
 </Callout>
 
 ## What it is often confused with

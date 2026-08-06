@@ -27,7 +27,9 @@ The single most useful convention is **rotating the role**, and it is worth adop
 The corollary is that a facilitator who has a strong view on the item should hand the role over for that item and say why. Groups that treat this as normal have fewer arguments about neutrality than groups that treat it as an accusation.
 
 <Callout type="caveat">
+
 Facilitation is a skill, not a personality. Communities often hand it to whoever is most confident in a room, which selects for exactly the wrong thing — the role rewards patience and attention to who has not spoken, not fluency.
+
 </Callout>
 
 <Sources

@@ -82,7 +82,9 @@ In a <Gloss term="housing-cooperative" />, members collectively own the organisa
 Neither says anything about how much people share socially. A co-op can be a close community or an ordinary block of flats with a shared freehold.
 
 <Callout type="caveat">
+
 None of these labels is protected or certified. Nobody audits a project before it calls itself an ecovillage, and "eco" appears in a good deal of ordinary property marketing. Treat every label as the start of a question.
+
 </Callout>
 
 ## The question that actually sorts them
@@ -99,9 +101,11 @@ A community that uses these words precisely will answer all four without hesitat
 ## What to ask on a visit
 
 <Callout type="note" title="Take these with you">
+
 1. **Which of land, income and decisions do you share — and which do you deliberately not?** The second half of that question is the revealing one.
 2. **What would I own, exactly?** Ask to be shown the lease, the deed or the share certificate rather than told.
 3. **Who was the last household to leave, and what did they take with them?** How a form treats exit tells you more about it than how it describes entry.
+
 </Callout>
 
 <Deep title="Deep · the wider field, for reference">

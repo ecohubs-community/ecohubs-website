@@ -25,7 +25,9 @@ A common house is easy to draw and expensive to build, so it is the first thing 
 The recurring pattern in established communities is meals two or three times a week, cooked on a rota, with attendance optional and a sign-up sheet. That combination — regular enough to be a habit, optional enough not to be an obligation — is what most projects converge on, and it is worth asking about on a visit. A community that has a beautiful common house and no cooking rota has built the room and not the practice.
 
 <Callout type="caveat">
+
 Ask who cleans it, and how that is agreed. Shared space generates work that is easy to leave undone and awkward to raise, and the common house is where communities most often discover they never wrote down who is responsible for what.
+
 </Callout>
 
 <Sources

@@ -33,7 +33,9 @@ Drop the domain and you have a committee. Drop the double link and you have a de
 The failure to watch for is a circle that has an aim but no spending authority. It meets, it plans, and every plan goes to the general meeting anyway — so the group has added a layer without removing any load, and the circle's members quietly stop attending. If forming a circle has not made the general meeting shorter, the domain was probably never real.
 
 <Callout type="caveat">
+
 Circles need an exit as well as an entry. Agree from the start how someone leaves a circle, and how a circle is dissolved when its work is done — communities accumulate dormant circles the way organisations accumulate committees, and each one is a small ongoing claim on attention.
+
 </Callout>
 
 <Sources

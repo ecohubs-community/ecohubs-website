@@ -31,7 +31,9 @@ Groups that use blocking successfully write down three things.
 The distinction to test against is simple enough to use in a meeting. "I would have chosen a different supplier" is a preference. "This commits the repair fund we agreed to hold for winter" is a blocking concern. A group that cannot reliably tell those apart will drift back to unanimity whatever it calls its method.
 
 <Callout type="caveat">
+
 A block is a right, not a mood. Communities that survive consensus at any size treat raising one as a serious act with obligations attached — and pair it with a clear <Gloss term="stand-aside" /> convention, so disagreeing without stopping the group is always available.
+
 </Callout>
 
 <Sources

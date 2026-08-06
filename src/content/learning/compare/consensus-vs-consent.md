@@ -50,7 +50,9 @@ Consensus produces buy-in that consent does not. When a group has genuinely talk
 It is also a better teacher. The amendment loop — raise a concern, change the proposal, test again — forces a group to hear each other in a way that a well-run consent round can skip. Groups that start with consensus and move to consent later often keep the listening habits, and they are the reason the second method works at all.
 
 <Callout type="caveat">
+
 Neither method fixes a group that cannot talk to each other. Both change how a decision is *closed*, not whether the underlying disagreement was heard. A community with an unresolved power problem will produce bad decisions under either.
+
 </Callout>
 
 ## Where each breaks

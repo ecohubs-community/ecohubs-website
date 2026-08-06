@@ -50,7 +50,9 @@ The <Gloss term="agreements" /> that matter in practice are unglamorous and proc
 That last one is the most commonly missing. A rule with no stated consequence is a preference, and every member works out which is which inside a year.
 
 <Callout type="note" title="The test that works on any visit">
+
 Ask to read the agreements, and ask when they were last reviewed. A community that can hand you a current document has a working system. One that describes the feeling but cannot find the text has an intention — which is not worthless, but it is a different thing, and it will not help when two members disagree about what was decided in 2019.
+
 </Callout>
 
 ## What the label does not tell you
@@ -78,15 +80,19 @@ Two directions, and both are worth recognising.
 **Inward, by drift.** Established communities sometimes keep the label for decades after the founders' agreements stopped being read by anyone. Nothing was broken — the document simply stopped being consulted, new members never saw it, and the text now describes a place that no longer exists. This is the quieter failure, and the more common one.
 
 <Callout type="caveat">
+
 There is no registry and no certification. Nobody audits a group before it calls itself an intentional community, and the phrase is not protected in any jurisdiction we know of. Treat the label as the beginning of a question rather than an answer.
+
 </Callout>
 
 ## What to ask on a visit
 
 <Callout type="note" title="Take these with you">
+
 1. **May I read your agreements?** A yes, with an actual document, tells you more than an hour of conversation.
 2. **When were they last reviewed?** "We're due a review" is a fine answer. "I'm not sure where they are" is the answer you came for.
 3. **What do you actually hold in common — land, money, decisions, or goodwill?** Ask it in those words. Communities that use the term precisely will answer without hesitating.
+
 </Callout>
 
 <Deep title="Deep · where the definition comes from">

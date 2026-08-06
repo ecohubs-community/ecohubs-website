@@ -23,7 +23,9 @@ An objection has to be reasoned, and it has to be about the aim rather than abou
 The standard phrase from sociocratic practice is that a proposal needs to be **good enough for now and safe enough to try** — which carries an assumption people often miss. Consent expects to be revisited. A decision made this way is provisional by design, and that is exactly what makes it safe to say yes to.
 
 <Callout type="caveat">
+
 Consent is not a conflict-resolution method, and it does not fix a group that cannot talk to each other. It changes how a decision is closed, not whether the underlying disagreement was ever heard.
+
 </Callout>
 
 ## Where it tends to fail

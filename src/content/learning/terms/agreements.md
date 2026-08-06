@@ -27,7 +27,9 @@ That last one is the most commonly missing. A rule with no stated consequence is
 The clearest test is the one to apply on a visit: ask to read the agreements, and ask when they were last reviewed. A community that can hand you a current document has a working system. One that describes the feeling but cannot find the text has an intention — which is not worthless, but it is not the same thing, and it will not help when two members disagree about what was decided in 2019.
 
 <Callout type="caveat">
+
 Agreements decay quietly. The usual pattern is not that they are broken but that they stop being read: new members never see them, the people who wrote them leave, and the document describes a community that no longer exists. A review date written into the agreements themselves is the cheapest defence.
+
 </Callout>
 
 <Sources

@@ -89,7 +89,9 @@ The facilitator holds the process — whose turn it is, which stage the proposal
 Rotate the role, even when someone is obviously good at it. A permanent facilitator accumulates informal power nobody granted: they decide what gets discussed and when a thing is settled. That is authority, whatever the agreements say.
 
 <Callout type="caveat">
+
 No method fixes a group that cannot talk to each other. All of these change how a decision is *closed*, not whether the underlying disagreement was heard. A community with an unresolved power problem will produce bad decisions under any of them — and will usually blame the method.
+
 </Callout>
 
 ## What breaks

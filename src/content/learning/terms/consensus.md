@@ -27,7 +27,9 @@ It is also not unanimity by acclamation. Most consensus traditions distinguish b
 The method's best-documented lineage is the Quaker practice of seeking the "sense of the meeting", which predates its adoption by activist and community groups by roughly three centuries. That history matters, because Quaker meetings carry two things most communities do not: a shared spiritual frame for what agreement means, and a trained clerk whose job is to name when the sense of the meeting has been reached. Groups that lift the method without either tend to find it works well at eight people and painfully at thirty.
 
 <Callout type="caveat">
+
 Consensus fails quietly rather than loudly. The usual signs are not shouting matches but attendance dropping, decisions drifting to whoever stayed until eleven, and important proposals never being tabled because nobody wants the meeting. If that sounds familiar, the problem is usually the method's fit, not the people.
+
 </Callout>
 
 <Sources

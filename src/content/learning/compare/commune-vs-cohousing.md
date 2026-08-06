@@ -51,7 +51,9 @@ It also removes most of the interdependence. What you get is excellent neighbour
 This is why cohousing is the easiest form to join and the easiest to leave: you buy or rent a home much like any other, and if it does not work out you sell it. It is also the most expensive form to *start*, because it means building or converting real housing.
 
 <Callout type="caveat">
+
 "Commune" is used loosely in the press for any <Gloss term="intentional-community" />, which muddles the one distinction that actually predicts daily life. Most intentional communities are not communes. If members hold their own jobs and pay their own bills, cohousing is usually the more accurate word.
+
 </Callout>
 
 ## When each is the right answer
