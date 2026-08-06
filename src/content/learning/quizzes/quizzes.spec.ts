@@ -13,9 +13,7 @@ const quizzes = Object.values(QUIZZES);
 
 /** Every path a reader could actually reach. */
 const publishedUrls = new Set(
-	allEntries
-		.filter((e) => e.frontmatter.status === 'published')
-		.map((e) => urlFor(e))
+	allEntries.filter((e) => e.frontmatter.status === 'published').map((e) => urlFor(e))
 );
 
 describe('quiz definitions', () => {
@@ -71,7 +69,10 @@ describe('quiz definitions', () => {
 		// the quiz, so it has to stand on its own.
 		for (const quiz of quizzes) {
 			for (const outcome of quiz.outcomes ?? []) {
-				expect(outcome.description.split(/\s+/).length, `${quiz.id} → ${outcome.id}`).toBeGreaterThan(20);
+				expect(
+					outcome.description.split(/\s+/).length,
+					`${quiz.id} → ${outcome.id}`
+				).toBeGreaterThan(20);
 			}
 		}
 	});

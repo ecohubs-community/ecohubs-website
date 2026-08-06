@@ -53,19 +53,47 @@ export const whichCommunityFits: QuizDefinition = {
 			id: 'purpose',
 			prompt: 'What would you most want the place to be for?',
 			options: [
-				{ id: 'neighbours', label: 'Knowing my neighbours and not raising a family alone', weights: { cohousing: 3, coop: 1 } },
-				{ id: 'land', label: 'Healing a piece of land and living from it', weights: { ecovillage: 3, commune: 1 } },
-				{ id: 'together', label: 'Building a shared life, not just shared facilities', weights: { commune: 3, ecovillage: 1 } },
-				{ id: 'afford', label: 'Somewhere secure I can actually afford, long term', weights: { coop: 3, cohousing: 1 } }
+				{
+					id: 'neighbours',
+					label: 'Knowing my neighbours and not raising a family alone',
+					weights: { cohousing: 3, coop: 1 }
+				},
+				{
+					id: 'land',
+					label: 'Healing a piece of land and living from it',
+					weights: { ecovillage: 3, commune: 1 }
+				},
+				{
+					id: 'together',
+					label: 'Building a shared life, not just shared facilities',
+					weights: { commune: 3, ecovillage: 1 }
+				},
+				{
+					id: 'afford',
+					label: 'Somewhere secure I can actually afford, long term',
+					weights: { coop: 3, cohousing: 1 }
+				}
 			]
 		},
 		{
 			id: 'money',
 			prompt: 'How much would you want money to be shared?',
 			options: [
-				{ id: 'separate', label: 'Not at all — my income stays mine', weights: { cohousing: 3, coop: 2 } },
-				{ id: 'costs', label: 'Shared costs and some shared assets', weights: { coop: 2, ecovillage: 2 } },
-				{ id: 'most', label: 'Most things pooled, with a common budget', weights: { ecovillage: 2, commune: 2 } },
+				{
+					id: 'separate',
+					label: 'Not at all — my income stays mine',
+					weights: { cohousing: 3, coop: 2 }
+				},
+				{
+					id: 'costs',
+					label: 'Shared costs and some shared assets',
+					weights: { coop: 2, ecovillage: 2 }
+				},
+				{
+					id: 'most',
+					label: 'Most things pooled, with a common budget',
+					weights: { ecovillage: 2, commune: 2 }
+				},
 				{ id: 'all', label: 'Everything — one purse, needs met from it', weights: { commune: 4 } }
 			]
 		},
@@ -73,10 +101,26 @@ export const whichCommunityFits: QuizDefinition = {
 			id: 'governance',
 			prompt: 'How should decisions get made?',
 			options: [
-				{ id: 'light', label: 'Lightly — I would rather not be in many meetings', weights: { coop: 2, cohousing: 2 } },
-				{ id: 'consent', label: 'By consent, with written agreements everyone can see', weights: { cohousing: 2, ecovillage: 2 } },
-				{ id: 'deep', label: 'Together and at length, even when it is slow', weights: { commune: 3, ecovillage: 1 } },
-				{ id: 'delegate', label: 'Mostly delegated to people who know the subject', weights: { coop: 3 } }
+				{
+					id: 'light',
+					label: 'Lightly — I would rather not be in many meetings',
+					weights: { coop: 2, cohousing: 2 }
+				},
+				{
+					id: 'consent',
+					label: 'By consent, with written agreements everyone can see',
+					weights: { cohousing: 2, ecovillage: 2 }
+				},
+				{
+					id: 'deep',
+					label: 'Together and at length, even when it is slow',
+					weights: { commune: 3, ecovillage: 1 }
+				},
+				{
+					id: 'delegate',
+					label: 'Mostly delegated to people who know the subject',
+					weights: { coop: 3 }
+				}
 			]
 		},
 		{
@@ -84,19 +128,47 @@ export const whichCommunityFits: QuizDefinition = {
 			prompt: 'What would you want to own?',
 			options: [
 				{ id: 'home', label: 'My home, outright', weights: { cohousing: 4 } },
-				{ id: 'share', label: 'A share of something held in common', weights: { coop: 3, ecovillage: 1 } },
-				{ id: 'nothing', label: 'Nothing personally — the land belongs to the project', weights: { commune: 3, ecovillage: 2 } },
-				{ id: 'unsure', label: 'I would want that decided carefully, not quickly', weights: { coop: 1, ecovillage: 1, cohousing: 1, commune: 1 } }
+				{
+					id: 'share',
+					label: 'A share of something held in common',
+					weights: { coop: 3, ecovillage: 1 }
+				},
+				{
+					id: 'nothing',
+					label: 'Nothing personally — the land belongs to the project',
+					weights: { commune: 3, ecovillage: 2 }
+				},
+				{
+					id: 'unsure',
+					label: 'I would want that decided carefully, not quickly',
+					weights: { coop: 1, ecovillage: 1, cohousing: 1, commune: 1 }
+				}
 			]
 		},
 		{
 			id: 'lifestyle',
 			prompt: 'Where and how would you want to live?',
 			options: [
-				{ id: 'urban', label: 'In or near a town, with my current work and life', weights: { cohousing: 3, coop: 2 } },
-				{ id: 'rural', label: 'Rural, hands in the soil, a slower income', weights: { ecovillage: 3, commune: 2 } },
-				{ id: 'offgrid', label: 'As self-reliant as possible, off-grid if I can', weights: { ecovillage: 3, commune: 1 } },
-				{ id: 'flexible', label: 'Somewhere I can leave and return to without drama', weights: { cohousing: 2, coop: 2 } }
+				{
+					id: 'urban',
+					label: 'In or near a town, with my current work and life',
+					weights: { cohousing: 3, coop: 2 }
+				},
+				{
+					id: 'rural',
+					label: 'Rural, hands in the soil, a slower income',
+					weights: { ecovillage: 3, commune: 2 }
+				},
+				{
+					id: 'offgrid',
+					label: 'As self-reliant as possible, off-grid if I can',
+					weights: { ecovillage: 3, commune: 1 }
+				},
+				{
+					id: 'flexible',
+					label: 'Somewhere I can leave and return to without drama',
+					weights: { cohousing: 2, coop: 2 }
+				}
 			]
 		}
 	]

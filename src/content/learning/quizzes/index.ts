@@ -9,9 +9,11 @@
  * a new quiz means adding it here and nowhere else.
  */
 import type { QuizDefinition } from '$lib/learning/quiz';
+import { isThisAnIntentionalCommunity } from './is-this-an-intentional-community';
 import { whichCommunityFits } from './which-community-fits';
 
 export const QUIZZES: Record<string, QuizDefinition> = {
+	[isThisAnIntentionalCommunity.id]: isThisAnIntentionalCommunity,
 	[whichCommunityFits.id]: whichCommunityFits
 };
 

@@ -55,4 +55,18 @@
 			{/each}
 		</ol>
 	{/if}
+
+	<!-- Every page carrying sources also says where the writing came from. One
+	     place rather than a line retyped into a hundred markdown files. -->
+	<p class="mt-6 border-t border-stone-100 pt-4 text-[12.5px] leading-relaxed text-stone-400">
+		Written by EcoHubs members, with AI assistance for drafting and editing, and reviewed by a
+		person before publication. Facts are checked against the sources listed; anything we could not
+		verify is marked.
+		<a
+			href="/learn/how-this-is-written"
+			class="text-stone-500 underline underline-offset-2 hover:text-ecohubs-dark"
+		>
+			How this is written
+		</a>
+	</p>
 </section>

@@ -21,7 +21,8 @@ faq:
       with review before publication. Every factual claim about a named
       community is checked against that community's own published material, and
       anything we could not confirm is marked as unconfirmed rather than
-      quietly dropped.
+      quietly dropped. How this is written, including where AI fits, is set out
+      in full at /learn/how-this-is-written.
   - question: Is it free?
     answer: >-
       Yes, and it stays free. No account, no email wall, no course at the end.

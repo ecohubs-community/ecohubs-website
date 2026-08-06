@@ -37,15 +37,28 @@ describe('indexability — every depth layer is in the server HTML', () => {
 		expect(html()).toContain('data-depth-layer="quick"');
 	});
 
+	/**
+	 * Asserts the property rather than a phrase. These two used to check for
+	 * specific sentences from the fixture, and rewriting the lesson broke them
+	 * — which taught nothing, since the guarantee is about markup, not wording.
+	 */
 	it('includes the deep layer, which is the most quotable content', () => {
 		const body = html();
 		expect(body).toContain('data-depth-layer="deep"');
-		expect(body).toContain('Global Ecovillage Network');
+
+		const deep = body.match(/data-depth-layer="deep"[\s\S]*?<\/aside>/)?.[0] ?? '';
+		const text = deep.replace(/<!--[\s\S]*?-->/g, '').replace(/<[^>]+>/g, ' ');
+		// Substantial prose, not an empty shell or a "read more" affordance.
+		expect(text.trim().split(/\s+/).length).toBeGreaterThan(50);
 	});
 
 	it('renders deep prose as visible text, not behind an interaction', () => {
 		// If this ever needed a click to appear, a crawler would not see it.
-		expect(html()).toContain('vary by an order of magnitude');
+		const deep = html().match(/data-depth-layer="deep"[\s\S]*?<\/aside>/)?.[0] ?? '';
+		expect(deep, 'no deep layer rendered').toBeTruthy();
+		expect(deep).not.toContain('<details');
+		expect(deep).not.toMatch(/\shidden(\s|=|>)/);
+		expect(deep).not.toContain('<button');
 	});
 
 	it('keeps the quick summary visible at every depth, because depth only adds', () => {
@@ -111,10 +124,14 @@ describe('Gloss', () => {
 		// sentence is not one contiguous string in the markup.
 		const text = body.replace(/<!--[\s\S]*?-->/g, '').replace(/<[^>]+>/g, '');
 
-		// De-hyphenated, so the sentence still reads properly rather than
-		// exposing the raw slug.
-		expect(text).toContain('An intentional community is not defined by');
-		expect(text).not.toContain('intentional-community');
+		// De-hyphenated, so a term still reads properly rather than exposing the
+		// raw slug. Asserted over every slug the lesson references rather than
+		// one sentence, so rewording the prose cannot break it.
+		const slugs = (lesson!.frontmatter as { terms?: string[] }).terms ?? [];
+		expect(slugs.length).toBeGreaterThan(0);
+		for (const slug of slugs.filter((t) => t.includes('-'))) {
+			expect(text, `raw slug "${slug}" leaked into visible prose`).not.toContain(slug);
+		}
 		expect(body).not.toContain('role="tooltip"');
 	});
 
@@ -122,7 +139,7 @@ describe('Gloss', () => {
 		expect(html()).not.toContain('href="/learn/glossary/intentional-community"');
 	});
 
-	it('keeps the author\'s own link text', () => {
+	it("keeps the author's own link text", () => {
 		expect(html()).toContain('cohousing');
 	});
 });
