@@ -1,23 +1,13 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import { LearnRail } from '$lib/components/learning';
+	import { LearnRail, TopicCard } from '$lib/components/learning';
 	import { learningBreadcrumbs } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 
 	const breadcrumbs = learningBreadcrumbs([{ name: 'Topics', path: '/learn/topics' }]);
-
-	function summarise(counts: PageData['topics'][number]['counts']): string {
-		const parts = [
-			counts.guides && `${counts.guides} guide${counts.guides === 1 ? '' : 's'}`,
-			counts.comparisons && `${counts.comparisons} compared`,
-			counts.terms && `${counts.terms} term${counts.terms === 1 ? '' : 's'}`,
-			counts.cases && `${counts.cases} case stud${counts.cases === 1 ? 'y' : 'ies'}`
-		].filter(Boolean);
-		return parts.join(' · ');
-	}
 </script>
 
 <SEO
@@ -35,7 +25,7 @@
 	<!-- One grid for the whole page, not one per section: the rail starts level
      with the heading, as in the design, rather than below a full-width hero. -->
 	<div
-		class="mx-auto grid max-w-4xl gap-12 px-6 pt-8 pb-20 md:pb-28 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		class="mx-auto grid max-w-[1360px] gap-14 px-6 pt-8 pb-20 md:pb-28 lg:grid-cols-[248px_minmax(0,1fr)]"
 	>
 		<div class="min-w-0 lg:order-2">
 			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
@@ -55,22 +45,9 @@
 			<div class="hairline my-10"></div>
 
 			{#if data.topics.length}
-				<ul class="grid gap-5 sm:grid-cols-2">
+				<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					{#each data.topics as topic (topic.slug)}
-						<li>
-							<a
-								href="/learn/topics/{topic.slug}"
-								class="group block h-full rounded-2xl border border-stone-200/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:soft-shadow"
-							>
-								<h2
-									class="font-serif text-xl text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
-								>
-									{topic.title}
-								</h2>
-								<p class="mt-2 text-sm leading-relaxed text-stone-700">{topic.summary}</p>
-								<p class="mt-4 text-xs text-stone-500">{summarise(topic.counts)}</p>
-							</a>
-						</li>
+						<li class="flex"><TopicCard topic={{ ...topic, articles: topic.total }} /></li>
 					{/each}
 				</ul>
 			{:else}

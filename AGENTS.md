@@ -153,6 +153,10 @@ Content lives in `src/content/learning/**/*.md` — markdown with frontmatter, i
 - **Every learning page carries the section nav**: `<LearnRail>` on `lg` and up, `<LearnTabs>` (in the `/learn` layout) below it. A page that renders its own sidebar without the rail breaks the hub's navigation — the reason `/learn`, `/learn/topics` and the detail pages each had to be fixed once already.
 - **The rail and header follow `design_files/learning-hub/`.** Its colours map onto existing tokens — active nav is `bg-ecohubs-ivory` + `text-ecohubs-dark` (*not* dark-on-white), labels are `font-mono text-[10.5px] tracking-[0.18em]`, sub-lists get a left rule with an emerald accent on the current item. Header controls share `PILL` from `components/learning/pill.ts`.
 - **Search lives in the rail as a field, not as a nav entry** — `LEARN_SECTIONS` deliberately omits it, and `activeSection('/learn/search')` returns `''` so nothing else lights up there. The tab row appends Search as its own tab.
+- **Cards come from `components/learning/`** — `GuideCard` (featured / compact), `TopicCard`, `PathCard`, `TermCard` — and share `CARD`/`TAG`/`META` from `card.ts`. Don't hand-roll a fifth card shape.
+- **Covers are motifs, not images.** A page with no `image:` gets one of six CSS motifs picked from its slug (`motif.ts`), so it always has a cover and neighbours differ. Set `image:` for real art — the validator then requires `imageAlt:` (write `imageAlt: ''` to declare it decorative).
+- **`isIndexable()` gates five places now**: route, listings, sitemap, search index, and the rabbit-hole pool.
+- **No invented metrics.** There is no analytics on this site, so the hub ships *Most linked to* — counted from `terms:`/`related:` — where the design says "Popular this week", and says so on the card.
 - **`LEARN_SECTIONS` may only name routes that exist.** Everything is prerendered, so a link to a missing route fails the build rather than 404ing in production — which is how `/learn/search` announced itself.
 
 ## External links

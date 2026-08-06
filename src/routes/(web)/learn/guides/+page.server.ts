@@ -8,7 +8,11 @@ export const load: PageServerLoad = async () => {
 	const guides = publishedGuides
 		.map((entry) => {
 			const lessons = lessonsOfGuide(entry.frontmatter.slug);
+			const fm = entry.frontmatter;
 			return {
+				image: fm.image,
+				imageAlt: fm.imageAlt,
+				motif: fm.motif,
 				slug: entry.frontmatter.slug,
 				title: entry.frontmatter.title,
 				summary: entry.frontmatter.summary,

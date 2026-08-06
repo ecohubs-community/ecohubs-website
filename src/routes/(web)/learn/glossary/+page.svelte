@@ -1,7 +1,7 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import { LearnRail } from '$lib/components/learning';
+	import { LearnRail, TermCard } from '$lib/components/learning';
 	import { definedTermSet, learningBreadcrumbs } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -47,7 +47,7 @@
 	<!-- One grid for the whole page, not one per section: the rail starts level
      with the heading, as in the design, rather than below a full-width hero. -->
 	<div
-		class="mx-auto grid max-w-4xl gap-12 px-6 pt-8 pb-20 md:pb-28 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		class="mx-auto grid max-w-[1360px] gap-14 px-6 pt-8 pb-20 md:pb-28 lg:grid-cols-[248px_minmax(0,1fr)]"
 	>
 		<div class="min-w-0 lg:order-2">
 			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
@@ -83,24 +83,11 @@
 						>
 							{group.letter}
 						</h2>
-						<dl class="grid gap-4 sm:grid-cols-2">
+						<div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
 							{#each group.items as term (term.slug)}
-								<div
-									class="rounded-2xl border border-stone-200/70 bg-white p-5 transition-all duration-300 hover:soft-shadow"
-								>
-									<dt class="font-serif text-lg text-ecohubs-deep">
-										<a
-											href="/learn/glossary/{term.slug}"
-											class="transition-colors hover:text-ecohubs-primary"
-										>
-											{term.term}
-										</a>
-									</dt>
-									<dd class="mt-2 text-sm leading-relaxed text-stone-700">{term.short}</dd>
-									<dd class="mt-3 text-xs text-stone-500">{term.topicTitle}</dd>
-								</div>
+								<TermCard {term} />
 							{/each}
-						</dl>
+						</div>
 					</section>
 				{/each}
 			{:else}

@@ -1,13 +1,20 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import { LearnRail } from '$lib/components/learning';
+	import { LearnRail, PathCard } from '$lib/components/learning';
+	import { onMount } from 'svelte';
+	import { getProgress } from '$lib/learning/storage';
 	import { learningBreadcrumbs } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 
 	const breadcrumbs = learningBreadcrumbs([{ name: 'Learning paths', path: '/learn/paths' }]);
+
+	// Read once for the whole grid, not once per card. Empty on the server, so
+	// every bar starts at zero and fills after hydration.
+	let read = $state<Record<string, unknown>>({});
+	onMount(() => (read = getProgress()));
 </script>
 
 <SEO
@@ -25,7 +32,7 @@
 	<!-- One grid for the whole page, not one per section: the rail starts level
      with the heading, as in the design, rather than below a full-width hero. -->
 	<div
-		class="mx-auto grid max-w-4xl gap-12 px-6 pt-8 pb-20 md:pb-28 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		class="mx-auto grid max-w-[1360px] gap-14 px-6 pt-8 pb-20 md:pb-28 lg:grid-cols-[248px_minmax(0,1fr)]"
 	>
 		<div class="min-w-0 lg:order-2">
 			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
@@ -46,28 +53,9 @@
 			<div class="hairline my-10"></div>
 
 			{#if data.paths.length}
-				<ul class="grid gap-5 sm:grid-cols-2">
+				<ul class="grid gap-4 md:grid-cols-2">
 					{#each data.paths as path (path.slug)}
-						<li>
-							<a
-								href="/learn/paths/{path.slug}"
-								class="group flex h-full flex-col rounded-2xl border border-stone-200/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:soft-shadow"
-							>
-								<h2
-									class="font-serif text-xl text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
-								>
-									{path.title}
-								</h2>
-								<p class="mt-2 flex-1 text-sm leading-relaxed text-stone-700">{path.summary}</p>
-								<p class="mt-4 text-xs text-stone-500">
-									{path.steps}
-									{path.steps === 1 ? 'lesson' : 'lessons'} · {path.minutes} min
-									{#if path.endsAt}
-										· ends at {path.endsAt.label.toLowerCase()}
-									{/if}
-								</p>
-							</a>
-						</li>
+						<li class="flex"><PathCard {path} {read} /></li>
 					{/each}
 				</ul>
 			{:else}

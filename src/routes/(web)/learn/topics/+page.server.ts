@@ -26,6 +26,9 @@ export const load: PageServerLoad = async () => {
 				slug: fm.slug,
 				title: fm.title,
 				summary: fm.summary,
+				image: fm.image,
+				imageAlt: fm.imageAlt,
+				motif: fm.motif,
 				rcosLayer: fm.rcosLayer,
 				counts,
 				total: counts.guides + counts.comparisons + counts.terms + counts.cases

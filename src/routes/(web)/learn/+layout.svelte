@@ -31,12 +31,21 @@
 </script>
 
 {#if savedCount > 0 && page.url.pathname !== '/learn/saved'}
-	<div class="fixed top-24 right-6 z-30 hidden lg:block">
+	<div class="fixed top-40 right-6 z-30 hidden lg:block">
 		<a
 			href="/learn/saved"
 			class="inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white/90 px-4 py-2 text-sm text-stone-600 shadow-sm backdrop-blur transition-colors hover:border-ecohubs-dark hover:text-ecohubs-deep"
 		>
-			<span aria-hidden="true">★</span>
+			<svg
+				viewBox="0 0 24 24"
+				aria-hidden="true"
+				class="size-3.5 shrink-0"
+				stroke="currentColor"
+				stroke-width="1.7"
+				stroke-linejoin="round"
+			>
+				<path d="M7 4h10v16l-5-4-5 4z" />
+			</svg>
 			Saved
 			<span class="rounded-full bg-emerald-50 px-1.5 text-xs text-ecohubs-deep">{savedCount}</span>
 		</a>

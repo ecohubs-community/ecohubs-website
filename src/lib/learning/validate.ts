@@ -49,6 +49,12 @@ export function isIndexable(entry: ContentEntry): boolean {
 }
 
 function checkBase(fm: Frontmatter, path: string, issues: ValidationIssue[]) {
+	// A cover carries meaning often enough that a blank alt has to be a choice,
+	// not an oversight — so say so explicitly by writing `imageAlt: ''`.
+	if (fm.image && fm.imageAlt === undefined) {
+		issues.push({ path, message: '"image" is set but "imageAlt" is missing' });
+	}
+
 	if (!CONTENT_TYPES.includes(fm.type)) {
 		issues.push({ path, message: `unknown type "${fm.type}"` });
 	}

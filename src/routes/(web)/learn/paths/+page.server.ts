@@ -22,14 +22,19 @@ export const load: PageServerLoad = async () => {
 				slug: fm.slug,
 				title: fm.title,
 				summary: fm.summary,
-				steps: steps.length,
+				// The card shows the first three by name and counts the rest, so it
+				// needs every step rather than just a total.
+				steps: steps.map((l) => ({
+					slug: l!.frontmatter.slug,
+					title: l!.frontmatter.title
+				})),
 				minutes: steps.reduce((sum, l) => sum + readingMinutes(l!), 0),
 				endsAt: fm.endsAt ?? null
 			};
 		})
 		// A path whose lessons are all still drafts would render as an empty
 		// sequence — the validator catches it, but so does this.
-		.filter((p) => p.steps > 0);
+		.filter((p) => p.steps.length > 0);
 
 	return { paths, indexable: paths.length > 0 };
 };

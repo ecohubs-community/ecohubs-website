@@ -27,6 +27,16 @@ export type Status = 'draft' | 'published';
 export const DEPTHS = ['quick', 'standard', 'deep'] as const;
 export type Depth = (typeof DEPTHS)[number];
 
+/**
+ * The generated cover art, from the design's six CSS motifs.
+ *
+ * Cheaper than an image in every sense — no file, no request, no layout shift —
+ * and it means a page always has a cover even before anyone commissions art.
+ * A page with a real `image` uses that instead.
+ */
+export const MOTIFS = ['rings', 'strata', 'grid', 'tide', 'seed', 'weave'] as const;
+export type Motif = (typeof MOTIFS)[number];
+
 /** Fields every piece of content carries. */
 export interface BaseFrontmatter {
 	title: string;
@@ -39,6 +49,13 @@ export interface BaseFrontmatter {
 	updated: string;
 	/** The single query this page is meant to answer. One page, one query. */
 	targetQuery?: string;
+	/** Cover image, absolute from `static/`. Falls back to a motif when unset. */
+	image?: string;
+	/** Required whenever `image` is set — a cover is never decorative. */
+	imageAlt?: string;
+	/** Which motif to use when there is no image. Defaults to one picked from
+	 *  the slug, so it is stable and neighbouring cards differ. */
+	motif?: Motif;
 }
 
 export interface GuideFrontmatter extends BaseFrontmatter {

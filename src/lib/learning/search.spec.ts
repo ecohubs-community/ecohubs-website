@@ -1,15 +1,16 @@
 import { describe, expect, it } from 'vitest';
-import { buildSearchIndex, searchDocs, type SearchDoc } from './search';
+import { buildSearchIndex, groupByKind, searchDocs, type SearchDoc } from './search';
 import { allEntries } from './index';
 import { isIndexable } from './validate';
 import { bodyText, tokenise } from './text';
 
 /** A doc built the way buildSearchIndex builds one, so the matcher is tested
  *  against the same shape it meets in production. */
-function doc(title: string, summary = '', body = '', type = 'topic'): SearchDoc {
+function doc(title: string, summary = '', body = '', type = 'topic', kind = 'Topic'): SearchDoc {
 	return {
 		url: `/learn/topics/${title.toLowerCase().replace(/\W+/g, '-')}`,
 		type,
+		kind,
 		title,
 		summary,
 		text: tokenise(`${title} ${summary} ${body}`).join(' ')
@@ -146,3 +147,36 @@ function deepOnlyWords(raw: string): string[] {
 		.filter((w) => w.length >= 7 && !elsewhere.has(w))
 		.slice(0, 5);
 }
+
+describe('groupByKind', () => {
+	it("returns the design's order, skipping kinds with no results", () => {
+		const docs = [
+			doc('A term', '', '', 'term', 'Glossary'),
+			doc('A guide', '', '', 'guide', 'Guide'),
+			doc('A topic', '', '', 'topic', 'Topic')
+		];
+		expect(groupByKind(docs).map((g) => g.kind)).toEqual(['Topic', 'Guide', 'Glossary']);
+	});
+
+	it('keeps every document', () => {
+		const docs = [
+			doc('One', '', '', 'topic', 'Topic'),
+			doc('Two', '', '', 'topic', 'Topic'),
+			doc('Three', '', '', 'term', 'Glossary')
+		];
+		const grouped = groupByKind(docs);
+		expect(grouped.flatMap((g) => g.docs)).toHaveLength(3);
+		expect(grouped.find((g) => g.kind === 'Topic')?.docs).toHaveLength(2);
+	});
+
+	/** A new content type must not vanish from search because nobody added it
+	 *  to the order list. */
+	it('keeps an unknown kind, after the known ones', () => {
+		const docs = [doc('Odd', '', '', 'zine', 'Zine'), doc('A topic', '', '', 'topic', 'Topic')];
+		expect(groupByKind(docs).map((g) => g.kind)).toEqual(['Topic', 'Zine']);
+	});
+
+	it('returns nothing for no results', () => {
+		expect(groupByKind([])).toEqual([]);
+	});
+});

@@ -196,3 +196,85 @@ html.js [data-scroll-stagger].is-visible > * {
 .reveal-fade-in {
 	animation: reveal-fade-in 0.6s ease-out both;
 }
+
+/* ---------------------------------------------------------------------------
+   Learning Hub cover motifs — taken 1:1 from `design_files/learning-hub`.
+
+   Plain CSS rather than Tailwind arbitrary values: each of these is three or
+   four stacked gradients, and as a `bg-[...]` utility it would be an unreadable
+   single line. They also never vary, which is exactly what a class is for.
+
+   A card shows a motif only when its page has no `image`; see `Cover.svelte`.
+   --------------------------------------------------------------------------- */
+.motif {
+	position: relative;
+	overflow: hidden;
+	background: #f2f1ea;
+}
+
+/* A soft lift at the foot, so a label sitting on the motif stays readable. */
+.motif::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, transparent 55%, rgba(255, 255, 255, 0.35));
+}
+
+.motif[data-motif='rings'] {
+	background:
+		radial-gradient(
+			circle at 26% 68%,
+			transparent 26%,
+			rgba(6, 78, 59, 0.16) 26%,
+			rgba(6, 78, 59, 0.16) 27.2%,
+			transparent 27.4%
+		),
+		radial-gradient(
+			circle at 26% 68%,
+			transparent 42%,
+			rgba(6, 78, 59, 0.11) 42%,
+			rgba(6, 78, 59, 0.11) 43.2%,
+			transparent 43.4%
+		),
+		radial-gradient(circle at 26% 68%, rgba(5, 150, 105, 0.22) 0 12%, transparent 12.5%), #eef0e7;
+}
+
+.motif[data-motif='strata'] {
+	background:
+		linear-gradient(
+			180deg,
+			transparent 0 38%,
+			rgba(139, 111, 71, 0.14) 38% 46%,
+			transparent 46% 58%,
+			rgba(139, 111, 71, 0.2) 58% 63%,
+			transparent 63% 76%,
+			rgba(139, 111, 71, 0.12) 76% 88%,
+			transparent 88%
+		),
+		#f3ece3;
+}
+
+.motif[data-motif='grid'] {
+	background:
+		repeating-linear-gradient(90deg, rgba(6, 78, 59, 0.13) 0 1px, transparent 1px 26px),
+		repeating-linear-gradient(0deg, rgba(6, 78, 59, 0.1) 0 1px, transparent 1px 26px), #eff0ea;
+}
+
+.motif[data-motif='tide'] {
+	background:
+		radial-gradient(120% 60% at 50% 118%, rgba(74, 144, 164, 0.3) 0 40%, transparent 41%),
+		radial-gradient(120% 60% at 50% 132%, rgba(74, 144, 164, 0.2) 0 40%, transparent 41%), #eaf2f4;
+}
+
+.motif[data-motif='seed'] {
+	background:
+		radial-gradient(circle at 70% 34%, rgba(217, 119, 6, 0.26) 0 9%, transparent 9.5%),
+		radial-gradient(circle at 44% 62%, rgba(217, 119, 6, 0.16) 0 6%, transparent 6.5%),
+		radial-gradient(circle at 82% 70%, rgba(217, 119, 6, 0.12) 0 4%, transparent 4.5%), #f7f0e5;
+}
+
+.motif[data-motif='weave'] {
+	background:
+		repeating-linear-gradient(45deg, rgba(6, 78, 59, 0.12) 0 2px, transparent 2px 14px),
+		repeating-linear-gradient(-45deg, rgba(139, 111, 71, 0.12) 0 2px, transparent 2px 14px), #f1f1ea;
+}

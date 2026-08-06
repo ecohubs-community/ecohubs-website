@@ -31,7 +31,7 @@
 	     starts level with the title rather than below a full-width hero, and it
 	     can only do that if the heading lives in the article column too. -->
 	<div
-		class="mx-auto grid max-w-3xl gap-12 px-6 pt-8 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		class="mx-auto grid max-w-[1360px] gap-14 px-6 pt-8 pb-20 md:pb-28 lg:grid-cols-[248px_minmax(0,1fr)]"
 	>
 		<div class="min-w-0 lg:order-2">
 			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">

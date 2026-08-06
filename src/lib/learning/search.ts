@@ -34,9 +34,24 @@ const sources = import.meta.glob<string>('/src/content/learning/**/*.md', {
 	import: 'default'
 });
 
+/** Display labels and the order the design groups results in. */
+export const KIND_ORDER = ['Topic', 'Guide', 'Lesson', 'Compared', 'Learning path', 'Glossary'];
+
+const KIND: Record<string, string> = {
+	topic: 'Topic',
+	guide: 'Guide',
+	lesson: 'Lesson',
+	compare: 'Compared',
+	path: 'Learning path',
+	term: 'Glossary',
+	case: 'Case study'
+};
+
 export interface SearchDoc {
 	url: string;
 	type: string;
+	/** What the card's chip says, and what results are grouped under. */
+	kind: string;
 	title: string;
 	/** One line of context under the result. */
 	summary: string;
@@ -63,6 +78,7 @@ function toDoc(entry: ContentEntry): SearchDoc {
 	return {
 		url: urlFor(entry),
 		type: fm.type,
+		kind: KIND[fm.type] ?? fm.type,
 		title,
 		summary,
 		text: tokenise(
@@ -141,4 +157,20 @@ export function searchDocs(docs: SearchDoc[], query: string, limit = 25): Search
 		.sort((a, b) => b.score - a.score || a.doc.title.localeCompare(b.doc.title))
 		.slice(0, limit)
 		.map((s) => s.doc);
+}
+
+/** Results split by kind, in the design's order. Empty groups are dropped. */
+export function groupByKind(docs: SearchDoc[]): { kind: string; docs: SearchDoc[] }[] {
+	const groups = new Map<string, SearchDoc[]>();
+	for (const doc of docs) {
+		const list = groups.get(doc.kind);
+		if (list) list.push(doc);
+		else groups.set(doc.kind, [doc]);
+	}
+
+	// Known kinds first, in order; anything new falls in behind rather than
+	// disappearing because it was not on the list.
+	const known = KIND_ORDER.filter((k) => groups.has(k));
+	const rest = [...groups.keys()].filter((k) => !KIND_ORDER.includes(k)).sort();
+	return [...known, ...rest].map((kind) => ({ kind, docs: groups.get(kind)! }));
 }
