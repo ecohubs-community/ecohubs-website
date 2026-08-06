@@ -5,11 +5,10 @@
 	 * Tabler via Iconify, like the rest of the site. `currentColor` is what lets
 	 * the active state tint the icon along with its label.
 	 *
-	 * Wrapped in a fixed-size box because `@iconify/svelte` renders nothing on
-	 * the server and fetches its icon data after hydration — without the box the
-	 * labels shift right the moment the icons arrive.
+	 * Kept in a fixed-size box so the label never shifts, whatever the glyph's
+	 * own proportions.
 	 */
-	import Icon from '@iconify/svelte';
+	import Icon from '$lib/components/Icon.svelte';
 
 	let { section }: { section: string } = $props();
 

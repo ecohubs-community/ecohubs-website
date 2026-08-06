@@ -22,7 +22,7 @@
 	import { onMount } from 'svelte';
 	import { LEARN_SECTIONS, activeSection, currentState } from '$lib/learning/sections';
 	import { bookmarkCount, watchBookmarks } from '$lib/learning/bookmarks.svelte';
-	import Icon from '@iconify/svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import RailIcon from './RailIcon.svelte';
 
 	export interface RailItem {

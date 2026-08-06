@@ -10,7 +10,7 @@
 	 * URL and the back button behaves.
 	 */
 	import { onMount } from 'svelte';
-	import Icon from '@iconify/svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import { page } from '$app/state';
 	import { replaceState } from '$app/navigation';
 	import SEO from '$lib/components/SEO.svelte';

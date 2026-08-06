@@ -11,7 +11,7 @@
 	 * moment is the only good chance to teach the feature.
 	 */
 	import { onMount } from 'svelte';
-	import Icon from '@iconify/svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import { isBookmarked, isFirstBookmark, toggleBookmark } from '$lib/learning/storage';
 	import { PILL, PILL_OFF, PILL_ON } from './pill';
 

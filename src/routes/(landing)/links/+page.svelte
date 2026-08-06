@@ -24,7 +24,7 @@
 		Check,
 		X
 	} from 'lucide-svelte';
-	import Icon from '@iconify/svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import { onMount } from 'svelte';
 	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
 	import SEO from '$lib/components/SEO.svelte';
@@ -256,12 +256,12 @@
 	const enc = encodeURIComponent;
 	// Brand glyphs via Iconify simple-icons (monochrome, inherit currentColor).
 	const shareTargets = [
-		{ label: 'WhatsApp', icon: 'simple-icons:whatsapp', href: `https://wa.me/?text=${enc(`${shareText} ${shareUrl}`)}` },
-		{ label: 'Telegram', icon: 'simple-icons:telegram', href: `https://t.me/share/url?url=${enc(shareUrl)}&text=${enc(shareText)}` },
-		{ label: 'X', icon: 'simple-icons:x', href: `https://twitter.com/intent/tweet?url=${enc(shareUrl)}&text=${enc(shareText)}` },
-		{ label: 'Facebook', icon: 'simple-icons:facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${enc(shareUrl)}` },
-		{ label: 'LinkedIn', icon: 'simple-icons:linkedin', href: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(shareUrl)}` },
-		{ label: 'Email', icon: 'lucide:mail', href: `mailto:?subject=${enc('EcoHubs Community')}&body=${enc(`${shareText}\n${shareUrl}`)}` }
+		{ label: 'WhatsApp', icon: 'tabler:brand-whatsapp', href: `https://wa.me/?text=${enc(`${shareText} ${shareUrl}`)}` },
+		{ label: 'Telegram', icon: 'tabler:brand-telegram', href: `https://t.me/share/url?url=${enc(shareUrl)}&text=${enc(shareText)}` },
+		{ label: 'X', icon: 'tabler:brand-x', href: `https://twitter.com/intent/tweet?url=${enc(shareUrl)}&text=${enc(shareText)}` },
+		{ label: 'Facebook', icon: 'tabler:brand-facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${enc(shareUrl)}` },
+		{ label: 'LinkedIn', icon: 'tabler:brand-linkedin', href: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(shareUrl)}` },
+		{ label: 'Email', icon: 'tabler:mail', href: `mailto:?subject=${enc('EcoHubs Community')}&body=${enc(`${shareText}\n${shareUrl}`)}` }
 	];
 
 	let copied = $state(false);

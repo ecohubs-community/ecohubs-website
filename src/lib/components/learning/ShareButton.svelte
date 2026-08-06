@@ -11,7 +11,7 @@
 	 * pointing at the previous page.
 	 */
 	import { onMount } from 'svelte';
-	import Icon from '@iconify/svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import { PILL, PILL_OFF } from './pill';
 
 	let { title }: { title: string } = $props();

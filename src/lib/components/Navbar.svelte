@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import Logo from '$lib/components/Logo.svelte';
 	import { page } from '$app/state';
-	import Icon from '@iconify/svelte';
+	import Icon from '$lib/components/Icon.svelte';
 
 	let scrolled = $state(false);
 	let mobileMenuOpen = $state(false);
