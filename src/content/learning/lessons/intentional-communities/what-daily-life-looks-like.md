@@ -121,8 +121,8 @@ The honest summary: sharing infrastructure demonstrably reduces resource use, th
 			note: 'community profiles and sustainability assessment material'
 		},
 		{
-			title: 'Cohousing Association of the United States',
-			url: 'https://www.cohousing.org/',
+			title: 'National CoHousing Alliance',
+			url: 'https://cohousingalliance.org/',
 			note: 'common house design, meal patterns and the privacy gradient'
 		},
 		{

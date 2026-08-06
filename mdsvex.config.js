@@ -7,7 +7,18 @@ import { slugifyHeading } from './src/lib/learning/headings.js';
  * file actually uses, so content files stay pure content — no boilerplate
  * `<script>` block repeated across ~140 files.
  */
-const AUTO_IMPORT = ['Quick', 'Deep', 'Gloss', 'Callout', 'Sources', 'Compare', 'Figure', 'Video', 'Quiz'];
+const AUTO_IMPORT = [
+	'Quick',
+	'Deep',
+	'Gloss',
+	'Callout',
+	'Sources',
+	'Compare',
+	'CostEstimator',
+	'Figure',
+	'Video',
+	'Quiz'
+];
 
 /**
  * Prepends a `<script>` importing the components a file references.

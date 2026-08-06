@@ -9,6 +9,7 @@ export { default as BookmarkButton } from './BookmarkButton.svelte';
 export { default as ArticleToc } from './ArticleToc.svelte';
 export { default as Callout } from './Callout.svelte';
 export { default as Compare } from './Compare.svelte';
+export { default as CostEstimator } from './CostEstimator.svelte';
 export { default as CompareCard } from './CompareCard.svelte';
 export { default as Cover } from './Cover.svelte';
 export { default as GuideCard } from './GuideCard.svelte';
