@@ -23,27 +23,41 @@ export const load: PageServerLoad = async ({ params }) => {
 			const lesson = lessonBySlug.get(step.lesson);
 			if (!lesson || lesson.frontmatter.status !== 'published') return null;
 			return {
-				guide: step.guide,
 				slug: lesson.frontmatter.slug,
 				title: lesson.frontmatter.title,
+				// The step's description is the lesson's own summary rather than a
+				// second copy in the path file — one place to change it.
 				summary: lesson.frontmatter.summary,
-				minutes: readingMinutes(lesson)
+				minutes: readingMinutes(lesson),
+				href: `/learn/guides/${step.guide}/${lesson.frontmatter.slug}`
 			};
 		})
 		.filter((s): s is NonNullable<typeof s> => s !== null);
 
 	if (steps.length === 0) throw error(404, 'This path has no published lessons yet');
 
-	// Sibling paths, for the rail's lower half — a reader who picked the wrong
-	// path should not have to go back to the index to find the right one.
+	// Sibling paths, for the rail and the tail of the page.
 	const others = publishedPaths
 		.filter((p) => p.frontmatter.slug !== fm.slug)
-		.map((p) => ({ slug: p.frontmatter.slug, title: p.frontmatter.title }));
+		.map((p) => {
+			const count = p.frontmatter.steps.filter(
+				(s) => lessonBySlug.get(s.lesson)?.frontmatter.status === 'published'
+			).length;
+			return {
+				slug: p.frontmatter.slug,
+				title: p.frontmatter.title,
+				image: p.frontmatter.image,
+				imageAlt: p.frontmatter.imageAlt,
+				motif: p.frontmatter.motif,
+				steps: count
+			};
+		})
+		.filter((p) => p.steps > 0);
 
 	return {
 		path: fm,
-		others,
 		steps,
+		others,
 		minutes: steps.reduce((sum, s) => sum + s.minutes, 0),
 		// A path is curation, so it needs steps rather than prose to be worth
 		// indexing — `isIndexable` sets its word threshold to zero for that reason.

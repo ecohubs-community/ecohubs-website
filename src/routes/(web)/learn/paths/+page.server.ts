@@ -1,33 +1,27 @@
 import type { PageServerLoad } from './$types';
-import { isIndexable, lessonBySlug, publishedPaths, readingMinutes } from '$lib/learning';
+import { lessonBySlug, publishedPaths, readingMinutes } from '$lib/learning';
 
 export const prerender = true;
 
-/**
- * The paths overview.
- *
- * A path is pure curation — an ordered set of lessons drawn from across the
- * guides — so its length and reading time are derived from the lessons rather
- * than authored, and cannot drift out of date.
- */
 export const load: PageServerLoad = async () => {
 	const paths = publishedPaths
 		.map((entry) => {
 			const fm = entry.frontmatter;
+			// Unpublished steps are dropped rather than rendered as dead links, so
+			// a path stays walkable while its lessons are still being written.
 			const steps = fm.steps
 				.map((step) => lessonBySlug.get(step.lesson))
-				.filter((l) => l && l.frontmatter.status === 'published');
+				.filter((l) => l?.frontmatter.status === 'published');
 
 			return {
 				slug: fm.slug,
 				title: fm.title,
 				summary: fm.summary,
-				// The card shows the first three by name and counts the rest, so it
-				// needs every step rather than just a total.
-				steps: steps.map((l) => ({
-					slug: l!.frontmatter.slug,
-					title: l!.frontmatter.title
-				})),
+				audience: fm.audience,
+				image: fm.image,
+				imageAlt: fm.imageAlt,
+				motif: fm.motif,
+				steps: steps.map((l) => ({ slug: l!.frontmatter.slug, title: l!.frontmatter.title })),
 				minutes: steps.reduce((sum, l) => sum + readingMinutes(l!), 0),
 				endsAt: fm.endsAt ?? null
 			};
@@ -36,5 +30,13 @@ export const load: PageServerLoad = async () => {
 		// sequence — the validator catches it, but so does this.
 		.filter((p) => p.steps.length > 0);
 
-	return { paths, indexable: paths.length > 0 };
+	return {
+		paths,
+		totals: {
+			paths: paths.length,
+			steps: paths.reduce((sum, p) => sum + p.steps.length, 0),
+			minutes: paths.reduce((sum, p) => sum + p.minutes, 0)
+		},
+		indexable: paths.length > 0
+	};
 };

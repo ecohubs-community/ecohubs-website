@@ -22,6 +22,8 @@ export { default as DepthSwitch } from './DepthSwitch.svelte';
 export { default as Gloss } from './Gloss.svelte';
 export { default as LearnRail } from './LearnRail.svelte';
 export { default as LearnTabs } from './LearnTabs.svelte';
+export { default as PathChain } from './PathChain.svelte';
+export { default as ProgressRing } from './ProgressRing.svelte';
 export { default as Prose } from './Prose.svelte';
 export { default as Quick } from './Quick.svelte';
 export { default as Quiz } from './Quiz.svelte';
@@ -32,6 +34,7 @@ export { default as Video } from './Video.svelte';
 
 export type { CompareRow } from './Compare.svelte';
 export type { GuideCardData } from './GuideCard.svelte';
+export type { ChainStep } from './PathChain.svelte';
 export type { PathCardData } from './PathCard.svelte';
 export type { TermCardData } from './TermCard.svelte';
 export type { TopicCardData } from './TopicCard.svelte';

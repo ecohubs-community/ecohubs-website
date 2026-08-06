@@ -115,6 +115,12 @@ export interface PathFrontmatter extends BaseFrontmatter {
 	type: 'path';
 	/** Ordered lessons drawn from across the guides. Curation only, no prose. */
 	steps: PathStep[];
+	/** Who it is for, in a few words — the kicker above the title. */
+	audience?: string;
+	/** "What you will be able to do", one line each. */
+	outcomes?: string[];
+	/** Worth reading alongside this path. */
+	pairs?: { label: string; href: string }[];
 	/** Where the path deliberately sends the reader when it ends. */
 	endsAt?: { label: string; href: string };
 }
