@@ -40,11 +40,11 @@ The obvious consequence of a common purse is financial. The one people underesti
 
 If the community pays for your dentistry, your bicycle and your trip to see your mother, then the community has a legitimate interest in all three — and needs an agreed way to say no without it feeling like a tribunal. Communes that work have usually spent years developing exactly that: budgets by category, a personal allowance nobody has to justify, and a clear line between what is decided collectively and what is not.
 
-The compensating advantage is real and hard to get any other way. A shared purse makes care affordable. Someone who becomes ill, has a child, or wants to retrain does not face it alone, and does not have to negotiate. <Gloss term="commune" />s that count caring and domestic work at the same rate as income-generating work — as Twin Oaks has done since 1967 — end up more equal on that axis than most workplaces.
+The compensating advantage is real and hard to get any other way. A shared purse makes care affordable. Someone who becomes ill, has a child, or wants to retrain does not face it alone, and does not have to negotiate. <Gloss term="commune">Communes</Gloss> that count caring and domestic work at the same rate as income-generating work — as Twin Oaks has done since 1967 — end up more equal on that axis than most workplaces.
 
 ## What separate finances actually buy
 
-<Gloss term="cohousing" /> deliberately keeps the money out. Households pay a share of common costs and are otherwise independent, and that single decision removes most of the disputes that break other kinds of community.
+<Gloss term="cohousing">Cohousing</Gloss> deliberately keeps the money out. Households pay a share of common costs and are otherwise independent, and that single decision removes most of the disputes that break other kinds of community.
 
 It also removes most of the interdependence. What you get is excellent neighbours, shared facilities you could not afford alone, and children who can be let out of the front door. What you do not get is anyone with a structural obligation to catch you.
 
@@ -52,7 +52,7 @@ This is why cohousing is the easiest form to join and the easiest to leave: you 
 
 <Callout type="caveat">
 
-"Commune" is used loosely in the press for any <Gloss term="intentional-community" />, which muddles the one distinction that actually predicts daily life. Most intentional communities are not communes. If members hold their own jobs and pay their own bills, cohousing is usually the more accurate word.
+"Commune" is used loosely in the press for any <Gloss term="intentional-community">intentional community</Gloss>, which muddles the one distinction that actually predicts daily life. Most intentional communities are not communes. If members hold their own jobs and pay their own bills, cohousing is usually the more accurate word.
 
 </Callout>
 

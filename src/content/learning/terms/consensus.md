@@ -18,7 +18,7 @@ In practice a consensus meeting is a cycle: a proposal is presented, clarifying 
 
 ## What it is often confused with
 
-Consensus is not the same as <Gloss term="consent" />, though the words get used interchangeably and the difference decides how a group feels after two years. Consensus asks *do you agree?* Consent asks *do you have a reasoned objection?* One seeks enthusiasm, the other tolerability. A group that says "consensus" while running consent — or the reverse — will keep having arguments it cannot name.
+Consensus is not the same as <Gloss term="consent">consent</Gloss>, though the words get used interchangeably and the difference decides how a group feels after two years. Consensus asks *do you agree?* Consent asks *do you have a reasoned objection?* One seeks enthusiasm, the other tolerability. A group that says "consensus" while running consent — or the reverse — will keep having arguments it cannot name.
 
 It is also not unanimity by acclamation. Most consensus traditions distinguish between actively agreeing, standing aside (you disagree but will not stop the group), and blocking. A group that has never defined a **blocking concern** — who may raise one, and on what grounds — has not really adopted consensus; it has adopted a veto.
 

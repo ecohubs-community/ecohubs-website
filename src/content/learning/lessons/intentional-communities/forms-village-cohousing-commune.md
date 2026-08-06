@@ -53,7 +53,7 @@ The words are answering different questions. *Cohousing* describes an **architec
 
 ## Cohousing is a shape
 
-<Gloss term="cohousing" /> is private, self-contained homes clustered around facilities the residents own and run: almost always a **common house** with a kitchen big enough to cook for everyone, often a laundry, a workshop and guest rooms that individual homes were built small enough to do without.
+<Gloss term="cohousing">Cohousing</Gloss> is private, self-contained homes clustered around facilities the residents own and run: almost always a **common house** with a kitchen big enough to cook for everyone, often a laundry, a workshop and guest rooms that individual homes were built small enough to do without.
 
 Four features recur almost everywhere the form appears. Residents take part in the design. The site is laid out so that encounter is likely — cars at the edge, front doors facing a shared path. The facilities are genuinely shared rather than merely communal-looking. And the community runs itself, with no landlord and no developer who stayed on.
 
@@ -61,13 +61,13 @@ Crucially, **households keep their own money**. That single fact removes most of
 
 ## Ecovillage is an aim
 
-<Gloss term="ecovillage" /> is a claim about purpose: a community consciously designing its social, cultural, ecological and economic systems to *regenerate* the place it sits in, in the Global Ecovillage Network's framing. Note the word — regenerate, not merely harm less. A settlement that recycles diligently is making a different and smaller claim.
+<Gloss term="ecovillage">Ecovillage</Gloss> is a claim about purpose: a community consciously designing its social, cultural, ecological and economic systems to *regenerate* the place it sits in, in the Global Ecovillage Network's framing. Note the word — regenerate, not merely harm less. A settlement that recycles diligently is making a different and smaller claim.
 
 Notice how much the definition leaves open. It says nothing about whether you own your home, whether there is a common kitchen, or how many people live there. That is why the label covers places as different as a three-household land project and a settlement of several hundred, and why it carries less information than people expect.
 
 ## Commune is an economy
 
-In a <Gloss term="commune" />, members pool income. Earnings go into a common pot and needs come out of it.
+In a <Gloss term="commune">commune</Gloss>, members pool income. Earnings go into a common pot and needs come out of it.
 
 The consequence people underestimate is not financial. It is that a shared purse makes almost everything a group matter: if the community pays for your dentistry and your trip to see your mother, the community has a legitimate interest in both, and needs an agreed way to say no without it feeling like a tribunal. Communes that work have usually spent years building exactly that.
 
@@ -77,7 +77,7 @@ The compensating advantage is hard to get any other way. A shared purse makes ca
 
 These sit *underneath* the others rather than beside them.
 
-In a <Gloss term="housing-cooperative" />, members collectively own the organisation that owns the building and hold a share plus a right to occupy. In a <Gloss term="community-land-trust" />, a non-profit holds the land permanently and leases it to residents who own their buildings — so the land is off the market and the housing stays affordable to the next household.
+In a <Gloss term="housing-cooperative">housing co-operative</Gloss>, members collectively own the organisation that owns the building and hold a share plus a right to occupy. In a <Gloss term="community-land-trust">community land trust</Gloss>, a non-profit holds the land permanently and leases it to residents who own their buildings — so the land is off the market and the housing stays affordable to the next household.
 
 Neither says anything about how much people share socially. A co-op can be a close community or an ordinary block of flats with a shared freehold.
 

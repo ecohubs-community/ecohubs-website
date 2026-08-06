@@ -35,7 +35,7 @@ The two words are used interchangeably in almost every community that uses eithe
 
 ## What consent actually changes
 
-<Gloss term="consent" /> narrows the question. Not *do you like this?* but *can you live with it, and can you point to a way it would harm us?* A proposal passes when nobody can.
+<Gloss term="consent">Consent</Gloss> narrows the question. Not *do you like this?* but *can you live with it, and can you point to a way it would harm us?* A proposal passes when nobody can.
 
 That narrowing does two things. It moves the bar from enthusiasm to tolerability, which is a much lower bar — and deliberately so. And it puts the work on the person objecting: an objection has to be reasoned and has to be about the group's aim rather than about taste. "I would have picked a different colour" is a preference. "This spends the repair fund we agreed to hold for winter" is an objection.
 
@@ -43,7 +43,7 @@ The phrase that carries the rest of it is **good enough for now, safe enough to 
 
 ## What consensus is actually for
 
-None of that makes <Gloss term="consensus" /> the worse method. It is doing a different job, and it is better at that job.
+None of that makes <Gloss term="consensus">consensus</Gloss> the worse method. It is doing a different job, and it is better at that job.
 
 Consensus produces buy-in that consent does not. When a group has genuinely talked a proposal into a shape everyone supports, the implementation is different — people carry it out because they own it rather than because it passed. In small groups doing emotionally loaded work, that is worth the extra hours.
 

@@ -14,7 +14,7 @@ related: [sociocracy, consent, agreements]
 
 A circle is a small team that owns a defined area of the community's work and may decide within it. Kitchen, land, finance, membership — each gets a boundary, and inside that boundary the circle decides without returning to a general meeting.
 
-The word is doing more work than "committee". A committee usually recommends; a circle decides. That difference is the whole reason <Gloss term="sociocracy" /> scales where a single all-hands meeting does not.
+The word is doing more work than "committee". A committee usually recommends; a circle decides. That difference is the whole reason <Gloss term="sociocracy">sociocracy</Gloss> scales where a single all-hands meeting does not.
 
 ## What makes it a circle rather than a working group
 
@@ -24,7 +24,7 @@ The word is doing more work than "committee". A committee usually recommends; a 
 
 **Two links to the wider group.** One person chosen by the parent circle and one chosen by the circle itself sit in both. Information and authority travel upward as well as down, which is what separates this from a hierarchy that has been redrawn as circles.
 
-**Decisions by <Gloss term="consent" />** within the domain.
+**Decisions by <Gloss term="consent">consent</Gloss>** within the domain.
 
 Drop the domain and you have a committee. Drop the double link and you have a delegation structure with nicer diagrams.
 

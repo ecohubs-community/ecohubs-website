@@ -40,7 +40,7 @@ Two out of three is common, and it is where most of the disappointment in this f
 
 A statement of values is worth writing and settles almost nothing. "We value transparency" cannot be broken, only disappointed. "Minutes are published within three days, and any member may see the accounts on request" can be broken — which is exactly what makes it useful, because a group can notice, name it, and act.
 
-The <Gloss term="agreements" /> that matter in practice are unglamorous and procedural:
+The <Gloss term="agreements">agreements</Gloss> that matter in practice are unglamorous and procedural:
 
 - How a decision is made, and by whom, and within what limits
 - What each member owes financially, and when
@@ -59,11 +59,11 @@ Ask to read the agreements, and ask when they were last reviewed. A community th
 
 This is where most misunderstandings start, because the term is deliberately broad.
 
-**It does not mean shared income.** That is a <Gloss term="commune" />, one option inside the category and a minority one. The majority of intentional communities have entirely private finances — members hold their own jobs, pay their own bills, and share the cost of the roof.
+**It does not mean shared income.** That is a <Gloss term="commune">commune</Gloss>, one option inside the category and a minority one. The majority of intentional communities have entirely private finances — members hold their own jobs, pay their own bills, and share the cost of the roof.
 
 **It does not mean shared politics or a shared faith.** Some are explicitly spiritual, many are explicitly not, and plenty contain people who disagree about most things and have simply agreed how to decide.
 
-**It does not mean rural.** Urban housing co-operatives and city <Gloss term="cohousing" /> projects are intentional communities in exactly the same sense as a land-based <Gloss term="ecovillage" />.
+**It does not mean rural.** Urban housing co-operatives and city <Gloss term="cohousing">cohousing</Gloss> projects are intentional communities in exactly the same sense as a land-based <Gloss term="ecovillage">ecovillage</Gloss>.
 
 **It does not mean giving up your home.** In most forms you have your own front door, your own kitchen and your own bathroom.
 

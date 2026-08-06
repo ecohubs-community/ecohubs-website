@@ -12,7 +12,7 @@ updated: 2026-08-06
 related: [consensus, consent, stand-aside]
 ---
 
-A blocking concern is an objection strong enough to stop a proposal from passing. It is the single most consequential rule in any group that decides by <Gloss term="consensus" /> or <Gloss term="consent" />, and the one most often left undefined.
+A blocking concern is an objection strong enough to stop a proposal from passing. It is the single most consequential rule in any group that decides by <Gloss term="consensus">consensus</Gloss> or <Gloss term="consent">consent</Gloss>, and the one most often left undefined.
 
 The reason it matters is arithmetic. If any member may block anything for any reason, the group has not adopted a decision method — it has handed every member a veto and hoped nobody uses it. That works until the first person does.
 
@@ -32,7 +32,7 @@ The distinction to test against is simple enough to use in a meeting. "I would h
 
 <Callout type="caveat">
 
-A block is a right, not a mood. Communities that survive consensus at any size treat raising one as a serious act with obligations attached — and pair it with a clear <Gloss term="stand-aside" /> convention, so disagreeing without stopping the group is always available.
+A block is a right, not a mood. Communities that survive consensus at any size treat raising one as a serious act with obligations attached — and pair it with a clear <Gloss term="stand-aside">stand aside</Gloss> convention, so disagreeing without stopping the group is always available.
 
 </Callout>
 

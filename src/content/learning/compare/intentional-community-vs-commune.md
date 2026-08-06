@@ -35,7 +35,7 @@ This is the most common confusion newcomers arrive with, and it is not really a 
 
 ## What the umbrella actually requires
 
-An <Gloss term="intentional-community" /> is defined by three conditions, and the third does the sorting: people chose each other, they live together or nearby, and they have written down how decisions get made.
+An <Gloss term="intentional-community">intentional community</Gloss> is defined by three conditions, and the third does the sorting: people chose each other, they live together or nearby, and they have written down how decisions get made.
 
 Chosen-ness rules out a street you happened to move into. Proximity rules out a network that only meets online. Written agreements rule out a group of friends sharing a house on the assumption that goodwill will hold — and it is the absence of that third condition, far more than any failure of idealism, that ends most attempts.
 
@@ -45,7 +45,7 @@ Notice what is *not* in the definition: no ecological commitment, no shared inco
 
 The word carries a picture — American and West German experiments of the late 1960s, most of which did not last. That picture is vivid, widely reproduced, and about fifty years old, and it is what most people are imagining when they hear any of these words.
 
-The result is a persistent mismatch. Someone reads about <Gloss term="cohousing" /> in the paper, pictures a commune, and either dismisses it as impractical or arrives with expectations of a shared economy that does not exist. Community groups spend a surprising share of their public communication correcting this.
+The result is a persistent mismatch. Someone reads about <Gloss term="cohousing">cohousing</Gloss> in the paper, pictures a commune, and either dismisses it as impractical or arrives with expectations of a shared economy that does not exist. Community groups spend a surprising share of their public communication correcting this.
 
 <Callout type="caveat">
 

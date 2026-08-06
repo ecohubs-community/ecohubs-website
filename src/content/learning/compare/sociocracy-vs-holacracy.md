@@ -38,7 +38,7 @@ These two get compared because they look alike on a diagram: nested circles, rep
 
 Not in the diagram. In **where authority comes from**.
 
-Under <Gloss term="sociocracy" />, a circle elects its own leader by consent, and a second person elected by the circle sits in the parent circle. Authority therefore flows in both directions by construction, and the circle has a genuine say in who speaks for it. That double link is the load-bearing part of the design.
+Under <Gloss term="sociocracy">sociocracy</Gloss>, a circle elects its own leader by consent, and a second person elected by the circle sits in the parent circle. Authority therefore flows in both directions by construction, and the circle has a genuine say in who speaks for it. That double link is the load-bearing part of the design.
 
 Under holacracy, the person leading a circle is appointed by the broader circle above it, and it is the representative going *upward* who is elected from within. That is a defensible choice in a company, where accountability runs to an employer. In a voluntary community, where nobody can be fired and everybody can leave, having your circle lead appointed from above tends to produce exactly the resentment the circle structure was meant to avoid.
 
@@ -52,7 +52,7 @@ Holacracy's best-known adoption, at the online retailer Zappos from 2013, is oft
 
 ## What communities actually take from either
 
-In practice, most communities that adopt "sociocracy" adopt a subset: <Gloss term="consent" /> decision-making and a handful of circles with real domains. The parts most often dropped are double linking and elections by consent — which is unfortunate, because those are the parts that make it more than a renamed committee structure.
+In practice, most communities that adopt "sociocracy" adopt a subset: <Gloss term="consent">consent</Gloss> decision-making and a handful of circles with real domains. The parts most often dropped are double linking and elections by consent — which is unfortunate, because those are the parts that make it more than a renamed committee structure.
 
 Holacracy shows up very rarely, and when it does it is usually in a community with a business attached, where the workplace framing already fits.
 

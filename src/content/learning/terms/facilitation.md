@@ -14,7 +14,7 @@ related: [consensus, consent, circle]
 
 Facilitation is holding a meeting's process — whose turn it is, which stage the proposal is at, when a round is finished — while staying out of its content. The facilitator does not advocate. Their job is that the method the group agreed on actually gets followed.
 
-That sounds procedural and minor. In practice it is the variable that most reliably separates communities whose meetings work from communities whose meetings are dreaded, more than the choice between <Gloss term="consensus" /> and <Gloss term="consent" /> does.
+That sounds procedural and minor. In practice it is the variable that most reliably separates communities whose meetings work from communities whose meetings are dreaded, more than the choice between <Gloss term="consensus">consensus</Gloss> and <Gloss term="consent">consent</Gloss> does.
 
 ## What the role actually does
 

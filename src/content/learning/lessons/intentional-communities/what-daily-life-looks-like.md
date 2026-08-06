@@ -26,7 +26,7 @@ Here is the texture, as plainly as we can put it.
 
 ## A week, roughly
 
-**Meals.** Most established communities eat together two or three times a week, cooked on a rota, in the <Gloss term="common-house" />. Attendance is almost always optional and there is usually a sign-up sheet so the cook knows numbers. If you cook once a month for thirty people, you eat eleven meals you did not cook. That trade is the single most-cited practical benefit of community life, and it is real.
+**Meals.** Most established communities eat together two or three times a week, cooked on a rota, in the <Gloss term="common-house">common house</Gloss>. Attendance is almost always optional and there is usually a sign-up sheet so the cook knows numbers. If you cook once a month for thirty people, you eat eleven meals you did not cook. That trade is the single most-cited practical benefit of community life, and it is real.
 
 **Work.** Somewhere between two and six hours a week of work for the place: grounds, maintenance, cleaning the shared rooms, admin, sitting on a circle. Communities vary enormously in whether this is counted, and how strictly.
 

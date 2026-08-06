@@ -12,7 +12,7 @@ updated: 2026-08-06
 related: [cohousing, intentional-community]
 ---
 
-The common house is the shared building at the centre of a <Gloss term="cohousing" /> project. At minimum a kitchen large enough to cook for everyone and a dining room to eat in; usually also a laundry, a workshop, a room for children, and guest rooms.
+The common house is the shared building at the centre of a <Gloss term="cohousing">cohousing</Gloss> project. At minimum a kitchen large enough to cook for everyone and a dining room to eat in; usually also a laundry, a workshop, a room for children, and guest rooms.
 
 The guest rooms are the clearest illustration of the logic. Rather than every household keeping a spare bedroom that stands empty most of the year, the community keeps two that anyone can book. The same reasoning applies to the workshop, the laundry, and the large table nobody has room for. Private homes are deliberately built smaller because the common house carries what would otherwise be duplicated thirty times over.
 

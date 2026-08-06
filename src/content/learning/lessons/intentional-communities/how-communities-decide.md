@@ -38,11 +38,11 @@ Governance is the least romantic subject in this guide and the one that most rel
 
 **Voting.** A majority decides. It is fast, legible, and for reversible operational decisions it is often the right answer — communities that put everything through consensus usually end up doing this informally anyway, just without admitting it. Its cost is structural: it manufactures a losing minority every time, and a minority that loses repeatedly stops coming.
 
-**<Gloss term="consensus" />.** A proposal passes only when everyone agrees. It produces buy-in that nothing else matches, and the amendment loop — raise a concern, change the proposal, test again — is a genuinely good teacher of how to hear each other. Past ten or fifteen people it starts handing a veto to whoever is most tired or most stubborn.
+**<Gloss term="consensus">Consensus</Gloss>.** A proposal passes only when everyone agrees. It produces buy-in that nothing else matches, and the amendment loop — raise a concern, change the proposal, test again — is a genuinely good teacher of how to hear each other. Past ten or fifteen people it starts handing a veto to whoever is most tired or most stubborn.
 
-**<Gloss term="consent" />.** A proposal passes when nobody has a reasoned, paramount objection. The question narrows from *do you agree?* to *can you live with it, and can you name a harm?* The bar moves from enthusiasm to tolerability, and the burden moves onto the objector to say what is actually wrong. Its standard — good enough for now, safe enough to try — assumes a review date, and quietly breaks without one.
+**<Gloss term="consent">Consent</Gloss>.** A proposal passes when nobody has a reasoned, paramount objection. The question narrows from *do you agree?* to *can you live with it, and can you name a harm?* The bar moves from enthusiasm to tolerability, and the burden moves onto the objector to say what is actually wrong. Its standard — good enough for now, safe enough to try — assumes a review date, and quietly breaks without one.
 
-**<Gloss term="sociocracy" />.** Not a method but a system: <Gloss term="circle" />s with defined domains, linked in both directions, deciding by consent inside their boundary. It is what lets a community of sixty stop bringing the compost rota to a general meeting.
+**<Gloss term="sociocracy">Sociocracy</Gloss>.** Not a method but a system: <Gloss term="circle">circles</Gloss> with defined domains, linked in both directions, deciding by consent inside their boundary. It is what lets a community of sixty stop bringing the compost rota to a general meeting.
 
 The two pairs people most often confuse each have a page: [consensus vs consent](/learn/compare/consensus-vs-consent) and [sociocracy vs holacracy](/learn/compare/sociocracy-vs-holacracy).
 
@@ -52,15 +52,15 @@ Whichever method a group picks, one thing decides whether it works: **who may st
 
 If any member may block anything for any reason, the community has not adopted a method. It has given everyone a veto and hoped nobody uses it — which holds until the first person does, and then never again.
 
-A workable <Gloss term="blocking-concern" /> is defined three ways. **Who** may raise one — everyone, or the circle whose domain it is, or full members rather than those in a trial period. **On what grounds** — almost always harm to the group's stated aim rather than personal preference. And **what happens next**, because a block that only stops things creates a queue that nobody owns.
+A workable <Gloss term="blocking-concern">blocking concern</Gloss> is defined three ways. **Who** may raise one — everyone, or the circle whose domain it is, or full members rather than those in a trial period. **On what grounds** — almost always harm to the group's stated aim rather than personal preference. And **what happens next**, because a block that only stops things creates a queue that nobody owns.
 
-Its necessary partner is <Gloss term="stand-aside" />: disagreeing on the record without stopping the group. Without it, anyone with a reservation faces only two options — swallow it, or escalate to a block they do not really believe in. Both are corrosive, and communities using consensus at any scale almost always have an explicit stand-aside convention.
+Its necessary partner is <Gloss term="stand-aside">stand aside</Gloss>: disagreeing on the record without stopping the group. Without it, anyone with a reservation faces only two options — swallow it, or escalate to a block they do not really believe in. Both are corrosive, and communities using consensus at any scale almost always have an explicit stand-aside convention.
 
 <Quiz id="is-this-a-blocking-concern" />
 
 ## The meeting itself
 
-Method matters less than most groups expect. <Gloss term="facilitation" /> matters more.
+Method matters less than most groups expect. <Gloss term="facilitation">Facilitation</Gloss> matters more.
 
 The facilitator holds the process — whose turn it is, which stage the proposal is at, when a decision has actually been reached — while staying out of the content. Naming the decision sounds trivial and is the thing groups most often fail to do, leaving meetings that end with nobody certain what was agreed and two people remembering it differently in March.
 

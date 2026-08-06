@@ -32,7 +32,7 @@ Cohousing is the most expensive form to start, because it means building or conv
 
 ## What it is often confused with
 
-An <Gloss term="ecovillage" />, most of all. The two are not alternatives on the same axis: cohousing describes the *architecture and ownership*, an ecovillage describes the *purpose*. Plenty of ecovillages are built as cohousing, and plenty of cohousing has no ecological ambition at all. Confusing them is common enough that we wrote a page on it.
+An <Gloss term="ecovillage">ecovillage</Gloss>, most of all. The two are not alternatives on the same axis: cohousing describes the *architecture and ownership*, an ecovillage describes the *purpose*. Plenty of ecovillages are built as cohousing, and plenty of cohousing has no ecological ambition at all. Confusing them is common enough that we wrote a page on it.
 
 <Sources
 	items={[

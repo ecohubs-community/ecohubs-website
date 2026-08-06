@@ -43,7 +43,7 @@ It is not values. A statement of shared values is worth writing, and it settles 
 
 That last one is the most commonly missing. A rule with no stated consequence is a preference, and every member works out which is which inside a year.
 
-All of it lives in the community's <Gloss term="agreements" /> — the written text you can point at. The test is unglamorous and works on any visit: ask to read them, and ask when they were last reviewed.
+All of it lives in the community's <Gloss term="agreements">agreements</Gloss> — the written text you can point at. The test is unglamorous and works on any visit: ask to read them, and ask when they were last reviewed.
 
 ## The four methods, told apart
 
@@ -62,11 +62,11 @@ All of it lives in the community's <Gloss term="agreements" /> — the written t
 
 **Voting** is dismissed too quickly. It is fast, it is legible, and for reversible operational decisions it is often correct. Its cost is structural: it manufactures a losing minority every time, and a minority that loses repeatedly stops attending.
 
-**<Gloss term="consensus" />** asks for everyone's agreement. It produces buy-in nothing else matches, and it is a good teacher — the loop of raising a concern, amending, and testing again forces a group to hear each other. Past a dozen people it starts handing a veto to whoever is most tired or most stubborn.
+**<Gloss term="consensus">Consensus</Gloss>** asks for everyone's agreement. It produces buy-in nothing else matches, and it is a good teacher — the loop of raising a concern, amending, and testing again forces a group to hear each other. Past a dozen people it starts handing a veto to whoever is most tired or most stubborn.
 
-**<Gloss term="consent" />** narrows the question from *do you agree?* to *do you have a reasoned objection?* The bar moves from enthusiasm to tolerability, and the burden moves to the objector to say what is actually wrong. Its standard is that a proposal be good enough for now and safe enough to try — which assumes a review date, and quietly breaks without one.
+**<Gloss term="consent">Consent</Gloss>** narrows the question from *do you agree?* to *do you have a reasoned objection?* The bar moves from enthusiasm to tolerability, and the burden moves to the objector to say what is actually wrong. Its standard is that a proposal be good enough for now and safe enough to try — which assumes a review date, and quietly breaks without one.
 
-**<Gloss term="sociocracy" />** is a whole system rather than a method: <Gloss term="circle" />s with defined domains, linked in both directions, deciding by consent inside their boundary. It is what lets a community of sixty stop bringing the compost rota to a general meeting.
+**<Gloss term="sociocracy">Sociocracy</Gloss>** is a whole system rather than a method: <Gloss term="circle">circles</Gloss> with defined domains, linked in both directions, deciding by consent inside their boundary. It is what lets a community of sixty stop bringing the compost rota to a general meeting.
 
 The pairs people most often confuse have pages of their own: [consensus vs consent](/learn/compare/consensus-vs-consent), and [sociocracy vs holacracy](/learn/compare/sociocracy-vs-holacracy).
 
@@ -76,13 +76,13 @@ This is the single most consequential rule a group writes, and the one most ofte
 
 If any member may block anything for any reason, the community has not adopted a method — it has issued everyone a veto and hoped nobody uses it. That holds until the first person does, and then it holds never again.
 
-A workable <Gloss term="blocking-concern" /> is defined three ways: **who** may raise one, on **what grounds** — almost always harm to the group's stated aim rather than personal preference — and **what happens next**, because a block that only stops things creates a queue nobody owns.
+A workable <Gloss term="blocking-concern">blocking concern</Gloss> is defined three ways: **who** may raise one, on **what grounds** — almost always harm to the group's stated aim rather than personal preference — and **what happens next**, because a block that only stops things creates a queue nobody owns.
 
-Its necessary partner is <Gloss term="stand-aside" />: disagreeing on the record without stopping the group. Without it, anyone with a reservation faces only two options — swallow it, or escalate to a block they do not really believe in. Communities that use consensus at any scale almost always have an explicit stand-aside convention, and the ones that do not are usually the ones describing meetings as exhausting.
+Its necessary partner is <Gloss term="stand-aside">stand aside</Gloss>: disagreeing on the record without stopping the group. Without it, anyone with a reservation faces only two options — swallow it, or escalate to a block they do not really believe in. Communities that use consensus at any scale almost always have an explicit stand-aside convention, and the ones that do not are usually the ones describing meetings as exhausting.
 
 ## The meeting itself
 
-Method matters less than most groups expect. <Gloss term="facilitation" /> matters more.
+Method matters less than most groups expect. <Gloss term="facilitation">Facilitation</Gloss> matters more.
 
 The facilitator holds the process — whose turn it is, which stage the proposal is at, when a decision has actually been reached — while staying out of the content. Naming the decision sounds trivial and is the thing groups most often fail to do, leaving meetings that end with nobody certain what was agreed.
 

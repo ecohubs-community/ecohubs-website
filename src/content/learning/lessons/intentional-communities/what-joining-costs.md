@@ -26,23 +26,23 @@ This is the page people act on, so it is the page where inventing a plausible nu
 
 ## The three numbers
 
-**Entry.** What you hand over to move in. In cohousing and most co-operative forms this is the price of a home, and it is a normal local property price, because you are competing with everyone else in that town for a building. In an income-sharing <Gloss term="commune" /> it is often nothing at all.
+**Entry.** What you hand over to move in. In cohousing and most co-operative forms this is the price of a home, and it is a normal local property price, because you are competing with everyone else in that town for a building. In an income-sharing <Gloss term="commune">commune</Gloss> it is often nothing at all.
 
 **Monthly.** Dues, service charge, association fee — the same thing under four names. It covers what the community owns in common: insurance, the shared heating, the roof of the common house, the reserve for the roof of the common house in fifteen years.
 
 **Exit.** What returns to you when you go. This is set entirely by the legal form, it is written down before you arrive, and it is the number that decides whether the years you spent there cost you a little or a great deal.
 
-If you only take one habit from this lesson: **ask the exit question first**. It is the fastest way to find out whether a community understands its own <Gloss term="agreements" />.
+If you only take one habit from this lesson: **ask the exit question first**. It is the fastest way to find out whether a community understands its own <Gloss term="agreements">agreements</Gloss>.
 
 ## What entry buys, by form
 
 The word "joining fee" is misleading, because in most forms you are not paying a fee — you are buying an asset, and the question is which asset.
 
-In **<Gloss term="cohousing" />** you usually buy the home outright, and the shared facilities come with it. Cohousing homes are priced against comparable homes nearby on a cost-per-square-metre basis, which is why they sit at ordinary market rates: the common house is paid for by every household having built slightly less private space.
+In **<Gloss term="cohousing">cohousing</Gloss>** you usually buy the home outright, and the shared facilities come with it. Cohousing homes are priced against comparable homes nearby on a cost-per-square-metre basis, which is why they sit at ordinary market rates: the common house is paid for by every household having built slightly less private space.
 
-In a **<Gloss term="housing-cooperative" />** you buy a share in the organisation that owns the building, plus a right to occupy your home. The share can cost a great deal or very little depending on whether the co-op is market-equity or limited-equity — and that distinction, not the size of the flat, is what determines what you walk away with.
+In a **<Gloss term="housing-cooperative">housing co-operative</Gloss>** you buy a share in the organisation that owns the building, plus a right to occupy your home. The share can cost a great deal or very little depending on whether the co-op is market-equity or limited-equity — and that distinction, not the size of the flat, is what determines what you walk away with.
 
-Under a **<Gloss term="community-land-trust" />** you buy the building and lease the ground beneath it. Entry is lower than the open-market price precisely because you are not buying the land. That discount is the whole mechanism, and it is paid for at the other end.
+Under a **<Gloss term="community-land-trust">community land trust</Gloss>** you buy the building and lease the ground beneath it. Entry is lower than the open-market price precisely because you are not buying the land. That discount is the whole mechanism, and it is paid for at the other end.
 
 In a **commune**, entry is typically nothing, and so is your stake. You are joining an economy, not buying into one.
 

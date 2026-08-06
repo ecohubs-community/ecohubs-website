@@ -14,11 +14,11 @@ related: [consensus, blocking-concern, consent]
 
 To stand aside is to say, on the record, that you disagree with a proposal but will not stop it. The decision passes; your disagreement is minuted; you are not obliged to carry the work out enthusiastically, and nobody has to pretend you were persuaded.
 
-It sounds like a small procedural nicety. It is the mechanism that makes <Gloss term="consensus" /> workable in a group larger than a household.
+It sounds like a small procedural nicety. It is the mechanism that makes <Gloss term="consensus">consensus</Gloss> workable in a group larger than a household.
 
 ## Why it matters so much
 
-Without a stand-aside convention, a consensus group offers only two positions: agree, or block. That forces anyone with a reservation into an unfair choice — swallow it and pretend, or escalate to a <Gloss term="blocking-concern" /> they do not really think is warranted. Both are corrosive. The first breeds quiet resentment and the second breeds meetings that never end.
+Without a stand-aside convention, a consensus group offers only two positions: agree, or block. That forces anyone with a reservation into an unfair choice — swallow it and pretend, or escalate to a <Gloss term="blocking-concern">blocking concern</Gloss> they do not really think is warranted. Both are corrosive. The first breeds quiet resentment and the second breeds meetings that never end.
 
 A third position dissolves the problem. It lets a group distinguish "I think this is a mistake" from "this would harm us", which are genuinely different claims, and it lets the minority position be preserved for the review rather than lost.
 

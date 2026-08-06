@@ -32,7 +32,7 @@ Findhorn's footprint figure is twenty years old and specific to one community, a
 
 ## What it is often confused with
 
-<Gloss term="cohousing" />, constantly. Cohousing is an architecture; an ecovillage is an aim. An ecovillage very often *adopts* cohousing's layout — clustered private homes around shared facilities — because it is a well-tested pattern, which is exactly why the two words get swapped. The other frequent confusion is with an eco-development: housing built to a high environmental standard and sold, with no community of any kind attached.
+<Gloss term="cohousing">Cohousing</Gloss>, constantly. Cohousing is an architecture; an ecovillage is an aim. An ecovillage very often *adopts* cohousing's layout — clustered private homes around shared facilities — because it is a well-tested pattern, which is exactly why the two words get swapped. The other frequent confusion is with an eco-development: housing built to a high environmental standard and sold, with no community of any kind attached.
 
 <Sources
 	items={[

@@ -70,7 +70,7 @@ Two places calling themselves ecovillages can sit at opposite ends of every row.
 
 ## How decisions actually get made
 
-This is the part that decides whether a place lasts. Most communities run on some form of <Gloss term="consensus" /> or <Gloss term="consent">consent</Gloss>, and the difference matters more than newcomers expect: consensus asks everyone to agree, consent asks whether anyone has a reasoned objection. The first is warmer and, past a certain size, hands a quiet veto to whoever is most persistent.
+This is the part that decides whether a place lasts. Most communities run on some form of <Gloss term="consensus">consensus</Gloss> or <Gloss term="consent">consent</Gloss>, and the difference matters more than newcomers expect: consensus asks everyone to agree, consent asks whether anyone has a reasoned objection. The first is warmer and, past a certain size, hands a quiet veto to whoever is most persistent.
 
 What predicts trouble is not which method a group picked. It is whether the method is written down, whether anyone can name who decides what, and whether there is a way to change the rules that everybody already agreed to before they needed it.
 

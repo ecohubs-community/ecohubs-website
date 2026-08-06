@@ -14,7 +14,7 @@ related: [consensus, sociocracy]
 
 Consent asks a narrower question than agreement does. Not *do you like this?* but *can you live with it, and do you have a reasoned objection to it?* A proposal passes when nobody can point to a way it would harm the group or stop the group meeting its aim.
 
-That narrowing is the whole point. <Gloss term="consensus" /> chases a proposal everyone actively supports, which sounds generous and, past a certain size, quietly hands a veto to whoever is most tired, most stubborn, or most articulate at eleven at night. Consent moves the bar from enthusiasm to tolerability.
+That narrowing is the whole point. <Gloss term="consensus">Consensus</Gloss> chases a proposal everyone actively supports, which sounds generous and, past a certain size, quietly hands a veto to whoever is most tired, most stubborn, or most articulate at eleven at night. Consent moves the bar from enthusiasm to tolerability.
 
 ## What makes an objection "paramount"
 

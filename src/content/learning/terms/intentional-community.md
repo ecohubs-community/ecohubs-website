@@ -22,7 +22,7 @@ Not values. Values are easy to agree and impossible to enforce. The agreements t
 
 ## An example
 
-The umbrella term as used today is largely the Foundation for Intentional Community's, which has catalogued communities in North America since 1937 and deliberately covers everything from <Gloss term="cohousing" /> to <Gloss term="commune" /> to housing co-ops and <Gloss term="ecovillage" />s. That breadth is the point: the label describes a *legal and social arrangement*, not a lifestyle or an ideology. Two communities both accurately called intentional can share nothing beyond having written their rules down.
+The umbrella term as used today is largely the Foundation for Intentional Community's, which has catalogued communities in North America since 1937 and deliberately covers everything from <Gloss term="cohousing">cohousing</Gloss> to <Gloss term="commune">commune</Gloss> to housing co-ops and <Gloss term="ecovillage">ecovillages</Gloss>. That breadth is the point: the label describes a *legal and social arrangement*, not a lifestyle or an ideology. Two communities both accurately called intentional can share nothing beyond having written their rules down.
 
 <Callout type="caveat">
 

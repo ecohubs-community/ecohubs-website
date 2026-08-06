@@ -35,7 +35,7 @@ People use these two words as if they were points on the same scale — cohousin
 
 ## Cohousing is a shape
 
-<Gloss term="cohousing" /> came out of Denmark in the late 1960s — *bofællesskab*, "living community" — as an answer to a domestic problem rather than an ecological one: raising children and running a household in a nuclear family is isolating and inefficient. The design that emerged is remarkably consistent wherever it has spread. Private homes, deliberately modest. A common house with a kitchen big enough to cook for everyone. Cars pushed to the edge so the paths between homes are walkable and children can be let out of the door.
+<Gloss term="cohousing">Cohousing</Gloss> came out of Denmark in the late 1960s — *bofællesskab*, "living community" — as an answer to a domestic problem rather than an ecological one: raising children and running a household in a nuclear family is isolating and inefficient. The design that emerged is remarkably consistent wherever it has spread. Private homes, deliberately modest. A common house with a kitchen big enough to cook for everyone. Cars pushed to the edge so the paths between homes are walkable and children can be let out of the door.
 
 What makes it cohousing is that the residents run it. Not a landlord, not a developer who stayed on, not a charismatic founder. That is also what makes it slow: a cohousing group typically spends years in meetings before anything is built.
 
@@ -43,7 +43,7 @@ Crucially, **households keep their own money.** People pay a share of the common
 
 ## Ecovillage is an aim
 
-<Gloss term="ecovillage" /> is a claim about purpose. The usual reference point is the Global Ecovillage Network's framing: a community consciously designing its social, ecological, economic and cultural systems to regenerate its environment. Note how much that leaves open. It says nothing about whether you own your home, whether there is a common kitchen, or how many people live there.
+<Gloss term="ecovillage">Ecovillage</Gloss> is a claim about purpose. The usual reference point is the Global Ecovillage Network's framing: a community consciously designing its social, ecological, economic and cultural systems to regenerate its environment. Note how much that leaves open. It says nothing about whether you own your home, whether there is a common kitchen, or how many people live there.
 
 That breadth is why the word covers such different places. A three-household land project in Portugal and a settlement of several hundred both use it, honestly. It is also why the label carries less information than people expect when they search for it — knowing a place calls itself an ecovillage tells you what it is aiming at, not what living there is like.
 

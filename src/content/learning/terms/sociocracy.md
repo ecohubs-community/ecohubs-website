@@ -12,7 +12,7 @@ updated: 2026-08-06
 related: [consent, consensus]
 ---
 
-Sociocracy is a governance system that divides a group into **circles** — small teams, each with a defined domain it may decide within — and connects them so that authority flows both ways. Within a circle, decisions are made by <Gloss term="consent" />: a proposal passes when nobody has a reasoned, paramount objection.
+Sociocracy is a governance system that divides a group into **circles** — small teams, each with a defined domain it may decide within — and connects them so that authority flows both ways. Within a circle, decisions are made by <Gloss term="consent">consent</Gloss>: a proposal passes when nobody has a reasoned, paramount objection.
 
 Three parts do the work, and a group that adopts only one of them has not adopted sociocracy.
 
