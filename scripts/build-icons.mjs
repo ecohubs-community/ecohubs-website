@@ -24,9 +24,15 @@ const require = createRequire(import.meta.url);
 const SRC = 'src';
 const OUT = 'src/lib/icons.generated.ts';
 
-/** Every `tabler:name` mentioned anywhere in the source. */
+/**
+ * Every `tabler:name` mentioned anywhere in the source.
+ * @param {string} dir
+ * @returns {string[]}
+ */
 export function collectNames(dir = SRC) {
+	/** @type {Set<string>} */
 	const names = new Set();
+	/** @param {string} path */
 	const walk = (path) => {
 		for (const entry of readdirSync(path)) {
 			const full = join(path, entry);
@@ -52,7 +58,12 @@ export function collectNames(dir = SRC) {
 /* Everything below runs only when invoked directly, so the scanner above can
  * be imported by a test without regenerating anything. */
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-	const { icons, width, height } = require('@iconify-json/tabler/icons.json');
+	const set = require('@iconify-json/tabler/icons.json');
+	const { width, height } = set;
+	// The JSON's inferred type is a literal union of all 6,232 names, which
+	// cannot be indexed by an arbitrary string — widen it once, here.
+	/** @type {Record<string, { body: string }>} */
+	const icons = set.icons;
 	const names = collectNames();
 
 	const missing = names.filter((n) => !(n in icons));
