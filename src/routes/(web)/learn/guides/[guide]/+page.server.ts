@@ -33,15 +33,34 @@ export const load: PageServerLoad = async ({ params }) => {
 	const topic = topicBySlug.get(fm.topic);
 
 	// Lower half of the rail: sideways to sibling guides.
-	const otherGuides = publishedGuides
+	const siblings = publishedGuides
 		.filter((g) => g.frontmatter.slug !== fm.slug)
-		.filter((g) => lessonsOfGuide(g.frontmatter.slug).length > 0)
-		.map((g) => ({ href: `/learn/guides/${g.frontmatter.slug}`, label: g.frontmatter.title }));
+		.filter((g) => lessonsOfGuide(g.frontmatter.slug).length > 0);
+
+	const otherGuides = siblings.map((g) => ({
+		href: `/learn/guides/${g.frontmatter.slug}`,
+		label: g.frontmatter.title
+	}));
+
+	// The same siblings as cards, for "after this guide".
+	const nextGuides = siblings.map((g) => {
+		const theirLessons = lessonsOfGuide(g.frontmatter.slug);
+		return {
+			slug: g.frontmatter.slug,
+			title: g.frontmatter.title,
+			image: g.frontmatter.image,
+			imageAlt: g.frontmatter.imageAlt,
+			motif: g.frontmatter.motif,
+			lessons: theirLessons.length,
+			minutes: theirLessons.reduce((sum, l) => sum + readingMinutes(l), 0)
+		};
+	});
 
 	return {
 		guide: fm,
 		lessons,
 		otherGuides,
+		nextGuides,
 		totalMinutes: lessons.reduce((sum, l) => sum + l.minutes, 0),
 		topicTitle: topic?.frontmatter.title ?? fm.topic,
 		topicPublished: topic?.frontmatter.status === 'published',

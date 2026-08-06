@@ -18,6 +18,7 @@ export { default as TopicCard } from './TopicCard.svelte';
 export { default as Deep } from './Deep.svelte';
 export { default as DiscoveryList } from './DiscoveryList.svelte';
 export { default as RabbitHole } from './RabbitHole.svelte';
+export { default as Faq } from './Faq.svelte';
 export { default as Figure } from './Figure.svelte';
 export { default as DepthSwitch } from './DepthSwitch.svelte';
 export { default as Gloss } from './Gloss.svelte';

@@ -65,6 +65,12 @@ export interface GuideFrontmatter extends BaseFrontmatter {
 	level: 'foundational' | 'intermediate' | 'advanced';
 	/** Topic slug this guide sits under. */
 	topic: string;
+	/** "What this guide covers", one line each. */
+	outcomes?: string[];
+	/** What a reader asks before committing to a long read. */
+	faq?: { question: string; answer: string }[];
+	/** What you need first. Omit when there is nothing. */
+	prerequisites?: string;
 }
 
 export interface LessonFrontmatter extends BaseFrontmatter {
