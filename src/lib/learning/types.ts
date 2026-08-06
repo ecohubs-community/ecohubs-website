@@ -86,6 +86,12 @@ export interface TopicFrontmatter extends BaseFrontmatter {
 	rcosLayer?: number;
 	/** Which grouping it sits in on the knowledge map. See `clusters.ts`. */
 	cluster: ClusterKey;
+	/**
+	 * How to check a term from this topic against reality — shown on every
+	 * glossary term filed under it. Written once per topic rather than per
+	 * term, because the advice is the same for all of them.
+	 */
+	practice?: string;
 	terms?: string[];
 }
 

@@ -4,6 +4,8 @@ title: Intentional Communities
 slug: intentional-communities
 summary: What these places are, the forms they take, what they ask of you, and how to tell them apart.
 targetQuery: intentional community
+practice: >-
+  This is a word people use loosely, so check it against what is actually held in common: land, income, decisions, or only good will. Communities that use the term precisely will tell you, unprompted, which of those they share and which they do not.
 cluster: culture
 rcosLayer: 0
 status: published

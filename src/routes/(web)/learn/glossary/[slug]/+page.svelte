@@ -2,7 +2,8 @@
 	import type { Component } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import { LearnRail, Prose } from '$lib/components/learning';
+	import { LearnRail, Prose, TermCard } from '$lib/components/learning';
+	import { CARD, META } from '$lib/components/learning/card';
 	import { definedTerm, learningBreadcrumbs } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -42,7 +43,7 @@
 		<div class="min-w-0 lg:order-2 lg:max-w-[820px]">
 			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
 				<a href="/learn/glossary" class="kicker text-emerald-700 hover:text-ecohubs-deep">
-					Glossary
+					{data.topicTitle} · glossary
 				</a>
 				<Breadcrumbs items={breadcrumbs} />
 			</div>
@@ -59,13 +60,16 @@
 				{term.short}
 			</p>
 
-			<p class="mt-5 text-sm text-stone-500">
-				{#if data.topicPublished}
-					<a href="/learn/topics/{term.topic}" class="hover:text-ecohubs-deep">{data.topicTitle}</a>
-				{:else}
-					{data.topicTitle}
-				{/if}
-			</p>
+			{#if data.practice}
+				<!-- How to check a term of this kind against reality. Written once per
+				     topic, because the advice is the same for every term under it. -->
+				<section
+					class="{CARD} mt-10 bg-ecohubs-ivory p-7 hover:border-stone-200/90 hover:shadow-none"
+				>
+					<div class="kicker mb-3 text-emerald-700">In practice</div>
+					<p class="text-[15.5px] leading-relaxed text-stone-700">{data.practice}</p>
+				</section>
+			{/if}
 
 			<div class="hairline my-10"></div>
 
@@ -76,53 +80,62 @@
 
 			{#if data.related.length}
 				<section class="mt-14 border-t border-stone-200 pt-8">
-					<h2 class="kicker mb-4 text-stone-500">Related terms</h2>
-					<dl class="grid gap-4 sm:grid-cols-2">
+					<h2 class="kicker mb-5 text-emerald-700">Related terms</h2>
+					<div class="grid gap-3 sm:grid-cols-2">
 						{#each data.related as item (item.slug)}
-							<div class="rounded-2xl border border-stone-200/70 bg-white p-5">
-								<dt class="font-serif text-lg text-ecohubs-deep">
-									<a
-										href="/learn/glossary/{item.slug}"
-										class="transition-colors hover:text-ecohubs-primary"
-									>
-										{item.term}
-									</a>
-								</dt>
-								<dd class="mt-2 text-sm leading-relaxed text-stone-700">{item.short}</dd>
-							</div>
+							<TermCard term={{ ...item, topicTitle: data.topicTitle }} />
 						{/each}
-					</dl>
+					</div>
 				</section>
 			{/if}
 
-			{#if data.usedIn.length}
+			{#if data.topicPublished || data.usedIn.length}
 				<section class="mt-12">
-					<h2 class="kicker mb-4 text-stone-500">Where this comes up</h2>
-					<ul class="space-y-2 text-sm">
+					<h2 class="kicker mb-5 text-emerald-700">Where it appears</h2>
+					<div class="grid gap-3 sm:grid-cols-2">
+						{#if data.topicPublished}
+							<a href="/learn/topics/{term.topic}" class="{CARD} bg-white p-5">
+								<div class="{META} mb-2">Topic</div>
+								<div class="font-serif text-[17px] leading-snug text-ecohubs-deep">
+									{data.topicTitle}
+								</div>
+							</a>
+						{/if}
 						{#each data.usedIn as item (item.url)}
-							<li>
-								<a
-									href={item.url}
-									class="text-ecohubs-dark underline decoration-emerald-300 underline-offset-2 hover:decoration-emerald-600"
-								>
+							<a href={item.url} class="{CARD} bg-white p-5">
+								<div class="{META} mb-2 capitalize">{item.type}</div>
+								<div class="font-serif text-[17px] leading-snug text-ecohubs-deep">
 									{item.title}
-								</a>
-								<span class="text-stone-400"> · {item.type}</span>
-							</li>
+								</div>
+							</a>
 						{/each}
-					</ul>
+					</div>
 				</section>
 			{/if}
 
-			<div class="mt-14 text-center">
+			<!-- The glossary should be readable straight through, not only searched.
+			     Alphabetical, wrapping, so the last term still leads somewhere. -->
+			<nav
+				aria-label="Glossary navigation"
+				class="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-stone-200 pt-8"
+			>
 				<a
 					href="/learn/glossary"
-					class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
+					class="group inline-flex items-center gap-2 rounded-full border border-stone-300 px-6 py-3 text-[15px] text-stone-800 transition-colors hover:border-ecohubs-dark hover:text-ecohubs-dark"
 				>
 					<span class="transition-transform group-hover:-translate-x-0.5">←</span>
-					<span class="font-story italic">All terms</span>
+					All terms
 				</a>
-			</div>
+				{#if data.next}
+					<a
+						href="/learn/glossary/{data.next.slug}"
+						rel="next"
+						class="inline-flex items-center gap-2 rounded-full bg-ecohubs-dark px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-ecohubs-deep"
+					>
+						{data.next.term} <span aria-hidden="true">→</span>
+					</a>
+				{/if}
+			</nav>
 		</div>
 
 		<!-- A definition has no sections worth listing, so the rail's upper
