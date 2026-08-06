@@ -48,11 +48,17 @@ export const load: PageServerLoad = async ({ params }) => {
 	const terms = (fm.terms ?? [])
 		.map((slug) => termBySlug.get(slug))
 		.filter((t) => t && t.frontmatter.status === 'published')
-		.map((t) => ({ slug: t!.frontmatter.slug, term: t!.frontmatter.term, short: t!.frontmatter.short }));
+		.map((t) => ({
+			slug: t!.frontmatter.slug,
+			term: t!.frontmatter.term,
+			short: t!.frontmatter.short
+		}));
 
 	// The whole guide, for the left rail: a lesson page's primary navigation is
 	// its siblings, not its own headings.
 	const siblings = ordered.map((l, i) => ({
+		// The slug is what the rail matches against stored reading progress.
+		slug: l.frontmatter.slug,
 		href: `/learn/guides/${params.guide}/${l.frontmatter.slug}`,
 		label: l.frontmatter.title,
 		marker: String(i + 1).padStart(2, '0'),

@@ -20,6 +20,16 @@ describe('activeSection', () => {
 		expect(activeSection('/learn/saved')).toBe('hub');
 	});
 
+	/** Search has a field in the rail and a tab of its own, so no section
+	 *  should light up there. */
+	it('marks no section on the search page', () => {
+		expect(activeSection('/learn/search')).toBe('');
+	});
+
+	it('excludes search from the section list', () => {
+		expect(LEARN_SECTIONS.map((s) => s.href)).not.toContain('/learn/search');
+	});
+
 	it('does not match a path that merely shares a prefix', () => {
 		expect(activeSection('/learning')).toBe('');
 		expect(activeSection('/learn/topicsomething')).toBe('hub');

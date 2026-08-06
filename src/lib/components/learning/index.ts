@@ -6,6 +6,7 @@
  * that plugin's AUTO_IMPORT array.
  */
 export { default as BookmarkButton } from './BookmarkButton.svelte';
+export { default as ArticleToc } from './ArticleToc.svelte';
 export { default as Callout } from './Callout.svelte';
 export { default as Compare } from './Compare.svelte';
 export { default as Deep } from './Deep.svelte';
@@ -18,6 +19,7 @@ export { default as Prose } from './Prose.svelte';
 export { default as Quick } from './Quick.svelte';
 export { default as Quiz } from './Quiz.svelte';
 export { default as ReadToggle } from './ReadToggle.svelte';
+export { default as ShareButton } from './ShareButton.svelte';
 export { default as Sources } from './Sources.svelte';
 export { default as Video } from './Video.svelte';
 

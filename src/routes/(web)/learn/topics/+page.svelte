@@ -28,72 +28,66 @@
 	noindex={!data.indexable}
 />
 
-<section class="relative overflow-hidden pt-32 pb-14 md:pt-40 md:pb-16">
+<!-- Opaque, because the site's animated backdrop sits at z-index -1 and would
+     otherwise show through the whole page. The article routes get this from
+     their <article> wrapper; index routes have none, so it lives here. -->
+<div class="bg-ecohubs-base">
+	<!-- One grid for the whole page, not one per section: the rail starts level
+     with the heading, as in the design, rather than below a full-width hero. -->
 	<div
-		class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
-	></div>
-	<div
-		class="absolute -z-10 top-20 -left-40 h-[420px] w-[420px] rounded-full bg-emerald-200/25 blur-3xl"
-	></div>
-
-	<div class="mx-auto max-w-4xl px-6 lg:px-8">
-		<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
-			<div class="kicker text-emerald-700">Browse by topic</div>
-			<Breadcrumbs items={breadcrumbs} />
-		</div>
-		<h1
-			class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl lg:text-[64px]"
-		>
-			Ten doors into
-			<em class="font-story font-normal italic text-ecohubs-primary">the same house.</em>
-		</h1>
-		<p class="mt-6 max-w-2xl text-lg leading-relaxed font-light text-stone-700">
-			Every one of these decides whether a community lasts. Start wherever your question is.
-		</p>
-	</div>
-</section>
-
-<div class="hairline mx-auto max-w-4xl"></div>
-
-<section class="py-14 md:py-20">
-	<div
-			class="mx-auto grid max-w-4xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
-		>
-			<div class="min-w-0 lg:order-2">
-		{#if data.topics.length}
-			<ul class="grid gap-5 sm:grid-cols-2">
-				{#each data.topics as topic (topic.slug)}
-					<li>
-						<a
-							href="/learn/topics/{topic.slug}"
-							class="group block h-full rounded-2xl border border-stone-200/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:soft-shadow"
-						>
-							<h2
-								class="font-serif text-xl text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
-							>
-								{topic.title}
-							</h2>
-							<p class="mt-2 text-sm leading-relaxed text-stone-700">{topic.summary}</p>
-							<p class="mt-4 text-xs text-stone-500">{summarise(topic.counts)}</p>
-						</a>
-					</li>
-				{/each}
-			</ul>
-		{:else}
-			<p class="font-story text-lg text-stone-500 italic">The first topics are being written.</p>
-		{/if}
-
-		<div class="mt-14 text-center">
-			<a
-				href="/learn"
-				class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
-			>
-				<span class="transition-transform group-hover:-translate-x-0.5">←</span>
-				<span class="font-story italic">The learning hub</span>
-			</a>
-		</div>
+		class="mx-auto grid max-w-4xl gap-12 px-6 pt-8 pb-20 md:pb-28 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+	>
+		<div class="min-w-0 lg:order-2">
+			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
+				<div class="kicker text-emerald-700">Browse by topic</div>
+				<Breadcrumbs items={breadcrumbs} />
 			</div>
+			<h1
+				class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl lg:text-[64px]"
+			>
+				Ten doors into
+				<em class="font-story font-normal italic text-ecohubs-primary">the same house.</em>
+			</h1>
+			<p class="mt-6 max-w-2xl text-lg leading-relaxed font-light text-stone-700">
+				Every one of these decides whether a community lasts. Start wherever your question is.
+			</p>
 
-			<LearnRail />
+			<div class="hairline my-10"></div>
+
+			{#if data.topics.length}
+				<ul class="grid gap-5 sm:grid-cols-2">
+					{#each data.topics as topic (topic.slug)}
+						<li>
+							<a
+								href="/learn/topics/{topic.slug}"
+								class="group block h-full rounded-2xl border border-stone-200/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:soft-shadow"
+							>
+								<h2
+									class="font-serif text-xl text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
+								>
+									{topic.title}
+								</h2>
+								<p class="mt-2 text-sm leading-relaxed text-stone-700">{topic.summary}</p>
+								<p class="mt-4 text-xs text-stone-500">{summarise(topic.counts)}</p>
+							</a>
+						</li>
+					{/each}
+				</ul>
+			{:else}
+				<p class="font-story text-lg text-stone-500 italic">The first topics are being written.</p>
+			{/if}
+
+			<div class="mt-14 text-center">
+				<a
+					href="/learn"
+					class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
+				>
+					<span class="transition-transform group-hover:-translate-x-0.5">←</span>
+					<span class="font-story italic">The learning hub</span>
+				</a>
+			</div>
 		</div>
-	</section>
+
+		<LearnRail />
+	</div>
+</div>

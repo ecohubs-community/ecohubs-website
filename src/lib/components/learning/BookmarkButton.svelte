@@ -12,6 +12,7 @@
 	 */
 	import { onMount } from 'svelte';
 	import { isBookmarked, isFirstBookmark, toggleBookmark } from '$lib/learning/storage';
+	import { PILL, PILL_OFF, PILL_ON } from './pill';
 
 	let { id, type, title }: { id: string; type: string; title: string } = $props();
 
@@ -41,13 +42,20 @@
 			type="button"
 			onclick={toggle}
 			aria-pressed={saved}
-			class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors
-			       {saved
-				? 'border-ecohubs-dark bg-emerald-50 text-ecohubs-deep'
-				: 'border-stone-300 text-stone-600 hover:border-ecohubs-dark hover:text-ecohubs-deep'}"
+			class="{PILL} {saved ? PILL_ON : PILL_OFF}"
 		>
-			<span aria-hidden="true">{saved ? '★' : '☆'}</span>
-			{saved ? 'Saved' : 'Save'}
+			<svg
+				viewBox="0 0 24 24"
+				aria-hidden="true"
+				class="size-3.5 shrink-0"
+				fill={saved ? 'currentColor' : 'none'}
+				stroke="currentColor"
+				stroke-width="1.7"
+				stroke-linejoin="round"
+			>
+				<path d="M7 4h10v16l-5-4-5 4z" />
+			</svg>
+			{saved ? 'Saved' : 'Bookmark'}
 			<span class="sr-only">{title}</span>
 		</button>
 

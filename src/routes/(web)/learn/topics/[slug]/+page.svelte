@@ -2,7 +2,15 @@
 	import type { Component } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import { BookmarkButton, DepthSwitch, LearnRail, Prose } from '$lib/components/learning';
+	import {
+		ArticleToc,
+		BookmarkButton,
+		DepthSwitch,
+		LearnRail,
+		Prose,
+		ReadToggle,
+		ShareButton
+	} from '$lib/components/learning';
 	import { learningBreadcrumbs, topicArticle } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -18,6 +26,15 @@
 		])
 	);
 	const jsonLd = $derived(topicArticle(topic));
+
+	// "2 August 2026" — spelled out, because the mono meta line is read, not scanned.
+	const formatted = $derived(
+		new Date(topic.updated).toLocaleDateString('en-GB', {
+			day: 'numeric',
+			month: 'long',
+			year: 'numeric'
+		})
+	);
 </script>
 
 <SEO
@@ -30,15 +47,16 @@
 />
 
 <article class="bg-ecohubs-base pb-20 md:pb-28">
-	<!-- ═══════════════════════════════════════════════════════════════
-			1. HERO
-	═══════════════════════════════════════════════════════════════ -->
-	<section class="relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-14">
-		<div
-			class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
-		></div>
-
-		<div class="mx-auto max-w-3xl px-6 lg:px-8">
+	<!-- One grid for the whole page, not one per section: in the design the rail
+	     starts level with the title rather than below a full-width hero, and it
+	     can only do that if the heading lives in the article column too. -->
+	<div
+		class="mx-auto grid max-w-3xl gap-12 px-6 pt-8 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+	>
+		<div class="min-w-0 lg:order-2">
+			<!-- ═══════════════════════════════════════════════════════
+					1. HEADER
+			═══════════════════════════════════════════════════════ -->
 			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
 				<a href="/learn/topics" class="kicker text-emerald-700 hover:text-ecohubs-deep">Topic</a>
 				<Breadcrumbs items={breadcrumbs} />
@@ -52,36 +70,42 @@
 
 			<p class="mt-6 text-xl leading-relaxed font-light text-stone-700">{topic.summary}</p>
 
-			<div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-stone-500">
-				<span class="font-story italic">{data.readingMinutes} min read</span>
+			<!-- Facts about the page, in the design's mono meta voice. -->
+			<div
+				class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-[11px] tracking-[0.06em] text-[#8a8a80]"
+			>
+				<span>{data.readingMinutes} min read</span>
 				{#if topic.rcosLayer !== undefined}
-					<span class="text-stone-300">·</span>
+					<span aria-hidden="true">·</span>
 					<a
 						href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="hover:text-ecohubs-deep"
+						class="hover:text-ecohubs-dark"
 					>
 						RCOS Layer {topic.rcosLayer}
 					</a>
 				{/if}
-				<BookmarkButton id={topic.slug} type="topic" title={topic.title} />
-				<span class="ml-auto"><DepthSwitch /></span>
+				<span aria-hidden="true">·</span>
+				<span>Updated {formatted}</span>
 			</div>
-		</div>
-	</section>
 
-	<div class="hairline mx-auto max-w-3xl"></div>
+			<!-- Things you can do with the page, all one pill row. -->
+			<div class="mt-6 flex flex-wrap items-center gap-3">
+				<DepthSwitch />
+				<ReadToggle id={topic.slug} />
+				<BookmarkButton id={topic.slug} type="topic" title={topic.title} />
+				<ShareButton title={topic.title} />
+			</div>
 
-	<!-- ═══════════════════════════════════════════════════════════════
-			2. BODY
-	═══════════════════════════════════════════════════════════════ -->
-	<section class="pt-12">
-		<!-- Article first in source order; the rail is placed left by grid order. -->
-		<div
-			class="mx-auto grid max-w-3xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
-		>
-			<div class="min-w-0 lg:order-2">
+			<div class="hairline my-10"></div>
+
+			<!-- ═══════════════════════════════════════════════════════
+					2. BODY
+			═══════════════════════════════════════════════════════ -->
+			<!-- Repeats the rail's section list, which is hidden below `lg`. -->
+			<div class="mb-10"><ArticleToc headings={data.headings} /></div>
+
 			<Prose>
 				<Content />
 			</Prose>
@@ -173,16 +197,15 @@
 					<span class="font-story italic">All topics</span>
 				</a>
 			</div>
-			</div>
-
-			<!-- A topic's "within" is its own sections; a lesson's is its siblings. -->
-			<LearnRail
-				withinTitle="On this page"
-				within={data.headings.map((h) => ({ href: `#${h.id}`, label: h.text }))}
-				sidewaysTitle="Related topics"
-				sideways={data.relatedTopics}
-				backLink={{ href: '/learn/topics', label: 'All topics' }}
-			/>
 		</div>
-	</section>
+
+		<!-- A topic's "within" is its own sections; a lesson's is its siblings. -->
+		<LearnRail
+			withinTitle={topic.title}
+			within={data.headings.map((h) => ({ href: `#${h.id}`, label: h.text }))}
+			sidewaysTitle="Related topics"
+			sideways={data.relatedTopics}
+			backLink={{ href: '/learn/topics', label: 'All topics' }}
+		/>
+	</div>
 </article>

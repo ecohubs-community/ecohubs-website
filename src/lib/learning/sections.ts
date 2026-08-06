@@ -6,7 +6,12 @@
  * thing that makes `/learn` feel like one place rather than a set of
  * unrelated pages, and the first draft of the rail left it out entirely.
  *
- * Entries appear only when their route exists: never link to a 404.
+ * Search is deliberately absent: in the design the rail carries a search
+ * *field* above this list rather than a link, and the tab row appends Search
+ * as its last tab. Both are handled by the components, not by this list.
+ *
+ * Entries appear only when their route exists: never link to a 404. Knowledge
+ * Map joins the list when `/learn/map` is built (step 11).
  */
 export interface LearnSection {
 	key: string;
@@ -18,10 +23,8 @@ export const LEARN_SECTIONS: LearnSection[] = [
 	{ key: 'hub', label: 'Learning', href: '/learn' },
 	{ key: 'guides', label: 'Guides', href: '/learn/guides' },
 	{ key: 'topics', label: 'Topics', href: '/learn/topics' },
-	{ key: 'paths', label: 'Learning paths', href: '/learn/paths' },
-	{ key: 'glossary', label: 'Glossary', href: '/learn/glossary' },
-	{ key: 'search', label: 'Search', href: '/learn/search' }
-	// Knowledge Map joins this list when /learn/map exists (step 11).
+	{ key: 'paths', label: 'Learning Paths', href: '/learn/paths' },
+	{ key: 'glossary', label: 'Glossary', href: '/learn/glossary' }
 ];
 
 /**
@@ -34,6 +37,10 @@ export const LEARN_SECTIONS: LearnSection[] = [
  * hub reads as a bug.
  */
 export function activeSection(pathname: string): string {
+	// Search is not a section: the rail shows it as a field and the tab row as
+	// its own tab, so nothing in this list should light up there.
+	if (pathname === '/learn/search') return '';
+
 	const match = [...LEARN_SECTIONS]
 		.filter((s) => pathname === s.href || pathname.startsWith(`${s.href}/`))
 		.sort((a, b) => b.href.length - a.href.length)[0];
@@ -46,7 +53,7 @@ export function activeSection(pathname: string): string {
  * `page` asserts that the link points at what you are reading, so it is only
  * right on an exact match; the section merely *containing* the current page
  * gets `true`. Both are styled identically — the distinction is for screen
- * readers, which otherwise announce six pages as "current" across the hub.
+ * readers, which otherwise announce five pages as "current" across the hub.
  */
 export function currentState(
 	pathname: string,

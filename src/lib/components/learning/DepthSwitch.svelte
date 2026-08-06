@@ -40,7 +40,7 @@
 </script>
 
 <div
-	class="inline-flex items-center gap-1 rounded-full border border-stone-200 bg-white p-1"
+	class="inline-flex items-center rounded-full border border-stone-200/90 bg-ecohubs-ivory p-[3px]"
 	role="group"
 	aria-label="Reading depth"
 >
@@ -50,10 +50,10 @@
 			onclick={() => choose(option.value)}
 			aria-pressed={current === option.value}
 			title={option.hint}
-			class="rounded-full px-4 py-1.5 text-sm transition-colors
+			class="rounded-full px-3.5 py-1.5 text-[12.5px] transition-all
 			       {current === option.value
-				? 'bg-ecohubs-dark text-white'
-				: 'text-stone-600 hover:text-ecohubs-deep'}"
+				? 'bg-white font-medium text-ecohubs-dark shadow-sm'
+				: 'text-stone-600 hover:text-ecohubs-dark'}"
 		>
 			{option.label}
 		</button>

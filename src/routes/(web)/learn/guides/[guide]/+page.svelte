@@ -3,6 +3,8 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { LearnRail, Prose } from '$lib/components/learning';
+	import { onMount } from 'svelte';
+	import { getProgress } from '$lib/learning/storage';
 	import { guideArticle, learningBreadcrumbs } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -15,6 +17,12 @@
 		learningBreadcrumbs([{ name: guide.title, path: `/learn/guides/${guide.slug}` }])
 	);
 	const jsonLd = $derived(guideArticle(guide, data.lessons));
+
+	// Which lessons this browser has finished. Empty on the server, so every
+	// tick renders unfilled and then fills in after hydration — the rail's
+	// content never depends on it.
+	let read = $state<Record<string, unknown>>({});
+	onMount(() => (read = getProgress()));
 </script>
 
 <SEO
@@ -27,12 +35,13 @@
 />
 
 <article class="bg-ecohubs-base pb-20 md:pb-28">
-	<section class="relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-14">
-		<div
-			class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
-		></div>
-
-		<div class="mx-auto max-w-3xl px-6 lg:px-8">
+	<!-- One grid for the whole page, not one per section: in the design the rail
+	     starts level with the title rather than below a full-width hero, and it
+	     can only do that if the heading lives in the article column too. -->
+	<div
+		class="mx-auto grid max-w-3xl gap-12 px-6 pt-8 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+	>
+		<div class="min-w-0 lg:order-2">
 			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
 				<div class="kicker text-emerald-700">Guide · {guide.level}</div>
 				<Breadcrumbs items={breadcrumbs} />
@@ -46,29 +55,25 @@
 
 			<p class="mt-6 text-xl leading-relaxed font-light text-stone-700">{guide.summary}</p>
 
-			<div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-stone-500">
-				<span class="font-story italic">
+			<!-- Facts about the page, in the design's mono meta voice. -->
+			<div
+				class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-[11px] tracking-[0.06em] text-[#8a8a80]"
+			>
+				<span>
 					{data.lessons.length}
 					{data.lessons.length === 1 ? 'lesson' : 'lessons'}
 				</span>
-				<span class="text-stone-300">·</span>
-				<span class="font-story italic">{data.totalMinutes} min in total</span>
+				<span aria-hidden="true">·</span>
+				<span>{data.totalMinutes} min in total</span>
 				{#if data.topicPublished}
-					<span class="text-stone-300">·</span>
-					<a href="/learn/topics/{guide.topic}" class="hover:text-ecohubs-deep">{data.topicTitle}</a>
+					<span aria-hidden="true">·</span>
+					<a href="/learn/topics/{guide.topic}" class="hover:text-ecohubs-dark">{data.topicTitle}</a
+					>
 				{/if}
 			</div>
-		</div>
-	</section>
 
-	<div class="hairline mx-auto max-w-3xl"></div>
+			<div class="hairline my-10"></div>
 
-	<section class="pt-12">
-		<!-- Article first in source order; the rail is placed left by grid order. -->
-		<div
-			class="mx-auto grid max-w-3xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
-		>
-			<div class="min-w-0 lg:order-2">
 			<Prose layer={null}>
 				<Content />
 			</Prose>
@@ -115,19 +120,18 @@
 					<span class="font-story italic">The learning hub</span>
 				</a>
 			</div>
-			</div>
-
-			<LearnRail
-				withinTitle="This guide"
-				within={data.lessons.map((l) => ({
-					href: `/learn/guides/${guide.slug}/${l.slug}`,
-					label: l.title,
-					marker: String(l.number).padStart(2, '0'),
-					note: `${l.minutes} min`
-				}))}
-				sidewaysTitle="Other guides"
-				sideways={data.otherGuides}
-			/>
 		</div>
-	</section>
+
+		<LearnRail
+			withinTitle="This guide · {data.lessons.length} lessons"
+			within={data.lessons.map((l) => ({
+				href: `/learn/guides/${guide.slug}/${l.slug}`,
+				label: l.title,
+				done: !!read[l.slug],
+				note: `${l.minutes} min`
+			}))}
+			sidewaysTitle="Other guides"
+			sideways={data.otherGuides}
+		/>
+	</div>
 </article>

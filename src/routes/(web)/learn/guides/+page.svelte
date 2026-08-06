@@ -27,9 +27,7 @@
 			<div class="kicker text-emerald-700">Guides</div>
 			<Breadcrumbs items={breadcrumbs} />
 		</div>
-		<h1
-			class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl"
-		>
+		<h1 class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl">
 			Long reads that
 			<em class="font-story font-normal italic text-ecohubs-primary">finish the subject.</em>
 		</h1>

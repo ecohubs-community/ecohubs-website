@@ -27,12 +27,13 @@
 />
 
 <article class="bg-ecohubs-base pb-20 md:pb-28">
-	<section class="relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-14">
-		<div
-			class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
-		></div>
-
-		<div class="mx-auto max-w-3xl px-6 lg:px-8">
+	<!-- One grid for the whole page, not one per section: in the design the rail
+	     starts level with the title rather than below a full-width hero, and it
+	     can only do that if the heading lives in the article column too. -->
+	<div
+		class="mx-auto grid max-w-3xl gap-12 px-6 pt-8 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+	>
+		<div class="min-w-0 lg:order-2">
 			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
 				<a href="/learn/paths" class="kicker text-emerald-700 hover:text-ecohubs-deep">
 					Learning path
@@ -53,83 +54,74 @@
 					{data.steps.length} lessons · {data.minutes} min
 				</span>
 			</p>
-		</div>
-	</section>
 
-	<div class="hairline mx-auto max-w-3xl"></div>
+			<div class="hairline my-10"></div>
 
-	<section class="pt-12">
-		<!-- Article first in source order; the rail is placed left by grid order. -->
-		<div
-			class="mx-auto grid max-w-3xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
-		>
-			<div class="min-w-0 lg:order-2">
-				<!-- An ordered list, because the order is the point of a path. -->
-				<ol class="space-y-3">
-					{#each data.steps as step, i (step.slug)}
-						<li>
-							<a
-								href="/learn/guides/{step.guide}/{step.slug}"
-								class="group flex gap-5 rounded-2xl border border-stone-200/70 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:soft-shadow"
-							>
-								<span class="shrink-0 font-story text-lg text-stone-400 italic">
-									{String(i + 1).padStart(2, '0')}
-								</span>
-								<span class="min-w-0">
-									<span
-										class="block font-serif text-lg text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
-									>
-										{step.title}
-									</span>
-									<span class="mt-1 block text-sm leading-relaxed text-stone-600">
-										{step.summary}
-									</span>
-									<span class="mt-2 block text-xs text-stone-400">{step.minutes} min</span>
-								</span>
-							</a>
-						</li>
-					{/each}
-				</ol>
-
-				{#if path.endsAt}
-					<!-- Every path ends somewhere deliberate. This is the whole point of
-				     curating one: the reader arrives somewhere useful. -->
-					<div class="mt-10 rounded-2xl border border-emerald-100 bg-emerald-50/40 p-6 sm:p-8">
-						<p class="kicker mb-2 text-emerald-700">When you reach the end</p>
+			<!-- An ordered list, because the order is the point of a path. -->
+			<ol class="space-y-3">
+				{#each data.steps as step, i (step.slug)}
+					<li>
 						<a
-							href={path.endsAt.href}
-							class="font-serif text-xl text-ecohubs-deep underline decoration-emerald-300 underline-offset-4 transition-colors hover:decoration-emerald-600"
+							href="/learn/guides/{step.guide}/{step.slug}"
+							class="group flex gap-5 rounded-2xl border border-stone-200/70 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:soft-shadow"
 						>
-							{path.endsAt.label}
+							<span class="shrink-0 font-story text-lg text-stone-400 italic">
+								{String(i + 1).padStart(2, '0')}
+							</span>
+							<span class="min-w-0">
+								<span
+									class="block font-serif text-lg text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
+								>
+									{step.title}
+								</span>
+								<span class="mt-1 block text-sm leading-relaxed text-stone-600">
+									{step.summary}
+								</span>
+								<span class="mt-2 block text-xs text-stone-400">{step.minutes} min</span>
+							</span>
 						</a>
-					</div>
-				{/if}
+					</li>
+				{/each}
+			</ol>
 
-				<div class="mt-14 text-center">
+			{#if path.endsAt}
+				<!-- Every path ends somewhere deliberate. This is the whole point of
+				     curating one: the reader arrives somewhere useful. -->
+				<div class="mt-10 rounded-2xl border border-emerald-100 bg-emerald-50/40 p-6 sm:p-8">
+					<p class="kicker mb-2 text-emerald-700">When you reach the end</p>
 					<a
-						href="/learn/paths"
-						class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
+						href={path.endsAt.href}
+						class="font-serif text-xl text-ecohubs-deep underline decoration-emerald-300 underline-offset-4 transition-colors hover:decoration-emerald-600"
 					>
-						<span class="transition-transform group-hover:-translate-x-0.5">←</span>
-						<span class="font-story italic">All paths</span>
+						{path.endsAt.label}
 					</a>
 				</div>
-			</div>
+			{/if}
 
-			<!-- A path *is* its sequence, so the rail carries the steps and marks
-			     how far along each one sits. -->
-			<LearnRail
-				withinTitle="The path"
-				within={data.steps.map((step, i) => ({
-					href: `/learn/guides/${step.guide}/${step.slug}`,
-					label: step.title,
-					marker: String(i + 1),
-					note: `${step.minutes} min`
-				}))}
-				sidewaysTitle="Other paths"
-				sideways={data.others.map((o) => ({ href: `/learn/paths/${o.slug}`, label: o.title }))}
-				backLink={{ href: '/learn/paths', label: 'All paths' }}
-			/>
+			<div class="mt-14 text-center">
+				<a
+					href="/learn/paths"
+					class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
+				>
+					<span class="transition-transform group-hover:-translate-x-0.5">←</span>
+					<span class="font-story italic">All paths</span>
+				</a>
+			</div>
 		</div>
-	</section>
+
+		<!-- A path *is* its sequence, so the rail carries the steps and marks
+			     how far along each one sits. -->
+		<LearnRail
+			withinTitle="The path"
+			within={data.steps.map((step, i) => ({
+				href: `/learn/guides/${step.guide}/${step.slug}`,
+				label: step.title,
+				marker: String(i + 1),
+				note: `${step.minutes} min`
+			}))}
+			sidewaysTitle="Other paths"
+			sideways={data.others.map((o) => ({ href: `/learn/paths/${o.slug}`, label: o.title }))}
+			backLink={{ href: '/learn/paths', label: 'All paths' }}
+		/>
+	</div>
 </article>

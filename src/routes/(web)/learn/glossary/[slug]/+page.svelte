@@ -33,12 +33,13 @@
 	<!-- ═══════════════════════════════════════════════════════════════
 			1. HERO
 	═══════════════════════════════════════════════════════════════ -->
-	<section class="relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-14">
-		<div
-			class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
-		></div>
-
-		<div class="mx-auto max-w-3xl px-6 lg:px-8">
+	<!-- One grid for the whole page, not one per section: in the design the rail
+	     starts level with the title rather than below a full-width hero, and it
+	     can only do that if the heading lives in the article column too. -->
+	<div
+		class="mx-auto grid max-w-3xl gap-12 px-6 pt-8 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+	>
+		<div class="min-w-0 lg:order-2">
 			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
 				<a href="/learn/glossary" class="kicker text-emerald-700 hover:text-ecohubs-deep">
 					Glossary
@@ -65,88 +66,76 @@
 					{data.topicTitle}
 				{/if}
 			</p>
-		</div>
-	</section>
 
-	<div class="hairline mx-auto max-w-3xl"></div>
+			<div class="hairline my-10"></div>
 
-	<!-- ═══════════════════════════════════════════════════════════════
-			2. BODY
-	═══════════════════════════════════════════════════════════════ -->
-	<section class="pt-12">
-		<!-- Article first in source order; the rail is placed left by grid order. -->
-		<div
-			class="mx-auto grid max-w-3xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
-		>
-			<div class="min-w-0 lg:order-2">
-				<!-- A term has one version, so it sits outside the depth system. -->
-				<Prose layer={null}>
-					<Content />
-				</Prose>
+			<!-- A term has one version, so it sits outside the depth system. -->
+			<Prose layer={null}>
+				<Content />
+			</Prose>
 
-				{#if data.related.length}
-					<section class="mt-14 border-t border-stone-200 pt-8">
-						<h2 class="kicker mb-4 text-stone-500">Related terms</h2>
-						<dl class="grid gap-4 sm:grid-cols-2">
-							{#each data.related as item (item.slug)}
-								<div class="rounded-2xl border border-stone-200/70 bg-white p-5">
-									<dt class="font-serif text-lg text-ecohubs-deep">
-										<a
-											href="/learn/glossary/{item.slug}"
-											class="transition-colors hover:text-ecohubs-primary"
-										>
-											{item.term}
-										</a>
-									</dt>
-									<dd class="mt-2 text-sm leading-relaxed text-stone-700">{item.short}</dd>
-								</div>
-							{/each}
-						</dl>
-					</section>
-				{/if}
-
-				{#if data.usedIn.length}
-					<section class="mt-12">
-						<h2 class="kicker mb-4 text-stone-500">Where this comes up</h2>
-						<ul class="space-y-2 text-sm">
-							{#each data.usedIn as item (item.url)}
-								<li>
+			{#if data.related.length}
+				<section class="mt-14 border-t border-stone-200 pt-8">
+					<h2 class="kicker mb-4 text-stone-500">Related terms</h2>
+					<dl class="grid gap-4 sm:grid-cols-2">
+						{#each data.related as item (item.slug)}
+							<div class="rounded-2xl border border-stone-200/70 bg-white p-5">
+								<dt class="font-serif text-lg text-ecohubs-deep">
 									<a
-										href={item.url}
-										class="text-ecohubs-dark underline decoration-emerald-300 underline-offset-2 hover:decoration-emerald-600"
+										href="/learn/glossary/{item.slug}"
+										class="transition-colors hover:text-ecohubs-primary"
 									>
-										{item.title}
+										{item.term}
 									</a>
-									<span class="text-stone-400"> · {item.type}</span>
-								</li>
-							{/each}
-						</ul>
-					</section>
-				{/if}
+								</dt>
+								<dd class="mt-2 text-sm leading-relaxed text-stone-700">{item.short}</dd>
+							</div>
+						{/each}
+					</dl>
+				</section>
+			{/if}
 
-				<div class="mt-14 text-center">
-					<a
-						href="/learn/glossary"
-						class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
-					>
-						<span class="transition-transform group-hover:-translate-x-0.5">←</span>
-						<span class="font-story italic">All terms</span>
-					</a>
-				</div>
+			{#if data.usedIn.length}
+				<section class="mt-12">
+					<h2 class="kicker mb-4 text-stone-500">Where this comes up</h2>
+					<ul class="space-y-2 text-sm">
+						{#each data.usedIn as item (item.url)}
+							<li>
+								<a
+									href={item.url}
+									class="text-ecohubs-dark underline decoration-emerald-300 underline-offset-2 hover:decoration-emerald-600"
+								>
+									{item.title}
+								</a>
+								<span class="text-stone-400"> · {item.type}</span>
+							</li>
+						{/each}
+					</ul>
+				</section>
+			{/if}
+
+			<div class="mt-14 text-center">
+				<a
+					href="/learn/glossary"
+					class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
+				>
+					<span class="transition-transform group-hover:-translate-x-0.5">←</span>
+					<span class="font-story italic">All terms</span>
+				</a>
 			</div>
-
-			<!-- A definition has no sections worth listing, so the rail's upper
-			     half carries where the word actually gets used instead. -->
-			<LearnRail
-				withinTitle="Where this comes up"
-				within={data.usedIn.map((u) => ({ href: u.url, label: u.title, note: u.type }))}
-				sidewaysTitle="Related terms"
-				sideways={data.related.map((r) => ({
-					href: `/learn/glossary/${r.slug}`,
-					label: r.term
-				}))}
-				backLink={{ href: '/learn/glossary', label: 'All terms' }}
-			/>
 		</div>
-	</section>
+
+		<!-- A definition has no sections worth listing, so the rail's upper
+			     half carries where the word actually gets used instead. -->
+		<LearnRail
+			withinTitle="Where this comes up"
+			within={data.usedIn.map((u) => ({ href: u.url, label: u.title, note: u.type }))}
+			sidewaysTitle="Related terms"
+			sideways={data.related.map((r) => ({
+				href: `/learn/glossary/${r.slug}`,
+				label: r.term
+			}))}
+			backLink={{ href: '/learn/glossary', label: 'All terms' }}
+		/>
+	</div>
 </article>

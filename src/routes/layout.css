@@ -89,11 +89,14 @@ main div:not([class*='font-']) {
 	}
 }
 
-/* Thin centered hairline divider between sections. */
+/* Thin centered hairline divider between sections.
+   `margin-inline`, not `margin`: this rule is unlayered, so a shorthand would
+   beat Tailwind's layered `my-*` utilities and silently zero them — which is
+   exactly how a divider ended up drawn through a paragraph. */
 .hairline {
 	height: 1px;
 	background: linear-gradient(90deg, transparent, rgba(6, 78, 59, 0.25), transparent);
-	margin: 0 auto;
+	margin-inline: auto;
 }
 
 /* Emerald-tinted drop cap on long-form story openings. */
