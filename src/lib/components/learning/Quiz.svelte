@@ -13,7 +13,13 @@
 	 * completion in localStorage, so there is no consent question to answer.
 	 */
 	import { onMount } from 'svelte';
-	import { isComplete, score, type Answers, type QuizDefinition } from '$lib/learning/quiz';
+	import {
+		collectAsks,
+		isComplete,
+		score,
+		type Answers,
+		type QuizDefinition
+	} from '$lib/learning/quiz';
 	import { getQuizState, setQuizState } from '$lib/learning/storage';
 	import { getQuiz } from '../../../content/learning/quizzes';
 
@@ -42,6 +48,7 @@
 	});
 
 	const result = $derived(definition ? score(definition, answers) : null);
+	const asks = $derived(definition ? collectAsks(definition, answers) : []);
 	const complete = $derived(definition ? isComplete(definition, answers) : false);
 	const lastStep = $derived((definition?.questions.length ?? 1) - 1);
 
@@ -187,6 +194,17 @@
 											{option.explanation}
 										</span>
 									{/if}
+									{#if option.asks?.length}
+										<!--
+											Same rule as the explanations above: every option's questions are
+											in the server HTML, so the whole list is indexable and readable
+											with no JavaScript. Once hydrated they collapse, and the ones the
+											reader actually earned are gathered into a single list below.
+										-->
+										<span class="mt-1 block text-sm text-stone-600 {enhanced ? 'hidden' : ''}">
+											Ask: {option.asks.join(' · ')}
+										</span>
+									{/if}
 								</span>
 							</label>
 						{/each}
@@ -307,30 +325,49 @@
 						</table>
 					{/if}
 				{:else}
-					<p class="kicker mb-3 text-stone-500">Your profile</p>
-					<table class="w-full text-sm">
-						<caption class="sr-only">Your score in each dimension</caption>
-						<tbody>
-							{#each result?.dimensions ?? [] as item (item.dimension.id)}
-								<tr>
-									<th scope="row" class="w-44 py-1.5 pr-3 text-left font-normal text-stone-600">
-										{item.dimension.label}
-									</th>
-									<td class="py-1.5">
-										<span class="flex items-center gap-2">
-											<span
-												class="h-2 rounded-full bg-ecohubs-primary"
-												style="width: {Math.round(item.share * 100)}%"
-											></span>
-											<span class="shrink-0 text-xs text-stone-500">
-												{Math.round(item.share * 100)}%
-											</span>
-										</span>
-									</td>
-								</tr>
+					{#if asks.length}
+						<p class="kicker mb-3 text-stone-500">Questions to take with you</p>
+						<ol class="mb-8 space-y-2 text-[0.95rem] leading-relaxed text-stone-700">
+							{#each asks as ask, i (ask)}
+								<li class="flex gap-3">
+									<span class="font-mono text-xs text-stone-400"
+										>{String(i + 1).padStart(2, '0')}</span
+									>
+									<span>{ask}</span>
+								</li>
 							{/each}
-						</tbody>
-					</table>
+						</ol>
+						<p class="mb-8 font-story text-sm text-stone-500 italic">
+							No verdict, because there isn’t one. These are the things your answers make worth
+							asking, and a community that can answer them has thought about your situation.
+						</p>
+					{/if}
+					{#if definition.dimensions?.length}
+						<p class="kicker mb-3 text-stone-500">Your profile</p>
+						<table class="w-full text-sm">
+							<caption class="sr-only">Your score in each dimension</caption>
+							<tbody>
+								{#each result?.dimensions ?? [] as item (item.dimension.id)}
+									<tr>
+										<th scope="row" class="w-44 py-1.5 pr-3 text-left font-normal text-stone-600">
+											{item.dimension.label}
+										</th>
+										<td class="py-1.5">
+											<span class="flex items-center gap-2">
+												<span
+													class="h-2 rounded-full bg-ecohubs-primary"
+													style="width: {Math.round(item.share * 100)}%"
+												></span>
+												<span class="shrink-0 text-xs text-stone-500">
+													{Math.round(item.share * 100)}%
+												</span>
+											</span>
+										</td>
+									</tr>
+								{/each}
+							</tbody>
+						</table>
+					{/if}
 				{/if}
 			</div>
 		{/if}

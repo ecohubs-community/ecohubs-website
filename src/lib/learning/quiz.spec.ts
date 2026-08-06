@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { isComplete, score, type QuizDefinition } from './quiz';
+import { collectAsks, isComplete, score, type QuizDefinition } from './quiz';
 
 const weighted: QuizDefinition = {
 	id: 'fits',
@@ -164,5 +164,46 @@ describe('isComplete', () => {
 
 	it('treats an empty multi-select as unanswered', () => {
 		expect(isComplete(check, { q1: 'b', q2: [] })).toBe(false);
+	});
+});
+
+describe('collectAsks', () => {
+	const definition: QuizDefinition = {
+		id: 'asks',
+		mode: 'profile',
+		title: 'Asks',
+		intro: '',
+		questions: [
+			{
+				id: 'q1',
+				options: [
+					{ id: 'a', label: 'A', asks: ['First', 'Shared'] },
+					{ id: 'b', label: 'B', asks: ['Other'] }
+				],
+				prompt: 'One'
+			},
+			{
+				id: 'q2',
+				options: [
+					{ id: 'a', label: 'A', asks: ['Shared', 'Second'] },
+					{ id: 'b', label: 'B' }
+				],
+				prompt: 'Two'
+			}
+		]
+	};
+
+	it('gathers the questions the chosen answers earn, in question order', () => {
+		expect(collectAsks(definition, { q1: 'a', q2: 'a' })).toEqual(['First', 'Shared', 'Second']);
+	});
+
+	it('does not repeat a question two answers both raise', () => {
+		const list = collectAsks(definition, { q1: 'a', q2: 'a' });
+		expect(list.filter((q) => q === 'Shared')).toHaveLength(1);
+	});
+
+	it('ignores options that carry none, and unanswered questions', () => {
+		expect(collectAsks(definition, { q1: 'b', q2: 'b' })).toEqual(['Other']);
+		expect(collectAsks(definition, {})).toEqual([]);
 	});
 });

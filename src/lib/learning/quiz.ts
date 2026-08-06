@@ -25,6 +25,15 @@ export interface QuizOption {
 	correct?: boolean;
 	/** `check`: shown once the reader answers, right or wrong. */
 	explanation?: string;
+	/**
+	 * `profile`: questions this answer earns the reader.
+	 *
+	 * A profile quiz about a household's circumstances has no right answer and
+	 * no flattering verdict to deliver. What it can honestly produce is a list
+	 * of things to go and ask — different for someone with a toddler than for
+	 * someone with an ageing parent. See `collectAsks`.
+	 */
+	asks?: string[];
 }
 
 export interface QuizQuestion {
@@ -167,4 +176,25 @@ export function isComplete(definition: QuizDefinition, answers: Answers): boolea
 		const raw = answers[q.id];
 		return Array.isArray(raw) ? raw.length > 0 : Boolean(raw);
 	});
+}
+
+/**
+ * The questions a reader's answers have earned them, in question order.
+ *
+ * Deduplicated, because two answers may legitimately raise the same thing and
+ * a list that repeats itself looks broken rather than emphatic.
+ */
+export function collectAsks(definition: QuizDefinition, answers: Answers): string[] {
+	const seen = new Set<string>();
+	const list: string[] = [];
+	for (const question of definition.questions) {
+		for (const option of chosen(answers, question)) {
+			for (const ask of option.asks ?? []) {
+				if (seen.has(ask)) continue;
+				seen.add(ask);
+				list.push(ask);
+			}
+		}
+	}
+	return list;
 }
