@@ -162,7 +162,7 @@
 							</h2>
 						</div>
 						{#if ready}
-							<span class={META}>click a step to tick it off</span>
+							<span class={META}>click a step to open it · click its number to tick it off</span>
 						{/if}
 					</div>
 

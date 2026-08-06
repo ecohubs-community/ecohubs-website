@@ -8,10 +8,11 @@
 	 * finished in one place and unread in another — and would double-count a
 	 * lesson that two paths share.
 	 *
-	 * The design makes the whole row one button with an "Open lesson" link
-	 * nested inside it. Nested interactive elements are ambiguous to a keyboard
-	 * and invalid HTML, so the toggle and the link are siblings here: the row
-	 * ticks, the link below it opens.
+	 * The row is a link to the lesson, because that is what a reader means by
+	 * clicking a step. The numbered dot beside it is the toggle — it already
+	 * shows done state, so it is the obvious thing to press to change it. They
+	 * are siblings, not nested: two actions on one row need two controls, and a
+	 * button inside a link is invalid HTML and ambiguous to a keyboard.
 	 */
 	import Icon from '$lib/components/Icon.svelte';
 	import { META } from './card';
@@ -52,9 +53,13 @@
 		{@const isDone = done[i]}
 		{@const isNext = i === nextIndex}
 		<li class="relative pb-1 {i > 0 ? 'mt-2.5' : ''}">
-			<span
-				aria-hidden="true"
-				class="absolute top-3.5 -left-[38px] z-10 grid size-[31px] place-items-center rounded-full border font-mono text-[10.5px] transition-all duration-200
+			<!-- The dot is the toggle, and a sibling of the link rather than nested
+			     inside it: two actions on one row need two controls. -->
+			<button
+				type="button"
+				onclick={() => onToggle(step.slug)}
+				aria-pressed={isDone}
+				class="absolute top-3.5 -left-[38px] z-10 grid size-[31px] place-items-center rounded-full border font-mono text-[10.5px] transition-all duration-200 hover:border-ecohubs-primary
 				       {isDone
 					? 'border-ecohubs-primary bg-ecohubs-primary text-white'
 					: isNext
@@ -62,17 +67,18 @@
 						: 'border-stone-200 bg-white text-stone-500'}"
 			>
 				{#if isDone}
-					<Icon icon="tabler:check" width="13" height="13" />
+					<Icon icon="tabler:check" width="13" height="13" aria-hidden="true" />
 				{:else}
-					{String(i + 1).padStart(2, '0')}
+					<span aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
 				{/if}
-			</span>
+				<span class="sr-only">
+					Mark “{step.title}” as {isDone ? 'not done' : 'done'}
+				</span>
+			</button>
 
-			<button
-				type="button"
-				onclick={() => onToggle(step.slug)}
-				aria-pressed={isDone}
-				class="flex w-full items-start gap-4 rounded-2xl border px-4.5 py-3.5 text-left transition-colors
+			<a
+				href={step.href}
+				class="flex w-full items-start gap-4 rounded-2xl border px-4.5 py-3.5 transition-colors
 				       {isNext
 					? 'border-ecohubs-primary/30 bg-white'
 					: 'border-transparent hover:border-stone-200/90 hover:bg-[#faf9f5]'}"
@@ -88,16 +94,8 @@
 					<span class="mt-0.5 block max-w-[56ch] text-[13.5px] leading-[1.55] text-stone-500">
 						{step.summary}
 					</span>
-					<span class="sr-only">{isDone ? 'Done' : 'Not done'} — click to change</span>
 				</span>
 				<span class="{META} hidden pt-1 whitespace-nowrap sm:block">{step.minutes} min</span>
-			</button>
-
-			<a
-				href={step.href}
-				class="mt-1 ml-4.5 inline-block text-[12.5px] text-ecohubs-primary hover:text-ecohubs-dark"
-			>
-				Open lesson →
 			</a>
 		</li>
 	{/each}
