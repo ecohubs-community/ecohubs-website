@@ -59,10 +59,18 @@ describe('content index', () => {
 });
 
 describe('derived views', () => {
+	/**
+	 * Asserts the ordering rule rather than today's lesson count — the previous
+	 * version hard-coded `[1, 2]` and broke the moment a lesson was written,
+	 * which is the opposite of what a test about ordering should do.
+	 */
 	it('orders lessons within a guide', () => {
 		expect(guideBySlug.get('intentional-communities')).toBeDefined();
-		const ordered = lessonsOfGuide('intentional-communities');
-		expect(ordered.map((l) => l.frontmatter.order)).toEqual([1, 2]);
+		const orders = lessonsOfGuide('intentional-communities').map((l) => l.frontmatter.order);
+
+		expect(orders.length).toBeGreaterThan(1);
+		expect(orders).toEqual([...orders].sort((a, b) => a - b));
+		expect(new Set(orders).size, 'duplicate order values').toBe(orders.length);
 	});
 
 	it('links neighbours within a guide', () => {
