@@ -27,12 +27,20 @@
 	);
 	const jsonLd = $derived(topicArticle(topic));
 
-	// "2 August 2026" — spelled out, because the mono meta line is read, not scanned.
+	/**
+	 * "2 August 2026" — spelled out, because the mono meta line is read rather
+	 * than scanned.
+	 *
+	 * Formatted in UTC on purpose. `updated` is a plain calendar date, which
+	 * `new Date()` parses as UTC midnight; formatting that in the reader's zone
+	 * showed the day before to everyone west of UTC.
+	 */
 	const formatted = $derived(
 		new Date(topic.updated).toLocaleDateString('en-GB', {
 			day: 'numeric',
 			month: 'long',
-			year: 'numeric'
+			year: 'numeric',
+			timeZone: 'UTC'
 		})
 	);
 </script>

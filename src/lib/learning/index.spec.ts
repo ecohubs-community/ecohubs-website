@@ -18,6 +18,7 @@ import {
 	urlFor,
 	validationIssues
 } from './index';
+import { isIndexable } from './validate';
 
 describe('content index', () => {
 	it('loads content files and parses their frontmatter', () => {
@@ -155,12 +156,16 @@ describe('sitemap', () => {
 		expect(sitemapEntries().map((e) => e.url)).toContain('/learn/glossary/consent');
 	});
 
-	it('excludes every draft', () => {
-		const urls = sitemapEntries().map((e) => e.url);
-		const drafts = allEntries
-			.filter((e) => e.frontmatter.status !== 'published')
-			.map((e) => urlFor(e));
-		for (const url of drafts) expect(urls).not.toContain(url);
+	/**
+	 * Stated as an equivalence rather than "no drafts appear": with everything
+	 * published that loop had nothing to iterate and the test passed while
+	 * checking nothing. This version stays meaningful whatever the content is.
+	 */
+	it('lists exactly the indexable entries — no drafts, no stubs', () => {
+		const urls = new Set(sitemapEntries().map((e) => e.url));
+		const wrong = allEntries.filter((e) => urls.has(urlFor(e)) !== isIndexable(e));
+		expect(wrong.map((e) => e.path)).toEqual([]);
+		expect(urls.size).toBeGreaterThan(0);
 	});
 
 	it('carries a lastmod for every entry, since that is the field Google reads', () => {

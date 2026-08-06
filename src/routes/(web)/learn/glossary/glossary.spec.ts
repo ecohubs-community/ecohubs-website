@@ -8,7 +8,7 @@
 import { describe, expect, it } from 'vitest';
 import { load as loadIndex } from './+page.server';
 import { load as loadTerm, entries } from './[slug]/+page.server';
-import { terms } from '$lib/learning';
+import { terms, topicBySlug } from '$lib/learning';
 import { isIndexable } from '$lib/learning/validate';
 
 /** Whatever is currently unpublished — named slugs would make these tests fail
@@ -99,12 +99,20 @@ describe('term page', () => {
 		expect(leaked).toEqual([]);
 	});
 
-	it('never links a topic page that does not exist yet', async () => {
-		const data = await call<Promise<{ topicPublished: boolean; topicTitle: string }>>(loadTerm, {
-			slug: 'consent'
-		});
-		expect(data.topicPublished).toBe(false);
-		expect(data.topicTitle).toBe('Community Governance'); // still named, just not linked
+	it('offers the topic as a link only once that page is published', async () => {
+		const wrong: string[] = [];
+
+		for (const term of terms.filter((t) => t.frontmatter.status === 'published')) {
+			const data = await call<Promise<{ topicPublished: boolean; topicTitle: string }>>(loadTerm, {
+				slug: term.frontmatter.slug
+			});
+			const published = topicBySlug.get(term.frontmatter.topic)?.frontmatter.status === 'published';
+			// Named either way — only the link depends on it.
+			if (data.topicPublished !== published || !data.topicTitle) {
+				wrong.push(term.frontmatter.slug);
+			}
+		}
+		expect(wrong).toEqual([]);
 	});
 
 	it('prerenders one entry per published term, and no drafts', () => {
