@@ -11,6 +11,29 @@ interface SitemapRoute {
 	lastmod?: string;
 }
 
+/**
+ * The Learning Hub's section index pages.
+ *
+ * Derived rather than written out one by one: each was previously its own
+ * near-identical block, and adding `/learn/guides` meant remembering to write a
+ * fifth — which is exactly how it came to be missing.
+ *
+ * A section appears only once it holds something indexable, and its `lastmod`
+ * is the newest thing it contains. An index over nothing but stubs is itself
+ * thin, and dating it "today" would be the kind of lie the note below warns of.
+ */
+function learnSectionRoutes(): SitemapRoute[] {
+	const all = learningEntries();
+	return ['/learn/guides', '/learn/glossary', '/learn/paths', '/learn/topics'].flatMap((path) => {
+		const lastmod = all
+			.filter((e) => e.url.startsWith(`${path}/`))
+			.map((e) => e.lastmod)
+			.sort()
+			.at(-1);
+		return lastmod ? [{ path, priority: '0.6', changefreq: 'weekly', lastmod }] : [];
+	});
+}
+
 /*
  * `lastmod` is the one hint here Google actually reads (priority and changefreq
  * are ignored). It is only useful while it stays truthful, so these are real
@@ -87,12 +110,15 @@ export const GET: RequestHandler = async () => {
 			changefreq: 'monthly' as const,
 			lastmod: post.date
 		})),
-		...Array.from(tagLastmod, ([slug, lastmod]): SitemapRoute => ({
-			path: `/blog/tag/${slug}`,
-			priority: '0.5',
-			changefreq: 'weekly',
-			lastmod
-		})),
+		...Array.from(
+			tagLastmod,
+			([slug, lastmod]): SitemapRoute => ({
+				path: `/blog/tag/${slug}`,
+				priority: '0.5',
+				changefreq: 'weekly',
+				lastmod
+			})
+		),
 		...(authors.length
 			? [
 					{
@@ -134,36 +160,7 @@ export const GET: RequestHandler = async () => {
 							.sort()
 							.at(-1)
 					},
-					{
-						path: '/learn/glossary',
-						priority: '0.6',
-						changefreq: 'weekly',
-						lastmod: learningEntries()
-							.filter((e) => e.url.startsWith('/learn/glossary/'))
-							.map((e) => e.lastmod)
-							.sort()
-							.at(-1)
-					},
-					{
-						path: '/learn/paths',
-						priority: '0.6',
-						changefreq: 'weekly',
-						lastmod: learningEntries()
-							.filter((e) => e.url.startsWith('/learn/paths/'))
-							.map((e) => e.lastmod)
-							.sort()
-							.at(-1)
-					},
-					{
-						path: '/learn/topics',
-						priority: '0.6',
-						changefreq: 'weekly',
-						lastmod: learningEntries()
-							.filter((e) => e.url.startsWith('/learn/topics/'))
-							.map((e) => e.lastmod)
-							.sort()
-							.at(-1)
-					}
+					...learnSectionRoutes()
 				] as SitemapRoute[])
 			: []),
 		...learningEntries().map(

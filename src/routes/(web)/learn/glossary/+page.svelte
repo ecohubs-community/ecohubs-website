@@ -1,6 +1,7 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { LearnRail } from '$lib/components/learning';
 	import { definedTermSet, learningBreadcrumbs } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -60,7 +61,10 @@
 		2. TERMS
 ═══════════════════════════════════════════════════════════════════ -->
 <section class="py-14 md:py-20">
-	<div class="mx-auto max-w-4xl px-6 lg:px-8">
+	<div
+			class="mx-auto grid max-w-4xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		>
+			<div class="min-w-0 lg:order-2">
 		{#if data.groups.length}
 			<!-- A–Z rail. Anchors rather than a filter, so it works without JS. -->
 			<nav aria-label="Jump to letter" class="mb-12 flex flex-wrap gap-2">
@@ -115,5 +119,8 @@
 				<span class="font-story italic">The learning hub</span>
 			</a>
 		</div>
-	</div>
-</section>
+			</div>
+
+			<LearnRail />
+		</div>
+	</section>

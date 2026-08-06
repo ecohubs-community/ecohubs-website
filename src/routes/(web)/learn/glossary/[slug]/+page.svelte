@@ -2,7 +2,7 @@
 	import type { Component } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import { Prose } from '$lib/components/learning';
+	import { LearnRail, Prose } from '$lib/components/learning';
 	import { definedTerm, learningBreadcrumbs } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -74,61 +74,79 @@
 			2. BODY
 	═══════════════════════════════════════════════════════════════ -->
 	<section class="pt-12">
-		<div class="mx-auto max-w-3xl px-6 lg:px-8">
-			<!-- A term has one version, so it sits outside the depth system. -->
-			<Prose layer={null}>
-				<Content />
-			</Prose>
+		<!-- Article first in source order; the rail is placed left by grid order. -->
+		<div
+			class="mx-auto grid max-w-3xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		>
+			<div class="min-w-0 lg:order-2">
+				<!-- A term has one version, so it sits outside the depth system. -->
+				<Prose layer={null}>
+					<Content />
+				</Prose>
 
-			{#if data.related.length}
-				<section class="mt-14 border-t border-stone-200 pt-8">
-					<h2 class="kicker mb-4 text-stone-500">Related terms</h2>
-					<dl class="grid gap-4 sm:grid-cols-2">
-						{#each data.related as item (item.slug)}
-							<div class="rounded-2xl border border-stone-200/70 bg-white p-5">
-								<dt class="font-serif text-lg text-ecohubs-deep">
+				{#if data.related.length}
+					<section class="mt-14 border-t border-stone-200 pt-8">
+						<h2 class="kicker mb-4 text-stone-500">Related terms</h2>
+						<dl class="grid gap-4 sm:grid-cols-2">
+							{#each data.related as item (item.slug)}
+								<div class="rounded-2xl border border-stone-200/70 bg-white p-5">
+									<dt class="font-serif text-lg text-ecohubs-deep">
+										<a
+											href="/learn/glossary/{item.slug}"
+											class="transition-colors hover:text-ecohubs-primary"
+										>
+											{item.term}
+										</a>
+									</dt>
+									<dd class="mt-2 text-sm leading-relaxed text-stone-700">{item.short}</dd>
+								</div>
+							{/each}
+						</dl>
+					</section>
+				{/if}
+
+				{#if data.usedIn.length}
+					<section class="mt-12">
+						<h2 class="kicker mb-4 text-stone-500">Where this comes up</h2>
+						<ul class="space-y-2 text-sm">
+							{#each data.usedIn as item (item.url)}
+								<li>
 									<a
-										href="/learn/glossary/{item.slug}"
-										class="transition-colors hover:text-ecohubs-primary"
+										href={item.url}
+										class="text-ecohubs-dark underline decoration-emerald-300 underline-offset-2 hover:decoration-emerald-600"
 									>
-										{item.term}
+										{item.title}
 									</a>
-								</dt>
-								<dd class="mt-2 text-sm leading-relaxed text-stone-700">{item.short}</dd>
-							</div>
-						{/each}
-					</dl>
-				</section>
-			{/if}
+									<span class="text-stone-400"> · {item.type}</span>
+								</li>
+							{/each}
+						</ul>
+					</section>
+				{/if}
 
-			{#if data.usedIn.length}
-				<section class="mt-12">
-					<h2 class="kicker mb-4 text-stone-500">Where this comes up</h2>
-					<ul class="space-y-2 text-sm">
-						{#each data.usedIn as item (item.url)}
-							<li>
-								<a
-									href={item.url}
-									class="text-ecohubs-dark underline decoration-emerald-300 underline-offset-2 hover:decoration-emerald-600"
-								>
-									{item.title}
-								</a>
-								<span class="text-stone-400"> · {item.type}</span>
-							</li>
-						{/each}
-					</ul>
-				</section>
-			{/if}
-
-			<div class="mt-14 text-center">
-				<a
-					href="/learn/glossary"
-					class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
-				>
-					<span class="transition-transform group-hover:-translate-x-0.5">←</span>
-					<span class="font-story italic">All terms</span>
-				</a>
+				<div class="mt-14 text-center">
+					<a
+						href="/learn/glossary"
+						class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
+					>
+						<span class="transition-transform group-hover:-translate-x-0.5">←</span>
+						<span class="font-story italic">All terms</span>
+					</a>
+				</div>
 			</div>
+
+			<!-- A definition has no sections worth listing, so the rail's upper
+			     half carries where the word actually gets used instead. -->
+			<LearnRail
+				withinTitle="Where this comes up"
+				within={data.usedIn.map((u) => ({ href: u.url, label: u.title, note: u.type }))}
+				sidewaysTitle="Related terms"
+				sideways={data.related.map((r) => ({
+					href: `/learn/glossary/${r.slug}`,
+					label: r.term
+				}))}
+				backLink={{ href: '/learn/glossary', label: 'All terms' }}
+			/>
 		</div>
 	</section>
 </article>

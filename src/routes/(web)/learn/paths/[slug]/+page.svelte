@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { LearnRail } from '$lib/components/learning';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { courseSchema, learningBreadcrumbs } from '$lib/learning/schema';
@@ -58,57 +59,77 @@
 	<div class="hairline mx-auto max-w-3xl"></div>
 
 	<section class="pt-12">
-		<div class="mx-auto max-w-3xl px-6 lg:px-8">
-			<!-- An ordered list, because the order is the point of a path. -->
-			<ol class="space-y-3">
-				{#each data.steps as step, i (step.slug)}
-					<li>
-						<a
-							href="/learn/guides/{step.guide}/{step.slug}"
-							class="group flex gap-5 rounded-2xl border border-stone-200/70 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:soft-shadow"
-						>
-							<span class="shrink-0 font-story text-lg text-stone-400 italic">
-								{String(i + 1).padStart(2, '0')}
-							</span>
-							<span class="min-w-0">
-								<span
-									class="block font-serif text-lg text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
-								>
-									{step.title}
+		<!-- Article first in source order; the rail is placed left by grid order. -->
+		<div
+			class="mx-auto grid max-w-3xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		>
+			<div class="min-w-0 lg:order-2">
+				<!-- An ordered list, because the order is the point of a path. -->
+				<ol class="space-y-3">
+					{#each data.steps as step, i (step.slug)}
+						<li>
+							<a
+								href="/learn/guides/{step.guide}/{step.slug}"
+								class="group flex gap-5 rounded-2xl border border-stone-200/70 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:soft-shadow"
+							>
+								<span class="shrink-0 font-story text-lg text-stone-400 italic">
+									{String(i + 1).padStart(2, '0')}
 								</span>
-								<span class="mt-1 block text-sm leading-relaxed text-stone-600">
-									{step.summary}
+								<span class="min-w-0">
+									<span
+										class="block font-serif text-lg text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
+									>
+										{step.title}
+									</span>
+									<span class="mt-1 block text-sm leading-relaxed text-stone-600">
+										{step.summary}
+									</span>
+									<span class="mt-2 block text-xs text-stone-400">{step.minutes} min</span>
 								</span>
-								<span class="mt-2 block text-xs text-stone-400">{step.minutes} min</span>
-							</span>
-						</a>
-					</li>
-				{/each}
-			</ol>
+							</a>
+						</li>
+					{/each}
+				</ol>
 
-			{#if path.endsAt}
-				<!-- Every path ends somewhere deliberate. This is the whole point of
+				{#if path.endsAt}
+					<!-- Every path ends somewhere deliberate. This is the whole point of
 				     curating one: the reader arrives somewhere useful. -->
-				<div class="mt-10 rounded-2xl border border-emerald-100 bg-emerald-50/40 p-6 sm:p-8">
-					<p class="kicker mb-2 text-emerald-700">When you reach the end</p>
+					<div class="mt-10 rounded-2xl border border-emerald-100 bg-emerald-50/40 p-6 sm:p-8">
+						<p class="kicker mb-2 text-emerald-700">When you reach the end</p>
+						<a
+							href={path.endsAt.href}
+							class="font-serif text-xl text-ecohubs-deep underline decoration-emerald-300 underline-offset-4 transition-colors hover:decoration-emerald-600"
+						>
+							{path.endsAt.label}
+						</a>
+					</div>
+				{/if}
+
+				<div class="mt-14 text-center">
 					<a
-						href={path.endsAt.href}
-						class="font-serif text-xl text-ecohubs-deep underline decoration-emerald-300 underline-offset-4 transition-colors hover:decoration-emerald-600"
+						href="/learn/paths"
+						class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
 					>
-						{path.endsAt.label}
+						<span class="transition-transform group-hover:-translate-x-0.5">←</span>
+						<span class="font-story italic">All paths</span>
 					</a>
 				</div>
-			{/if}
-
-			<div class="mt-14 text-center">
-				<a
-					href="/learn/paths"
-					class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
-				>
-					<span class="transition-transform group-hover:-translate-x-0.5">←</span>
-					<span class="font-story italic">All paths</span>
-				</a>
 			</div>
+
+			<!-- A path *is* its sequence, so the rail carries the steps and marks
+			     how far along each one sits. -->
+			<LearnRail
+				withinTitle="The path"
+				within={data.steps.map((step, i) => ({
+					href: `/learn/guides/${step.guide}/${step.slug}`,
+					label: step.title,
+					marker: String(i + 1),
+					note: `${step.minutes} min`
+				}))}
+				sidewaysTitle="Other paths"
+				sideways={data.others.map((o) => ({ href: `/learn/paths/${o.slug}`, label: o.title }))}
+				backLink={{ href: '/learn/paths', label: 'All paths' }}
+			/>
 		</div>
 	</section>
 </article>

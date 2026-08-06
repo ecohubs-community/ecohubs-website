@@ -8,6 +8,7 @@
 	 * deleted stops appearing rather than becoming a dead link.
 	 */
 	import { onMount } from 'svelte';
+	import { LearnRail } from '$lib/components/learning';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { learningBreadcrumbs } from '$lib/learning/schema';
@@ -34,7 +35,11 @@
 	}
 
 	function refresh() {
-		saved = resolve(getBookmarks().sort((a, b) => b.savedAt - a.savedAt).map((b) => b.id));
+		saved = resolve(
+			getBookmarks()
+				.sort((a, b) => b.savedAt - a.savedAt)
+				.map((b) => b.id)
+		);
 		read = resolve(Object.keys(getProgress()));
 	}
 
@@ -69,9 +74,7 @@
 			<div class="kicker text-emerald-700">Saved</div>
 			<Breadcrumbs items={breadcrumbs} />
 		</div>
-		<h1
-			class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl"
-		>
+		<h1 class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl">
 			What you were
 			<em class="font-story font-normal italic text-ecohubs-primary">reading.</em>
 		</h1>
@@ -85,71 +88,80 @@
 <div class="hairline mx-auto max-w-4xl"></div>
 
 <section class="py-14 md:py-20">
-	<div class="mx-auto max-w-4xl px-6 lg:px-8">
-		{#if !ready}
-			<p class="font-story text-lg text-stone-500 italic">Looking…</p>
-		{:else if !saved.length && !read.length}
-			<p class="font-story text-lg text-stone-500 italic">
-				Nothing saved yet. Use “Save” on any page and it will appear here.
-			</p>
-			<p class="mt-6">
-				<a
-					href="/learn"
-					class="text-sm text-ecohubs-dark underline decoration-emerald-300 underline-offset-2 hover:decoration-emerald-600"
-				>
-					Start at the hub →
-				</a>
-			</p>
-		{:else}
-			{#if saved.length}
-				<div class="mb-14">
-					<h2 class="kicker mb-5 text-emerald-700">Saved</h2>
-					<ul class="grid gap-5 sm:grid-cols-2">
-						{#each saved as item (item.slug)}
-							<li>
-								<a
-									href={item.url}
-									class="group block h-full rounded-2xl border border-stone-200/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:soft-shadow"
-								>
-									<h3
-										class="font-serif text-lg text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
+	<!-- Content first in source order; the rail is placed left by grid order. -->
+	<div
+		class="mx-auto grid max-w-4xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+	>
+		<div class="min-w-0 lg:order-2">
+			{#if !ready}
+				<p class="font-story text-lg text-stone-500 italic">Looking…</p>
+			{:else if !saved.length && !read.length}
+				<p class="font-story text-lg text-stone-500 italic">
+					Nothing saved yet. Use “Save” on any page and it will appear here.
+				</p>
+				<p class="mt-6">
+					<a
+						href="/learn"
+						class="text-sm text-ecohubs-dark underline decoration-emerald-300 underline-offset-2 hover:decoration-emerald-600"
+					>
+						Start at the hub →
+					</a>
+				</p>
+			{:else}
+				{#if saved.length}
+					<div class="mb-14">
+						<h2 class="kicker mb-5 text-emerald-700">Saved</h2>
+						<ul class="grid gap-5 sm:grid-cols-2">
+							{#each saved as item (item.slug)}
+								<li>
+									<a
+										href={item.url}
+										class="group block h-full rounded-2xl border border-stone-200/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:soft-shadow"
+									>
+										<h3
+											class="font-serif text-lg text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
+										>
+											{item.title}
+										</h3>
+										<p class="mt-2 text-sm leading-relaxed text-stone-700">{item.summary}</p>
+										<p class="mt-3 text-xs text-stone-400">{item.type}</p>
+									</a>
+								</li>
+							{/each}
+						</ul>
+					</div>
+				{/if}
+
+				{#if read.length}
+					<div class="mb-14">
+						<h2 class="kicker mb-5 text-emerald-700">Already read</h2>
+						<ul class="space-y-2 text-sm">
+							{#each read as item (item.slug)}
+								<li>
+									<a
+										href={item.url}
+										class="text-ecohubs-dark underline decoration-emerald-300 underline-offset-2 hover:decoration-emerald-600"
 									>
 										{item.title}
-									</h3>
-									<p class="mt-2 text-sm leading-relaxed text-stone-700">{item.summary}</p>
-									<p class="mt-3 text-xs text-stone-400">{item.type}</p>
-								</a>
-							</li>
-						{/each}
-					</ul>
-				</div>
-			{/if}
+									</a>
+								</li>
+							{/each}
+						</ul>
+					</div>
+				{/if}
 
-			{#if read.length}
-				<div class="mb-14">
-					<h2 class="kicker mb-5 text-emerald-700">Already read</h2>
-					<ul class="space-y-2 text-sm">
-						{#each read as item (item.slug)}
-							<li>
-								<a
-									href={item.url}
-									class="text-ecohubs-dark underline decoration-emerald-300 underline-offset-2 hover:decoration-emerald-600"
-								>
-									{item.title}
-								</a>
-							</li>
-						{/each}
-					</ul>
-				</div>
+				<button
+					type="button"
+					onclick={clear}
+					class="text-sm text-stone-500 underline underline-offset-2 hover:text-ecohubs-deep"
+				>
+					Clear everything stored in this browser
+				</button>
 			{/if}
+		</div>
 
-			<button
-				type="button"
-				onclick={clear}
-				class="text-sm text-stone-500 underline underline-offset-2 hover:text-ecohubs-deep"
-			>
-				Clear everything stored in this browser
-			</button>
-		{/if}
+		<!-- Nothing page-specific belongs in the lower half: what you saved is
+		     already the whole page. The section nav is the point. -->
+		<LearnRail />
 	</div>
 </section>

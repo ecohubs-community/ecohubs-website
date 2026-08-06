@@ -13,6 +13,7 @@ export { default as Figure } from './Figure.svelte';
 export { default as DepthSwitch } from './DepthSwitch.svelte';
 export { default as Gloss } from './Gloss.svelte';
 export { default as LearnRail } from './LearnRail.svelte';
+export { default as LearnTabs } from './LearnTabs.svelte';
 export { default as Prose } from './Prose.svelte';
 export { default as Quick } from './Quick.svelte';
 export { default as Quiz } from './Quiz.svelte';

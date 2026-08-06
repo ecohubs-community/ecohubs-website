@@ -149,6 +149,9 @@ Content lives in `src/content/learning/**/*.md` — markdown with frontmatter, i
 - **Never hide content by default.** Hiding is `html[data-depth=…]` set by the pre-paint script in `app.html`, and only from an explicitly stored choice. `getDepth()` returns `null` when unset for exactly this reason — a `|| 'standard'` fallback would hide the deep layer from Googlebot, which runs JS with empty storage. Same rule as the cookie banner and the hero cascade.
 - **`isIndexable()` gates the sitemap and page meta**, so thin or draft content stays reachable but unindexed. Drafts must be filtered in all four places: route, listings, sitemap, search index.
 - **All `localStorage` goes through `learning/storage.ts`** — versioned keys, every access wrapped, because storage throws in private mode.
+- **Search is built from source markdown, not rendered HTML** ([`learning/search.ts`](./src/lib/learning/search.ts)). That is what makes it depth-blind: `<Deep>` text is findable by a reader who has never opened deep mode. The index is emitted as `/learn/search-index.json` and fetched **only** on `/learn/search` — never import it from a page.
+- **Every learning page carries the section nav**: `<LearnRail>` on `lg` and up, `<LearnTabs>` (in the `/learn` layout) below it. A page that renders its own sidebar without the rail breaks the hub's navigation — the reason `/learn`, `/learn/topics` and the detail pages each had to be fixed once already.
+- **`LEARN_SECTIONS` may only name routes that exist.** Everything is prerendered, so a link to a missing route fails the build rather than 404ing in production — which is how `/learn/search` announced itself.
 
 ## External links
 

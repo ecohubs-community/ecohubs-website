@@ -34,8 +34,15 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	if (steps.length === 0) throw error(404, 'This path has no published lessons yet');
 
+	// Sibling paths, for the rail's lower half — a reader who picked the wrong
+	// path should not have to go back to the index to find the right one.
+	const others = publishedPaths
+		.filter((p) => p.frontmatter.slug !== fm.slug)
+		.map((p) => ({ slug: p.frontmatter.slug, title: p.frontmatter.title }));
+
 	return {
 		path: fm,
+		others,
 		steps,
 		minutes: steps.reduce((sum, s) => sum + s.minutes, 0),
 		// A path is curation, so it needs steps rather than prose to be worth

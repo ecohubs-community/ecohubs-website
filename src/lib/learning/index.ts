@@ -21,6 +21,7 @@ import type {
 	TopicFrontmatter
 } from './types';
 import { formatIssues, isIndexable, validateContent } from './validate';
+import { countWords } from './text';
 import { extractHeadings } from './headings.js';
 
 /* ── Loading ─────────────────────────────────────────────────────────────── */
@@ -37,33 +38,6 @@ const sources = import.meta.glob<string>('/src/content/learning/**/*.md', {
 	query: '?raw',
 	import: 'default'
 });
-
-/**
- * Word count of the reader-visible body.
- *
- * Naively stripping tags would score a comparison page near zero, because its
- * table lives in `<Compare rows={…} />` props — and on that kind of page the
- * table *is* the content. So prose written inside component props is counted
- * too: quoted strings of more than two words, excluding URLs and paths.
- *
- * Drives reading time and the `isIndexable` threshold, so undercounting here
- * would keep genuinely substantial pages out of the sitemap.
- */
-function countWords(raw: string): number {
-	const body = raw.replace(/^---\r?\n[\s\S]*?\r?\n---/, '').replace(/```[\s\S]*?```/g, ' ');
-
-	// Prose written as component props, e.g. a Compare row or a Sources title.
-	const inProps: string[] = [];
-	for (const tag of body.match(/<[A-Z][^>]*>/gs) ?? []) {
-		for (const [, quoted] of tag.matchAll(/['"]([^'"]{6,})['"]/g)) {
-			const looksLikeUrl = /^(https?:|\/|#|mailto:)/.test(quoted) || !quoted.includes(' ');
-			if (!looksLikeUrl) inProps.push(quoted);
-		}
-	}
-
-	const prose = body.replace(/<[^>]+>/g, ' ').replace(/[#*_>`|-]/g, ' ');
-	return [...prose.split(/\s+/), ...inProps.join(' ').split(/\s+/)].filter(Boolean).length;
-}
 
 /**
  * YAML turns an unquoted `2026-08-05` into a date, which mdsvex then serialises
@@ -150,7 +124,10 @@ export const pathBySlug = bySlug(paths);
 export const caseBySlug = bySlug(cases);
 
 /** Lessons of a guide, in author-defined order. */
-export function lessonsOfGuide(guideSlug: string, includeDrafts = false): Typed<LessonFrontmatter>[] {
+export function lessonsOfGuide(
+	guideSlug: string,
+	includeDrafts = false
+): Typed<LessonFrontmatter>[] {
 	return (includeDrafts ? lessons : publishedLessons)
 		.filter((l) => l.frontmatter.guide === guideSlug)
 		.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
@@ -202,17 +179,19 @@ export const termUsage: ReadonlyMap<string, ContentEntry[]> = (() => {
  * finished, and showing the definition is better than showing nothing. The
  * *link* is what respects publication status.
  */
-export const termDefinitions: ReadonlyMap<string, { term: string; short: string; published: boolean }> =
-	new Map(
-		terms.map((t) => [
-			t.frontmatter.slug,
-			{
-				term: t.frontmatter.term,
-				short: t.frontmatter.short,
-				published: t.frontmatter.status === 'published'
-			}
-		])
-	);
+export const termDefinitions: ReadonlyMap<
+	string,
+	{ term: string; short: string; published: boolean }
+> = new Map(
+	terms.map((t) => [
+		t.frontmatter.slug,
+		{
+			term: t.frontmatter.term,
+			short: t.frontmatter.short,
+			published: t.frontmatter.status === 'published'
+		}
+	])
+);
 
 /* ── Helpers shared with routes and the sitemap ──────────────────────────── */
 

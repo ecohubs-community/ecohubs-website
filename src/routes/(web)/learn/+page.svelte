@@ -1,6 +1,7 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { LearnRail } from '$lib/components/learning';
 	import { learningBreadcrumbs } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -47,7 +48,10 @@
 <div class="hairline mx-auto max-w-4xl"></div>
 
 <section class="py-14 md:py-20">
-	<div class="mx-auto max-w-4xl px-6 lg:px-8">
+	<div
+			class="mx-auto grid max-w-4xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		>
+			<div class="min-w-0 lg:order-2">
 		{#if data.topics.length}
 			<div class="mb-14">
 				<h2 class="kicker mb-5 text-emerald-700">Browse by topic</h2>
@@ -165,5 +169,8 @@
 		{#if !data.topics.length && !data.paths.length && !data.comparisons.length && !data.glossaryCount}
 			<p class="font-story text-lg text-stone-500 italic">The first entries are being written.</p>
 		{/if}
-	</div>
-</section>
+			</div>
+
+			<LearnRail />
+		</div>
+	</section>

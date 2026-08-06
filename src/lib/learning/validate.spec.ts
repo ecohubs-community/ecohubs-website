@@ -53,7 +53,10 @@ describe('validateContent — references', () => {
 	});
 
 	it('catches a terms: entry with no glossary file', () => {
-		const issues = validateContent([topic('a-topic'), entry({ type: 'topic', slug: 'b', terms: ['nope'] })]);
+		const issues = validateContent([
+			topic('a-topic'),
+			entry({ type: 'topic', slug: 'b', terms: ['nope'] })
+		]);
 		expect(issues.some((i) => i.message.includes('unknown glossary term "nope"'))).toBe(true);
 	});
 
@@ -85,7 +88,11 @@ describe('validateContent — references', () => {
 			short: 'x',
 			status: 'draft'
 		});
-		const issues = validateContent([topic('t'), draftTerm, entry({ type: 'topic', slug: 'b', terms: ['consent'] })]);
+		const issues = validateContent([
+			topic('t'),
+			draftTerm,
+			entry({ type: 'topic', slug: 'b', terms: ['consent'] })
+		]);
 		expect(issues).toEqual([]);
 	});
 });
@@ -98,7 +105,10 @@ describe('validateContent — structural rules', () => {
 
 	it('allows the same slug across different types', () => {
 		// A guide and its topic legitimately share a slug.
-		const issues = validateContent([topic('intentional-communities'), entry({ type: 'guide', slug: 'intentional-communities', topic: 'intentional-communities' })]);
+		const issues = validateContent([
+			topic('intentional-communities'),
+			entry({ type: 'guide', slug: 'intentional-communities', topic: 'intentional-communities' })
+		]);
 		expect(issues).toEqual([]);
 	});
 
@@ -144,12 +154,18 @@ describe('isIndexable', () => {
 	});
 
 	it('excludes a published but too-thin term', () => {
-		const thin = entry({ type: 'term', slug: 'x', term: 'X', topic: 't', short: 'd' }, MIN_WORDS.term - 1);
+		const thin = entry(
+			{ type: 'term', slug: 'x', term: 'X', topic: 't', short: 'd' },
+			MIN_WORDS.term - 1
+		);
 		expect(isIndexable(thin)).toBe(false);
 	});
 
 	it('includes a published term of sufficient length', () => {
-		const full = entry({ type: 'term', slug: 'x', term: 'X', topic: 't', short: 'd' }, MIN_WORDS.term);
+		const full = entry(
+			{ type: 'term', slug: 'x', term: 'X', topic: 't', short: 'd' },
+			MIN_WORDS.term
+		);
 		expect(isIndexable(full)).toBe(true);
 	});
 

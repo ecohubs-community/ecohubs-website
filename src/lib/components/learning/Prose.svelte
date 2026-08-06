@@ -30,8 +30,7 @@
 	// Standard and deep are handled by the layer components themselves.
 	const depthRules =
 		layer === 'standard'
-			? '[html[data-depth=quick]_&>*:not([data-depth-layer=quick])]:hidden ' +
-				'print:[&>*]:block!'
+			? '[html[data-depth=quick]_&>*:not([data-depth-layer=quick])]:hidden ' + 'print:[&>*]:block!'
 			: '';
 </script>
 

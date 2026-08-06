@@ -129,8 +129,7 @@ export function score(definition: QuizDefinition, answers: Answers): QuizResult 
 		if (definition.mode === 'check' && picked.length > 0) {
 			const expected = question.options.filter((o) => o.correct).map((o) => o.id);
 			const got = picked.map((o) => o.id);
-			const same =
-				expected.length === got.length && expected.every((id) => got.includes(id));
+			const same = expected.length === got.length && expected.every((id) => got.includes(id));
 			if (same) correct++;
 		}
 	}

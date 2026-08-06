@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import { setDefinitions } from '$lib/learning/context';
+	import LearnTabs from '$lib/components/learning/LearnTabs.svelte';
 	import { getBookmarks } from '$lib/learning/storage';
 	import type { LayoutData } from './$types';
 
@@ -41,5 +42,8 @@
 		</a>
 	</div>
 {/if}
+
+<!-- Mobile counterpart of the rail's section nav. -->
+<div class="pt-20"><LearnTabs /></div>
 
 {@render children()}

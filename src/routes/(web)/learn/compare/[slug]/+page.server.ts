@@ -40,6 +40,7 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	return {
 		compare: fm,
+		headings: entry.headings,
 		topicTitle: topic?.frontmatter.title ?? fm.topic,
 		topicPublished: topic?.frontmatter.status === 'published',
 		terms,

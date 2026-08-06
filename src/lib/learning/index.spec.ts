@@ -79,7 +79,10 @@ describe('derived views', () => {
 		// Only published lessons are offered as prev/next.
 		const ordered = lessonsOfGuide('intentional-communities');
 		for (const lesson of ordered) {
-			const { previous, next } = guideNeighbours('intentional-communities', lesson.frontmatter.slug);
+			const { previous, next } = guideNeighbours(
+				'intentional-communities',
+				lesson.frontmatter.slug
+			);
 			for (const neighbour of [previous, next]) {
 				if (neighbour) expect(neighbour.frontmatter.status).toBe('published');
 			}
@@ -89,7 +92,9 @@ describe('derived views', () => {
 	it('extracts a table of contents whose ids match the rendered headings', () => {
 		// Both come from headings.js, so a contents link can never point at an
 		// anchor that does not exist.
-		const topic = [...allEntries].find((e) => e.frontmatter.slug === 'intentional-communities' && e.frontmatter.type === 'topic');
+		const topic = [...allEntries].find(
+			(e) => e.frontmatter.slug === 'intentional-communities' && e.frontmatter.type === 'topic'
+		);
 		expect(topic!.headings.length).toBeGreaterThan(2);
 		for (const heading of topic!.headings) {
 			expect(heading.id).toMatch(/^[a-z0-9-]+$/);

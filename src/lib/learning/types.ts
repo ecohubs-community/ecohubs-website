@@ -9,7 +9,15 @@
  * See `Learning Hub — Implementation Plan.md` §3.
  */
 
-export const CONTENT_TYPES = ['guide', 'lesson', 'topic', 'compare', 'term', 'path', 'case'] as const;
+export const CONTENT_TYPES = [
+	'guide',
+	'lesson',
+	'topic',
+	'compare',
+	'term',
+	'path',
+	'case'
+] as const;
 export type ContentType = (typeof CONTENT_TYPES)[number];
 
 /** `draft` is invisible everywhere: routes, listings, sitemap and search. */

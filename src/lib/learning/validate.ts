@@ -9,7 +9,13 @@
  * Deliberately pure: it takes already-parsed entries and returns issues, so it
  * can be unit-tested without touching the filesystem or Vite.
  */
-import type { ContentEntry, Frontmatter, LessonFrontmatter, PathFrontmatter, ValidationIssue } from './types';
+import type {
+	ContentEntry,
+	Frontmatter,
+	LessonFrontmatter,
+	PathFrontmatter,
+	ValidationIssue
+} from './types';
 import { CONTENT_TYPES } from './types';
 
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -80,7 +86,10 @@ export function validateContent(entries: ContentEntry[]): ValidationIssue[] {
 		const key = `${fm.type}:${fm.slug}`;
 		const previous = seen.get(key);
 		if (previous) {
-			issues.push({ path, message: `duplicate ${fm.type} slug "${fm.slug}" (also in ${previous})` });
+			issues.push({
+				path,
+				message: `duplicate ${fm.type} slug "${fm.slug}" (also in ${previous})`
+			});
 		} else {
 			seen.set(key, path);
 		}

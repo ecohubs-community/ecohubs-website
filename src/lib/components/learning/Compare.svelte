@@ -16,11 +16,8 @@
 		values: string[];
 	}
 
-	let {
-		columns,
-		rows,
-		caption
-	}: { columns: string[]; rows: CompareRow[]; caption?: string } = $props();
+	let { columns, rows, caption }: { columns: string[]; rows: CompareRow[]; caption?: string } =
+		$props();
 </script>
 
 <!-- `not-prose` so the typography plugin's own table styling does not fight the

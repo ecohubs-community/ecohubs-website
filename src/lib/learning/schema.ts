@@ -102,10 +102,7 @@ export function comparisonArticle(compare: CompareFrontmatter) {
  * misrepresent them. The lesson order is real information, so it is expressed
  * as an ItemList instead.
  */
-export function guideArticle(
-	guide: GuideFrontmatter,
-	lessons: { slug: string; title: string }[]
-) {
+export function guideArticle(guide: GuideFrontmatter, lessons: { slug: string; title: string }[]) {
 	const url = `${SITE}/learn/guides/${guide.slug}`;
 	return {
 		'@context': 'https://schema.org',
@@ -131,10 +128,7 @@ export function guideArticle(
 }
 
 /** A lesson, tied back to the guide that contains it. */
-export function lessonArticle(
-	lesson: LessonFrontmatter,
-	guide: { slug: string; title: string }
-) {
+export function lessonArticle(lesson: LessonFrontmatter, guide: { slug: string; title: string }) {
 	const guideUrl = `${SITE}/learn/guides/${guide.slug}`;
 	const url = `${guideUrl}/${lesson.slug}`;
 	return {
