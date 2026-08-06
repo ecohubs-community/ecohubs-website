@@ -4,6 +4,7 @@ title: Intentional Communities
 slug: intentional-communities
 summary: What these places are, the forms they take, what they ask of you, and how to tell them apart.
 targetQuery: intentional community
+cluster: culture
 rcosLayer: 0
 status: published
 updated: 2026-08-05

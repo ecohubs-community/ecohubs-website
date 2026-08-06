@@ -9,6 +9,8 @@
  * See `Learning Hub — Implementation Plan.md` §3.
  */
 
+import type { ClusterKey } from './clusters';
+
 export const CONTENT_TYPES = [
 	'guide',
 	'lesson',
@@ -82,6 +84,8 @@ export interface TopicFrontmatter extends BaseFrontmatter {
 	type: 'topic';
 	/** The RCOS Core layer this topic maps to, when it maps to one. */
 	rcosLayer?: number;
+	/** Which grouping it sits in on the knowledge map. See `clusters.ts`. */
+	cluster: ClusterKey;
 	terms?: string[];
 }
 

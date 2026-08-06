@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { formatIssues, isIndexable, MIN_WORDS, validateContent } from './validate';
 import type { ContentEntry, Frontmatter } from './types';
+import { CLUSTER_KEYS, type ClusterKey } from './clusters';
 
 /** Build an entry without touching the filesystem — validation is pure. */
 function entry(frontmatter: Partial<Frontmatter> & { type: Frontmatter['type'] }, words = 5000) {
@@ -19,23 +20,29 @@ function entry(frontmatter: Partial<Frontmatter> & { type: Frontmatter['type'] }
 	} as ContentEntry;
 }
 
-const topic = (slug: string) => entry({ type: 'topic', slug });
+const topic = (slug: string) => entry({ type: 'topic', slug, cluster: 'culture' });
 const term = (slug: string, topicSlug = 'a-topic') =>
 	entry({ type: 'term', slug, term: slug, topic: topicSlug, short: 'A definition.' });
 
 describe('validateContent — required fields', () => {
 	it('reports a missing required field', () => {
-		const issues = validateContent([entry({ type: 'topic', slug: 'x', title: undefined })]);
+		const issues = validateContent([
+			entry({ type: 'topic', slug: 'x', cluster: 'culture', title: undefined })
+		]);
 		expect(issues.some((i) => i.message.includes('"title"'))).toBe(true);
 	});
 
 	it('rejects a non-kebab-case slug', () => {
-		const issues = validateContent([entry({ type: 'topic', slug: 'Not_Kebab' })]);
+		const issues = validateContent([
+			entry({ type: 'topic', slug: 'Not_Kebab', cluster: 'culture' })
+		]);
 		expect(issues.some((i) => i.message.includes('kebab-case'))).toBe(true);
 	});
 
 	it('rejects a malformed date', () => {
-		const issues = validateContent([entry({ type: 'topic', slug: 'x', updated: '5 Aug 2026' })]);
+		const issues = validateContent([
+			entry({ type: 'topic', slug: 'x', cluster: 'culture', updated: '5 Aug 2026' })
+		]);
 		expect(issues.some((i) => i.message.includes('YYYY-MM-DD'))).toBe(true);
 	});
 
@@ -91,7 +98,7 @@ describe('validateContent — references', () => {
 		const issues = validateContent([
 			topic('t'),
 			draftTerm,
-			entry({ type: 'topic', slug: 'b', terms: ['consent'] })
+			entry({ type: 'topic', slug: 'b', cluster: 'culture', terms: ['consent'] })
 		]);
 		expect(issues).toEqual([]);
 	});
@@ -188,5 +195,37 @@ describe('formatIssues', () => {
 		expect(message).toContain('2 issues');
 		expect(message).toContain('/a.md');
 		expect(message).toContain('/b.md');
+	});
+});
+
+describe('validateContent — clusters', () => {
+	it('reports a topic with no cluster', () => {
+		const issues = validateContent([entry({ type: 'topic', slug: 'x' })]);
+		expect(issues.some((i) => i.message.includes('"cluster"'))).toBe(true);
+	});
+
+	it('reports a cluster that does not exist', () => {
+		// Cast: frontmatter is untyped YAML at runtime, and catching exactly this is
+		// the validator's job — TypeScript cannot see a bad value in a .md file.
+		const issues = validateContent([
+			entry({ type: 'topic', slug: 'x', cluster: 'weather' as ClusterKey })
+		]);
+		expect(issues.some((i) => i.message.includes('unknown cluster'))).toBe(true);
+	});
+
+	it('accepts every real cluster key', () => {
+		const bad = CLUSTER_KEYS.filter(
+			(key) =>
+				validateContent([entry({ type: 'topic', slug: 'x', cluster: key as ClusterKey })]).length >
+				0
+		);
+		expect(bad).toEqual([]);
+		expect(CLUSTER_KEYS.length).toBeGreaterThan(0);
+	});
+
+	/** Only topics are placed on the map, so nothing else should need one. */
+	it('does not ask other types for a cluster', () => {
+		const issues = validateContent([term('consent')]);
+		expect(issues.some((i) => i.message.includes('cluster'))).toBe(false);
 	});
 });

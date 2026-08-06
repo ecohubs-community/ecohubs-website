@@ -4,6 +4,10 @@
 	 *
 	 * Tabler via Iconify, like the rest of the site. `currentColor` is what lets
 	 * the active state tint the icon along with its label.
+	 *
+	 * Wrapped in a fixed-size box because `@iconify/svelte` renders nothing on
+	 * the server and fetches its icon data after hydration — without the box the
+	 * labels shift right the moment the icons arrive.
 	 */
 	import Icon from '@iconify/svelte';
 
@@ -23,11 +27,7 @@
 </script>
 
 {#if ICONS[section]}
-	<Icon
-		icon={ICONS[section]}
-		width="15"
-		height="15"
-		class="shrink-0 opacity-75"
-		aria-hidden="true"
-	/>
+	<span class="inline-flex size-[15px] shrink-0 items-center justify-center opacity-75">
+		<Icon icon={ICONS[section]} width="15" height="15" aria-hidden="true" />
+	</span>
 {/if}

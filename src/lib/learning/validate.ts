@@ -17,6 +17,7 @@ import type {
 	ValidationIssue
 } from './types';
 import { CONTENT_TYPES } from './types';
+import { CLUSTER_KEYS } from './clusters';
 
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -49,6 +50,20 @@ export function isIndexable(entry: ContentEntry): boolean {
 }
 
 function checkBase(fm: Frontmatter, path: string, issues: ValidationIssue[]) {
+	// Without a cluster a topic cannot be placed on the knowledge map. Required
+	// rather than defaulted: a silent default puts new topics in the wrong group,
+	// and a wrong group is harder to notice than a missing one.
+	if (fm.type === 'topic') {
+		if (!fm.cluster) {
+			issues.push({ path, message: 'topic is missing "cluster"' });
+		} else if (!CLUSTER_KEYS.includes(fm.cluster)) {
+			issues.push({
+				path,
+				message: `unknown cluster "${fm.cluster}" — expected one of ${CLUSTER_KEYS.join(', ')}`
+			});
+		}
+	}
+
 	// A cover carries meaning often enough that a blank alt has to be a choice,
 	// not an oversight — so say so explicitly by writing `imageAlt: ''`.
 	if (fm.image && fm.imageAlt === undefined) {

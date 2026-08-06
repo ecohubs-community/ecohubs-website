@@ -10,8 +10,8 @@
  * *field* above this list rather than a link, and the tab row appends Search
  * as its last tab. Both are handled by the components, not by this list.
  *
- * Entries appear only when their route exists: never link to a 404. Knowledge
- * Map joins the list when `/learn/map` is built (step 11).
+ * Entries appear only when their route exists: never link to a 404 — everything
+ * here is prerendered, so a missing route fails the build.
  */
 export interface LearnSection {
 	key: string;
@@ -24,7 +24,8 @@ export const LEARN_SECTIONS: LearnSection[] = [
 	{ key: 'guides', label: 'Guides', href: '/learn/guides' },
 	{ key: 'topics', label: 'Topics', href: '/learn/topics' },
 	{ key: 'paths', label: 'Learning Paths', href: '/learn/paths' },
-	{ key: 'glossary', label: 'Glossary', href: '/learn/glossary' }
+	{ key: 'glossary', label: 'Glossary', href: '/learn/glossary' },
+	{ key: 'map', label: 'Knowledge Map', href: '/learn/map' }
 ];
 
 /**
@@ -53,7 +54,7 @@ export function activeSection(pathname: string): string {
  * `page` asserts that the link points at what you are reading, so it is only
  * right on an exact match; the section merely *containing* the current page
  * gets `true`. Both are styled identically — the distinction is for screen
- * readers, which otherwise announce five pages as "current" across the hub.
+ * readers, which otherwise announce six pages as "current" across the hub.
  */
 export function currentState(
 	pathname: string,

@@ -4,6 +4,7 @@ title: Community Governance
 slug: community-governance
 summary: Decision-making that survives disagreement, fatigue and ten years of turnover.
 targetQuery: community governance
+cluster: power
 rcosLayer: 2
 status: draft
 updated: 2026-08-05
