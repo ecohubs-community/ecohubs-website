@@ -18,40 +18,35 @@
 	noindex={!data.indexable}
 />
 
-<section class="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20">
+<!-- Opaque, because the site's animated backdrop sits at z-index -1 and would
+     otherwise show through the whole page. The article routes get this from
+     their <article> wrapper; index routes have none, so it lives here. -->
+<div class="bg-ecohubs-base">
+	<!-- One grid for the whole page, not one per section: the rail starts level
+	     with the heading, as in the design, rather than below a full-width hero. -->
 	<div
-		class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
-	></div>
-	<div
-		class="absolute -z-10 top-20 -left-40 h-[420px] w-[420px] rounded-full bg-emerald-200/25 blur-3xl"
-	></div>
-
-	<div class="mx-auto max-w-4xl px-6 lg:px-8">
-		<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
-			<div class="kicker text-emerald-700">Learning hub</div>
-			<Breadcrumbs items={breadcrumbs} />
-		</div>
-		<h1
-			class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl lg:text-[64px]"
-		>
-			Learn everything about
-			<em class="font-story font-normal italic text-ecohubs-primary">regenerative communities.</em>
-		</h1>
-		<p class="mt-6 max-w-2xl text-lg leading-relaxed font-light text-stone-700">
-			How these places actually work — how they decide, how they hold money and land, how they
-			handle conflict, and why they break. Written by people building one, and honest about what we
-			don't yet know.
-		</p>
-	</div>
-</section>
-
-<div class="hairline mx-auto max-w-4xl"></div>
-
-<section class="py-14 md:py-20">
-	<div
-		class="mx-auto grid max-w-4xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		class="mx-auto grid max-w-4xl gap-12 px-6 pt-8 pb-20 md:pb-28 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
 	>
 		<div class="min-w-0 lg:order-2">
+			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
+				<div class="kicker text-emerald-700">Learning hub</div>
+				<Breadcrumbs items={breadcrumbs} />
+			</div>
+			<h1
+				class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl lg:text-[64px]"
+			>
+				Learn everything about
+				<em class="font-story font-normal italic text-ecohubs-primary">regenerative communities.</em
+				>
+			</h1>
+			<p class="mt-6 max-w-2xl text-lg leading-relaxed font-light text-stone-700">
+				How these places actually work — how they decide, how they hold money and land, how they
+				handle conflict, and why they break. Written by people building one, and honest about what
+				we don't yet know.
+			</p>
+
+			<div class="hairline my-10"></div>
+
 			{#if data.topics.length}
 				<div class="mb-14">
 					<h2 class="kicker mb-5 text-emerald-700">Browse by topic</h2>
@@ -173,4 +168,4 @@
 
 		<LearnRail />
 	</div>
-</section>
+</div>

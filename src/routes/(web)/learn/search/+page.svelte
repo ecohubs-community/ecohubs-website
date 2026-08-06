@@ -58,26 +58,26 @@
 	noindex
 />
 
-<section class="relative overflow-hidden pt-20 pb-10 md:pt-28 md:pb-12">
+<!-- Opaque, because the site's animated backdrop sits at z-index -1 and would
+     otherwise show through the whole page. The article routes get this from
+     their <article> wrapper; index routes have none, so it lives here. -->
+<div class="bg-ecohubs-base">
+	<!-- One grid for the whole page, not one per section: the rail starts level
+	     with the heading, as in the design, rather than below a full-width hero. -->
 	<div
-		class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
-	></div>
-	<div class="mx-auto max-w-6xl px-6 lg:px-8">
-		<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
-			<div class="kicker text-emerald-700">Search</div>
-			<Breadcrumbs items={breadcrumbs} />
-		</div>
-		<h1 class="font-serif text-4xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-5xl">
-			Search the hub
-		</h1>
-	</div>
-</section>
-
-<section class="pb-20 md:pb-28">
-	<div
-		class="mx-auto grid max-w-3xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		class="mx-auto grid max-w-4xl gap-12 px-6 pt-8 pb-20 md:pb-28 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
 	>
 		<div class="min-w-0 lg:order-2">
+			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
+				<div class="kicker text-emerald-700">Search</div>
+				<Breadcrumbs items={breadcrumbs} />
+			</div>
+			<h1 class="font-serif text-4xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-5xl">
+				Search the hub
+			</h1>
+
+			<div class="hairline my-10"></div>
+
 			<!-- Results update as you type, so the button looks redundant. It is
 			     what commits the query to the URL: a submit button is the reliable
 			     way to get Enter-to-submit (the no-button case depends on a
@@ -149,4 +149,4 @@
 
 		<LearnRail />
 	</div>
-</section>
+</div>

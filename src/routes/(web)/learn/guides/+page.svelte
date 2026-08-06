@@ -18,27 +18,27 @@
 	noindex={!data.indexable}
 />
 
-<section class="relative overflow-hidden pt-20 pb-14 md:pt-28 md:pb-16">
+<!-- Opaque, because the site's animated backdrop sits at z-index -1 and would
+     otherwise show through the whole page. The article routes get this from
+     their <article> wrapper; index routes have none, so it lives here. -->
+<div class="bg-ecohubs-base">
+	<!-- One grid for the whole page, not one per section: the rail starts level
+	     with the heading, as in the design, rather than below a full-width hero. -->
 	<div
-		class="absolute inset-0 -z-10 bg-gradient-to-b from-ecohubs-ivory via-ecohubs-base to-ecohubs-base"
-	></div>
-	<div class="mx-auto max-w-6xl px-6 lg:px-8">
-		<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
-			<div class="kicker text-emerald-700">Guides</div>
-			<Breadcrumbs items={breadcrumbs} />
-		</div>
-		<h1 class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl">
-			Long reads that
-			<em class="font-story font-normal italic text-ecohubs-primary">finish the subject.</em>
-		</h1>
-	</div>
-</section>
-
-<section class="pb-20 md:pb-28">
-	<div
-		class="mx-auto grid max-w-3xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
+		class="mx-auto grid max-w-4xl gap-12 px-6 pt-8 pb-20 md:pb-28 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
 	>
 		<div class="min-w-0 lg:order-2">
+			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
+				<div class="kicker text-emerald-700">Guides</div>
+				<Breadcrumbs items={breadcrumbs} />
+			</div>
+			<h1 class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl">
+				Long reads that
+				<em class="font-story font-normal italic text-ecohubs-primary">finish the subject.</em>
+			</h1>
+
+			<div class="hairline my-10"></div>
+
 			{#if data.guides.length}
 				<ul class="space-y-5">
 					{#each data.guides as guide (guide.slug)}
@@ -68,4 +68,4 @@
 
 		<LearnRail />
 	</div>
-</section>
+</div>
