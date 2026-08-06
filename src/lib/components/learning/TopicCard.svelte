@@ -18,7 +18,7 @@
 	let { topic }: { topic: TopicCardData } = $props();
 </script>
 
-<a href="/learn/topics/{topic.slug}" class="{CARD} flex flex-col p-6">
+<a href="/learn/topics/{topic.slug}" class="{CARD} flex flex-col bg-white p-6">
 	<Cover
 		slug={topic.slug}
 		image={topic.image}

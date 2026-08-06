@@ -36,6 +36,27 @@ export interface DiscoveryItem {
 	title: string;
 	summary: string;
 	updated: string;
+	/** The second line on a discovery card, e.g. "3 pages link here". */
+	note?: string;
+}
+
+/**
+ * "2 days ago", "last week".
+ *
+ * Built from a date passed in rather than `new Date()`, so the string is fixed
+ * at build time and cannot disagree between the server render and the client.
+ */
+export function relativeDate(iso: string, today: string): string {
+	const days = Math.round(
+		(Date.parse(`${today}T00:00:00Z`) - Date.parse(`${iso}T00:00:00Z`)) / 86_400_000
+	);
+	if (days <= 0) return 'today';
+	if (days === 1) return 'yesterday';
+	if (days < 7) return `${days} days ago`;
+	if (days < 14) return 'last week';
+	if (days < 60) return `${Math.round(days / 7)} weeks ago`;
+	if (days < 365) return `${Math.round(days / 30)} months ago`;
+	return `${Math.round(days / 365)} years ago`;
 }
 
 function toItem(entry: ContentEntry): DiscoveryItem {
@@ -61,12 +82,22 @@ function discoverable(): ContentEntry[] {
 	].filter(isIndexable);
 }
 
-/** Newest first, by the `updated` date authors maintain by hand. */
-export function recentlyUpdated(limit = 5): DiscoveryItem[] {
+/**
+ * Newest first, by the `updated` date authors maintain by hand.
+ *
+ * `today` is passed in — the load supplies the build date — so the relative
+ * strings are baked at build time rather than drifting between the server
+ * render and the client.
+ */
+export function recentlyUpdated(today: string, limit = 4): DiscoveryItem[] {
 	return discoverable()
 		.map(toItem)
 		.sort((a, b) => b.updated.localeCompare(a.updated) || a.title.localeCompare(b.title))
-		.slice(0, limit);
+		.slice(0, limit)
+		.map((item) => ({
+			...item,
+			note: `${item.kind} · updated ${relativeDate(item.updated, today)}`
+		}));
 }
 
 /**
@@ -78,7 +109,7 @@ export function recentlyUpdated(limit = 5): DiscoveryItem[] {
  * real question ("what does this body of work keep coming back to?") instead
  * of pretending to answer one we cannot.
  */
-export function mostReferenced(limit = 5): DiscoveryItem[] {
+export function mostReferenced(limit = 4): DiscoveryItem[] {
 	const inbound = new Map<string, number>();
 	for (const entry of allEntries) {
 		if (entry.frontmatter.status !== 'published') continue;
@@ -93,7 +124,10 @@ export function mostReferenced(limit = 5): DiscoveryItem[] {
 		.filter((r) => r.score > 0)
 		.sort((a, b) => b.score - a.score || a.item.title.localeCompare(b.item.title))
 		.slice(0, limit)
-		.map((r) => r.item);
+		.map((r) => ({
+			...r.item,
+			note: `${r.score} ${r.score === 1 ? 'page links' : 'pages link'} here`
+		}));
 }
 
 /**

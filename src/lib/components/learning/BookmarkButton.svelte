@@ -11,6 +11,7 @@
 	 * moment is the only good chance to teach the feature.
 	 */
 	import { onMount } from 'svelte';
+	import Icon from '@iconify/svelte';
 	import { isBookmarked, isFirstBookmark, toggleBookmark } from '$lib/learning/storage';
 	import { PILL, PILL_OFF, PILL_ON } from './pill';
 
@@ -44,18 +45,14 @@
 			aria-pressed={saved}
 			class="{PILL} {saved ? PILL_ON : PILL_OFF}"
 		>
-			<svg
-				viewBox="0 0 24 24"
+			<Icon
+				icon={saved ? 'tabler:bookmark-filled' : 'tabler:bookmark'}
+				width="14"
+				height="14"
+				class="shrink-0"
 				aria-hidden="true"
-				class="size-3.5 shrink-0"
-				fill={saved ? 'currentColor' : 'none'}
-				stroke="currentColor"
-				stroke-width="1.7"
-				stroke-linejoin="round"
-			>
-				<path d="M7 4h10v16l-5-4-5 4z" />
-			</svg>
-			{saved ? 'Saved' : 'Bookmark'}
+			/>
+			{saved ? 'Bookmarked' : 'Bookmark'}
 			<span class="sr-only">{title}</span>
 		</button>
 
@@ -64,8 +61,10 @@
 				role="status"
 				class="absolute top-full right-0 z-30 mt-2 w-64 rounded-xl border border-stone-200 bg-white p-3 text-sm leading-relaxed text-stone-700 shadow-lg"
 			>
-				Saved in this browser. Find it under
-				<a href="/learn/saved" class="text-ecohubs-dark underline underline-offset-2">Saved</a>.
+				Kept in this browser. Find it under
+				<a href="/learn/bookmarks" class="text-ecohubs-dark underline underline-offset-2"
+					>Bookmarks</a
+				>.
 			</span>
 		{/if}
 	</span>

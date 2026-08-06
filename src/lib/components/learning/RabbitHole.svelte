@@ -34,7 +34,9 @@
 </script>
 
 {#if item}
-	<div class="{CARD} flex flex-col p-7 hover:border-stone-200/90 hover:shadow-none">
+	<div
+		class="{CARD} flex flex-col bg-ecohubs-ivory p-7 hover:border-stone-200/90 hover:shadow-none"
+	>
 		<div class="flex items-center justify-between gap-4">
 			<span class="kicker text-emerald-700">A rabbit hole for you</span>
 			{#if canReroll}

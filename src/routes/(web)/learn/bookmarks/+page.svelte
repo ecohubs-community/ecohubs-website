@@ -17,7 +17,7 @@
 
 	let { data }: { data: PageData } = $props();
 
-	const breadcrumbs = learningBreadcrumbs([{ name: 'Saved', path: '/learn/saved' }]);
+	const breadcrumbs = learningBreadcrumbs([{ name: 'Bookmarks', path: '/learn/bookmarks' }]);
 
 	// Derived from the catalogue rather than restated, so the union of content
 	// types stays in one place.
@@ -57,8 +57,8 @@
 <!-- Permanently noindex: for a crawler this page is empty by construction, and
      it is excluded from the sitemap for the same reason. -->
 <SEO
-	title="Saved — EcoHubs learning hub"
-	description="What you saved and how far you have read, kept in this browser."
+	title="Bookmarks — EcoHubs learning hub"
+	description="What you bookmarked and how far you have read, kept in this browser."
 	ogImage="/og-default.jpg"
 	{breadcrumbs}
 	noindex
@@ -75,7 +75,7 @@
 	>
 		<div class="min-w-0 lg:order-2">
 			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
-				<div class="kicker text-emerald-700">Saved</div>
+				<div class="kicker text-emerald-700">Bookmarks</div>
 				<Breadcrumbs items={breadcrumbs} />
 			</div>
 			<h1 class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl">
@@ -93,7 +93,7 @@
 				<p class="font-story text-lg text-stone-500 italic">Looking…</p>
 			{:else if !saved.length && !read.length}
 				<p class="font-story text-lg text-stone-500 italic">
-					Nothing saved yet. Use “Save” on any page and it will appear here.
+					Nothing bookmarked yet. Use “Bookmark” on any page and it will appear here.
 				</p>
 				<p class="mt-6">
 					<a
@@ -106,7 +106,7 @@
 			{:else}
 				{#if saved.length}
 					<div class="mb-14">
-						<h2 class="kicker mb-5 text-emerald-700">Saved</h2>
+						<h2 class="kicker mb-5 text-emerald-700">Bookmarked</h2>
 						<ul class="grid gap-5 sm:grid-cols-2">
 							{#each saved as item (item.slug)}
 								<li>

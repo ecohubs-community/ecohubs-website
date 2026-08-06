@@ -27,7 +27,7 @@
 	const percent = $derived(path.steps.length ? Math.round((done / path.steps.length) * 100) : 0);
 </script>
 
-<a href="/learn/paths/{path.slug}" class="{CARD} p-7">
+<a href="/learn/paths/{path.slug}" class="{CARD} bg-white p-7">
 	<div class="flex items-start justify-between gap-4">
 		<h3 class="font-serif text-[21px] leading-snug text-ecohubs-deep">{path.title}</h3>
 		<span class={TAG}>{path.minutes} min</span>

@@ -10,6 +10,7 @@
 	 * URL and the back button behaves.
 	 */
 	import { onMount } from 'svelte';
+	import Icon from '@iconify/svelte';
 	import { page } from '$app/state';
 	import { replaceState } from '$app/navigation';
 	import SEO from '$lib/components/SEO.svelte';
@@ -106,17 +107,13 @@
 				role="search"
 				class="mt-6 flex items-center gap-3 rounded-full border border-stone-200 bg-white py-1.5 pr-1.5 pl-6 shadow-[0_18px_40px_-30px_rgba(11,46,36,0.5)]"
 			>
-				<svg
-					viewBox="0 0 24 24"
+				<Icon
+					icon="tabler:search"
+					width="18"
+					height="18"
+					class="shrink-0 text-stone-400"
 					aria-hidden="true"
-					class="size-[18px] shrink-0 text-stone-400"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="1.8"
-				>
-					<circle cx="11" cy="11" r="6.5" />
-					<path d="M16 16l4 4" />
-				</svg>
+				/>
 				<label for="learn-search" class="sr-only">Search the learning hub</label>
 				<input
 					id="learn-search"
@@ -153,7 +150,7 @@
 						</a>.
 					</p>
 				{:else if !loading && groups.length === 0}
-					<div class="{CARD} p-8 hover:border-stone-200/90 hover:shadow-none">
+					<div class="{CARD} bg-white p-8 hover:border-stone-200/90 hover:shadow-none">
 						<div class="font-serif text-[22px] text-ecohubs-deep">Nothing matched “{query}”.</div>
 						<p class="mt-3 text-[15px] leading-relaxed text-stone-600">
 							Try a shorter word. If you had to look it up somewhere else, that's our bug —
@@ -172,7 +169,7 @@
 						</div>
 						<div class="flex flex-col gap-3">
 							{#each group.docs as doc (doc.url)}
-								<a href={doc.url} class="{CARD} flex items-start gap-4 p-5">
+								<a href={doc.url} class="{CARD} flex items-start gap-4 bg-white p-5">
 									<span class="{TAG} mt-0.5">{doc.kind}</span>
 									<span class="min-w-0 flex-1">
 										<span class="block font-serif text-[18px] leading-snug text-ecohubs-deep">

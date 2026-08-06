@@ -105,8 +105,10 @@ export const load: PageServerLoad = async () => {
 		topics,
 		paths,
 		comparisons,
-		recent: recentlyUpdated(5),
-		referenced: mostReferenced(5),
+		// Prerendered, so this is the build date — which is exactly the reference
+		// point "2 days ago" should be measured from.
+		recent: recentlyUpdated(new Date().toISOString().slice(0, 10)),
+		referenced: mostReferenced(),
 		rabbit: rabbitPool(),
 		// Nothing published yet means nothing worth offering to a search engine.
 		indexable: glossaryCount + comparisons.length + topics.length + paths.length > 0

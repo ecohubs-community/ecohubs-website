@@ -149,11 +149,24 @@ export function toggleBookmark(id: string, type: string): boolean {
 	if (i >= 0) {
 		list.splice(i, 1);
 		write(KEYS.bookmarks, list);
+		announce();
 		return false;
 	}
 	list.push({ id, type, savedAt: Date.now() });
 	write(KEYS.bookmarks, list);
+	announce();
 	return true;
+}
+
+/**
+ * Tell this document the bookmark list changed.
+ *
+ * The `storage` event only fires in *other* tabs, so without this the nav entry
+ * beside the button you just clicked would not update until the next
+ * navigation.
+ */
+function announce() {
+	if (typeof window !== 'undefined') window.dispatchEvent(new Event('bookmarkschange'));
 }
 
 /** True when this is the reader's very first bookmark — the moment to explain
@@ -200,4 +213,5 @@ export function setQuizState(quizId: string, state: QuizState): void {
 export function clearAll(): void {
 	for (const key of Object.values(KEYS)) remove(key);
 	if (browser) document.documentElement.removeAttribute('data-depth');
+	announce();
 }

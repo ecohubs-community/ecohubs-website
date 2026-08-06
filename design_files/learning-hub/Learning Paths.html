@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Learning Paths — EcoHubs Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="learning-hub.js"></script>
+<link rel="stylesheet" href="learning-hub.css" />
+<style>.progring{transform:rotate(-90deg)}</style>
+</head>
+<body data-section="paths">
+<div data-siteheader></div>
+<div class="pt-16">
+<div class="max-w-[1360px] mx-auto px-5"><div class="railtabs" data-railtabs></div></div>
+<div class="shell">
+
+<aside class="rail rail-desktop">
+  <div class="rail-group"><div class="rail-label">Learning</div><div data-railnav></div></div>
+  <div class="rail-group">
+    <div class="rail-label">The four paths</div>
+    <div class="tree" id="pathnav"></div>
+  </div>
+  <div class="rail-group">
+    <div class="rail-label">How paths work</div>
+    <p class="px-2 text-[13px] text-stone-500 leading-relaxed">A path is an ordered set of lessons pulled from across the hub. Tick a step to remember it — everything is stored in this browser, and there is nothing to sign up for.</p>
+  </div>
+</aside>
+
+<main class="pb-8">
+
+<header class="pt-9 max-w-[820px]">
+  <nav class="breadcrumb mb-6"><a href="Learning Hub.html">Learning</a><span>/</span><span class="text-stone-500">Learning Paths</span></nav>
+  <h1 class="font-serif text-[40px] md:text-[46px] leading-[1.08] tracking-tight text-ecohubs-deep">Learning paths</h1>
+  <p class="lede mt-5">Four ordered routes through the same material, each written for a different question: <em class="font-story italic">should I join one, or should I start one?</em> Follow a path end to end, or lift one step out of it.</p>
+  <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 meta" id="topmeta"></div>
+</header>
+
+<section class="mt-11">
+  <div id="pathcards" class="grid md:grid-cols-2 gap-5"></div>
+</section>
+
+<div class="hairline my-16"></div>
+
+<section class="grid lg:grid-cols-[.85fr_1.15fr] gap-10 items-start">
+  <div>
+    <div class="kicker text-emerald-700 mb-3">Choosing one</div>
+    <h2 class="font-serif text-[29px] leading-tight text-ecohubs-deep">Start with the question, <em class="font-story italic font-normal text-stone-500">not the syllabus.</em></h2>
+    <p class="mt-4 text-[15.5px] text-stone-600 leading-relaxed">Two of these paths are about a decision. Two are about a craft you will need whichever decision you make.</p>
+  </div>
+  <div class="flex flex-col gap-3">
+    <div class="card p-6 flex gap-5">
+      <span class="font-mono text-[11px] text-emerald-700 pt-1 shrink-0">IF</span>
+      <span><span class="block text-[15.5px] text-ecohubs-deep leading-snug">You are curious whether community life would suit you at all</span><span class="block text-[14px] text-stone-600 mt-1.5 leading-relaxed">Take <a href="Learning Path.html?p=find-your-community">Find Your Community</a> — six steps, six hours, ends with an honest yes or no.</span></span>
+    </div>
+    <div class="card p-6 flex gap-5">
+      <span class="font-mono text-[11px] text-emerald-700 pt-1 shrink-0">IF</span>
+      <span><span class="block text-[15.5px] text-ecohubs-deep leading-snug">You already know it suits you and you want land</span><span class="block text-[14px] text-stone-600 mt-1.5 leading-relaxed">Take <a href="Learning Path.html?p=become-a-community-founder">Become a Community Founder</a> — the long one, and the one that saves the most money.</span></span>
+    </div>
+    <div class="card p-6 flex gap-5">
+      <span class="font-mono text-[11px] text-emerald-700 pt-1 shrink-0">IF</span>
+      <span><span class="block text-[15.5px] text-ecohubs-deep leading-snug">Your group already exists and meetings are the problem</span><span class="block text-[14px] text-stone-600 mt-1.5 leading-relaxed">Take <a href="Learning Path.html?p=governance-fundamentals">Governance Fundamentals</a>, then <a href="Learning Path.html?p=building-community-culture">Building Community Culture</a>.</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="mt-16 rounded-[24px] bg-[#f5f2ea] grain relative overflow-hidden p-8 md:p-10">
+  <div class="relative grid lg:grid-cols-[1.1fr_.9fr] gap-8 items-center">
+    <div>
+      <div class="kicker text-emerald-800 mb-3">Still undecided</div>
+      <h2 class="font-serif text-[26px] leading-tight text-ecohubs-deep">Twelve minutes will tell you more than four descriptions.</h2>
+      <p class="mt-3 text-[15px] text-stone-700 leading-relaxed max-w-lg">The Resilience Assessment asks what you can contribute, tolerate and afford — and points at the path that fits the answers.</p>
+    </div>
+    <div class="flex flex-wrap gap-3 lg:justify-end">
+      <a href="Learning Map.html" class="btn btn-ghost text-[15px]">Browse the map</a>
+      <a href="Resilience Assessment.html" class="btn btn-primary text-[15px]">Take the assessment <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+</div></div>
+<div data-footer></div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const M=EH.pathMeta, ids=p=>p.steps.map((s,i)=>p.slug+':'+i);
+
+  document.getElementById('topmeta').innerHTML=
+    `<span>${EH.paths.length} paths</span><span>·</span><span>${EH.paths.reduce((a,p)=>a+p.steps.length,0)} steps</span><span>·</span><span>${EH.paths.reduce((a,p)=>a+p.hours,0)} hours in total</span><span>·</span><span>no account needed</span>`;
+
+  document.getElementById('pathnav').innerHTML=EH.paths.map(p=>
+    `<a href="Learning Path.html?p=${p.slug}" data-nav="${p.slug}">${p.title}<span class="rail-count" data-navpct>0%</span></a>`).join('');
+
+  document.getElementById('pathcards').innerHTML=EH.paths.map(p=>{
+    const list=ids(p), pct=EH.progress.pct(list);
+    const nextIdx=list.findIndex(id=>!EH.progress.done(id));
+    const mins=(M.detail[p.slug]||[]).reduce((a,x)=>a+x[0],0);
+    return `<a href="Learning Path.html?p=${p.slug}" class="card overflow-hidden flex flex-col">
+      <div class="motif h-28" data-motif="${M.motif[p.slug]}"><span class="m-label">path · ${p.slug.replace(/-/g,' ')}</span></div>
+      <div class="p-7 flex-1 flex flex-col">
+        <div class="meta">${M.audience[p.slug]}</div>
+        <h2 class="font-serif text-[23px] leading-snug text-ecohubs-deep mt-2">${p.title}</h2>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-stone-600">${p.blurb}</p>
+        <ol class="mt-5 flex flex-col gap-2">${p.steps.slice(0,3).map((s,i)=>
+          `<li class="flex gap-3 text-[13.5px] text-stone-500"><span class="font-mono text-[11px] text-stone-400 pt-0.5">${String(i+1).padStart(2,'0')}</span>${s}</li>`).join('')}
+          <li class="text-[13px] text-stone-400 pl-8">+ ${p.steps.length-3} more steps</li></ol>
+        <div class="mt-auto pt-6">
+          <div class="flex flex-wrap gap-x-5 gap-y-1.5 meta mb-4"><span>${p.steps.length} steps</span><span>${p.lessons} lessons</span><span>${mins} min reading</span><span>~${p.hours} h total</span></div>
+          <div class="flex items-center gap-4">
+            <svg width="42" height="42" viewBox="0 0 42 42" class="progring shrink-0" aria-hidden="true">
+              <circle cx="21" cy="21" r="17" fill="none" stroke="#ece9e2" stroke-width="4"></circle>
+              <circle cx="21" cy="21" r="17" fill="none" stroke="#059669" stroke-width="4" stroke-linecap="round" stroke-dasharray="106.8" stroke-dashoffset="${(106.8*(1-pct/100)).toFixed(1)}"></circle>
+            </svg>
+            <span class="flex-1">
+              <span class="block text-[14.5px] text-ecohubs-deep">${pct===0?'Not started':(nextIdx===-1?'Path complete':pct+'% complete')}</span>
+              <span class="block meta mt-0.5">${nextIdx===-1?'Revisit any step':'Next: '+p.steps[Math.max(0,nextIdx)]}</span>
+            </span>
+            <span class="text-ecohubs-dark text-sm">→</span>
+          </div>
+        </div>
+      </div>
+    </a>`;}).join('');
+
+  EH.paths.forEach(p=>{
+    const nav=document.querySelector(`[data-nav="${p.slug}"] [data-navpct]`);
+    if(nav)nav.textContent=EH.progress.pct(ids(p))+'%';
+  });
+});
+</script>
+</body>
+</html>

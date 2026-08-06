@@ -1,9 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { page } from '$app/state';
 	import { setDefinitions } from '$lib/learning/context';
 	import LearnTabs from '$lib/components/learning/LearnTabs.svelte';
-	import { getBookmarks } from '$lib/learning/storage';
 	import type { LayoutData } from './$types';
 
 	let { data, children }: { data: LayoutData; children: import('svelte').Snippet } = $props();
@@ -11,48 +8,10 @@
 	// Available to every <Gloss> in the section without any of them importing
 	// the content index.
 	setDefinitions(data.definitions);
-
-	/**
-	 * The "Saved" entry appears only once there is something in it.
-	 *
-	 * A permanent nav item would be dead weight for the great majority who never
-	 * save anything, and its appearance is the discovery moment — which is why
-	 * the first save also shows a one-time hint pointing here.
-	 */
-	let savedCount = $state(0);
-
-	onMount(() => {
-		const update = () => (savedCount = getBookmarks().length);
-		update();
-		// Another tab may add one; and returning to this layout re-runs onMount.
-		window.addEventListener('storage', update);
-		return () => window.removeEventListener('storage', update);
-	});
 </script>
 
-{#if savedCount > 0 && page.url.pathname !== '/learn/saved'}
-	<div class="fixed top-40 right-6 z-30 hidden lg:block">
-		<a
-			href="/learn/saved"
-			class="inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white/90 px-4 py-2 text-sm text-stone-600 shadow-sm backdrop-blur transition-colors hover:border-ecohubs-dark hover:text-ecohubs-deep"
-		>
-			<svg
-				viewBox="0 0 24 24"
-				aria-hidden="true"
-				class="size-3.5 shrink-0"
-				stroke="currentColor"
-				stroke-width="1.7"
-				stroke-linejoin="round"
-			>
-				<path d="M7 4h10v16l-5-4-5 4z" />
-			</svg>
-			Saved
-			<span class="rounded-full bg-emerald-50 px-1.5 text-xs text-ecohubs-deep">{savedCount}</span>
-		</a>
-	</div>
-{/if}
-
-<!-- Mobile counterpart of the rail's section nav. -->
+<!-- Mobile counterpart of the rail's section nav. Bookmarks lives inside that
+     nav now, so nothing floats over the page. -->
 <div class="pt-20"><LearnTabs /></div>
 
 {@render children()}

@@ -7,10 +7,16 @@
 	 * search box has no room here, and a tab keeps the row to one line.
 	 */
 	import { page } from '$app/state';
+	import { onMount } from 'svelte';
 	import { LEARN_SECTIONS, activeSection, currentState } from '$lib/learning/sections';
+	import { bookmarkCount, watchBookmarks } from '$lib/learning/bookmarks.svelte';
 
 	const active = $derived(activeSection(page.url.pathname));
 	const onSearch = $derived(page.url.pathname === '/learn/search');
+
+	onMount(watchBookmarks);
+	const bookmarks = $derived(bookmarkCount());
+	const onBookmarks = $derived(page.url.pathname === '/learn/bookmarks');
 
 	const TAB = 'inline-block rounded-full border px-3.5 py-[7px] text-[13.5px] whitespace-nowrap';
 	const ON = 'border-ecohubs-dark bg-ecohubs-dark text-ecohubs-ivory';
@@ -43,6 +49,27 @@
 					Search
 				</a>
 			</li>
+			<!-- Dimmed and inert until there is something in it, like the rail. -->
+			{#if bookmarks > 0}
+				<li>
+					<a
+						href="/learn/bookmarks"
+						aria-current={onBookmarks ? 'page' : undefined}
+						class="{TAB} {onBookmarks ? ON : OFF}"
+					>
+						Bookmarks ({bookmarks})
+					</a>
+				</li>
+			{:else}
+				<li>
+					<span
+						aria-disabled="true"
+						class="{TAB} border-stone-200 bg-white text-stone-700 opacity-40"
+					>
+						Bookmarks
+					</span>
+				</li>
+			{/if}
 		</ul>
 	</div>
 </nav>

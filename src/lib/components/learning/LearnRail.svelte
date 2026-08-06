@@ -19,7 +19,10 @@
 	 */
 	import type { Snippet } from 'svelte';
 	import { page } from '$app/state';
+	import { onMount } from 'svelte';
 	import { LEARN_SECTIONS, activeSection, currentState } from '$lib/learning/sections';
+	import { bookmarkCount, watchBookmarks } from '$lib/learning/bookmarks.svelte';
+	import Icon from '@iconify/svelte';
 	import RailIcon from './RailIcon.svelte';
 
 	export interface RailItem {
@@ -54,6 +57,12 @@
 	} = $props();
 
 	const active = $derived(activeSection(page.url.pathname));
+
+	// Zero until hydration, so the entry renders disabled rather than absent —
+	// a nav that grows an item on load is a nav that moved under the reader.
+	onMount(watchBookmarks);
+	const bookmarks = $derived(bookmarkCount());
+	const onBookmarks = $derived(page.url.pathname === '/learn/bookmarks');
 	/** Is there a group above the back link? It only needs its own divider if so. */
 	const hasLower = $derived(within.length > 0 || sideways.length > 0 || !!footer);
 
@@ -82,17 +91,13 @@
 			role="search"
 			class="mb-1 flex items-center gap-2 rounded-[10px] border border-stone-200 bg-white px-2.5 py-[7px]"
 		>
-			<svg
-				viewBox="0 0 24 24"
+			<Icon
+				icon="tabler:search"
+				width="14"
+				height="14"
+				class="shrink-0 text-stone-400"
 				aria-hidden="true"
-				class="size-3.5 shrink-0 text-stone-400"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="1.8"
-			>
-				<circle cx="11" cy="11" r="6.5" />
-				<path d="M16 16l4 4" />
-			</svg>
+			/>
 			<label for="rail-search" class="sr-only">Search the hub</label>
 			<input
 				id="rail-search"
@@ -117,6 +122,32 @@
 					<span>{section.label}</span>
 				</a>
 			{/each}
+
+			<!-- Always present, so it can be found before there is anything in it;
+			     dimmed and inert until there is. -->
+			{#if bookmarks > 0}
+				<a
+					href="/learn/bookmarks"
+					aria-current={onBookmarks ? 'page' : undefined}
+					class="mt-3 flex items-center gap-2.5 rounded-[9px] px-2.5 py-[7px] text-sm transition-colors
+					       {onBookmarks
+						? 'bg-ecohubs-ivory font-medium text-ecohubs-dark'
+						: 'text-stone-700 hover:bg-ecohubs-ivory hover:text-ecohubs-dark'}"
+				>
+					<RailIcon section="bookmarks" />
+					<span>Bookmarks</span>
+					<span class="ml-auto font-mono text-[10.5px] text-stone-400">{bookmarks}</span>
+				</a>
+			{:else}
+				<span
+					aria-disabled="true"
+					title="Bookmark a page and it will appear here"
+					class="mt-3 flex items-center gap-2.5 rounded-[9px] px-2.5 py-[7px] text-sm text-stone-700 opacity-40"
+				>
+					<RailIcon section="bookmarks" />
+					<span>Bookmarks</span>
+				</span>
+			{/if}
 		</nav>
 
 		<!-- The divider belongs to the lower half, so it must not outlive it: an

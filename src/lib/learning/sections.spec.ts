@@ -17,7 +17,7 @@ describe('activeSection', () => {
 
 	it('falls back to the hub for pages with no section of their own', () => {
 		expect(activeSection('/learn/compare/cohousing-vs-ecovillage')).toBe('hub');
-		expect(activeSection('/learn/saved')).toBe('hub');
+		expect(activeSection('/learn/bookmarks')).toBe('hub');
 	});
 
 	/** Search has a field in the rail and a tab of its own, so no section
@@ -53,7 +53,7 @@ describe('currentState', () => {
 			'/learn/topics',
 			'/learn/topics/intentional-communities',
 			'/learn/guides/a/b',
-			'/learn/saved',
+			'/learn/bookmarks',
 			'/learn/compare/x'
 		];
 		const counts = paths.map((p) => {

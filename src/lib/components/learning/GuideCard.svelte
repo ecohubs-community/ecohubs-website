@@ -33,7 +33,7 @@
 
 <a
 	href="/learn/guides/{guide.slug}"
-	class="{CARD} overflow-hidden {featured ? 'flex flex-col' : 'flex'} {className}"
+	class="{CARD} bg-white overflow-hidden {featured ? 'flex flex-col' : 'flex'} {className}"
 >
 	<Cover
 		slug={guide.slug}

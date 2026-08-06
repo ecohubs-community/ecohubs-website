@@ -151,12 +151,17 @@
 			<!-- ═══════════════════════════════════════════════════════
 					DISCOVERY
 			═══════════════════════════════════════════════════════ -->
-			<section class="mt-20 grid gap-5 lg:grid-cols-3">
+			<!-- Two columns while a panel has no data yet, three once it does — an empty
+			     third of the row reads as something that failed to load. -->
+			<section
+				class="mt-20 grid gap-5 {data.referenced.length ? 'lg:grid-cols-3' : 'md:grid-cols-2'}"
+			>
 				<DiscoveryList title="Recently updated" items={data.recent} />
 				<DiscoveryList
 					title="Most linked to"
 					items={data.referenced}
-					note="Counted from the pages that cite them — we do not track readers."
+					ranked
+					footnote="Counted from the pages that cite them. We do not track readers."
 				/>
 				<RabbitHole pool={data.rabbit} {seed} />
 			</section>

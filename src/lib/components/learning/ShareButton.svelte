@@ -11,6 +11,7 @@
 	 * pointing at the previous page.
 	 */
 	import { onMount } from 'svelte';
+	import Icon from '@iconify/svelte';
 	import { PILL, PILL_OFF } from './pill';
 
 	let { title }: { title: string } = $props();
@@ -46,19 +47,7 @@
 
 {#if ready}
 	<button type="button" onclick={share} class="{PILL} {PILL_OFF}">
-		<svg
-			viewBox="0 0 24 24"
-			aria-hidden="true"
-			class="size-3.5 shrink-0"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-		>
-			<circle cx="17" cy="6" r="2.5" />
-			<circle cx="7" cy="12" r="2.5" />
-			<circle cx="17" cy="18" r="2.5" />
-			<path d="M9.2 10.8l5.6-3.6M9.2 13.2l5.6 3.6" />
-		</svg>
+		<Icon icon="tabler:share" width="14" height="14" class="shrink-0" aria-hidden="true" />
 		<span aria-live="polite">{copied ? 'Link copied' : 'Share'}</span>
 	</button>
 {/if}

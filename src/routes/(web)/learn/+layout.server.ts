@@ -29,7 +29,7 @@ export const load: LayoutServerLoad = async () => {
 		})),
 
 		/**
-		 * A light catalogue of everything published, so `/learn/saved` can turn
+		 * A light catalogue of everything published, so `/learn/bookmarks` can turn
 		 * stored ids back into titles and links.
 		 *
 		 * Resolving here rather than storing titles alongside the bookmark is
