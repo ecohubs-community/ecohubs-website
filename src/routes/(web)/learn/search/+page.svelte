@@ -78,7 +78,12 @@
 		class="mx-auto grid max-w-3xl gap-12 px-6 lg:max-w-6xl lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-8"
 	>
 		<div class="min-w-0 lg:order-2">
-			<form onsubmit={submit} role="search">
+			<!-- Results update as you type, so the button looks redundant. It is
+			     what commits the query to the URL: a submit button is the reliable
+			     way to get Enter-to-submit (the no-button case depends on a
+			     single-field special rule) and it is what gives a phone keyboard
+			     its "Go" key. -->
+			<form onsubmit={submit} role="search" class="flex gap-2">
 				<label for="learn-search" class="sr-only">Search the learning hub</label>
 				<input
 					id="learn-search"
@@ -86,8 +91,14 @@
 					bind:value={query}
 					placeholder="What would you like to learn?"
 					autocomplete="off"
-					class="w-full rounded-full border border-stone-300 bg-white px-6 py-3.5 text-lg text-stone-800 placeholder:text-stone-400 focus:border-ecohubs-dark focus:outline-none"
+					class="min-w-0 flex-1 rounded-full border border-stone-300 bg-white px-6 py-3.5 text-lg text-stone-800 placeholder:text-stone-400 focus:border-ecohubs-dark focus:outline-none"
 				/>
+				<button
+					type="submit"
+					class="shrink-0 rounded-full bg-ecohubs-dark px-6 py-3.5 text-sm text-white transition-colors hover:bg-ecohubs-deep"
+				>
+					Search
+				</button>
 			</form>
 
 			<div class="mt-8" aria-live="polite">
