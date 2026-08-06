@@ -8,6 +8,12 @@
 import { describe, expect, it } from 'vitest';
 import { load as loadIndex } from './+page.server';
 import { load as loadTerm, entries } from './[slug]/+page.server';
+import { terms } from '$lib/learning';
+import { isIndexable } from '$lib/learning/validate';
+
+/** Whatever is currently unpublished — named slugs would make these tests fail
+ *  the day someone finishes the draft they happened to reference. */
+const drafts = terms.filter((t) => t.frontmatter.status !== 'published');
 
 // The load functions only touch `params`; the rest of the event is unused.
 const call = <T>(fn: unknown, params: Record<string, string> = {}) =>
@@ -16,11 +22,13 @@ const call = <T>(fn: unknown, params: Record<string, string> = {}) =>
 describe('glossary index', () => {
 	it('lists only published, substantial terms', async () => {
 		const data = await call<Promise<{ terms: { slug: string }[] }>>(loadIndex);
-		const slugs = data.terms.map((t) => t.slug);
+		const slugs = new Set(data.terms.map((t) => t.slug));
 
-		expect(slugs).toContain('consent'); // published and complete
-		expect(slugs).not.toContain('sociocracy'); // draft
-		expect(slugs).not.toContain('cohousing'); // draft
+		// The rule, not a sample: everything listed passes the gate, and
+		// everything that fails it is absent.
+		const wrong = terms.filter((t) => slugs.has(t.frontmatter.slug) !== isIndexable(t));
+		expect(wrong.map((t) => t.frontmatter.slug)).toEqual([]);
+		expect(slugs.size).toBeGreaterThan(0);
 	});
 
 	it('stays out of the index while the glossary is still thin', async () => {
@@ -46,10 +54,12 @@ describe('term page', () => {
 		expect(data.indexable).toBe(true);
 	});
 
-	it('404s a draft rather than exposing unpublished work', async () => {
-		await expect(async () =>
-			call<Promise<unknown>>(loadTerm, { slug: 'sociocracy' })
-		).rejects.toThrow();
+	it.runIf(drafts.length > 0)('404s a draft rather than exposing unpublished work', async () => {
+		for (const draft of drafts) {
+			await expect(async () =>
+				call<Promise<unknown>>(loadTerm, { slug: draft.frontmatter.slug })
+			).rejects.toThrow();
+		}
 	});
 
 	it('404s an unknown slug', async () => {
@@ -59,9 +69,16 @@ describe('term page', () => {
 	});
 
 	it('never links a related term that is unpublished', async () => {
-		// `consent` relates to consensus and sociocracy, both drafts.
-		const data = await call<Promise<{ related: unknown[] }>>(loadTerm, { slug: 'consent' });
-		expect(data.related).toEqual([]);
+		const draftSlugs = new Set(drafts.map((t) => t.frontmatter.slug));
+		const leaked: string[] = [];
+
+		for (const term of terms.filter((t) => t.frontmatter.status === 'published')) {
+			const data = await call<Promise<{ related: { slug: string }[] }>>(loadTerm, {
+				slug: term.frontmatter.slug
+			});
+			leaked.push(...data.related.map((r) => r.slug).filter((s) => draftSlugs.has(s)));
+		}
+		expect(leaked).toEqual([]);
 	});
 
 	it('never links a topic page that does not exist yet', async () => {
@@ -73,8 +90,11 @@ describe('term page', () => {
 	});
 
 	it('prerenders one entry per published term, and no drafts', () => {
-		const slugs = (entries as () => { slug: string }[])().map((e) => e.slug);
-		expect(slugs).toContain('consent');
-		expect(slugs).not.toContain('sociocracy');
+		const slugs = new Set((entries as () => { slug: string }[])().map((e) => e.slug));
+		const wrong = terms.filter(
+			(t) => slugs.has(t.frontmatter.slug) !== (t.frontmatter.status === 'published')
+		);
+		expect(wrong.map((t) => t.frontmatter.slug)).toEqual([]);
+		expect(slugs.size).toBeGreaterThan(0);
 	});
 });

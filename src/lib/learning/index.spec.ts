@@ -12,6 +12,7 @@ import {
 	readingMinutes,
 	sitemapEntries,
 	termDefinitions,
+	terms,
 	termUsage,
 	topicBySlug,
 	urlFor,
@@ -111,9 +112,15 @@ describe('derived views', () => {
 	it('includes drafts in the definition map, so a tooltip still works', () => {
 		// A lesson may reference a term whose page is unfinished; showing the
 		// definition beats showing nothing. `published` decides the link.
-		const sociocracy = termDefinitions.get('sociocracy');
-		expect(sociocracy?.short).toBeTruthy();
-		expect(sociocracy?.published).toBe(false);
+		//
+		// Asserted as a rule over every term rather than against one named slug:
+		// publishing a draft should not break a test about drafts.
+		const wrong = terms.filter((t) => {
+			const entry = termDefinitions.get(t.frontmatter.slug);
+			return !entry?.short || entry.published !== (t.frontmatter.status === 'published');
+		});
+		expect(wrong.map((t) => t.frontmatter.slug)).toEqual([]);
+		expect(terms.length).toBeGreaterThan(0);
 	});
 
 	it('builds reverse usage only from published content', () => {
