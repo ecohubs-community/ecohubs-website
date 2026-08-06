@@ -13,11 +13,12 @@
 	let { section }: { section: string } = $props();
 
 	// Chosen to match the design's shapes: two panes, a lined document, four
-	// tiles, joined nodes, a closed book, a compass.
+	// tiles, opposing arrows, joined nodes, a closed book, a compass.
 	const ICONS: Record<string, string> = {
 		hub: 'tabler:layout-columns',
 		guides: 'tabler:file-text',
 		topics: 'tabler:layout-grid',
+		compare: 'tabler:arrows-left-right',
 		paths: 'tabler:route',
 		glossary: 'tabler:book-2',
 		map: 'tabler:compass',

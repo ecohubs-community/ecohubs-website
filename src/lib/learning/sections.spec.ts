@@ -13,10 +13,10 @@ describe('activeSection', () => {
 		expect(activeSection('/learn/topics/intentional-communities')).toBe('topics');
 		expect(activeSection('/learn/guides/a/b')).toBe('guides');
 		expect(activeSection('/learn/glossary/consent')).toBe('glossary');
+		expect(activeSection('/learn/compare/cohousing-vs-ecovillage')).toBe('compare');
 	});
 
 	it('falls back to the hub for pages with no section of their own', () => {
-		expect(activeSection('/learn/compare/cohousing-vs-ecovillage')).toBe('hub');
 		expect(activeSection('/learn/bookmarks')).toBe('hub');
 	});
 

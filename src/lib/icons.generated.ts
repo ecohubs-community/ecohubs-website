@@ -4,8 +4,11 @@ import type { IconifyIcon } from '@iconify/types';
 
 const DEFAULTS = { width: 24, height: 24 };
 
-/** The 25 icons this site uses, inlined so nothing is fetched at runtime. */
+/** The 26 icons this site uses, inlined so nothing is fetched at runtime. */
 export const ICONS: Record<string, IconifyIcon> = {
+	'tabler:arrows-left-right': {
+		body: '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 17H3m3-7L3 7l3-3M3 7h18m-3 13l3-3l-3-3"/>'
+	},
 	'tabler:book-2': {
 		body: '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19 4v16H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M19 16H7a2 2 0 0 0-2 2M9 8h6"/></g>'
 	},

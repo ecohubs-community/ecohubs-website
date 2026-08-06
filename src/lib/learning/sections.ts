@@ -23,6 +23,7 @@ export const LEARN_SECTIONS: LearnSection[] = [
 	{ key: 'hub', label: 'Learning', href: '/learn' },
 	{ key: 'guides', label: 'Guides', href: '/learn/guides' },
 	{ key: 'topics', label: 'Topics', href: '/learn/topics' },
+	{ key: 'compare', label: 'Compared', href: '/learn/compare' },
 	{ key: 'paths', label: 'Learning Paths', href: '/learn/paths' },
 	{ key: 'glossary', label: 'Glossary', href: '/learn/glossary' },
 	{ key: 'map', label: 'Knowledge Map', href: '/learn/map' }
@@ -33,7 +34,7 @@ export const LEARN_SECTIONS: LearnSection[] = [
  * resolves to Guides rather than to the hub.
  *
  * `/learn` prefixes every page here, so pages with no section of their own —
- * a comparison, the saved list — fall back to the hub rather than to nothing.
+ * the bookmarks list — fall back to the hub rather than to nothing.
  * That is deliberate: an unmarked nav on a page that plainly sits inside the
  * hub reads as a bug.
  */
@@ -54,7 +55,7 @@ export function activeSection(pathname: string): string {
  * `page` asserts that the link points at what you are reading, so it is only
  * right on an exact match; the section merely *containing* the current page
  * gets `true`. Both are styled identically — the distinction is for screen
- * readers, which otherwise announce six pages as "current" across the hub.
+ * readers, which otherwise announce seven pages as "current" across the hub.
  */
 export function currentState(
 	pathname: string,
