@@ -13,7 +13,7 @@
 	 */
 	import Cover from './Cover.svelte';
 	import ProgressRing from './ProgressRing.svelte';
-	import { CARD, META, TAG } from './card';
+	import { CARD, META, TAG, TAG_OFF } from './card';
 	import type { Motif } from '$lib/learning/types';
 
 	export interface PathCardData {
@@ -72,7 +72,7 @@
 				{path.title}
 			</h3>
 			{#if !full}
-				<span class={TAG}>{path.minutes} min</span>
+				<span class="{TAG} {TAG_OFF}">{path.minutes} min</span>
 			{/if}
 		</div>
 

@@ -79,8 +79,14 @@
      section navigation, and the article column is the priority. -->
 <aside class="hidden lg:order-1 lg:block">
 	<!-- Scrolls independently: a guide with nine lessons plus a topic tree is
-	     taller than the viewport, and the rail should not drag the article. -->
-	<div class="sticky top-16 max-h-[calc(100vh-4rem)] self-start overflow-y-auto py-7 pb-16">
+	     taller than the viewport, and the rail should not drag the article. The
+	     scrollbar is hidden until hover, as in the design — otherwise a permanent
+	     bar sits between the rail and the article. -->
+	<div
+		class="sticky top-16 max-h-[calc(100vh-4rem)] self-start overflow-y-auto py-7 pb-16
+		       [scrollbar-width:none] hover:[scrollbar-color:rgba(120,113,108,0.28)_transparent]
+		       hover:[scrollbar-width:thin]"
+	>
 		<!-- Always first: where you are in the hub. Every learning page shows
 		     this, which is what makes /learn feel like one place. -->
 		<p class={LABEL}>Learning</p>

@@ -12,7 +12,7 @@
 	 * render would differ between the server and the client and trip hydration.
 	 */
 	import { onMount } from 'svelte';
-	import { CARD, META, TAG } from './card';
+	import { CARD, META, TAG, TAG_OFF } from './card';
 	import type { DiscoveryItem } from '$lib/learning/discovery';
 
 	let { pool, seed = 0 }: { pool: DiscoveryItem[]; seed?: number } = $props();
@@ -50,7 +50,7 @@
 			{/if}
 		</div>
 
-		<span class="{TAG} mt-4 self-start bg-white">{item.kind}</span>
+		<span class="{TAG} {TAG_OFF} mt-4 self-start bg-white">{item.kind}</span>
 		<h3 class="mt-4 font-serif text-[21px] leading-snug text-ecohubs-deep">{item.title}</h3>
 		<p class="mt-3 flex-1 text-[14.5px] leading-relaxed text-stone-600">{item.summary}</p>
 		<a href={item.url} class="mt-5 text-sm text-ecohubs-dark hover:text-ecohubs-deep">

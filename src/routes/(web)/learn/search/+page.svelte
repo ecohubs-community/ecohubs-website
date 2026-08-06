@@ -16,7 +16,7 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { LearnRail } from '$lib/components/learning';
-	import { CARD, META, TAG } from '$lib/components/learning/card';
+	import { CARD, META, TAG, TAG_OFF } from '$lib/components/learning/card';
 	import { learningBreadcrumbs } from '$lib/learning/schema';
 	import { groupByKind, searchDocs, type SearchDoc } from '$lib/learning/search';
 
@@ -170,7 +170,7 @@
 						<div class="flex flex-col gap-3">
 							{#each group.docs as doc (doc.url)}
 								<a href={doc.url} class="{CARD} flex items-start gap-4 bg-white p-5">
-									<span class="{TAG} mt-0.5">{doc.kind}</span>
+									<span class="{TAG} {TAG_OFF} mt-0.5">{doc.kind}</span>
 									<span class="min-w-0 flex-1">
 										<span class="block font-serif text-[18px] leading-snug text-ecohubs-deep">
 											{doc.title}

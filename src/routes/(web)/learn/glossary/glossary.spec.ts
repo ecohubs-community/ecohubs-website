@@ -38,10 +38,28 @@ describe('glossary index', () => {
 		expect(data.indexable).toBe(data.terms.length >= 5);
 	});
 
-	it('groups terms alphabetically for the A–Z rail', async () => {
-		const data = await call<Promise<{ groups: { letter: string }[] }>>(loadIndex);
-		const letters = data.groups.map((g) => g.letter);
-		expect(letters).toEqual([...letters].sort());
+	it('returns terms alphabetically, which the A–Z grouping relies on', async () => {
+		// Grouping moved to the page so it can react to the search and topic
+		// filters; the load's contract is now just that the order is right.
+		const data = await call<Promise<{ terms: { term: string }[] }>>(loadIndex);
+		const names = data.terms.map((t) => t.term);
+		expect(names).toEqual([...names].sort((a, b) => a.localeCompare(b)));
+		expect(names.length).toBeGreaterThan(0);
+	});
+
+	it('offers a topic filter for every topic present, and no others', async () => {
+		const data =
+			await call<Promise<{ terms: { topic: string }[]; topics: { slug: string }[] }>>(loadIndex);
+		expect(data.topics.map((t) => t.slug).sort()).toEqual(
+			[...new Set(data.terms.map((t) => t.topic))].sort()
+		);
+	});
+
+	it('ranks most-linked terms by citations, highest first', async () => {
+		const data = await call<Promise<{ mostCited: { count: number }[] }>>(loadIndex);
+		const counts = data.mostCited.map((t) => t.count);
+		expect(counts).toEqual([...counts].sort((a, b) => b - a));
+		expect(counts.every((c) => c > 0)).toBe(true);
 	});
 });
 
