@@ -56,13 +56,23 @@ function normalise(fm: Frontmatter): Frontmatter {
 	return fm;
 }
 
-const entries: ContentEntry[] = Object.entries(modules).map(([path, module]) => ({
-	frontmatter: normalise(module.metadata),
-	component: module.default,
-	path,
-	words: countWords(sources[path] ?? ''),
-	headings: extractHeadings(sources[path] ?? '')
-}));
+const entries: ContentEntry[] = Object.entries(modules).map(([path, module]) => {
+	// mdsvex leaves `metadata` undefined when the YAML fails to parse — most
+	// often an unquoted value containing ": ", which YAML reads as a nested
+	// mapping. Without this the whole index dies on `undefined.updated`, with no
+	// clue which of a hundred files is at fault.
+	if (!module.metadata) {
+		throw new Error(`${path}: frontmatter did not parse. A value containing ": " must be quoted.`);
+	}
+
+	return {
+		frontmatter: normalise(module.metadata),
+		component: module.default,
+		path,
+		words: countWords(sources[path] ?? ''),
+		headings: extractHeadings(sources[path] ?? '')
+	};
+});
 
 /* ── Validation ──────────────────────────────────────────────────────────── */
 
