@@ -24,7 +24,13 @@ interface SitemapRoute {
  */
 function learnSectionRoutes(): SitemapRoute[] {
 	const all = learningEntries();
-	return ['/learn/guides', '/learn/glossary', '/learn/paths', '/learn/topics'].flatMap((path) => {
+	return [
+		'/learn/compare',
+		'/learn/guides',
+		'/learn/glossary',
+		'/learn/paths',
+		'/learn/topics'
+	].flatMap((path) => {
 		const lastmod = all
 			.filter((e) => e.url.startsWith(`${path}/`))
 			.map((e) => e.lastmod)

@@ -9,6 +9,7 @@ export { default as BookmarkButton } from './BookmarkButton.svelte';
 export { default as ArticleToc } from './ArticleToc.svelte';
 export { default as Callout } from './Callout.svelte';
 export { default as Compare } from './Compare.svelte';
+export { default as CompareCard } from './CompareCard.svelte';
 export { default as Cover } from './Cover.svelte';
 export { default as GuideCard } from './GuideCard.svelte';
 export { default as PathCard } from './PathCard.svelte';
@@ -33,6 +34,7 @@ export { default as Sources } from './Sources.svelte';
 export { default as Video } from './Video.svelte';
 
 export type { CompareRow } from './Compare.svelte';
+export type { CompareCardData } from './CompareCard.svelte';
 export type { GuideCardData } from './GuideCard.svelte';
 export type { ChainStep } from './PathChain.svelte';
 export type { PathCardData } from './PathCard.svelte';

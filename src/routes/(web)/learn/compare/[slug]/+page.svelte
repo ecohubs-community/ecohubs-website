@@ -19,11 +19,11 @@
 	const compare = $derived(data.compare);
 	const Content = $derived(data.content as Component);
 
-	// No intermediate "Compare" crumb: there is no /learn/compare index, so it
-	// would have pointed back at /learn — a duplicate URL in the trail, and a
-	// misleading BreadcrumbList in the schema.
 	const breadcrumbs = $derived(
-		learningBreadcrumbs([{ name: compare.title, path: `/learn/compare/${compare.slug}` }])
+		learningBreadcrumbs([
+			{ name: 'Compared', path: '/learn/compare' },
+			{ name: compare.title, path: `/learn/compare/${compare.slug}` }
+		])
 	);
 	const jsonLd = $derived(comparisonArticle(compare));
 </script>
@@ -137,11 +137,11 @@
 
 			<div class="mt-14 text-center">
 				<a
-					href="/learn"
+					href="/learn/compare"
 					class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
 				>
 					<span class="transition-transform group-hover:-translate-x-0.5">←</span>
-					<span class="font-story italic">The learning hub</span>
+					<span class="font-story italic">All comparisons</span>
 				</a>
 			</div>
 		</div>
@@ -156,9 +156,7 @@
 				href: `/learn/compare/${o.slug}`,
 				label: o.title
 			}))}
-			backLink={data.topicPublished
-				? { href: `/learn/topics/${compare.topic}`, label: data.topicTitle }
-				: { href: '/learn/topics', label: 'All topics' }}
+			backLink={{ href: '/learn/compare', label: 'All comparisons' }}
 		/>
 	</div>
 </article>

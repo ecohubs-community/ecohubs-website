@@ -166,7 +166,17 @@
 				<RabbitHole pool={data.rabbit} {seed} />
 			</section>
 
-			<div class="mt-16 text-center">
+			<div class="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+				<a
+					href="/learn/compare"
+					class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
+				>
+					<span class="font-story italic">
+						Or tell two things apart — {data.comparisons.length}
+						{data.comparisons.length === 1 ? 'comparison' : 'comparisons'}
+					</span>
+					<span class="transition-transform group-hover:translate-x-0.5">→</span>
+				</a>
 				<a
 					href="/learn/glossary"
 					class="group inline-flex items-center gap-2 text-sm text-ecohubs-dark transition-colors hover:text-ecohubs-deep"
