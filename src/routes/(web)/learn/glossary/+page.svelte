@@ -11,6 +11,23 @@
 	const jsonLd = $derived(definedTermSet(data.terms));
 </script>
 
+{#snippet letters()}
+	<p class="mb-2.5 px-2.5 font-mono text-[10.5px] tracking-[0.18em] text-[#8a8a80] uppercase">
+		Jump to letter
+	</p>
+	<!-- Anchors rather than a filter, so it works without JavaScript. -->
+	<nav aria-label="Jump to letter" class="flex flex-wrap gap-1.5 px-2.5">
+		{#each data.groups as group (group.letter)}
+			<a
+				href="#letter-{group.letter}"
+				class="grid size-7 place-items-center rounded-md border border-stone-200 font-mono text-[11px] text-stone-600 transition-colors hover:border-ecohubs-dark hover:text-ecohubs-dark"
+			>
+				{group.letter}
+			</a>
+		{/each}
+	</nav>
+{/snippet}
+
 <SEO
 	title="Glossary — every word this world uses, said plainly"
 	description="Plain definitions of the words used in intentional communities, ecovillages and community governance — each with an example and where it applies."
@@ -58,17 +75,6 @@
 
 			{#if data.groups.length}
 				<!-- A–Z rail. Anchors rather than a filter, so it works without JS. -->
-				<nav aria-label="Jump to letter" class="mb-12 flex flex-wrap gap-2">
-					{#each data.groups as group (group.letter)}
-						<a
-							href="#letter-{group.letter}"
-							class="rounded-full border border-stone-200 px-3 py-1 text-sm text-stone-600 transition-colors hover:border-ecohubs-dark hover:text-ecohubs-deep"
-						>
-							{group.letter}
-						</a>
-					{/each}
-				</nav>
-
 				{#each data.groups as group (group.letter)}
 					<section class="mb-14">
 						<h2
@@ -112,6 +118,6 @@
 			</div>
 		</div>
 
-		<LearnRail />
+		<LearnRail footer={letters} />
 	</div>
 </div>
