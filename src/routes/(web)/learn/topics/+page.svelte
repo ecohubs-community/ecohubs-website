@@ -9,10 +9,26 @@
 	let { data }: { data: PageData } = $props();
 
 	const breadcrumbs = learningBreadcrumbs([{ name: 'Topics', path: '/learn/topics' }]);
+
+	/** Small numbers read better as words in a headline. */
+	const WORDS = [
+		'No',
+		'One',
+		'Two',
+		'Three',
+		'Four',
+		'Five',
+		'Six',
+		'Seven',
+		'Eight',
+		'Nine',
+		'Ten'
+	];
+	const spelled = (n: number) => WORDS[n] ?? String(n);
 </script>
 
 <SEO
-	title="Topics — the ten doors into community living"
+	title="Topics — the doors into community living"
 	description="Governance, money, land, conflict, membership and daily life — the subjects that decide whether a community lasts, each explained from the ground up."
 	ogImage="/og-default.jpg"
 	{breadcrumbs}
@@ -31,10 +47,12 @@
 				<div class="kicker text-emerald-700">Browse by topic</div>
 				<Breadcrumbs items={breadcrumbs} />
 			</div>
+			<!-- The number is counted, not written: the heading said "Ten doors"
+			     while eight topics were published, because the plan had ten. -->
 			<h1
 				class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl lg:text-[64px]"
 			>
-				Ten doors into
+				{spelled(data.topics.length)} doors into
 				<em class="font-story font-normal italic text-ecohubs-primary">the same house.</em>
 			</h1>
 			<p class="mt-6 max-w-2xl text-lg leading-relaxed font-light text-stone-700">

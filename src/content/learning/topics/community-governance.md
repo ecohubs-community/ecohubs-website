@@ -8,6 +8,10 @@ practice: >-
   Governance terms only mean something once they are written into agreements with a named process. Ask a community to show you the paragraph — and the last time it was reviewed. If a group can describe the feeling but not point to the text, treat this as an intention rather than a working system.
 cluster: power
 rcosLayer: 2
+image: topics/community-governance.webp
+imageAlt: >-
+  About a dozen adults in a circle of mismatched chairs in a village hall, one standing
+  at a flipchart headed "Key challenges" mid-sentence while the others listen.
 status: published
 updated: 2026-08-06
 terms:

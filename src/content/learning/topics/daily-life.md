@@ -8,6 +8,10 @@ practice: >-
   Everything on this page is checkable on a visit, and none of it is checkable from a website. Ask for numbers rather than impressions — how many hours, how many meals, how many people at the last meeting — and ask three different members the same question. The variance between their answers is usually more informative than any of the answers.
 cluster: culture
 rcosLayer: 5
+image: topics/daily-life.webp
+imageAlt: >-
+  A long outdoor table after a shared meal — stacked plates, used glasses, a jug of
+  flowers — with four people still talking at the far end and empty chairs at the near one.
 status: published
 updated: 2026-08-07
 terms: [common-house, work-quota, privacy-gradient, invisible-work]

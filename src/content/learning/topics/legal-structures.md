@@ -7,6 +7,10 @@ targetQuery: intentional community legal structure
 practice: >-
   Every term on this page describes a document that exists. Ask to be shown it rather than told about it — the lease, the share certificate, the deed, the ground lease. Being shown it is the answer; being told about it is not. Then ask who has lent on this before, because a structure nobody has ever financed is a structure that has not been tested.
 cluster: money
+image: topics/legal-structures.webp
+imageAlt: >-
+  A signed residential lease on a dark wooden table, a pen resting on it beside reading
+  glasses and a set of keys tagged with a house number.
 status: published
 updated: 2026-08-07
 terms: [community-land-trust, housing-cooperative, ground-lease, resale-formula, limited-equity]

@@ -4,7 +4,6 @@ title: Judge a community before you commit
 slug: judge-a-community
 summary: For people who have found somewhere and now have to decide whether it works — governance, conflict, money and the patterns that end projects.
 audience: For people with a place in mind and a decision to make
-motif: strata
 outcomes:
   - Read a community's governance from the outside in a single visit
   - Tell a real warning sign from something that only sounds alarming
@@ -18,6 +17,10 @@ pairs:
     href: /learn/topics/resilience
   - label: Glossary — blocking concern
     href: /learn/glossary/blocking-concern
+image: learning-paths/judge-a-community.webp
+imageAlt: >-
+  A visitor standing apart at the edge of a courtyard with a notebook, watching a group
+  of residents and children talking around a table outside a communal building.
 status: published
 updated: 2026-08-07
 steps:

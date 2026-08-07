@@ -8,6 +8,10 @@ practice: >-
   Nothing on this page is a prediction. Use it as a set of things to check against a real community and against your own group: ask what nearly ended this place, and what changed afterwards. A community that can answer both has survived something and learned from it, which is the only evidence of resilience anybody can actually show you.
 cluster: power
 rcosLayer: 6
+image: topics/resilience.webp
+imageAlt: >-
+  An old timber and render building patched with mismatched boards and sheets of
+  corrugated metal, still in use, with someone working inside the open doorway.
 status: published
 updated: 2026-08-07
 terms: [drift, founder-transition, exit-clause, agreements]

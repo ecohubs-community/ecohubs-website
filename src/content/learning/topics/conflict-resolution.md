@@ -8,6 +8,10 @@ practice: >-
   A conflict process that has never been used is a document, not a practice. Ask when it was last triggered, by whom, and what changed as a result — and ask whether somebody who is not on the board could start it. If the answer to that last question takes a while, that is the answer.
 cluster: power
 rcosLayer: 4
+image: topics/conflict-resolution.webp
+imageAlt: >-
+  Two people sitting at opposite ends of a weathered bench above a grey sea, turned
+  toward each other mid-conversation, neither smiling.
 status: published
 updated: 2026-08-07
 terms: [repair-process, informal-power, graduated-sanctions, facilitation]

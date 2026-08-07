@@ -8,6 +8,10 @@ practice: >-
   Financial terms in this field mean different things in different communities, so treat every one of them as a question rather than a definition. Ask for the paragraph in the agreements, ask what the figure was last year, and ask what happens to a member who cannot pay. A community that answers all three from memory has a working economy; one that answers none has an intention.
 cluster: money
 rcosLayer: 3
+image: topics/community-economy.webp
+imageAlt: >-
+  A kitchen table with a household ledger, a calculator, mugs and a teapot, and two
+  people going over a printed sheet headed "July budget".
 status: published
 updated: 2026-08-07
 terms: [common-purse, labour-credit, reserve-fund, special-levy, agreements]

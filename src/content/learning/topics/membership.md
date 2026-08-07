@@ -8,6 +8,10 @@ practice: >-
   Membership vocabulary varies more between communities than almost any other, so never accept a stage name at face value. Ask what a person at that stage may decide, what they pay, and what they would get back if they withdrew. If the community cannot answer for each stage, the stages are labels rather than a process.
 cluster: culture
 rcosLayer: 1
+image: topics/membership.webp
+imageAlt: >-
+  A visitor carrying a large rucksack walking across a cobbled courtyard beside a
+  resident who is talking and gesturing, with timber balconies above.
 status: published
 updated: 2026-08-07
 terms: [visitor-period, provisional-membership, membership-agreement, agreements]

@@ -8,6 +8,10 @@ practice: >-
   This is a word people use loosely, so check it against what is actually held in common: land, income, decisions, or only good will. Communities that use the term precisely will tell you, unprompted, which of those they share and which they do not.
 cluster: culture
 rcosLayer: 0
+image: topics/intentional-communities.webp
+imageAlt: >-
+  Three very different homes around a shared meadow — a timber cabin with a porch, a
+  rendered cottage, and a large barn — linked by gravel paths and a fire circle.
 status: published
 updated: 2026-08-05
 terms: [intentional-community, cohousing, ecovillage, commune]
