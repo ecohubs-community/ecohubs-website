@@ -81,11 +81,10 @@
 	<!-- Scrolls independently: a guide with nine lessons plus a topic tree is
 	     taller than the viewport, and the rail should not drag the article. The
 	     scrollbar is hidden until hover, as in the design — otherwise a permanent
-	     bar sits between the rail and the article. -->
+	     bar sits between the rail and the article. See `.rail-scroll` below for
+	     why the reveal is a colour change and not a width change. -->
 	<div
-		class="sticky top-16 max-h-[calc(100vh-4rem)] self-start overflow-y-auto py-7 pb-16
-		       [scrollbar-width:none] hover:[scrollbar-color:rgba(120,113,108,0.28)_transparent]
-		       hover:[scrollbar-width:thin]"
+		class="rail-scroll sticky top-16 max-h-[calc(100vh-4rem)] self-start overflow-y-auto py-7 pb-16"
 	>
 		<!-- Always first: where you are in the hub. Every learning page shows
 		     this, which is what makes /learn feel like one place. -->
@@ -238,3 +237,20 @@
 		{/if}
 	</div>
 </aside>
+
+<style>
+	/* Reveal the scrollbar by colour, never by width. Toggling `scrollbar-width`
+	   from none to thin on hover switches the rail to a classic scrollbar that
+	   takes real space, so the rail narrows the moment the pointer arrives and
+	   its labels re-wrap. Reserving the gutter up front and starting the thumb
+	   transparent keeps the content box the same width at rest and on hover. */
+	.rail-scroll {
+		scrollbar-gutter: stable;
+		scrollbar-width: thin;
+		scrollbar-color: transparent transparent;
+	}
+
+	.rail-scroll:hover {
+		scrollbar-color: rgba(120, 113, 108, 0.28) transparent;
+	}
+</style>
