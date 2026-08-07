@@ -12,6 +12,7 @@
 	import { LEARN_SHELL } from '$lib/components/learning/shell';
 	import { CARD, META } from '$lib/components/learning/card';
 	import { learningBreadcrumbs } from '$lib/learning/schema';
+	import { LINE_HEIGHT, type MapLayout } from '$lib/learning/map';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -54,72 +55,24 @@
 
 			{#if data.layout.clusters.length}
 				<div class="{CARD} mt-8 bg-ecohubs-base p-6 hover:border-stone-200/90 hover:shadow-none">
-					<!-- `img` with a label rather than a bare graphic: assistive tech
-					     should announce what this is, and the list below carries the
-					     same information in text. -->
-					<svg
-						viewBox="0 0 {data.layout.width} {data.layout.height}"
-						class="w-full"
-						style="height: min(74vh, 760px)"
-						role="img"
-						aria-label="Map of every learning topic, grouped into clusters"
-					>
-						{#each data.layout.clusters as cluster (cluster.key)}
-							<g>
-								<circle
-									cx={cluster.x}
-									cy={cluster.y}
-									r={cluster.r}
-									fill="rgba(245,242,234,0.9)"
-									stroke="rgba(6,78,59,0.16)"
-									stroke-dasharray="3 5"
-								/>
-								<text
-									x={cluster.x}
-									y={cluster.y - cluster.r + 18}
-									text-anchor="middle"
-									class="font-mono text-[9.5px] tracking-[0.16em] uppercase"
-									fill="#a8a29e"
-								>
-									{cluster.label}
-								</text>
-
-								<!-- Spokes first, so the dots sit on top of them. -->
-								{#each cluster.nodes as node (node.slug)}
-									<line
-										x1={node.cx}
-										y1={node.cy}
-										x2={node.x}
-										y2={node.y}
-										stroke="rgba(6,78,59,0.14)"
-									/>
-								{/each}
-								<circle cx={cluster.x} cy={cluster.y} r="4" fill="rgba(6,78,59,0.35)" />
-
-								{#each cluster.nodes as node (node.slug)}
-									<a href="/learn/topics/{node.slug}" class="group">
-										<circle
-											cx={node.x}
-											cy={node.y}
-											r={node.r}
-											fill="rgba(6,78,59,0.55)"
-											class="transition-colors group-hover:fill-ecohubs-primary"
-										/>
-										<text
-											x={node.x}
-											y={node.y - node.r - 6}
-											text-anchor="middle"
-											font-size="11.5"
-											fill="#3f3f3a"
-											class="transition-colors group-hover:fill-ecohubs-dark"
-										>
-											{node.title}
-										</text>
-									</a>
-								{/each}
-							</g>
-						{/each}
-					</svg>
+					<!-- Two drawings of the same map, one wide and one stacked, with
+					     CSS choosing. The layouts are computed at build time and a
+					     prerendered page cannot know the render width, so the choice
+					     has to be made in the stylesheet. `hidden` is `display:none`,
+					     so the unused one is out of the accessibility tree and out of
+					     the tab order — not merely invisible. -->
+					<!-- The switch is at `md`, not `sm`: the wide map is scaled to fit
+					     its column, so at 640 points of viewport its labels come out
+					     under 7px. It is comfortable from about 768 up. -->
+					<div class="hidden md:block">
+						{@render mapSvg(data.layout)}
+					</div>
+					<!-- Capped, because the stacked canvas is a third of the wide
+					     one's width: left to fill a tablet it would draw 15px labels
+					     on a drawing authored at 11.5. -->
+					<div class="mx-auto max-w-[360px] md:hidden">
+						{@render mapSvg(data.narrowLayout)}
+					</div>
 				</div>
 			{:else}
 				<p class="mt-8 font-story text-lg text-stone-500 italic">
@@ -169,6 +122,79 @@
 		<LearnRail footer={railLists} />
 	</div>
 </div>
+
+<!--
+	One drawing, rendered twice from two different layouts.
+
+	`img` with a label rather than a bare graphic: assistive tech should
+	announce what this is, and the cluster cards below carry the same
+	information as text.
+
+	`h-auto` rather than a fixed height: an SVG sized to its own viewBox aspect
+	ratio draws as large as the column allows, at every width. A fixed height
+	letterboxes it instead — on a phone the drawing shrank to a fifth of a box
+	it only filled a quarter of.
+-->
+{#snippet mapSvg(layout: MapLayout)}
+	<svg
+		viewBox="0 0 {layout.width} {layout.height}"
+		class="h-auto w-full"
+		role="img"
+		aria-label="Map of every learning topic, grouped into clusters"
+	>
+		{#each layout.clusters as cluster (cluster.key)}
+			<g>
+				<circle
+					cx={cluster.x}
+					cy={cluster.y}
+					r={cluster.r}
+					fill="rgba(245,242,234,0.9)"
+					stroke="rgba(6,78,59,0.16)"
+					stroke-dasharray="3 5"
+				/>
+				<text
+					x={cluster.x}
+					y={cluster.y - cluster.r + 18}
+					text-anchor="middle"
+					class="font-mono text-[9.5px] tracking-[0.16em] uppercase"
+					fill="#a8a29e"
+				>
+					{cluster.label}
+				</text>
+
+				<!-- Spokes first, so the dots sit on top of them. -->
+				{#each cluster.nodes as node (node.slug)}
+					<line x1={node.cx} y1={node.cy} x2={node.x} y2={node.y} stroke="rgba(6,78,59,0.14)" />
+				{/each}
+				<circle cx={cluster.x} cy={cluster.y} r="4" fill="rgba(6,78,59,0.35)" />
+
+				{#each cluster.nodes as node (node.slug)}
+					<a href="/learn/topics/{node.slug}" class="group">
+						<circle
+							cx={node.x}
+							cy={node.y}
+							r={node.r}
+							fill="rgba(6,78,59,0.55)"
+							class="transition-colors group-hover:fill-ecohubs-primary"
+						/>
+						<text
+							x={node.labelX}
+							y={node.labelY}
+							text-anchor={node.anchor}
+							font-size="11.5"
+							fill="#3f3f3a"
+							class="transition-colors group-hover:fill-ecohubs-dark"
+						>
+							{#each node.lines as line, i (i)}
+								<tspan x={node.labelX} dy={i === 0 ? 0 : LINE_HEIGHT}>{line}</tspan>
+							{/each}
+						</text>
+					</a>
+				{/each}
+			</g>
+		{/each}
+	</svg>
+{/snippet}
 
 {#snippet railLists()}
 	{#if data.clusters.length}

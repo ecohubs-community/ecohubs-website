@@ -30,7 +30,14 @@ export const load: PageServerLoad = async () => {
 
 	// Coordinates are computed here, not in the browser: the page ships a
 	// finished SVG that a crawler can read and that never reflows on load.
+	//
+	// Two of them, because the choice between a two-column map and a stacked
+	// one is a question about render width, and a prerendered page cannot ask.
+	// Both ship and CSS picks; the hidden one is `display:none`, so it is out
+	// of the accessibility tree and out of the tab order rather than merely
+	// invisible.
 	const layout = layoutMap(topics);
+	const narrowLayout = layoutMap(topics, { compact: true });
 
 	const clusters = CLUSTERS.map((cluster) => {
 		const items = topics.filter((t) => t.cluster === cluster.key);
@@ -44,6 +51,7 @@ export const load: PageServerLoad = async () => {
 
 	return {
 		layout,
+		narrowLayout,
 		clusters,
 		rabbit: rabbitPool(),
 		// A map of one topic tells a reader nothing they did not already know.
