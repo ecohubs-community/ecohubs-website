@@ -3,7 +3,7 @@ type: term
 title: Common house
 slug: common-house
 term: Common house
-topic: intentional-communities
+topic: daily-life
 summary: The shared building at the centre of a cohousing project — usually a large kitchen and dining room, plus what individual homes were built small enough to do without.
 short: The shared building at the centre of a cohousing project, usually a large kitchen and dining room plus what homes were built small enough to do without.
 targetQuery: what is a common house in cohousing

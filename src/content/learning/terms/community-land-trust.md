@@ -3,7 +3,7 @@ type: term
 title: Community land trust
 slug: community-land-trust
 term: Community land trust
-topic: intentional-communities
+topic: legal-structures
 summary: A non-profit holds the land permanently and leases it to residents who own their buildings — separating the two so housing stays affordable after the first sale.
 short: A non-profit holds land permanently and leases it to residents who own their buildings, separating the two so homes stay affordable after the first sale.
 targetQuery: what is a community land trust

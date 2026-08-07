@@ -3,7 +3,7 @@ type: term
 title: Housing co-operative
 slug: housing-cooperative
 term: Housing co-operative
-topic: intentional-communities
+topic: legal-structures
 summary: A legal form in which members collectively own the entity that owns the building, and hold a right to occupy rather than a deed to a flat.
 short: Members collectively own the entity that owns the building, and hold a right to occupy rather than a deed to a flat.
 targetQuery: what is a housing cooperative
