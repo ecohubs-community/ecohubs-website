@@ -1,14 +1,14 @@
 {
 	"intentional-communities": {
-		"generatedAt": "2026-08-07T15:45:53.916Z",
+		"generatedAt": "2026-08-07T16:43:22.665Z",
 		"entries": [
 			{
 				"kind": "pdf",
 				"label": "The whole guide as one PDF",
-				"detail": "PDF · 65 pages · printable",
+				"detail": "PDF · 66 pages · printable",
 				"file": "/downloads/intentional-communities/intentional-communities-guide.pdf",
-				"bytes": 2203656,
-				"pages": 65
+				"bytes": 2221768,
+				"pages": 66
 			},
 			{
 				"kind": "pdf",

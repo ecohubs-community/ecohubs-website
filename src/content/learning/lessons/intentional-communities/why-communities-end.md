@@ -4,7 +4,7 @@ title: Why communities end
 slug: why-communities-end
 guide: intentional-communities
 order: 10
-summary: Where the "90% fail" figure actually comes from, the six patterns that recur, and the endings that are not failures.
+summary: Where the two different "90% fail" figures come from, the six patterns that recur, and the endings that are not failures.
 targetQuery: why do intentional communities fail
 status: published
 updated: 2026-08-06
@@ -37,7 +37,33 @@ Look at what has to happen for that to become "ninety per cent of intentional co
 - **Lasting fewer than 25 years** becomes *failing*, which would make most businesses, most marriages and nearly every voluntary organisation a failure.
 - And a **sample of 91 self-selected historical cases** becomes a rate for a category that had not been invented yet.
 
-Deborah Altus, who works in this field's own scholarship, asks the question that the arithmetic invites: should longevity alone be the measure of success, and should short-lived communities be regarded as failures? On the Foundation for Intentional Community's own site, the ninety per cent figure appears not in the research but in a **reader's comment**, attached to 1960s and 70s communes. That is roughly the standard of evidence it has everywhere we looked.
+Deborah Altus, who works in this field's own scholarship, asks the question that the arithmetic invites: should longevity alone be the measure of success, and should short-lived communities be regarded as failures?
+
+## The other ninety per cent
+
+There is a second source, and it is the one most people are actually half-remembering. It is also about something different.
+
+Diana Leafe Christian's *Creating a Life Together* (2003) — the standard practical reference on forming communities, written by the then editor of *Communities* magazine — opens with this: **most aspiring ecovillages and community groups, "probably 90 percent", never get off the ground.** Their envisioned communities never get built. They cannot find the right land, or they run out of money, or they get mired in conflict before there is anything to be in conflict about.
+
+Read that carefully, because it is not the claim it gets turned into.
+
+Christian is describing **groups trying to start a community**, not communities that exist. A forming group that never buys land and never builds anything did not fail as a community; it never became one. Her figure says nothing about the odds facing a community you could go and visit next week — which is what "ninety per cent of intentional communities fail" is always taken to mean.
+
+She is also careful about it in a way that the people quoting her are not. The number is hedged — *probably* — and it comes from her own experience: editing the magazine, visiting dozens of communities, and interviewing scores of founders. It is a practitioner's estimate, offered as one, rather than a count of anything.
+
+<Callout type="note" title="Two different ninety per cents">
+
+**Kanter, 1972.** 91 American communal projects founded between 1780 and 1860. Success defined as lasting 25 years. Most did not.
+
+**Christian, 2003.** Roughly 90% of *forming groups* never build anything at all. An experienced estimate, explicitly hedged.
+
+Neither is a failure rate for existing intentional communities. They have been welded into one sentence that neither author wrote, and that sentence is the one that circulates.
+
+</Callout>
+
+The genuinely useful part of Christian's argument is not the number at all. It is what she does with it. Having looked at the groups that made it and the groups that did not, she concluded that **the successful tenth had all done the same five or six things right, and the unsuccessful nine-tenths had made the same handful of mistakes.**
+
+That is a claim about *pattern* rather than *rate*, from somebody who looked at a great many cases. It is also, more or less, the rest of this lesson.
 
 <Callout type="caveat" title="What we are and are not saying">
 
@@ -45,7 +71,9 @@ We are **not** saying most communities succeed. We do not know. Nobody does.
 
 There is no registry, listing is voluntary, and no one follows up on the ones that stop listing — a community that quietly dissolves simply disappears from the directory, indistinguishable from one that stopped updating its profile. The denominator does not exist, so neither does the rate.
 
-What we are saying is narrower and more useful: **a number with no source cannot help you decide anything**, in either direction. If it comforted you, it should not. If it frightened you off, it should not have.
+Nor are we saying the two figures above are invented. Kanter counted something real and Christian estimated something real. **What does not exist is the thing they get quoted as** — a failure rate for existing intentional communities. One is a nineteenth-century longevity threshold; the other is about groups that never built anything.
+
+If the number comforted you, it should not have. If it frightened you off, it should not have. And if you are joining a **forming** group rather than an established one, Christian's version is the one that applies to you, and it is worth taking seriously.
 
 </Callout>
 
@@ -115,6 +143,11 @@ An honest gap to close the lesson on. Ostrom studied irrigation systems and fish
 			title: 'Kanter, R. M. — Commitment and Community (Harvard University Press, 1972)',
 			url: 'https://www.hup.harvard.edu/books/9780674145764',
 			note: '91 communal projects founded 1780–1860, and the 25-year success threshold everything traces back to'
+		},
+		{
+			title: 'Christian, D. L. — Creating a Life Together (New Society Publishers, 2003)',
+			url: 'https://newsociety.com/book/creating-a-life-together/',
+			note: 'the "probably 90 percent" of forming groups that never build, and the five or six things the rest got right'
 		},
 		{
 			title: 'Altus, D. — The Value of Community: What Defines Success?',

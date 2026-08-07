@@ -269,51 +269,54 @@
 			{/if}
 
 			<!-- ═══════════════════════════════════════════════════════
-					4. GUIDE DOWNLOADS
-					Only what has actually been generated: the section is absent
-					for a guide nobody has run `pnpm downloads` for.
+					4. DOWNLOADS AND ABOUT, SIDE BY SIDE
+					Two short columns rather than two full-width bands: neither
+					fills 820px, and stacked they pushed "after this guide"
+					below the fold on every screen.
 			═══════════════════════════════════════════════════════ -->
-			{#if data.downloads}
-				<section class="mt-16 max-w-[820px]">
-					<div class="kicker mb-5 text-emerald-700">Guide downloads</div>
-					<div class="flex flex-col gap-3">
-						{#each data.downloads.entries as item (item.file)}
-							<a href={item.file} download class="{CARD} flex items-center gap-4 bg-white p-5">
-								<span
-									class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#f5f2ea] text-ecohubs-deep"
-								>
-									<Icon
-										icon={item.kind === 'xlsx' ? 'tabler:table' : 'tabler:download'}
-										class="h-4 w-4"
-									/>
-								</span>
-								<span class="min-w-0">
-									<span class="block text-[15px] text-ecohubs-deep">{item.label}</span>
-									<span class="{META} block">{item.detail} · {item.size}</span>
-								</span>
-							</a>
-						{/each}
-					</div>
-					<p class="mt-4 font-story text-sm text-stone-500 italic">
-						Generated from this guide on {generated}. Free to print, copy and translate.
-					</p>
-				</section>
-			{/if}
+			<div class="mt-16 grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+				{#if data.downloads}
+					<section>
+						<div class="kicker mb-5 text-emerald-700">Guide downloads</div>
+						<div class="flex flex-col gap-3">
+							{#each data.downloads.entries as item (item.file)}
+								<a href={item.file} download class="{CARD} flex items-center gap-4 bg-white p-5">
+									<span
+										class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#f5f2ea] text-ecohubs-deep"
+									>
+										<Icon
+											icon={item.kind === 'xlsx' ? 'tabler:table' : 'tabler:download'}
+											class="h-4 w-4"
+										/>
+									</span>
+									<span class="min-w-0">
+										<span class="block text-[15px] text-ecohubs-deep">{item.label}</span>
+										<span class="{META} block">{item.detail} · {item.size}</span>
+									</span>
+								</a>
+							{/each}
+						</div>
+						<p class="mt-4 font-story text-sm text-stone-500 italic">
+							Generated from this guide on {generated}. Free to print, copy and translate.
+						</p>
+					</section>
+				{/if}
+
+				{#if guide.faq?.length}
+					<section>
+						<div class="kicker mb-5 text-emerald-700">About this guide</div>
+						<Faq items={guide.faq} />
+					</section>
+				{/if}
+			</div>
 
 			<!-- ═══════════════════════════════════════════════════════
-					5. ABOUT THIS GUIDE
+					5. AFTER THIS GUIDE
+					Sibling guides first when there are any, then the topics
+					this guide touches but does not cover — ordered by how many
+					of its glossary terms each one owns.
 			═══════════════════════════════════════════════════════ -->
-			{#if guide.faq?.length}
-				<section class="mt-16 max-w-[820px]">
-					<div class="kicker mb-5 text-emerald-700">About this guide</div>
-					<Faq items={guide.faq} />
-				</section>
-			{/if}
-
-			<!-- ═══════════════════════════════════════════════════════
-					6. AFTER THIS GUIDE
-			═══════════════════════════════════════════════════════ -->
-			{#if data.nextGuides.length}
+			{#if data.nextGuides.length || data.nextTopics.length}
 				<section class="mt-16">
 					<div class="kicker mb-5 text-emerald-700">After this guide</div>
 					<div class="grid gap-3 sm:grid-cols-3">
@@ -334,6 +337,32 @@
 									<div class="{META} mt-2">
 										{other.lessons}
 										{other.lessons === 1 ? 'lesson' : 'lessons'} · {other.minutes} min
+									</div>
+								</div>
+							</a>
+						{/each}
+
+						{#each data.nextTopics as topic (topic.slug)}
+							<a href="/learn/topics/{topic.slug}" class="{CARD} overflow-hidden bg-white">
+								<Cover
+									slug={topic.slug}
+									image={topic.image}
+									imageAlt={topic.imageAlt}
+									motif={topic.motif}
+									label="topic"
+									sizes="(min-width: 640px) 300px, 100vw"
+									class="h-24 w-full"
+								/>
+								<div class="p-5">
+									<div class="font-serif text-[17px] leading-snug text-ecohubs-deep">
+										{topic.title}
+									</div>
+									<div class="mt-2 line-clamp-2 text-[14px] leading-relaxed text-stone-600">
+										{topic.summary}
+									</div>
+									<div class="{META} mt-2">
+										topic · {topic.terms}
+										{topic.terms === 1 ? 'term' : 'terms'}
 									</div>
 								</div>
 							</a>

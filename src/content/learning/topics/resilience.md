@@ -2,7 +2,7 @@
 type: topic
 title: Resilience & Why Communities Fail
 slug: resilience
-summary: Where the "90% fail" figure actually comes from, the six patterns that recur, and the endings that are not failures.
+summary: Where the two different "90% fail" figures come from, the six patterns that recur, and the endings that are not failures.
 targetQuery: why do intentional communities fail
 practice: >-
   Nothing on this page is a prediction. Use it as a set of things to check against a real community and against your own group: ask what nearly ended this place, and what changed afterwards. A community that can answer both has survived something and learned from it, which is the only evidence of resilience anybody can actually show you.
@@ -36,13 +36,19 @@ Look at what has to happen for that to become a modern failure rate:
 - **Lasting fewer than 25 years** becomes *failing*, which would make most businesses, most marriages and nearly every voluntary organisation a failure.
 - A **sample of 91 self-selected historical cases** becomes a rate for a category that had not been invented yet.
 
-On the Foundation for Intentional Community's own site, the ninety per cent figure appears not in the research but in a **reader's comment**. That is roughly the standard of evidence it has everywhere we looked.
+There is a second source, and it is the one most people are half-remembering. Diana Leafe Christian's *Creating a Life Together* (2003) states that most aspiring ecovillages and community groups — **"probably 90 percent"** — never get off the ground; their envisioned communities are never built, because the group cannot find land, runs out of money, or is mired in conflict before there is anything to be in conflict about.
+
+That is a real observation from somebody who edited *Communities* magazine and interviewed scores of founders, and it is explicitly hedged. It is also about **groups trying to start a community**, not communities that exist. A group that never built anything did not fail as a community; it never became one.
+
+So there are two ninety per cents in circulation — a nineteenth-century longevity threshold and an estimate about forming groups — and they have been welded into a sentence neither author wrote. If you are joining a **forming** group, Christian's version is the one that applies to you, and it deserves to be taken seriously. If you are looking at somewhere that already exists, neither figure tells you anything.
+
+The useful half of Christian's argument is not the number. It is her conclusion that the successful tenth had all done the same five or six things right, and the rest had made the same handful of mistakes — a claim about pattern rather than rate, which is what the section below offers.
 
 <Callout type="caveat" title="What we are and are not saying">
 
 We are **not** saying most communities succeed. We do not know, and nobody does. There is no registry, listing is voluntary, and nobody follows up on the ones that stop listing — a community that quietly dissolves simply disappears from the directory, indistinguishable from one that stopped updating its profile.
 
-What we are saying is narrower: **a number with no source cannot help you decide anything**, in either direction. If it comforted you, it should not. If it frightened you off, it should not have.
+Nor are we saying the figures are invented. Kanter counted something real and Christian estimated something real. **What does not exist is the thing they get quoted as.** If the number comforted you, it should not have; if it frightened you off, it should not have either.
 
 </Callout>
 
@@ -101,6 +107,11 @@ An honest gap to close on. Ostrom studied irrigation systems and fisheries, not 
 			title: 'Kanter, R. M. — Commitment and Community (Harvard University Press, 1972)',
 			url: 'https://www.hup.harvard.edu/books/9780674145764',
 			note: '91 projects founded 1780–1860, and the 25-year threshold everything traces to'
+		},
+		{
+			title: 'Christian, D. L. — Creating a Life Together (New Society Publishers, 2003)',
+			url: 'https://newsociety.com/book/creating-a-life-together/',
+			note: 'the "probably 90 percent" of forming groups that never build anything'
 		},
 		{
 			title: 'Altus, D. — The Value of Community: What Defines Success?',
