@@ -1,0 +1,60 @@
+#!/bin/sh
+#
+# Two jobs, in order:
+#
+#   1. Format the staged files. CI runs `prettier --check .`, and this PR went
+#      red on 62 unformatted content files because nothing local looked at
+#      them until the build did.
+#   2. Regenerate the guide downloads when the commit changes what is inside
+#      them. The PDFs and the worksheet are committed artefacts — the site is
+#      prerendered, so they have to exist at build time — which means they go
+#      stale silently unless something notices.
+#
+# Both stage what they change, so the commit carries it. Neither does anything
+# when nothing relevant is staged, so ordinary commits are unaffected.
+#
+# SKIP_DOWNLOADS=1 skips step 2 only; formatting is cheap and always worth it.
+set -e
+
+# NUL-separated and `xargs -0`: filenames can contain spaces, and the `-r` flag
+# that would otherwise guard the empty case is GNU-only and absent on macOS.
+staged() { git diff --cached --name-only --diff-filter=ACMR -z; }
+
+if [ -n "$(git diff --cached --name-only --diff-filter=ACMR)" ]; then
+	# `prettier --write` edits the working tree and `git add <path>` stages the
+	# whole file, so a partially staged file (git add -p) would have its
+	# unstaged edits silently swept into the commit. Refuse rather than guess:
+	# committing work somebody deliberately held back is not recoverable from
+	# the commit message.
+	work=$(mktemp -d)
+	git diff --cached --name-only --diff-filter=ACMR | sort > "$work/staged"
+	git diff --name-only | sort > "$work/unstaged"
+	mixed=$(comm -12 "$work/staged" "$work/unstaged")
+	rm -rf "$work"
+
+	if [ -n "$mixed" ]; then
+		echo "pre-commit: these files have both staged and unstaged changes:"
+		echo "$mixed" | sed 's/^/  /'
+		echo
+		echo "Formatting them would sweep the unstaged edits into the commit."
+		echo
+		echo "Either stage them fully:      git add <file>"
+		echo "or set the rest aside first:  git stash push --keep-index"
+		exit 1
+	fi
+
+	staged | xargs -0 npx prettier --write --ignore-unknown --log-level warn
+	staged | xargs -0 git add
+fi
+
+if [ -n "$SKIP_DOWNLOADS" ]; then
+	echo "pre-commit: SKIP_DOWNLOADS set — leaving the downloads alone."
+	exit 0
+fi
+
+node scripts/build-downloads.ts --staged
+
+if ! git diff --quiet -- static/downloads; then
+	git add static/downloads
+	echo "pre-commit: regenerated downloads added to this commit."
+fi

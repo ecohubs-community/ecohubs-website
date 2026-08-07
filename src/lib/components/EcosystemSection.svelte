@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { fade, scale, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import Icon from '@iconify/svelte';
+	import Icon from '$lib/components/Icon.svelte';
 
 	interface EcosystemTool {
 		icon: string;

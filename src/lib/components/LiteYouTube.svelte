@@ -92,11 +92,17 @@
 <svelte:head>
 	{#if videoJsonLd}
 		<!-- Closing tag split so the Svelte parser doesn't end the script context. -->
-		{@html '<' + 'script type="application/ld+json">' + JSON.stringify(videoJsonLd) + '<' + '/script>'}
+		{@html '<' +
+			'script type="application/ld+json">' +
+			JSON.stringify(videoJsonLd) +
+			'<' +
+			'/script>'}
 	{/if}
 </svelte:head>
 
-<div class="relative aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 soft-shadow border-4 border-stone-200">
+<div
+	class="relative aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 soft-shadow border-4 border-stone-200"
+>
 	{#if activated}
 		<iframe
 			src={embedSrc}

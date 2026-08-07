@@ -23,21 +23,21 @@ This file orients AI coding assistants (Claude Code, Cursor, etc.) working in th
 
 Public site lives under the `(web)` route group so it shares Navbar + Footer + the homepage layout. Routes:
 
-| Route                       | File                                            | Notes                                                                                                                                                                                                                                                |
-| --------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Route                       | File                                            | Notes                                                                                                                                                                                                                                                    |
+| --------------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `/`                         | `src/routes/(web)/+page.svelte`                 | Homepage. Long, narrative — hero, stories, wounds, manifesto moment, answers, network, "what we are already doing", vision teaser, RCOS Standard teaser, members constellation, tech, who-this-is-for, FAQ teaser, roadmap, "before you join", final CTA |
-| `/vision`                   | `src/routes/(web)/vision/+page.svelte`          | Vision page with manifesto moment, six principles, three horizons, values, loop diagram                                                                                                                                                              |
-| `/rcos`                | `src/routes/(web)/rcos/+page.svelte`       | RCOS Standard page — failure modes, what-it-is/isn't, seven core layers, modules, comparisons, pilot, contribute, FAQ                                                                                                                             |
-| `/csi`                      | `src/routes/(web)/csi/+page.svelte`             | CSI (Community Suitability Index) page — pendant to `/rcos` for `csi.ecohubs.community`. Constraints, what-it-is/isn't, the three gates, seven domains, how to read a score, sources, personas, FAQ                                                    |
-| `/votecast`                 | `src/routes/(web)/votecast/+page.svelte`        | VoteCast page — pendant to `/rcos` and `/csi` for `votecast.ecohubs.community`. Interactive consent-ballot hero demo, why decisions break, what-it-is/isn't, six voting methods, decision lifecycle, the settings that decide fairness, personas, FAQ  |
-| `/seeking`                  | `src/routes/(web)/seeking/+page.svelte`         | Seeking.Community page — the one ecosystem page for people who want to **join** a community rather than build one. Example-match hero, why people look, what stops them, how it works, the ten intake questions, what comes back, FAQ                 |
-| `/membership`               | `src/routes/(web)/membership/+page.svelte`      | Membership page — what it is/isn't, doorways, application process, rooms, trust-by-design, EcosystemSection, voices, FAQ                                                                                                                             |
-| `/faq`                      | `src/routes/(web)/faq/+page.svelte`             | **Canonical FAQ page**. Aggregates FAQs from `(web)/data.ts`, `vision/data.ts`, `rcos/data.ts`, `csi/data.ts`, `votecast/data.ts`, `seeking/data.ts`, `membership/data.ts`. Only this route emits `FAQPage` JSON-LD                                                                                   |
-| `/blog`, `/blog/[slug]`     | `src/routes/(web)/blog/...`                     | Ghost-backed blog                                                                                                                                                                                                                                    |
-| `/join`                     | `src/routes/(web)/join/+page.svelte`            | Multi-step application form (`ApplicationForm.svelte`)                                                                                                                                                                                               |
-| `/contact`                  | `src/routes/(web)/contact/+page.svelte`         | Channels + `ContactForm.svelte`                                                                                                                                                                                                                      |
-| `/privacy`, `/terms`        | `src/routes/(web)/{privacy,terms}/+page.svelte` | Legal                                                                                                                                                                                                                                                |
-| `/sitemap.xml`, `/feed.xml` | `src/routes/{sitemap,feed}.xml/+server.ts`      | Generated                                                                                                                                                                                                                                            |
+| `/vision`                   | `src/routes/(web)/vision/+page.svelte`          | Vision page with manifesto moment, six principles, three horizons, values, loop diagram                                                                                                                                                                  |
+| `/rcos`                     | `src/routes/(web)/rcos/+page.svelte`            | RCOS Standard page — failure modes, what-it-is/isn't, seven core layers, modules, comparisons, pilot, contribute, FAQ                                                                                                                                    |
+| `/csi`                      | `src/routes/(web)/csi/+page.svelte`             | CSI (Community Suitability Index) page — pendant to `/rcos` for `csi.ecohubs.community`. Constraints, what-it-is/isn't, the three gates, seven domains, how to read a score, sources, personas, FAQ                                                      |
+| `/votecast`                 | `src/routes/(web)/votecast/+page.svelte`        | VoteCast page — pendant to `/rcos` and `/csi` for `votecast.ecohubs.community`. Interactive consent-ballot hero demo, why decisions break, what-it-is/isn't, six voting methods, decision lifecycle, the settings that decide fairness, personas, FAQ    |
+| `/seeking`                  | `src/routes/(web)/seeking/+page.svelte`         | Seeking.Community page — the one ecosystem page for people who want to **join** a community rather than build one. Example-match hero, why people look, what stops them, how it works, the ten intake questions, what comes back, FAQ                    |
+| `/membership`               | `src/routes/(web)/membership/+page.svelte`      | Membership page — what it is/isn't, doorways, application process, rooms, trust-by-design, EcosystemSection, voices, FAQ                                                                                                                                 |
+| `/faq`                      | `src/routes/(web)/faq/+page.svelte`             | **Canonical FAQ page**. Aggregates FAQs from `(web)/data.ts`, `vision/data.ts`, `rcos/data.ts`, `csi/data.ts`, `votecast/data.ts`, `seeking/data.ts`, `membership/data.ts`. Only this route emits `FAQPage` JSON-LD                                      |
+| `/blog`, `/blog/[slug]`     | `src/routes/(web)/blog/...`                     | Ghost-backed blog                                                                                                                                                                                                                                        |
+| `/join`                     | `src/routes/(web)/join/+page.svelte`            | Multi-step application form (`ApplicationForm.svelte`)                                                                                                                                                                                                   |
+| `/contact`                  | `src/routes/(web)/contact/+page.svelte`         | Channels + `ContactForm.svelte`                                                                                                                                                                                                                          |
+| `/privacy`, `/terms`        | `src/routes/(web)/{privacy,terms}/+page.svelte` | Legal                                                                                                                                                                                                                                                    |
+| `/sitemap.xml`, `/feed.xml` | `src/routes/{sitemap,feed}.xml/+server.ts`      | Generated                                                                                                                                                                                                                                                |
 
 Per-page data (lists, FAQs, copy that's repeated or templated) lives in a sibling `data.ts`. Keep it that way — the Svelte file should stay focused on layout and reactive state.
 
@@ -126,7 +126,13 @@ Every page **must** use the [`SEO.svelte`](./src/lib/components/SEO.svelte) comp
 
 Adding a page is three edits, not one. A page missing from either file is a page search engines and AI assistants may never find.
 
-- **New page** → add it to the `routes` array in [`sitemap.xml/+server.ts`](./src/routes/sitemap.xml/+server.ts) **and** to [`static/llms.txt`](./static/llms.txt) (one line: link plus a sentence saying what it is). Blog posts and tag archives are pulled from Ghost automatically — don't list those by hand.
+- **New page** → add it to the `routes` array in [`sitemap.xml/+server.ts`](./src/routes/sitemap.xml/+server.ts) **and** to [`llms.txt/+server.ts`](./src/routes/llms.txt/+server.ts) (one line: link plus a sentence saying what it is). Three exceptions, all generated:
+  - **Blog posts and tag archives** come from Ghost.
+  - **`/learn` content entries** — every guide, lesson, topic, comparison, path and glossary term — come from the content index, filtered by `isIndexable()`.
+  - **`/learn` section indexes** come from `LEARN_SECTIONS` in [`sections.ts`](./src/lib/learning/sections.ts), which both files read. Adding a nav section adds it to both; give it a sentence in `SECTION_BLURBS` or the spec fails.
+
+  A **standalone** `/learn` page that is not a content entry and not a nav section — `/learn/how-this-is-written` is the only one — still has to be added to both files by hand. `llms.txt` used to be a static file listing three of the hub's ninety pages, which is why it is a route now.
+
 - **Meaningful content change** → bump that route's `lastmod` to the date of the change. Cosmetic tweaks don't count.
 - `lastmod` is the only hint here Google actually reads (`priority` and `changefreq` are ignored), and it only works while it stays truthful — never stamp it with the build date, or crawlers learn to ignore the field.
 - A tag archive is `noindex` and stays out of the sitemap until it has `MIN_POSTS_FOR_INDEXABLE_TAG` posts (see [`blog.ts`](./src/lib/server/blog.ts)). One shared constant drives both, so they can't disagree — change it there, not in two places.
@@ -137,6 +143,50 @@ Adding a page is three edits, not one. A page missing from either file is a page
     -d '{"urls":["https://ecohubs.community/your-page"]}'
   ```
   Submit deleted URLs too — a 404 tells them to drop it. Never bulk-submit the whole site; that is the sitemap's job, and the protocol explicitly discourages it. The key lives at `static/<key>.txt` and must match `INDEXNOW_KEY`.
+
+## Learning Hub content
+
+Content lives in `src/content/learning/**/*.md` — markdown with frontmatter, indexed at build time by [`src/lib/learning/index.ts`](./src/lib/learning/index.ts). There is no database.
+
+- **Frontmatter is the schema.** Types in `learning/types.ts`; `learning/validate.ts` fails the build on a broken `guide:`, `terms:`, `topic:`, `related:` or path step. Fix the reference — do not weaken the validator.
+- **No import block in content files.** `<Quick>`, `<Deep>`, `<Gloss>`, `<Callout>`, `<Sources>` are injected by the remark plugin in [`mdsvex.config.js`](./mdsvex.config.js). Adding a component means exporting it from `$lib/components/learning` **and** listing it in that plugin's `AUTO_IMPORT`.
+- **Three depth layers.** `<Quick>` is a separate short version, the body is the standard read, `<Deep>` is additive detail. All three ship in the HTML; the switch only reduces what a _returning_ reader sees.
+- **Depth is strictly additive — each level only ever adds.** `quick` → short version. `standard` → short version + body. `deep` → short version + body + detail. Nothing a reader has already seen disappears when they ask for more. If a new layer is added, it must obey this.
+- **Never hide content by default.** Hiding is `html[data-depth=…]` set by the pre-paint script in `app.html`, and only from an explicitly stored choice. `getDepth()` returns `null` when unset for exactly this reason — a `|| 'standard'` fallback would hide the deep layer from Googlebot, which runs JS with empty storage. Same rule as the cookie banner and the hero cascade.
+- **`isIndexable()` gates the sitemap and page meta**, so thin or draft content stays reachable but unindexed. Drafts must be filtered in **all six places**: route, listings, sitemap, search index, the rabbit-hole pool, and `llms.txt`.
+- **All `localStorage` goes through `learning/storage.ts`** — versioned keys, every access wrapped, because storage throws in private mode.
+- **Search is built from source markdown, not rendered HTML** ([`learning/search.ts`](./src/lib/learning/search.ts)). That is what makes it depth-blind: `<Deep>` text is findable by a reader who has never opened deep mode. The index is emitted as `/learn/search-index.json` and fetched **only** on `/learn/search` — never import it from a page.
+- **Every learning page carries the section nav**: `<LearnRail>` on `lg` and up, `<LearnTabs>` (in the `/learn` layout) below it. A page that renders its own sidebar without the rail breaks the hub's navigation — the reason `/learn`, `/learn/topics` and the detail pages each had to be fixed once already.
+- **The rail and header follow `design_files/learning-hub/`.** Its colours map onto existing tokens — active nav is `bg-ecohubs-ivory` + `text-ecohubs-dark` (_not_ dark-on-white), labels are `font-mono text-[10.5px] tracking-[0.18em]`, sub-lists get a left rule with an emerald accent on the current item. Header controls share `PILL` from `components/learning/pill.ts`.
+- **Search lives in the rail as a field, not as a nav entry** — `LEARN_SECTIONS` deliberately omits it, and `activeSection('/learn/search')` returns `''` so nothing else lights up there. The tab row appends Search as its own tab.
+- **Icons go through [`$lib/components/Icon.svelte`](./src/lib/components/Icon.svelte)**, never `@iconify/svelte` directly. It hands Iconify bundled data instead of a name, so icons render server-side and nothing is fetched from `api.iconify.design`. Only the tabler set is used. **After using a new icon, run `pnpm icons`** — `icons.spec.ts` fails the build if the bundle and the source disagree. Hand-written `<svg>` is for illustrations and diagrams, not icons.
+- **Path progress is lesson progress.** Ticking a step on a path marks the underlying lesson read, so the path page, the guide rail and the hub cards are one fact rather than three tallies that can disagree. Paths carry optional `audience:`, `outcomes:` and `pairs:`; a step's description is the lesson's own `summary`, never a second copy.
+- **Topics declare a `cluster:`** (`clusters.ts`), validated at build time — it places them on the knowledge map. The map's coordinates come from `layoutMap()` at build time, so `/learn/map` ships a finished SVG with real text and real links.
+- **`CARD` sets no background on purpose.** Two background utilities in the same layer are ordered by Tailwind, not by the class attribute, so a card that asked for ivory silently rendered white. Every caller states its own `bg-*`.
+- **Cards come from `components/learning/`** — `GuideCard` (featured / compact), `TopicCard`, `PathCard`, `TermCard` — and share `CARD`/`TAG`/`META` from `card.ts`. Don't hand-roll a fifth card shape.
+- **Covers are motifs, not images.** A page with no `image:` gets one of six CSS motifs picked from its slug (`motif.ts`), so it always has a cover and neighbours differ. Set `image:` for real art — the validator then requires `imageAlt:` (write `imageAlt: ''` to declare it decorative).
+- **No invented metrics.** There is no analytics on this site, so the hub ships _Most linked to_ — counted from `terms:`/`related:` — where the design says "Popular this week", and says so on the card.
+- **`LEARN_SECTIONS` may only name routes that exist.** Everything is prerendered, so a link to a missing route fails the build rather than 404ing in production — which is how `/learn/search` announced itself.
+
+## Guide downloads (generated artefacts)
+
+Each guide can ship a full-guide PDF, a "Questions to ask on a visit" PDF and a cost model worksheet. They are **generated, committed files** under `static/downloads/`, listed on the guide page from `static/downloads/manifest.json`. The site is prerendered, so they must exist at build time.
+
+```bash
+pnpm downloads                    # every published guide
+pnpm downloads <guide-slug>       # one
+pnpm downloads --staged           # only guides whose staged content changed
+```
+
+- **Keep them in step with the content.** A committed PDF goes stale silently. `.githooks/pre-commit` runs `pnpm downloads --staged` and stages what changed, so an ordinary commit that edits a lesson also carries the regenerated PDF. `core.hooksPath` is set by `pnpm prepare`, so a fresh clone gets it. `SKIP_DOWNLOADS=1 git commit` bypasses it — use that for a work-in-progress commit, and regenerate before the PR.
+- **What counts as related lives in `guidesToRebuild()`** in [`scripts/build-downloads.ts`](./scripts/build-downloads.ts), with tests. A guide's own file or a lesson under `lessons/<slug>/` affects only that guide; quizzes, glossary terms, the `(print)` routes, `cost.ts` and `questions.ts` end up in every PDF, so they rebuild all of them. **Add a path to `SHARED` when a new input starts appearing inside a download.**
+- **Adding a new kind of download means adding its trigger too.** A generator with no matching pre-commit rule is a file that is wrong within a week. Extend `guidesToRebuild()` (and its spec) in the same change, and add the entry to the manifest so the guide page picks it up without hardcoding.
+- **The PDFs are printed from `/print/<guide>` by headless Chrome**, never re-stated. That route group sets `csr = false`, and because every hub component renders in full on the server and only hides parts of itself after hydration, no-hydration _is_ the print form: all depth layers, quizzes as answer keys, the estimator's reference table. **If you make a component hide something before hydration, you have broken the PDF and the crawler at the same time.**
+- **Nothing guide-specific is hardcoded.** Guides are discovered from the content directory; the visit questions are extracted from lessons by the callout convention `title="Take these with you"` (`learning/questions.ts`); a guide only gets a worksheet if a lesson uses `<CostEstimator>`. A second guide needs no code.
+- **The worksheet ships formulas, not one example's answers**, and `scripts/worksheet.spec.ts` evaluates them against `estimate()`. A spreadsheet that disagreed with the site would be worse than none, because a reader would trust it more. **If the cost model changes, that spec is what catches the drift.**
+- **`downloads.ts` is server-only.** It imports the manifest from `static/`; importing it from a component pulls that JSON into the browser bundle and broke the guide page once already.
+- Playwright's chromium is needed once per machine: `npx playwright install chromium`.
+- **`.githooks/pre-commit` also runs Prettier over the staged files**, because CI runs `prettier --check .` and content markdown is easy to forget. `pnpm lint` is the same check — run it before pushing if you bypassed the hook.
 
 ## External links
 
@@ -174,7 +224,7 @@ src/lib/components/sections/   Whole page sections shared between long pages.
   WhyWeBuiltIt.svelte        Dark purpose pull-quote + three numbered reason cards — /csi, /votecast, /seeking
 ```
 
-Cross-page *content* gets the same treatment: the Purpose Charter quote that opens
+Cross-page _content_ gets the same treatment: the Purpose Charter quote that opens
 `WhyWeBuiltIt` on both pages lives once in `src/lib/config/purpose-charter.ts`.
 
 Anything not in that list is either dead or should be reviewed before reuse.
@@ -209,7 +259,7 @@ Before opening a PR for non-trivial UI work:
 - [ ] All main routes (`/`, `/vision`, `/rcos`, `/csi`, `/votecast`, `/seeking`, `/membership`, `/faq`) return 200
 - [ ] H1 count = 1 per page; no `<svelte:component>` introduced
 - [ ] New pages emit `<SEO>` with `ogImage` + `breadcrumbs`
-- [ ] New pages added to **both** `sitemap.xml/+server.ts` and `static/llms.txt`; `lastmod` bumped on any page whose content meaningfully changed
+- [ ] New pages added to **both** `sitemap.xml/+server.ts` and `llms.txt/+server.ts` (learning content is generated into both); `lastmod` bumped on any page whose content meaningfully changed
 - [ ] External `target="_blank"` links carry `rel="noopener noreferrer"`
 - [ ] No new `bg-[#…]` hex unless you're prototyping; otherwise use a token
 - [ ] No new commented-out blocks (use git history instead)

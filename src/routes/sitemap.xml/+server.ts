@@ -1,5 +1,7 @@
 import type { RequestHandler } from './$types';
 import { getAllAuthors, getAllPosts, MIN_POSTS_FOR_INDEXABLE_TAG } from '$lib/server/blog';
+import { sitemapEntries as learningEntries } from '$lib/learning';
+import { LEARN_SECTIONS } from '$lib/learning/sections';
 
 const siteUrl = 'https://ecohubs.community';
 
@@ -8,6 +10,42 @@ interface SitemapRoute {
 	priority: string;
 	changefreq: string;
 	lastmod?: string;
+}
+
+/**
+ * The Learning Hub's section index pages.
+ *
+ * Derived rather than written out one by one: each was previously its own
+ * near-identical block, and adding `/learn/guides` meant remembering to write a
+ * fifth — which is exactly how it came to be missing.
+ *
+ * The list is `LEARN_SECTIONS`, the hub's own navigation, so a section cannot
+ * be reachable in the rail and absent here. Written out separately, this had
+ * already lost `/learn/map`.
+ *
+ * A section appears only once it holds something indexable, and its `lastmod`
+ * is the newest thing it contains. An index over nothing but stubs is itself
+ * thin, and dating it "today" would be the kind of lie the note below warns of.
+ */
+function learnSectionRoutes(): SitemapRoute[] {
+	const all = learningEntries();
+	const newest = all
+		.map((e) => e.lastmod)
+		.sort()
+		.at(-1);
+
+	return LEARN_SECTIONS.filter((section) => section.href !== '/learn').flatMap(({ href }) => {
+		// A section over its own children dates itself by them. `/learn/map` has
+		// no children — it draws the topics — so it falls back to the newest
+		// thing in the hub, which is what changes it.
+		const lastmod =
+			all
+				.filter((e) => e.url.startsWith(`${href}/`))
+				.map((e) => e.lastmod)
+				.sort()
+				.at(-1) ?? newest;
+		return lastmod ? [{ path: href, priority: '0.6', changefreq: 'weekly', lastmod }] : [];
+	});
 }
 
 /*
@@ -31,6 +69,12 @@ const routes: SitemapRoute[] = [
 	{ path: '/join', priority: '0.7', changefreq: 'monthly', lastmod: '2026-06-28' },
 	{ path: '/contact', priority: '0.7', changefreq: 'yearly', lastmod: '2026-08-04' },
 	{ path: '/blog', priority: '0.8', changefreq: 'weekly', lastmod: '2026-08-04' },
+	{
+		path: '/learn/how-this-is-written',
+		priority: '0.5',
+		changefreq: 'yearly',
+		lastmod: '2026-08-06'
+	},
 	{ path: '/privacy', priority: '0.3', changefreq: 'yearly', lastmod: '2026-08-04' },
 	{ path: '/terms', priority: '0.3', changefreq: 'yearly', lastmod: '2026-08-04' },
 
@@ -86,12 +130,15 @@ export const GET: RequestHandler = async () => {
 			changefreq: 'monthly' as const,
 			lastmod: post.date
 		})),
-		...Array.from(tagLastmod, ([slug, lastmod]): SitemapRoute => ({
-			path: `/blog/tag/${slug}`,
-			priority: '0.5',
-			changefreq: 'weekly',
-			lastmod
-		})),
+		...Array.from(
+			tagLastmod,
+			([slug, lastmod]): SitemapRoute => ({
+				path: `/blog/tag/${slug}`,
+				priority: '0.5',
+				changefreq: 'weekly',
+				lastmod
+			})
+		),
 		...(authors.length
 			? [
 					{
@@ -112,6 +159,36 @@ export const GET: RequestHandler = async () => {
 				priority: '0.6',
 				changefreq: 'monthly',
 				lastmod: authorLastmod.get(a.slug)
+			})
+		),
+		// Learning Hub. `sitemapEntries()` already applies `isIndexable`, so
+		// drafts and stubs are filtered at the source rather than here — one
+		// gate driving both the sitemap and each page's robots meta.
+		//
+		// The hub and glossary index are listed only once there is something
+		// behind them; an empty section should not be offered to a crawler.
+		// `lastmod` is the newest thing they contain, which is truthful and
+		// updates itself.
+		...(learningEntries().length
+			? ([
+					{
+						path: '/learn',
+						priority: '0.7',
+						changefreq: 'weekly',
+						lastmod: learningEntries()
+							.map((e) => e.lastmod)
+							.sort()
+							.at(-1)
+					},
+					...learnSectionRoutes()
+				] as SitemapRoute[])
+			: []),
+		...learningEntries().map(
+			({ url, lastmod }): SitemapRoute => ({
+				path: url,
+				priority: '0.5',
+				changefreq: 'monthly',
+				lastmod
 			})
 		)
 	];

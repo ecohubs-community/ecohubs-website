@@ -200,8 +200,8 @@
 						<p class="mt-4 text-[15px] leading-[1.6] text-stone-700 font-light">
 							Once a month we write down what we're learning as communities try to live
 							regeneratively — what held, what broke first, and the one idea we can't put down. No
-							algorithm, no streak to keep. Just a letter you can read in the time it takes a
-							kettle to boil.
+							algorithm, no streak to keep. Just a letter you can read in the time it takes a kettle
+							to boil.
 						</p>
 
 						<form class="mt-7" onsubmit={handleSubmit}>

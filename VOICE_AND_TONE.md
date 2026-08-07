@@ -20,15 +20,15 @@ Every piece of copy should sound like all five at once. If a draft fails one of 
 
 The voice stays constant; the tone adapts to context.
 
-| Surface          | Tone                        | Notes                                                                      |
-| ---------------- | --------------------------- | -------------------------------------------------------------------------- |
-| Homepage         | Warm + invitational         | Name the problem briefly, pivot fast to agency and an invitation.          |
-| Vision page      | Visionary + philosophical   | Allow longer sentences and bigger framing — still tied to concrete layers. |
-| RCOS Standard    | Formal + pragmatic          | Most cerebral. Define terms; contrast "what it is" vs "what it isn't".     |
-| Membership       | Invitational + transparent  | Empowerment ("you can…") + clarity ("here's how…").                        |
-| Join / forms     | Direct + reassuring         | Remove friction. "No wallet needed. No credit card ever required."         |
-| Social posts     | Warm + concrete             | One idea per post. Lead with a tangible image or finding, not a manifesto. |
-| Newsletter       | Conversational + structured | First-person plural ("we're testing…"). Always include a next step.        |
+| Surface       | Tone                        | Notes                                                                      |
+| ------------- | --------------------------- | -------------------------------------------------------------------------- |
+| Homepage      | Warm + invitational         | Name the problem briefly, pivot fast to agency and an invitation.          |
+| Vision page   | Visionary + philosophical   | Allow longer sentences and bigger framing — still tied to concrete layers. |
+| RCOS Standard | Formal + pragmatic          | Most cerebral. Define terms; contrast "what it is" vs "what it isn't".     |
+| Membership    | Invitational + transparent  | Empowerment ("you can…") + clarity ("here's how…").                        |
+| Join / forms  | Direct + reassuring         | Remove friction. "No wallet needed. No credit card ever required."         |
+| Social posts  | Warm + concrete             | One idea per post. Lead with a tangible image or finding, not a manifesto. |
+| Newsletter    | Conversational + structured | First-person plural ("we're testing…"). Always include a next step.        |
 
 ## 4. Vocabulary
 

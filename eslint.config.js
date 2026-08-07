@@ -11,6 +11,12 @@ const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
 export default defineConfig(
 	includeIgnoreFile(gitignorePath),
+	{
+		// `design_files/` holds the designer's reference exports — hand-written
+		// HTML and JS we read from and never ship. Linting them reports on
+		// somebody else's code, which is noise, and it was failing CI.
+		ignores: ['design_files/**']
+	},
 	js.configs.recommended,
 	...ts.configs.recommended,
 	...svelte.configs.recommended,

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Learning Path — EcoHubs Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="learning-hub.js"></script>
+<link rel="stylesheet" href="learning-hub.css" />
+<style>
+.chain{position:relative;padding-left:38px}
+.chain::before{content:"";position:absolute;left:15px;top:14px;bottom:26px;width:1px;background:#e7e5e4}
+.chain>.step{position:relative;padding:0 0 4px}
+.chain>.step+.step{margin-top:10px}
+.step .dot{position:absolute;left:-38px;top:14px;width:31px;height:31px;border-radius:99px;background:#fff;border:1px solid #e0ddd6;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#78716c;transition:all .22s;z-index:1}
+.step.is-done .dot{background:#059669;border-color:#059669;color:#fff}
+.step.is-next .dot{border-color:#059669;color:#047857;box-shadow:0 0 0 4px rgba(5,150,105,.11)}
+.step .row{width:100%;text-align:left;display:flex;align-items:flex-start;gap:16px;padding:14px 18px;border-radius:16px;border:1px solid transparent;transition:background .18s,border-color .18s}
+.step .row:hover{background:#faf9f5;border-color:rgba(231,229,228,.9)}
+.step.is-next .row{background:#fff;border-color:rgba(5,150,105,.32)}
+.step.is-done .row .t{color:#6b7265}
+.step .t{font-family:'Pridi',serif;font-size:16.5px;line-height:1.35;color:#0b2e24}
+.step .d{font-size:13.5px;line-height:1.55;color:#78716c;margin-top:3px;max-width:56ch}
+.step .open{font-size:12.5px;color:#059669;margin-top:7px;display:inline-block}
+.progring{transform:rotate(-90deg)}
+</style>
+</head>
+<body data-section="paths">
+<div data-siteheader></div>
+<div class="pt-16">
+<div class="max-w-[1360px] mx-auto px-5"><div class="railtabs" data-railtabs></div></div>
+<div class="shell">
+
+<aside class="rail rail-desktop">
+  <div class="rail-group"><div class="rail-label">Learning</div><div data-railnav></div></div>
+  <div class="rail-group">
+    <div class="rail-label" id="raillabel">This path</div>
+    <a href="Learning Paths.html" class="rail-link mb-2"><span>↩ All learning paths</span></a>
+    <div class="tree" id="railsteps"></div>
+    <div class="mt-4 px-2">
+      <div class="flex items-center justify-between mb-2 meta"><span>Progress</span><span id="railpct">0%</span></div>
+      <div class="bar"><i id="railbar" style="width:0"></i></div>
+    </div>
+  </div>
+  <div class="rail-group">
+    <div class="rail-label">Other paths</div>
+    <div class="rail-nav" id="otherpaths"></div>
+  </div>
+</aside>
+
+<main class="pb-8">
+
+<header class="pt-9">
+  <nav class="breadcrumb mb-6"><a href="Learning Hub.html">Learning</a><span>/</span><a href="Learning Paths.html">Learning Paths</a><span>/</span><span class="text-stone-500" id="crumb">Path</span></nav>
+  <div class="grid lg:grid-cols-[1.2fr_.8fr] gap-10 items-start">
+    <div>
+      <div class="kicker text-emerald-700 mb-4" id="audience">Path</div>
+      <h1 class="font-serif text-[38px] md:text-[44px] leading-[1.08] tracking-tight text-ecohubs-deep" id="title">—</h1>
+      <p class="lede mt-5" id="blurb">—</p>
+      <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 meta" id="meta"></div>
+      <div class="mt-7 flex flex-wrap items-center gap-3">
+        <a href="Learning Lesson.html" class="btn btn-primary text-[15px]" id="startbtn">Start step 01 <span>→</span></a>
+        <button class="readbtn" id="resetpath">Reset this path</button>
+      </div>
+    </div>
+    <div class="motif rounded-[22px] h-[220px] lg:h-[300px]" id="cover" data-motif="seed"><span class="m-label" id="coverlabel">path</span></div>
+  </div>
+</header>
+
+<section class="mt-12">
+  <div class="kicker text-emerald-700 mb-3">What you will be able to do</div>
+  <div id="outcomes" class="grid sm:grid-cols-2 xl:grid-cols-4 gap-3"></div>
+</section>
+
+<div class="hairline my-14"></div>
+
+<div class="grid lg:grid-cols-[1fr_248px] gap-9 items-start">
+  <section>
+    <div class="flex items-end justify-between gap-6 flex-wrap mb-6">
+      <div>
+        <div class="kicker text-emerald-700 mb-3">The path</div>
+        <h2 class="font-serif text-[29px] leading-tight text-ecohubs-deep" id="stepcount">— steps, in order</h2>
+      </div>
+      <span class="meta">click a step to tick it off</span>
+    </div>
+    <div class="chain" id="chain"></div>
+  </section>
+
+  <aside class="card p-6 lg:sticky lg:top-24">
+    <div class="flex items-center gap-4">
+      <svg width="58" height="58" viewBox="0 0 42 42" class="progring shrink-0" aria-hidden="true">
+        <circle cx="21" cy="21" r="17" fill="none" stroke="#ece9e2" stroke-width="4"></circle>
+        <circle cx="21" cy="21" r="17" fill="none" stroke="#059669" stroke-width="4" stroke-linecap="round" stroke-dasharray="106.8" stroke-dashoffset="106.8" id="ring"></circle>
+      </svg>
+      <div>
+        <div class="font-serif text-[21px] text-ecohubs-deep" id="bigpct">0%</div>
+        <div class="meta" id="donecount">—</div>
+      </div>
+    </div>
+    <div class="hairline my-5"></div>
+    <div class="kicker text-emerald-700 mb-3">Up next</div>
+    <div class="text-[14.5px] leading-snug text-ecohubs-deep" id="nextstep">—</div>
+    <a href="Learning Lesson.html" class="inline-block mt-4 text-[13.5px] text-ecohubs-dark" id="nextlink">Open it →</a>
+    <div class="hairline my-5"></div>
+    <div class="kicker text-emerald-700 mb-3">Pairs well with</div>
+    <div class="flex flex-col gap-2" id="pairs"></div>
+  </aside>
+</div>
+
+<section class="mt-16">
+  <div class="kicker text-emerald-700 mb-5">Continue elsewhere</div>
+  <div id="others" class="grid sm:grid-cols-3 gap-3"></div>
+</section>
+
+</main>
+</div></div>
+<div data-footer></div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const M=EH.pathMeta;
+  const want=new URLSearchParams(location.search).get('p');
+  const p=EH.paths.find(x=>x.slug===want)||EH.paths[0];
+  const d=M.detail[p.slug]||[], ids=p.steps.map((s,i)=>p.slug+':'+i);
+  const mins=d.reduce((a,x)=>a+x[0],0);
+
+  document.title=p.title+' — EcoHubs Learning';
+  document.getElementById('crumb').textContent=p.title;
+  document.getElementById('raillabel').textContent=p.title;
+  document.getElementById('audience').textContent=M.audience[p.slug];
+  document.getElementById('title').textContent=p.title;
+  document.getElementById('blurb').textContent=p.blurb;
+  document.getElementById('cover').dataset.motif=M.motif[p.slug];
+  document.getElementById('coverlabel').textContent='path · '+p.slug.replace(/-/g,' ');
+  document.getElementById('stepcount').textContent=p.steps.length+' steps, in order';
+  document.getElementById('meta').innerHTML=
+    `<span>${p.steps.length} steps</span><span>·</span><span>${p.lessons} lessons</span><span>·</span><span>${mins} min of reading</span><span>·</span><span>~${p.hours} h with the exercises</span><span>·</span><span>free, no account</span>`;
+
+  document.getElementById('outcomes').innerHTML=(M.outcomes[p.slug]||[]).map((o,i)=>
+    `<div class="card p-6"><div class="font-mono text-[11px] text-emerald-700 mb-2">${String(i+1).padStart(2,'0')}</div><p class="text-[14.5px] text-stone-700 leading-relaxed">${o}</p></div>`).join('');
+
+  document.getElementById('chain').innerHTML=p.steps.map((s,i)=>
+    `<div class="step" data-step="${ids[i]}">
+      <span class="dot">${String(i+1).padStart(2,'0')}</span>
+      <button type="button" class="row">
+        <span class="flex-1 min-w-0"><span class="block t">${s}</span><span class="block d">${(d[i]&&d[i][1])||''}</span><span class="open">Open lesson →</span></span>
+        <span class="meta whitespace-nowrap pt-1 hidden sm:block">${d[i]?d[i][0]+' min':''}</span>
+      </button>
+    </div>`).join('')+
+    `<div class="step" id="final">
+      <span class="dot">✓</span>
+      <div class="row" style="cursor:default">
+        <span class="flex-1"><span class="block t">Path complete</span><span class="block d">Then: talk to someone who has done it. <a href="Membership Page.html">Members</a> host monthly calls for exactly this.</span></span>
+      </div>
+    </div>`;
+
+  document.getElementById('railsteps').innerHTML=p.steps.map((s,i)=>
+    `<a href="Learning Lesson.html" data-railstep="${ids[i]}"><span class="tick"></span>${s}</a>`).join('');
+
+  document.getElementById('pairs').innerHTML=(M.pairs[p.slug]||[]).map(([label,href])=>
+    `<a href="${href}" class="text-[13.5px] text-stone-600 hover:text-ecohubs-dark">${label}</a>`).join('');
+
+  document.getElementById('others').innerHTML=EH.paths.filter(x=>x.slug!==p.slug).map(x=>
+    `<a href="Learning Path.html?p=${x.slug}" class="card overflow-hidden"><div class="motif h-20" data-motif="${M.motif[x.slug]}"></div><div class="p-5"><div class="font-serif text-[16.5px] text-ecohubs-deep leading-snug">${x.title}</div><div class="meta mt-2">${x.steps.length} steps · ${x.hours} h · ${EH.progress.pct(x.steps.map((s,i)=>x.slug+':'+i))}%</div></div></a>`).join('');
+
+  const paint=()=>{
+    const doneCount=ids.filter(id=>EH.progress.done(id)).length;
+    const pct=EH.progress.pct(ids);
+    const nextIdx=ids.findIndex(id=>!EH.progress.done(id));
+    document.querySelectorAll('#chain .step[data-step]').forEach((el,i)=>{
+      const on=EH.progress.done(ids[i]);
+      el.classList.toggle('is-done',on);
+      el.classList.toggle('is-next',i===nextIdx);
+      el.querySelector('.dot').textContent=on?'✓':String(i+1).padStart(2,'0');
+    });
+    document.getElementById('final').classList.toggle('is-done',nextIdx===-1);
+    document.getElementById('ring').setAttribute('stroke-dashoffset',(106.8*(1-pct/100)).toFixed(1));
+    document.getElementById('bigpct').textContent=pct+'%';
+    document.getElementById('donecount').textContent=doneCount+' of '+ids.length+' steps';
+    document.getElementById('nextstep').textContent=nextIdx===-1?'Nothing — you finished this path.':p.steps[nextIdx];
+    document.getElementById('nextlink').textContent=nextIdx===-1?'Revisit the first step →':'Open it →';
+    document.getElementById('startbtn').firstChild.textContent=
+      nextIdx===-1?'Path complete — revisit ':(nextIdx<=0?'Start step 01 ':'Continue step '+String(nextIdx+1).padStart(2,'0')+' ');
+    document.getElementById('railpct').textContent=pct+'%';
+    document.getElementById('railbar').style.width=pct+'%';
+    document.querySelectorAll('[data-railstep]').forEach(a=>a.classList.toggle('is-done',EH.progress.done(a.dataset.railstep)));
+  };
+
+  document.getElementById('chain').addEventListener('click',e=>{
+    const row=e.target.closest('.step[data-step] .row'); if(!row)return;
+    if(e.target.closest('.open')){location.href='Learning Lesson.html';return;}
+    EH.progress.toggle(row.closest('.step').dataset.step);
+    paint();
+  });
+  document.getElementById('resetpath').addEventListener('click',()=>{ids.forEach(id=>EH.progress.set(id,false));paint();});
+
+  document.getElementById('otherpaths').innerHTML=EH.paths.map(x=>
+    `<a class="rail-link${x.slug===p.slug?' is-active':''}" href="Learning Path.html?p=${x.slug}"><span>${x.title}</span></a>`).join('');
+
+  paint();
+});
+</script>
+</body>
+</html>

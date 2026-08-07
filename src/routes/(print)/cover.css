@@ -1,0 +1,13 @@
+/**
+ * First-page bleed, for documents that open with a cover.
+ *
+ * Imported only by the full-guide page. It used to live in `print.css`, which
+ * meant the visit-questions sheet — which has no cover — lost the top margin on
+ * its first page and printed its header flush to the paper's edge.
+ *
+ * Chrome's `@page` margins win over the ones passed to `page.pdf()`, so this
+ * file is the only thing that decides it.
+ */
+@page :first {
+	margin: 0;
+}
