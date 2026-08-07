@@ -126,7 +126,13 @@ Every page **must** use the [`SEO.svelte`](./src/lib/components/SEO.svelte) comp
 
 Adding a page is three edits, not one. A page missing from either file is a page search engines and AI assistants may never find.
 
-- **New page** → add it to the `routes` array in [`sitemap.xml/+server.ts`](./src/routes/sitemap.xml/+server.ts) **and** to [`llms.txt/+server.ts`](./src/routes/llms.txt/+server.ts) (one line: link plus a sentence saying what it is). Blog posts and tag archives are pulled from Ghost automatically, and **everything under `/learn` is generated from the content index** — don't list either by hand. `llms.txt` used to be a static file; it listed three of the hub's ninety pages, which is why it is a route now.
+- **New page** → add it to the `routes` array in [`sitemap.xml/+server.ts`](./src/routes/sitemap.xml/+server.ts) **and** to [`llms.txt/+server.ts`](./src/routes/llms.txt/+server.ts) (one line: link plus a sentence saying what it is). Three exceptions, all generated:
+  - **Blog posts and tag archives** come from Ghost.
+  - **`/learn` content entries** — every guide, lesson, topic, comparison, path and glossary term — come from the content index, filtered by `isIndexable()`.
+  - **`/learn` section indexes** come from `LEARN_SECTIONS` in [`sections.ts`](./src/lib/learning/sections.ts), which both files read. Adding a nav section adds it to both; give it a sentence in `SECTION_BLURBS` or the spec fails.
+
+  A **standalone** `/learn` page that is not a content entry and not a nav section — `/learn/how-this-is-written` is the only one — still has to be added to both files by hand. `llms.txt` used to be a static file listing three of the hub's ninety pages, which is why it is a route now.
+
 - **Meaningful content change** → bump that route's `lastmod` to the date of the change. Cosmetic tweaks don't count.
 - `lastmod` is the only hint here Google actually reads (`priority` and `changefreq` are ignored), and it only works while it stays truthful — never stamp it with the build date, or crawlers learn to ignore the field.
 - A tag archive is `noindex` and stays out of the sitemap until it has `MIN_POSTS_FOR_INDEXABLE_TAG` posts (see [`blog.ts`](./src/lib/server/blog.ts)). One shared constant drives both, so they can't disagree — change it there, not in two places.

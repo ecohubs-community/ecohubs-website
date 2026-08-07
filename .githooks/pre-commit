@@ -37,8 +37,9 @@ if [ -n "$(git diff --cached --name-only --diff-filter=ACMR)" ]; then
 		echo "$mixed" | sed 's/^/  /'
 		echo
 		echo "Formatting them would sweep the unstaged edits into the commit."
-		echo "Stage them fully, stash the rest, or commit with SKIP_DOWNLOADS=1"
-		echo "after running \`pnpm format\` yourself."
+		echo
+		echo "Either stage them fully:      git add <file>"
+		echo "or set the rest aside first:  git stash push --keep-index"
 		exit 1
 	fi
 

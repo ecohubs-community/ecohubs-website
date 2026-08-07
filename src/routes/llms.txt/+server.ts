@@ -9,6 +9,7 @@ import {
 	publishedTopics,
 	urlFor
 } from '$lib/learning';
+import { LEARN_SECTIONS } from '$lib/learning/sections';
 import type { ContentEntry } from '$lib/learning/types';
 
 /**
@@ -82,40 +83,35 @@ function fromEntries(entries: ContentEntry[]): string[] {
 		.sort();
 }
 
+/**
+ * A sentence for each standalone hub page, keyed by the route.
+ *
+ * `LEARN_SECTIONS` is the hub's own navigation and the single list the sitemap
+ * uses too, so a section cannot appear in the rail and be missing here. The
+ * spec fails if a section has no sentence — which is the point: a new section
+ * should not slip in undescribed.
+ *
+ * `/learn/search` and `/learn/bookmarks` are deliberately absent from
+ * `LEARN_SECTIONS` and are permanently `noindex`, so they are not listed.
+ */
+const SECTION_BLURBS: Record<string, string> = {
+	'/learn':
+		'Plain explanations of how intentional communities actually work — governance, money, land, conflict and daily life.',
+	'/learn/guides': 'Every guide in the hub, longest-form first.',
+	'/learn/topics':
+		'The subjects that decide whether a community lasts, each explained from the ground up.',
+	'/learn/compare': 'The pairs of terms this field most often confuses, told apart.',
+	'/learn/paths': 'Ordered sequences through the lessons, for a particular question.',
+	'/learn/glossary':
+		'Plain definitions of the words this field uses, each with an example and what it is often confused with.',
+	'/learn/map': 'How the topics relate to each other, drawn as a map.'
+};
+
 function learningSection(): string {
 	const indexes = [
-		line(
-			'Learning Hub',
-			'/learn',
-			'Plain explanations of how intentional communities actually work — governance, money, land, conflict and daily life.'
-		),
-		line('Guides', '/learn/guides', 'Every guide in the hub, longest-form first.'),
-		line(
-			'Topics',
-			'/learn/topics',
-			'The subjects that decide whether a community lasts, each explained from the ground up.'
-		),
-		line(
-			'Compared',
-			'/learn/compare',
-			'The pairs of terms this field most often confuses, told apart.'
-		),
-		line(
-			'Learning paths',
-			'/learn/paths',
-			'Ordered sequences through the lessons, for a particular question.'
-		),
-		line(
-			'Glossary',
-			'/learn/glossary',
-			'Plain definitions of the words this field uses, each with an example and what it is often confused with.'
-		),
-		line('Knowledge map', '/learn/map', 'How the topics relate to each other, drawn as a map.'),
-		line(
-			'Search the hub',
-			'/learn/search',
-			'Search every lesson, term, topic and comparison, including the deep layers.'
-		),
+		...LEARN_SECTIONS.map(({ label, href }) => line(label, href, SECTION_BLURBS[href] ?? '')),
+		// Not a nav section, so not in LEARN_SECTIONS — a standalone page, listed
+		// here and in the sitemap's own routes array by hand.
 		line(
 			'How this is written',
 			'/learn/how-this-is-written',

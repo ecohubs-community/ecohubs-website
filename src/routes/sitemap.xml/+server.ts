@@ -1,6 +1,7 @@
 import type { RequestHandler } from './$types';
 import { getAllAuthors, getAllPosts, MIN_POSTS_FOR_INDEXABLE_TAG } from '$lib/server/blog';
 import { sitemapEntries as learningEntries } from '$lib/learning';
+import { LEARN_SECTIONS } from '$lib/learning/sections';
 
 const siteUrl = 'https://ecohubs.community';
 
@@ -18,25 +19,32 @@ interface SitemapRoute {
  * near-identical block, and adding `/learn/guides` meant remembering to write a
  * fifth — which is exactly how it came to be missing.
  *
+ * The list is `LEARN_SECTIONS`, the hub's own navigation, so a section cannot
+ * be reachable in the rail and absent here. Written out separately, this had
+ * already lost `/learn/map`.
+ *
  * A section appears only once it holds something indexable, and its `lastmod`
  * is the newest thing it contains. An index over nothing but stubs is itself
  * thin, and dating it "today" would be the kind of lie the note below warns of.
  */
 function learnSectionRoutes(): SitemapRoute[] {
 	const all = learningEntries();
-	return [
-		'/learn/compare',
-		'/learn/guides',
-		'/learn/glossary',
-		'/learn/paths',
-		'/learn/topics'
-	].flatMap((path) => {
-		const lastmod = all
-			.filter((e) => e.url.startsWith(`${path}/`))
-			.map((e) => e.lastmod)
-			.sort()
-			.at(-1);
-		return lastmod ? [{ path, priority: '0.6', changefreq: 'weekly', lastmod }] : [];
+	const newest = all
+		.map((e) => e.lastmod)
+		.sort()
+		.at(-1);
+
+	return LEARN_SECTIONS.filter((section) => section.href !== '/learn').flatMap(({ href }) => {
+		// A section over its own children dates itself by them. `/learn/map` has
+		// no children — it draws the topics — so it falls back to the newest
+		// thing in the hub, which is what changes it.
+		const lastmod =
+			all
+				.filter((e) => e.url.startsWith(`${href}/`))
+				.map((e) => e.lastmod)
+				.sort()
+				.at(-1) ?? newest;
+		return lastmod ? [{ path: href, priority: '0.6', changefreq: 'weekly', lastmod }] : [];
 	});
 }
 

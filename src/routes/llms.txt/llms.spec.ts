@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { GET } from './+server';
+import { LEARN_SECTIONS } from '$lib/learning/sections';
 import {
 	isIndexable,
 	publishedComparisons,
@@ -65,6 +66,25 @@ describe('llms.txt', () => {
 		const lesson = publishedLessons.find((l) => l.frontmatter.slug === 'what-joining-costs');
 		expect(lesson).toBeDefined();
 		expect(body).toContain(lesson!.frontmatter.summary);
+	});
+
+	/**
+	 * The sitemap derives its section list from the same constant, so a section
+	 * cannot be in the rail and missing from one of them — which is how
+	 * `/learn/map` came to be in llms.txt and absent from the sitemap.
+	 */
+	it('lists every nav section, with a sentence', () => {
+		for (const { href, label } of LEARN_SECTIONS) {
+			const entry = body.split('\n').find((l) => l.includes(`](https://ecohubs.community${href})`));
+			expect(entry, `${href} is not listed`).toBeDefined();
+			expect(entry, `${href} has no sentence`).toMatch(/\): .+/);
+			expect(entry).toContain(label);
+		}
+	});
+
+	it('omits the pages that are permanently noindex', () => {
+		expect(body).not.toContain('/learn/search)');
+		expect(body).not.toContain('/learn/bookmarks)');
 	});
 
 	it('serves as plain text', () => {
