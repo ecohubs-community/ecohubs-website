@@ -11,6 +11,7 @@
 	import Cover from './Cover.svelte';
 	import { CARD, META } from './card';
 	import type { Motif } from '$lib/learning/types';
+	import type { Picture } from '$lib/learning/images';
 
 	export interface GuideCardData {
 		slug: string;
@@ -19,7 +20,7 @@
 		level: string;
 		lessons: number;
 		minutes: number;
-		image?: string;
+		image?: string | Picture;
 		imageAlt?: string;
 		motif?: Motif;
 	}
@@ -41,6 +42,7 @@
 		imageAlt={guide.imageAlt}
 		motif={guide.motif}
 		label={featured ? `guide · ${guide.level}` : undefined}
+		sizes={featured ? '(min-width: 768px) 900px, 100vw' : '128px'}
 		class={featured ? 'h-56 w-full md:h-72' : 'w-32 shrink-0'}
 	/>
 

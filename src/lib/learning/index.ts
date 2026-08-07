@@ -21,6 +21,7 @@ import type {
 	TopicFrontmatter
 } from './types';
 import { formatIssues, isIndexable, validateContent } from './validate';
+import { coverUrl } from './images';
 import { countWords } from './text';
 import { extractHeadings } from './headings.js';
 
@@ -45,15 +46,21 @@ const sources = import.meta.glob<string>('/src/content/learning/**/*.md', {
  * file would work but is a trap for whoever writes content, so normalise both
  * shapes back to a plain `YYYY-MM-DD` here.
  */
-function normalise(fm: Frontmatter): Frontmatter {
+function normalise(fm: Frontmatter, path: string): Frontmatter {
+	let out = fm;
+
 	const updated = fm.updated as unknown;
 	if (updated instanceof Date) {
-		return { ...fm, updated: updated.toISOString().slice(0, 10) };
+		out = { ...out, updated: updated.toISOString().slice(0, 10) };
+	} else if (typeof updated === 'string' && /^\d{4}-\d{2}-\d{2}T/.test(updated)) {
+		out = { ...out, updated: updated.slice(0, 10) };
 	}
-	if (typeof updated === 'string' && /^\d{4}-\d{2}-\d{2}T/.test(updated)) {
-		return { ...fm, updated: updated.slice(0, 10) };
-	}
-	return fm;
+
+	// Resolved once, here, so every consumer of `frontmatter.image` gets a URL
+	// rather than each route remembering to resolve it. See `images.ts`.
+	if (typeof fm.image === 'string') out = { ...out, image: coverUrl(fm.image, path) };
+
+	return out;
 }
 
 const entries: ContentEntry[] = Object.entries(modules).map(([path, module]) => {
@@ -66,7 +73,7 @@ const entries: ContentEntry[] = Object.entries(modules).map(([path, module]) => 
 	}
 
 	return {
-		frontmatter: normalise(module.metadata),
+		frontmatter: normalise(module.metadata, path),
 		component: module.default,
 		path,
 		words: countWords(sources[path] ?? ''),

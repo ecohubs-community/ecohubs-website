@@ -3,6 +3,7 @@
 	import Cover from './Cover.svelte';
 	import { CARD, META } from './card';
 	import type { Motif } from '$lib/learning/types';
+	import type { Picture } from '$lib/learning/images';
 
 	export interface TopicCardData {
 		slug: string;
@@ -10,7 +11,7 @@
 		summary: string;
 		/** How much has been written under this topic. */
 		articles: number;
-		image?: string;
+		image?: string | Picture;
 		imageAlt?: string;
 		motif?: Motif;
 	}
@@ -24,6 +25,7 @@
 		image={topic.image}
 		imageAlt={topic.imageAlt}
 		motif={topic.motif}
+		sizes="(min-width: 1024px) 300px, (min-width: 640px) 50vw, 100vw"
 		class="mb-5 h-16 w-full rounded-xl"
 	/>
 	<h3 class="font-serif text-[19px] leading-snug text-ecohubs-deep">{topic.title}</h3>

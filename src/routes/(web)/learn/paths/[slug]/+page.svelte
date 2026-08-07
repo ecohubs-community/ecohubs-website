@@ -123,6 +123,7 @@
 					imageAlt={path.imageAlt}
 					motif={path.motif}
 					label="path · {path.title.toLowerCase()}"
+					sizes="(min-width: 1024px) 420px, 100vw"
 					class="h-[220px] w-full rounded-[22px] lg:h-[300px]"
 				/>
 			</div>
@@ -229,6 +230,7 @@
 									image={other.image}
 									imageAlt={other.imageAlt}
 									motif={other.motif}
+									sizes="(min-width: 1024px) 300px, 50vw"
 									class="h-20 w-full"
 								/>
 								<div class="p-5">

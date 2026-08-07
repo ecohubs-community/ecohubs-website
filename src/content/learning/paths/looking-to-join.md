@@ -4,6 +4,10 @@ title: I want to join a community
 slug: looking-to-join
 summary: For people who want to live in one rather than start one.
 audience: For people who want to join one, not start one
+image: learning-paths/join-community.webp
+imageAlt: >-
+  Four people embracing in a shared vegetable garden, with timber and
+  green-roofed homes behind them and a rucksack set down on the path.
 outcomes:
   - Say what an intentional community actually is, and what it is not
   - Tell the main forms apart well enough to know which suits you

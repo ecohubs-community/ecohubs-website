@@ -15,6 +15,7 @@
 	import ProgressRing from './ProgressRing.svelte';
 	import { CARD, META, TAG, TAG_OFF } from './card';
 	import type { Motif } from '$lib/learning/types';
+	import type { Picture } from '$lib/learning/images';
 
 	export interface PathCardData {
 		slug: string;
@@ -22,7 +23,7 @@
 		summary: string;
 		minutes: number;
 		audience?: string;
-		image?: string;
+		image?: string | Picture;
 		imageAlt?: string;
 		motif?: Motif;
 		/** Every step, in order. Only the first three are shown. */
@@ -58,6 +59,7 @@
 			imageAlt={path.imageAlt}
 			motif={path.motif}
 			label="path · {path.title.toLowerCase()}"
+			sizes="(min-width: 1024px) 460px, (min-width: 640px) 50vw, 100vw"
 			class="h-28 w-full"
 		/>
 	{/if}

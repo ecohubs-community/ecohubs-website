@@ -1,3 +1,5 @@
+import type { Picture } from './images';
+
 /**
  * Learning Hub content model.
  *
@@ -51,8 +53,15 @@ export interface BaseFrontmatter {
 	updated: string;
 	/** The single query this page is meant to answer. One page, one query. */
 	targetQuery?: string;
-	/** Cover image, absolute from `static/`. Falls back to a motif when unset. */
-	image?: string;
+	/**
+	 * Cover image, authored as either a name under `src/lib/assets/learning/`
+	 * or an absolute path from `static/`.
+	 *
+	 * `images.ts` rewrites this when the index is built, so by the time anything
+	 * reads it the bundled form is a `Picture` and the static form is still a
+	 * string. Falls back to a motif when unset.
+	 */
+	image?: string | Picture;
 	/** Required whenever `image` is set — a cover is never decorative. */
 	imageAlt?: string;
 	/** Which motif to use when there is no image. Defaults to one picked from
