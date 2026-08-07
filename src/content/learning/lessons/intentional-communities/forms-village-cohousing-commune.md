@@ -109,7 +109,7 @@ Four forms cover most of what you will meet, but the field names many more, and 
 
 **By purpose:** spiritual and monastic communities, Camphill and other care-based communities, artist and maker communities, student co-operatives, senior cohousing, and single-issue projects formed around one practice.
 
-**By tenure:** freehold clusters, housing co-operatives at market and limited equity, community land trusts, the German _Mietshäuser Syndikat_ model — which places a veto against resale in the hands of a separate entity — and long-lease arrangements on land held by a trust or a church.
+**By tenure:** freehold clusters, housing co-operatives at market and limited equity, community land trusts, the German _Mietshäuser Syndikat_ model — where each house is owned by its own company, the residents' association holds 51% and the Syndikat 49%, and the two hold one vote each on selling or converting it, so neither can privatise the building alone — and long-lease arrangements on land held by a trust or a church.
 
 **By age and origin:** intentional communities founded as such, and traditional villages that adopted the framing later. The Global Ecovillage Network deliberately includes both, which is why its member list contains places that have existed for centuries.
 
@@ -138,6 +138,11 @@ note: 'the ecovillage definition and its four dimensions'
 title: 'Foundation for Intentional Community',
 url: 'https://www.ic.org/',
 note: 'the directory, and the breadth of what the umbrella covers'
+},
+{
+title: 'Mietshäuser Syndikat — the building blocks of the network',
+url: 'https://www.syndikat.org/en/the-building-blocks-of-the-network/',
+note: 'the 51/49 house company, and the veto that makes reprivatisation take two'
 },
 {
 title: 'Diggers & Dreamers',

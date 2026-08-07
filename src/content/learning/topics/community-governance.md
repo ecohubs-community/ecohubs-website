@@ -50,7 +50,7 @@ rows={[
 { label: 'Produces', values: ['A decision and a losing minority', 'Strong buy-in', 'Workable decisions, provisionally', 'Delegated authority that scales'] },
 { label: 'Fails by', values: ['Repeated minorities disengaging', 'Fatigue; one holdout stops everything', 'Objections raised, never resolved', 'Circles without real domains'] },
 { label: 'Comfortable up to', values: ['Any size', 'Roughly 8–15', 'Larger', 'Larger still'] },
-{ label: 'Needs written', values: ['Thresholds and quorum', 'What counts as a block', 'Grounds for objection', 'Domains and links'] }
+{ label: 'Must be written', values: ['Thresholds and quorum', 'What counts as a block', 'Grounds for objection', 'Domains and links'] }
 ]}
 caption="Most communities that last use more than one, and write down which decisions get which."
 />

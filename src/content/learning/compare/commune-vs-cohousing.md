@@ -23,13 +23,13 @@ columns={['Commune', 'Cohousing']}
 rows={[
 { label: 'Income', values: ['Pooled into a common purse', 'Entirely separate'] },
 { label: 'Housing', values: ['Often shared or allocated by the group', 'Private, self-contained, individually held'] },
-{ label: 'What you pay', values: ['Everything, in exchange for needs met', 'A share of common costs'] },
+{ label: 'What you pay', values: ['Everything, in exchange for having your needs met', 'A share of common costs'] },
 { label: 'Joining', values: ['Long — often a year of provisional membership', 'Buy or rent a home; a shorter process'] },
 { label: 'Leaving', values: ['Complex; what you take out is a written rule', 'Sell or move out, much like anywhere'] },
 { label: 'Labour', values: ['Usually a quota, counted and tracked', 'Voluntary work on the common parts'] },
 { label: 'Group decides about', values: ['Money, work, often housing', 'The common parts only'] },
 { label: 'Typical size', values: ['Often 20–100 adults', '20–40 households'] },
-{ label: 'How common', values: ['Rare', 'The most common form in Europe and North America'] }
+{ label: 'How common', values: ['A small minority of communities', 'Far more common than income sharing'] }
 ]}
 caption="Generalisations. Both labels are self-applied, and hybrids exist."
 />

@@ -48,7 +48,7 @@ export const isThisAnIntentionalCommunity: QuizDefinition = {
 					label: 'Yes',
 					correct: true,
 					explanation:
-						'All three conditions are met. This is cohousing — the most common form in Europe and North America, and the one that asks least of your finances.'
+						'All three conditions are met. This is cohousing — the form that asks least of your finances, and much the commoner of the two arrangements this guide compares.'
 				},
 				{
 					id: 'no',

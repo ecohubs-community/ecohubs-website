@@ -21,6 +21,27 @@ set -e
 staged() { git diff --cached --name-only --diff-filter=ACMR -z; }
 
 if [ -n "$(git diff --cached --name-only --diff-filter=ACMR)" ]; then
+	# `prettier --write` edits the working tree and `git add <path>` stages the
+	# whole file, so a partially staged file (git add -p) would have its
+	# unstaged edits silently swept into the commit. Refuse rather than guess:
+	# committing work somebody deliberately held back is not recoverable from
+	# the commit message.
+	work=$(mktemp -d)
+	git diff --cached --name-only --diff-filter=ACMR | sort > "$work/staged"
+	git diff --name-only | sort > "$work/unstaged"
+	mixed=$(comm -12 "$work/staged" "$work/unstaged")
+	rm -rf "$work"
+
+	if [ -n "$mixed" ]; then
+		echo "pre-commit: these files have both staged and unstaged changes:"
+		echo "$mixed" | sed 's/^/  /'
+		echo
+		echo "Formatting them would sweep the unstaged edits into the commit."
+		echo "Stage them fully, stash the rest, or commit with SKIP_DOWNLOADS=1"
+		echo "after running \`pnpm format\` yourself."
+		exit 1
+	fi
+
 	staged | xargs -0 npx prettier --write --ignore-unknown --log-level warn
 	staged | xargs -0 git add
 fi
