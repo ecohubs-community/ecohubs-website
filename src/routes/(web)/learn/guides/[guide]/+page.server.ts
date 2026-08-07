@@ -1,4 +1,5 @@
 import { error } from '@sveltejs/kit';
+import { downloadsFor } from '$lib/learning/downloads';
 import type { EntryGenerator, PageServerLoad } from './$types';
 import {
 	guideBySlug,
@@ -57,6 +58,8 @@ export const load: PageServerLoad = async ({ params }) => {
 	});
 
 	return {
+		// Only present once `pnpm downloads` has generated them.
+		downloads: downloadsFor(params.guide),
 		guide: fm,
 		lessons,
 		otherGuides,

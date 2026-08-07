@@ -142,21 +142,30 @@
 						{#each question.options as option (option.id)}
 							{@const chosen = picked(question.id, option.id)}
 							{@const reveal = submitted && definition.mode === 'check'}
+							<!--
+								With no JavaScript there is nothing to submit, so the quiz can only
+								be an answer key — which is what the printed guide wants, and what
+								a crawler should see too. Once hydrated this marker goes and the
+								reader gets to be wrong first.
+							-->
+							{@const key = !enhanced && definition.mode === 'check' && option.correct}
 							{@const wrong = reveal && chosen && !option.correct}
 							{@const right = reveal && chosen && option.correct}
 							{@const missed = reveal && !chosen && option.correct}
 							<label
 								class="flex gap-3 rounded-xl border p-3 transition-colors
 							       {submitted ? 'cursor-default' : 'cursor-pointer'}
-							       {wrong
-									? 'border-red-300 bg-red-50/60'
-									: right || missed
-										? 'border-ecohubs-primary bg-emerald-50/60'
-										: chosen
-											? 'border-ecohubs-dark bg-emerald-50/50'
-											: submitted
-												? 'border-stone-200'
-												: 'border-stone-200 hover:border-stone-300'}"
+							       {key
+									? 'border-ecohubs-primary bg-emerald-50/60'
+									: wrong
+										? 'border-red-300 bg-red-50/60'
+										: right || missed
+											? 'border-ecohubs-primary bg-emerald-50/60'
+											: chosen
+												? 'border-ecohubs-dark bg-emerald-50/50'
+												: submitted
+													? 'border-stone-200'
+													: 'border-stone-200 hover:border-stone-300'}"
 							>
 								<input
 									type={question.multiple ? 'checkbox' : 'radio'}
@@ -170,7 +179,9 @@
 								<span class="min-w-0">
 									<span class="flex flex-wrap items-baseline gap-x-2">
 										<span class="text-stone-800">{option.label}</span>
-										{#if wrong}
+										{#if key}
+											<span class="text-xs font-medium text-emerald-700">correct answer</span>
+										{:else if wrong}
 											<span class="text-xs font-medium text-red-700">not this one</span>
 										{:else if right}
 											<span class="text-xs font-medium text-emerald-700">correct</span>

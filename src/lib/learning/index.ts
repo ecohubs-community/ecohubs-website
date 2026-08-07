@@ -77,6 +77,9 @@ const entries: ContentEntry[] = Object.entries(modules).map(([path, module]) => 
 		component: module.default,
 		path,
 		words: countWords(sources[path] ?? ''),
+		// Kept so anything deriving from the markdown itself — the search index,
+		// the visit-questions download — reads the same text the page renders.
+		source: sources[path] ?? '',
 		headings: extractHeadings(sources[path] ?? '')
 	};
 });

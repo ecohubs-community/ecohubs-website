@@ -18,36 +18,7 @@
 	 * nothing.
 	 */
 	import { onMount } from 'svelte';
-	import { LIMITS, estimate, type EquityModel } from '$lib/learning/cost';
-
-	const MODELS: { id: EquityModel; label: string; rule: string; source: string }[] = [
-		{
-			id: 'market',
-			label: 'You own it and may sell at market',
-			rule: 'You get whatever the home is then worth, less the cost of selling. Freehold homes, and most cohousing.',
-			source: 'Structural — ordinary property law.'
-		},
-		{
-			id: 'clt',
-			label: 'Community land trust, improvements-only formula',
-			rule: 'You bought the building, not the ground under it, and you keep only an agreed share of the building’s appreciation. The rest stays with the trust so the next household can afford the home.',
-			source:
-				'Grounded Solutions Network puts the typical share at about 25%, with some trusts scaling it from 5% after one year to 30% after thirty.'
-		},
-		{
-			id: 'par',
-			label: 'Your share is returned at its original value',
-			rule: 'You paid for a share in the organisation and you get that same sum back, with no uplift. Common in limited-equity housing co-operatives.',
-			source: 'Structural — set by the co-operative’s own rules. Ask to read them.'
-		},
-		{
-			id: 'none',
-			label: 'Nothing returns',
-			rule: 'You were renting, or you were a member of an income-sharing community and held no stake in it. Any assets you arrived with are still yours.',
-			source:
-				'Structural. Twin Oaks, for instance, freezes members’ existing assets rather than absorbing them.'
-		}
-	];
+	import { EQUITY_MODELS as MODELS, LIMITS, estimate, type EquityModel } from '$lib/learning/cost';
 
 	/** Share of appreciation a CLT seller keeps, as a percentage. */
 	const CLT_DEFAULT_SHARE = 25;
@@ -98,7 +69,15 @@
 		{/each}
 	</dl>
 
-	{#if enhanced}
+	{#if !enhanced}
+		<!-- Shown to a reader without JavaScript, and to the printed guide, where
+		     a calculator is no use. Both need somewhere to go. -->
+		<p class="mt-6 text-sm text-stone-600">
+			The interactive version of this works out what the years cost you from your own numbers. There
+			is also a spreadsheet with the same arithmetic in the guide downloads, which works offline and
+			lets you keep the figures a community gives you.
+		</p>
+	{:else}
 		<h3 class="kicker mt-8 mb-4 text-stone-500">Put your own numbers in</h3>
 
 		<div class="grid gap-4 sm:grid-cols-2">

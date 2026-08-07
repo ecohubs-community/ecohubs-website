@@ -12,11 +12,23 @@
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { Cover, Faq, LearnRail, Prose } from '$lib/components/learning';
 	import { CARD, META } from '$lib/components/learning/card';
+	import Icon from '$lib/components/Icon.svelte';
 	import { guideArticle, learningBreadcrumbs } from '$lib/learning/schema';
 	import { getProgress, setRead } from '$lib/learning/storage';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
+
+	const generated = $derived(
+		data.downloads
+			? new Date(data.downloads.generatedAt).toLocaleDateString('en-GB', {
+					day: 'numeric',
+					month: 'long',
+					year: 'numeric',
+					timeZone: 'UTC'
+				})
+			: ''
+	);
 
 	const guide = $derived(data.guide);
 	const Content = $derived(data.content as Component);
@@ -258,7 +270,39 @@
 			{/if}
 
 			<!-- ═══════════════════════════════════════════════════════
-					4. ABOUT THIS GUIDE
+					4. GUIDE DOWNLOADS
+					Only what has actually been generated: the section is absent
+					for a guide nobody has run `pnpm downloads` for.
+			═══════════════════════════════════════════════════════ -->
+			{#if data.downloads}
+				<section class="mt-16 max-w-[820px]">
+					<div class="kicker mb-5 text-emerald-700">Guide downloads</div>
+					<div class="flex flex-col gap-3">
+						{#each data.downloads.entries as item (item.file)}
+							<a href={item.file} download class="{CARD} flex items-center gap-4 bg-white p-5">
+								<span
+									class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#f5f2ea] text-ecohubs-deep"
+								>
+									<Icon
+										icon={item.kind === 'xlsx' ? 'tabler:table' : 'tabler:download'}
+										class="h-4 w-4"
+									/>
+								</span>
+								<span class="min-w-0">
+									<span class="block text-[15px] text-ecohubs-deep">{item.label}</span>
+									<span class="{META} block">{item.detail} · {item.size}</span>
+								</span>
+							</a>
+						{/each}
+					</div>
+					<p class="mt-4 font-story text-sm text-stone-500 italic">
+						Generated from this guide on {generated}. Free to print, copy and translate.
+					</p>
+				</section>
+			{/if}
+
+			<!-- ═══════════════════════════════════════════════════════
+					5. ABOUT THIS GUIDE
 			═══════════════════════════════════════════════════════ -->
 			{#if guide.faq?.length}
 				<section class="mt-16 max-w-[820px]">
@@ -268,7 +312,7 @@
 			{/if}
 
 			<!-- ═══════════════════════════════════════════════════════
-					5. AFTER THIS GUIDE
+					6. AFTER THIS GUIDE
 			═══════════════════════════════════════════════════════ -->
 			{#if data.nextGuides.length}
 				<section class="mt-16">

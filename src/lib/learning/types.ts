@@ -170,6 +170,12 @@ export interface ContentEntry<F extends Frontmatter = Frontmatter> {
 	path: string;
 	/** Word count of the source body, used for reading time. */
 	words: number;
+	/**
+	 * The raw markdown, kept so anything derived from the text — the search
+	 * index, the visit-questions download — reads what the page renders rather
+	 * than a second copy that can drift.
+	 */
+	source: string;
 	/** Top-level (`##`) sections, for the table of contents. Ids match the ones
 	 *  stamped onto the rendered headings — both come from `headings.js`. */
 	headings: TocHeading[];

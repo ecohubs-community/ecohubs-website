@@ -21,7 +21,8 @@
 		"test:e2e": "playwright test",
 		"test": "npm run test:e2e && npm run test:unit -- --run",
 		"test:unit": "vitest",
-		"icons": "node scripts/build-icons.mjs"
+		"icons": "node scripts/build-icons.mjs",
+		"downloads": "node scripts/build-downloads.ts"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
@@ -42,6 +43,7 @@
 		"@vitest/browser-playwright": "^4.0.10",
 		"eslint": "^9.39.1",
 		"eslint-plugin-svelte": "^3.13.0",
+		"exceljs": "^4.4.0",
 		"globals": "^16.5.0",
 		"mdsvex": "^0.12.6",
 		"playwright": "^1.56.1",

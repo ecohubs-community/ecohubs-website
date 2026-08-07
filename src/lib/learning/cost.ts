@@ -107,3 +107,48 @@ export function estimate(input: CostInput): CostResult {
 
 	return { years, worth, dues, back, net, perMonth: net / (years * 12) };
 }
+
+/** One equity model, as the estimator, the worksheet and the PDF all describe it. */
+export interface EquityModelInfo {
+	id: EquityModel;
+	label: string;
+	rule: string;
+	source: string;
+}
+
+/**
+ * The four models, in one place.
+ *
+ * They used to live in `CostEstimator.svelte`, which meant the build script
+ * that writes the worksheet could not read them — a Node script cannot import
+ * a Svelte component. Anything that describes these models now describes the
+ * same four.
+ */
+export const EQUITY_MODELS: EquityModelInfo[] = [
+	{
+		id: 'market',
+		label: 'You own it and may sell at market',
+		rule: 'You get whatever the home is then worth, less the cost of selling. Freehold homes, and most cohousing.',
+		source: 'Structural — ordinary property law.'
+	},
+	{
+		id: 'clt',
+		label: 'Community land trust, improvements-only formula',
+		rule: 'You bought the building, not the ground under it, and you keep only an agreed share of the building’s appreciation. The rest stays with the trust so the next household can afford the home.',
+		source:
+			'Grounded Solutions Network puts the typical share at about 25%, with some trusts scaling it from 5% after one year to 30% after thirty.'
+	},
+	{
+		id: 'par',
+		label: 'Your share is returned at its original value',
+		rule: 'You paid for a share in the organisation and you get that same sum back, with no uplift. Common in limited-equity housing co-operatives.',
+		source: 'Structural — set by the co-operative’s own rules. Ask to read them.'
+	},
+	{
+		id: 'none',
+		label: 'Nothing returns',
+		rule: 'You were renting, or you were a member of an income-sharing community and held no stake in it. Any assets you arrived with are still yours.',
+		source:
+			'Structural. Twin Oaks, for instance, freezes members’ existing assets rather than absorbing them.'
+	}
+];
