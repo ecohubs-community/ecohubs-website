@@ -147,11 +147,16 @@
 					<div>
 						<div class="kicker mb-3 text-emerald-800">Still undecided</div>
 						<h2 class="font-serif text-[26px] leading-tight text-ecohubs-deep">
-							Twelve minutes will tell you more than four descriptions.
+							If no path fits,
+							<em class="font-story font-normal text-stone-500 italic">start from where you are.</em
+							>
 						</h2>
 						<p class="mt-3 max-w-lg text-[15px] leading-relaxed text-stone-700">
-							The Community Resilience Assessment asks what you can contribute, tolerate and afford
-							— and points at the path that fits the answers.
+							The map lays the whole hub out at once — every guide, topic and term, and how they
+							connect. And if you are already part of a community, the free Community Resilience
+							Assessment is the more useful first move: ten questions, about five minutes, and a
+							human-written report on which of your agreements are written down and which are still
+							unsaid.
 						</p>
 					</div>
 					<div class="flex flex-wrap gap-3 lg:justify-end">
