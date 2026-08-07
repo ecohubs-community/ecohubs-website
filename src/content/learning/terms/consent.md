@@ -3,13 +3,13 @@ type: term
 title: Consent
 slug: consent
 term: Consent
-topic: community-governance
+topic: decision-methods
 summary: A decision passes when no one has a reasoned, paramount objection — not when everyone agrees.
 short: A decision passes when no one has a reasoned, paramount objection. Not the same as everyone thinking it is the best idea.
 targetQuery: what is consent decision making
 status: published
-updated: 2026-08-05
-related: [consensus, sociocracy]
+updated: 2026-08-07
+related: [consensus, sociocracy, paramount-objection, ratification]
 ---
 
 Consent asks a narrower question than agreement does. Not _do you like this?_ but _can you live with it, and do you have a reasoned objection to it?_ A proposal passes when nobody can point to a way it would harm the group or stop the group meeting its aim.

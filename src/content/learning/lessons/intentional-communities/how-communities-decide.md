@@ -4,38 +4,61 @@ title: How communities decide
 slug: how-communities-decide
 guide: intentional-communities
 order: 4
-summary: Four methods, how each fails, and how to read a community's governance from the outside in one visit.
+summary: How decisions are actually made, how each method fails, and how to read a community's governance from the outside in one visit.
 targetQuery: how do intentional communities make decisions
 status: published
-updated: 2026-08-06
+updated: 2026-08-07
 terms:
-  [consensus, consent, sociocracy, circle, blocking-concern, stand-aside, facilitation, agreements]
+  [
+    consensus,
+    consent,
+    sociocracy,
+    circle,
+    domain,
+    blocking-concern,
+    stand-aside,
+    facilitation,
+    agreements,
+    decision-tiers
+  ]
 related: [what-daily-life-looks-like, what-is-an-intentional-community]
 ---
 
 <Quick>
 
-Four methods dominate: **voting** (a majority decides), **consensus** (everyone agrees), **consent** (nobody has a reasoned objection), and **sociocracy** (small circles with real authority, deciding by consent). None is correct in the abstract, and most communities that last use more than one.
+Three methods carry a proposal: **a threshold vote** (approvals clear an agreed share), **consensus** (nobody sustains a reasoned objection), and **consent** (nobody has an objection judged serious enough to stand). None is correct in the abstract, and almost every community that lasts uses more than one — sorted by what the decision costs to get wrong.
+
+Two things are often mistaken for methods and are not. **Sociocracy** is a system for deciding who is allowed to decide without asking. **Polls and ranked votes** produce a picture of where the group stands; nothing passes and nothing fails.
 
 What actually predicts whether governance works is not the method. It is three things written down: **who may object**, **on what grounds**, and **when the decision gets reviewed**. A group that has not written those has issued everyone a veto and hoped nobody uses it.
-
-You can read most of this from the outside in a single visit, if you ask the right two questions.
 
 </Quick>
 
 Governance is the least romantic subject in this guide and the one that most reliably predicts whether a community will still exist in ten years. Not because the right method saves a group, but because the _absence_ of an agreed one lets power settle wherever it likes — usually on whoever has the most time, the longest history, and the most stamina at eleven at night.
 
-## The four methods
+## The three that carry a proposal
 
-**Voting.** A majority decides. It is fast, legible, and for reversible operational decisions it is often the right answer — communities that put everything through consensus usually end up doing this informally anyway, just without admitting it. Its cost is structural: it manufactures a losing minority every time, and a minority that loses repeatedly stops coming.
+**A threshold vote.** A written proposal is adopted if approvals clear an agreed share — more than half, or two-thirds for the weightier things. It is fast, legible, and for reversible operational decisions it is often the right answer; communities that put everything through consensus usually end up doing this informally anyway, just without admitting it. Its cost is structural: it manufactures a losing minority every time, and a minority that loses repeatedly stops coming.
 
-**<Gloss term="consensus">Consensus</Gloss>.** A proposal passes only when everyone agrees. It produces buy-in that nothing else matches, and the amendment loop — raise a concern, change the proposal, test again — is a genuinely good teacher of how to hear each other. Past ten or fifteen people it starts handing a veto to whoever is most tired or most stubborn.
+**<Gloss term="consensus">Consensus</Gloss>.** A proposal is amended until nobody sustains a reasoned objection. It produces buy-in that nothing else matches, and the amendment loop — raise a concern, change the proposal, test again — is a genuinely good teacher of how to hear each other. Past ten or fifteen people it starts handing a veto to whoever is most tired or most stubborn.
 
 **<Gloss term="consent">Consent</Gloss>.** A proposal passes when nobody has a reasoned, paramount objection. The question narrows from _do you agree?_ to _can you live with it, and can you name a harm?_ The bar moves from enthusiasm to tolerability, and the burden moves onto the objector to say what is actually wrong. Its standard — good enough for now, safe enough to try — assumes a review date, and quietly breaks without one.
 
-**<Gloss term="sociocracy">Sociocracy</Gloss>.** Not a method but a system: <Gloss term="circle">circles</Gloss> with defined domains, linked in both directions, deciding by consent inside their boundary. It is what lets a community of sixty stop bringing the compost rota to a general meeting.
+The pair people most often confuse has a page: [consensus vs consent](/learn/compare/consensus-vs-consent). So does the argument most founding groups have: [majority vote vs consensus](/learn/compare/majority-vote-vs-consensus).
 
-The two pairs people most often confuse each have a page: [consensus vs consent](/learn/compare/consensus-vs-consent) and [sociocracy vs holacracy](/learn/compare/sociocracy-vs-holacracy).
+## Two things that are not methods
+
+**Polls and ranked votes** do not decide anything. A poll reports how the group split; a ranked vote elects one option from several without splitting the vote. Both are for the stage _before_ a proposal exists, and using them there is why some communities' proposals pass easily — the disagreement was found before anything was drafted. A poll mistaken for a decision is one of the more reliable ways to produce an argument in March.
+
+**<Gloss term="sociocracy">Sociocracy</Gloss>** is a system, not a method: <Gloss term="circle">circles</Gloss> with defined <Gloss term="domain">domains</Gloss>, linked in both directions, deciding by consent inside their boundary. It answers "who may decide this without asking?" rather than "what counts as agreement?" It is what lets a community of sixty stop bringing the compost rota to a general meeting — and the test of whether it is real is simple: if forming a circle has not made the general meeting shorter, the domain was never real. See also [sociocracy vs holacracy](/learn/compare/sociocracy-vs-holacracy).
+
+## Not one method — usually three
+
+The thing most groups arrive at the hard way, usually after an evening spent on tile colours: sort decisions by what they cost to get wrong, and give each class its own method.
+
+**Operational** business — the rota, the repair, the order — should be fast, delegated and reversible. **Strategic** decisions that commit money or change direction deserve a higher bar and a real discussion window. **Constitutional** questions about the community's purpose, its agreements and its membership rules should be slow on purpose. And a decision nobody can classify defaults to the higher tier, or every borderline case drifts down toward the easier meeting.
+
+On a visit, this is a useful thing to ask about directly. A community that names one method for everything is either very small, or not really using it. The full version is in [decision methods](/learn/topics/decision-methods), including what <Gloss term="decision-tiers">decision tiers</Gloss> have to have written down to work.
 
 ## The rule that matters more than the method
 

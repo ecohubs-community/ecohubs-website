@@ -16,6 +16,7 @@ import { spotTheEarlyWarning } from './spot-the-early-warning';
 import { whatWouldYouOwn } from './what-would-you-own';
 import { whatWouldYourHouseholdNeed } from './what-would-your-household-need';
 import { whichCommunityFits } from './which-community-fits';
+import { whichTierIsThisDecision } from './which-tier-is-this-decision';
 
 export const QUIZZES: Record<string, QuizDefinition> = {
 	[howMuchSharedLife.id]: howMuchSharedLife,
@@ -24,7 +25,8 @@ export const QUIZZES: Record<string, QuizDefinition> = {
 	[spotTheEarlyWarning.id]: spotTheEarlyWarning,
 	[whatWouldYouOwn.id]: whatWouldYouOwn,
 	[whatWouldYourHouseholdNeed.id]: whatWouldYourHouseholdNeed,
-	[whichCommunityFits.id]: whichCommunityFits
+	[whichCommunityFits.id]: whichCommunityFits,
+	[whichTierIsThisDecision.id]: whichTierIsThisDecision
 };
 
 export function getQuiz(id: string): QuizDefinition | undefined {

@@ -13,6 +13,8 @@ outcomes:
 pairs:
   - label: Consensus vs consent
     href: /learn/compare/consensus-vs-consent
+  - label: Decision Methods
+    href: /learn/topics/decision-methods
   - label: Resilience & Why Communities Fail
     href: /learn/topics/resilience
   - label: Glossary — blocking concern

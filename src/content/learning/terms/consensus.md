@@ -3,13 +3,13 @@ type: term
 title: Consensus
 slug: consensus
 term: Consensus
-topic: community-governance
+topic: decision-methods
 summary: A decision method requiring the agreement of all participants. Powerful for trust, slow under scale and fatigue.
 short: A decision method requiring the agreement of all participants. Powerful for trust, slow under scale and fatigue.
 targetQuery: what is consensus decision making
 status: published
-updated: 2026-08-06
-related: [consent, sociocracy]
+updated: 2026-08-07
+related: [consent, sociocracy, supermajority, decision-tiers]
 ---
 
 Consensus is a decision method in which a proposal passes only when every participant agrees to it. Not a majority, not a large majority — everyone. The intent is that nobody is ever outvoted, so nobody has to live under a decision they argued against and lost.
