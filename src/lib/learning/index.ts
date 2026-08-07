@@ -130,6 +130,16 @@ export const publishedTerms = publishedOf(terms);
 export const publishedPaths = publishedOf(paths);
 export const publishedCases = publishedOf(cases);
 
+/**
+ * Every published entry, of every type.
+ *
+ * Exported so a consumer that must cover *all* content — the sitemap, and
+ * `llms.txt` — can group by `type` instead of listing the collections by hand.
+ * Hand-listed, `llms.txt` had already missed `case`, a type with no files yet
+ * and so no way to notice.
+ */
+export const publishedContent: ContentEntry[] = published;
+
 /** slug → entry, per type, for O(1) route lookups. */
 function bySlug<F extends Frontmatter>(list: Typed<F>[]): ReadonlyMap<string, Typed<F>> {
 	return new Map(list.map((e) => [e.frontmatter.slug, e]));

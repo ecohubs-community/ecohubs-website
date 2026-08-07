@@ -1,16 +1,7 @@
 import { PUBLIC_SITE_URL } from '$env/static/public';
-import {
-	isIndexable,
-	publishedComparisons,
-	publishedGuides,
-	publishedLessons,
-	publishedPaths,
-	publishedTerms,
-	publishedTopics,
-	urlFor
-} from '$lib/learning';
+import { isIndexable, publishedContent, urlFor } from '$lib/learning';
 import { LEARN_SECTIONS } from '$lib/learning/sections';
-import type { ContentEntry } from '$lib/learning/types';
+import type { Frontmatter } from '$lib/learning/types';
 
 /**
  * `llms.txt`, with its Learning section generated.
@@ -76,9 +67,26 @@ function line(title: string, path: string, summary: string): string {
 	return `- [${title}](${SITE}${path}): ${sentence}`;
 }
 
-function fromEntries(entries: ContentEntry[]): string[] {
-	return entries
+/**
+ * How the content types are grouped under `## Learning`, in order.
+ *
+ * Every type in the content model appears in exactly one group — the spec
+ * checks that — so adding a type without deciding where it belongs fails
+ * rather than silently dropping its pages out of the file.
+ */
+const GROUPS: { heading: string; types: Frontmatter['type'][] }[] = [
+	{ heading: 'Guides and lessons', types: ['guide', 'lesson'] },
+	{ heading: 'Topics', types: ['topic'] },
+	{ heading: 'Compared', types: ['compare'] },
+	{ heading: 'Learning paths', types: ['path'] },
+	{ heading: 'Case studies', types: ['case'] },
+	{ heading: 'Glossary', types: ['term'] }
+];
+
+function group(types: Frontmatter['type'][]): string[] {
+	return publishedContent
 		.filter(isIndexable)
+		.filter((entry) => types.includes(entry.frontmatter.type))
 		.map((entry) => line(entry.frontmatter.title, urlFor(entry), entry.frontmatter.summary))
 		.sort();
 }
@@ -123,27 +131,12 @@ function learningSection(): string {
 		'## Learning',
 		'',
 		...indexes,
-		'',
-		'### Guides and lessons',
-		'',
-		...fromEntries(publishedGuides),
-		...fromEntries(publishedLessons),
-		'',
-		'### Topics',
-		'',
-		...fromEntries(publishedTopics),
-		'',
-		'### Compared',
-		'',
-		...fromEntries(publishedComparisons),
-		'',
-		'### Learning paths',
-		'',
-		...fromEntries(publishedPaths),
-		'',
-		'### Glossary',
-		'',
-		...fromEntries(publishedTerms)
+		// A group with nothing in it prints no heading — an empty "Case studies"
+		// section would advertise content that does not exist.
+		...GROUPS.flatMap(({ heading, types }) => {
+			const entries = group(types);
+			return entries.length ? ['', `### ${heading}`, '', ...entries] : [];
+		})
 	].join('\n');
 }
 
