@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { Component } from 'svelte';
+	import { LEARN_SHELL } from '$lib/components/learning/shell';
+	import Icon from '$lib/components/Icon.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { onMount } from 'svelte';
@@ -46,9 +48,7 @@
 	<!-- One grid for the whole page, not one per section: in the design the rail
 	     starts level with the title rather than below a full-width hero, and it
 	     can only do that if the heading lives in the article column too. -->
-	<div
-		class="mx-auto grid max-w-[1360px] gap-14 px-6 pt-8 pb-20 md:pb-28 lg:grid-cols-[248px_minmax(0,1fr)]"
-	>
+	<div class={LEARN_SHELL}>
 		<div class="min-w-0 lg:order-2 lg:max-w-[820px]">
 			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
 				<a
@@ -133,10 +133,19 @@
 						class="group rounded-2xl border border-stone-200/70 bg-white p-5 transition-all duration-300 hover:soft-shadow"
 					>
 						<span class="kicker block text-stone-400">Previous</span>
-						<span
-							class="mt-1 block font-serif text-lg text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
-						>
-							{data.previous.title}
+						<span class="mt-1 flex items-center gap-2.5">
+							<!-- The arrow steps toward its edge on hover, so the direction is
+							     felt rather than only read. -->
+							<Icon
+								icon="tabler:arrow-narrow-left"
+								class="h-5 w-5 shrink-0 text-stone-400 transition-all duration-300 group-hover:-translate-x-1 group-hover:text-ecohubs-primary"
+								aria-hidden="true"
+							/>
+							<span
+								class="font-serif text-lg text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
+							>
+								{data.previous.title}
+							</span>
 						</span>
 					</a>
 				{:else}
@@ -150,10 +159,17 @@
 						class="group rounded-2xl border border-stone-200/70 bg-white p-5 text-right transition-all duration-300 hover:soft-shadow"
 					>
 						<span class="kicker block text-stone-400">Next</span>
-						<span
-							class="mt-1 block font-serif text-lg text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
-						>
-							{data.next.title}
+						<span class="mt-1 flex items-center justify-end gap-2.5">
+							<span
+								class="font-serif text-lg text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
+							>
+								{data.next.title}
+							</span>
+							<Icon
+								icon="tabler:arrow-narrow-right"
+								class="h-5 w-5 shrink-0 text-stone-400 transition-all duration-300 group-hover:translate-x-1 group-hover:text-ecohubs-primary"
+								aria-hidden="true"
+							/>
 						</span>
 					</a>
 				{:else}
@@ -162,10 +178,19 @@
 						class="group rounded-2xl border border-stone-200/70 bg-white p-5 text-right transition-all duration-300 hover:soft-shadow"
 					>
 						<span class="kicker block text-stone-400">You reached the end</span>
-						<span
-							class="mt-1 block font-serif text-lg text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
-						>
-							Back to {data.guide.title}
+						<span class="mt-1 flex items-center justify-end gap-2.5">
+							<span
+								class="font-serif text-lg text-ecohubs-deep transition-colors group-hover:text-ecohubs-primary"
+							>
+								Back to {data.guide.title}
+							</span>
+							<!-- Up, not right: this one returns to the guide rather than
+							     continuing through it. -->
+							<Icon
+								icon="tabler:arrow-narrow-up"
+								class="h-5 w-5 shrink-0 text-stone-400 transition-all duration-300 group-hover:-translate-y-1 group-hover:text-ecohubs-primary"
+								aria-hidden="true"
+							/>
 						</span>
 					</a>
 				{/if}

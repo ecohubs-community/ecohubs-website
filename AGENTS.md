@@ -163,6 +163,25 @@ Content lives in `src/content/learning/**/*.md` — markdown with frontmatter, i
 - **No invented metrics.** There is no analytics on this site, so the hub ships *Most linked to* — counted from `terms:`/`related:` — where the design says "Popular this week", and says so on the card.
 - **`LEARN_SECTIONS` may only name routes that exist.** Everything is prerendered, so a link to a missing route fails the build rather than 404ing in production — which is how `/learn/search` announced itself.
 
+## Guide downloads (generated artefacts)
+
+Each guide can ship a full-guide PDF, a "Questions to ask on a visit" PDF and a cost model worksheet. They are **generated, committed files** under `static/downloads/`, listed on the guide page from `static/downloads/manifest.json`. The site is prerendered, so they must exist at build time.
+
+```bash
+pnpm downloads                    # every published guide
+pnpm downloads <guide-slug>       # one
+pnpm downloads --staged           # only guides whose staged content changed
+```
+
+- **Keep them in step with the content.** A committed PDF goes stale silently. `.githooks/pre-commit` runs `pnpm downloads --staged` and stages what changed, so an ordinary commit that edits a lesson also carries the regenerated PDF. `core.hooksPath` is set by `pnpm prepare`, so a fresh clone gets it. `SKIP_DOWNLOADS=1 git commit` bypasses it — use that for a work-in-progress commit, and regenerate before the PR.
+- **What counts as related lives in `guidesToRebuild()`** in [`scripts/build-downloads.ts`](./scripts/build-downloads.ts), with tests. A guide's own file or a lesson under `lessons/<slug>/` affects only that guide; quizzes, glossary terms, the `(print)` routes, `cost.ts` and `questions.ts` end up in every PDF, so they rebuild all of them. **Add a path to `SHARED` when a new input starts appearing inside a download.**
+- **Adding a new kind of download means adding its trigger too.** A generator with no matching pre-commit rule is a file that is wrong within a week. Extend `guidesToRebuild()` (and its spec) in the same change, and add the entry to the manifest so the guide page picks it up without hardcoding.
+- **The PDFs are printed from `/print/<guide>` by headless Chrome**, never re-stated. That route group sets `csr = false`, and because every hub component renders in full on the server and only hides parts of itself after hydration, no-hydration *is* the print form: all depth layers, quizzes as answer keys, the estimator's reference table. **If you make a component hide something before hydration, you have broken the PDF and the crawler at the same time.**
+- **Nothing guide-specific is hardcoded.** Guides are discovered from the content directory; the visit questions are extracted from lessons by the callout convention `title="Take these with you"` (`learning/questions.ts`); a guide only gets a worksheet if a lesson uses `<CostEstimator>`. A second guide needs no code.
+- **The worksheet ships formulas, not one example's answers**, and `scripts/worksheet.spec.ts` evaluates them against `estimate()`. A spreadsheet that disagreed with the site would be worse than none, because a reader would trust it more. **If the cost model changes, that spec is what catches the drift.**
+- **`downloads.ts` is server-only.** It imports the manifest from `static/`; importing it from a component pulls that JSON into the browser bundle and broke the guide page once already.
+- Playwright's chromium is needed once per machine: `npx playwright install chromium`.
+
 ## External links
 
 External `target="_blank"` links use `rel="noopener noreferrer"`. CTA-style external links (pill buttons, card links) opt out of the global underline+arrow with `class="no-external-decoration"` — see the rule in `theme.css`.

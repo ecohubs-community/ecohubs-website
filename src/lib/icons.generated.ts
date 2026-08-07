@@ -4,9 +4,12 @@
 
 	const DEFAULTS = { width: 24, height: 24 };
 
-	/** The 28 icons this site uses, inlined so nothing is fetched at runtime. */
+	/** The 31 icons this site uses, inlined so nothing is fetched at runtime. */
 	export const ICONS: Record<string, IconifyIcon> = {
-		'tabler:arrows-left-right': {"body":"<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 17H3m3-7L3 7l3-3M3 7h18m-3 13l3-3l-3-3\"/>"},
+		'tabler:arrow-narrow-left': {"body":"<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M5 12h14M5 12l4 4m-4-4l4-4\"/>"},
+	'tabler:arrow-narrow-right': {"body":"<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M5 12h14m-4 4l4-4m-4-4l4 4\"/>"},
+	'tabler:arrow-narrow-up': {"body":"<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 5v14m4-10l-4-4M8 9l4-4\"/>"},
+	'tabler:arrows-left-right': {"body":"<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 17H3m3-7L3 7l3-3M3 7h18m-3 13l3-3l-3-3\"/>"},
 	'tabler:book-2': {"body":"<g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"M19 4v16H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z\"/><path d=\"M19 16H7a2 2 0 0 0-2 2M9 8h6\"/></g>"},
 	'tabler:bookmark': {"body":"<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M18 7v14l-6-4l-6 4V7a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4\"/>"},
 	'tabler:bookmark-filled': {"body":"<path fill=\"currentColor\" d=\"M14 2a5 5 0 0 1 5 5v14a1 1 0 0 1-1.555.832L12 18.202l-5.444 3.63a1 1 0 0 1-1.55-.72L5 21V7a5 5 0 0 1 5-5z\"/>"},

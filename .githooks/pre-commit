@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# Regenerates the guide downloads when a commit changes what is inside them.
+#
+# The PDFs and the worksheet are committed artefacts — the site is prerendered,
+# so they have to exist at build time — which means they go stale silently
+# unless something notices. This notices.
+#
+# It does nothing when no staged file affects a guide, so ordinary commits are
+# unaffected. Set SKIP_DOWNLOADS=1 to bypass it.
+set -e
+
+if [ -n "$SKIP_DOWNLOADS" ]; then
+	echo "pre-commit: SKIP_DOWNLOADS set — leaving the downloads alone."
+	exit 0
+fi
+
+node scripts/build-downloads.ts --staged
+
+# Stage whatever changed, so the commit carries the artefacts it just
+# invalidated rather than leaving them for the next one.
+if ! git diff --quiet -- static/downloads; then
+	git add static/downloads
+	echo "pre-commit: regenerated downloads added to this commit."
+fi

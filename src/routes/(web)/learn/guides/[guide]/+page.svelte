@@ -11,6 +11,7 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { Cover, Faq, LearnRail, Prose } from '$lib/components/learning';
+	import { LEARN_SHELL } from '$lib/components/learning/shell';
 	import { CARD, META } from '$lib/components/learning/card';
 	import Icon from '$lib/components/Icon.svelte';
 	import { guideArticle, learningBreadcrumbs } from '$lib/learning/schema';
@@ -83,9 +84,7 @@
 />
 
 <article class="bg-ecohubs-base">
-	<div
-		class="mx-auto grid max-w-[1360px] gap-14 px-6 pt-8 pb-20 md:pb-28 lg:grid-cols-[248px_minmax(0,1fr)]"
-	>
+	<div class={LEARN_SHELL}>
 		<div class="min-w-0 lg:order-2">
 			<!-- ═══════════════════════════════════════════════════════
 					1. HERO

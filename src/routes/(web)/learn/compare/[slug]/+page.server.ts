@@ -29,14 +29,22 @@ export const load: PageServerLoad = async ({ params }) => {
 	const terms = (fm.terms ?? [])
 		.map((slug) => termBySlug.get(slug))
 		.filter((t) => t && t.frontmatter.status === 'published')
-		.map((t) => ({ slug: t!.frontmatter.slug, term: t!.frontmatter.term, short: t!.frontmatter.short }));
+		.map((t) => ({
+			slug: t!.frontmatter.slug,
+			term: t!.frontmatter.term,
+			short: t!.frontmatter.short
+		}));
 
 	// Other comparisons, for the "still deciding?" rail at the foot.
 	const others = publishedComparisons
 		.filter((c) => c.frontmatter.slug !== fm.slug)
 		.filter(isIndexable)
 		.slice(0, 3)
-		.map((c) => ({ slug: c.frontmatter.slug, title: c.frontmatter.title, summary: c.frontmatter.summary }));
+		.map((c) => ({
+			slug: c.frontmatter.slug,
+			title: c.frontmatter.title,
+			summary: c.frontmatter.summary
+		}));
 
 	return {
 		compare: fm,

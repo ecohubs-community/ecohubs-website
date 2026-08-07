@@ -2,6 +2,7 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { LearnRail, TopicCard } from '$lib/components/learning';
+	import { LEARN_SHELL } from '$lib/components/learning/shell';
 	import { learningBreadcrumbs } from '$lib/learning/schema';
 	import type { PageData } from './$types';
 
@@ -24,9 +25,7 @@
 <div class="bg-ecohubs-base">
 	<!-- One grid for the whole page, not one per section: the rail starts level
      with the heading, as in the design, rather than below a full-width hero. -->
-	<div
-		class="mx-auto grid max-w-[1360px] gap-14 px-6 pt-8 pb-20 md:pb-28 lg:grid-cols-[248px_minmax(0,1fr)]"
-	>
+	<div class={LEARN_SHELL}>
 		<div class="min-w-0 lg:order-2">
 			<div class="mb-5 flex flex-wrap items-start justify-between gap-4">
 				<div class="kicker text-emerald-700">Browse by topic</div>

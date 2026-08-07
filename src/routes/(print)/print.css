@@ -6,6 +6,17 @@
  * without generating one.
  */
 
+/*
+ * White paper.
+ *
+ * The site's body is #fbfbf9, which on screen is a warm sheet and in a PDF is a
+ * flat cream wash over all 69 pages — printed, it is just ink. The cover paints
+ * its own background and is unaffected.
+ */
+body {
+	background-color: #fff;
+}
+
 @page {
 	size: A4;
 	/* The top margin leaves room for the running header Chrome injects; the
@@ -62,6 +73,16 @@
 	font-size: 12pt;
 	margin-top: 1.1em;
 	margin-bottom: 0.35em;
+}
+
+/*
+ * The short-version card and the deep layer set their own `text-lg` inside the
+ * aside, which survived the rule below and printed noticeably larger than the
+ * body around it. `.kicker` is exempt because it is meant to be smaller.
+ */
+.sheet .prose aside :is(div, p, li, span):not(.kicker),
+.sheet .prose section :is(div, p, li, span):not(.kicker) {
+	font-size: inherit;
 }
 
 /* Callouts, the short-version card and the deep layer are all boxed asides.

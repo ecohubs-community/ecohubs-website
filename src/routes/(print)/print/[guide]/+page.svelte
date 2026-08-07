@@ -10,7 +10,7 @@
 	 */
 	import type { Component } from 'svelte';
 	import '../../cover.css';
-	import { Prose } from '$lib/components/learning';
+	import { Cover, Prose } from '$lib/components/learning';
 	import { setDefinitions } from '$lib/learning/context';
 	import type { PageData } from './$types';
 
@@ -48,6 +48,18 @@
 	</div>
 
 	<div>
+		{#if data.guide.image}
+			<!-- A fixed 3:1 band rather than the image's own shape, so every guide's
+			     cover has the same proportions whatever was uploaded. `Cover` crops
+			     to fill it. -->
+			<Cover
+				slug={data.guide.slug}
+				image={data.guide.image}
+				imageAlt={data.guide.imageAlt}
+				sizes="640px"
+				class="mb-9 aspect-[3/1] w-full rounded-[5mm]"
+			/>
+		{/if}
 		<h1 class="font-serif text-[40pt] leading-[1.08]">{data.guide.title}</h1>
 		<p class="mt-6 max-w-[125mm] text-[13pt] leading-relaxed text-emerald-50/90">
 			{data.guide.summary}
@@ -71,19 +83,23 @@
 </section>
 
 <!-- ── Contents ────────────────────────────────────────────────────────── -->
-<section class="page-break sheet pt-[6mm]">
+<section id="contents" class="page-break sheet pt-[6mm]">
 	<h2 class="font-serif text-[20pt] text-ecohubs-deep">Contents</h2>
 	<ol class="mt-5 space-y-1.5">
 		{#each data.lessons as lesson (lesson.slug)}
-			<li class="flex gap-4 border-b border-stone-200 pb-1.5">
-				<span class="font-mono text-[9.5pt] text-stone-400">{lesson.marker}</span>
-				<span class="min-w-0 flex-1">
-					<span class="block font-serif text-[11.5pt] text-ecohubs-deep">{lesson.title}</span>
-					<span class="block text-[9pt] leading-snug text-stone-600">{lesson.summary}</span>
-				</span>
-				<span class="font-mono text-[9pt] whitespace-nowrap text-stone-400">
-					{lesson.minutes} min
-				</span>
+			<li class="border-b border-stone-200 pb-1.5">
+				<!-- Chrome turns in-document anchors into real PDF link annotations,
+				     so the contents page works as navigation in a reader. -->
+				<a href="#{lesson.slug}" class="flex gap-4 no-underline">
+					<span class="font-mono text-[9.5pt] text-stone-400">{lesson.marker}</span>
+					<span class="min-w-0 flex-1">
+						<span class="block font-serif text-[11.5pt] text-ecohubs-deep">{lesson.title}</span>
+						<span class="block text-[9pt] leading-snug text-stone-600">{lesson.summary}</span>
+					</span>
+					<span class="font-mono text-[9pt] whitespace-nowrap text-stone-400">
+						{lesson.minutes} min
+					</span>
+				</a>
 			</li>
 		{/each}
 	</ol>
@@ -107,9 +123,12 @@
 
 <!-- ── The lessons ─────────────────────────────────────────────────────── -->
 {#each data.lessons as lesson (lesson.slug)}
-	<article class="page-break sheet pt-[6mm]">
-		<div class="font-mono text-[9pt] tracking-[0.16em] text-emerald-800 uppercase">
-			Lesson {lesson.marker} of {data.lessons.length}
+	<article id={lesson.slug} class="page-break sheet pt-[6mm]">
+		<div class="flex items-baseline justify-between gap-4">
+			<div class="font-mono text-[9pt] tracking-[0.16em] text-emerald-800 uppercase">
+				Lesson {lesson.marker} of {data.lessons.length}
+			</div>
+			<a href="#contents" class="font-mono text-[8pt] text-stone-400 no-underline">Contents</a>
 		</div>
 		<h2 class="mt-2 font-serif text-[24pt] leading-[1.14] text-ecohubs-deep">{lesson.title}</h2>
 		<p class="mt-3 text-[12pt] leading-relaxed text-stone-600">{lesson.summary}</p>

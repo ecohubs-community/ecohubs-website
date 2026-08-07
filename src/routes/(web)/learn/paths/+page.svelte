@@ -3,6 +3,7 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { LearnRail, PathCard } from '$lib/components/learning';
+	import { LEARN_SHELL } from '$lib/components/learning/shell';
 	import { CARD, META } from '$lib/components/learning/card';
 	import { learningBreadcrumbs } from '$lib/learning/schema';
 	import { getProgress } from '$lib/learning/storage';
@@ -40,9 +41,7 @@
 
 <!-- Opaque, because the site's animated backdrop sits at z-index -1. -->
 <div class="bg-ecohubs-base">
-	<div
-		class="mx-auto grid max-w-[1360px] gap-14 px-6 pt-8 pb-20 md:pb-28 lg:grid-cols-[248px_minmax(0,1fr)]"
-	>
+	<div class={LEARN_SHELL}>
 		<div class="min-w-0 lg:order-2">
 			<!-- ═══════════════════════════════════════════════════════
 					1. HEADER
