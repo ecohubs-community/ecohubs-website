@@ -152,6 +152,7 @@
 					imageAlt={guide.imageAlt}
 					motif={guide.motif}
 					label="guide · {guide.level}"
+					sizes="(min-width: 1024px) 420px, 100vw"
 					class="h-[300px] w-full rounded-[24px] lg:h-[380px]"
 				/>
 			</div>
@@ -280,6 +281,7 @@
 									image={other.image}
 									imageAlt={other.imageAlt}
 									motif={other.motif}
+									sizes="(min-width: 640px) 300px, 100vw"
 									class="h-24 w-full"
 								/>
 								<div class="p-5">

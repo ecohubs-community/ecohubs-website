@@ -79,3 +79,49 @@ describe('estimate', () => {
 		expect(r.perMonth).toBeCloseTo(250, 6);
 	});
 });
+
+/**
+ * These are the shapes the browser could actually produce: HTML min/max
+ * constrain the spinner, not typing, pasting or a cleared field.
+ */
+describe('estimate, given input the markup cannot prevent', () => {
+	it('refuses a negative period rather than charging negative dues', () => {
+		const r = estimate({ ...base, years: -5 });
+		expect(r.years).toBe(1);
+		expect(r.dues).toBe(3000);
+		expect(r.dues).toBeGreaterThan(0);
+	});
+
+	it('caps an absurd period instead of billing three hundred million', () => {
+		const r = estimate({ ...base, years: 100_000 });
+		expect(r.years).toBe(60);
+		expect(r.dues).toBe(250 * 12 * 60);
+		expect(Number.isFinite(r.net)).toBe(true);
+	});
+
+	it('never lets a land trust return more than the home is worth', () => {
+		const r = estimate({ ...base, model: 'clt', growthPercent: 3, sharePercent: 500 });
+		expect(r.back).toBeLessThanOrEqual(r.worth);
+		// 500% clamped to 100% is the whole gain, and no more.
+		expect(r.back).toBeCloseTo(r.worth, 6);
+	});
+
+	it('treats a cleared field as its floor rather than as NaN', () => {
+		for (const field of ['entry', 'monthly', 'years', 'growthPercent', 'sharePercent'] as const) {
+			const r = estimate({ ...base, [field]: NaN });
+			expect(Number.isFinite(r.net), `${field} produced NaN`).toBe(true);
+			expect(Number.isFinite(r.perMonth), `${field} produced NaN`).toBe(true);
+		}
+	});
+
+	it('reports the period it used, so a caller can label its own output', () => {
+		expect(estimate({ ...base, years: 7 }).years).toBe(7);
+		expect(estimate({ ...base, years: 7.6 }).years).toBe(8);
+		expect(estimate({ ...base, years: 0 }).years).toBe(1);
+	});
+
+	it('holds a negative growth rate to the floor the input offers', () => {
+		const r = estimate({ ...base, growthPercent: -90 });
+		expect(r.worth).toBeCloseTo(300_000 * 0.9 ** 10, 6);
+	});
+});

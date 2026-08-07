@@ -18,7 +18,7 @@
 	 * nothing.
 	 */
 	import { onMount } from 'svelte';
-	import { estimate, type EquityModel } from '$lib/learning/cost';
+	import { LIMITS, estimate, type EquityModel } from '$lib/learning/cost';
 
 	const MODELS: { id: EquityModel; label: string; rule: string; source: string }[] = [
 		{
@@ -130,7 +130,8 @@
 				<span class="mb-1 block text-sm text-stone-600">What you pay to move in</span>
 				<input
 					type="number"
-					min="0"
+					min={LIMITS.entry[0]}
+					max={LIMITS.entry[1]}
 					step="1000"
 					bind:value={entry}
 					class="w-full rounded-xl border border-stone-300 bg-white px-3 py-2 text-stone-800"
@@ -141,7 +142,8 @@
 				<span class="mb-1 block text-sm text-stone-600">Monthly dues or service charge</span>
 				<input
 					type="number"
-					min="0"
+					min={LIMITS.monthly[0]}
+					max={LIMITS.monthly[1]}
 					step="10"
 					bind:value={monthly}
 					class="w-full rounded-xl border border-stone-300 bg-white px-3 py-2 text-stone-800"
@@ -152,8 +154,8 @@
 				<span class="mb-1 block text-sm text-stone-600">Years you expect to stay</span>
 				<input
 					type="number"
-					min="1"
-					max="60"
+					min={LIMITS.years[0]}
+					max={LIMITS.years[1]}
 					step="1"
 					bind:value={years}
 					class="w-full rounded-xl border border-stone-300 bg-white px-3 py-2 text-stone-800"
@@ -166,8 +168,8 @@
 				</span>
 				<input
 					type="number"
-					min="-10"
-					max="20"
+					min={LIMITS.growthPercent[0]}
+					max={LIMITS.growthPercent[1]}
 					step="0.5"
 					bind:value={growth}
 					class="w-full rounded-xl border border-stone-300 bg-white px-3 py-2 text-stone-800"
@@ -182,8 +184,8 @@
 					<span class="mb-1 block text-sm text-stone-600"> Share of appreciation you keep, % </span>
 					<input
 						type="number"
-						min="0"
-						max="100"
+						min={LIMITS.sharePercent[0]}
+						max={LIMITS.sharePercent[1]}
 						step="1"
 						bind:value={share}
 						class="w-full rounded-xl border border-stone-300 bg-white px-3 py-2 text-stone-800"
@@ -195,7 +197,14 @@
 			{/if}
 		</div>
 
-		<div class="mt-8 border-t border-stone-200 pt-6" aria-live="polite">
+		<div class="mt-8 border-t border-stone-200 pt-6">
+			<!-- A live region on the table announced all five rows on every keystroke.
+			     One sentence carries the same result and is bearable to listen to. -->
+			<p class="sr-only" aria-live="polite">
+				{result.net >= 0
+					? `Over ${result.years} years this costs ${money(result.net)}, or ${money(result.perMonth)} a month.`
+					: `Over ${result.years} years you come out ahead by ${money(-result.net)}.`}
+			</p>
 			<table class="w-full text-sm">
 				<caption class="sr-only">What the period costs under the model you chose</caption>
 				<tbody class="[&_td]:py-2 [&_td]:text-right [&_th]:py-2 [&_th]:pr-3 [&_th]:text-left">
@@ -205,8 +214,10 @@
 					</tr>
 					<tr class="border-b border-stone-100">
 						<th scope="row" class="font-normal text-stone-600">
-							Dues over {years}
-							{years === 1 ? 'year' : 'years'}
+							<!-- `result.years` rather than `years`: a typed -5 is clamped before
+							     anything is calculated, and the label has to say so. -->
+							Dues over {result.years}
+							{result.years === 1 ? 'year' : 'years'}
 						</th>
 						<td class="font-mono text-stone-800">{money(result.dues)}</td>
 					</tr>

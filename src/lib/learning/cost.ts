@@ -34,6 +34,14 @@ export interface CostInput {
 }
 
 export interface CostResult {
+	/**
+	 * The period actually used, after clamping.
+	 *
+	 * Returned so the caller can label its own output honestly: the row used to
+	 * read "Dues over -5 years" because the heading trusted the raw input while
+	 * the arithmetic did something else.
+	 */
+	years: number;
 	/** What the home is worth at the end of the period. */
 	worth: number;
 	/** Total dues paid over the period. */
@@ -46,8 +54,36 @@ export interface CostResult {
 	perMonth: number;
 }
 
+/**
+ * HTML `min` and `max` on a number input constrain the spinner, not what can be
+ * typed or pasted, so every bound is enforced here instead.
+ *
+ * Without it the estimator would publish nonsense with a straight face: a
+ * negative period produced negative dues, a mistyped period produced three
+ * hundred million, and a land-trust share above 100% returned more than the
+ * home was worth. On a page about money that is worse than an error.
+ */
+function clamp(value: number, low: number, high: number): number {
+	if (!Number.isFinite(value)) return low;
+	return Math.min(high, Math.max(low, value));
+}
+
+/** The bounds, in one place, so the inputs and the arithmetic cannot disagree. */
+export const LIMITS = {
+	entry: [0, 100_000_000],
+	monthly: [0, 100_000],
+	years: [1, 60],
+	growthPercent: [-10, 20],
+	sharePercent: [0, 100]
+} as const;
+
 export function estimate(input: CostInput): CostResult {
-	const { model, entry, monthly, years, growthPercent, sharePercent } = input;
+	const model = input.model;
+	const entry = clamp(input.entry, ...LIMITS.entry);
+	const monthly = clamp(input.monthly, ...LIMITS.monthly);
+	const years = Math.round(clamp(input.years, ...LIMITS.years));
+	const growthPercent = clamp(input.growthPercent, ...LIMITS.growthPercent);
+	const sharePercent = clamp(input.sharePercent, ...LIMITS.sharePercent);
 
 	const worth = entry * Math.pow(1 + growthPercent / 100, years);
 	const dues = monthly * 12 * years;
@@ -69,5 +105,5 @@ export function estimate(input: CostInput): CostResult {
 
 	const net = entry + dues - back;
 
-	return { worth, dues, back, net, perMonth: net / Math.max(1, years * 12) };
+	return { years, worth, dues, back, net, perMonth: net / (years * 12) };
 }

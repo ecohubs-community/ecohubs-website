@@ -6,6 +6,8 @@
 	 * JavaScript, browsers give it correct keyboard and screen-reader behaviour
 	 * for free, and find-in-page reaches text inside a closed one.
 	 */
+	import { isExternal, parseInline } from '$lib/learning/inline';
+
 	let { items }: { items: { question: string; answer: string }[] } = $props();
 </script>
 
@@ -23,6 +25,21 @@
 				<span class="hidden group-open:inline">–</span>
 			</span>
 		</summary>
-		<div class="max-w-[66ch] pb-5 text-[15.5px] leading-[1.7] text-stone-700">{item.answer}</div>
+		<div class="max-w-[66ch] pb-5 text-[15.5px] leading-[1.7] text-stone-700">
+			<!-- Frontmatter is not markdown, so `[label](href)` is resolved here
+			     rather than leaving a bare path sitting in a sentence. -->
+			{#each parseInline(item.answer) as segment, i (i)}
+				{#if segment.kind === 'link'}
+					<a
+						href={segment.href}
+						class="text-ecohubs-dark underline decoration-emerald-300 underline-offset-2 hover:decoration-emerald-600"
+						target={isExternal(segment.href) ? '_blank' : undefined}
+						rel={isExternal(segment.href) ? 'noreferrer' : undefined}
+					>
+						{segment.text}
+					</a>
+				{:else}{segment.text}{/if}
+			{/each}
+		</div>
 	</details>
 {/each}

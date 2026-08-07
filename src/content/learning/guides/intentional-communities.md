@@ -7,6 +7,11 @@ level: foundational
 summary: The whole landscape in one read — what these places are, what they ask of you, and how to tell whether one is right for you.
 targetQuery: intentional community
 prerequisites: no prerequisites
+image: guides/intentional-communities.webp
+imageAlt: >-
+  A cluster of timber and earth-rendered homes with turf roofs around a gravel
+  courtyard, a long table laid with cups and pots, someone reading on a porch,
+  and vegetable beds in the foreground.
 status: published
 updated: 2026-08-06
 outcomes:
@@ -21,8 +26,8 @@ faq:
       with review before publication. Every factual claim about a named
       community is checked against that community's own published material, and
       anything we could not confirm is marked as unconfirmed rather than
-      quietly dropped. How this is written, including where AI fits, is set out
-      in full at /learn/how-this-is-written.
+      quietly dropped. [How this is written](/learn/how-this-is-written),
+      including where AI fits, is set out in full.
   - question: Is it free?
     answer: >-
       Yes, and it stays free. No account, no email wall, no course at the end.
