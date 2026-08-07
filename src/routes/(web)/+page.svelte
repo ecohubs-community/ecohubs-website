@@ -81,13 +81,18 @@
 		<div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 			<!-- Left: copy -->
 			<div class="lg:col-span-7">
-				<div data-hero-step="0.05" style="--hero-delay: 0.05s" class="kicker text-emerald-700 mb-6 flex items-center gap-3">
+				<div
+					data-hero-step="0.05"
+					style="--hero-delay: 0.05s"
+					class="kicker text-emerald-700 mb-6 flex items-center gap-3"
+				>
 					<span class="relative inline-block w-2 h-2 rounded-full bg-emerald-600 pulse-dot"></span>
 					A living project · Pilot hub active in Ecuador
 				</div>
 
 				<h1
-					data-hero-step="0.15" style="--hero-delay: 0.15s"
+					data-hero-step="0.15"
+					style="--hero-delay: 0.15s"
 					class="font-serif text-5xl md:text-6xl lg:text-[76px] leading-[1.02] tracking-tight text-ecohubs-deep"
 				>
 					Maybe it isn't <br class="hidden md:block" />
@@ -100,7 +105,8 @@
 				</h1>
 
 				<p
-					data-hero-step="0.30" style="--hero-delay: 0.30s"
+					data-hero-step="0.30"
+					style="--hero-delay: 0.30s"
 					class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light"
 				>
 					EcoHubs is a growing network of people building regenerative intentional communities — a
@@ -108,7 +114,11 @@
 					that belonging is built in, not left to chance.
 				</p>
 
-				<div data-hero-step="0.42" style="--hero-delay: 0.42s" class="mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
+				<div
+					data-hero-step="0.42"
+					style="--hero-delay: 0.42s"
+					class="mt-10 flex flex-col sm:flex-row flex-wrap gap-3"
+				>
 					<a
 						href="#story"
 						class="px-7 py-3.5 bg-ecohubs-dark text-white font-medium rounded-full
@@ -151,7 +161,11 @@
 
 			<!-- Right: image mosaic -->
 			<div class="lg:col-span-5 relative">
-				<div data-hero-step="0.20" style="--hero-delay: 0.20s" class="grid grid-cols-5 grid-rows-6 gap-3 h-[520px]">
+				<div
+					data-hero-step="0.20"
+					style="--hero-delay: 0.20s"
+					class="grid grid-cols-5 grid-rows-6 gap-3 h-[520px]"
+				>
 					<div class="col-span-3 row-span-4 rounded-[28px] overflow-hidden soft-shadow">
 						<enhanced:img
 							src={HeroImage}
@@ -192,7 +206,8 @@
 				</div>
 				<!-- Floating quote chip — pulled down/out so only its top-right corner overlaps -->
 				<div
-					data-hero-step="0.65" style="--hero-delay: 0.65s"
+					data-hero-step="0.65"
+					style="--hero-delay: 0.65s"
 					class="absolute -left-8 lg:-left-12 -bottom-8 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 soft-shadow
                     max-w-[260px] border border-stone-100 hidden md:block"
 				>
@@ -275,7 +290,7 @@
 						<!-- emerald-700/stone-600 rather than emerald-600/70 and stone-500:
 					     at this size the lighter pair measured 2.7:1 and 4.5:1 against
 					     the ivory background, below the 4.5:1 minimum. -->
-					<div class="text-xs mt-0.5 {story.cta ? 'text-emerald-700' : 'text-stone-600'}">
+						<div class="text-xs mt-0.5 {story.cta ? 'text-emerald-700' : 'text-stone-600'}">
 							{story.name} · {story.location}
 						</div>
 						{#if story.placeholder}

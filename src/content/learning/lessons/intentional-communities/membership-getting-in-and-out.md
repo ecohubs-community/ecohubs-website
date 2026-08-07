@@ -34,7 +34,7 @@ Communities describe their membership process in the language of welcome, and it
 
 **Full member.** The stake, the vote, and whatever the <Gloss term="agreements">agreements</Gloss> say about exit.
 
-The durations vary enormously and there is no standard. What is fairly consistent is the *shape*: a short look, a longer trial, a probationary stretch, and then commitment.
+The durations vary enormously and there is no standard. What is fairly consistent is the _shape_: a short look, a longer trial, a probationary stretch, and then commitment.
 
 ## A published process, in full
 
@@ -44,9 +44,9 @@ Twin Oaks in Virginia runs a **three-week visitor period**. During it, prospecti
 
 Three features of that are worth noticing, because they are what a well-designed process looks like anywhere.
 
-**Everyone gets a say, but the decision is held by a body.** A whole-community vote on a person can turn into a popularity contest; a small team with the whole community's input has to give reasons. This is also why admission is one of the few places where communities using <Gloss term="consent">consent</Gloss> often deliberately do *not* use it: a single unexplained <Gloss term="blocking-concern">blocking concern</Gloss> against a person is nearly impossible to appeal, and is the mechanism by which a community quietly stops admitting anyone unlike itself.
+**Everyone gets a say, but the decision is held by a body.** A whole-community vote on a person can turn into a popularity contest; a small team with the whole community's input has to give reasons. This is also why admission is one of the few places where communities using <Gloss term="consent">consent</Gloss> often deliberately do _not_ use it: a single unexplained <Gloss term="blocking-concern">blocking concern</Gloss> against a person is nearly impossible to appeal, and is the mechanism by which a community quietly stops admitting anyone unlike itself.
 
-**"Visit again" exists.** A process with only yes and no forces a premature answer. A middle option lets a community say *we don't know yet* honestly, which is usually the truth.
+**"Visit again" exists.** A process with only yes and no forces a premature answer. A middle option lets a community say _we don't know yet_ honestly, which is usually the truth.
 
 **The decision happens after you leave.** Nobody has to deliver a verdict to your face over dinner, and you are not sitting in the room while people work out how they feel.
 
@@ -111,7 +111,7 @@ So take the stages here as a shape to compare a real community against, not as a
 
 The membership literature is unusually candid that communities are not primarily selecting for shared values.
 
-Diana Leafe Christian's *Creating a Life Together* — the standard practical reference on forming communities, published in 2003 — devotes a chapter to selecting people to join you, and the theme running through it is **emotional maturity** rather than agreement. Shared values get a group through the first year. What determines whether it survives the tenth is whether its members can be disagreed with, can hear a criticism without escalating, and can stay in a room with someone they are annoyed by.
+Diana Leafe Christian's _Creating a Life Together_ — the standard practical reference on forming communities, published in 2003 — devotes a chapter to selecting people to join you, and the theme running through it is **emotional maturity** rather than agreement. Shared values get a group through the first year. What determines whether it survives the tenth is whether its members can be disagreed with, can hear a criticism without escalating, and can stay in a room with someone they are annoyed by.
 
 This is why the interview questions in a good process tend to be about conflict rather than about beliefs. "How do you handle it when a decision goes against you?" predicts far more than "what do you think about consensus?"
 
@@ -122,26 +122,26 @@ The honest summary is that the process is doing something necessary and somethin
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Twin Oaks Community — FAQs',
-			url: 'https://www.twinoaks.org/faqs-all-on-one-page',
-			note: 'the three-week visitor period, the input process, and the stated grounds for asking someone to leave'
-		},
-		{
-			title: 'Christian, D. L. — Creating a Life Together (New Society Publishers, 2003)',
-			url: 'https://newsociety.com/book/creating-a-life-together/',
-			note: 'the standard practical reference; chapter 18 covers selecting people to join you'
-		},
-		{
-			title: 'Foundation for Intentional Community',
-			url: 'https://www.ic.org/',
-			note: 'directory listings, many of which set out a community’s membership process in full'
-		},
-		{
-			title: 'Owning, leasing, renting',
-			url: '/learn/guides/intentional-communities/owning-leasing-renting',
-			note: 'what your stake actually is, which decides what leaving returns to you'
-		}
-	]}
+items={[
+{
+title: 'Twin Oaks Community — FAQs',
+url: 'https://www.twinoaks.org/faqs-all-on-one-page',
+note: 'the three-week visitor period, the input process, and the stated grounds for asking someone to leave'
+},
+{
+title: 'Christian, D. L. — Creating a Life Together (New Society Publishers, 2003)',
+url: 'https://newsociety.com/book/creating-a-life-together/',
+note: 'the standard practical reference; chapter 18 covers selecting people to join you'
+},
+{
+title: 'Foundation for Intentional Community',
+url: 'https://www.ic.org/',
+note: 'directory listings, many of which set out a community’s membership process in full'
+},
+{
+title: 'Owning, leasing, renting',
+url: '/learn/guides/intentional-communities/owning-leasing-renting',
+note: 'what your stake actually is, which decides what leaving returns to you'
+}
+]}
 />

@@ -35,11 +35,11 @@ A CLT is a structure for holding land, not a way of living together. It says not
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Champlain Housing Trust',
-			url: 'https://www.getahome.org/',
-			note: 'the longest published record of CLT resales'
-		}
-	]}
+items={[
+{
+title: 'Champlain Housing Trust',
+url: 'https://www.getahome.org/',
+note: 'the longest published record of CLT resales'
+}
+]}
 />

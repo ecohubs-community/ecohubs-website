@@ -20,7 +20,7 @@ This is a legal shell rather than a social form. A co-op can be a close intentio
 
 **Decisions about the building are collective by construction.** Repairs, rents, admissions and rules are decided by the membership, usually one vote per member rather than by size of holding.
 
-**What you can sell varies enormously**, and this is the question to ask first. In a *market-rate* co-op, shares can be sold at whatever they will fetch, and the co-op behaves much like ordinary ownership. In a **limited-equity** co-op, the resale price is capped by a formula, which keeps homes affordable for the next member and means the current one does not capture the appreciation.
+**What you can sell varies enormously**, and this is the question to ask first. In a _market-rate_ co-op, shares can be sold at whatever they will fetch, and the co-op behaves much like ordinary ownership. In a **limited-equity** co-op, the resale price is capped by a formula, which keeps homes affordable for the next member and means the current one does not capture the appreciation.
 
 **Mortgages work differently.** Lending against a co-op share is a specialised product in most countries, and it is the practical obstacle that surprises people who assumed the finance would resemble a normal purchase.
 
@@ -35,11 +35,11 @@ The limited-equity model is the one to understand, because it makes the trade-of
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Intentional community vs commune',
-			url: '/learn/compare/intentional-community-vs-commune',
-			note: 'where co-ops sit among the other forms'
-		}
-	]}
+items={[
+{
+title: 'Intentional community vs commune',
+url: '/learn/compare/intentional-community-vs-commune',
+note: 'where co-ops sit among the other forms'
+}
+]}
 />

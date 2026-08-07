@@ -18,8 +18,11 @@
 		onsuccess?: (email: string) => void;
 	}
 
-	let { variant = 'light', buttonLabel = 'Join the founding community', onsuccess }: Props =
-		$props();
+	let {
+		variant = 'light',
+		buttonLabel = 'Join the founding community',
+		onsuccess
+	}: Props = $props();
 
 	const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -83,7 +86,11 @@
 			<p class={dark ? 'font-medium text-[15px] text-emerald-50' : 'font-medium text-[15px]'}>
 				You're on the list — check your inbox.
 			</p>
-			<p class={dark ? 'text-[13.5px] text-emerald-100/75 mt-0.5' : 'text-[13.5px] text-stone-600 mt-0.5'}>
+			<p
+				class={dark
+					? 'text-[13.5px] text-emerald-100/75 mt-0.5'
+					: 'text-[13.5px] text-stone-600 mt-0.5'}
+			>
 				We sent a note to
 				<span class={dark ? 'font-medium text-emerald-200' : 'font-medium text-ecohubs-dark'}
 					>{email}</span
@@ -139,10 +146,18 @@
 			</p>
 		{/if}
 
-		<p class={dark ? 'text-[13.5px] text-emerald-100/70 font-light' : 'h-soft text-[13.5px] font-light text-stone-600'}>
+		<p
+			class={dark
+				? 'text-[13.5px] text-emerald-100/70 font-light'
+				: 'h-soft text-[13.5px] font-light text-stone-600'}
+		>
 			Free to join. No commitment — just the first step.
 		</p>
-		<p class={dark ? 'text-[12px] text-emerald-100/55 font-light' : 'text-[12px] font-light text-stone-500'}>
+		<p
+			class={dark
+				? 'text-[12px] text-emerald-100/55 font-light'
+				: 'text-[12px] font-light text-stone-500'}
+		>
 			We'll never share your email · about 2 emails a month · unsubscribe anytime.
 		</p>
 	</form>

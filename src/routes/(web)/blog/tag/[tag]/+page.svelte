@@ -76,10 +76,7 @@
 ═══════════════════════════════════════════════════════════════════ -->
 <section class="py-16 md:py-20">
 	<div class="max-w-7xl mx-auto px-6 lg:px-8">
-		<div
-			data-scroll-stagger
-			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-		>
+		<div data-scroll-stagger class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 			{#each posts as post (post.slug)}
 				<article
 					class="bg-white rounded-2xl overflow-hidden border border-stone-200/70 hover:soft-shadow hover:-translate-y-1 transition-all duration-300 flex flex-col"

@@ -12,30 +12,30 @@ terms: [consensus, consent, sociocracy]
 
 <Quick>
 
-**Consensus** asks *do you agree?* — a proposal passes when everyone actively supports it. **Consent** asks *do you object, and why?* — a proposal passes when nobody can name a reasoned way it would harm the group or stop it meeting its aim. Consensus seeks enthusiasm; consent seeks tolerability. The practical difference is that consent puts the burden on the objector to say what is wrong, and expects the decision to be revisited.
+**Consensus** asks _do you agree?_ — a proposal passes when everyone actively supports it. **Consent** asks _do you object, and why?_ — a proposal passes when nobody can name a reasoned way it would harm the group or stop it meeting its aim. Consensus seeks enthusiasm; consent seeks tolerability. The practical difference is that consent puts the burden on the objector to say what is wrong, and expects the decision to be revisited.
 
 </Quick>
 
 The two words are used interchangeably in almost every community that uses either, and the swap is expensive. Groups adopt "consensus" from a handbook, run something closer to consent in practice, and then spend years arguing about a rule nobody has written down.
 
 <Compare
-	columns={['Consensus', 'Consent']}
-	rows={[
-		{ label: 'The question asked', values: ['Do you agree with this?', 'Do you have a reasoned objection?'] },
-		{ label: 'Bar for passing', values: ['Everyone actively supports it', 'Nobody can name a paramount objection'] },
-		{ label: 'Burden of proof', values: ['On the proposal, to win everyone over', 'On the objector, to say what is wrong'] },
-		{ label: 'Standard applied', values: ['This is the best option we can find', 'Good enough for now, safe enough to try'] },
-		{ label: 'Treats decisions as', values: ['Settled', 'Provisional, with a review date'] },
-		{ label: 'Preference vs harm', values: ['Often blurred in practice', 'Explicitly separated'] },
-		{ label: 'Typical failure', values: ['Stalls; whoever stays latest wins', 'Objections raised but never resolved'] },
-		{ label: 'Scales to', values: ['Roughly 8–15 before strain', 'Larger, if circles are used'] }
-	]}
-	caption="Both are families of practice rather than fixed rules; individual groups vary."
+columns={['Consensus', 'Consent']}
+rows={[
+{ label: 'The question asked', values: ['Do you agree with this?', 'Do you have a reasoned objection?'] },
+{ label: 'Bar for passing', values: ['Everyone actively supports it', 'Nobody can name a paramount objection'] },
+{ label: 'Burden of proof', values: ['On the proposal, to win everyone over', 'On the objector, to say what is wrong'] },
+{ label: 'Standard applied', values: ['This is the best option we can find', 'Good enough for now, safe enough to try'] },
+{ label: 'Treats decisions as', values: ['Settled', 'Provisional, with a review date'] },
+{ label: 'Preference vs harm', values: ['Often blurred in practice', 'Explicitly separated'] },
+{ label: 'Typical failure', values: ['Stalls; whoever stays latest wins', 'Objections raised but never resolved'] },
+{ label: 'Scales to', values: ['Roughly 8–15 before strain', 'Larger, if circles are used'] }
+]}
+caption="Both are families of practice rather than fixed rules; individual groups vary."
 />
 
 ## What consent actually changes
 
-<Gloss term="consent">Consent</Gloss> narrows the question. Not *do you like this?* but *can you live with it, and can you point to a way it would harm us?* A proposal passes when nobody can.
+<Gloss term="consent">Consent</Gloss> narrows the question. Not _do you like this?_ but _can you live with it, and can you point to a way it would harm us?_ A proposal passes when nobody can.
 
 That narrowing does two things. It moves the bar from enthusiasm to tolerability, which is a much lower bar — and deliberately so. And it puts the work on the person objecting: an objection has to be reasoned and has to be about the group's aim rather than about taste. "I would have picked a different colour" is a preference. "This spends the repair fund we agreed to hold for winter" is an objection.
 
@@ -51,7 +51,7 @@ It is also a better teacher. The amendment loop — raise a concern, change the 
 
 <Callout type="caveat">
 
-Neither method fixes a group that cannot talk to each other. Both change how a decision is *closed*, not whether the underlying disagreement was heard. A community with an unresolved power problem will produce bad decisions under either.
+Neither method fixes a group that cannot talk to each other. Both change how a decision is _closed_, not whether the underlying disagreement was heard. A community with an unresolved power problem will produce bad decisions under either.
 
 </Callout>
 
@@ -67,7 +67,7 @@ Consent fails to vagueness. The three common versions, in rough order of frequen
 
 **Consent suits you if** the group is past a dozen people, decisions are frequent and mostly operational, or your meetings have started to feel like endurance. It is also the right answer if you have noticed that one person's reluctance can stop anything — consent gives you a principled way to distinguish that from a real objection.
 
-Most communities that last end up using both: consent for the ordinary run of decisions, and something much closer to consensus for the small number that change what the community *is*. Writing down which decisions are which is the single most useful governance hour you will spend.
+Most communities that last end up using both: consent for the ordinary run of decisions, and something much closer to consensus for the small number that change what the community _is_. Writing down which decisions are which is the single most useful governance hour you will spend.
 
 <Deep title="Deep · defining a blocking concern">
 
@@ -80,16 +80,16 @@ The corresponding move under consensus is defining **standing aside** — disagr
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Beyond the Vote: Why the Most Resilient Communities are Replacing Consensus with Consent',
-			url: '/blog/beyond-the-vote-why-the-most-resilient-communities-are-replacing-consensus-with-consent',
-			note: 'the longer EcoHubs argument for consent'
-		},
-		{
-			title: 'RCOS Core — Layer 2: Governance & Decision Logic',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
-			note: 'both methods specified side by side'
-		}
-	]}
+items={[
+{
+title: 'Beyond the Vote: Why the Most Resilient Communities are Replacing Consensus with Consent',
+url: '/blog/beyond-the-vote-why-the-most-resilient-communities-are-replacing-consensus-with-consent',
+note: 'the longer EcoHubs argument for consent'
+},
+{
+title: 'RCOS Core — Layer 2: Governance & Decision Logic',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
+note: 'both methods specified side by side'
+}
+]}
 />

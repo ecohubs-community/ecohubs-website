@@ -12,7 +12,7 @@ updated: 2026-08-05
 related: [consensus, sociocracy]
 ---
 
-Consent asks a narrower question than agreement does. Not *do you like this?* but *can you live with it, and do you have a reasoned objection to it?* A proposal passes when nobody can point to a way it would harm the group or stop the group meeting its aim.
+Consent asks a narrower question than agreement does. Not _do you like this?_ but _can you live with it, and do you have a reasoned objection to it?_ A proposal passes when nobody can point to a way it would harm the group or stop the group meeting its aim.
 
 That narrowing is the whole point. <Gloss term="consensus">Consensus</Gloss> chases a proposal everyone actively supports, which sounds generous and, past a certain size, quietly hands a veto to whoever is most tired, most stubborn, or most articulate at eleven at night. Consent moves the bar from enthusiasm to tolerability.
 
@@ -33,16 +33,16 @@ Consent is not a conflict-resolution method, and it does not fix a group that ca
 Three ways, in roughly this order of frequency. A group adopts the language without defining who may object and on what grounds, so in practice everything is still unanimity. Objections get raised but never resolved, so proposals stall in a queue nobody owns. Or the review date is never set, and "good enough for now" silently becomes permanent — the same drift that turns an emergency measure into an unrepealed rule.
 
 <Sources
-	items={[
-		{
-			title: 'Beyond the Vote: Why the Most Resilient Communities are Replacing Consensus with Consent',
-			url: '/blog/beyond-the-vote-why-the-most-resilient-communities-are-replacing-consensus-with-consent',
-			note: 'EcoHubs field note'
-		},
-		{
-			title: 'RCOS Core — Layer 2: Governance & Decision Logic',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
-			note: 'where consent is specified as a decision method'
-		}
-	]}
+items={[
+{
+title: 'Beyond the Vote: Why the Most Resilient Communities are Replacing Consensus with Consent',
+url: '/blog/beyond-the-vote-why-the-most-resilient-communities-are-replacing-consensus-with-consent',
+note: 'EcoHubs field note'
+},
+{
+title: 'RCOS Core — Layer 2: Governance & Decision Logic',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
+note: 'where consent is specified as a decision method'
+}
+]}
 />

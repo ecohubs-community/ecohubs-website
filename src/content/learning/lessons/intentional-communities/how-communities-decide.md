@@ -9,16 +9,7 @@ targetQuery: how do intentional communities make decisions
 status: published
 updated: 2026-08-06
 terms:
-  [
-    consensus,
-    consent,
-    sociocracy,
-    circle,
-    blocking-concern,
-    stand-aside,
-    facilitation,
-    agreements
-  ]
+  [consensus, consent, sociocracy, circle, blocking-concern, stand-aside, facilitation, agreements]
 related: [what-daily-life-looks-like, what-is-an-intentional-community]
 ---
 
@@ -32,7 +23,7 @@ You can read most of this from the outside in a single visit, if you ask the rig
 
 </Quick>
 
-Governance is the least romantic subject in this guide and the one that most reliably predicts whether a community will still exist in ten years. Not because the right method saves a group, but because the *absence* of an agreed one lets power settle wherever it likes — usually on whoever has the most time, the longest history, and the most stamina at eleven at night.
+Governance is the least romantic subject in this guide and the one that most reliably predicts whether a community will still exist in ten years. Not because the right method saves a group, but because the _absence_ of an agreed one lets power settle wherever it likes — usually on whoever has the most time, the longest history, and the most stamina at eleven at night.
 
 ## The four methods
 
@@ -40,7 +31,7 @@ Governance is the least romantic subject in this guide and the one that most rel
 
 **<Gloss term="consensus">Consensus</Gloss>.** A proposal passes only when everyone agrees. It produces buy-in that nothing else matches, and the amendment loop — raise a concern, change the proposal, test again — is a genuinely good teacher of how to hear each other. Past ten or fifteen people it starts handing a veto to whoever is most tired or most stubborn.
 
-**<Gloss term="consent">Consent</Gloss>.** A proposal passes when nobody has a reasoned, paramount objection. The question narrows from *do you agree?* to *can you live with it, and can you name a harm?* The bar moves from enthusiasm to tolerability, and the burden moves onto the objector to say what is actually wrong. Its standard — good enough for now, safe enough to try — assumes a review date, and quietly breaks without one.
+**<Gloss term="consent">Consent</Gloss>.** A proposal passes when nobody has a reasoned, paramount objection. The question narrows from _do you agree?_ to _can you live with it, and can you name a harm?_ The bar moves from enthusiasm to tolerability, and the burden moves onto the objector to say what is actually wrong. Its standard — good enough for now, safe enough to try — assumes a review date, and quietly breaks without one.
 
 **<Gloss term="sociocracy">Sociocracy</Gloss>.** Not a method but a system: <Gloss term="circle">circles</Gloss> with defined domains, linked in both directions, deciding by consent inside their boundary. It is what lets a community of sixty stop bringing the compost rota to a general meeting.
 
@@ -80,7 +71,7 @@ You cannot audit a community's governance in an afternoon. You can learn a surpr
 
 <Callout type="caveat">
 
-No method fixes a group that cannot talk to each other. All of these change how a decision is *closed*, not whether the underlying disagreement was heard. A community with an unresolved power problem will produce bad decisions under any of them — and will usually blame the method.
+No method fixes a group that cannot talk to each other. All of these change how a decision is _closed_, not whether the underlying disagreement was heard. A community with an unresolved power problem will produce bad decisions under any of them — and will usually blame the method.
 
 </Callout>
 
@@ -99,7 +90,7 @@ No method fixes a group that cannot talk to each other. All of these change how 
 
 The strongest empirical work here is not about intentional communities at all.
 
-Elinor Ostrom studied common-pool resources — irrigation systems, fisheries, forests, some managed successfully for centuries — to explain why the standard prediction of inevitable collapse kept failing. *Governing the Commons* (1990) distilled the answer into eight design principles, and the work won her the Nobel Memorial Prize in Economics in 2009.
+Elinor Ostrom studied common-pool resources — irrigation systems, fisheries, forests, some managed successfully for centuries — to explain why the standard prediction of inevitable collapse kept failing. _Governing the Commons_ (1990) distilled the answer into eight design principles, and the work won her the Nobel Memorial Prize in Economics in 2009.
 
 Several transfer directly, and none of them are about picking the right decision rule:
 
@@ -119,26 +110,26 @@ Note the limitation honestly. Ostrom's cases are resource-management commons, no
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Ostrom, E. — Governing the Commons (1990)',
-			url: 'https://doi.org/10.1017/CBO9780511807763',
-			note: 'the eight design principles and the evidence behind them'
-		},
-		{
-			title: 'RCOS Core — Layer 2: Governance & Decision Logic',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
-			note: 'the specification this lesson explains in plain language'
-		},
-		{
-			title: 'Sociocracy For All',
-			url: 'https://www.sociocracyforall.org/',
-			note: 'circles, domains and consent, for groups without shareholders'
-		},
-		{
-			title: 'Seeds for Change',
-			url: 'https://www.seedsforchange.org.uk/',
-			note: 'free, practical consensus and facilitation guides'
-		}
-	]}
+items={[
+{
+title: 'Ostrom, E. — Governing the Commons (1990)',
+url: 'https://doi.org/10.1017/CBO9780511807763',
+note: 'the eight design principles and the evidence behind them'
+},
+{
+title: 'RCOS Core — Layer 2: Governance & Decision Logic',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
+note: 'the specification this lesson explains in plain language'
+},
+{
+title: 'Sociocracy For All',
+url: 'https://www.sociocracyforall.org/',
+note: 'circles, domains and consent, for groups without shareholders'
+},
+{
+title: 'Seeds for Change',
+url: 'https://www.seedsforchange.org.uk/',
+note: 'free, practical consensus and facilitation guides'
+}
+]}
 />

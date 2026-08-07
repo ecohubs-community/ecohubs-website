@@ -25,28 +25,28 @@ An intentional community is a group of people who chose each other, live togethe
 
 The phrase covers an ecovillage in Portugal, a cohousing block in Copenhagen, and a farm in Missouri where nobody has a private income. What they share is not architecture or ideology. It is that the arrangement was **chosen and made explicit**, rather than inherited.
 
-That is also the useful test when you are looking at a place and trying to work out what it actually is. Not *how green is it* or *how radical does it sound*, but: what do these people share, who decides, and what happens when someone wants to leave?
+That is also the useful test when you are looking at a place and trying to work out what it actually is. Not _how green is it_ or _how radical does it sound_, but: what do these people share, who decides, and what happens when someone wants to leave?
 
 ## The forms they take
 
 Four labels do most of the work, and they answer different questions.
 
 <Compare
-	columns={['What is shared', 'What is private']}
-	rows={[
-		{ label: 'Cohousing', values: ['Facilities — usually a common house and kitchen', 'Home, income, most of daily life'] },
-		{ label: 'Ecovillage', values: ['An ecological design intent; often land', 'Varies widely between projects'] },
-		{ label: 'Commune', values: ['Income, and usually property', 'Personal space, and little else financially'] },
-		{ label: 'Co-op / land trust', values: ['Legal ownership of the land or building', 'Homes, income, day-to-day decisions'] }
-	]}
-	caption="Self-applied labels. Ask what is actually shared before trusting any of them."
+columns={['What is shared', 'What is private']}
+rows={[
+{ label: 'Cohousing', values: ['Facilities — usually a common house and kitchen', 'Home, income, most of daily life'] },
+{ label: 'Ecovillage', values: ['An ecological design intent; often land', 'Varies widely between projects'] },
+{ label: 'Commune', values: ['Income, and usually property', 'Personal space, and little else financially'] },
+{ label: 'Co-op / land trust', values: ['Legal ownership of the land or building', 'Homes, income, day-to-day decisions'] }
+]}
+caption="Self-applied labels. Ask what is actually shared before trusting any of them."
 />
 
-Two of these get confused constantly, because an ecovillage often *uses* cohousing architecture. [Cohousing and ecovillage told apart](/learn/compare/cohousing-vs-ecovillage) is the longer answer.
+Two of these get confused constantly, because an ecovillage often _uses_ cohousing architecture. [Cohousing and ecovillage told apart](/learn/compare/cohousing-vs-ecovillage) is the longer answer.
 
 <Deep title="Deep · the wider field, for reference">
 
-Those four cover most of what you will meet, but the field is broader. Roughly by how often you encounter them: cohousing, ecovillages, housing co-operatives, spiritual communities, communes, co-living, and community land trusts — though the last is usually a legal structure a community *uses* rather than an identity it claims.
+Those four cover most of what you will meet, but the field is broader. Roughly by how often you encounter them: cohousing, ecovillages, housing co-operatives, spiritual communities, communes, co-living, and community land trusts — though the last is usually a legal structure a community _uses_ rather than an identity it claims.
 
 Beyond that: student co-operatives, senior cohousing, ashrams and monasteries, retreat centres, agrarian communities and homestead clusters, permaculture projects, artist communities, co-working-and-living houses, maker spaces, and eco-industrial parks. Several of these are only loosely intentional communities — a co-living building run by a company and a monastery share almost nothing beyond proximity — which is exactly why the labels are a poor place to start.
 
@@ -54,18 +54,18 @@ Beyond that: student co-operatives, senior cohousing, ashrams and monasteries, r
 
 ## A better way to tell them apart
 
-Labels describe what a place calls itself. These five dimensions describe what it actually *is*, and they predict daily life far better:
+Labels describe what a place calls itself. These five dimensions describe what it actually _is_, and they predict daily life far better:
 
 <Compare
-	columns={['Ranges from', 'to']}
-	rows={[
-		{ label: 'Purpose', values: ['A single focus — farming, faith, affordability', 'Broad regeneration of land, culture and livelihood'] },
-		{ label: 'Economic model', values: ['Independent households sharing costs', 'Full income pooling'] },
-		{ label: 'Governance', values: ['A founder who decides', 'Consent or consensus among everyone'] },
-		{ label: 'Land ownership', values: ['Individually owned homes', 'A trust or foundation that owns everything'] },
-		{ label: 'Lifestyle', values: ['Urban, on-grid, secular, come and go', 'Rural, off-grid, shared practice, deeply committed'] }
-	]}
-	caption="Any real community sits somewhere along each of these, and the combination is what you are actually choosing."
+columns={['Ranges from', 'to']}
+rows={[
+{ label: 'Purpose', values: ['A single focus — farming, faith, affordability', 'Broad regeneration of land, culture and livelihood'] },
+{ label: 'Economic model', values: ['Independent households sharing costs', 'Full income pooling'] },
+{ label: 'Governance', values: ['A founder who decides', 'Consent or consensus among everyone'] },
+{ label: 'Land ownership', values: ['Individually owned homes', 'A trust or foundation that owns everything'] },
+{ label: 'Lifestyle', values: ['Urban, on-grid, secular, come and go', 'Rural, off-grid, shared practice, deeply committed'] }
+]}
+caption="Any real community sits somewhere along each of these, and the combination is what you are actually choosing."
 />
 
 Two places calling themselves ecovillages can sit at opposite ends of every row. Two places with different labels can be nearly identical. Ask about the five, not the name.
@@ -86,7 +86,7 @@ What predicts trouble is not which method a group picked. It is whether the meth
 
 ## Money, and what joining costs
 
-There is no standard answer and the range is enormous — from a modest monthly contribution to a six-figure buy-in. What matters more than the number is what the money *buys*: equity you can sell, a right to live somewhere you never own, or a refundable deposit whose terms nobody wrote down.
+There is no standard answer and the range is enormous — from a modest monthly contribution to a six-figure buy-in. What matters more than the number is what the money _buys_: equity you can sell, a right to live somewhere you never own, or a refundable deposit whose terms nobody wrote down.
 
 The question worth asking before any of it: **what happens to that money if I leave?** A community that has not answered it in writing has not answered it at all.
 
@@ -104,19 +104,19 @@ These patterns repeat closely enough to be written down and tested for. The [RCO
 
 <Callout type="caveat">
 
-Nobody has reliable failure statistics for this field. The often-quoted "90% fail" figure has no sound source we can find. What is well documented is the *pattern* of failure, which is why the RCOS stress tests describe failure modes rather than probabilities.
+Nobody has reliable failure statistics for this field. The often-quoted "90% fail" figure has no sound source we can find. What is well documented is the _pattern_ of failure, which is why the RCOS stress tests describe failure modes rather than probabilities.
 
 </Callout>
 
 <Sources
-	items={[
-		{ title: 'Foundation for Intentional Community', url: 'https://www.ic.org/', note: 'directory and definitions' },
-		{ title: 'Global Ecovillage Network', url: 'https://ecovillage.org/', note: 'ecovillage framing and network' },
-		{ title: 'RCOS Core v0.1', url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/', note: 'the standard behind this hub' },
-		{
-			title: 'RCOS stress tests',
-			url: 'https://rcos.ecohubs.community/articles/rcos-stress-tests',
-			note: 'documented failure modes, with pass and fail criteria'
-		}
-	]}
+items={[
+{ title: 'Foundation for Intentional Community', url: 'https://www.ic.org/', note: 'directory and definitions' },
+{ title: 'Global Ecovillage Network', url: 'https://ecovillage.org/', note: 'ecovillage framing and network' },
+{ title: 'RCOS Core v0.1', url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/', note: 'the standard behind this hub' },
+{
+title: 'RCOS stress tests',
+url: 'https://rcos.ecohubs.community/articles/rcos-stress-tests',
+note: 'documented failure modes, with pass and fail criteria'
+}
+]}
 />

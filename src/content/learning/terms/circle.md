@@ -39,11 +39,11 @@ Circles need an exit as well as an entry. Agree from the start how someone leave
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'RCOS Core — Layer 2: Governance & Decision Logic',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
-			note: 'domains and delegation, specified'
-		}
-	]}
+items={[
+{
+title: 'RCOS Core — Layer 2: Governance & Decision Logic',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
+note: 'domains and delegation, specified'
+}
+]}
 />

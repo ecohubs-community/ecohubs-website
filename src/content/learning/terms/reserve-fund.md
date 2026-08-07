@@ -39,16 +39,16 @@ A reserve fund is also a governance question, not only a financial one. Ask who 
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'What joining costs',
-			url: '/learn/guides/intentional-communities/what-joining-costs',
-			note: 'where the monthly money actually goes'
-		},
-		{
-			title: 'Cohousing Costs After You Move In — Cohousing Now! (Coho/US)',
-			url: 'https://www.cohousing.org/wp-content/uploads/2020/10/Coho-Now-103_-Cohousing-Costs-After-You-Move-In.pdf',
-			note: 'the budget analysis the one-third figure comes from'
-		}
-	]}
+items={[
+{
+title: 'What joining costs',
+url: '/learn/guides/intentional-communities/what-joining-costs',
+note: 'where the monthly money actually goes'
+},
+{
+title: 'Cohousing Costs After You Move In — Cohousing Now! (Coho/US)',
+url: 'https://www.cohousing.org/wp-content/uploads/2020/10/Coho-Now-103_-Cohousing-Costs-After-You-Move-In.pdf',
+note: 'the budget analysis the one-third figure comes from'
+}
+]}
 />

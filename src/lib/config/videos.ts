@@ -50,5 +50,9 @@ export function toIsoDuration(seconds: number): string {
 	const h = Math.floor(seconds / 3600);
 	const m = Math.floor((seconds % 3600) / 60);
 	const s = seconds % 60;
-	return `PT${h ? `${h}H` : ''}${m ? `${m}M` : ''}${s ? `${s}S` : ''}` || 'PT0S';
+	// The `|| 'PT0S'` this replaces could never fire: a template literal starting
+	// with "PT" is always truthy, so a zero-length video produced the string "PT",
+	// which is not a valid ISO 8601 duration for schema.org to read.
+	const parts = `${h ? `${h}H` : ''}${m ? `${m}M` : ''}${s ? `${s}S` : ''}`;
+	return `PT${parts || '0S'}`;
 }

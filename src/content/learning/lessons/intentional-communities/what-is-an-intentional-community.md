@@ -97,30 +97,30 @@ There is no registry and no certification. Nobody audits a group before it calls
 
 <Deep title="Deep · where the definition comes from">
 
-The umbrella usage in English is largely the Foundation for Intentional Community's. The organisation has catalogued communities in North America since 1937 and deliberately spans everything from cohousing to communes to housing co-operatives to ecovillages — a breadth that is the point rather than a weakness. The label describes a *legal and social arrangement*, not a lifestyle.
+The umbrella usage in English is largely the Foundation for Intentional Community's. The organisation has catalogued communities in North America since 1937 and deliberately spans everything from cohousing to communes to housing co-operatives to ecovillages — a breadth that is the point rather than a weakness. The label describes a _legal and social arrangement_, not a lifestyle.
 
 That breadth is also why the field's own data is thin. Because the category is self-declared and the directory is self-listed, nobody knows how many intentional communities exist, how long they last, or what proportion end. Figures circulate anyway — the claim that ninety per cent fail is repeated constantly and has no sound source we have been able to find. Anyone quoting a survival rate for this field is quoting a guess.
 
-What *is* documented, in the academic literature around the Communal Studies Association and its international counterpart, is the *pattern* of failure rather than its rate: which things go wrong, in what order, and what the communities that lasted did differently. That is a more useful thing to know, and it is what the rest of this guide is built on.
+What _is_ documented, in the academic literature around the Communal Studies Association and its international counterpart, is the _pattern_ of failure rather than its rate: which things go wrong, in what order, and what the communities that lasted did differently. That is a more useful thing to know, and it is what the rest of this guide is built on.
 
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Foundation for Intentional Community',
-			url: 'https://www.ic.org/',
-			note: 'the directory since 1937, and the source of the umbrella definition'
-		},
-		{
-			title: 'Communal Studies Association',
-			url: 'https://www.communalstudies.org/',
-			note: 'the academic literature, including the journal Communal Societies'
-		},
-		{
-			title: 'RCOS Core — Layer 0: Identity & Scope',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/',
-			note: 'how a community states what it is, and what it is not'
-		}
-	]}
+items={[
+{
+title: 'Foundation for Intentional Community',
+url: 'https://www.ic.org/',
+note: 'the directory since 1937, and the source of the umbrella definition'
+},
+{
+title: 'Communal Studies Association',
+url: 'https://www.communalstudies.org/',
+note: 'the academic literature, including the journal Communal Societies'
+},
+{
+title: 'RCOS Core — Layer 0: Identity & Scope',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/',
+note: 'how a community states what it is, and what it is not'
+}
+]}
 />

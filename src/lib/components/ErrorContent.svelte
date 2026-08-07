@@ -107,7 +107,8 @@
 							{path.label}
 							<span
 								class="font-mono text-stone-300 transition-colors group-hover:text-ecohubs-primary"
-							>→</span>
+								>→</span
+							>
 						</a>
 					{/each}
 				</div>

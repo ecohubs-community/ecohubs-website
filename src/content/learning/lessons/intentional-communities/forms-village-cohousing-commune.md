@@ -9,14 +9,7 @@ targetQuery: types of intentional communities
 status: published
 updated: 2026-08-06
 terms:
-  [
-    cohousing,
-    ecovillage,
-    commune,
-    housing-cooperative,
-    community-land-trust,
-    intentional-community
-  ]
+  [cohousing, ecovillage, commune, housing-cooperative, community-land-trust, intentional-community]
 related: [what-is-an-intentional-community]
 ---
 
@@ -32,23 +25,23 @@ One question sorts them faster than any label: **what is actually held in common
 
 People tend to arrange these words on a ladder, with cohousing at the mild end and commune at the committed end. It is an understandable picture and it is wrong, and holding it makes the field impossible to read.
 
-The words are answering different questions. *Cohousing* describes an **architecture**. *Ecovillage* describes a **purpose**. *Commune* describes an **economy**. *Co-operative* and *community land trust* describe **legal ownership**. Asking whether a place is a cohousing or an ecovillage is a bit like asking whether a building is brick or a school.
+The words are answering different questions. _Cohousing_ describes an **architecture**. _Ecovillage_ describes a **purpose**. _Commune_ describes an **economy**. _Co-operative_ and _community land trust_ describe **legal ownership**. Asking whether a place is a cohousing or an ecovillage is a bit like asking whether a building is brick or a school.
 
 ## The four, side by side
 
 <Compare
-	columns={['Cohousing', 'Ecovillage', 'Commune', 'Co-op / land trust']}
-	rows={[
-		{ label: 'The word describes', values: ['An architecture', 'A purpose', 'An economy', 'A legal shell'] },
-		{ label: 'Income', values: ['Private', 'Usually private', 'Pooled', 'Private'] },
-		{ label: 'Your home', values: ['Private, self-contained', 'Varies', 'Often allocated', 'Private, held via a share or lease'] },
-		{ label: 'What you own', values: ['Usually the home', 'Varies widely', 'Usually nothing personally', 'A share, or the building but not the land'] },
-		{ label: 'Ecological aim', values: ['Optional', 'Definitional', 'Optional', 'Optional'] },
-		{ label: 'Typical size', values: ['20–40 households', 'A handful to several hundred', '20–100 adults', 'Any'] },
-		{ label: 'Ease of joining', values: ['Easiest', 'Varies', 'Hardest', 'Moderate'] },
-		{ label: 'Ease of leaving', values: ['Sell, much like anywhere', 'Varies', 'Complex, and written down', 'Sell your share, often at a capped price'] }
-	]}
-	caption="Generalisations, not rules. Every label here is self-applied and none is certified."
+columns={['Cohousing', 'Ecovillage', 'Commune', 'Co-op / land trust']}
+rows={[
+{ label: 'The word describes', values: ['An architecture', 'A purpose', 'An economy', 'A legal shell'] },
+{ label: 'Income', values: ['Private', 'Usually private', 'Pooled', 'Private'] },
+{ label: 'Your home', values: ['Private, self-contained', 'Varies', 'Often allocated', 'Private, held via a share or lease'] },
+{ label: 'What you own', values: ['Usually the home', 'Varies widely', 'Usually nothing personally', 'A share, or the building but not the land'] },
+{ label: 'Ecological aim', values: ['Optional', 'Definitional', 'Optional', 'Optional'] },
+{ label: 'Typical size', values: ['20–40 households', 'A handful to several hundred', '20–100 adults', 'Any'] },
+{ label: 'Ease of joining', values: ['Easiest', 'Varies', 'Hardest', 'Moderate'] },
+{ label: 'Ease of leaving', values: ['Sell, much like anywhere', 'Varies', 'Complex, and written down', 'Sell your share, often at a capped price'] }
+]}
+caption="Generalisations, not rules. Every label here is self-applied and none is certified."
 />
 
 ## Cohousing is a shape
@@ -61,7 +54,7 @@ Crucially, **households keep their own money**. That single fact removes most of
 
 ## Ecovillage is an aim
 
-<Gloss term="ecovillage">Ecovillage</Gloss> is a claim about purpose: a community consciously designing its social, cultural, ecological and economic systems to *regenerate* the place it sits in, in the Global Ecovillage Network's framing. Note the word — regenerate, not merely harm less. A settlement that recycles diligently is making a different and smaller claim.
+<Gloss term="ecovillage">Ecovillage</Gloss> is a claim about purpose: a community consciously designing its social, cultural, ecological and economic systems to _regenerate_ the place it sits in, in the Global Ecovillage Network's framing. Note the word — regenerate, not merely harm less. A settlement that recycles diligently is making a different and smaller claim.
 
 Notice how much the definition leaves open. It says nothing about whether you own your home, whether there is a common kitchen, or how many people live there. That is why the label covers places as different as a three-household land project and a settlement of several hundred, and why it carries less information than people expect.
 
@@ -75,7 +68,7 @@ The compensating advantage is hard to get any other way. A shared purse makes ca
 
 ## Co-operatives and land trusts are legal shells
 
-These sit *underneath* the others rather than beside them.
+These sit _underneath_ the others rather than beside them.
 
 In a <Gloss term="housing-cooperative">housing co-operative</Gloss>, members collectively own the organisation that owns the building and hold a share plus a right to occupy. In a <Gloss term="community-land-trust">community land trust</Gloss>, a non-profit holds the land permanently and leases it to residents who own their buildings — so the land is off the market and the housing stays affordable to the next household.
 
@@ -116,40 +109,40 @@ Four forms cover most of what you will meet, but the field names many more, and 
 
 **By purpose:** spiritual and monastic communities, Camphill and other care-based communities, artist and maker communities, student co-operatives, senior cohousing, and single-issue projects formed around one practice.
 
-**By tenure:** freehold clusters, housing co-operatives at market and limited equity, community land trusts, the German *Mietshäuser Syndikat* model — which places a veto against resale in the hands of a separate entity — and long-lease arrangements on land held by a trust or a church.
+**By tenure:** freehold clusters, housing co-operatives at market and limited equity, community land trusts, the German _Mietshäuser Syndikat_ model — which places a veto against resale in the hands of a separate entity — and long-lease arrangements on land held by a trust or a church.
 
 **By age and origin:** intentional communities founded as such, and traditional villages that adopted the framing later. The Global Ecovillage Network deliberately includes both, which is why its member list contains places that have existed for centuries.
 
-Two things are worth taking from this list. First, most real projects are combinations, and asking "which one is it?" often has no clean answer. Second, the vocabulary varies by country far more than English-language sources suggest — *bofællesskab*, *Wohnprojekt*, *habitat participatif* and *ecoaldea* do not map neatly onto each other, and a directory in one language will use categories a directory in another does not have.
+Two things are worth taking from this list. First, most real projects are combinations, and asking "which one is it?" often has no clean answer. Second, the vocabulary varies by country far more than English-language sources suggest — _bofællesskab_, _Wohnprojekt_, _habitat participatif_ and _ecoaldea_ do not map neatly onto each other, and a directory in one language will use categories a directory in another does not have.
 
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Cohousing vs ecovillage',
-			url: '/learn/compare/cohousing-vs-ecovillage',
-			note: 'the two most-confused labels, told apart properly'
-		},
-		{
-			title: 'Commune vs cohousing',
-			url: '/learn/compare/commune-vs-cohousing',
-			note: 'the money question, in detail'
-		},
-		{
-			title: 'Global Ecovillage Network',
-			url: 'https://ecovillage.org/',
-			note: 'the ecovillage definition and its four dimensions'
-		},
-		{
-			title: 'Foundation for Intentional Community',
-			url: 'https://www.ic.org/',
-			note: 'the directory, and the breadth of what the umbrella covers'
-		},
-		{
-			title: 'Diggers & Dreamers',
-			url: 'https://www.diggersanddreamers.org.uk/',
-			note: 'UK directory and publications, useful for European vocabulary'
-		}
-	]}
+items={[
+{
+title: 'Cohousing vs ecovillage',
+url: '/learn/compare/cohousing-vs-ecovillage',
+note: 'the two most-confused labels, told apart properly'
+},
+{
+title: 'Commune vs cohousing',
+url: '/learn/compare/commune-vs-cohousing',
+note: 'the money question, in detail'
+},
+{
+title: 'Global Ecovillage Network',
+url: 'https://ecovillage.org/',
+note: 'the ecovillage definition and its four dimensions'
+},
+{
+title: 'Foundation for Intentional Community',
+url: 'https://www.ic.org/',
+note: 'the directory, and the breadth of what the umbrella covers'
+},
+{
+title: 'Diggers & Dreamers',
+url: 'https://www.diggersanddreamers.org.uk/',
+note: 'UK directory and publications, useful for European vocabulary'
+}
+]}
 />

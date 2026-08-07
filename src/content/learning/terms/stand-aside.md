@@ -35,11 +35,11 @@ Watch for standing aside becoming the default. If most decisions pass with sever
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Consensus vs consent',
-			url: '/learn/compare/consensus-vs-consent',
-			note: 'how each method handles disagreement'
-		}
-	]}
+items={[
+{
+title: 'Consensus vs consent',
+url: '/learn/compare/consensus-vs-consent',
+note: 'how each method handles disagreement'
+}
+]}
 />

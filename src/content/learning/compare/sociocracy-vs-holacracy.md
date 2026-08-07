@@ -19,19 +19,19 @@ terms: [sociocracy, consent, consensus]
 These two get compared because they look alike on a diagram: nested circles, representatives linking them, decisions made by testing objections rather than counting votes. The resemblance is real — holacracy drew on sociocracy — but what they ask of a group is very different.
 
 <Compare
-	columns={['Sociocracy', 'Holacracy']}
-	rows={[
-		{ label: 'Origin', values: ['Gerard Endenburg, Netherlands, 1970s', 'Brian Robertson, United States, 2007'] },
-		{ label: 'Defined by', values: ['A body of practice', 'A written constitution you adopt'] },
-		{ label: 'Adaptable', values: ['Expected — groups modify it', 'Discouraged — the rules are the product'] },
-		{ label: 'Decisions', values: ['Consent: no reasoned, paramount objection', 'Integrative decision-making: objections tested for validity'] },
-		{ label: 'Who leads a circle', values: ['Elected by the circle, by consent', 'Appointed by the wider circle'] },
-		{ label: 'Roles', values: ['Held by people, filled by election', 'Defined separately from people; one person may hold several'] },
-		{ label: 'Meetings', values: ['Structured, but the group sets the format', 'Tightly prescribed tactical and governance formats'] },
-		{ label: 'Learning curve', values: ['Moderate', 'Steep — most adopters use a trainer'] },
-		{ label: 'Used by communities', values: ['Widely', 'Rarely'] }
-	]}
-	caption="Both are living systems; holacracy's constitution in particular has gone through several revisions."
+columns={['Sociocracy', 'Holacracy']}
+rows={[
+{ label: 'Origin', values: ['Gerard Endenburg, Netherlands, 1970s', 'Brian Robertson, United States, 2007'] },
+{ label: 'Defined by', values: ['A body of practice', 'A written constitution you adopt'] },
+{ label: 'Adaptable', values: ['Expected — groups modify it', 'Discouraged — the rules are the product'] },
+{ label: 'Decisions', values: ['Consent: no reasoned, paramount objection', 'Integrative decision-making: objections tested for validity'] },
+{ label: 'Who leads a circle', values: ['Elected by the circle, by consent', 'Appointed by the wider circle'] },
+{ label: 'Roles', values: ['Held by people, filled by election', 'Defined separately from people; one person may hold several'] },
+{ label: 'Meetings', values: ['Structured, but the group sets the format', 'Tightly prescribed tactical and governance formats'] },
+{ label: 'Learning curve', values: ['Moderate', 'Steep — most adopters use a trainer'] },
+{ label: 'Used by communities', values: ['Widely', 'Rarely'] }
+]}
+caption="Both are living systems; holacracy's constitution in particular has gone through several revisions."
 />
 
 ## Where the real difference sits
@@ -40,7 +40,7 @@ Not in the diagram. In **where authority comes from**.
 
 Under <Gloss term="sociocracy">sociocracy</Gloss>, a circle elects its own leader by consent, and a second person elected by the circle sits in the parent circle. Authority therefore flows in both directions by construction, and the circle has a genuine say in who speaks for it. That double link is the load-bearing part of the design.
 
-Under holacracy, the person leading a circle is appointed by the broader circle above it, and it is the representative going *upward* who is elected from within. That is a defensible choice in a company, where accountability runs to an employer. In a voluntary community, where nobody can be fired and everybody can leave, having your circle lead appointed from above tends to produce exactly the resentment the circle structure was meant to avoid.
+Under holacracy, the person leading a circle is appointed by the broader circle above it, and it is the representative going _upward_ who is elected from within. That is a defensible choice in a company, where accountability runs to an employer. In a voluntary community, where nobody can be fired and everybody can leave, having your circle lead appointed from above tends to produce exactly the resentment the circle structure was meant to avoid.
 
 The second real difference is what happens to disagreement about the rules themselves. Sociocracy expects a group to modify the practice. Holacracy's constitution is the product, and adopting it means agreeing to be governed by it, including its process for changing it.
 
@@ -77,21 +77,21 @@ Holacracy's integrative decision-making is stricter and more procedural. An obje
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'RCOS Core — Layer 2: Governance & Decision Logic',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
-			note: 'circles, domains and consent, specified'
-		},
-		{
-			title: 'Sociocracy For All',
-			url: 'https://www.sociocracyforall.org/',
-			note: 'the main practitioner organisation for non-corporate groups'
-		},
-		{
-			title: 'Consensus vs consent',
-			url: '/learn/compare/consensus-vs-consent',
-			note: 'the decision method underneath both systems'
-		}
-	]}
+items={[
+{
+title: 'RCOS Core — Layer 2: Governance & Decision Logic',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
+note: 'circles, domains and consent, specified'
+},
+{
+title: 'Sociocracy For All',
+url: 'https://www.sociocracyforall.org/',
+note: 'the main practitioner organisation for non-corporate groups'
+},
+{
+title: 'Consensus vs consent',
+url: '/learn/compare/consensus-vs-consent',
+note: 'the decision method underneath both systems'
+}
+]}
 />

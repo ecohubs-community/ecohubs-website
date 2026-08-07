@@ -33,11 +33,11 @@ Facilitation is a skill, not a personality. Communities often hand it to whoever
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'RCOS Core — Layer 2: Governance & Decision Logic',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
-			note: 'meeting roles and how they rotate'
-		}
-	]}
+items={[
+{
+title: 'RCOS Core — Layer 2: Governance & Decision Logic',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
+note: 'meeting roles and how they rotate'
+}
+]}
 />

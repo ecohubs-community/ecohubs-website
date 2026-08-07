@@ -35,16 +35,16 @@ Ask when the last levy was, what it was for, and how much per household. Then as
 
 <Callout type="caveat">
 
-Be equally wary of a community that has *never* raised one and owns a building older than twenty years. Either the reserve is genuinely well funded, which is excellent and checkable, or the work has been deferred and the levy is still coming.
+Be equally wary of a community that has _never_ raised one and owns a building older than twenty years. Either the reserve is genuinely well funded, which is excellent and checkable, or the work has been deferred and the levy is still coming.
 
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'What joining costs',
-			url: '/learn/guides/intentional-communities/what-joining-costs',
-			note: 'the costs that are not on the price list'
-		}
-	]}
+items={[
+{
+title: 'What joining costs',
+url: '/learn/guides/intentional-communities/what-joining-costs',
+note: 'the costs that are not on the price list'
+}
+]}
 />

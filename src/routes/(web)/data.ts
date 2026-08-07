@@ -485,7 +485,7 @@ export const faqItems = [
 	},
 	{
 		q: 'Is this a crypto project? What is ECO?',
-		a: "No. ECO is not a cryptocurrency or a tradable coin — there is nothing to buy, sell, or speculate on. It is purely an internal unit we use to make contribution visible, measurable and transparent: a shared ledger for the labour and care people put in. It is never traded, never promoted as an investment, and never the reason to join. The reason to join is the people and the work."
+		a: 'No. ECO is not a cryptocurrency or a tradable coin — there is nothing to buy, sell, or speculate on. It is purely an internal unit we use to make contribution visible, measurable and transparent: a shared ledger for the labour and care people put in. It is never traded, never promoted as an investment, and never the reason to join. The reason to join is the people and the work.'
 	},
 	{
 		q: "I don't have skills in permaculture or governance. Am I still welcome?",

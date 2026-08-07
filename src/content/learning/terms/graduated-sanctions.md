@@ -14,7 +14,7 @@ related: [repair-process, agreements, blocking-concern]
 
 Graduated sanctions means a community's response to a broken agreement scales with how serious and how repeated the breach is. A first lapse gets a conversation; a persistent pattern gets something with more weight behind it.
 
-The idea comes from Elinor Ostrom's study of common-pool resources — irrigation systems, fisheries, forests, some managed successfully for centuries — published as *Governing the Commons* in 1990, work that won the Nobel Memorial Prize in Economics in 2009. Graduated sanctions is one of eight design principles she found in the systems that lasted.
+The idea comes from Elinor Ostrom's study of common-pool resources — irrigation systems, fisheries, forests, some managed successfully for centuries — published as _Governing the Commons_ in 1990, work that won the Nobel Memorial Prize in Economics in 2009. Graduated sanctions is one of eight design principles she found in the systems that lasted.
 
 ## Why communities need it
 
@@ -35,16 +35,16 @@ Sanctions only work where breaches are noticed, which is the design principle im
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Ostrom, E. — Governing the Commons (1990)',
-			url: 'https://doi.org/10.1017/CBO9780511807763',
-			note: 'the eight design principles and the evidence behind them'
-		},
-		{
-			title: 'Conflict, power and repair',
-			url: '/learn/guides/intentional-communities/conflict-power-and-repair',
-			note: 'what a repair process must be able to conclude'
-		}
-	]}
+items={[
+{
+title: 'Ostrom, E. — Governing the Commons (1990)',
+url: 'https://doi.org/10.1017/CBO9780511807763',
+note: 'the eight design principles and the evidence behind them'
+},
+{
+title: 'Conflict, power and repair',
+url: '/learn/guides/intentional-communities/conflict-power-and-repair',
+note: 'what a repair process must be able to conclude'
+}
+]}
 />

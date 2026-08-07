@@ -115,8 +115,8 @@
 				</h3>
 				<p class="mt-3 text-sm text-stone-400 max-w-md">
 					We're early — a small project finding its shape. When something actually shifts — a new
-					chapter of the RCOS Standard, a note from the Ecuador pilot, an invitation to gather — we'll
-					write. No schedule. No filler.
+					chapter of the RCOS Standard, a note from the Ecuador pilot, an invitation to gather —
+					we'll write. No schedule. No filler.
 				</p>
 			</div>
 			<div>
@@ -177,8 +177,8 @@
 				<Logo surface="dark" />
 			</div>
 			<p class="text-sm text-stone-400 leading-relaxed max-w-sm">
-				We are co-creating the RCOS Standard for regenerative living. Join us to design communities that
-				thrive in harmony with nature.
+				We are co-creating the RCOS Standard for regenerative living. Join us to design communities
+				that thrive in harmony with nature.
 			</p>
 			<div class="mt-6 flex flex-wrap items-center gap-3">
 				{#each socialLinks as link (link.label)}

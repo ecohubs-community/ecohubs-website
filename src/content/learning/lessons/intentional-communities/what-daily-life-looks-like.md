@@ -32,7 +32,7 @@ Here is the texture, as plainly as we can put it.
 
 **Meetings.** Expect a whole-community meeting monthly or fortnightly, one to two hours, plus whatever circle or working group you sit on. Two to five hours a month is typical in a settled community. In a forming one it can be triple that, and forming groups routinely underestimate this by a factor of two.
 
-**Everything else.** Your job, your family, your own kitchen, your own evening. The mistake newcomers make is imagining community life *replaces* ordinary life. It sits on top of it.
+**Everything else.** Your job, your family, your own kitchen, your own evening. The mistake newcomers make is imagining community life _replaces_ ordinary life. It sits on top of it.
 
 ## The work nobody put on the rota
 
@@ -50,7 +50,7 @@ Ask who does the invisible work, and then ask the same question of somebody else
 
 Well-designed communities think in terms of a **privacy gradient**: from fully public (the path, the common house) through semi-private (your porch, your bit of garden) to fully private (behind your door). The gradient matters because it lets you regulate contact without having to announce that you want to be left alone.
 
-Where it is missing — homes opening directly onto a shared kitchen, no defensible outdoor space, thin walls — people withdraw entirely instead, because the only available setting is *all* or *nothing*.
+Where it is missing — homes opening directly onto a shared kitchen, no defensible outdoor space, thin walls — people withdraw entirely instead, because the only available setting is _all_ or _nothing_.
 
 The privacy that is hardest to arrange is not spatial. It is **not being observed**. In a community of forty, people know roughly when you come home, whether you went to the meeting, and how you looked when you did. Nobody is spying. It is simply the arithmetic of living near people who pay attention.
 
@@ -76,7 +76,7 @@ Also plainly, because the trade is real.
 
 Fewer things and more capacity — one workshop, one set of tools, three cars instead of twenty. Children who can be let out of the front door. Meals you did not cook. Somebody who notices when you are unwell. Neighbours who know what your work is and ask about it.
 
-And the one that people who leave say they miss most: a default answer to the question *who would I call?*
+And the one that people who leave say they miss most: a default answer to the question _who would I call?_
 
 <Callout type="caveat">
 
@@ -114,21 +114,21 @@ The honest summary: sharing infrastructure demonstrably reduces resource use, th
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Global Ecovillage Network',
-			url: 'https://ecovillage.org/',
-			note: 'community profiles and sustainability assessment material'
-		},
-		{
-			title: 'National CoHousing Alliance',
-			url: 'https://cohousingalliance.org/',
-			note: 'common house design, meal patterns and the privacy gradient'
-		},
-		{
-			title: 'Diggers & Dreamers',
-			url: 'https://www.diggersanddreamers.org.uk/',
-			note: 'first-hand accounts of daily life in UK communities'
-		}
-	]}
+items={[
+{
+title: 'Global Ecovillage Network',
+url: 'https://ecovillage.org/',
+note: 'community profiles and sustainability assessment material'
+},
+{
+title: 'National CoHousing Alliance',
+url: 'https://cohousingalliance.org/',
+note: 'common house design, meal patterns and the privacy gradient'
+},
+{
+title: 'Diggers & Dreamers',
+url: 'https://www.diggersanddreamers.org.uk/',
+note: 'first-hand accounts of daily life in UK communities'
+}
+]}
 />

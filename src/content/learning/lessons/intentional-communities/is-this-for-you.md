@@ -54,7 +54,7 @@ The traits that predict a good fit are unglamorous, and none of them is idealism
 
 **Start with the directories.** The Foundation for Intentional Community's directory is the largest in English and covers everything from cohousing to communes. The Global Ecovillage Network lists ecologically-oriented projects worldwide. Diggers & Dreamers covers the UK and is the best English-language route into European vocabulary. Cohousing has its own national networks in most countries where the form has taken hold.
 
-**Search by what is held in common, not by the label.** This is the single most useful habit from [lesson 2](/learn/guides/intentional-communities/forms-village-cohousing-commune). "Ecovillage" and "cohousing" will each return places that have almost nothing in common with each other. *Do they share land, income, decisions, or only goodwill?* narrows the field faster than any category filter.
+**Search by what is held in common, not by the label.** This is the single most useful habit from [lesson 2](/learn/guides/intentional-communities/forms-village-cohousing-commune). "Ecovillage" and "cohousing" will each return places that have almost nothing in common with each other. _Do they share land, income, decisions, or only goodwill?_ narrows the field faster than any category filter.
 
 **Read the listing for what it does not say.** A profile that describes the values in detail and the legal structure not at all is telling you which one it has thought about.
 
@@ -79,7 +79,7 @@ Here is every "ask on a visit" question from this guide in one place. Take the o
 1. May I read your agreements?
 2. When were they last reviewed?
 3. What do you actually hold in common — land, money, decisions, or goodwill?
-4. Which of those do you deliberately *not* share?
+4. Which of those do you deliberately _not_ share?
 5. What would I own, exactly? Show me the lease, the deed or the share certificate.
 6. Who was the last household to leave, and what did they take with them?
 
@@ -152,31 +152,31 @@ The visit questions are the easy half. These are the ones nobody can ask on your
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Foundation for Intentional Community — the directory',
-			url: 'https://www.ic.org/',
-			note: 'the largest English-language directory; self-listed and unverified, so treat entries as leads'
-		},
-		{
-			title: 'Global Ecovillage Network',
-			url: 'https://ecovillage.org/',
-			note: 'ecologically-oriented projects worldwide, including long-established traditional villages'
-		},
-		{
-			title: 'Diggers & Dreamers',
-			url: 'https://www.diggersanddreamers.org.uk/',
-			note: 'the UK directory, and the best route into European vocabulary'
-		},
-		{
-			title: 'National CoHousing Alliance',
-			url: 'https://cohousingalliance.org/',
-			note: 'cohousing communities, including ones currently seeking members'
-		},
-		{
-			title: 'Seeking — our own matchmaking',
-			url: '/seeking',
-			note: 'a person hand-picks a few active, aligned communities with honest notes; free, no account'
-		}
-	]}
+items={[
+{
+title: 'Foundation for Intentional Community — the directory',
+url: 'https://www.ic.org/',
+note: 'the largest English-language directory; self-listed and unverified, so treat entries as leads'
+},
+{
+title: 'Global Ecovillage Network',
+url: 'https://ecovillage.org/',
+note: 'ecologically-oriented projects worldwide, including long-established traditional villages'
+},
+{
+title: 'Diggers & Dreamers',
+url: 'https://www.diggersanddreamers.org.uk/',
+note: 'the UK directory, and the best route into European vocabulary'
+},
+{
+title: 'National CoHousing Alliance',
+url: 'https://cohousingalliance.org/',
+note: 'cohousing communities, including ones currently seeking members'
+},
+{
+title: 'Seeking — our own matchmaking',
+url: '/seeking',
+note: 'a person hand-picks a few active, aligned communities with honest notes; free, no account'
+}
+]}
 />

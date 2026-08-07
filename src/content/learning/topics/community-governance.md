@@ -15,16 +15,7 @@ imageAlt: >-
 status: published
 updated: 2026-08-06
 terms:
-  [
-    agreements,
-    blocking-concern,
-    circle,
-    consensus,
-    consent,
-    facilitation,
-    sociocracy,
-    stand-aside
-  ]
+  [agreements, blocking-concern, circle, consensus, consent, facilitation, sociocracy, stand-aside]
 ---
 
 <Quick>
@@ -52,23 +43,23 @@ All of it lives in the community's <Gloss term="agreements">agreements</Gloss> �
 ## The four methods, told apart
 
 <Compare
-	columns={['Voting', 'Consensus', 'Consent', 'Sociocracy']}
-	rows={[
-		{ label: 'Passes when', values: ['A majority is for it', 'Everyone agrees', 'Nobody has a reasoned objection', 'No objection, within a circle domain'] },
-		{ label: 'Speed', values: ['Fast', 'Slow', 'Moderate', 'Moderate, and parallel'] },
-		{ label: 'Produces', values: ['A decision and a losing minority', 'Strong buy-in', 'Workable decisions, provisionally', 'Delegated authority that scales'] },
-		{ label: 'Fails by', values: ['Repeated minorities disengaging', 'Fatigue; one holdout stops everything', 'Objections raised, never resolved', 'Circles without real domains'] },
-		{ label: 'Comfortable up to', values: ['Any size', 'Roughly 8–15', 'Larger', 'Larger still'] },
-		{ label: 'Needs written', values: ['Thresholds and quorum', 'What counts as a block', 'Grounds for objection', 'Domains and links'] }
-	]}
-	caption="Most communities that last use more than one, and write down which decisions get which."
+columns={['Voting', 'Consensus', 'Consent', 'Sociocracy']}
+rows={[
+{ label: 'Passes when', values: ['A majority is for it', 'Everyone agrees', 'Nobody has a reasoned objection', 'No objection, within a circle domain'] },
+{ label: 'Speed', values: ['Fast', 'Slow', 'Moderate', 'Moderate, and parallel'] },
+{ label: 'Produces', values: ['A decision and a losing minority', 'Strong buy-in', 'Workable decisions, provisionally', 'Delegated authority that scales'] },
+{ label: 'Fails by', values: ['Repeated minorities disengaging', 'Fatigue; one holdout stops everything', 'Objections raised, never resolved', 'Circles without real domains'] },
+{ label: 'Comfortable up to', values: ['Any size', 'Roughly 8–15', 'Larger', 'Larger still'] },
+{ label: 'Needs written', values: ['Thresholds and quorum', 'What counts as a block', 'Grounds for objection', 'Domains and links'] }
+]}
+caption="Most communities that last use more than one, and write down which decisions get which."
 />
 
 **Voting** is dismissed too quickly. It is fast, it is legible, and for reversible operational decisions it is often correct. Its cost is structural: it manufactures a losing minority every time, and a minority that loses repeatedly stops attending.
 
 **<Gloss term="consensus">Consensus</Gloss>** asks for everyone's agreement. It produces buy-in nothing else matches, and it is a good teacher — the loop of raising a concern, amending, and testing again forces a group to hear each other. Past a dozen people it starts handing a veto to whoever is most tired or most stubborn.
 
-**<Gloss term="consent">Consent</Gloss>** narrows the question from *do you agree?* to *do you have a reasoned objection?* The bar moves from enthusiasm to tolerability, and the burden moves to the objector to say what is actually wrong. Its standard is that a proposal be good enough for now and safe enough to try — which assumes a review date, and quietly breaks without one.
+**<Gloss term="consent">Consent</Gloss>** narrows the question from _do you agree?_ to _do you have a reasoned objection?_ The bar moves from enthusiasm to tolerability, and the burden moves to the objector to say what is actually wrong. Its standard is that a proposal be good enough for now and safe enough to try — which assumes a review date, and quietly breaks without one.
 
 **<Gloss term="sociocracy">Sociocracy</Gloss>** is a whole system rather than a method: <Gloss term="circle">circles</Gloss> with defined domains, linked in both directions, deciding by consent inside their boundary. It is what lets a community of sixty stop bringing the compost rota to a general meeting.
 
@@ -94,7 +85,7 @@ Rotate the role, even when someone is obviously good at it. A permanent facilita
 
 <Callout type="caveat">
 
-No method fixes a group that cannot talk to each other. All of these change how a decision is *closed*, not whether the underlying disagreement was heard. A community with an unresolved power problem will produce bad decisions under any of them — and will usually blame the method.
+No method fixes a group that cannot talk to each other. All of these change how a decision is _closed_, not whether the underlying disagreement was heard. A community with an unresolved power problem will produce bad decisions under any of them — and will usually blame the method.
 
 </Callout>
 
@@ -110,7 +101,7 @@ Three patterns, in rough order of frequency.
 
 <Deep title="Deep · what the research actually supports">
 
-The strongest empirical work here is not about intentional communities at all. Elinor Ostrom's study of common-pool resources — irrigation systems, fisheries, forests, some managed successfully for centuries — set out to explain why the standard prediction of inevitable collapse kept failing. *Governing the Commons* (1990) distilled the answer into eight design principles, and the work won her the Nobel Memorial Prize in Economics in 2009.
+The strongest empirical work here is not about intentional communities at all. Elinor Ostrom's study of common-pool resources — irrigation systems, fisheries, forests, some managed successfully for centuries — set out to explain why the standard prediction of inevitable collapse kept failing. _Governing the Commons_ (1990) distilled the answer into eight design principles, and the work won her the Nobel Memorial Prize in Economics in 2009.
 
 Several map directly onto community governance, and none of them are about choosing the right decision method:
 
@@ -123,26 +114,26 @@ Several map directly onto community governance, and none of them are about choos
 - **Recognised right to organise**, not overridden from outside.
 - **Nested units** for larger systems — which is, in effect, the circle idea arrived at independently.
 
-The pattern worth taking from it: what predicts durability is not the elegance of the decision rule but whether the group can *change its own rules*, notice breaches, and respond proportionately. Most community governance failures are failures of monitoring and graduated response, not of voting arithmetic.
+The pattern worth taking from it: what predicts durability is not the elegance of the decision rule but whether the group can _change its own rules_, notice breaches, and respond proportionately. Most community governance failures are failures of monitoring and graduated response, not of voting arithmetic.
 
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'RCOS Core — Layer 2: Governance & Decision Logic',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
-			note: 'the specification this topic explains in plain language'
-		},
-		{
-			title: 'Beyond the Vote: Why the Most Resilient Communities are Replacing Consensus with Consent',
-			url: '/blog/beyond-the-vote-why-the-most-resilient-communities-are-replacing-consensus-with-consent',
-			note: 'the longer EcoHubs argument'
-		},
-		{
-			title: 'Ostrom, E. — Governing the Commons (1990)',
-			url: 'https://doi.org/10.1017/CBO9780511807763',
-			note: 'the eight design principles, and the evidence behind them'
-		}
-	]}
+items={[
+{
+title: 'RCOS Core — Layer 2: Governance & Decision Logic',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
+note: 'the specification this topic explains in plain language'
+},
+{
+title: 'Beyond the Vote: Why the Most Resilient Communities are Replacing Consensus with Consent',
+url: '/blog/beyond-the-vote-why-the-most-resilient-communities-are-replacing-consensus-with-consent',
+note: 'the longer EcoHubs argument'
+},
+{
+title: 'Ostrom, E. — Governing the Commons (1990)',
+url: 'https://doi.org/10.1017/CBO9780511807763',
+note: 'the eight design principles, and the evidence behind them'
+}
+]}
 />

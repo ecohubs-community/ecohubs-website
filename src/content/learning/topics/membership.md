@@ -39,7 +39,7 @@ Communities describe their membership process in the language of welcome, and it
 
 **Full member.** The stake, the vote, and whatever the <Gloss term="agreements">agreements</Gloss> say about exit.
 
-Durations vary enormously and there is no standard. What is fairly consistent is the *shape*: a short look, a longer trial, a probationary stretch, then commitment.
+Durations vary enormously and there is no standard. What is fairly consistent is the _shape_: a short look, a longer trial, a probationary stretch, then commitment.
 
 ## A process that is actually published
 
@@ -51,7 +51,7 @@ Three features of that are worth copying anywhere.
 
 **Everyone has a say, but a body decides.** A whole-community vote on a person becomes a popularity contest; a small team with the community's input has to give reasons.
 
-**"Visit again" exists.** A process with only yes and no forces a premature answer. A middle option lets a community say *we don't know yet*, which is usually the truth.
+**"Visit again" exists.** A process with only yes and no forces a premature answer. A middle option lets a community say _we don't know yet_, which is usually the truth.
 
 **The decision happens after you leave.** Nobody delivers a verdict to your face over dinner.
 
@@ -59,7 +59,7 @@ Three features of that are worth copying anywhere.
 
 Admission is one of the few places where communities that decide everything else by consent often deliberately do not use it.
 
-A single unexplained objection against a *person* is nearly impossible to appeal, and it is the mechanism by which a community quietly stops admitting anyone unlike itself. Requiring reasons, and giving the decision to a body that must state them, is a safeguard rather than bureaucracy.
+A single unexplained objection against a _person_ is nearly impossible to appeal, and it is the mechanism by which a community quietly stops admitting anyone unlike itself. Requiring reasons, and giving the decision to a body that must state them, is a safeguard rather than bureaucracy.
 
 </Callout>
 
@@ -93,9 +93,9 @@ Take the stages here as a shape to compare a real community against, not a norm 
 
 The membership literature is unusually candid that communities are not primarily selecting for shared values.
 
-Diana Leafe Christian's *Creating a Life Together* — the standard practical reference on forming communities, published in 2003 — devotes a chapter to selecting people to join you, and the theme running through it is **emotional maturity** rather than agreement. Shared values get a group through its first year. What decides whether it survives its tenth is whether members can be disagreed with, hear a criticism without escalating, and stay in a room with someone they find annoying.
+Diana Leafe Christian's _Creating a Life Together_ — the standard practical reference on forming communities, published in 2003 — devotes a chapter to selecting people to join you, and the theme running through it is **emotional maturity** rather than agreement. Shared values get a group through its first year. What decides whether it survives its tenth is whether members can be disagreed with, hear a criticism without escalating, and stay in a room with someone they find annoying.
 
-That is why the interview questions in a good process are about conflict rather than belief. *How do you handle it when a decision goes against you?* predicts far more than *what do you think about consensus?*
+That is why the interview questions in a good process are about conflict rather than belief. _How do you handle it when a decision goes against you?_ predicts far more than _what do you think about consensus?_
 
 There is an uncomfortable corollary. A process that selects for people who are easy to be around also selects, without intending to, for people who resemble the existing members — in class, in background, in the specific register of politeness a group has grown used to. Communities that care about this build in explicit counterweights: written criteria rather than a general sense of fit, a body that must give reasons rather than a whole-group vote, and a periodic look at who has been turned away and what they had in common.
 
@@ -104,26 +104,26 @@ The process is doing something necessary and something risky at the same time. T
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Membership: getting in, and getting out',
-			url: '/learn/guides/intentional-communities/membership-getting-in-and-out',
-			note: 'the stages in full, and what a fair agreement contains'
-		},
-		{
-			title: 'Twin Oaks Community — FAQs',
-			url: 'https://www.twinoaks.org/faqs-all-on-one-page',
-			note: 'a membership process a community publishes in full'
-		},
-		{
-			title: 'Christian, D. L. — Creating a Life Together (New Society Publishers, 2003)',
-			url: 'https://newsociety.com/book/creating-a-life-together/',
-			note: 'chapter 18 covers selecting people to join you'
-		},
-		{
-			title: 'RCOS Core — Layer 1: Membership',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/',
-			note: 'stages, rights and obligations, specified'
-		}
-	]}
+items={[
+{
+title: 'Membership: getting in, and getting out',
+url: '/learn/guides/intentional-communities/membership-getting-in-and-out',
+note: 'the stages in full, and what a fair agreement contains'
+},
+{
+title: 'Twin Oaks Community — FAQs',
+url: 'https://www.twinoaks.org/faqs-all-on-one-page',
+note: 'a membership process a community publishes in full'
+},
+{
+title: 'Christian, D. L. — Creating a Life Together (New Society Publishers, 2003)',
+url: 'https://newsociety.com/book/creating-a-life-together/',
+note: 'chapter 18 covers selecting people to join you'
+},
+{
+title: 'RCOS Core — Layer 1: Membership',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/',
+note: 'stages, rights and obligations, specified'
+}
+]}
 />

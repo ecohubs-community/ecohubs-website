@@ -37,16 +37,16 @@ Limited equity affects financing as much as returns. A capped-value share is una
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Owning, leasing, renting',
-			url: '/learn/guides/intentional-communities/owning-leasing-renting',
-			note: 'what you would own, and whether a lender will touch it'
-		},
-		{
-			title: 'Limited Equity Co-ops by Community Land Trusts — Grounded Solutions Network',
-			url: 'https://groundedsolutions.org/resources/limited-equity-housing-co-ops-community-land-trusts/',
-			note: 'how the co-op and land trust models combine'
-		}
-	]}
+items={[
+{
+title: 'Owning, leasing, renting',
+url: '/learn/guides/intentional-communities/owning-leasing-renting',
+note: 'what you would own, and whether a lender will touch it'
+},
+{
+title: 'Limited Equity Co-ops by Community Land Trusts — Grounded Solutions Network',
+url: 'https://groundedsolutions.org/resources/limited-equity-housing-co-ops-community-land-trusts/',
+note: 'how the co-op and land trust models combine'
+}
+]}
 />

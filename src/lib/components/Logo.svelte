@@ -24,7 +24,8 @@
 			class="font-serif font-bold text-3xl tracking-tight pb-0 leading-none
 			       {surface === 'dark' ? 'text-white' : 'text-ecohubs-dark'}"
 		>
-			Eco<span class={surface === 'dark' ? 'text-ecohubs-light' : 'text-ecohubs-primary'}>Hubs</span>
+			Eco<span class={surface === 'dark' ? 'text-ecohubs-light' : 'text-ecohubs-primary'}>Hubs</span
+			>
 		</span>
 		<span
 			class="font-sans text-[0.625rem] pb-0 leading-none tracking-[0.35rem] uppercase

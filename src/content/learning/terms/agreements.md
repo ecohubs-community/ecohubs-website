@@ -33,11 +33,11 @@ Agreements decay quietly. The usual pattern is not that they are broken but that
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'RCOS Core — Layer 2: Governance & Decision Logic',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
-			note: 'how agreements are specified and reviewed'
-		}
-	]}
+items={[
+{
+title: 'RCOS Core — Layer 2: Governance & Decision Logic',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
+note: 'how agreements are specified and reviewed'
+}
+]}
 />

@@ -31,7 +31,7 @@ Every community will tell you it takes conflict seriously. The way to find out i
 
 ## The five that actually recur
 
-**Money.** Rarely large sums. A special levy, a member who is behind, whether the group should have bought the expensive one. Money disputes are seldom about money; they are about whether a decision felt made *with* you or *at* you.
+**Money.** Rarely large sums. A special levy, a member who is behind, whether the group should have bought the expensive one. Money disputes are seldom about money; they are about whether a decision felt made _with_ you or _at_ you.
 
 **Noise.** Comically small and genuinely corrosive. The workshop at eight on a Sunday, the dog, the band practice, the child who has discovered a recorder. These escalate because both parties are entirely reasonable and neither can concede without giving up something ordinary.
 
@@ -58,21 +58,21 @@ Where structure is informal it forms around friendship networks and access to in
 
 None of these people is doing anything wrong. That is the point.
 
-Freeman's remedies transfer directly: delegate specific authority to specific people for specific tasks by an agreed procedure; require accountability; **rotate the tasks**; allocate by ability and interest rather than by who volunteered first; and spread information as widely as possible, because *information is power* and a community where two people can read the accounts has two people in charge whatever its constitution says.
+Freeman's remedies transfer directly: delegate specific authority to specific people for specific tasks by an agreed procedure; require accountability; **rotate the tasks**; allocate by ability and interest rather than by who volunteered first; and spread information as widely as possible, because _information is power_ and a community where two people can read the accounts has two people in charge whatever its constitution says.
 
 ## What a repair process has to contain
 
 Communities collect methods — mediation, restorative circles, nonviolent communication, an external facilitator on retainer. The method matters far less than four structural questions, all of which can be asked in one conversation.
 
 <Compare
-	columns={['The question', 'A weak answer', 'A working answer']}
-	rows={[
-		{ label: 'Who may start it?', values: ['The board, or a majority', 'Any member, alone'] },
-		{ label: 'What happens first?', values: ['It goes to the general meeting', 'The two people talk, with support'] },
-		{ label: 'Who holds it?', values: ['Whoever everyone trusts', 'A named role, with an outside option'] },
-		{ label: 'What can it conclude?', values: ['A recommendation', 'An agreement, a rule change, or a consequence'] }
-	]}
-	caption="The first row is the one that matters most: a process only the powerful can trigger is unavailable to the person most likely to need it."
+columns={['The question', 'A weak answer', 'A working answer']}
+rows={[
+{ label: 'Who may start it?', values: ['The board, or a majority', 'Any member, alone'] },
+{ label: 'What happens first?', values: ['It goes to the general meeting', 'The two people talk, with support'] },
+{ label: 'Who holds it?', values: ['Whoever everyone trusts', 'A named role, with an outside option'] },
+{ label: 'What can it conclude?', values: ['A recommendation', 'An agreement, a rule change, or a consequence'] }
+]}
+caption="The first row is the one that matters most: a process only the powerful can trigger is unavailable to the person most likely to need it."
 />
 
 The last row is where <Gloss term="graduated-sanctions">graduated sanctions</Gloss> belong. Elinor Ostrom's study of long-lived commons found that durable systems have graduated sanctions and cheap, local conflict resolution — a first breach is not treated like a fifth, and getting a dispute heard does not require an ordeal.
@@ -103,31 +103,31 @@ The consequence Freeman identified is specific and unpleasant: the informal elit
 
 The corollary is the useful part. Formal structure is not the opposite of an egalitarian community — it is the mechanism by which one stays egalitarian. Written domains, rotating roles, published accounts and defined terms of office are all ways of making power visible enough to be shared. A community that resists all of them in the name of trust is choosing an aristocracy of the well-connected, usually without meaning to.
 
-Worth holding alongside a limitation: Freeman was writing about political organising, not households. A group that answers every interpersonal difficulty with a new rule has its own recognisable pathology. The argument is for structure that is *visible*, not structure that is *heavy*.
+Worth holding alongside a limitation: Freeman was writing about political organising, not households. A group that answers every interpersonal difficulty with a new rule has its own recognisable pathology. The argument is for structure that is _visible_, not structure that is _heavy_.
 
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Conflict, power and repair',
-			url: '/learn/guides/intentional-communities/conflict-power-and-repair',
-			note: 'the lesson this topic summarises, with the questions to ask on a visit'
-		},
-		{
-			title: 'Freeman, J. — The Tyranny of Structurelessness (1970/1972)',
-			url: 'https://www.jofreeman.com/joreen/tyranny.htm',
-			note: 'the essay itself, free from the author'
-		},
-		{
-			title: 'Ostrom, E. — Governing the Commons (1990)',
-			url: 'https://doi.org/10.1017/CBO9780511807763',
-			note: 'graduated sanctions and accessible conflict resolution'
-		},
-		{
-			title: 'Seeds for Change',
-			url: 'https://www.seedsforchange.org.uk/',
-			note: 'free practical guides on facilitation and working through group conflict'
-		}
-	]}
+items={[
+{
+title: 'Conflict, power and repair',
+url: '/learn/guides/intentional-communities/conflict-power-and-repair',
+note: 'the lesson this topic summarises, with the questions to ask on a visit'
+},
+{
+title: 'Freeman, J. — The Tyranny of Structurelessness (1970/1972)',
+url: 'https://www.jofreeman.com/joreen/tyranny.htm',
+note: 'the essay itself, free from the author'
+},
+{
+title: 'Ostrom, E. — Governing the Commons (1990)',
+url: 'https://doi.org/10.1017/CBO9780511807763',
+note: 'graduated sanctions and accessible conflict resolution'
+},
+{
+title: 'Seeds for Change',
+url: 'https://www.seedsforchange.org.uk/',
+note: 'free practical guides on facilitation and working through group conflict'
+}
+]}
 />

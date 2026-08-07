@@ -18,7 +18,7 @@ The word to weigh in that definition is **regenerate**. A settlement that recycl
 
 ## What it describes, and what it does not
 
-An ecovillage is a *purpose*, not a building type or an ownership model. It says nothing about whether homes are private, whether income is shared, or how decisions get made. That is why the label sits comfortably on settlements as different as a hundred-person rural project and a retrofitted urban block.
+An ecovillage is a _purpose_, not a building type or an ownership model. It says nothing about whether homes are private, whether income is shared, or how decisions get made. That is why the label sits comfortably on settlements as different as a hundred-person rural project and a retrofitted urban block.
 
 ## An example
 
@@ -32,19 +32,19 @@ Findhorn's footprint figure is twenty years old and specific to one community, a
 
 ## What it is often confused with
 
-<Gloss term="cohousing">Cohousing</Gloss>, constantly. Cohousing is an architecture; an ecovillage is an aim. An ecovillage very often *adopts* cohousing's layout — clustered private homes around shared facilities — because it is a well-tested pattern, which is exactly why the two words get swapped. The other frequent confusion is with an eco-development: housing built to a high environmental standard and sold, with no community of any kind attached.
+<Gloss term="cohousing">Cohousing</Gloss>, constantly. Cohousing is an architecture; an ecovillage is an aim. An ecovillage very often _adopts_ cohousing's layout — clustered private homes around shared facilities — because it is a well-tested pattern, which is exactly why the two words get swapped. The other frequent confusion is with an eco-development: housing built to a high environmental standard and sold, with no community of any kind attached.
 
 <Sources
-	items={[
-		{
-			title: 'Global Ecovillage Network',
-			url: 'https://ecovillage.org/',
-			note: 'the network that carries the definition'
-		},
-		{
-			title: 'Cohousing vs ecovillage',
-			url: '/learn/compare/cohousing-vs-ecovillage',
-			note: 'the two told apart properly'
-		}
-	]}
+items={[
+{
+title: 'Global Ecovillage Network',
+url: 'https://ecovillage.org/',
+note: 'the network that carries the definition'
+},
+{
+title: 'Cohousing vs ecovillage',
+url: '/learn/compare/cohousing-vs-ecovillage',
+note: 'the two told apart properly'
+}
+]}
 />

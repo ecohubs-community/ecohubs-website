@@ -46,18 +46,18 @@ Nothing about the label on the gate tells you which of these you are looking at.
 ## The three numbers
 
 <Compare
-	columns={['Entry', 'Monthly', 'Exit']}
-	rows={[
-		{ label: 'What it is', values: ['What you pay to move in', 'Dues, service charge, association fee', 'What returns to you when you leave'] },
-		{ label: 'Usually set by', values: ['The local property market', 'The community’s own budget', 'The legal structure, written in advance'] },
-		{ label: 'Who asks about it', values: ['Almost everyone', 'Most people', 'Almost nobody'] },
-		{ label: 'How much it varies', values: ['Enormously, by place', 'Enormously, by what is shared', 'Totally, by form'] },
-		{ label: 'The question to ask', values: ['What exactly does this buy?', 'How much of it is saved?', 'What did the last leaver take?'] }
-	]}
-	caption="The third column is where the money actually is. It is also the one nobody puts on a website."
+columns={['Entry', 'Monthly', 'Exit']}
+rows={[
+{ label: 'What it is', values: ['What you pay to move in', 'Dues, service charge, association fee', 'What returns to you when you leave'] },
+{ label: 'Usually set by', values: ['The local property market', 'The community’s own budget', 'The legal structure, written in advance'] },
+{ label: 'Who asks about it', values: ['Almost everyone', 'Most people', 'Almost nobody'] },
+{ label: 'How much it varies', values: ['Enormously, by place', 'Enormously, by what is shared', 'Totally, by form'] },
+{ label: 'The question to ask', values: ['What exactly does this buy?', 'How much of it is saved?', 'What did the last leaver take?'] }
+]}
+caption="The third column is where the money actually is. It is also the one nobody puts on a website."
 />
 
-Entry is usually an ordinary local property price, because in most forms you are buying a home and competing with everyone else in that town for it. The community premium people expect rarely exists; what exists is a *discount* in some legal structures, paid for at the other end.
+Entry is usually an ordinary local property price, because in most forms you are buying a home and competing with everyone else in that town for it. The community premium people expect rarely exists; what exists is a _discount_ in some legal structures, paid for at the other end.
 
 The monthly figure is a service charge under another name. And the exit figure is decided entirely by which legal shell you are in — [owning, leasing or renting](/learn/guides/intentional-communities/owning-leasing-renting) — which is why the two topics are inseparable.
 
@@ -112,26 +112,26 @@ There is a lesson in the contrast. A common purse forces a community to publish 
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'What joining costs',
-			url: '/learn/guides/intentional-communities/what-joining-costs',
-			note: 'the three numbers in full, with a calculator for the third'
-		},
-		{
-			title: 'Cohousing Costs After You Move In — Cohousing Now! (Coho/US)',
-			url: 'https://www.cohousing.org/wp-content/uploads/2020/10/Coho-Now-103_-Cohousing-Costs-After-You-Move-In.pdf',
-			note: 'the 20-community, 611-unit budget analysis quoted above'
-		},
-		{
-			title: 'Twin Oaks Community — FAQs',
-			url: 'https://www.twinoaks.org/faqs-all-on-one-page',
-			note: 'the labour quota, the allowance and the asset rule, from the community itself'
-		},
-		{
-			title: 'RCOS Core — Layer 3: Economic Logic',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/',
-			note: 'how a community states what it shares financially, and what it does not'
-		}
-	]}
+items={[
+{
+title: 'What joining costs',
+url: '/learn/guides/intentional-communities/what-joining-costs',
+note: 'the three numbers in full, with a calculator for the third'
+},
+{
+title: 'Cohousing Costs After You Move In — Cohousing Now! (Coho/US)',
+url: 'https://www.cohousing.org/wp-content/uploads/2020/10/Coho-Now-103_-Cohousing-Costs-After-You-Move-In.pdf',
+note: 'the 20-community, 611-unit budget analysis quoted above'
+},
+{
+title: 'Twin Oaks Community — FAQs',
+url: 'https://www.twinoaks.org/faqs-all-on-one-page',
+note: 'the labour quota, the allowance and the asset rule, from the community itself'
+},
+{
+title: 'RCOS Core — Layer 3: Economic Logic',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/',
+note: 'how a community states what it shares financially, and what it does not'
+}
+]}
 />

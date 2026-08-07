@@ -22,7 +22,7 @@ Shared income. Shared politics. Shared meals, even — most communities eat toge
 
 ## An example
 
-The form began in Denmark in the early 1970s — *bofællesskab*, "living community" — with Sættedammen, near Hillerød, generally cited as the first. It reached English-speaking countries largely through Kathryn McCamant and Charles Durrett, whose 1988 book gave the model its English name. Typical projects run to twenty or forty households, a size chosen deliberately: large enough that the common house is busy, small enough that everyone knows everyone.
+The form began in Denmark in the early 1970s — _bofællesskab_, "living community" — with Sættedammen, near Hillerød, generally cited as the first. It reached English-speaking countries largely through Kathryn McCamant and Charles Durrett, whose 1988 book gave the model its English name. Typical projects run to twenty or forty households, a size chosen deliberately: large enough that the common house is busy, small enough that everyone knows everyone.
 
 <Callout type="caveat">
 
@@ -32,14 +32,14 @@ Cohousing is the most expensive form to start, because it means building or conv
 
 ## What it is often confused with
 
-An <Gloss term="ecovillage">ecovillage</Gloss>, most of all. The two are not alternatives on the same axis: cohousing describes the *architecture and ownership*, an ecovillage describes the *purpose*. Plenty of ecovillages are built as cohousing, and plenty of cohousing has no ecological ambition at all. Confusing them is common enough that we wrote a page on it.
+An <Gloss term="ecovillage">ecovillage</Gloss>, most of all. The two are not alternatives on the same axis: cohousing describes the _architecture and ownership_, an ecovillage describes the _purpose_. Plenty of ecovillages are built as cohousing, and plenty of cohousing has no ecological ambition at all. Confusing them is common enough that we wrote a page on it.
 
 <Sources
-	items={[
-		{
-			title: 'Cohousing vs ecovillage',
-			url: '/learn/compare/cohousing-vs-ecovillage',
-			note: 'the two told apart properly'
-		}
-	]}
+items={[
+{
+title: 'Cohousing vs ecovillage',
+url: '/learn/compare/cohousing-vs-ecovillage',
+note: 'the two told apart properly'
+}
+]}
 />

@@ -30,21 +30,21 @@ Most communities land somewhere in between, with a stated <Gloss term="work-quot
 
 <Callout type="caveat">
 
-Watch what a system does *not* count, because that is where the unfairness accumulates. Emotional labour and organisational memory are the two most commonly uncounted, and they distribute themselves along much the same lines they do everywhere else.
+Watch what a system does _not_ count, because that is where the unfairness accumulates. Emotional labour and organisational memory are the two most commonly uncounted, and they distribute themselves along much the same lines they do everywhere else.
 
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Twin Oaks Community — FAQs',
-			url: 'https://www.twinoaks.org/faqs-all-on-one-page',
-			note: '38.5 credits a week, and what counts toward them'
-		},
-		{
-			title: 'What daily life actually looks like',
-			url: '/learn/guides/intentional-communities/what-daily-life-looks-like',
-			note: 'the work that never reaches a rota'
-		}
-	]}
+items={[
+{
+title: 'Twin Oaks Community — FAQs',
+url: 'https://www.twinoaks.org/faqs-all-on-one-page',
+note: '38.5 credits a week, and what counts toward them'
+},
+{
+title: 'What daily life actually looks like',
+url: '/learn/guides/intentional-communities/what-daily-life-looks-like',
+note: 'the work that never reaches a rota'
+}
+]}
 />

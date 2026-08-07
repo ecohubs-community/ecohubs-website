@@ -37,16 +37,16 @@ Watch for the transition that happens on paper only: roles are created, election
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Why communities end',
-			url: '/learn/guides/intentional-communities/why-communities-end',
-			note: 'founder authority that never converted, among the six patterns'
-		},
-		{
-			title: 'Freeman, J. — The Tyranny of Structurelessness (1970/1972)',
-			url: 'https://www.jofreeman.com/joreen/tyranny.htm',
-			note: 'why undescribed authority cannot be limited or withdrawn'
-		}
-	]}
+items={[
+{
+title: 'Why communities end',
+url: '/learn/guides/intentional-communities/why-communities-end',
+note: 'founder authority that never converted, among the six patterns'
+},
+{
+title: 'Freeman, J. — The Tyranny of Structurelessness (1970/1972)',
+url: 'https://www.jofreeman.com/joreen/tyranny.htm',
+note: 'why undescribed authority cannot be limited or withdrawn'
+}
+]}
 />

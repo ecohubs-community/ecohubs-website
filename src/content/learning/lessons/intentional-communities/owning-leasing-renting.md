@@ -27,16 +27,16 @@ Everything in the previous lesson depended on which of these you are being offer
 ## The four shells
 
 <Compare
-	columns={['Freehold', 'Co-op share', 'Ground lease', 'Tenancy']}
-	rows={[
-		{ label: 'What is in your name', values: ['The home and its land', 'A share in the organisation', 'The building, not the ground', 'Nothing'] },
-		{ label: 'Who owns the rest', values: ['An association you belong to', 'The co-operative', 'The trust owns the land', 'A landlord or the community'] },
-		{ label: 'Can you sell it', values: ['Yes, on the open market', 'Yes, back or on, at the co-op’s price', 'Yes, at the formula price', 'No'] },
-		{ label: 'Who chooses the buyer', values: ['You, often subject to membership', 'The co-operative', 'The trust', 'Not applicable'] },
-		{ label: 'Financing', values: ['An ordinary mortgage', 'A share loan, from few lenders', 'A mortgage, on specific conditions', 'None needed'] },
-		{ label: 'What your heirs get', values: ['The home', 'The share', 'The lease, subject to the formula', 'Nothing'] }
-	]}
-	caption="Generalisations across jurisdictions. The document in front of you outranks this table."
+columns={['Freehold', 'Co-op share', 'Ground lease', 'Tenancy']}
+rows={[
+{ label: 'What is in your name', values: ['The home and its land', 'A share in the organisation', 'The building, not the ground', 'Nothing'] },
+{ label: 'Who owns the rest', values: ['An association you belong to', 'The co-operative', 'The trust owns the land', 'A landlord or the community'] },
+{ label: 'Can you sell it', values: ['Yes, on the open market', 'Yes, back or on, at the co-op’s price', 'Yes, at the formula price', 'No'] },
+{ label: 'Who chooses the buyer', values: ['You, often subject to membership', 'The co-operative', 'The trust', 'Not applicable'] },
+{ label: 'Financing', values: ['An ordinary mortgage', 'A share loan, from few lenders', 'A mortgage, on specific conditions', 'None needed'] },
+{ label: 'What your heirs get', values: ['The home', 'The share', 'The lease, subject to the formula', 'Nothing'] }
+]}
+caption="Generalisations across jurisdictions. The document in front of you outranks this table."
 />
 
 <Quiz id="what-would-you-own" />
@@ -67,7 +67,7 @@ This is the blocker that stops people who are otherwise ready, and it deserves a
 - The home must be owner-occupied, a principal residence, and one or two units — **not a manufactured home and not a co-op unit**.
 - Almost every ordinary loan product is available; the exception is adjustable-rate mortgages with a short initial fixed period.
 
-Read that list as a checklist for the *trust*, not for you. A ten-year-old trust using a model lease is straightforwardly financeable. A brand-new project with a bespoke lease its founders wrote themselves is where people get stuck, and the fix is upstream of you.
+Read that list as a checklist for the _trust_, not for you. A ten-year-old trust using a model lease is straightforwardly financeable. A brand-new project with a bespoke lease its founders wrote themselves is where people get stuck, and the fix is upstream of you.
 
 **A co-operative share needs a different product entirely.** The loan is secured on your shares and on an assignment of your rights under the occupancy agreement — not on real property. It is called a share loan, the market for it is much smaller than the mortgage market, and eligibility depends partly on the co-operative's own rules: a transfer fee, for example, can put the loan out of reach unless the lender is exempt from it on a foreclosure or the fee is charged only on profit.
 
@@ -85,13 +85,13 @@ This is not a trick — it is what makes the lending possible at all, because a 
 
 Ask this early, however far off it feels, because it is where the four shells differ most and where families get an unwelcome surprise.
 
-A freehold home passes like any other. A co-operative share passes as an asset, but whether your heirs may *live there* is a separate question governed by the co-operative's rules and usually requires them to be accepted as members. A land trust home can be inherited — the technical guidance is explicit that people do receive these homes through inheritance — but the heir takes the lease as it stands, resale formula included, and the trust will want them to understand that before they inherit rather than after. A tenancy usually ends, though some jurisdictions give a resident family member succession rights.
+A freehold home passes like any other. A co-operative share passes as an asset, but whether your heirs may _live there_ is a separate question governed by the co-operative's rules and usually requires them to be accepted as members. A land trust home can be inherited — the technical guidance is explicit that people do receive these homes through inheritance — but the heir takes the lease as it stands, resale formula included, and the trust will want them to understand that before they inherit rather than after. A tenancy usually ends, though some jurisdictions give a resident family member succession rights.
 
 The practical version: **the community's rules on inheritance are in the same document as everything else, and you can read them before you commit.**
 
 <Callout type="caveat">
 
-Everything named above is American or British, because those are the systems that publish their rules in a form we could check. Property law is national and sometimes regional; the *shapes* here travel well and the specifics do not. The German *Mietshäuser Syndikat* model, French *habitat participatif* and Danish *andelsbolig* co-operatives each solve these problems differently, and none maps cleanly onto the four columns above.
+Everything named above is American or British, because those are the systems that publish their rules in a form we could check. Property law is national and sometimes regional; the _shapes_ here travel well and the specifics do not. The German _Mietshäuser Syndikat_ model, French _habitat participatif_ and Danish _andelsbolig_ co-operatives each solve these problems differently, and none maps cleanly onto the four columns above.
 
 Take the questions with you. Do not take the answers.
 
@@ -121,31 +121,31 @@ There is a general lesson in this for any community, not only for land trusts. T
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Fannie Mae — Community Land Trust Checklist',
-			url: 'https://singlefamily.fanniemae.com/media/document/pdf/community-land-trust-checklist',
-			note: 'Form 2100, the model-lease requirement, the lease term rule, and the foreclosure point'
-		},
-		{
-			title: 'Fannie Mae Selling Guide — Loan Eligibility for Co-op Share Loans',
-			url: 'https://selling-guide.fanniemae.com/sel/b4-2.3-04/loan-eligibility-co-op-share-loans',
-			note: 'what a share loan is secured on, and how transfer fees affect eligibility'
-		},
-		{
-			title: 'Ecology Building Society — community-led housing mortgages',
-			url: 'https://www.ecology.co.uk/community-and-commercial-mortgages/community-led-housing/',
-			note: 'published loan-to-value limits and eligibility conditions, for a UK lender'
-		},
-		{
-			title: 'Resale Formula Design — Grounded Solutions Network (2011)',
-			url: 'https://groundedsolutions.org/wp-content/uploads/2018-11/12-Resale-Formula-Design.pdf',
-			note: 'formula amendment, informed consent, inheritance, and periodic reporting'
-		},
-		{
-			title: 'What joining costs',
-			url: '/learn/guides/intentional-communities/what-joining-costs',
-			note: 'the three numbers these shells decide, with a calculator for the last one'
-		}
-	]}
+items={[
+{
+title: 'Fannie Mae — Community Land Trust Checklist',
+url: 'https://singlefamily.fanniemae.com/media/document/pdf/community-land-trust-checklist',
+note: 'Form 2100, the model-lease requirement, the lease term rule, and the foreclosure point'
+},
+{
+title: 'Fannie Mae Selling Guide — Loan Eligibility for Co-op Share Loans',
+url: 'https://selling-guide.fanniemae.com/sel/b4-2.3-04/loan-eligibility-co-op-share-loans',
+note: 'what a share loan is secured on, and how transfer fees affect eligibility'
+},
+{
+title: 'Ecology Building Society — community-led housing mortgages',
+url: 'https://www.ecology.co.uk/community-and-commercial-mortgages/community-led-housing/',
+note: 'published loan-to-value limits and eligibility conditions, for a UK lender'
+},
+{
+title: 'Resale Formula Design — Grounded Solutions Network (2011)',
+url: 'https://groundedsolutions.org/wp-content/uploads/2018-11/12-Resale-Formula-Design.pdf',
+note: 'formula amendment, informed consent, inheritance, and periodic reporting'
+},
+{
+title: 'What joining costs',
+url: '/learn/guides/intentional-communities/what-joining-costs',
+note: 'the three numbers these shells decide, with a calculator for the last one'
+}
+]}
 />

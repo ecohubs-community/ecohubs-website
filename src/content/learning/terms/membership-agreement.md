@@ -36,16 +36,16 @@ Read items 5, 6 and 7 hardest. They describe the days nobody wants to imagine, w
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Membership: getting in, and getting out',
-			url: '/learn/guides/intentional-communities/membership-getting-in-and-out',
-			note: 'the checklist in context, with the questions to ask on a visit'
-		},
-		{
-			title: 'Owning, leasing, renting',
-			url: '/learn/guides/intentional-communities/owning-leasing-renting',
-			note: 'the legal shell item 1 lands you in'
-		}
-	]}
+items={[
+{
+title: 'Membership: getting in, and getting out',
+url: '/learn/guides/intentional-communities/membership-getting-in-and-out',
+note: 'the checklist in context, with the questions to ask on a visit'
+},
+{
+title: 'Owning, leasing, renting',
+url: '/learn/guides/intentional-communities/owning-leasing-renting',
+note: 'the legal shell item 1 lands you in'
+}
+]}
 />

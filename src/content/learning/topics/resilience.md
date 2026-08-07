@@ -21,7 +21,7 @@ terms: [drift, founder-transition, exit-clause, agreements]
 
 **Nobody knows what proportion of intentional communities fail.** There is no register, no denominator and no follow-up study, so any survival rate you are quoted is a guess — including the ninety per cent figure.
 
-What *is* documented is the **pattern** rather than the rate: six things go wrong repeatedly, and only one of them is about conflict. The rest are about writing — a vision never written, a decision method never agreed, money without terms, founder authority that never converted, no repair process, and the slow one, <Gloss term="drift">drift</Gloss>.
+What _is_ documented is the **pattern** rather than the rate: six things go wrong repeatedly, and only one of them is about conflict. The rest are about writing — a vision never written, a decision method never agreed, money without terms, founder authority that never converted, no repair process, and the slow one, <Gloss term="drift">drift</Gloss>.
 
 And some endings are not failures. A community that finished what it set out to do, or wound itself up deliberately and paid everyone out, did not fail. It ended.
 
@@ -31,18 +31,18 @@ And some endings are not failures. A community that finished what it set out to 
 
 You will meet the claim that ninety per cent of intentional communities fail. It appears in newspaper articles, in books, and from people who have lived in communities for decades.
 
-We went looking for its source. The nearest thing to a foundation is **Rosabeth Moss Kanter's *Commitment and Community*** (Harvard University Press, 1972), a serious piece of sociology that surveyed **91 communal projects founded in America between 1780 and 1860**. Kanter needed an operational definition of success and chose one: a community counted as successful if it **lasted at least 25 years**. On that measure only a handful qualified.
+We went looking for its source. The nearest thing to a foundation is **Rosabeth Moss Kanter's _Commitment and Community_** (Harvard University Press, 1972), a serious piece of sociology that surveyed **91 communal projects founded in America between 1780 and 1860**. Kanter needed an operational definition of success and chose one: a community counted as successful if it **lasted at least 25 years**. On that measure only a handful qualified.
 
 Look at what has to happen for that to become a modern failure rate:
 
 - A study of **nineteenth-century American communes** becomes a claim about communities today.
 - A study of a **specific window**, 1780 to 1860, becomes a permanent rate.
-- **Lasting fewer than 25 years** becomes *failing*, which would make most businesses, most marriages and nearly every voluntary organisation a failure.
+- **Lasting fewer than 25 years** becomes _failing_, which would make most businesses, most marriages and nearly every voluntary organisation a failure.
 - A **sample of 91 self-selected historical cases** becomes a rate for a category that had not been invented yet.
 
-There is a second source, and it is the one most people are half-remembering. Diana Leafe Christian's *Creating a Life Together* (2003) states that most aspiring ecovillages and community groups — **"probably 90 percent"** — never get off the ground; their envisioned communities are never built, because the group cannot find land, runs out of money, or is mired in conflict before there is anything to be in conflict about.
+There is a second source, and it is the one most people are half-remembering. Diana Leafe Christian's _Creating a Life Together_ (2003) states that most aspiring ecovillages and community groups — **"probably 90 percent"** — never get off the ground; their envisioned communities are never built, because the group cannot find land, runs out of money, or is mired in conflict before there is anything to be in conflict about.
 
-That is a real observation from somebody who edited *Communities* magazine and interviewed scores of founders, and it is explicitly hedged. It is also about **groups trying to start a community**, not communities that exist. A group that never built anything did not fail as a community; it never became one.
+That is a real observation from somebody who edited _Communities_ magazine and interviewed scores of founders, and it is explicitly hedged. It is also about **groups trying to start a community**, not communities that exist. A group that never built anything did not fail as a community; it never became one.
 
 So there are two ninety per cents in circulation — a nineteenth-century longevity threshold and an estimate about forming groups — and they have been welded into a sentence neither author wrote. If you are joining a **forming** group, Christian's version is the one that applies to you, and it deserves to be taken seriously. If you are looking at somewhere that already exists, neither figure tells you anything.
 
@@ -66,7 +66,7 @@ Nor are we saying the figures are invented. Kanter counted something real and Ch
 
 **4. <Gloss term="founder-transition">Founder authority</Gloss> that never converted.** The founders carried the project and were right to. What kills communities is when that informal authority is never turned into something anyone can hold, limit or inherit — so the group can neither disagree with them nor continue without them.
 
-**5. Conflict with no process.** Not conflict. Conflict *without a route*. The dispute has nowhere to go, so it goes everywhere.
+**5. Conflict with no process.** Not conflict. Conflict _without a route_. The dispute has nowhere to go, so it goes everywhere.
 
 **6. Drift.** The slow one, and the most common. Nothing breaks. The <Gloss term="agreements">agreements</Gloss> stop being read, then stop being taught to new members, then describe a place that no longer exists. Shared meals thin from three a week to one to occasionally. Nobody decided any of it.
 
@@ -101,31 +101,31 @@ An honest gap to close on. Ostrom studied irrigation systems and fisheries, not 
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Why communities end',
-			url: '/learn/guides/intentional-communities/why-communities-end',
-			note: 'the lesson in full, with a quiz on telling a warning sign from a false alarm'
-		},
-		{
-			title: 'Kanter, R. M. — Commitment and Community (Harvard University Press, 1972)',
-			url: 'https://www.hup.harvard.edu/books/9780674145764',
-			note: '91 projects founded 1780–1860, and the 25-year threshold everything traces to'
-		},
-		{
-			title: 'Christian, D. L. — Creating a Life Together (New Society Publishers, 2003)',
-			url: 'https://newsociety.com/book/creating-a-life-together/',
-			note: 'the "probably 90 percent" of forming groups that never build anything'
-		},
-		{
-			title: 'Altus, D. — The Value of Community: What Defines Success?',
-			url: 'https://www.ic.org/the-value-of-community-what-defines-success/',
-			note: 'a Communal Studies scholar questioning longevity as the measure'
-		},
-		{
-			title: 'Communal Studies Association',
-			url: 'https://www.communalstudies.org/',
-			note: 'the academic literature on communal societies, historical and contemporary'
-		}
-	]}
+items={[
+{
+title: 'Why communities end',
+url: '/learn/guides/intentional-communities/why-communities-end',
+note: 'the lesson in full, with a quiz on telling a warning sign from a false alarm'
+},
+{
+title: 'Kanter, R. M. — Commitment and Community (Harvard University Press, 1972)',
+url: 'https://www.hup.harvard.edu/books/9780674145764',
+note: '91 projects founded 1780–1860, and the 25-year threshold everything traces to'
+},
+{
+title: 'Christian, D. L. — Creating a Life Together (New Society Publishers, 2003)',
+url: 'https://newsociety.com/book/creating-a-life-together/',
+note: 'the "probably 90 percent" of forming groups that never build anything'
+},
+{
+title: 'Altus, D. — The Value of Community: What Defines Success?',
+url: 'https://www.ic.org/the-value-of-community-what-defines-success/',
+note: 'a Communal Studies scholar questioning longevity as the measure'
+},
+{
+title: 'Communal Studies Association',
+url: 'https://www.communalstudies.org/',
+note: 'the academic literature on communal societies, historical and contemporary'
+}
+]}
 />

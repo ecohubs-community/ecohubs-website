@@ -37,11 +37,11 @@ A long provisional stage can quietly become a second class of resident: doing th
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Membership: getting in, and getting out',
-			url: '/learn/guides/intentional-communities/membership-getting-in-and-out',
-			note: 'the stages, and what a fair membership agreement contains'
-		}
-	]}
+items={[
+{
+title: 'Membership: getting in, and getting out',
+url: '/learn/guides/intentional-communities/membership-getting-in-and-out',
+note: 'the stages, and what a fair membership agreement contains'
+}
+]}
 />

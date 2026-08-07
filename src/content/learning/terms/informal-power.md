@@ -14,7 +14,7 @@ related: [repair-process, facilitation, founder-transition]
 
 Informal power is the influence people hold in a group without anyone having voted for it, written it down, or being able to take it back. It is not a failure of a community; it is what happens automatically, and the only question is whether it is visible.
 
-Jo Freeman's essay *The Tyranny of Structurelessness* (1970, published 1972) made the argument that has never stopped being relevant here: **a structureless group is impossible**. Where structure is informal it forms around friendship networks and access to information, and produces an elite that is unaccountable precisely because the group denies it exists.
+Jo Freeman's essay _The Tyranny of Structurelessness_ (1970, published 1972) made the argument that has never stopped being relevant here: **a structureless group is impossible**. Where structure is informal it forms around friendship networks and access to information, and produces an elite that is unaccountable precisely because the group denies it exists.
 
 ## Where it sits in a community
 
@@ -38,16 +38,16 @@ That last one is the cheapest and least done. A community where two people can r
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Freeman, J. — The Tyranny of Structurelessness (1970/1972)',
-			url: 'https://www.jofreeman.com/joreen/tyranny.htm',
-			note: 'the essay, free from the author, with its seven principles'
-		},
-		{
-			title: 'Conflict, power and repair',
-			url: '/learn/guides/intentional-communities/conflict-power-and-repair',
-			note: 'informal power in a community, and what to ask about it'
-		}
-	]}
+items={[
+{
+title: 'Freeman, J. — The Tyranny of Structurelessness (1970/1972)',
+url: 'https://www.jofreeman.com/joreen/tyranny.htm',
+note: 'the essay, free from the author, with its seven principles'
+},
+{
+title: 'Conflict, power and repair',
+url: '/learn/guides/intentional-communities/conflict-power-and-repair',
+note: 'informal power in a community, and what to ask about it'
+}
+]}
 />

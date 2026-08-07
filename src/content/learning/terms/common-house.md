@@ -31,11 +31,11 @@ Ask who cleans it, and how that is agreed. Shared space generates work that is e
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Cohousing vs ecovillage',
-			url: '/learn/compare/cohousing-vs-ecovillage',
-			note: 'where the common house sits in the wider picture'
-		}
-	]}
+items={[
+{
+title: 'Cohousing vs ecovillage',
+url: '/learn/compare/cohousing-vs-ecovillage',
+note: 'where the common house sits in the wider picture'
+}
+]}
 />

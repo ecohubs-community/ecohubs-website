@@ -39,16 +39,16 @@ Beware the compliment that fixes it in place. "She's just so good at that" is ho
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'What daily life actually looks like',
-			url: '/learn/guides/intentional-communities/what-daily-life-looks-like',
-			note: 'the work nobody put on the rota'
-		},
-		{
-			title: 'Conflict, power and repair',
-			url: '/learn/guides/intentional-communities/conflict-power-and-repair',
-			note: 'how uncounted contribution becomes uncounted power'
-		}
-	]}
+items={[
+{
+title: 'What daily life actually looks like',
+url: '/learn/guides/intentional-communities/what-daily-life-looks-like',
+note: 'the work nobody put on the rota'
+},
+{
+title: 'Conflict, power and repair',
+url: '/learn/guides/intentional-communities/conflict-power-and-repair',
+note: 'how uncounted contribution becomes uncounted power'
+}
+]}
 />

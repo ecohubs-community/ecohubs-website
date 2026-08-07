@@ -22,7 +22,7 @@ Not values. Values are easy to agree and impossible to enforce. The agreements t
 
 ## An example
 
-The umbrella term as used today is largely the Foundation for Intentional Community's, which has catalogued communities in North America since 1937 and deliberately covers everything from <Gloss term="cohousing">cohousing</Gloss> to <Gloss term="commune">commune</Gloss> to housing co-ops and <Gloss term="ecovillage">ecovillages</Gloss>. That breadth is the point: the label describes a *legal and social arrangement*, not a lifestyle or an ideology. Two communities both accurately called intentional can share nothing beyond having written their rules down.
+The umbrella term as used today is largely the Foundation for Intentional Community's, which has catalogued communities in North America since 1937 and deliberately covers everything from <Gloss term="cohousing">cohousing</Gloss> to <Gloss term="commune">commune</Gloss> to housing co-ops and <Gloss term="ecovillage">ecovillages</Gloss>. That breadth is the point: the label describes a _legal and social arrangement_, not a lifestyle or an ideology. Two communities both accurately called intentional can share nothing beyond having written their rules down.
 
 <Callout type="caveat">
 
@@ -35,16 +35,16 @@ The umbrella term as used today is largely the Foundation for Intentional Commun
 Two directions, both worth watching for. Developers occasionally market conventional housing as an intentional community on the strength of a shared garden and a residents' WhatsApp group — no agreements, no membership process, no way to leave that anyone has thought about. And established communities sometimes keep the label decades after the founders' agreements stopped being read by anyone, which is its own kind of drift.
 
 <Sources
-	items={[
-		{
-			title: 'Foundation for Intentional Community',
-			url: 'https://www.ic.org/',
-			note: 'the long-running directory and the source of the umbrella definition'
-		},
-		{
-			title: 'RCOS Core — Layer 0: Identity & Scope',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/',
-			note: 'how a community states what it is and is not'
-		}
-	]}
+items={[
+{
+title: 'Foundation for Intentional Community',
+url: 'https://www.ic.org/',
+note: 'the long-running directory and the source of the umbrella definition'
+},
+{
+title: 'RCOS Core — Layer 0: Identity & Scope',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/',
+note: 'how a community states what it is and is not'
+}
+]}
 />

@@ -35,16 +35,16 @@ Knowing the exit terms is also protection for the person staying. A decision to 
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Why communities end',
-			url: '/learn/guides/intentional-communities/why-communities-end',
-			note: 'endings that are not failures'
-		},
-		{
-			title: 'What joining costs',
-			url: '/learn/guides/intentional-communities/what-joining-costs',
-			note: 'the exit number, with a calculator'
-		}
-	]}
+items={[
+{
+title: 'Why communities end',
+url: '/learn/guides/intentional-communities/why-communities-end',
+note: 'endings that are not failures'
+},
+{
+title: 'What joining costs',
+url: '/learn/guides/intentional-communities/what-joining-costs',
+note: 'the exit number, with a calculator'
+}
+]}
 />

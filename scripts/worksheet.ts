@@ -43,12 +43,7 @@ export function buildWorkbook(guideTitle: string, generatedAt: Date): ExcelJS.Wo
 		views: [{ showGridLines: false }],
 		pageSetup: { paperSize: 9, orientation: 'portrait' }
 	});
-	s.columns = [
-		{ width: 4 },
-		{ width: 42 },
-		{ width: 18 },
-		{ width: 44 }
-	];
+	s.columns = [{ width: 4 }, { width: 42 }, { width: 18 }, { width: 44 }];
 
 	s.getCell('B2').value = 'What joining a community costs';
 	asHeading(s.getCell('B2'), 16);

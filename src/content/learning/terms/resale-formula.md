@@ -16,7 +16,7 @@ A resale formula is the written rule that decides the price at which a resale-re
 
 ## The common shapes
 
-**Appraisal-based, improvements only.** The seller keeps a share of the appreciation of the *building* but none of the land's. Grounded Solutions Network's technical manual describes the typical share as about **25%**, noting that some trusts set it higher and some scale it with tenure — giving as an example a share rising from **5% after one year to 30% after thirty**.
+**Appraisal-based, improvements only.** The seller keeps a share of the appreciation of the _building_ but none of the land's. Grounded Solutions Network's technical manual describes the typical share as about **25%**, noting that some trusts set it higher and some scale it with tenure — giving as an example a share rising from **5% after one year to 30% after thirty**.
 
 **Indexed.** The price rises with an index — area median income, or consumer prices — rather than with the market. Predictable, and it can drift away from affordability when incomes and prices diverge.
 
@@ -39,16 +39,16 @@ A capped return is not a bad deal, but it is a specific one, and it works out di
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Resale Formula Design — Grounded Solutions Network (2011)',
-			url: 'https://groundedsolutions.org/wp-content/uploads/2018-11/12-Resale-Formula-Design.pdf',
-			note: 'every formula type, with the trade-offs of each'
-		},
-		{
-			title: 'What joining costs',
-			url: '/learn/guides/intentional-communities/what-joining-costs',
-			note: 'the exit number, with a calculator'
-		}
-	]}
+items={[
+{
+title: 'Resale Formula Design — Grounded Solutions Network (2011)',
+url: 'https://groundedsolutions.org/wp-content/uploads/2018-11/12-Resale-Formula-Design.pdf',
+note: 'every formula type, with the trade-offs of each'
+},
+{
+title: 'What joining costs',
+url: '/learn/guides/intentional-communities/what-joining-costs',
+note: 'the exit number, with a calculator'
+}
+]}
 />

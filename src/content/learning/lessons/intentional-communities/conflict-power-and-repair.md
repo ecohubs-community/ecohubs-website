@@ -55,7 +55,7 @@ In a community, the informal structure is usually easy to spot once you look for
 
 None of these people is doing anything wrong. That is the point. Informal power accumulates around competence and availability, and the people who hold it are frequently the ones working hardest.
 
-Freeman's remedies are practical and transfer directly. **Delegate specific authority to specific people for specific tasks, by an agreed procedure.** Require them to be accountable to the group. **Rotate the tasks**, so nobody comes to own a role. Allocate by ability and interest rather than by who volunteered first. And spread information as widely as possible — *information is power*, so a community where only two people can read the accounts has two people in charge whatever its constitution says.
+Freeman's remedies are practical and transfer directly. **Delegate specific authority to specific people for specific tasks, by an agreed procedure.** Require them to be accountable to the group. **Rotate the tasks**, so nobody comes to own a role. Allocate by ability and interest rather than by who volunteered first. And spread information as widely as possible — _information is power_, so a community where only two people can read the accounts has two people in charge whatever its constitution says.
 
 This is also why the [rotation of facilitators](/learn/guides/intentional-communities/how-communities-decide) matters more than it sounds, and why "we don't really need a structure, we all get on" is the single least reassuring sentence a community can say to a visitor.
 
@@ -109,31 +109,31 @@ The consequence Freeman identified is specific and unpleasant: the informal elit
 
 The corollary is the useful part. Formal structure is not the opposite of an egalitarian community — it is the mechanism by which one stays egalitarian. Written domains, rotating roles, published accounts and a defined term of office are all ways of making power visible enough to be shared. A community that resists all of them in the name of trust is choosing an aristocracy of the well-connected, usually without meaning to and always while denying it.
 
-Worth holding alongside a limitation: Freeman was writing about political organising, not households. A family-scale community cannot run on procedure alone, and a group that answers every interpersonal difficulty with a new rule has its own recognisable pathology. The argument is for structure that is *visible*, not for structure that is *heavy*.
+Worth holding alongside a limitation: Freeman was writing about political organising, not households. A family-scale community cannot run on procedure alone, and a group that answers every interpersonal difficulty with a new rule has its own recognisable pathology. The argument is for structure that is _visible_, not for structure that is _heavy_.
 
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Freeman, J. — The Tyranny of Structurelessness (1970/1972)',
-			url: 'https://www.jofreeman.com/joreen/tyranny.htm',
-			note: 'the essay itself, free from the author; the seven principles for democratic structuring'
-		},
-		{
-			title: 'Ostrom, E. — Governing the Commons (1990)',
-			url: 'https://doi.org/10.1017/CBO9780511807763',
-			note: 'graduated sanctions and accessible conflict resolution, among the eight design principles'
-		},
-		{
-			title: 'RCOS Core — Layer 2: Governance & Decision Logic',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
-			note: 'domains, delegated authority and accountability, specified'
-		},
-		{
-			title: 'Seeds for Change',
-			url: 'https://www.seedsforchange.org.uk/',
-			note: 'free practical guides on facilitation and working through group conflict'
-		}
-	]}
+items={[
+{
+title: 'Freeman, J. — The Tyranny of Structurelessness (1970/1972)',
+url: 'https://www.jofreeman.com/joreen/tyranny.htm',
+note: 'the essay itself, free from the author; the seven principles for democratic structuring'
+},
+{
+title: 'Ostrom, E. — Governing the Commons (1990)',
+url: 'https://doi.org/10.1017/CBO9780511807763',
+note: 'graduated sanctions and accessible conflict resolution, among the eight design principles'
+},
+{
+title: 'RCOS Core — Layer 2: Governance & Decision Logic',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
+note: 'domains, delegated authority and accountability, specified'
+},
+{
+title: 'Seeds for Change',
+url: 'https://www.seedsforchange.org.uk/',
+note: 'free practical guides on facilitation and working through group conflict'
+}
+]}
 />

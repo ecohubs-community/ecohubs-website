@@ -14,7 +14,7 @@ related: [labour-credit, invisible-work, agreements]
 
 A work quota is the amount of work a member owes the community — usually stated in hours a week or a month. Grounds, maintenance, cleaning shared rooms, cooking on the rota, administration, sitting on a circle.
 
-Two to six hours a week is typical in a settled community with private finances. Income-sharing communities ask for far more because the work *is* the economy: Twin Oaks sets 38.5 hours a week, covering both its businesses and its domestic areas.
+Two to six hours a week is typical in a settled community with private finances. Income-sharing communities ask for far more because the work _is_ the economy: Twin Oaks sets 38.5 hours a week, covering both its businesses and its domestic areas.
 
 ## Counted, or trusted?
 
@@ -39,16 +39,16 @@ A quota measures the work somebody thought to put on a list. It systematically m
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'What daily life actually looks like',
-			url: '/learn/guides/intentional-communities/what-daily-life-looks-like',
-			note: 'the week, concretely'
-		},
-		{
-			title: 'Twin Oaks Community — FAQs',
-			url: 'https://www.twinoaks.org/faqs-all-on-one-page',
-			note: '38.5 hours a week, and what counts'
-		}
-	]}
+items={[
+{
+title: 'What daily life actually looks like',
+url: '/learn/guides/intentional-communities/what-daily-life-looks-like',
+note: 'the week, concretely'
+},
+{
+title: 'Twin Oaks Community — FAQs',
+url: 'https://www.twinoaks.org/faqs-all-on-one-page',
+note: '38.5 hours a week, and what counts'
+}
+]}
 />

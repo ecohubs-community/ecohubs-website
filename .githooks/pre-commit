@@ -1,14 +1,29 @@
 #!/bin/sh
 #
-# Regenerates the guide downloads when a commit changes what is inside them.
+# Two jobs, in order:
 #
-# The PDFs and the worksheet are committed artefacts — the site is prerendered,
-# so they have to exist at build time — which means they go stale silently
-# unless something notices. This notices.
+#   1. Format the staged files. CI runs `prettier --check .`, and this PR went
+#      red on 62 unformatted content files because nothing local looked at
+#      them until the build did.
+#   2. Regenerate the guide downloads when the commit changes what is inside
+#      them. The PDFs and the worksheet are committed artefacts — the site is
+#      prerendered, so they have to exist at build time — which means they go
+#      stale silently unless something notices.
 #
-# It does nothing when no staged file affects a guide, so ordinary commits are
-# unaffected. Set SKIP_DOWNLOADS=1 to bypass it.
+# Both stage what they change, so the commit carries it. Neither does anything
+# when nothing relevant is staged, so ordinary commits are unaffected.
+#
+# SKIP_DOWNLOADS=1 skips step 2 only; formatting is cheap and always worth it.
 set -e
+
+# NUL-separated and `xargs -0`: filenames can contain spaces, and the `-r` flag
+# that would otherwise guard the empty case is GNU-only and absent on macOS.
+staged() { git diff --cached --name-only --diff-filter=ACMR -z; }
+
+if [ -n "$(git diff --cached --name-only --diff-filter=ACMR)" ]; then
+	staged | xargs -0 npx prettier --write --ignore-unknown --log-level warn
+	staged | xargs -0 git add
+fi
 
 if [ -n "$SKIP_DOWNLOADS" ]; then
 	echo "pre-commit: SKIP_DOWNLOADS set — leaving the downloads alone."
@@ -17,8 +32,6 @@ fi
 
 node scripts/build-downloads.ts --staged
 
-# Stage whatever changed, so the commit carries the artefacts it just
-# invalidated rather than leaving them for the next one.
 if ! git diff --quiet -- static/downloads; then
 	git add static/downloads
 	echo "pre-commit: regenerated downloads added to this commit."

@@ -20,7 +20,7 @@ It is a design idea rather than a rule, and it does one specific job: it lets so
 
 Sitting on your own porch is a legible signal. People can see you, greet you, and judge from your posture whether to stop. You have not turned anyone away and you have not committed to an evening of company.
 
-Take that step away — homes opening straight onto a shared kitchen, no defensible outdoor space — and the only available settings are *all* or *nothing*. People who want a quiet evening have to go indoors and close the door, which in a small community reads as a statement. So they do it less than they need to, then more than they meant to, and the community acquires a reputation for being intense.
+Take that step away — homes opening straight onto a shared kitchen, no defensible outdoor space — and the only available settings are _all_ or _nothing_. People who want a quiet evening have to go indoors and close the door, which in a small community reads as a statement. So they do it less than they need to, then more than they meant to, and the community acquires a reputation for being intense.
 
 ## What to look for on a visit
 
@@ -38,16 +38,16 @@ A gradient is spatial and the hardest privacy to arrange is not. In a community 
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'What daily life actually looks like',
-			url: '/learn/guides/intentional-communities/what-daily-life-looks-like',
-			note: 'noise, doors, and the privacy nobody warns you about'
-		},
-		{
-			title: 'National CoHousing Alliance',
-			url: 'https://cohousingalliance.org/',
-			note: 'site design material for the form the idea comes from'
-		}
-	]}
+items={[
+{
+title: 'What daily life actually looks like',
+url: '/learn/guides/intentional-communities/what-daily-life-looks-like',
+note: 'noise, doors, and the privacy nobody warns you about'
+},
+{
+title: 'National CoHousing Alliance',
+url: 'https://cohousingalliance.org/',
+note: 'site design material for the form the idea comes from'
+}
+]}
 />

@@ -38,7 +38,7 @@ The complications are equally real and less discussed.
 
 The most-repeated benefit of raising children in community is that they can roam — that because neighbours know each other, children get a freedom their peers have lost.
 
-We went looking for evidence and found something more awkward. A 2019 Canadian multi-site study of 1,699 children aged 8 to 12 measured exactly this: whether parents agreeing that "most adults who live in the neighborhood look out for other people's children" predicted children's independent mobility. **It did not** — the association was not significant in the final analysis. What *was* strongly associated, negatively, was parents' fear of traffic, crime and dangerous crossings.
+We went looking for evidence and found something more awkward. A 2019 Canadian multi-site study of 1,699 children aged 8 to 12 measured exactly this: whether parents agreeing that "most adults who live in the neighborhood look out for other people's children" predicted children's independent mobility. **It did not** — the association was not significant in the final analysis. What _was_ strongly associated, negatively, was parents' fear of traffic, crime and dangerous crossings.
 
 That study is of ordinary Canadian neighbourhoods, not of intentional communities, and nobody appears to have run the equivalent inside one. But it points somewhere useful. If children roam more in cohousing, the likeliest reason is not that everybody knows them — it is that the **cars are parked at the edge**, which is a design decision rather than a social one, and one you can see on a site plan before you move in.
 
@@ -48,7 +48,7 @@ That study is of ordinary Canadian neighbourhoods, not of intentional communitie
 
 Start with the law, because it constrains everything else and people routinely get this backwards.
 
-Home education is lawful in the United Kingdom and in most of the United States. It is **illegal in Germany**, and has been since 1918 — a ban the European Court of Human Rights upheld unanimously in *Wunderlich v. Germany* in January 2019, holding that compulsory school attendance pursues legitimate aims including avoiding the emergence of parallel societies, and that removing the children of parents who refused to comply was proportionate. Whatever you think of that, it is the legal reality in a country with a very active community movement.
+Home education is lawful in the United Kingdom and in most of the United States. It is **illegal in Germany**, and has been since 1918 — a ban the European Court of Human Rights upheld unanimously in _Wunderlich v. Germany_ in January 2019, holding that compulsory school attendance pursues legitimate aims including avoiding the emergence of parallel societies, and that removing the children of parents who refused to comply was proportionate. Whatever you think of that, it is the legal reality in a country with a very active community movement.
 
 So the first question about a community's beautiful plan for its own learning group is not whether it is a good idea. It is what the plan actually is, legally: a registered school, a supplementary group alongside compulsory attendance, or an intention nobody has tested.
 
@@ -70,7 +70,7 @@ The ones that handle it badly treat adolescence as a failure of the community's 
 
 Here the field makes a claim it is usually careful about and occasionally is not.
 
-Senior cohousing is designed around **independent living with mutual support** — private homes, shared meals, neighbours who notice. Charles Durrett, the architect who brought the model into English, is explicit that it does not replace formal caregiving when it is needed; what it supplies is a layer of informal help underneath the formal system, not instead of it. The practices that go with it have a name — *co-care* — and the distinction from *care* is the entire point.
+Senior cohousing is designed around **independent living with mutual support** — private homes, shared meals, neighbours who notice. Charles Durrett, the architect who brought the model into English, is explicit that it does not replace formal caregiving when it is needed; what it supplies is a layer of informal help underneath the formal system, not instead of it. The practices that go with it have a name — _co-care_ — and the distinction from _care_ is the entire point.
 
 That distinction matters because the failure mode is predictable. A group of friends in their sixties buys a site together. Twenty years later one of them needs two people to help her out of bed at three in the morning, and the community discovers that willingness is not the same as capacity, and that the person doing most of the helping is also seventy-eight.
 
@@ -115,31 +115,31 @@ There is an honest gap here worth naming: we have found no longitudinal work fol
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Wunderlich v. Germany — European Court of Human Rights, 10 January 2019',
-			url: 'https://strasbourgobservers.com/2019/02/05/wunderlich-v-germany-enforcing-compulsory-home-schooling/',
-			note: 'the judgment upholding Germany’s ban on home education, and the reasoning behind it'
-		},
-		{
-			title: 'Riazi et al. — Correlates of Children’s Independent Mobility in Canada (2019)',
-			url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6727085/',
-			note: '1,699 children aged 8–12; neighbours looking out for children was not significantly associated with independent mobility'
-		},
-		{
-			title: 'The Cohousing Company — Senior Cohousing',
-			url: 'https://www.cohousingco.com/senior-cohousing',
-			note: 'co-care versus care, and the ten-week study course senior groups run before building'
-		},
-		{
-			title: 'National CoHousing Alliance — Senior Cohousing',
-			url: 'https://cohousingalliance.org/senior-cohousing/',
-			note: 'communities, events and material on ageing in cohousing'
-		},
-		{
-			title: 'Owning, leasing, renting',
-			url: '/learn/guides/intentional-communities/owning-leasing-renting',
-			note: 'what your heirs would actually receive, by legal shell'
-		}
-	]}
+items={[
+{
+title: 'Wunderlich v. Germany — European Court of Human Rights, 10 January 2019',
+url: 'https://strasbourgobservers.com/2019/02/05/wunderlich-v-germany-enforcing-compulsory-home-schooling/',
+note: 'the judgment upholding Germany’s ban on home education, and the reasoning behind it'
+},
+{
+title: 'Riazi et al. — Correlates of Children’s Independent Mobility in Canada (2019)',
+url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6727085/',
+note: '1,699 children aged 8–12; neighbours looking out for children was not significantly associated with independent mobility'
+},
+{
+title: 'The Cohousing Company — Senior Cohousing',
+url: 'https://www.cohousingco.com/senior-cohousing',
+note: 'co-care versus care, and the ten-week study course senior groups run before building'
+},
+{
+title: 'National CoHousing Alliance — Senior Cohousing',
+url: 'https://cohousingalliance.org/senior-cohousing/',
+note: 'communities, events and material on ageing in cohousing'
+},
+{
+title: 'Owning, leasing, renting',
+url: '/learn/guides/intentional-communities/owning-leasing-renting',
+note: 'what your heirs would actually receive, by legal shell'
+}
+]}
 />

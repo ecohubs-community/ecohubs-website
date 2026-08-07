@@ -12,7 +12,10 @@ export interface ListmonkResult {
 	error?: string;
 }
 
-export async function subscribeToListmonk(email: string, listIds: number[] = [1]): Promise<ListmonkResult> {
+export async function subscribeToListmonk(
+	email: string,
+	listIds: number[] = [1]
+): Promise<ListmonkResult> {
 	if (!LINKMONK_URL || !LINKMONK_USERNAME) {
 		return { ok: false, error: 'Listmonk not configured' };
 	}

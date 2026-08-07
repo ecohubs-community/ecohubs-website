@@ -19,18 +19,18 @@ terms: [intentional-community, commune, cohousing]
 This is the most common confusion newcomers arrive with, and it is not really a confusion between two things. It is a category being mistaken for its most famous member — like using "terrier" to mean "dog".
 
 <Compare
-	columns={['Intentional community', 'Commune']}
-	rows={[
-		{ label: 'What the word is', values: ['The category', 'One form within it'] },
-		{ label: 'Requires', values: ['Chosen membership, proximity, written agreements', 'All of that, plus pooled income'] },
-		{ label: 'Finances', values: ['Usually private', 'Pooled by definition'] },
-		{ label: 'Housing', values: ['Usually private and self-contained', 'Often shared or allocated'] },
-		{ label: 'Covers', values: ['Cohousing, ecovillages, co-ops, land trusts, communes', 'Only income-sharing communities'] },
-		{ label: 'How common', values: ['Thousands of documented projects', 'A small minority of them'] },
-		{ label: 'Joining', values: ['Varies enormously by form', 'Long, and mutual'] },
-		{ label: 'Public image', values: ['Thin — most people have no picture', 'Strong, and mostly from the 1960s'] }
-	]}
-	caption="The right question is never which label a place uses, but what it actually shares."
+columns={['Intentional community', 'Commune']}
+rows={[
+{ label: 'What the word is', values: ['The category', 'One form within it'] },
+{ label: 'Requires', values: ['Chosen membership, proximity, written agreements', 'All of that, plus pooled income'] },
+{ label: 'Finances', values: ['Usually private', 'Pooled by definition'] },
+{ label: 'Housing', values: ['Usually private and self-contained', 'Often shared or allocated'] },
+{ label: 'Covers', values: ['Cohousing, ecovillages, co-ops, land trusts, communes', 'Only income-sharing communities'] },
+{ label: 'How common', values: ['Thousands of documented projects', 'A small minority of them'] },
+{ label: 'Joining', values: ['Varies enormously by form', 'Long, and mutual'] },
+{ label: 'Public image', values: ['Thin — most people have no picture', 'Strong, and mostly from the 1960s'] }
+]}
+caption="The right question is never which label a place uses, but what it actually shares."
 />
 
 ## What the umbrella actually requires
@@ -39,7 +39,7 @@ An <Gloss term="intentional-community">intentional community</Gloss> is defined 
 
 Chosen-ness rules out a street you happened to move into. Proximity rules out a network that only meets online. Written agreements rule out a group of friends sharing a house on the assumption that goodwill will hold — and it is the absence of that third condition, far more than any failure of idealism, that ends most attempts.
 
-Notice what is *not* in the definition: no ecological commitment, no shared income, no shared politics, no communal meals. A housing co-op in a city and a land project in the hills can both be intentional communities and share nothing else.
+Notice what is _not_ in the definition: no ecological commitment, no shared income, no shared politics, no communal meals. A housing co-op in a city and a land project in the hills can both be intentional communities and share nothing else.
 
 ## Why "commune" swallowed the category
 
@@ -80,16 +80,16 @@ A single project frequently occupies more than one row: an ecovillage laid out a
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Foundation for Intentional Community',
-			url: 'https://www.ic.org/',
-			note: 'the long-running directory, and the source of the umbrella definition'
-		},
-		{
-			title: 'Commune vs cohousing',
-			url: '/learn/compare/commune-vs-cohousing',
-			note: 'the money question, in detail'
-		}
-	]}
+items={[
+{
+title: 'Foundation for Intentional Community',
+url: 'https://www.ic.org/',
+note: 'the long-running directory, and the source of the umbrella definition'
+},
+{
+title: 'Commune vs cohousing',
+url: '/learn/compare/commune-vs-cohousing',
+note: 'the money question, in detail'
+}
+]}
 />

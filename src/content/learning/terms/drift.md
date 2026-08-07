@@ -41,11 +41,11 @@ Not all drift is decline. Communities legitimately change what they want — a g
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Why communities end',
-			url: '/learn/guides/intentional-communities/why-communities-end',
-			note: 'the six patterns, and the endings that are not failures'
-		}
-	]}
+items={[
+{
+title: 'Why communities end',
+url: '/learn/guides/intentional-communities/why-communities-end',
+note: 'the six patterns, and the endings that are not failures'
+}
+]}
 />

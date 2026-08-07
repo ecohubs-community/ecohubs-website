@@ -6,7 +6,10 @@
 	import WaitlistForm from '$lib/components/waitlist/WaitlistForm.svelte';
 	import WaitlistProfileModal from '$lib/components/waitlist/WaitlistProfileModal.svelte';
 	import { initMauticTracking } from '$lib/utils/mautic';
-	import { initScrollAnimations, initStaggeredScrollAnimations } from '$lib/utils/scroll-animations';
+	import {
+		initScrollAnimations,
+		initStaggeredScrollAnimations
+	} from '$lib/utils/scroll-animations';
 	import { SEO_CONFIG } from '$lib/config/seo';
 	import { Users, MapPin, Coins, Network } from 'lucide-svelte';
 
@@ -95,8 +98,16 @@
 
 	const team = [
 		{ img: StefanImg, name: 'Stefan Lessle', role: 'EcoHubs initiator · Web Developer' },
-		{ img: LuisaImg, name: 'Luisa Meneghetti', role: 'EcoHubs co-founder · Consultant & Trusted Advisor' },
-		{ img: CalebeImg, name: 'Calebe de Roure', role: 'EcoHubs contributor · Regenerative Economist' },
+		{
+			img: LuisaImg,
+			name: 'Luisa Meneghetti',
+			role: 'EcoHubs co-founder · Consultant & Trusted Advisor'
+		},
+		{
+			img: CalebeImg,
+			name: 'Calebe de Roure',
+			role: 'EcoHubs contributor · Regenerative Economist'
+		},
 		{ img: JavierProfile, name: 'Javier Yanez', role: 'Natural builder · open-source dome systems' }
 	];
 
@@ -111,7 +122,7 @@
 		},
 		{
 			q: 'Do I need to be an expert, or move now?',
-			a: 'No to both. The path is gradual and there\'s training built in. What matters far more than existing skills is curiosity, care, and a willingness to learn alongside others. Plenty of people on the list are simply paying attention for now.'
+			a: "No to both. The path is gradual and there's training built in. What matters far more than existing skills is curiosity, care, and a willingness to learn alongside others. Plenty of people on the list are simply paying attention for now."
 		},
 		{
 			q: "Can I help even if I don't move in?",
@@ -243,10 +254,7 @@
 
 <main class="overflow-x-hidden">
 	<!-- ============ 1 · HERO ============ -->
-	<section
-		id="hero"
-		class="relative flex flex-col lg:min-h-screen lg:justify-end scroll-mt-16"
-	>
+	<section id="hero" class="relative flex flex-col lg:min-h-screen lg:justify-end scroll-mt-16">
 		<!-- Content — kept in normal flow on desktop so a tall block grows the
 		     section instead of being clipped above the fold. The image sits behind
 		     it as an absolute background. -->
@@ -267,9 +275,9 @@
 				</h1>
 
 				<p class="max-w-xl mt-6 text-lg font-light leading-relaxed text-stone-600 sm:text-xl">
-					We're building EcoHub One — a regenerative community designed so people thrive together, and
-					the land does too. It starts with a small founding circle. The first step is just saying
-					you're in.
+					We're building EcoHub One — a regenerative community designed so people thrive together,
+					and the land does too. It starts with a small founding circle. The first step is just
+					saying you're in.
 				</p>
 
 				<div class="mt-8">
@@ -315,7 +323,10 @@
 	</section>
 
 	<!-- ============ 2 · THE WHY ============ -->
-	<section id="why" class="py-24 md:py-32 bg-ecohubs-ivory grain relative overflow-hidden scroll-mt-16">
+	<section
+		id="why"
+		class="py-24 md:py-32 bg-ecohubs-ivory grain relative overflow-hidden scroll-mt-16"
+	>
 		<div class="relative max-w-4xl px-5 mx-auto lg:px-8" data-scroll-animate="fade-up">
 			<div class="mb-5 kicker text-emerald-800">The why</div>
 			<h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ecohubs-deep leading-[1.12]">
@@ -326,9 +337,9 @@
 			</h2>
 			<div class="grid gap-8 mt-8 md:grid-cols-2 md:gap-12">
 				<p class="text-[17px] leading-[1.75] text-stone-700">
-					We're not the first to dream of living differently. People have tried for decades. And most
-					intentional communities don't fail on solar panels or vegetable beds — they fail on the
-					hard, human part: conflict, unclear decisions, burnout, who-does-what.
+					We're not the first to dream of living differently. People have tried for decades. And
+					most intentional communities don't fail on solar panels or vegetable beds — they fail on
+					the hard, human part: conflict, unclear decisions, burnout, who-does-what.
 				</p>
 				<p class="text-[17px] leading-[1.75] text-stone-700">
 					<strong class="font-medium text-ecohubs-deep">EcoHubs starts with that hard part.</strong>
@@ -345,7 +356,9 @@
 			<div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 				<div data-scroll-animate="fade-up">
 					<div class="mb-5 kicker text-emerald-700">What is an EcoHub?</div>
-					<h2 class="font-serif text-3xl sm:text-4xl md:text-[44px] text-ecohubs-deep leading-[1.12]">
+					<h2
+						class="font-serif text-3xl sm:text-4xl md:text-[44px] text-ecohubs-deep leading-[1.12]"
+					>
 						A small community that lives well together —
 						<em class="italic font-normal font-story text-ecohubs-primary"
 							>and gives more to the land than it takes.</em
@@ -354,13 +367,16 @@
 					<p class="mt-6 text-[17px] leading-[1.75] text-stone-700 max-w-xl">
 						Picture a handful of households on regenerating land: shared gardens and kitchens,
 						low-impact homes, real work and real income, and a way of making decisions together that
-						actually holds. Not a commune, not an eco-resort — a living place designed to be repeated.
+						actually holds. Not a commune, not an eco-resort — a living place designed to be
+						repeated.
 					</p>
 
 					<div class="grid gap-3 mt-9 sm:grid-cols-2">
 						{#each principles as p}
 							<div class="rounded-2xl bg-ecohubs-ivory border border-stone-200/70 p-5">
-								<div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-1.5">
+								<div
+									class="font-mono text-[11px] tracking-widest uppercase text-emerald-700 mb-1.5"
+								>
 									{p.n}
 								</div>
 								<p class="text-[14.5px] text-stone-800 leading-snug">
@@ -472,21 +488,26 @@
 	</section>
 
 	<!-- ============ 5 · BUILDING IT FOR REAL — JAVIER'S DOMES ============ -->
-	<section id="build" class="py-24 md:py-32 bg-ecohubs-ivory grain relative overflow-hidden scroll-mt-16">
+	<section
+		id="build"
+		class="py-24 md:py-32 bg-ecohubs-ivory grain relative overflow-hidden scroll-mt-16"
+	>
 		<div class="relative px-5 mx-auto max-w-7xl lg:px-8">
 			<div class="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
 				<div class="lg:col-span-5" data-scroll-animate="fade-up">
 					<div class="mb-5 kicker text-emerald-800">Building it for real</div>
-					<h2 class="font-serif text-3xl sm:text-4xl md:text-[44px] text-ecohubs-deep leading-[1.12]">
+					<h2
+						class="font-serif text-3xl sm:text-4xl md:text-[44px] text-ecohubs-deep leading-[1.12]"
+					>
 						The homes already exist —
 						<em class="italic font-normal font-story text-stone-500"
 							>and they're buildable almost anywhere.</em
 						>
 					</h2>
 					<p class="mt-6 text-[17px] leading-[1.75] text-stone-700">
-						This isn't a render. Natural builder Javier Yanez has developed an affordable, replicable
-						geodesic dome system: CNC-cut frames assembled with local, natural materials. A 7-metre
-						dome runs roughly
+						This isn't a render. Natural builder Javier Yanez has developed an affordable,
+						replicable geodesic dome system: CNC-cut frames assembled with local, natural materials.
+						A 7-metre dome runs roughly
 						<strong class="font-medium text-ecohubs-deep">$10k–$20k</strong> — strong, beautiful, and
 						within reach.
 					</p>
@@ -529,8 +550,12 @@
 							sizes="(max-width: 1023px) 50vw, 320px"
 							class="absolute inset-0 object-cover w-full h-full"
 						/>
-						<div class="absolute inset-0 flex items-end p-3 bg-gradient-to-t from-black/35 to-transparent">
-							<span class="text-white text-[12px] font-medium drop-shadow">Dome frame in the field</span>
+						<div
+							class="absolute inset-0 flex items-end p-3 bg-gradient-to-t from-black/35 to-transparent"
+						>
+							<span class="text-white text-[12px] font-medium drop-shadow"
+								>Dome frame in the field</span
+							>
 						</div>
 					</div>
 					<div
@@ -542,7 +567,9 @@
 							sizes="(max-width: 1023px) 50vw, 320px"
 							class="absolute inset-0 object-cover w-full h-full"
 						/>
-						<div class="absolute inset-0 flex items-end p-3 bg-gradient-to-t from-black/35 to-transparent">
+						<div
+							class="absolute inset-0 flex items-end p-3 bg-gradient-to-t from-black/35 to-transparent"
+						>
 							<span class="text-white text-[12px] font-medium drop-shadow">Living interior</span>
 						</div>
 					</div>
@@ -585,7 +612,9 @@
 							>
 								{step.n}
 							</span>
-							<h3 class="font-serif text-lg leading-snug text-ecohubs-deep lg:mt-0">{step.title}</h3>
+							<h3 class="font-serif text-lg leading-snug text-ecohubs-deep lg:mt-0">
+								{step.title}
+							</h3>
 							<p class="mt-1.5 text-[14px] text-stone-600 leading-relaxed">{step.body}</p>
 							{#if step.here}
 								<span
@@ -619,7 +648,9 @@
 				Permaculturists, economists, software developers and ecological builders, designing this
 				together in the open — 15+ contributors across 10 countries.
 			</p>
-			<div class="grid grid-cols-2 gap-x-6 gap-y-9 mt-12 sm:grid-cols-4 sm:gap-x-4 max-w-3xl mx-auto">
+			<div
+				class="grid grid-cols-2 gap-x-6 gap-y-9 mt-12 sm:grid-cols-4 sm:gap-x-4 max-w-3xl mx-auto"
+			>
 				{#each team as person}
 					<figure class="flex flex-col items-center gap-2.5 text-center">
 						<div class="relative w-20 h-20 overflow-hidden rounded-full soft-shadow">
@@ -632,7 +663,8 @@
 						</div>
 						<figcaption>
 							<span class="block text-[14px] font-medium text-ecohubs-deep">{person.name}</span>
-							<span class="block text-[12px] text-stone-500 leading-snug mt-0.5">{person.role}</span>
+							<span class="block text-[12px] text-stone-500 leading-snug mt-0.5">{person.role}</span
+							>
 						</figcaption>
 					</figure>
 				{/each}
@@ -673,7 +705,9 @@
 			<div class="mb-12" data-scroll-animate="fade-up">
 				<div class="mb-5 kicker text-emerald-700">Honest answers</div>
 				<h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ecohubs-deep leading-[1.12]">
-					The questions <em class="italic font-normal font-story text-stone-500">people actually ask.</em>
+					The questions <em class="italic font-normal font-story text-stone-500"
+						>people actually ask.</em
+					>
 				</h2>
 			</div>
 
@@ -685,7 +719,8 @@
 							aria-expanded={openFaq === i}
 							class="flex items-start justify-between w-full gap-6 py-5 text-left"
 						>
-							<span class="font-serif text-lg leading-snug sm:text-xl text-ecohubs-deep">{item.q}</span
+							<span class="font-serif text-lg leading-snug sm:text-xl text-ecohubs-deep"
+								>{item.q}</span
 							>
 							<span
 								class="mt-1.5 shrink-0 w-3.5 h-3.5 relative transition-transform duration-300 before:content-[''] before:absolute before:top-1/2 before:left-0 before:w-3.5 before:h-px before:bg-ecohubs-dark after:content-[''] after:absolute after:left-1/2 after:top-0 after:h-3.5 after:w-px after:bg-ecohubs-dark {openFaq ===
@@ -697,15 +732,15 @@
 						{#if openFaq === i}
 							<div transition:slide>
 								<p class="pb-6 text-[16px] leading-[1.7] text-stone-700">
-										{item.a}
-										{#if item.link}
-											<a
-												href={item.link.href}
-												class="text-ecohubs-dark font-medium underline underline-offset-2 hover:text-ecohubs-primary transition-colors"
-												>{item.link.label}</a
-											>
-										{/if}
-									</p>
+									{item.a}
+									{#if item.link}
+										<a
+											href={item.link.href}
+											class="text-ecohubs-dark font-medium underline underline-offset-2 hover:text-ecohubs-primary transition-colors"
+											>{item.link.label}</a
+										>
+									{/if}
+								</p>
 							</div>
 						{/if}
 					</div>
@@ -736,11 +771,13 @@
 			</div>
 			<h2 class="font-serif text-3xl sm:text-5xl md:text-[56px] leading-[1.08] text-emerald-50">
 				A new way of living is being built.
-				<em class="italic font-normal font-story text-emerald-200/85">Belong to it from the start.</em>
+				<em class="italic font-normal font-story text-emerald-200/85"
+					>Belong to it from the start.</em
+				>
 			</h2>
 			<p class="max-w-xl mx-auto mt-6 text-lg font-light leading-relaxed text-emerald-100/80">
-				One email puts you in the room while EcoHub One takes shape — no commitment, no cost, just the
-				first step.
+				One email puts you in the room while EcoHub One takes shape — no commitment, no cost, just
+				the first step.
 			</p>
 
 			<div class="mt-9">
@@ -748,8 +785,8 @@
 			</div>
 
 			<p class="mt-7 font-story italic text-[15px] text-emerald-200/70">
-				First cohort: ~20 pioneers, forming 2026 — kept small so the people in it can truly know each
-				other.
+				First cohort: ~20 pioneers, forming 2026 — kept small so the people in it can truly know
+				each other.
 			</p>
 		</div>
 	</section>
@@ -802,7 +839,9 @@
 			Free to join. No commitment — just the first step.
 		</p>
 	</div>
-	<a href="#join" class="px-5 py-3 text-sm font-medium text-white rounded-full shrink-0 bg-ecohubs-dark"
+	<a
+		href="#join"
+		class="px-5 py-3 text-sm font-medium text-white rounded-full shrink-0 bg-ecohubs-dark"
 		>Join the founding community</a
 	>
 </div>

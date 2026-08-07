@@ -42,16 +42,16 @@ Ask what happens if the trust itself fails. A ground lease is only as durable as
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Owning, leasing, renting',
-			url: '/learn/guides/intentional-communities/owning-leasing-renting',
-			note: 'the four legal shells and the mortgage question'
-		},
-		{
-			title: 'Fannie Mae — Community Land Trust Checklist',
-			url: 'https://singlefamily.fanniemae.com/media/document/pdf/community-land-trust-checklist',
-			note: 'what a lender requires of a ground lease'
-		}
-	]}
+items={[
+{
+title: 'Owning, leasing, renting',
+url: '/learn/guides/intentional-communities/owning-leasing-renting',
+note: 'the four legal shells and the mortgage question'
+},
+{
+title: 'Fannie Mae — Community Land Trust Checklist',
+url: 'https://singlefamily.fanniemae.com/media/document/pdf/community-land-trust-checklist',
+note: 'what a lender requires of a ground lease'
+}
+]}
 />

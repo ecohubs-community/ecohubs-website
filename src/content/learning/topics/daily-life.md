@@ -37,23 +37,23 @@ Descriptions of community life arrive in one of two registers: the brochure, whe
 
 **Meetings.** A whole-community meeting monthly or fortnightly, one to two hours, plus whatever working group you sit on. Two to five hours a month is typical in a settled community. In a forming one it can be triple that, and forming groups routinely underestimate it by a factor of two.
 
-**Everything else.** Your job, your family, your own kitchen, your own evening. The mistake newcomers make is imagining community life *replaces* ordinary life. It sits on top of it.
+**Everything else.** Your job, your family, your own kitchen, your own evening. The mistake newcomers make is imagining community life _replaces_ ordinary life. It sits on top of it.
 
 ## What you give up, and what you get
 
 <Compare
-	columns={['You give up', 'You get']}
-	rows={[
-		{ label: 'Spontaneity', values: ['Painting the hallway is now a group matter', 'Decisions that more than one person has thought about'] },
-		{ label: 'Anonymity', values: ['There is no version where nobody notices you', 'Somebody notices when you are unwell'] },
-		{ label: 'Avoidance', values: ['You will be in a room with them on Thursday', 'Disagreements get resolved rather than nursed'] },
-		{ label: 'Speed', values: ['A minute’s decision can take a week', 'Fewer decisions that only suited one household'] },
-		{ label: 'Things', values: ['Some private space and some private kit', 'One workshop, three cars instead of twenty'] }
-	]}
-	caption="The same facts read as a cost or a benefit depending on the person. Notice which column you found yourself agreeing with."
+columns={['You give up', 'You get']}
+rows={[
+{ label: 'Spontaneity', values: ['Painting the hallway is now a group matter', 'Decisions that more than one person has thought about'] },
+{ label: 'Anonymity', values: ['There is no version where nobody notices you', 'Somebody notices when you are unwell'] },
+{ label: 'Avoidance', values: ['You will be in a room with them on Thursday', 'Disagreements get resolved rather than nursed'] },
+{ label: 'Speed', values: ['A minute’s decision can take a week', 'Fewer decisions that only suited one household'] },
+{ label: 'Things', values: ['Some private space and some private kit', 'One workshop, three cars instead of twenty'] }
+]}
+caption="The same facts read as a cost or a benefit depending on the person. Notice which column you found yourself agreeing with."
 />
 
-The one that people who leave say they miss most is not on either side of that table. It is a default answer to the question *who would I call?*
+The one that people who leave say they miss most is not on either side of that table. It is a default answer to the question _who would I call?_
 
 ## The work nobody put on the rota
 
@@ -65,7 +65,7 @@ Every community has a rota, and every community has a second layer of work that 
 
 Well-designed communities think in terms of a <Gloss term="privacy-gradient">privacy gradient</Gloss>: from fully public through semi-private to fully private, so a resident can regulate contact without having to announce that they want to be left alone.
 
-Where it is missing — homes opening directly onto a shared kitchen, no defensible outdoor space, thin walls — people withdraw entirely instead, because the only available setting is *all* or *nothing*.
+Where it is missing — homes opening directly onto a shared kitchen, no defensible outdoor space, thin walls — people withdraw entirely instead, because the only available setting is _all_ or _nothing_.
 
 The privacy hardest to arrange is not spatial. It is not being observed. In a community of forty, people know roughly when you come home, whether you went to the meeting, and how you looked when you did. Nobody is spying; it is the arithmetic of living near people who pay attention.
 
@@ -96,26 +96,26 @@ The general lesson is worth carrying into every claim in this topic: the pleasan
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'What daily life actually looks like',
-			url: '/learn/guides/intentional-communities/what-daily-life-looks-like',
-			note: 'the week in full, with a profile quiz on how much shared life you want'
-		},
-		{
-			title: 'Children, ageing and the shape of a life',
-			url: '/learn/guides/intentional-communities/children-ageing-and-a-life',
-			note: 'childcare, schooling, teenagers, growing old and dying'
-		},
-		{
-			title: 'Riazi et al. — Correlates of Children’s Independent Mobility in Canada (2019)',
-			url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6727085/',
-			note: 'the study behind the deep section'
-		},
-		{
-			title: 'National CoHousing Alliance',
-			url: 'https://cohousingalliance.org/',
-			note: 'common house design, meal patterns, and senior cohousing'
-		}
-	]}
+items={[
+{
+title: 'What daily life actually looks like',
+url: '/learn/guides/intentional-communities/what-daily-life-looks-like',
+note: 'the week in full, with a profile quiz on how much shared life you want'
+},
+{
+title: 'Children, ageing and the shape of a life',
+url: '/learn/guides/intentional-communities/children-ageing-and-a-life',
+note: 'childcare, schooling, teenagers, growing old and dying'
+},
+{
+title: 'Riazi et al. — Correlates of Children’s Independent Mobility in Canada (2019)',
+url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6727085/',
+note: 'the study behind the deep section'
+},
+{
+title: 'National CoHousing Alliance',
+url: 'https://cohousingalliance.org/',
+note: 'common house design, meal patterns, and senior cohousing'
+}
+]}
 />

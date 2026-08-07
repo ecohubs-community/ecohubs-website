@@ -19,19 +19,19 @@ In a **commune**, members pool income — earnings go into a common pot and need
 Almost every other difference between these two forms is downstream of a single question: does the community share income? Answer that and you can predict most of the rest — how long admission takes, how much you can be asked to justify, how easy it is to leave, and how much of your life is a group matter.
 
 <Compare
-	columns={['Commune', 'Cohousing']}
-	rows={[
-		{ label: 'Income', values: ['Pooled into a common purse', 'Entirely separate'] },
-		{ label: 'Housing', values: ['Often shared or allocated by the group', 'Private, self-contained, individually held'] },
-		{ label: 'What you pay', values: ['Everything, in exchange for needs met', 'A share of common costs'] },
-		{ label: 'Joining', values: ['Long — often a year of provisional membership', 'Buy or rent a home; a shorter process'] },
-		{ label: 'Leaving', values: ['Complex; what you take out is a written rule', 'Sell or move out, much like anywhere'] },
-		{ label: 'Labour', values: ['Usually a quota, counted and tracked', 'Voluntary work on the common parts'] },
-		{ label: 'Group decides about', values: ['Money, work, often housing', 'The common parts only'] },
-		{ label: 'Typical size', values: ['Often 20–100 adults', '20–40 households'] },
-		{ label: 'How common', values: ['Rare', 'The most common form in Europe and North America'] }
-	]}
-	caption="Generalisations. Both labels are self-applied, and hybrids exist."
+columns={['Commune', 'Cohousing']}
+rows={[
+{ label: 'Income', values: ['Pooled into a common purse', 'Entirely separate'] },
+{ label: 'Housing', values: ['Often shared or allocated by the group', 'Private, self-contained, individually held'] },
+{ label: 'What you pay', values: ['Everything, in exchange for needs met', 'A share of common costs'] },
+{ label: 'Joining', values: ['Long — often a year of provisional membership', 'Buy or rent a home; a shorter process'] },
+{ label: 'Leaving', values: ['Complex; what you take out is a written rule', 'Sell or move out, much like anywhere'] },
+{ label: 'Labour', values: ['Usually a quota, counted and tracked', 'Voluntary work on the common parts'] },
+{ label: 'Group decides about', values: ['Money, work, often housing', 'The common parts only'] },
+{ label: 'Typical size', values: ['Often 20–100 adults', '20–40 households'] },
+{ label: 'How common', values: ['Rare', 'The most common form in Europe and North America'] }
+]}
+caption="Generalisations. Both labels are self-applied, and hybrids exist."
 />
 
 ## What pooling income actually does
@@ -48,7 +48,7 @@ The compensating advantage is real and hard to get any other way. A shared purse
 
 It also removes most of the interdependence. What you get is excellent neighbours, shared facilities you could not afford alone, and children who can be let out of the front door. What you do not get is anyone with a structural obligation to catch you.
 
-This is why cohousing is the easiest form to join and the easiest to leave: you buy or rent a home much like any other, and if it does not work out you sell it. It is also the most expensive form to *start*, because it means building or converting real housing.
+This is why cohousing is the easiest form to join and the easiest to leave: you buy or rent a home much like any other, and if it does not work out you sell it. It is also the most expensive form to _start_, because it means building or converting real housing.
 
 <Callout type="caveat">
 
@@ -79,16 +79,16 @@ Each of these can be adopted independently, and each can be reversed. That is th
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Federation of Egalitarian Communities',
-			url: 'https://www.thefec.org/',
-			note: 'income sharing as a condition of membership'
-		},
-		{
-			title: 'Cohousing vs ecovillage',
-			url: '/learn/compare/cohousing-vs-ecovillage',
-			note: 'the other comparison cohousing gets caught in'
-		}
-	]}
+items={[
+{
+title: 'Federation of Egalitarian Communities',
+url: 'https://www.thefec.org/',
+note: 'income sharing as a condition of membership'
+},
+{
+title: 'Cohousing vs ecovillage',
+url: '/learn/compare/cohousing-vs-ecovillage',
+note: 'the other comparison cohousing gets caught in'
+}
+]}
 />

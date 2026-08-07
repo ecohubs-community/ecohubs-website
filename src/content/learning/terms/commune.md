@@ -35,11 +35,11 @@ The commune is the rarest of the main forms and the hardest to join, and both fa
 "Commune" is used loosely in the press for any <Gloss term="intentional-community">intentional community</Gloss>, which muddles the one distinction that actually predicts daily life. Most intentional communities have entirely private finances. If members hold their own jobs, pay their own bills and simply share a garden and a common house, it is not a commune — the word for that is usually <Gloss term="cohousing">cohousing</Gloss>.
 
 <Sources
-	items={[
-		{
-			title: 'Federation of Egalitarian Communities',
-			url: 'https://www.thefec.org/',
-			note: 'income sharing as a membership condition'
-		}
-	]}
+items={[
+{
+title: 'Federation of Egalitarian Communities',
+url: 'https://www.thefec.org/',
+note: 'income sharing as a membership condition'
+}
+]}
 />

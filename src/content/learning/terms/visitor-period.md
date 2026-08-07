@@ -39,16 +39,16 @@ Ask whether you may come back a second time, in a different season. A rural comm
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Membership: getting in, and getting out',
-			url: '/learn/guides/intentional-communities/membership-getting-in-and-out',
-			note: 'the four stages, and what is decided at each'
-		},
-		{
-			title: 'Twin Oaks Community — FAQs',
-			url: 'https://www.twinoaks.org/faqs-all-on-one-page',
-			note: 'a three-week visitor period, described by the community'
-		}
-	]}
+items={[
+{
+title: 'Membership: getting in, and getting out',
+url: '/learn/guides/intentional-communities/membership-getting-in-and-out',
+note: 'the four stages, and what is decided at each'
+},
+{
+title: 'Twin Oaks Community — FAQs',
+url: 'https://www.twinoaks.org/faqs-all-on-one-page',
+note: 'a three-week visitor period, described by the community'
+}
+]}
 />

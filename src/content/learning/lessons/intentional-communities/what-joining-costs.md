@@ -55,14 +55,14 @@ The best data we have found on ongoing costs is a study by the Cohousing Associa
 What it shows about where the money goes is genuinely useful:
 
 <Compare
-	columns={['Share of the average annual budget']}
-	rows={[
-		{ label: 'Utilities and insurance', values: ['34%'] },
-		{ label: 'Savings — the reserve fund', values: ['33%'] },
-		{ label: 'Self-performed admin and maintenance', values: ['15%'] },
-		{ label: 'Trade and professional contracts', values: ['12%'] }
-	]}
-	caption="Cohousing Association of the US / Cohousing Research Network, 20 communities, 611 units. The remainder is a small residual."
+columns={['Share of the average annual budget']}
+rows={[
+{ label: 'Utilities and insurance', values: ['34%'] },
+{ label: 'Savings — the reserve fund', values: ['33%'] },
+{ label: 'Self-performed admin and maintenance', values: ['15%'] },
+{ label: 'Trade and professional contracts', values: ['12%'] }
+]}
+caption="Cohousing Association of the US / Cohousing Research Network, 20 communities, 611 units. The remainder is a small residual."
 />
 
 The line worth staring at is the second one. **Roughly a third of what you pay each month is not for this year at all** — it is the reserve, saved against the roof, the boiler and the resurfacing. A community whose dues look enviably low is often one that is not saving, and the bill arrives later as a special levy that nobody budgeted for.
@@ -130,36 +130,36 @@ The entry cost is nothing. The exit is also nothing, with one important protecti
 
 Read that as a genuine financial proposition rather than an eccentricity. It buys something no other form on this page offers — care that nobody has to negotiate for. Illness, a new child, retraining and old age are simply covered. What it costs is the ability to accumulate anything, and the freedom to spend without reference to anyone else.
 
-It is also worth noting *why* these figures exist at all while cohousing's do not. A common purse forces a community to publish its arithmetic. Private finances let everyone keep the question vague — which is exactly how a field ends up with no usable cost data.
+It is also worth noting _why_ these figures exist at all while cohousing's do not. A common purse forces a community to publish its arithmetic. Private finances let everyone keep the question vague — which is exactly how a field ends up with no usable cost data.
 
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Cohousing Costs After You Move In — Cohousing Now! (Coho/US)',
-			url: 'https://www.cohousing.org/wp-content/uploads/2020/10/Coho-Now-103_-Cohousing-Costs-After-You-Move-In.pdf',
-			note: 'the 20-community, 611-unit budget analysis, and the dues ranges quoted above'
-		},
-		{
-			title: 'Resale Formula Design — Grounded Solutions Network (2011)',
-			url: 'https://groundedsolutions.org/wp-content/uploads/2018-11/12-Resale-Formula-Design.pdf',
-			note: 'chapter 12 of the CLT Technical Manual; the source of the 25% and 5–30% figures'
-		},
-		{
-			title: 'Twin Oaks Community — FAQs',
-			url: 'https://www.twinoaks.org/faqs-all-on-one-page',
-			note: 'the labour quota, the allowance and the asset-freezing rule, from the community itself'
-		},
-		{
-			title: 'National CoHousing Alliance',
-			url: 'https://cohousingalliance.org/',
-			note: 'successor to Coho/US; community listings, and homes currently for sale'
-		},
-		{
-			title: 'Foundation for Intentional Community',
-			url: 'https://www.ic.org/',
-			note: 'directory listings, many of which state entry costs and monthly charges directly'
-		}
-	]}
+items={[
+{
+title: 'Cohousing Costs After You Move In — Cohousing Now! (Coho/US)',
+url: 'https://www.cohousing.org/wp-content/uploads/2020/10/Coho-Now-103_-Cohousing-Costs-After-You-Move-In.pdf',
+note: 'the 20-community, 611-unit budget analysis, and the dues ranges quoted above'
+},
+{
+title: 'Resale Formula Design — Grounded Solutions Network (2011)',
+url: 'https://groundedsolutions.org/wp-content/uploads/2018-11/12-Resale-Formula-Design.pdf',
+note: 'chapter 12 of the CLT Technical Manual; the source of the 25% and 5–30% figures'
+},
+{
+title: 'Twin Oaks Community — FAQs',
+url: 'https://www.twinoaks.org/faqs-all-on-one-page',
+note: 'the labour quota, the allowance and the asset-freezing rule, from the community itself'
+},
+{
+title: 'National CoHousing Alliance',
+url: 'https://cohousingalliance.org/',
+note: 'successor to Coho/US; community listings, and homes currently for sale'
+},
+{
+title: 'Foundation for Intentional Community',
+url: 'https://www.ic.org/',
+note: 'directory listings, many of which state entry costs and monthly charges directly'
+}
+]}
 />

@@ -360,13 +360,13 @@
 			<p class="text-ecohubs-deep font-serif text-[28px] leading-[1.25] md:text-[36px]">
 				Most intentional communities don't fracture because their values were wrong. They fracture
 				because the rules everyone assumed were shared
-				<em class="font-story text-ecohubs-primary font-normal italic">turned out not to be</em> —
-				and the discovery happens during the conflict, not before it.
+				<em class="font-story text-ecohubs-primary font-normal italic">turned out not to be</em> — and
+				the discovery happens during the conflict, not before it.
 			</p>
 			<p class="mt-8 text-lg leading-relaxed font-light text-stone-700">
-				This isn't about blame, or about communities being naive. It's about how rarely we slow
-				down to write things down — and how cleanly the gaps reveal themselves the first time
-				something hard happens.
+				This isn't about blame, or about communities being naive. It's about how rarely we slow down
+				to write things down — and how cleanly the gaps reveal themselves the first time something
+				hard happens.
 			</p>
 		</div>
 	</section>
@@ -413,8 +413,7 @@
 						<div class="mb-8 flex items-center justify-between gap-4">
 							<div class="flex items-center gap-1.5">
 								{#each QUESTIONS as _, i}
-									<span class="q-nav-dot" class:done={i < index} class:current={i === index}
-									></span>
+									<span class="q-nav-dot" class:done={i < index} class:current={i === index}></span>
 								{/each}
 							</div>
 							{#key index}
@@ -560,8 +559,8 @@
 								<h4
 									class="text-ecohubs-deep font-serif text-[22px] leading-snug mb-3 md:text-[26px]"
 								>
-									Our team will read your community's actual agreements and send back a complete
-									map of your gaps — with prioritized recommendations.
+									Our team will read your community's actual agreements and send back a complete map
+									of your gaps — with prioritized recommendations.
 								</h4>
 								<p class="mb-6 text-[14.5px] leading-relaxed text-stone-600">
 									Free. In your inbox within five business days.
@@ -727,8 +726,8 @@
 						A clear pie chart of your gaps.
 					</h3>
 					<p class="mb-6 text-[14.5px] leading-relaxed text-stone-700">
-						What percentage of your community's rules are explicit, what's partially defined,
-						what's missing entirely. One image, the whole landscape.
+						What percentage of your community's rules are explicit, what's partially defined, what's
+						missing entirely. One image, the whole landscape.
 					</p>
 					<div class="mt-auto flex items-center gap-4 pt-4">
 						<svg viewBox="0 0 42 42" class="h-20 w-20 -rotate-90">
@@ -783,8 +782,8 @@
 						A table of every category we checked.
 					</h3>
 					<p class="mb-6 text-[14.5px] leading-relaxed text-stone-700">
-						For each area — decision-making, membership, money, conflict, accountability —
-						exactly what's defined, what's vague, and what's missing in your specific documents.
+						For each area — decision-making, membership, money, conflict, accountability — exactly
+						what's defined, what's vague, and what's missing in your specific documents.
 					</p>
 					<div
 						class="mt-auto rounded-2xl border border-stone-200/80 bg-white p-4 pt-4 font-mono text-[11.5px] leading-[2] text-stone-600"
@@ -874,7 +873,7 @@
 					</div>
 				</div>
 				<div
-					class="soft-shadow absolute -right-2 -bottom-6  rounded-2xl border border-stone-200 bg-white px-5 py-4 md:-right-6"
+					class="soft-shadow absolute -right-2 -bottom-6 rounded-2xl border border-stone-200 bg-white px-5 py-4 md:-right-6"
 				>
 					<div
 						class="mb-1 flex items-center gap-2 text-xs tracking-widest text-emerald-700 uppercase"
@@ -941,9 +940,9 @@
 						>
 					</summary>
 					<p class="mt-5 max-w-2xl text-[15.5px] leading-relaxed text-stone-700">
-						If you have more than five people sharing a space, this is for you. Smaller and
-						informal communities often have the most implicit rules — and the most to gain from
-						making them explicit.
+						If you have more than five people sharing a space, this is for you. Smaller and informal
+						communities often have the most implicit rules — and the most to gain from making them
+						explicit.
 					</p>
 				</details>
 
@@ -993,7 +992,10 @@
 	<!-- ═══════════════════════════════════════════════════════════════
 		7 · FINAL CTA
 		═══════════════════════════════════════════════════════════════ -->
-	<section class="relative bg-ecohubs-deep overflow-hidden py-24 md:py-36" style="background-image: radial-gradient(circle at 30% 20%, rgba(16,185,129,0.2), transparent 50%), radial-gradient(circle at 80% 80%, rgba(217,119,6,0.15), transparent 55%);">
+	<section
+		class="relative bg-ecohubs-deep overflow-hidden py-24 md:py-36"
+		style="background-image: radial-gradient(circle at 30% 20%, rgba(16,185,129,0.2), transparent 50%), radial-gradient(circle at 80% 80%, rgba(217,119,6,0.15), transparent 55%);"
+	>
 		<div class="absolute inset-0 -z-10 bg-linear-to-b from-[#0b2e24] to-[#2a2e2d]"></div>
 		<div
 			class="absolute inset-0 -z-10 opacity-30"
@@ -1005,10 +1007,9 @@
 			<h2
 				class="font-serif text-4xl leading-[1.08] tracking-tight text-[#f5f2ea] md:text-5xl lg:text-6xl"
 			>
-				In our pilots, <span class="text-emerald-300">40–50%</span> of crucial rules weren't
-				written down.
-				<em class="font-story font-normal text-stone-300 italic"
-					>Where does your community land?</em
+				In our pilots, <span class="text-emerald-300">40–50%</span> of crucial rules weren't written
+				down.
+				<em class="font-story font-normal text-stone-300 italic">Where does your community land?</em
 				>
 			</h2>
 			<p class="mx-auto mt-7 max-w-xl text-lg leading-relaxed font-light text-stone-300/85">
@@ -1017,11 +1018,7 @@
 			</p>
 
 			{#if !form2Done}
-				<form
-					autocomplete="off"
-					onsubmit={onForm2Submit}
-					class="mx-auto mt-12 max-w-[550px]"
-				>
+				<form autocomplete="off" onsubmit={onForm2Submit} class="mx-auto mt-12 max-w-[550px]">
 					<div
 						class="flex flex-col gap-3 rounded-full border border-white/10 bg-white/5 p-2 backdrop-blur sm:flex-row"
 					>
@@ -1044,8 +1041,8 @@
 						<p class="mt-3 text-[13px] text-red-300">{form2Error}</p>
 					{/if}
 					<p class="mt-5 text-[13px] leading-relaxed font-light text-stone-400/90">
-						Free. No payment. No upsell. We read your agreements, write your report, then delete
-						the documents.
+						Free. No payment. No upsell. We read your agreements, write your report, then delete the
+						documents.
 						<em class="font-story text-stone-300 italic">Your rules stay yours.</em>
 					</p>
 				</form>

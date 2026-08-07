@@ -26,7 +26,7 @@ The compensating advantage is hard to get any other way. A shared purse makes ca
 
 ## What it is not
 
-It is not shared *property*. Members of income-sharing communities typically keep the assets they arrived with; those assets are usually frozen for the duration of membership rather than absorbed, so someone who leaves after twelve years leaves with what they brought.
+It is not shared _property_. Members of income-sharing communities typically keep the assets they arrived with; those assets are usually frozen for the duration of membership rather than absorbed, so someone who leaves after twelve years leaves with what they brought.
 
 Nor is it all-or-nothing. Partial income sharing exists — a fixed percentage, or everything above a threshold — and so does the much commoner arrangement of private income with a small solidarity fund.
 
@@ -37,16 +37,16 @@ A common purse concentrates enormous informal power in whoever administers it. A
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Commune vs cohousing',
-			url: '/learn/compare/commune-vs-cohousing',
-			note: 'the money question, told apart properly'
-		},
-		{
-			title: 'Twin Oaks Community — About income sharing',
-			url: 'https://www.twinoaks.org/faqs-all-on-one-page',
-			note: 'a long-running common purse, described by the community itself'
-		}
-	]}
+items={[
+{
+title: 'Commune vs cohousing',
+url: '/learn/compare/commune-vs-cohousing',
+note: 'the money question, told apart properly'
+},
+{
+title: 'Twin Oaks Community — About income sharing',
+url: 'https://www.twinoaks.org/faqs-all-on-one-page',
+note: 'a long-running common purse, described by the community itself'
+}
+]}
 />

@@ -37,16 +37,16 @@ No process resolves a conflict where one party has substantially more power than
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Conflict, power and repair',
-			url: '/learn/guides/intentional-communities/conflict-power-and-repair',
-			note: 'the four questions in context'
-		},
-		{
-			title: 'Seeds for Change',
-			url: 'https://www.seedsforchange.org.uk/',
-			note: 'free practical guides on working through group conflict'
-		}
-	]}
+items={[
+{
+title: 'Conflict, power and repair',
+url: '/learn/guides/intentional-communities/conflict-power-and-repair',
+note: 'the four questions in context'
+},
+{
+title: 'Seeds for Change',
+url: 'https://www.seedsforchange.org.uk/',
+note: 'free practical guides on working through group conflict'
+}
+]}
 />

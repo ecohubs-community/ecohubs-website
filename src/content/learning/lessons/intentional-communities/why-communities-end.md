@@ -16,7 +16,7 @@ related: [conflict-power-and-repair, how-communities-decide]
 
 **Nobody knows what proportion of intentional communities fail.** There is no register, no denominator and no follow-up study, so any survival rate you are quoted is a guess — including the ninety per cent figure, whose trail we follow below.
 
-What *is* documented is the **pattern** rather than the rate: six things go wrong repeatedly, and only one of them is about conflict. The rest are about writing — a vision never written, a decision method never agreed, money without terms, founder authority that never converted, no repair process, and the slow one, drift.
+What _is_ documented is the **pattern** rather than the rate: six things go wrong repeatedly, and only one of them is about conflict. The rest are about writing — a vision never written, a decision method never agreed, money without terms, founder authority that never converted, no repair process, and the slow one, drift.
 
 And some endings are not failures. A community that finished what it set out to do, or wound itself up deliberately and paid everyone out, did not fail. It ended.
 
@@ -28,13 +28,13 @@ You will meet the claim that ninety per cent of intentional communities fail. It
 
 We went looking for its source. Here is what we found.
 
-The nearest thing to a foundation is **Rosabeth Moss Kanter's *Commitment and Community*** (Harvard University Press, 1972), a genuinely serious piece of sociology that surveyed **91 communal projects founded in America between 1780 and 1860**. Kanter needed an operational definition of success, and chose one: a community counted as successful if it **lasted at least 25 years**. On that measure only a handful qualified — the Shakers, Amana, Oneida and a few others.
+The nearest thing to a foundation is **Rosabeth Moss Kanter's _Commitment and Community_** (Harvard University Press, 1972), a genuinely serious piece of sociology that surveyed **91 communal projects founded in America between 1780 and 1860**. Kanter needed an operational definition of success, and chose one: a community counted as successful if it **lasted at least 25 years**. On that measure only a handful qualified — the Shakers, Amana, Oneida and a few others.
 
 Look at what has to happen for that to become "ninety per cent of intentional communities fail":
 
 - A study of **nineteenth-century American communes** becomes a claim about communities today.
 - A study of a **specific historical window**, 1780 to 1860, becomes a claim about a permanent rate.
-- **Lasting fewer than 25 years** becomes *failing*, which would make most businesses, most marriages and nearly every voluntary organisation a failure.
+- **Lasting fewer than 25 years** becomes _failing_, which would make most businesses, most marriages and nearly every voluntary organisation a failure.
 - And a **sample of 91 self-selected historical cases** becomes a rate for a category that had not been invented yet.
 
 Deborah Altus, who works in this field's own scholarship, asks the question that the arithmetic invites: should longevity alone be the measure of success, and should short-lived communities be regarded as failures?
@@ -43,19 +43,19 @@ Deborah Altus, who works in this field's own scholarship, asks the question that
 
 There is a second source, and it is the one most people are actually half-remembering. It is also about something different.
 
-Diana Leafe Christian's *Creating a Life Together* (2003) — the standard practical reference on forming communities, written by the then editor of *Communities* magazine — opens with this: **most aspiring ecovillages and community groups, "probably 90 percent", never get off the ground.** Their envisioned communities never get built. They cannot find the right land, or they run out of money, or they get mired in conflict before there is anything to be in conflict about.
+Diana Leafe Christian's _Creating a Life Together_ (2003) — the standard practical reference on forming communities, written by the then editor of _Communities_ magazine — opens with this: **most aspiring ecovillages and community groups, "probably 90 percent", never get off the ground.** Their envisioned communities never get built. They cannot find the right land, or they run out of money, or they get mired in conflict before there is anything to be in conflict about.
 
 Read that carefully, because it is not the claim it gets turned into.
 
 Christian is describing **groups trying to start a community**, not communities that exist. A forming group that never buys land and never builds anything did not fail as a community; it never became one. Her figure says nothing about the odds facing a community you could go and visit next week — which is what "ninety per cent of intentional communities fail" is always taken to mean.
 
-She is also careful about it in a way that the people quoting her are not. The number is hedged — *probably* — and it comes from her own experience: editing the magazine, visiting dozens of communities, and interviewing scores of founders. It is a practitioner's estimate, offered as one, rather than a count of anything.
+She is also careful about it in a way that the people quoting her are not. The number is hedged — _probably_ — and it comes from her own experience: editing the magazine, visiting dozens of communities, and interviewing scores of founders. It is a practitioner's estimate, offered as one, rather than a count of anything.
 
 <Callout type="note" title="Two different ninety per cents">
 
 **Kanter, 1972.** 91 American communal projects founded between 1780 and 1860. Success defined as lasting 25 years. Most did not.
 
-**Christian, 2003.** Roughly 90% of *forming groups* never build anything at all. An experienced estimate, explicitly hedged.
+**Christian, 2003.** Roughly 90% of _forming groups_ never build anything at all. An experienced estimate, explicitly hedged.
 
 Neither is a failure rate for existing intentional communities. They have been welded into one sentence that neither author wrote, and that sentence is the one that circulates.
 
@@ -63,7 +63,7 @@ Neither is a failure rate for existing intentional communities. They have been w
 
 The genuinely useful part of Christian's argument is not the number at all. It is what she does with it. Having looked at the groups that made it and the groups that did not, she concluded that **the successful tenth had all done the same five or six things right, and the unsuccessful nine-tenths had made the same handful of mistakes.**
 
-That is a claim about *pattern* rather than *rate*, from somebody who looked at a great many cases. It is also, more or less, the rest of this lesson.
+That is a claim about _pattern_ rather than _rate_, from somebody who looked at a great many cases. It is also, more or less, the rest of this lesson.
 
 <Callout type="caveat" title="What we are and are not saying">
 
@@ -89,7 +89,7 @@ The rate is unknown. The pattern is not — it recurs across the case literature
 
 **4. Founder authority that never converted.** The founders carried the project and were right to. What kills communities is when that informal authority is never turned into something anyone can hold, limit or inherit — so the group cannot disagree with them, and cannot continue without them. See [lesson 9](/learn/guides/intentional-communities/conflict-power-and-repair) on why declaring that there is no hierarchy makes this worse rather than better.
 
-**5. Conflict with no process.** Not conflict. Conflict *without* a route. The dispute has nowhere to go, so it goes everywhere: into the meetings, the meals, the rota, and eventually into who is still speaking to whom.
+**5. Conflict with no process.** Not conflict. Conflict _without_ a route. The dispute has nowhere to go, so it goes everywhere: into the meetings, the meals, the rota, and eventually into who is still speaking to whom.
 
 **6. Drift.** The slow one, and the most common. Nothing breaks. The agreements stop being read, then stop being taught to new members, then describe a place that no longer exists. Shared meals thin out from three a week to one to occasionally. Nobody decided any of this. One day the community is a pleasant street where people are polite to each other, and everyone is vaguely sad without being able to say what was lost.
 
@@ -138,36 +138,36 @@ An honest gap to close the lesson on. Ostrom studied irrigation systems and fish
 </Deep>
 
 <Sources
-	items={[
-		{
-			title: 'Kanter, R. M. — Commitment and Community (Harvard University Press, 1972)',
-			url: 'https://www.hup.harvard.edu/books/9780674145764',
-			note: '91 communal projects founded 1780–1860, and the 25-year success threshold everything traces back to'
-		},
-		{
-			title: 'Christian, D. L. — Creating a Life Together (New Society Publishers, 2003)',
-			url: 'https://newsociety.com/book/creating-a-life-together/',
-			note: 'the "probably 90 percent" of forming groups that never build, and the five or six things the rest got right'
-		},
-		{
-			title: 'Altus, D. — The Value of Community: What Defines Success?',
-			url: 'https://www.ic.org/the-value-of-community-what-defines-success/',
-			note: 'a Communal Studies scholar questioning longevity as the measure; the 90% figure appears in the comments'
-		},
-		{
-			title: 'Ostrom, E. — Governing the Commons (1990)',
-			url: 'https://doi.org/10.1017/CBO9780511807763',
-			note: 'the eight design principles, and what they imply about durability'
-		},
-		{
-			title: 'Communal Studies Association',
-			url: 'https://www.communalstudies.org/',
-			note: 'the academic literature on communal societies, historical and contemporary'
-		},
-		{
-			title: 'How this is written',
-			url: '/learn/how-this-is-written',
-			note: 'why we mark what we could not verify rather than dropping it'
-		}
-	]}
+items={[
+{
+title: 'Kanter, R. M. — Commitment and Community (Harvard University Press, 1972)',
+url: 'https://www.hup.harvard.edu/books/9780674145764',
+note: '91 communal projects founded 1780–1860, and the 25-year success threshold everything traces back to'
+},
+{
+title: 'Christian, D. L. — Creating a Life Together (New Society Publishers, 2003)',
+url: 'https://newsociety.com/book/creating-a-life-together/',
+note: 'the "probably 90 percent" of forming groups that never build, and the five or six things the rest got right'
+},
+{
+title: 'Altus, D. — The Value of Community: What Defines Success?',
+url: 'https://www.ic.org/the-value-of-community-what-defines-success/',
+note: 'a Communal Studies scholar questioning longevity as the measure; the 90% figure appears in the comments'
+},
+{
+title: 'Ostrom, E. — Governing the Commons (1990)',
+url: 'https://doi.org/10.1017/CBO9780511807763',
+note: 'the eight design principles, and what they imply about durability'
+},
+{
+title: 'Communal Studies Association',
+url: 'https://www.communalstudies.org/',
+note: 'the academic literature on communal societies, historical and contemporary'
+},
+{
+title: 'How this is written',
+url: '/learn/how-this-is-written',
+note: 'why we mark what we could not verify rather than dropping it'
+}
+]}
 />

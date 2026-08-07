@@ -118,8 +118,11 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			summary: 'A Mautic form submission failed unexpectedly (500).',
 			error
 		});
-		return json({ success: false, message: 'An error occurred. Please try again later.' }, {
-			status: 500
-		});
+		return json(
+			{ success: false, message: 'An error occurred. Please try again later.' },
+			{
+				status: 500
+			}
+		);
 	}
 };

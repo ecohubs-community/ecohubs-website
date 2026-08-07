@@ -37,11 +37,11 @@ A block is a right, not a mood. Communities that survive consensus at any size t
 </Callout>
 
 <Sources
-	items={[
-		{
-			title: 'Consensus vs consent',
-			url: '/learn/compare/consensus-vs-consent',
-			note: 'where the bar sits under each method'
-		}
-	]}
+items={[
+{
+title: 'Consensus vs consent',
+url: '/learn/compare/consensus-vs-consent',
+note: 'where the bar sits under each method'
+}
+]}
 />

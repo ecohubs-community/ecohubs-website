@@ -18,14 +18,38 @@
 	/* Brand glyphs reuse the shared monochrome set in /static/social-icons —
 	   the same assets the site Footer renders, kept consistent with /links. */
 	const socials = [
-		{ href: 'https://www.instagram.com/ecohubs_community/', label: 'Instagram', icon: '/social-icons/instagram.svg' },
+		{
+			href: 'https://www.instagram.com/ecohubs_community/',
+			label: 'Instagram',
+			icon: '/social-icons/instagram.svg'
+		},
 		{ href: 'https://x.com/eco_hubs', label: 'X', icon: '/social-icons/x.svg' },
-		{ href: 'https://www.youtube.com/@ecohubs', label: 'YouTube', icon: '/social-icons/youtube.svg' },
+		{
+			href: 'https://www.youtube.com/@ecohubs',
+			label: 'YouTube',
+			icon: '/social-icons/youtube.svg'
+		},
 		{ href: 'https://discord.gg/Xnh7247Nq3', label: 'Discord', icon: '/social-icons/discord.svg' },
-		{ href: 'https://mastodon.social/@ecohubs', label: 'Mastodon', icon: '/social-icons/mastodon.svg' },
-		{ href: 'https://farcaster.xyz/ecohubs', label: 'Farcaster', icon: '/social-icons/farcaster.svg' },
-		{ href: 'https://www.linkedin.com/company/ecohubs/', label: 'LinkedIn', icon: '/social-icons/linkedin.svg' },
-		{ href: 'https://github.com/ecohubs-community', label: 'GitHub', icon: '/social-icons/github.svg' }
+		{
+			href: 'https://mastodon.social/@ecohubs',
+			label: 'Mastodon',
+			icon: '/social-icons/mastodon.svg'
+		},
+		{
+			href: 'https://farcaster.xyz/ecohubs',
+			label: 'Farcaster',
+			icon: '/social-icons/farcaster.svg'
+		},
+		{
+			href: 'https://www.linkedin.com/company/ecohubs/',
+			label: 'LinkedIn',
+			icon: '/social-icons/linkedin.svg'
+		},
+		{
+			href: 'https://github.com/ecohubs-community',
+			label: 'GitHub',
+			icon: '/social-icons/github.svg'
+		}
 	];
 
 	type Path = {
@@ -72,21 +96,37 @@
 <!-- noindex: this is a thin interstitial / doorway page whose only job is to
      route visitors deeper. It carries no unique content worth ranking, so we
      keep it out of the index (but `follow` lets crawlers reach the targets). -->
-<SEO title={pageTitle} description={pageDescription} canonical="/welcome" ogImage="/og-home.jpg" noindex />
+<SEO
+	title={pageTitle}
+	description={pageDescription}
+	canonical="/welcome"
+	ogImage="/og-home.jpg"
+	noindex
+/>
 
-<div class="relative min-h-screen overflow-hidden bg-ecohubs-deep bg-[radial-gradient(120%_80%_at_50%_-10%,#0e3a2c_0%,#0b2e24_55%,#06170f_100%)]">
+<div
+	class="relative min-h-screen overflow-hidden bg-ecohubs-deep bg-[radial-gradient(120%_80%_at_50%_-10%,#0e3a2c_0%,#0b2e24_55%,#06170f_100%)]"
+>
 	<!-- Texture + ambient glows -->
 	<div class="noise pointer-events-none absolute inset-0 opacity-50 mix-blend-soft-light"></div>
-	<div class="pointer-events-none absolute -left-24 -top-20 h-[360px] w-[360px] rounded-full bg-ecohubs-primary/30 blur-[70px]"></div>
-	<div class="pointer-events-none absolute -right-28 bottom-[10%] h-[300px] w-[300px] rounded-full bg-ecohubs-light/15 blur-[70px]"></div>
+	<div
+		class="pointer-events-none absolute -left-24 -top-20 h-[360px] w-[360px] rounded-full bg-ecohubs-primary/30 blur-[70px]"
+	></div>
+	<div
+		class="pointer-events-none absolute -right-28 bottom-[10%] h-[300px] w-[300px] rounded-full bg-ecohubs-light/15 blur-[70px]"
+	></div>
 
 	<div class="relative z-[2] mx-auto flex min-h-screen max-w-[600px] flex-col px-5 pb-16 pt-14">
 		<!-- HEADER (mirrors /links) -->
 		<header class="text-center">
-			<div class="mx-auto mb-5 grid h-26 w-26 place-items-center rounded-full bg-ecohubs-base shadow-[0_0_0_1px_rgba(255,255,255,0.18),0_24px_50px_-22px_rgba(0,0,0,0.6)]">
+			<div
+				class="mx-auto mb-5 grid h-26 w-26 place-items-center rounded-full bg-ecohubs-base shadow-[0_0_0_1px_rgba(255,255,255,0.18),0_24px_50px_-22px_rgba(0,0,0,0.6)]"
+			>
 				<img src={logo} alt="EcoHubs Community" class="h-16 w-16" />
 			</div>
-			<h1 class="mb-3 font-serif text-[27px] font-medium tracking-tight text-ecohubs-base">EcoHubs Community</h1>
+			<h1 class="mb-3 font-serif text-[27px] font-medium tracking-tight text-ecohubs-base">
+				EcoHubs Community
+			</h1>
 			<p class="mx-auto max-w-[460px] text-[15px] leading-relaxed text-ecohubs-base/80">
 				🌍 A regenerative future, designed together. We're co-creating
 				<strong class="font-medium text-ecohubs-light"
@@ -95,7 +135,10 @@
 			</p>
 
 			<!-- SOCIAL ICON ROW -->
-			<nav class="mx-auto mt-6 flex max-w-[460px] flex-wrap justify-center gap-2.5" aria-label="Social media">
+			<nav
+				class="mx-auto mt-6 flex max-w-[460px] flex-wrap justify-center gap-2.5"
+				aria-label="Social media"
+			>
 				{#each socials as s (s.label)}
 					<a
 						href={s.href}
@@ -106,14 +149,21 @@
 						onclick={() => track(`Social: ${s.label}`, s.href)}
 						class="grid h-[42px] w-[42px] place-items-center rounded-xl border border-white/10 bg-white/[0.07] transition hover:-translate-y-0.5 hover:border-ecohubs-light/50 hover:bg-white/[0.16]"
 					>
-						<img src={s.icon} alt="" class="h-[19px] w-[19px]" style="filter: invert(1) brightness(1.2);" />
+						<img
+							src={s.icon}
+							alt=""
+							class="h-[19px] w-[19px]"
+							style="filter: invert(1) brightness(1.2);"
+						/>
 					</a>
 				{/each}
 			</nav>
 		</header>
 
 		<!-- PROMPT -->
-		<p class="mt-12 mb-5 text-center text-[13px] font-semibold uppercase tracking-[0.22em] text-ecohubs-light">
+		<p
+			class="mt-12 mb-5 text-center text-[13px] font-semibold uppercase tracking-[0.22em] text-ecohubs-light"
+		>
 			Where would you like to start?
 		</p>
 
@@ -136,10 +186,18 @@
 						<Icon size={28} strokeWidth={1.7} />
 					</span>
 					<span class="flex min-w-0 flex-1 flex-col">
-						<span class="text-[17px] font-semibold leading-snug {p.feature ? 'text-ecohubs-base' : 'text-ecohubs-deep'}">
+						<span
+							class="text-[17px] font-semibold leading-snug {p.feature
+								? 'text-ecohubs-base'
+								: 'text-ecohubs-deep'}"
+						>
 							{p.title}
 						</span>
-						<span class="mt-1.5 text-[13px] leading-snug {p.feature ? 'text-ecohubs-base/70' : 'text-ecohubs-muted'}">
+						<span
+							class="mt-1.5 text-[13px] leading-snug {p.feature
+								? 'text-ecohubs-base/70'
+								: 'text-ecohubs-muted'}"
+						>
 							{p.desc}
 						</span>
 					</span>
@@ -155,10 +213,20 @@
 
 		<!-- FOOTER -->
 		<footer class="mt-auto pt-12 text-center">
-			<img src={logo} alt="" class="mx-auto mb-3 block h-[30px] w-[30px] opacity-50" style="filter: brightness(0) invert(1);" />
+			<img
+				src={logo}
+				alt=""
+				class="mx-auto mb-3 block h-[30px] w-[30px] opacity-50"
+				style="filter: brightness(0) invert(1);"
+			/>
 			<p class="text-[12px] text-ecohubs-base/50">
 				© {year} EcoHubs Community ·
-				<a class="text-ecohubs-light/80" href="https://ecohubs.community" target="_blank" rel="noopener">ecohubs.community</a>
+				<a
+					class="text-ecohubs-light/80"
+					href="https://ecohubs.community"
+					target="_blank"
+					rel="noopener">ecohubs.community</a
+				>
 			</p>
 		</footer>
 	</div>

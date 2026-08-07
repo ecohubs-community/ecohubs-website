@@ -20,11 +20,11 @@ Three parts do the work, and a group that adopts only one of them has not adopte
 
 **Double linking.** Two people sit in both a circle and its parent: one chosen by the parent, one chosen by the circle. Information and authority therefore travel upward as well as down, which is what separates this from a hierarchy that has been renamed.
 
-**Elections by consent.** Roles are filled by open nomination and reasoned argument rather than a secret ballot, so the group hears *why* someone is suited before it decides.
+**Elections by consent.** Roles are filled by open nomination and reasoned argument rather than a secret ballot, so the group hears _why_ someone is suited before it decides.
 
 ## An example
 
-Sociocracy was developed in the Netherlands in the 1970s by Gerard Endenburg, who applied it to his family's electrical engineering firm, building on the earlier educational work of Kees Boeke. Its spread into intentional communities is much more recent, and largely traceable to the work of Sociocracy For All and to *Many Voices One Song* by Ted Rau and Jerry Koch-Gonzalez, which rewrote the corporate framing for groups without shareholders.
+Sociocracy was developed in the Netherlands in the 1970s by Gerard Endenburg, who applied it to his family's electrical engineering firm, building on the earlier educational work of Kees Boeke. Its spread into intentional communities is much more recent, and largely traceable to the work of Sociocracy For All and to _Many Voices One Song_ by Ted Rau and Jerry Koch-Gonzalez, which rewrote the corporate framing for groups without shareholders.
 
 <Callout type="caveat">
 
@@ -37,16 +37,16 @@ The workplace origin is worth holding onto. Sociocracy assumes people can be ask
 Sociocracy is not simply "consensus with extra steps". Consent is one component of it; the circle structure and double linking are what make it scale, and they are the parts most often dropped. Nor is it the same as **holacracy**, a later trademarked system that shares the circle idea but adds a much heavier rule set and a formal constitution.
 
 <Sources
-	items={[
-		{
-			title: 'RCOS Core — Layer 2: Governance & Decision Logic',
-			url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
-			note: 'how circles and domains are specified'
-		},
-		{
-			title: 'Sociocracy For All',
-			url: 'https://www.sociocracyforall.org/',
-			note: 'the main practitioner organisation for non-corporate groups'
-		}
-	]}
+items={[
+{
+title: 'RCOS Core — Layer 2: Governance & Decision Logic',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic',
+note: 'how circles and domains are specified'
+},
+{
+title: 'Sociocracy For All',
+url: 'https://www.sociocracyforall.org/',
+note: 'the main practitioner organisation for non-corporate groups'
+}
+]}
 />

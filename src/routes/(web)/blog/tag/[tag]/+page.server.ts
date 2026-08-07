@@ -13,8 +13,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	}
 
 	// The display name comes from any post's matching tag (Ghost normalises casing).
-	const tagName =
-		posts[0].tags?.find((t) => t.slug === params.tag)?.name ?? params.tag;
+	const tagName = posts[0].tags?.find((t) => t.slug === params.tag)?.name ?? params.tag;
 
 	return {
 		posts,
