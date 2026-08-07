@@ -86,7 +86,9 @@ What predicts trouble is not which method a group picked. It is whether the meth
 
 ## Money, and what joining costs
 
-There is no standard answer and the range is enormous — from a modest monthly contribution to a six-figure buy-in. What matters more than the number is what the money _buys_: equity you can sell, a right to live somewhere you never own, or a refundable deposit whose terms nobody wrote down.
+There is no standard answer, and this hub publishes no figures — the only aggregate cost data we could find is twenty self-selected American communities, and nothing at all for Europe. What is worth knowing is the _shape_: in most forms entry is an ordinary local property price, because you are buying a home and competing with everyone else in that town for it.
+
+What matters more than the number is what the money _buys_: equity you can sell, a right to live somewhere you never own, or a refundable deposit whose terms nobody wrote down.
 
 The question worth asking before any of it: **what happens to that money if I leave?** A community that has not answered it in writing has not answered it at all.
 

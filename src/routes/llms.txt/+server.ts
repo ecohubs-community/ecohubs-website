@@ -1,4 +1,36 @@
-# EcoHubs.community
+import { PUBLIC_SITE_URL } from '$env/static/public';
+import {
+	isIndexable,
+	publishedComparisons,
+	publishedGuides,
+	publishedLessons,
+	publishedPaths,
+	publishedTerms,
+	publishedTopics,
+	urlFor
+} from '$lib/learning';
+import type { ContentEntry } from '$lib/learning/types';
+
+/**
+ * `llms.txt`, with its Learning section generated.
+ *
+ * It used to be a static file listing three of the hub's pages. The convention
+ * in AGENTS.md is that *every* public page appears here with a sentence, and
+ * the hub has around ninety — hand-maintaining that list would be wrong within
+ * a week, exactly as it was already.
+ *
+ * So the preamble and the hand-written sections stay literal, and everything
+ * under /learn is derived from the same index the sitemap uses. Each entry's
+ * sentence is its own `summary`, so the description cannot drift from the page.
+ *
+ * Draft and thin content is filtered by `isIndexable()` — the same gate that
+ * governs the routes, listings, sitemap, search index and rabbit-hole pool.
+ */
+export const prerender = true;
+
+const SITE = PUBLIC_SITE_URL || 'https://ecohubs.community';
+
+const PREAMBLE = `# EcoHubs.community
 
 > A network of people designing regenerative intentional communities — and publishing the standard, the tools and the failures in the open. EcoHubs maintains RCOS (the Regenerative Community Operating System), an open standard for how a community governs itself, admits and releases members, handles conflict, and changes its own rules.
 
@@ -17,15 +49,9 @@ EcoHubs is a working project, not a think tank: the standard is tested against a
 - [VoteCast](https://ecohubs.community/votecast): a tool for community decisions — proposals, deliberation, and six voting methods from a simple poll through to consent, with a durable record of what was decided. App at https://votecast.ecohubs.community.
 - [CSI — Community Suitability Index](https://ecohubs.community/csi): an open map of where a regenerative, sovereign community has room to begin, read against law, land, water and local welcome. App at https://csi.ecohubs.community.
 - [Community Resilience Assessment](https://ecohubs.community/community-resilience-assessment): a free ten-question assessment of how a community holds up under conflict, returned as a human-written report.
-- [Ecohub One](https://ecohubs.community/join-the-waitlist): First land-based project to join the waitlist for.
+- [Ecohub One](https://ecohubs.community/join-the-waitlist): First land-based project to join the waitlist for.`;
 
-## Learning
-
-- [Learning Hub](https://ecohubs.community/learn): plain explanations of how intentional communities actually work — governance, money, land, conflict and daily life.
-- [Glossary](https://ecohubs.community/learn/glossary): plain definitions of the words this field uses — intentional community, ecovillage, consent, sociocracy, common purse, community land trust — each with an example and what it is often confused with.
-- [Cohousing vs ecovillage](https://ecohubs.community/learn/compare/cohousing-vs-ecovillage): the two most-confused forms told apart — one describes a housing arrangement, the other a purpose.
-
-## Writing
+const TAIL = `## Writing
 
 - [Field notes (blog)](https://ecohubs.community/blog): essays on governance, membership, conflict and regenerative living.
 - [Authors](https://ecohubs.community/blog/authors): who writes the field notes, and every piece each of them has published.
@@ -41,4 +67,97 @@ EcoHubs is a working project, not a think tank: the standard is tested against a
 - [Contact](https://ecohubs.community/contact)
 - [All links, podcast and social](https://ecohubs.community/links)
 - [Privacy policy](https://ecohubs.community/privacy)
-- [Terms](https://ecohubs.community/terms)
+- [Terms](https://ecohubs.community/terms)`;
+
+/** `- [Title](url): summary.` — one line, as the convention asks. */
+function line(title: string, path: string, summary: string): string {
+	const sentence = summary.trim().replace(/\s+/g, ' ');
+	return `- [${title}](${SITE}${path}): ${sentence}`;
+}
+
+function fromEntries(entries: ContentEntry[]): string[] {
+	return entries
+		.filter(isIndexable)
+		.map((entry) => line(entry.frontmatter.title, urlFor(entry), entry.frontmatter.summary))
+		.sort();
+}
+
+function learningSection(): string {
+	const indexes = [
+		line(
+			'Learning Hub',
+			'/learn',
+			'Plain explanations of how intentional communities actually work — governance, money, land, conflict and daily life.'
+		),
+		line('Guides', '/learn/guides', 'Every guide in the hub, longest-form first.'),
+		line(
+			'Topics',
+			'/learn/topics',
+			'The subjects that decide whether a community lasts, each explained from the ground up.'
+		),
+		line(
+			'Compared',
+			'/learn/compare',
+			'The pairs of terms this field most often confuses, told apart.'
+		),
+		line(
+			'Learning paths',
+			'/learn/paths',
+			'Ordered sequences through the lessons, for a particular question.'
+		),
+		line(
+			'Glossary',
+			'/learn/glossary',
+			'Plain definitions of the words this field uses, each with an example and what it is often confused with.'
+		),
+		line('Knowledge map', '/learn/map', 'How the topics relate to each other, drawn as a map.'),
+		line(
+			'Search the hub',
+			'/learn/search',
+			'Search every lesson, term, topic and comparison, including the deep layers.'
+		),
+		line(
+			'How this is written',
+			'/learn/how-this-is-written',
+			'What we know first-hand, what comes from other communities, how AI is used, and what we do when we are wrong.'
+		)
+	];
+
+	return [
+		'## Learning',
+		'',
+		...indexes,
+		'',
+		'### Guides and lessons',
+		'',
+		...fromEntries(publishedGuides),
+		...fromEntries(publishedLessons),
+		'',
+		'### Topics',
+		'',
+		...fromEntries(publishedTopics),
+		'',
+		'### Compared',
+		'',
+		...fromEntries(publishedComparisons),
+		'',
+		'### Learning paths',
+		'',
+		...fromEntries(publishedPaths),
+		'',
+		'### Glossary',
+		'',
+		...fromEntries(publishedTerms)
+	].join('\n');
+}
+
+export function GET() {
+	const body = [PREAMBLE, '', learningSection(), '', TAIL, ''].join('\n');
+
+	return new Response(body, {
+		headers: {
+			'Content-Type': 'text/plain; charset=utf-8',
+			'Cache-Control': 'public, max-age=3600'
+		}
+	});
+}

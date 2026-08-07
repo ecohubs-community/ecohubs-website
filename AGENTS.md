@@ -126,7 +126,7 @@ Every page **must** use the [`SEO.svelte`](./src/lib/components/SEO.svelte) comp
 
 Adding a page is three edits, not one. A page missing from either file is a page search engines and AI assistants may never find.
 
-- **New page** → add it to the `routes` array in [`sitemap.xml/+server.ts`](./src/routes/sitemap.xml/+server.ts) **and** to [`static/llms.txt`](./static/llms.txt) (one line: link plus a sentence saying what it is). Blog posts and tag archives are pulled from Ghost automatically — don't list those by hand.
+- **New page** → add it to the `routes` array in [`sitemap.xml/+server.ts`](./src/routes/sitemap.xml/+server.ts) **and** to [`llms.txt/+server.ts`](./src/routes/llms.txt/+server.ts) (one line: link plus a sentence saying what it is). Blog posts and tag archives are pulled from Ghost automatically, and **everything under `/learn` is generated from the content index** — don't list either by hand. `llms.txt` used to be a static file; it listed three of the hub's ninety pages, which is why it is a route now.
 - **Meaningful content change** → bump that route's `lastmod` to the date of the change. Cosmetic tweaks don't count.
 - `lastmod` is the only hint here Google actually reads (`priority` and `changefreq` are ignored), and it only works while it stays truthful — never stamp it with the build date, or crawlers learn to ignore the field.
 - A tag archive is `noindex` and stays out of the sitemap until it has `MIN_POSTS_FOR_INDEXABLE_TAG` posts (see [`blog.ts`](./src/lib/server/blog.ts)). One shared constant drives both, so they can't disagree — change it there, not in two places.
@@ -147,7 +147,7 @@ Content lives in `src/content/learning/**/*.md` — markdown with frontmatter, i
 - **Three depth layers.** `<Quick>` is a separate short version, the body is the standard read, `<Deep>` is additive detail. All three ship in the HTML; the switch only reduces what a _returning_ reader sees.
 - **Depth is strictly additive — each level only ever adds.** `quick` → short version. `standard` → short version + body. `deep` → short version + body + detail. Nothing a reader has already seen disappears when they ask for more. If a new layer is added, it must obey this.
 - **Never hide content by default.** Hiding is `html[data-depth=…]` set by the pre-paint script in `app.html`, and only from an explicitly stored choice. `getDepth()` returns `null` when unset for exactly this reason — a `|| 'standard'` fallback would hide the deep layer from Googlebot, which runs JS with empty storage. Same rule as the cookie banner and the hero cascade.
-- **`isIndexable()` gates the sitemap and page meta**, so thin or draft content stays reachable but unindexed. Drafts must be filtered in all four places: route, listings, sitemap, search index.
+- **`isIndexable()` gates the sitemap and page meta**, so thin or draft content stays reachable but unindexed. Drafts must be filtered in **all six places**: route, listings, sitemap, search index, the rabbit-hole pool, and `llms.txt`.
 - **All `localStorage` goes through `learning/storage.ts`** — versioned keys, every access wrapped, because storage throws in private mode.
 - **Search is built from source markdown, not rendered HTML** ([`learning/search.ts`](./src/lib/learning/search.ts)). That is what makes it depth-blind: `<Deep>` text is findable by a reader who has never opened deep mode. The index is emitted as `/learn/search-index.json` and fetched **only** on `/learn/search` — never import it from a page.
 - **Every learning page carries the section nav**: `<LearnRail>` on `lg` and up, `<LearnTabs>` (in the `/learn` layout) below it. A page that renders its own sidebar without the rail breaks the hub's navigation — the reason `/learn`, `/learn/topics` and the detail pages each had to be fixed once already.
@@ -159,7 +159,6 @@ Content lives in `src/content/learning/**/*.md` — markdown with frontmatter, i
 - **`CARD` sets no background on purpose.** Two background utilities in the same layer are ordered by Tailwind, not by the class attribute, so a card that asked for ivory silently rendered white. Every caller states its own `bg-*`.
 - **Cards come from `components/learning/`** — `GuideCard` (featured / compact), `TopicCard`, `PathCard`, `TermCard` — and share `CARD`/`TAG`/`META` from `card.ts`. Don't hand-roll a fifth card shape.
 - **Covers are motifs, not images.** A page with no `image:` gets one of six CSS motifs picked from its slug (`motif.ts`), so it always has a cover and neighbours differ. Set `image:` for real art — the validator then requires `imageAlt:` (write `imageAlt: ''` to declare it decorative).
-- **`isIndexable()` gates five places now**: route, listings, sitemap, search index, and the rabbit-hole pool.
 - **No invented metrics.** There is no analytics on this site, so the hub ships _Most linked to_ — counted from `terms:`/`related:` — where the design says "Popular this week", and says so on the card.
 - **`LEARN_SECTIONS` may only name routes that exist.** Everything is prerendered, so a link to a missing route fails the build rather than 404ing in production — which is how `/learn/search` announced itself.
 
@@ -254,7 +253,7 @@ Before opening a PR for non-trivial UI work:
 - [ ] All main routes (`/`, `/vision`, `/rcos`, `/csi`, `/votecast`, `/seeking`, `/membership`, `/faq`) return 200
 - [ ] H1 count = 1 per page; no `<svelte:component>` introduced
 - [ ] New pages emit `<SEO>` with `ogImage` + `breadcrumbs`
-- [ ] New pages added to **both** `sitemap.xml/+server.ts` and `static/llms.txt`; `lastmod` bumped on any page whose content meaningfully changed
+- [ ] New pages added to **both** `sitemap.xml/+server.ts` and `llms.txt/+server.ts` (learning content is generated into both); `lastmod` bumped on any page whose content meaningfully changed
 - [ ] External `target="_blank"` links carry `rel="noopener noreferrer"`
 - [ ] No new `bg-[#…]` hex unless you're prototyping; otherwise use a token
 - [ ] No new commented-out blocks (use git history instead)
