@@ -7,6 +7,7 @@ import stefanFree from '$lib/assets/stefan-free.webp';
 import LuisaImage from '$lib/assets/luisa.webp';
 import luisaGarden from '$lib/assets/luisa-garden.webp';
 import BorisImage from '$lib/assets/boris.webp';
+import DanImage from '$lib/assets/dan.webp';
 import borisFruit from '$lib/assets/boris-fruit.webp';
 import danImagination from '$lib/assets/dan-imagination.webp';
 
@@ -191,6 +192,7 @@ export const stories: Story[] = [
 		id: 'dan',
 		name: 'Dan',
 		keyword: 'Imagination',
+		img: DanImage,
 		location: 'EcoHubs Member · Germany',
 		beats: [
 			{
