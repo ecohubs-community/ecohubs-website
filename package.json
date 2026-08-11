@@ -22,7 +22,8 @@
 		"test": "npm run test:e2e && npm run test:unit -- --run",
 		"test:unit": "vitest",
 		"icons": "node scripts/build-icons.mjs",
-		"downloads": "node scripts/build-downloads.ts"
+		"downloads": "node scripts/build-downloads.ts",
+		"links": "node scripts/check-links.ts"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",

@@ -119,8 +119,8 @@ note: 'the "probably 90 percent" of forming groups that never build anything'
 },
 {
 title: 'Altus, D. — The Value of Community: What Defines Success?',
-url: 'https://www.ic.org/the-value-of-community-what-defines-success/',
-note: 'a Communal Studies scholar questioning longevity as the measure'
+url: 'https://web.archive.org/web/20260419050029/https://www.ic.org/the-value-of-community-what-defines-success/',
+note: 'a Communal Studies scholar questioning longevity as the measure; the 90% figure appears in the comments. Archived — the Foundation for Intentional Community has since removed the original.'
 },
 {
 title: 'Communal Studies Association',

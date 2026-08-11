@@ -1,13 +1,13 @@
 {
 	"intentional-communities": {
-		"generatedAt": "2026-08-07T21:57:53.865Z",
+		"generatedAt": "2026-08-11T22:45:18.074Z",
 		"entries": [
 			{
 				"kind": "pdf",
 				"label": "The whole guide as one PDF",
 				"detail": "PDF · 68 pages · printable",
 				"file": "/downloads/intentional-communities/intentional-communities-guide.pdf",
-				"bytes": 2231702,
+				"bytes": 2232138,
 				"pages": 68
 			},
 			{
@@ -15,7 +15,7 @@
 				"label": "Questions to ask on a visit",
 				"detail": "PDF · 4 pages · 42 questions",
 				"file": "/downloads/intentional-communities/intentional-communities-visit-questions.pdf",
-				"bytes": 130623,
+				"bytes": 130509,
 				"pages": 4
 			},
 			{
@@ -23,7 +23,7 @@
 				"label": "Cost model worksheet",
 				"detail": "XLSX · entry / monthly / exit",
 				"file": "/downloads/intentional-communities/intentional-communities-cost-model.xlsx",
-				"bytes": 9580
+				"bytes": 9578
 			}
 		]
 	}

@@ -186,6 +186,8 @@ pnpm downloads --staged           # only guides whose staged content changed
 - **The worksheet ships formulas, not one example's answers**, and `scripts/worksheet.spec.ts` evaluates them against `estimate()`. A spreadsheet that disagreed with the site would be worse than none, because a reader would trust it more. **If the cost model changes, that spec is what catches the drift.**
 - **`downloads.ts` is server-only.** It imports the manifest from `static/`; importing it from a component pulls that JSON into the browser bundle and broke the guide page once already.
 - Playwright's chromium is needed once per machine: `npx playwright install chromium`.
+- **`pnpm links` checks every external citation** in the hub (~34 URLs). Not in CI — it needs the network, so as a build gate it would fail because somebody else's server had a bad afternoon. Run it before a content release. It reports three outcomes, not two: a **403 is a server refusing a script**, not a dead page (Twin Oaks, Fannie Mae and Wiley all block bots and are fine in a browser), so only real 404s and failures exit non-zero. Redirects are reported so you can check the citation still names the right publisher — that is how the Cohousing Association's move to `cohousingalliance.org` was caught.
+- **Internal links need no such check.** Everything is prerendered, so a link to a missing route already fails `pnpm build`, naming the page that linked it.
 - **`.githooks/pre-commit` also runs Prettier over the staged files**, because CI runs `prettier --check .` and content markdown is easy to forget. `pnpm lint` is the same check — run it before pushing if you bypassed the hook.
 
 ## External links
