@@ -9,6 +9,7 @@
 		{ href: '/vision', label: 'Vision' },
 		{ href: '/blog', label: 'Blog' },
 		{ href: '/membership', label: 'Membership' },
+		{ href: '/learn', label: 'Learning Hub' },
 		{ href: '/faq', label: 'FAQ' },
 		{ href: '/contact', label: 'Contact' }
 	];

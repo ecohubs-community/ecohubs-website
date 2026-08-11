@@ -1,10 +1,15 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import PersonaIcons from '$lib/components/PersonaIcons.svelte';
 	import EcosystemSection from '$lib/components/EcosystemSection.svelte';
 	import FaqAccordion from '$lib/components/FaqAccordion.svelte';
 	import ClosingCta from '$lib/components/sections/ClosingCta.svelte';
+	import {
+		initScrollAnimations,
+		initStaggeredScrollAnimations
+	} from '$lib/utils/scroll-animations';
 	import { generateBreadcrumbs } from '$lib/config/seo';
 
 	import { rooms, faqItems, doorways, voices } from './data';
@@ -14,6 +19,17 @@
 	// appear on this page for human readers.
 
 	const breadcrumbs = generateBreadcrumbs('membership');
+
+	// ClosingCta and FaqAccordion ship `data-scroll-animate` markup, which
+	// layout.css hides until the observer flips `.is-visible`. Without this the
+	// closing section renders as an empty dark band.
+	onMount(() => {
+		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
+		initStaggeredScrollAnimations('[data-scroll-stagger]', {
+			threshold: 0.15,
+			staggerDelay: 0.08
+		});
+	});
 </script>
 
 <SEO
