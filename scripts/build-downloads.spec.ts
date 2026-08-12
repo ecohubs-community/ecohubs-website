@@ -34,6 +34,17 @@ describe('guidesToRebuild', () => {
 		expect(guidesToRebuild([path], ALL)).toEqual(ALL);
 	});
 
+	/**
+	 * A failure page prints in the appendix of whichever guide owns its lesson,
+	 * and its path does not say which guide that is — the link runs through
+	 * `lesson:` in frontmatter. So it is shared, and editing one must not leave
+	 * a stale appendix in a guide this function decided to skip.
+	 */
+	it('rebuilds everything when a failure page changed', () => {
+		const changed = ['src/content/learning/failures/founder-informal-veto.md'];
+		expect(guidesToRebuild(changed, ALL)).toEqual(ALL);
+	});
+
 	it('does not mistake a similarly named directory for a guide', () => {
 		// `intentional-communities-old/` must not match `intentional-communities`.
 		const changed = ['src/content/learning/lessons/intentional-communities-old/a.md'];

@@ -43,6 +43,23 @@ interface Entry {
 	pages?: number;
 }
 
+type Manifest = Record<string, { generatedAt: string; entries: Entry[] }>;
+
+/**
+ * The manifest as it stands, so a partial rebuild can merge rather than replace.
+ *
+ * A missing or unreadable file is not an error — the first ever run has none,
+ * and a corrupted one should be rebuilt rather than crash the build. Either way
+ * the guides being rebuilt this run will overwrite their own keys.
+ */
+export async function readManifest(): Promise<Manifest> {
+	try {
+		return JSON.parse(await readFile(join(OUT, 'manifest.json'), 'utf8')) as Manifest;
+	} catch {
+		return {};
+	}
+}
+
 /* ── Reading the content directory ───────────────────────────────────────── */
 
 /** One frontmatter scalar, without pulling in a YAML parser for two fields. */
@@ -199,6 +216,13 @@ export function guidesToRebuild(changed: string[], all: string[]): string[] {
 		'src/routes/(print)/',
 		'src/content/learning/quizzes/',
 		'src/content/learning/terms/',
+		// A failure page prints in the appendix of whichever guide owns its
+		// lesson — and unlike a lesson, its path does not say which guide that
+		// is: the link runs through `lesson:` in its frontmatter. Reading
+		// frontmatter here would make this function impure for one file type, so
+		// it counts as shared. With a handful of guides that costs a minute and
+		// cannot be wrong.
+		'src/content/learning/failures/',
 		'src/lib/learning/cost.ts',
 		'src/lib/learning/questions.ts',
 		'scripts/worksheet.ts',
@@ -266,7 +290,20 @@ async function main() {
 	const generatedAt = new Date();
 	const browser = await chromium.launch();
 	const page = await browser.newPage();
-	const manifest: Record<string, { generatedAt: string; entries: Entry[] }> = {};
+	/**
+	 * Seeded from the manifest on disk, not started empty.
+	 *
+	 * Most runs rebuild only the guides whose sources changed — that is the
+	 * whole point of `guidesToRebuild()` and the pre-commit hook. Writing a
+	 * fresh object then meant the manifest listed only the guides rebuilt this
+	 * time, and every other guide's downloads section silently disappeared from
+	 * the site while its files sat untouched on disk.
+	 *
+	 * That is exactly what happened when the second guide was added: one commit
+	 * rebuilt `why-communities-fail` and dropped three `intentional-communities`
+	 * entries. Merging keeps a partial run partial.
+	 */
+	const manifest = await readManifest();
 
 	for (const guide of guides) {
 		console.log(`\n${guide.title}`);
@@ -335,7 +372,7 @@ async function main() {
 	server?.kill();
 	await mkdir(OUT, { recursive: true });
 	await writeFile(join(OUT, 'manifest.json'), JSON.stringify(manifest, null, '\t') + '\n');
-	console.log(`\nWrote ${Object.keys(manifest).length} guide(s) to static/downloads.`);
+	console.log(`\nWrote ${guides.length} guide(s); manifest lists ${Object.keys(manifest).length}.`);
 }
 
 // Guarded so a spec can import `guidesToRebuild` without generating anything —

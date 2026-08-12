@@ -11,11 +11,21 @@ const modules = import.meta.glob<{ default: unknown }>('/src/content/learning/le
 	eager: true
 });
 
+/** The appendix bodies, globbed separately because they live in their own directory. */
+const failures = import.meta.glob<{ default: unknown }>('/src/content/learning/failures/*.md', {
+	eager: true
+});
+
 export const load: PageLoad = async ({ data, params }) => {
 	const content = data.lessons.map((lesson) => ({
 		...lesson,
 		component: modules[`/src/content/learning/lessons/${params.guide}/${lesson.slug}.md`]?.default
 	}));
 
-	return { ...data, lessons: content };
+	const appendix = data.appendix.map((mode) => ({
+		...mode,
+		component: failures[`/src/content/learning/failures/${mode.slug}.md`]?.default
+	}));
+
+	return { ...data, lessons: content, appendix };
 };
