@@ -7,6 +7,12 @@ level: intermediate
 summary: Twenty-four documented patterns and one the standard misses, what each looks like from inside, and the structure that prevents it — for people who can still change the rules.
 targetQuery: why do intentional communities fail
 prerequisites: Written for people already inside a community — founding one, stewarding one, or watching something go wrong in one.
+image: guides/why-communities-fail.webp
+imageAlt: >-
+  A weathered timber-framed building with pale green infill panels, one cracked
+  corner post braced with a new pale batten and metal straps, its door open onto
+  a warmly lit interior. Outside, a long table with mugs and a bowl left on it,
+  chairs pushed back at angles, and one chair tipped over on the ground.
 motif: strata
 status: published
 updated: 2026-08-12
