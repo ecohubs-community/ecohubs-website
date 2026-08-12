@@ -65,6 +65,45 @@ describe('isPublicAddress', () => {
 		expect(isPublicAddress('::ffff:169.254.169.254')).toBe(false);
 		expect(isPublicAddress('::ffff:93.184.216.34')).toBe(true);
 	});
+
+	/**
+	 * The bug the dotted cases above did not catch, and could not: `new URL()`
+	 * rewrites `[::ffff:127.0.0.1]` to `[::ffff:7f00:1]`, so the readable
+	 * spelling never reaches the guard and the hex one was let through as
+	 * ordinary IPv6. A test asserting only the dotted form passes against
+	 * code that is wide open.
+	 */
+	it('sees through the hexadecimal mapped form, which is what a URL produces', () => {
+		expect(isPublicAddress('::ffff:7f00:1')).toBe(false); // 127.0.0.1
+		expect(isPublicAddress('::ffff:a9fe:a9fe')).toBe(false); // 169.254.169.254
+		expect(isPublicAddress('::ffff:a00:5')).toBe(false); // 10.0.0.5
+		expect(isPublicAddress('::ffff:c0a8:101')).toBe(false); // 192.168.1.1
+		expect(isPublicAddress('::ffff:5db8:d822')).toBe(true); // 93.184.216.34
+	});
+
+	/** The deprecated IPv4-compatible form carries an address too. */
+	it('sees through the IPv4-compatible form', () => {
+		expect(isPublicAddress('::7f00:1')).toBe(false);
+		expect(isPublicAddress('::a9fe:a9fe')).toBe(false);
+	});
+
+	it('parses every spelling of the same address alike', () => {
+		for (const spelling of [
+			'::ffff:7f00:1',
+			'::FFFF:7F00:1',
+			'0:0:0:0:0:ffff:7f00:1',
+			'0000:0000:0000:0000:0000:ffff:127.0.0.1',
+			'[::ffff:7f00:1]'
+		]) {
+			expect(isPublicAddress(spelling), spelling).toBe(false);
+		}
+	});
+
+	/** Refusing beats guessing: an address we cannot parse is not requested. */
+	it('refuses an address it cannot parse', () => {
+		for (const bad of ['::ffff:7f00:1::2', 'gggg::1', '1:2:3:4:5:6:7', '::ffff:999.1.1.1'])
+			expect(isPublicAddress(bad), bad).toBe(false);
+	});
 });
 
 describe('validatingLookup', () => {
@@ -121,7 +160,11 @@ describe('assertRequestable', () => {
 			'http://127.0.0.1:5173/',
 			'http://10.0.0.5/',
 			'http://[::1]:8080/',
-			'https://192.168.1.1/'
+			'https://192.168.1.1/',
+			// Written dotted; `new URL` hands the guard `[::ffff:7f00:1]`.
+			'http://[::ffff:127.0.0.1]/',
+			'http://[::ffff:7f00:1]/',
+			'http://[::ffff:a9fe:a9fe]/latest/meta-data/'
 		]) {
 			expect(() => assertRequestable(url), url).toThrow(/non-public/);
 		}

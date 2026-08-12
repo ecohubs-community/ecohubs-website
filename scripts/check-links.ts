@@ -124,6 +124,53 @@ function comparable(url: string): string {
 }
 
 /**
+ * An IPv6 address as its eight 16-bit groups, or `null` if it will not parse.
+ *
+ * Written out rather than pattern-matched because **the textual form is not
+ * the one you are given**: `new URL('http://[::ffff:127.0.0.1]/').hostname` is
+ * `[::ffff:7f00:1]`, so a check for the readable dotted spelling matches a
+ * string that never reaches it. That was a live bypass — `::ffff:7f00:1` is
+ * loopback, and a regex looking for `::ffff:` followed by digits and dots let
+ * it straight through while a unit test on the dotted spelling passed.
+ *
+ * Numbers have one spelling. Text has several.
+ */
+function hextets(ip: string): number[] | null {
+	let text = ip.toLowerCase().replace(/^\[|\]$/g, '');
+
+	// A dotted tail (`::ffff:127.0.0.1`) is the low 32 bits written as IPv4.
+	const dotted = text.match(/^(.*:)(\d{1,3}(?:\.\d{1,3}){3})$/);
+	if (dotted) {
+		const octets = dotted[2].split('.').map(Number);
+		if (octets.some((octet) => octet > 255)) return null;
+		const high = ((octets[0] << 8) | octets[1]).toString(16);
+		const low = ((octets[2] << 8) | octets[3]).toString(16);
+		text = `${dotted[1]}${high}:${low}`;
+	}
+
+	const halves = text.split('::');
+	if (halves.length > 2) return null;
+
+	const left = halves[0] ? halves[0].split(':') : [];
+	const right = halves.length === 2 && halves[1] ? halves[1].split(':') : [];
+
+	// Without `::` the address must already be all eight groups.
+	if (halves.length === 1) {
+		if (left.length !== 8) return null;
+	} else if (left.length + right.length > 7) {
+		return null;
+	}
+
+	const zeros: string[] = new Array(8 - left.length - right.length).fill('0');
+	const groups = halves.length === 1 ? left : [...left, ...zeros, ...right];
+
+	const numbers = groups.map((group) =>
+		/^[0-9a-f]{1,4}$/.test(group) ? parseInt(group, 16) : NaN
+	);
+	return numbers.some(Number.isNaN) ? null : numbers;
+}
+
+/**
  * Address ranges this script will not send a request to.
  *
  * Every URL here arrives from a content file, and a content file arrives in a
@@ -138,17 +185,41 @@ function comparable(url: string): string {
  * blocks, and the carrier-grade NAT range that home routers sit behind.
  */
 export function isPublicAddress(ip: string): boolean {
-	if (isIP(ip) === 6) {
-		const address = ip.toLowerCase().replace(/^\[|\]$/g, '');
-		// An IPv4-mapped address is an IPv4 address wearing a hat.
-		const mapped = address.match(/^::ffff:(\d+\.\d+\.\d+\.\d+)$/);
-		if (mapped) return isPublicAddress(mapped[1]);
-		if (address === '::' || address === '::1') return false;
-		// fc00::/7 unique-local, fe80::/10 link-local.
-		return !/^(f[cd]|fe[89ab])/.test(address);
+	// Brackets belong to the URL, not the address, and `isIP` rejects them.
+	const bare = ip.replace(/^\[|\]$/g, '');
+	const kind = isIP(bare);
+
+	// Anything that is not an address at all is refused rather than waved
+	// through. This branch used to fall into the IPv4 arithmetic below, where a
+	// malformed string produced `NaN` comparisons, every test failed, and the
+	// function answered `true` — open by default, on exactly the inputs least
+	// worth trusting.
+	if (kind === 0) return false;
+
+	if (kind === 6) {
+		const groups = hextets(bare);
+		// Unparseable is refused rather than allowed: the whole point of this
+		// function is that anything it cannot vouch for does not get requested.
+		if (!groups) return false;
+
+		const [a, , , , , sixth, seventh, eighth] = groups;
+
+		// The first 80 bits being zero means the address embeds an IPv4 one:
+		// `::ffff:x` is IPv4-mapped, `::x` the deprecated IPv4-compatible form.
+		// Both have to be judged as the IPv4 address they carry.
+		if (groups.slice(0, 5).every((group) => group === 0) && (sixth === 0xffff || sixth === 0)) {
+			if (sixth === 0 && seventh === 0 && eighth <= 1) return false; // :: and ::1
+			const octets = [seventh >> 8, seventh & 0xff, eighth >> 8, eighth & 0xff];
+			return isPublicAddress(octets.join('.'));
+		}
+
+		if ((a & 0xfe00) === 0xfc00) return false; // fc00::/7 unique-local
+		if ((a & 0xffc0) === 0xfe80) return false; // fe80::/10 link-local
+		if ((a & 0xff00) === 0xff00) return false; // ff00::/8 multicast
+		return true;
 	}
 
-	const [a, b] = ip.split('.').map(Number);
+	const [a, b] = bare.split('.').map(Number);
 	if (a === 0 || a === 10 || a === 127) return false;
 	if (a === 169 && b === 254) return false; // link-local, incl. cloud metadata
 	if (a === 172 && b >= 16 && b <= 31) return false;
