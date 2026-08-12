@@ -134,7 +134,7 @@ Four patterns, in rough order of frequency.
 
 **The emergency that never ended.** This one arrives disguised as competence. Something urgent happens — a burst pipe, a planning deadline, a member in crisis — and somebody sensible decides it, correctly, without the meeting. Everybody is relieved. The trouble is that nothing about the arrangement ends, because nothing about it ever began: no scope was set, no expiry, no review. The next urgent thing goes the same way, and eighteen months later the community has a decision-maker nobody appointed and cannot un-appoint.
 
-The defence is cheap and has to be built in advance: write the exception _before_ you need it, with a limit on what it covers and a date it stops. A group that only writes down its ordinary process has, in effect, decided that its emergencies will be governed by whoever moves first.
+Communities that avoid this have generally written the exception down _before_ needing it — what it covers, and the date it stops. It is cheap to do in advance and close to impossible afterwards, because by then the question is about a particular person who has been right several times. A group that has only ever written down its ordinary process has, in effect, left its emergencies to whoever moves first.
 
 <Rcos
 layer={2}

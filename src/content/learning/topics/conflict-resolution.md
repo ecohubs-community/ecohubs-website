@@ -85,13 +85,13 @@ This is the failure that gets misdiagnosed most often. The community concludes i
 
 </Callout>
 
-There is an answer to that, and it is not a better method. It is a process that **changes shape** when the parties are unequal.
+What the communities that handle this well seem to have is not a better method. It is a process that **changes shape** when the parties are unequal.
 
-The moves are unremarkable once named: bring in a facilitator from outside the community rather than the person everyone trusts; give the two sides separate ways to raise things, so the quieter one is not filing a complaint through a friend of the other; stand down the more powerful party's role authority for the duration, so the person deciding the rota is not also a party to the dispute; and require more before a sanction lands, not less. Alongside them, a stated protection from consequences for raising something at all — because the reason most of these disputes never enter a process is a well-founded guess about what happens afterwards.
+The moves are unremarkable once named. A facilitator from outside the community rather than the person everyone trusts. Separate ways for the two sides to raise things, so the quieter one is not filing a complaint through a friend of the other. The more powerful party's role authority stood down for the duration, so the person deciding the rota is not also a party to the dispute. More required before a sanction lands, not less. And alongside them, a stated protection from consequences for having raised it at all — because the reason most of these disputes never enter a process is a well-founded guess about what happens afterwards.
 
-So there is one question worth asking a community directly: **what changes about your conflict process when one of the two people is a founder?** "Nothing — it's the same for everyone" sounds like fairness and is the answer that produces the failure above.
+Which makes one question worth asking a community directly: **what changes about your conflict process when one of the two people is a founder?** "Nothing — it's the same for everyone" sounds like fairness, and is the answer that produces the failure above.
 
-A separate floor sits underneath all of it, and belongs in any agreement you read. Where there is credible risk to physical, psychological or child safety, protection comes first and the process catches up afterwards. That is not a variation on repair; it is the point at which repair stops being the question.
+A separate floor sits underneath all of it, and the agreements worth reading say so explicitly. Where there is credible risk to physical, psychological or child safety, protection comes first and the process catches up afterwards. That is not a variation on repair; it is the point at which repair stops being the question.
 
 <Rcos
 layer={4}

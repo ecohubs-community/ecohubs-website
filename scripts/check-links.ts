@@ -22,12 +22,19 @@
  * Twin Oaks, Fannie Mae and Wiley all have bot protection and all are perfectly
  * alive in a browser. Reporting those as broken is the same naive-measurement
  * mistake that put two false positives in the original SEO audit, so they are
- * counted separately and do not fail the run.
+ * counted separately and do not fail the run. Everything else at 400 or above,
+ * and every request that fails outright, does fail it.
+ *
+ * Every URL is checked against `assertPublic()` before the request and again on
+ * each redirect hop: these are public citations, and a content file is not
+ * entitled to make whoever runs this reach into their own network.
  */
 import { readFile, readdir } from 'node:fs/promises';
+import { lookup } from 'node:dns/promises';
+import { isIP } from 'node:net';
 import { join, relative } from 'node:path';
 import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CONTENT = join(ROOT, 'src/content/learning');
@@ -111,25 +118,117 @@ function comparable(url: string): string {
 	}
 }
 
+/**
+ * Address ranges this script will not send a request to.
+ *
+ * Every URL here arrives from a content file, and a content file arrives in a
+ * pull request. Left unchecked, `https://…` is enough to make somebody who runs
+ * `pnpm links` probe their own network: `169.254.169.254` for cloud metadata, a
+ * loopback port to learn what a maintainer is running, an internal host to fire
+ * a state-changing GET at. Only the status code comes back, so this is an
+ * oracle rather than a leak — but it is somebody else's machine either way.
+ *
+ * Ranges follow the IANA special-purpose registries; the useful ones here are
+ * loopback, link-local (which is what carries cloud metadata), the RFC 1918
+ * blocks, and the carrier-grade NAT range that home routers sit behind.
+ */
+export function isPublicAddress(ip: string): boolean {
+	if (isIP(ip) === 6) {
+		const address = ip.toLowerCase().replace(/^\[|\]$/g, '');
+		// An IPv4-mapped address is an IPv4 address wearing a hat.
+		const mapped = address.match(/^::ffff:(\d+\.\d+\.\d+\.\d+)$/);
+		if (mapped) return isPublicAddress(mapped[1]);
+		if (address === '::' || address === '::1') return false;
+		// fc00::/7 unique-local, fe80::/10 link-local.
+		return !/^(f[cd]|fe[89ab])/.test(address);
+	}
+
+	const [a, b] = ip.split('.').map(Number);
+	if (a === 0 || a === 10 || a === 127) return false;
+	if (a === 169 && b === 254) return false; // link-local, incl. cloud metadata
+	if (a === 172 && b >= 16 && b <= 31) return false;
+	if (a === 192 && b === 168) return false;
+	if (a === 100 && b >= 64 && b <= 127) return false; // CGNAT
+	if (a === 192 && b === 0) return false; // IETF protocol assignments
+	if (a === 198 && (b === 18 || b === 19)) return false; // benchmarking
+	if (a >= 224) return false; // multicast and reserved
+	return true;
+}
+
+/**
+ * Rejects a URL that is not a public http(s) destination.
+ *
+ * Resolves the hostname, because `http://internal.example.com/` is the same
+ * request as `http://10.0.0.5/` once DNS has had its say.
+ *
+ * **The line this stops at:** the address is checked before the request, not at
+ * the moment the socket connects, so a name that resolves publicly here and
+ * privately a millisecond later would still get through. Closing that needs a
+ * custom dispatcher owning the lookup — worth it for a service accepting
+ * hostile input continuously, not for a script a maintainer runs by hand a few
+ * times a year. This blocks the realistic version: a literal address, or a
+ * redirect into one.
+ */
+export async function assertPublic(url: string): Promise<void> {
+	const { protocol, hostname } = new URL(url);
+	if (protocol !== 'http:' && protocol !== 'https:') {
+		throw new Error(`refusing non-http(s) URL: ${protocol}`);
+	}
+
+	const literal = hostname.replace(/^\[|\]$/g, '');
+	const addresses = isIP(literal)
+		? [literal]
+		: (await lookup(hostname, { all: true })).map((entry) => entry.address);
+
+	// `every`, not `some`: a name answering with one public and one private
+	// address is the shape of an attack, not a coincidence.
+	if (!addresses.every(isPublicAddress)) {
+		throw new Error(`refusing non-public address: ${hostname} → ${addresses.join(', ')}`);
+	}
+}
+
+const MAX_REDIRECTS = 10;
+
 async function check(link: Link): Promise<Result> {
-	const attempt = async (method: 'HEAD' | 'GET') =>
-		fetch(link.url, {
-			method,
-			redirect: 'follow',
-			headers: { 'User-Agent': UA, Accept: '*/*' },
-			signal: AbortSignal.timeout(TIMEOUT_MS)
-		});
+	/**
+	 * Redirects are followed by hand rather than by `redirect: 'follow'`, so
+	 * that every hop is checked rather than only the URL in the content file.
+	 * A public host that 302s to `127.0.0.1` is otherwise the whole bypass.
+	 */
+	const follow = async (method: 'HEAD' | 'GET') => {
+		let url = link.url;
+
+		for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
+			await assertPublic(url);
+
+			const response = await fetch(url, {
+				method,
+				redirect: 'manual',
+				headers: { 'User-Agent': UA, Accept: '*/*' },
+				signal: AbortSignal.timeout(TIMEOUT_MS)
+			});
+
+			const location = response.headers.get('location');
+			if (response.status < 300 || response.status >= 400 || !location) {
+				return { status: response.status, url };
+			}
+
+			url = new URL(location, url).href;
+		}
+
+		throw new Error(`more than ${MAX_REDIRECTS} redirects`);
+	};
 
 	try {
 		// HEAD first — cheap — but plenty of servers answer it wrongly, so a
 		// non-OK HEAD is retried as a GET before being called a failure.
-		let response = await attempt('HEAD');
-		if (!response.ok) response = await attempt('GET');
+		let result = await follow('HEAD');
+		if (result.status >= 400) result = await follow('GET');
 
 		return {
 			...link,
-			status: response.status,
-			finalUrl: comparable(response.url) !== comparable(link.url) ? response.url : undefined
+			status: result.status,
+			finalUrl: comparable(result.url) !== comparable(link.url) ? result.url : undefined
 		};
 	} catch (error) {
 		return { ...link, status: null, error: (error as Error).message };
@@ -217,7 +316,11 @@ async function main() {
 	if (broken.length) process.exit(1);
 }
 
-main().catch((error) => {
-	console.error(error);
-	process.exit(1);
-});
+// Guarded so the spec can import the address guard without running a network
+// sweep — the same pattern `scripts/build-downloads.ts` uses.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+	main().catch((error) => {
+		console.error(error);
+		process.exit(1);
+	});
+}
