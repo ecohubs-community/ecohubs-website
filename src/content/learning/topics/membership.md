@@ -3,7 +3,7 @@ type: topic
 title: Membership & Belonging
 slug: membership
 summary: How people join, how they are turned down, and how they leave — the process that protects the joiner as much as the community.
-targetQuery: how to join an intentional community
+targetQuery: intentional community membership
 practice: >-
   Membership vocabulary varies more between communities than almost any other, so never accept a stage name at face value. Ask what a person at that stage may decide, what they pay, and what they would get back if they withdrew. If the community cannot answer for each stage, the stages are labels rather than a process.
 cluster: culture

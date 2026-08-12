@@ -183,6 +183,37 @@ export function validateContent(entries: ContentEntry[]): ValidationIssue[] {
 		}
 	}
 
+	/**
+	 * Two pages competing for the same search term.
+	 *
+	 * The Keyword Map's governing rule is "one primary term per page, and no
+	 * page competes with another" — when several target the same phrase, Google
+	 * picks one and the rest dilute it. The map was written before the hub
+	 * existed and its guardrails only cover hub-vs-marketing-page collisions, so
+	 * nothing was watching the hub's own pages: five had drifted into duplicates,
+	 * every one of them a topic and its twin lesson.
+	 *
+	 * Drafts are excluded — an unpublished page competes for nothing, and a
+	 * rewrite in progress should not fail the build. `isIndexable` is the same
+	 * gate the sitemap uses, so this asks exactly the question that matters:
+	 * of the pages Google can see, do any two want the same query?
+	 */
+	const byQuery = new Map<string, string>();
+	for (const entry of entries) {
+		const query = entry.frontmatter.targetQuery?.trim().toLowerCase();
+		if (!query || !isIndexable(entry)) continue;
+
+		const previous = byQuery.get(query);
+		if (previous) {
+			issues.push({
+				path: entry.path,
+				message: `targetQuery "${query}" is already claimed by ${previous} — two indexable pages competing for one term`
+			});
+		} else {
+			byQuery.set(query, entry.path);
+		}
+	}
+
 	// A published path whose steps are all drafts would render as an empty
 	// sequence — worth catching, since it looks fine in the source.
 	const publishedLessons = new Set(
