@@ -13,7 +13,7 @@ imageAlt: >-
   Three very different homes around a shared meadow — a timber cabin with a porch, a
   rendered cottage, and a large barn — linked by gravel paths and a fire circle.
 status: published
-updated: 2026-08-05
+updated: 2026-08-11
 terms: [intentional-community, cohousing, ecovillage, commune]
 ---
 
@@ -69,6 +69,21 @@ caption="Any real community sits somewhere along each of these, and the combinat
 />
 
 Two places calling themselves ecovillages can sit at opposite ends of every row. Two places with different labels can be nearly identical. Ask about the five, not the name.
+
+The first row is the one communities answer worst. Ask why a place exists and you will get five good things — affordability, ecology, raising children well, growing food, not being lonely. All five are real, and on an ordinary day they do not compete. What is worth finding out is which one **wins**: a purpose is less a mission statement than a tie-breaker, the thing a group agreed to fall back on the year the solar array and the second family's deposit want the same money and neither side is being unreasonable.
+
+A community that cannot name one has not avoided the choice. It has deferred it to whoever is most persuasive on the night.
+
+<Rcos
+layer={0}
+section="§2.1 Purpose Definition"
+href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-0-identity-scope#21-purpose-definition">
+
+The RCOS Standard makes that a requirement rather than good practice, and is strict about the wording: **exactly one** primary purpose, describing the enduring reason the community exists rather than a goal, a project or a strategy.
+
+Secondary purposes are permitted and may not override it; no decision or allocation of resources may materially contradict it; and changing it is a constitutional matter rather than an ordinary one. Which is the point of insisting on a single purpose in the first place — a tie-breaker that a busy meeting can quietly amend is not a tie-breaker.
+
+</Rcos>
 
 <Quiz id="which-community-fits" />
 

@@ -13,7 +13,7 @@ imageAlt: >-
   An old timber and render building patched with mismatched boards and sheets of
   corrugated metal, still in use, with someone working inside the open doorway.
 status: published
-updated: 2026-08-07
+updated: 2026-08-11
 terms: [drift, founder-transition, exit-clause, agreements]
 ---
 
@@ -72,6 +72,23 @@ Nor are we saying the figures are invented. Kanter counted something real and Ch
 
 Drift deserves its own note because it is the only one that does not feel like anything while it is happening. The others announce themselves.
 
+Which is also why vigilance is the wrong defence against it. Nobody notices a slow forgetting by paying closer attention; there is no moment to notice. What catches drift is duller and works without anyone being alert: **dating the agreements, and keeping the old versions.** A community that can say which version is in force, and when the last change was made and by whom, has turned a feeling into a check anybody can run.
+
+The difference that makes is mostly social. Without a current text, raising drift means saying "I think we have lost something", which is a criticism of everyone present and is heard as one. With it, the same observation is that the practice and the document disagree — a discrepancy, pointed at rather than levelled, and the sort of thing a group can look into without anyone having to be at fault. Communities that have been through it tend to describe wishing they had had that conversation four years earlier, and the reason they did not is almost never that nobody sensed it.
+
+<Rcos
+layer={6}
+section="§8.2 Versioning and Authority, §8.4 Learning and Feedback Capture"
+href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-6-evolution-adaptation#82-versioning-and-authority">
+
+Drift is the pattern this layer exists to catch, and the RCOS Standard states the defence as a validity rule rather than a filing habit: **no informal, undocumented or "understood" rule change may be considered valid.**
+
+Every adopted change is versioned and traceable to its decision record — the authority, the mechanism, the threshold, the effective date. Superseded rules stay accessible together with the dates during which they were in force. And the community must be able, at any moment, to determine unambiguously which version is currently in force and which artifacts are authoritative.
+
+One further clause reaches the other five patterns on this page: **repeated failure patterns must trigger structural review rather than individual blame.** The third time the same argument happens, the rule is the suspect.
+
+</Rcos>
+
 ## Endings that are not failures
 
 Treating every ending as a failure is unkind and analytically useless, and it is the habit that makes the ninety per cent figure feel plausible.
@@ -119,8 +136,13 @@ note: 'the "probably 90 percent" of forming groups that never build anything'
 },
 {
 title: 'Altus, D. — The Value of Community: What Defines Success?',
-url: 'https://www.ic.org/the-value-of-community-what-defines-success/',
-note: 'a Communal Studies scholar questioning longevity as the measure'
+url: 'https://web.archive.org/web/20260419050029/https://www.ic.org/the-value-of-community-what-defines-success/',
+note: 'a Communal Studies scholar questioning longevity as the measure; the 90% figure appears in the comments. Archived — the Foundation for Intentional Community has since removed the original.'
+},
+{
+title: 'RCOS Core — Layer 6: Evolution & Adaptation',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-6-evolution-adaptation',
+note: 'versioning, time-bounded experiments, and the learning log that makes drift visible'
 },
 {
 title: 'Communal Studies Association',

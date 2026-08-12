@@ -13,7 +13,7 @@ imageAlt: >-
   Two people sitting at opposite ends of a weathered bench above a grey sea, turned
   toward each other mid-conversation, neither smiling.
 status: published
-updated: 2026-08-07
+updated: 2026-08-11
 terms: [repair-process, informal-power, graduated-sanctions, facilitation]
 ---
 
@@ -85,6 +85,29 @@ This is the failure that gets misdiagnosed most often. The community concludes i
 
 </Callout>
 
+What the communities that handle this well seem to have is not a better method. It is a process that **changes shape** when the parties are unequal.
+
+The moves are unremarkable once named. A facilitator from outside the community rather than the person everyone trusts. Separate ways for the two sides to raise things, so the quieter one is not filing a complaint through a friend of the other. The more powerful party's authority in the relevant role suspended for the duration, so the person deciding the rota is not also a party to the dispute. More required before a sanction lands, not less. And alongside them, a stated protection from consequences for having raised it at all — because the reason most of these disputes never enter a process is a well-founded guess about what happens afterwards.
+
+Which makes one question worth asking a community directly: **what changes about your conflict process when one of the two people is a founder?** "Nothing — it's the same for everyone" sounds like fairness, and is the answer that produces the failure above.
+
+A separate floor sits underneath all of it, and the agreements worth reading say so explicitly. Where there is credible risk to physical, psychological or child safety, protection comes first and the process catches up afterwards. That is not a variation on repair; it is the point at which repair stops being the question.
+
+<Rcos
+layer={4}
+section="§6.3 Safeguards"
+href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-4-conflict-repair-accountability#63-safeguards">
+
+The RCOS Standard does not require the particular measures listed above, and the distinction is worth being exact about. What it requires is that a community **define explicit safeguards** for conflicts involving power asymmetries, dependency relationships or safety risks (§6.3.1), and that where a power differential exists between the parties, **elevated safeguards must be applied** (§6.3.3). Which ones is left open: external facilitation, separate channels, temporary suspension of role authority and a higher evidence threshold are offered as options a community _may_ choose from, not a checklist it must satisfy.
+
+That is the standard's usual shape — it constrains the response level and leaves the technique to the group. The part not left open is the **trigger**: elevated safeguards follow from the condition being present, not from a judgement that a particular dispute felt lopsided, so nobody has to argue their way into being protected.
+
+Two clauses are unconditional. **Anti-retaliation** protections are mandatory, covering four acts by name — raising a concern, requesting mediation, giving testimony or evidence, and taking part in a review or appeal (§6.3.2). And safety is written as an ordering rather than an exception: safety safeguards **override participation rights, role continuity and operational convenience** (§6.3.5). Every item in that list is something a community will be tempted to weigh against safety, which is presumably why they are enumerated.
+
+Safety-critical conflicts get their own requirement rather than the same one: a community must **define immediate protective actions** that may be taken before the process has finished (§6.3.4) — again a mandatory definition, with the measures themselves a menu.
+
+</Rcos>
+
 ## When to leave instead
 
 Repair is not always the right answer, and a topic that only counselled persistence would be doing you a disservice.
@@ -123,6 +146,11 @@ note: 'the essay itself, free from the author'
 title: 'Ostrom, E. — Governing the Commons (1990)',
 url: 'https://doi.org/10.1017/CBO9780511807763',
 note: 'graduated sanctions and accessible conflict resolution'
+},
+{
+title: 'RCOS Core — Layer 4: Conflict, Repair & Accountability',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-4-conflict-repair-accountability',
+note: 'conflict classes, the resolution ladder, safeguards against power asymmetry, and proportional sanctions'
 },
 {
 title: 'Seeds for Change',

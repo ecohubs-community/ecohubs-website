@@ -172,7 +172,7 @@ note: 'where EcoHubs implements these methods, with its own names for two of the
 },
 {
 title: 'Buchanan, J. & Tullock, G. — The Calculus of Consent (1962)',
-url: 'https://oll.libertyfund.org/titles/buchanan-the-calculus-of-consent',
+url: 'https://www.econlib.org/library/Buchanan/buchCv3.html',
 note: 'why the best decision rule differs by class of decision'
 },
 {

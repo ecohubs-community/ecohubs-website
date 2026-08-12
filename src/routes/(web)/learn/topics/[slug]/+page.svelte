@@ -13,6 +13,7 @@
 		ShareButton
 	} from '$lib/components/learning';
 	import { learningBreadcrumbs, topicArticle } from '$lib/learning/schema';
+	import { rcosLayerLabel, rcosLayerUrl } from '$lib/learning/rcos';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -85,10 +86,11 @@
 				{#if topic.rcosLayer !== undefined}
 					<span aria-hidden="true">·</span>
 					<a
-						href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/"
+						href={rcosLayerUrl(topic.rcosLayer)}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="hover:text-ecohubs-dark"
+						title="RCOS Core v0.1 — {rcosLayerLabel(topic.rcosLayer)}"
 					>
 						RCOS Layer {topic.rcosLayer}
 					</a>

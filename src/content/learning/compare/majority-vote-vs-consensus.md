@@ -91,7 +91,7 @@ note: 'names majority, supermajority and consent as mechanisms, sorted by decisi
 },
 {
 title: 'Buchanan, J. & Tullock, G. — The Calculus of Consent (1962)',
-url: 'https://oll.libertyfund.org/titles/buchanan-the-calculus-of-consent',
+url: 'https://www.econlib.org/library/Buchanan/buchCv3.html',
 note: 'the formal version of the trade this page describes'
 },
 {

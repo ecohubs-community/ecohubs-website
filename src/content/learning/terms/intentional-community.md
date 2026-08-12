@@ -8,7 +8,7 @@ summary: A group who chose each other, live together or close by, and have writt
 short: A group who chose each other, live together or close by, and have written down how they decide things.
 targetQuery: what is an intentional community
 status: published
-updated: 2026-08-06
+updated: 2026-08-11
 related: [cohousing, ecovillage, commune]
 ---
 
@@ -43,8 +43,8 @@ note: 'the long-running directory and the source of the umbrella definition'
 },
 {
 title: 'RCOS Core — Layer 0: Identity & Scope',
-url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/',
-note: 'how a community states what it is and is not'
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-0-identity-scope',
+note: 'how a community states what it is, what it is not, and what it does not govern'
 }
 ]}
 />

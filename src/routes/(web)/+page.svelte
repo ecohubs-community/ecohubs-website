@@ -111,7 +111,8 @@
 				>
 					EcoHubs is a growing network of people building regenerative intentional communities — a
 					different way to live together, rooted in nature, honest about conflict, and designed so
-					that belonging is built in, not left to chance.
+					that belonging is built in, not left to chance. That is what we mean by regenerative
+					living: giving back more than we take.
 				</p>
 
 				<div
