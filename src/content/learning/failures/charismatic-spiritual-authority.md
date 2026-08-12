@@ -7,7 +7,7 @@ layer: 2
 rcos: culture-influence/charismatic-spiritual-authority
 summary: Someone is so persuasive that disagreeing with them feels like a failure of understanding rather than a difference of view.
 targetQuery: charismatic leader community warning signs
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - Disagreement gets reframed as something the disagreeing person needs to work on.

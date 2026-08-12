@@ -6,7 +6,7 @@ guide: why-communities-fail
 order: 4
 summary: Four patterns about the edges — what the community stands for, what it may ask of you, and how somebody stops being a member.
 targetQuery: when someone no longer fits the community
-status: draft
+status: published
 updated: 2026-08-12
 terms: [membership-agreement, exit-clause, agreements, drift, graduated-sanctions]
 related: [conflict-that-never-resolves, membership-getting-in-and-out]

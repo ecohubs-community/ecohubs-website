@@ -7,7 +7,7 @@ layer: 2
 rcos: governance-power/founder-informal-veto
 summary: No rule grants it and everyone routes around it anyway — the objection that ends a discussion without ever being tested.
 targetQuery: founder syndrome intentional community
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - Proposals get quietly checked with one person before they reach a meeting.

@@ -6,7 +6,7 @@ guide: why-communities-fail
 order: 5
 summary: Five patterns that all end in the same place — a community running on two or three people who cannot stop, and a group that can see it and cannot fix it.
 targetQuery: burnout in intentional communities
-status: draft
+status: published
 updated: 2026-08-12
 terms: [invisible-work, work-quota, informal-power, agreements, facilitation]
 related: [power-nobody-voted-for, where-the-money-quietly-moves]

@@ -7,7 +7,7 @@ layer: 5
 rcos: operations-coordination/invisible-power-via-responsibilities
 summary: The person who does a thing ends up deciding it — nobody granted that, and nobody can take it back without taking the work back too.
 targetQuery: one person does everything in our community
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - Decisions in an area are made by whoever handles that area, without anybody deciding they should be.

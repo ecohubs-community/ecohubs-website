@@ -6,7 +6,7 @@ guide: why-communities-fail
 order: 1
 summary: Five patterns that hand authority to people the group never chose — and why every one of them is built by somebody being helpful.
 targetQuery: power struggles in intentional communities
-status: draft
+status: published
 updated: 2026-08-12
 terms:
   [informal-power, founder-transition, decision-matrix, blocking-concern, facilitation, agreements]

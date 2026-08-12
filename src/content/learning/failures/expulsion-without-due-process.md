@@ -7,7 +7,7 @@ layer: 1
 rcos: membership-boundaries/expulsion-without-due-process
 summary: Grounds invented during the case they are used on — and every remaining member quietly learns what the rules really are.
 targetQuery: expelling a member from a community
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - The agreements state no grounds for removal, or state them without a process.

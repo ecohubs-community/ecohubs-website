@@ -7,7 +7,7 @@ layer: 5
 rcos: operations-coordination/undefined-information-access
 summary: The accounts, the passwords, the history and the reason the rule exists — held by whoever happened to be there, and reachable only through them.
 targetQuery: community records nobody can find
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - Answering an ordinary question requires asking a specific person.

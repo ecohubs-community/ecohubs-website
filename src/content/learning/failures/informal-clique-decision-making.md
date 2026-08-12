@@ -7,7 +7,7 @@ layer: 2
 rcos: governance-power/informal-clique-decision-making
 summary: The real conversation happens in the kitchen and the meeting ratifies it — so attendance stops changing anything, and then stops.
 targetQuery: decisions made outside meetings community
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - Proposals arrive at the meeting already resolved, and discussion feels ceremonial.

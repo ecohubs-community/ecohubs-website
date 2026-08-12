@@ -7,7 +7,7 @@ layer: 0
 rcos: membership-boundaries/governance-creep-into-private-life
 summary: Each new rule was a reasonable answer to a real problem, and together they have opinions about your visitors, your diet and your evenings.
 targetQuery: how much can a community control your private life
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - The community has an agreed position on something it does not own or maintain.

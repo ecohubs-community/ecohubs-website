@@ -6,7 +6,7 @@ guide: why-communities-fail
 order: 3
 summary: Two communities met the same pressure and answered it opposite ways — one sold the commons and kept the model, the other kept the commons and changed the model.
 targetQuery: financial failure in intentional communities
-status: draft
+status: published
 updated: 2026-08-12
 terms: [reserve-fund, common-purse, invisible-work, special-levy, agreements]
 related: [power-nobody-voted-for, what-joining-costs]

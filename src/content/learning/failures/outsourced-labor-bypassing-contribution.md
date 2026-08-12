@@ -7,7 +7,7 @@ layer: 3
 rcos: economy-resources/outsourced-labor-bypassing-contribution
 summary: Some members pay their way out of the work — reasonably, one at a time — until the rota is done by whoever cannot afford not to.
 targetQuery: paying someone else to do your community work
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - Members may buy out of work hours, and the rate was never really calculated.

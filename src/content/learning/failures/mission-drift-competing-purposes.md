@@ -7,7 +7,7 @@ layer: 0
 rcos: membership-boundaries/mission-drift-competing-purposes
 summary: Nobody voted to become something else — enough people arrived wanting something else that it happened anyway.
 targetQuery: competing visions in a community
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - Longer-standing and newer members describe what the place is for in different words.

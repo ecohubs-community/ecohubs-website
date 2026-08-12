@@ -7,7 +7,7 @@ layer: 5
 rcos: operations-coordination/invisible-care-labor-burnout
 summary: The noticing, remembering and smoothing that never reaches a rota — done by the same people, unrecorded, until one of them stops.
 targetQuery: emotional labour in community who does it
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - The rota covers physical tasks and nothing else, and everyone knows other work exists.

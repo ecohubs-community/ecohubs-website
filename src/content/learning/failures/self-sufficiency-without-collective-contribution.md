@@ -7,7 +7,7 @@ layer: 5
 rcos: operations-coordination/self-sufficiency-without-collective-contribution
 summary: Households withdraw into their own lives, one reasonable decision at a time, and the commons is maintained by whoever still minds.
 targetQuery: members not participating in community life
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - Attendance at shared work and shared meals has fallen without any decision being made.

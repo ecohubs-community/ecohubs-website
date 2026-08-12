@@ -7,7 +7,7 @@ layer: 2
 rcos: governance-power/undefined-decision-type
 summary: The same question is routine or constitutional depending on who you ask — so the answer depends on who gets to frame it.
 targetQuery: unclear decision authority in a community
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - Arguments about whether something needs the whole group start before the discussion does.

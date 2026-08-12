@@ -7,7 +7,7 @@ layer: 4
 rcos: conflict-accountability/punishment-before-repair
 summary: The group does act — and reaches straight for the consequence, so nobody raises anything small ever again.
 targetQuery: punishment before repair community accountability
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - The first available response to a breach is a sanction, with nothing cheaper below it.

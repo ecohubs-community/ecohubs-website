@@ -6,7 +6,7 @@ guide: why-communities-fail
 order: 2
 summary: Two patterns, opposite in temperament and identical in effect — a community that cannot metabolise disagreement accumulates it.
 targetQuery: unresolved conflict in a community
-status: draft
+status: published
 updated: 2026-08-12
 terms: [repair-process, graduated-sanctions, facilitation, informal-power, agreements]
 related: [power-nobody-voted-for, conflict-power-and-repair]

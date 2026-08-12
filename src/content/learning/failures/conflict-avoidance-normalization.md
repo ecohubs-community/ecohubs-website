@@ -7,7 +7,7 @@ layer: 4
 rcos: conflict-accountability/conflict-avoidance-normalization
 summary: The group is warm, nothing is confronted, and difficulty gets absorbed quietly — until somebody leaves and everyone privately knew why.
 targetQuery: conflict avoidance in community
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - Difficulties are discussed widely in private and never once in a meeting.

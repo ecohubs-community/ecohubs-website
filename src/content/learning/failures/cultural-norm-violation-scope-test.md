@@ -7,7 +7,7 @@ layer: 0
 rcos: membership-boundaries/cultural-norm-violation-scope-test
 summary: A commitment written into the founding vision, and no process behind it — so the first person to break it discovers there was nothing there.
 targetQuery: when a member breaks community norms
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - A value is central to how the community describes itself and appears in no agreement.

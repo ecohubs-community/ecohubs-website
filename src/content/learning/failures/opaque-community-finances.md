@@ -7,7 +7,7 @@ layer: 3
 rcos: economy-resources/opaque-community-finances
 summary: Not hidden, exactly — just held by two people, reported in summary, and never actually examined by anyone else.
 targetQuery: community finances not transparent
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - The accounts are available in principle and nobody has asked to see them in years.

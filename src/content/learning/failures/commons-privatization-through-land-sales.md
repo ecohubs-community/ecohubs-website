@@ -7,7 +7,7 @@ layer: 3
 rcos: economy-resources/commons-privatization-through-land-sales
 summary: Every sale funds another year, every sale is defensible, and the thing being sold is what made the community possible.
 targetQuery: selling community land to cover costs
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - An operating shortfall has been closed by a sale more than once.

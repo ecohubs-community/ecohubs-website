@@ -7,7 +7,7 @@ layer: 5
 rcos: operations-coordination/rapid-growth-without-onboarding
 summary: New members arrive faster than the community can teach itself to them — so they learn a version, and the version drifts.
 targetQuery: growing an intentional community too fast
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - Onboarding is a person being generous with their time rather than a process.

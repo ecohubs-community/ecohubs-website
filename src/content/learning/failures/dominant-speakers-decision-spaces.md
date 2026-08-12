@@ -7,7 +7,7 @@ layer: 2
 rcos: governance-power/dominant-speakers-decision-spaces
 summary: Nothing is blocked and nobody is silenced — but only some people's proposals ever get finished, and the group calls it consensus.
 targetQuery: dominant voices in community meetings
-status: draft
+status: published
 updated: 2026-08-12
 signs:
   - The same two or three people speak first on almost every item.
