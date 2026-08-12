@@ -3,7 +3,7 @@ type: topic
 title: Resilience & Why Communities Fail
 slug: resilience
 summary: Where the two different "90% fail" figures come from, the six patterns that recur, and the endings that are not failures.
-targetQuery: why do intentional communities fail
+targetQuery: what makes intentional communities last
 practice: >-
   Nothing on this page is a prediction. Use it as a set of things to check against a real community and against your own group: ask what nearly ended this place, and what changed afterwards. A community that can answer both has survived something and learned from it, which is the only evidence of resilience anybody can actually show you.
 cluster: power

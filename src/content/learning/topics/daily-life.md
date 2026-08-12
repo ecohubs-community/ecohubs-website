@@ -3,7 +3,7 @@ type: topic
 title: Daily Life in Community
 slug: daily-life
 summary: A week, concretely — meals, work, meetings, noise, and the privacy nobody warns you about.
-targetQuery: what is it like to live in an intentional community
+targetQuery: daily life in an intentional community
 practice: >-
   Everything on this page is checkable on a visit, and none of it is checkable from a website. Ask for numbers rather than impressions — how many hours, how many meals, how many people at the last meeting — and ask three different members the same question. The variance between their answers is usually more informative than any of the answers.
 cluster: culture

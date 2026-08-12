@@ -6,7 +6,7 @@ term: Intentional community
 topic: intentional-communities
 summary: A group who chose each other, live together or close by, and have written down how they decide things.
 short: A group who chose each other, live together or close by, and have written down how they decide things.
-targetQuery: what is an intentional community
+targetQuery: intentional community definition
 status: published
 updated: 2026-08-11
 related: [cohousing, ecovillage, commune]

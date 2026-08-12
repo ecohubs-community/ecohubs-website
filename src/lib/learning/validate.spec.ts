@@ -151,6 +151,79 @@ describe('validateContent — structural rules', () => {
 	});
 });
 
+/**
+ * The Keyword Map's rule — one primary term per page — had nothing enforcing it
+ * inside the hub, and five pairs had drifted into competing for the same query.
+ */
+describe('validateContent — targetQuery collisions', () => {
+	const targeting = (slug: string, targetQuery: string, status = 'published') =>
+		entry({ type: 'topic', slug, cluster: 'culture', targetQuery, status } as never);
+
+	it('reports two indexable pages competing for one term', () => {
+		const issues = validateContent([
+			targeting('a', 'why do intentional communities fail'),
+			targeting('b', 'why do intentional communities fail')
+		]);
+		expect(issues.some((i) => i.message.includes('already claimed by'))).toBe(true);
+	});
+
+	it('names the page that claimed it first, so the fix is obvious', () => {
+		const issues = validateContent([
+			targeting('first', 'shared query'),
+			targeting('second', 'shared query')
+		]);
+		const clash = issues.find((i) => i.message.includes('already claimed by'));
+		expect(clash?.path).toContain('second');
+		expect(clash?.message).toContain('first');
+	});
+
+	it('ignores case and surrounding whitespace', () => {
+		const issues = validateContent([
+			targeting('a', 'Community Governance'),
+			targeting('b', '  community governance  ')
+		]);
+		expect(issues.some((i) => i.message.includes('already claimed by'))).toBe(true);
+	});
+
+	/**
+	 * mdsvex's YAML preserves internal runs — `targetQuery: a  b` arrives with
+	 * both spaces — so without collapsing them a typo would evade the check
+	 * while looking identical to a reader.
+	 */
+	it('ignores repeated whitespace inside the term', () => {
+		const issues = validateContent([
+			targeting('a', 'intentional community membership'),
+			targeting('b', 'intentional  community   membership'),
+			targeting('c', 'intentional\tcommunity membership')
+		]);
+		const clashes = issues.filter((i) => i.message.includes('already claimed by'));
+		expect(clashes).toHaveLength(2);
+	});
+
+	it('allows distinct terms', () => {
+		const issues = validateContent([
+			targeting('a', 'intentional community'),
+			targeting('b', 'types of intentional communities'),
+			targeting('c', 'intentional community definition')
+		]);
+		expect(issues.filter((i) => i.message.includes('already claimed by'))).toEqual([]);
+	});
+
+	/** A draft competes for nothing, and a rewrite should not fail the build. */
+	it('ignores drafts, which are not indexable', () => {
+		const issues = validateContent([
+			targeting('a', 'shared query'),
+			targeting('b', 'shared query', 'draft')
+		]);
+		expect(issues.filter((i) => i.message.includes('already claimed by'))).toEqual([]);
+	});
+
+	it('ignores pages with no targetQuery at all', () => {
+		const issues = validateContent([topic('a'), topic('b')]);
+		expect(issues.filter((i) => i.message.includes('already claimed by'))).toEqual([]);
+	});
+});
+
 describe('isIndexable', () => {
 	it('excludes drafts however long they are', () => {
 		const longDraft = entry(
