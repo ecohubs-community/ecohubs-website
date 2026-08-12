@@ -1,6 +1,6 @@
 /**
  * Generates the guide downloads: the full-guide PDF, the visit-questions PDF,
- * and the cost model worksheet.
+ * the failure-modes checklist, and the cost model worksheet.
  *
  *     pnpm downloads                 # every published guide
  *     pnpm downloads intentional-communities
@@ -345,6 +345,34 @@ async function main() {
 			console.log(`  ${questions} — ${result.pages} pages, ${count ?? '?'} questions`);
 		} else {
 			console.log('  no visit questions in this guide — skipped');
+		}
+
+		/**
+		 * The failure modes as a checklist, for guides that have any.
+		 *
+		 * Probed rather than configured, exactly as the visit questions are: the
+		 * route 404s when a guide has no failure modes, so adding modes to a
+		 * second guide is enough to give it the sheet too.
+		 */
+		const checklist = `${guide.slug}-failure-modes-checklist.pdf`;
+		const checklistUrl = `${base}/print/${guide.slug}/failures`;
+		const checklistHead = await fetch(checklistUrl);
+		if (checklistHead.ok) {
+			const body = await checklistHead.text();
+			const modes = body.match(/(\d+) patterns and (\d+) things to check/);
+			const result = await renderPdf(page, checklistUrl, join(dir, checklist), guide.title, {
+				cover: false
+			});
+			entries.push({
+				kind: 'pdf',
+				label: 'The failure modes as a checklist',
+				detail: `PDF · ${result.pages} ${result.pages === 1 ? 'page' : 'pages'}${modes ? ` · ${modes[1]} patterns, ${modes[2]} things to check` : ''}`,
+				file: `/downloads/${guide.slug}/${checklist}`,
+				...result
+			});
+			console.log(`  ${checklist} — ${result.pages} pages, ${modes?.[1] ?? '?'} patterns`);
+		} else {
+			console.log('  no failure modes in this guide — no checklist');
 		}
 
 		if (await usesEstimator(guide.slug)) {

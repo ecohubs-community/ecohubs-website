@@ -11,11 +11,13 @@
 	 * browsing — they are checking whether the thing happening to them has a
 	 * name.
 	 */
+	import Icon from '$lib/components/Icon.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { LearnRail } from '$lib/components/learning';
 	import { LEARN_SHELL } from '$lib/components/learning/shell';
 	import { learningBreadcrumbs } from '$lib/learning/schema';
+	import { RCOS_STRESS_TESTS } from '$lib/learning/rcos';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -119,6 +121,37 @@
 					</ul>
 				</section>
 			{/each}
+
+			<!-- The catalogue is not finished, and this page should not read as
+			     though it were. The twenty-fifth mode here is one the standard does
+			     not yet carry, which makes the invitation a description of
+			     something that has already happened rather than a form nobody
+			     fills in. -->
+			<aside class="max-w-[820px] rounded-2xl border border-emerald-200/70 bg-ecohubs-ivory/70 p-7">
+				<h2 class="font-serif text-xl text-ecohubs-deep md:text-2xl">
+					Lived through one that is not here?
+				</h2>
+				<p class="mt-3 max-w-[62ch] text-[0.95rem] leading-relaxed text-stone-700">
+					This catalogue grows by absorbing real experience — one of the patterns above is here
+					because it was missing from the standard, not because the standard listed it. If your
+					community has been through a structural failure nobody has written down, the useful
+					version is the specific one: what happened, which parts of the structure were involved,
+					and how it was or was not resolved.
+				</p>
+				<a
+					href="{RCOS_STRESS_TESTS}#contributing-a-stress-test"
+					class="mt-5 inline-flex items-center gap-2 text-[0.95rem] text-ecohubs-primary
+					       underline decoration-emerald-300 underline-offset-4 transition-colors
+					       hover:text-ecohubs-deep"
+					rel="noopener"
+				>
+					How to contribute a stress test
+					<Icon icon="tabler:external-link" class="h-4 w-4" />
+				</a>
+				<p class="mt-3 font-mono text-[10.5px] tracking-[0.06em] text-[#8a8a80]">
+					On the RCOS standard, which maintains the catalogue
+				</p>
+			</aside>
 		</div>
 
 		<LearnRail

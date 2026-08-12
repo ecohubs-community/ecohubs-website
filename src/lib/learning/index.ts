@@ -167,6 +167,42 @@ export function lessonsOfGuide(
 		.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 }
 
+/**
+ * The failure modes a guide covers, in the order its lessons introduce them.
+ *
+ * A failure page names its lesson rather than its guide, so the guide has to be
+ * resolved through the lesson — which also means a mode belonging to an
+ * unpublished lesson drops out on its own.
+ *
+ * Ordered by lesson rather than alphabetically because both the printed
+ * appendix and the checklist have to read in the same sequence as the guide: a
+ * reader working through lesson 3 should find its modes together, not scattered
+ * between A and W. Guides with no failure modes get an empty array, and their
+ * callers skip the section rather than printing an empty heading.
+ */
+export function failuresOfGuide(guideSlug: string) {
+	const ownLessons = lessonsOfGuide(guideSlug);
+	const order = new Map(ownLessons.map((lesson, index) => [lesson.frontmatter.slug, index]));
+
+	return publishedFailures
+		.filter((entry) => order.has(entry.frontmatter.lesson))
+		.sort(
+			(a, b) =>
+				order.get(a.frontmatter.lesson)! - order.get(b.frontmatter.lesson)! ||
+				a.frontmatter.title.localeCompare(b.frontmatter.title)
+		)
+		.map((entry) => ({
+			slug: entry.frontmatter.slug,
+			title: entry.frontmatter.title,
+			summary: entry.frontmatter.summary,
+			signs: entry.frontmatter.signs,
+			layer: entry.frontmatter.layer,
+			lesson: entry.frontmatter.lesson,
+			lessonTitle: ownLessons.find((l) => l.frontmatter.slug === entry.frontmatter.lesson)!
+				.frontmatter.title
+		}));
+}
+
 /** Previous/next within a guide, skipping drafts so readers never hit a gap. */
 export function guideNeighbours(guideSlug: string, lessonSlug: string) {
 	const ordered = lessonsOfGuide(guideSlug);

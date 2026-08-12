@@ -1,6 +1,6 @@
 {
 	"why-communities-fail": {
-		"generatedAt": "2026-08-12T21:30:18.298Z",
+		"generatedAt": "2026-08-12T21:57:36.742Z",
 		"entries": [
 			{
 				"kind": "pdf",
@@ -9,18 +9,26 @@
 				"file": "/downloads/why-communities-fail/why-communities-fail-guide.pdf",
 				"bytes": 1991275,
 				"pages": 98
+			},
+			{
+				"kind": "pdf",
+				"label": "The failure modes as a checklist",
+				"detail": "PDF · 5 pages · 25 patterns, 102 things to check",
+				"file": "/downloads/why-communities-fail/why-communities-fail-failure-modes-checklist.pdf",
+				"bytes": 191873,
+				"pages": 5
 			}
 		]
 	},
 	"intentional-communities": {
-		"generatedAt": "2026-08-12T18:04:05.077Z",
+		"generatedAt": "2026-08-12T21:57:36.742Z",
 		"entries": [
 			{
 				"kind": "pdf",
 				"label": "The whole guide as one PDF",
 				"detail": "PDF · 69 pages · printable",
 				"file": "/downloads/intentional-communities/intentional-communities-guide.pdf",
-				"bytes": 2284730,
+				"bytes": 2284719,
 				"pages": 69
 			},
 			{
@@ -36,7 +44,7 @@
 				"label": "Cost model worksheet",
 				"detail": "XLSX · entry / monthly / exit",
 				"file": "/downloads/intentional-communities/intentional-communities-cost-model.xlsx",
-				"bytes": 9578
+				"bytes": 9579
 			}
 		]
 	}
