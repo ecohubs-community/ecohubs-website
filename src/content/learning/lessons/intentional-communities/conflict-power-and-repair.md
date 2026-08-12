@@ -53,9 +53,9 @@ layer={4}
 section="§6.1 Conflict Classification"
 href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-4-conflict-repair-accountability#61-conflict-classification">
 
-The RCOS Standard requires a community to sort its conflicts before handling them, into four classes it names: **interpersonal**, **role-based** (a dispute about authority, responsibility or mandate), **structural** — the one above — and **breaches of a declared norm, scope or safety boundary**. Anything involving credible safety risk, coercion, abuse or threats is additionally **safety-critical**, and jumps to protective measures before the rest of the process runs.
+The RCOS Standard requires a community to sort its conflicts before handling them, and names four classes it must include **at minimum** — a community may define more: **interpersonal**, **role-based** (a dispute about authority, responsibility or mandate), **structural** — the one above — and **breaches of a declared norm, scope or safety boundary**. Anything involving credible safety risk, coercion, abuse or threats is additionally **safety-critical**, and triggers elevated safeguards before the rest of the process runs.
 
-Each class has to state its own entry criteria, response timelines, permitted resolution routes and documentation rules, so classifying a dispute is what selects its route rather than a label applied afterwards.
+Each class has to state its own entry criteria, its permitted and required resolution pathways, and its documentation and privacy rules — with response priority and timelines where a community sets them (§6.1.3). So classifying a dispute is what selects its route, rather than a label applied afterwards.
 
 Then the clause that is easy to skim past and does most of the work: **misclassification or avoidance of classification is itself a process failure**, subject to review. A community that keeps every difficulty interpersonal never has to change anything — and under RCOS that habit is the thing on record, not the disputes.
 

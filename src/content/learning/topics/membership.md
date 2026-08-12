@@ -92,7 +92,9 @@ href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-1-membership-
 
 The RCOS Standard treats both of those as compliance failures rather than misfortunes, which is a stronger claim than it looks.
 
-**Voluntary exit must be possible at all times and must not be punitive.** Not available in principle once a buyer is found — a standing right, on stated terms. **Suspension must be time-bounded and must never serve as an indefinite substitute for exit or removal**: it either runs out or turns into something that can be argued with. Forced exit runs through the due process of Layer 4 rather than through the membership rules alone.
+**Voluntary exit must be possible at all times** (§3.6.1), and the procedures for it must be explicit, documented and **non-punitive** (§3.6.2) — not available in principle once a buyer is found, but a standing right on stated terms. Exit must not cost a person rights beyond the ones membership itself carried.
+
+Suspension is different in kind: a community **may** define suspension states, or may not. What it may not do is run one loosely. If suspension exists, its conditions must be **explicit, time-bounded and reviewable** (§3.7.2), and it **must not** be used as an indefinite or punitive substitute for exit (§3.7.3) — it either runs out or turns into something that can be argued with. Forced exit runs through the due process of Layer 4 rather than through the membership rules alone.
 
 Read together they close the same loophole from both sides. A community cannot keep a member in a state it will not resolve, and cannot resolve it by making leaving expensive enough that nobody does.
 

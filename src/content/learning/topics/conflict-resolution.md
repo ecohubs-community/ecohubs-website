@@ -98,11 +98,13 @@ layer={4}
 section="§6.3 Safeguards"
 href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-4-conflict-repair-accountability#63-safeguards">
 
-The RCOS Standard makes each of those a requirement rather than a good instinct, and specifies what triggers them: not a judgement that a dispute feels lopsided, but the presence of a **power differential, a dependency relationship or a safety risk**. Elevated safeguards follow from the condition, so nobody has to argue their way into being protected.
+The RCOS Standard does not require the particular measures listed above, and the distinction is worth being exact about. What it requires is that a community **define explicit safeguards** for conflicts involving power asymmetries, dependency relationships or safety risks (§6.3.1), and that where a power differential exists between the parties, **elevated safeguards must be applied** (§6.3.3). Which ones is left open: external facilitation, separate channels, temporary suspension of role authority and a higher evidence threshold are offered as options a community _may_ choose from, not a checklist it must satisfy.
 
-Anti-retaliation is stated as its own clause, covering four acts by name — raising a concern, requesting mediation, giving testimony or evidence, and taking part in a review or appeal.
+That is the standard's usual shape — it constrains the response level and leaves the technique to the group. The part not left open is the **trigger**: elevated safeguards follow from the condition being present, not from a judgement that a particular dispute felt lopsided, so nobody has to argue their way into being protected.
 
-And the safety floor is written as an ordering rather than an exception: safety safeguards **override participation rights, role continuity and operational convenience**. Every word in that list is something a community will be tempted to weigh against safety, which is presumably why they are enumerated.
+Two clauses are unconditional. **Anti-retaliation** protections are mandatory, covering four acts by name — raising a concern, requesting mediation, giving testimony or evidence, and taking part in a review or appeal (§6.3.2). And safety is written as an ordering rather than an exception: safety safeguards **override participation rights, role continuity and operational convenience** (§6.3.5). Every item in that list is something a community will be tempted to weigh against safety, which is presumably why they are enumerated.
+
+Safety-critical conflicts get their own requirement rather than the same one: a community must **define immediate protective actions** that may be taken before the process has finished (§6.3.4) — again a mandatory definition, with the measures themselves a menu.
 
 </Rcos>
 

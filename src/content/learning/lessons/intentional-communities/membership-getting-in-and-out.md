@@ -45,9 +45,11 @@ layer={1}
 section="§3.3 Trial and Evaluation"
 href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-1-membership-system#33-trial-and-evaluation">
 
-The RCOS Standard writes that into a structure. Four membership states, no more: applicant, trial or probationary, full, exited — and a member is in exactly one of them at a time, so "sort of a member" is not an available position.
+The RCOS Standard writes that into a structure. Four membership states have to exist — applicant, trial or probationary, full, exited — as a minimum rather than a maximum, so a community may add its own. What it may not do is leave somebody between them: **no individual may hold more than one state at a time** (§3.1.4), which makes "sort of a member" an unavailable position rather than a common one.
 
-A trial stage must state its **duration**, the **criteria** it is assessed against and the **process by which it ends**. Each state's rights and obligations must be explicit and symmetrical: no obligation without the matching right, no right without the matching obligation. That symmetry rule is the one to hold up against a real agreement, because the stage that goes wrong is almost always the one where the obligations arrived early and the rights arrived late.
+A probationary period is mandatory, and must state its **duration**, its **evaluation criteria** and a **clear transition decision process** (§3.3.2). Failing to transition has to trigger a defined exit or extension rather than simply continuing.
+
+The clause to hold up against a real agreement is §3.4.4: **no obligation may be enforced without a corresponding, documented right.** Rights and obligations must be symmetrical and proportionate to the state (§3.4.3) — and note what that does and does not say. During probation, rights _may_ be limited while obligations must still be explicit (§3.3.3), so the asymmetry a trial member feels is permitted. What is not permitted is the undocumented version of it.
 
 </Rcos>
 
