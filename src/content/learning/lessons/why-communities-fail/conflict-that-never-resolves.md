@@ -47,6 +47,8 @@ That is the most misdiagnosed failure in this whole guide. The group concludes i
 
 </Callout>
 
+<Quiz id="did-it-resolve" />
+
 ## If it is already happening
 
 **Sort what you have before you build anything.** Most communities in trouble have three or four live difficulties and treat them as one atmosphere. They are not the same problem and they do not take the same route — a dispute about the rota is not a dispute about authority, and neither is a breach of a stated boundary.

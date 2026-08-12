@@ -76,6 +76,8 @@ So part of the commons was **rehomed into other community bodies** rather than p
 
 **And because the accounting is honest.** Findhorn's position was in its audited accounts the whole time. The information was never hidden. It was simply not the kind of information anyone reads as a trajectory.
 
+<Quiz id="will-it-be-there-next-year" />
+
 ## If it is already happening
 
 **Work out the run rate, once.** Not the budget — the gap. How much of last year's costs were covered by something that will not recur: a sale, a legacy, a grant, a reserve draw. That single number is the diagnosis, and most communities have never calculated it.

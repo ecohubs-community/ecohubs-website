@@ -51,6 +51,8 @@ Being unable to leave and being unwilling to leave look identical from outside, 
 
 </Callout>
 
+<Quiz id="is-that-in-scope" />
+
 ## If it is already happening
 
 **Write the scope before you write the rules.** A community arguing about whether it may have an opinion on somebody's diet, or their guests, or their income, is arguing about scope with only a specific case in front of it — which is the worst possible moment. What resolves it is a statement of what the community governs and, crucially, what it does not.

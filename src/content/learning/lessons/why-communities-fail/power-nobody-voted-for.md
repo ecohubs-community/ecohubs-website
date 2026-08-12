@@ -61,6 +61,8 @@ The reverse mistake is more common though, and more expensive: treating a struct
 
 </Callout>
 
+<Quiz id="structure-or-person" />
+
 ## If it is already happening
 
 Stabilisation before prevention. A community in the middle of this does not need a governance redesign; it needs the next three months to be less bad.

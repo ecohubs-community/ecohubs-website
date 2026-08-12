@@ -58,6 +58,8 @@ Three things follow, and they are the practical content of this lesson:
 
 **Somebody who is not overloaded has to run it.** This is the part communities get wrong most reliably. Asking the overloaded person to organise their own unloading is asking for one more task from the person with the least room, and it is why the attempt fails on the third week every time.
 
+<Quiz id="would-that-actually-help" />
+
 ## If it is already happening
 
 **Do the audit, not the conversation.** One person, two hours, a list: everything that has to happen for this community to keep functioning, and who currently does it. Not who is _supposed_ to. Who does.

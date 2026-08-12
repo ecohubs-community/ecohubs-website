@@ -58,6 +58,8 @@ The community was not in conflict about the content. It could not establish **wh
 
 Note how little would have prevented it: an adoption record and a summary of changes. Two fields.
 
+<Quiz id="is-there-a-way-back" />
+
 ## If it is already happening
 
 **Establish the present before you reconstruct the past.** Which documents are in force, as of today, agreed by whoever is in the room. Not their history — their status. This can be done in one meeting and it stops the bleeding.
