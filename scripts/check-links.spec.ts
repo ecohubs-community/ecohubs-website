@@ -7,7 +7,16 @@
  * small enough to be deleted by accident, so these pin it.
  */
 import { describe, expect, it } from 'vitest';
-import { assertPublic, isPublicAddress } from './check-links.ts';
+import { assertRequestable, isPublicAddress, validatingLookup } from './check-links.ts';
+
+/** Promise wrapper, because the lookup has to keep Node's callback shape. */
+function resolveVia(hostname: string, options: Record<string, unknown> = {}): Promise<unknown> {
+	return new Promise((resolve, reject) =>
+		validatingLookup(hostname, options, (error, address) =>
+			error ? reject(error) : resolve(address)
+		)
+	);
+}
 
 describe('isPublicAddress', () => {
 	it('accepts ordinary public addresses', () => {
@@ -58,25 +67,69 @@ describe('isPublicAddress', () => {
 	});
 });
 
-describe('assertPublic', () => {
-	it('refuses a literal private address in a URL', async () => {
-		await expect(assertPublic('http://169.254.169.254/latest/meta-data/')).rejects.toThrow(
-			/non-public/
-		);
-		await expect(assertPublic('http://127.0.0.1:5173/')).rejects.toThrow(/non-public/);
-		await expect(assertPublic('http://[::1]:8080/')).rejects.toThrow(/non-public/);
+describe('validatingLookup', () => {
+	it('refuses a literal private address', async () => {
+		await expect(resolveVia('169.254.169.254')).rejects.toThrow(/non-public/);
+		await expect(resolveVia('127.0.0.1')).rejects.toThrow(/non-public/);
+		await expect(resolveVia('::1')).rejects.toThrow(/non-public/);
 	});
 
 	/** `localhost` is the case a hostname-string blocklist would miss. */
-	it('resolves a hostname before judging it', async () => {
-		await expect(assertPublic('http://localhost:3000/')).rejects.toThrow(/non-public/);
+	it('refuses a name that resolves into private space', async () => {
+		await expect(resolveVia('localhost')).rejects.toThrow(/non-public/);
 	});
 
-	it('refuses a non-http scheme', async () => {
-		await expect(assertPublic('file:///etc/passwd')).rejects.toThrow(/non-http/);
+	it('resolves an ordinary public name', async () => {
+		await expect(resolveVia('example.com')).resolves.toMatch(/\d|:/);
 	});
 
-	it('allows a real public citation', async () => {
-		await expect(assertPublic('https://www.ic.org/')).resolves.toBeUndefined();
+	/**
+	 * The reason this is a `lookup` and not a check before the request: it is the
+	 * resolution the socket uses, so there is no second answer to disagree with
+	 * it. Node calls this at connect time and connects to what it returns —
+	 * meaning a rebinding name server gets one answer, not two.
+	 */
+	it('keeps Node’s callback contract, so http.request can use it directly', async () => {
+		const single = await resolveVia('example.com');
+		expect(typeof single).toBe('string');
+
+		const all = (await resolveVia('example.com', { all: true })) as { address: string }[];
+		expect(Array.isArray(all)).toBe(true);
+		expect(all[0]).toHaveProperty('address');
+		expect(all[0]).toHaveProperty('family');
+	});
+
+	it('reports a resolution failure rather than swallowing it', async () => {
+		await expect(resolveVia('nonexistent.invalid')).rejects.toThrow();
+	});
+});
+
+describe('assertRequestable', () => {
+	it('refuses a non-http scheme', () => {
+		expect(() => assertRequestable('file:///etc/passwd')).toThrow(/non-http/);
+		expect(() => assertRequestable('ftp://example.com/x')).toThrow(/non-http/);
+	});
+
+	/**
+	 * The regression this exists for. `http.request` skips `lookup` entirely
+	 * when the host is already an address, so a literal reaches the socket
+	 * unless it is stopped here. The first version of the guard missed it.
+	 */
+	it('refuses a literal private address, which never reaches the lookup', () => {
+		for (const url of [
+			'http://169.254.169.254/latest/meta-data/',
+			'http://127.0.0.1:5173/',
+			'http://10.0.0.5/',
+			'http://[::1]:8080/',
+			'https://192.168.1.1/'
+		]) {
+			expect(() => assertRequestable(url), url).toThrow(/non-public/);
+		}
+	});
+
+	it('allows http and https to a public host or address', () => {
+		expect(() => assertRequestable('https://www.ic.org/')).not.toThrow();
+		expect(() => assertRequestable('http://example.com/')).not.toThrow();
+		expect(() => assertRequestable('https://93.184.216.34/')).not.toThrow();
 	});
 });

@@ -25,12 +25,17 @@
  * counted separately and do not fail the run. Everything else at 400 or above,
  * and every request that fails outright, does fail it.
  *
- * Every URL is checked against `assertPublic()` before the request and again on
- * each redirect hop: these are public citations, and a content file is not
- * entitled to make whoever runs this reach into their own network.
+ * These are public citations, and a content file — which arrives in a pull
+ * request — is not entitled to make whoever runs this reach into their own
+ * network. `validatingLookup()` is the DNS resolution the socket itself uses,
+ * on the first request and on every redirect hop, so there is no gap between
+ * checking an address and connecting to it.
  */
 import { readFile, readdir } from 'node:fs/promises';
 import { lookup } from 'node:dns/promises';
+import type { LookupAddress, LookupOptions } from 'node:dns';
+import { request as httpRequest } from 'node:http';
+import { request as httpsRequest } from 'node:https';
 import { isIP } from 'node:net';
 import { join, relative } from 'node:path';
 import { dirname } from 'node:path';
@@ -156,64 +161,115 @@ export function isPublicAddress(ip: string): boolean {
 }
 
 /**
- * Rejects a URL that is not a public http(s) destination.
+ * A `dns.lookup` replacement that refuses to hand back a non-public address.
  *
- * Resolves the hostname, because `http://internal.example.com/` is the same
- * request as `http://10.0.0.5/` once DNS has had its say.
- *
- * **The line this stops at:** the address is checked before the request, not at
- * the moment the socket connects, so a name that resolves publicly here and
- * privately a millisecond later would still get through. Closing that needs a
- * custom dispatcher owning the lookup — worth it for a service accepting
- * hostile input continuously, not for a script a maintainer runs by hand a few
- * times a year. This blocks the realistic version: a literal address, or a
- * redirect into one.
+ * This is the whole SSRF defence, and it lives here rather than in a check
+ * before the request for one reason: **it is the resolution the socket
+ * actually uses.** Validating separately and then letting the client resolve
+ * again leaves a window — a hostile name server can answer publicly for the
+ * check and privately for the connection a millisecond later, which is DNS
+ * rebinding and is not a theoretical attack. `http.request` takes a `lookup`,
+ * calls it at connect time, and connects to whatever it returns, so there is no
+ * second resolution to disagree with this one.
  */
-export async function assertPublic(url: string): Promise<void> {
+export function validatingLookup(
+	hostname: string,
+	options: LookupOptions,
+	callback: (error: Error | null, address?: string | LookupAddress[], family?: number) => void
+): void {
+	lookup(hostname, { ...options, all: true }).then((entries) => {
+		// `every`, not `some`: a name answering with one public and one private
+		// address is the shape of an attack, not a coincidence.
+		if (!entries.every((entry) => isPublicAddress(entry.address))) {
+			const seen = entries.map((entry) => entry.address).join(', ');
+			callback(new Error(`refusing non-public address: ${hostname} → ${seen}`));
+			return;
+		}
+
+		if (options.all) callback(null, entries);
+		else callback(null, entries[0].address, entries[0].family);
+	}, callback);
+}
+
+/**
+ * Rejects a URL this script has no business requesting, before it is requested.
+ *
+ * `validatingLookup` covers hostnames but cannot cover `http://127.0.0.1/` —
+ * **there is nothing to look up, so Node never calls it** and connects to the
+ * literal. That gap is not theoretical: it is how the first version of this
+ * guard let `169.254.169.254` through, caught by running the checker against a
+ * planted URL rather than by reading the code.
+ */
+export function assertRequestable(url: string): void {
 	const { protocol, hostname } = new URL(url);
 	if (protocol !== 'http:' && protocol !== 'https:') {
 		throw new Error(`refusing non-http(s) URL: ${protocol}`);
 	}
 
 	const literal = hostname.replace(/^\[|\]$/g, '');
-	const addresses = isIP(literal)
-		? [literal]
-		: (await lookup(hostname, { all: true })).map((entry) => entry.address);
-
-	// `every`, not `some`: a name answering with one public and one private
-	// address is the shape of an attack, not a coincidence.
-	if (!addresses.every(isPublicAddress)) {
-		throw new Error(`refusing non-public address: ${hostname} → ${addresses.join(', ')}`);
+	if (isIP(literal) && !isPublicAddress(literal)) {
+		throw new Error(`refusing non-public address: ${literal}`);
 	}
 }
 
 const MAX_REDIRECTS = 10;
 
+/**
+ * Status and `Location` for one URL, and nothing else.
+ *
+ * `node:http` rather than `fetch`, because `fetch` gives no way to own the DNS
+ * lookup without pulling in undici as a dependency. It costs nothing here: this
+ * script never wants a response body, so the socket is destroyed as soon as the
+ * headers land — which is less work than `fetch` was doing, not more.
+ */
+function head(url: string, method: 'HEAD' | 'GET'): Promise<{ status: number; location?: string }> {
+	assertRequestable(url);
+	const request = url.startsWith('https:') ? httpsRequest : httpRequest;
+
+	return new Promise((resolve, reject) => {
+		const outgoing = request(
+			url,
+			{
+				method,
+				headers: { 'User-Agent': UA, Accept: '*/*' },
+				lookup: validatingLookup,
+				timeout: TIMEOUT_MS
+			},
+			(response) => {
+				resolve({
+					status: response.statusCode ?? 0,
+					location: response.headers.location
+				});
+				// Nothing here reads a body; holding the socket open to download
+				// one would be the only expensive part of the run.
+				response.destroy();
+			}
+		);
+
+		outgoing.on('timeout', () => outgoing.destroy(new Error(`timed out after ${TIMEOUT_MS}ms`)));
+		outgoing.on('error', reject);
+		outgoing.end();
+	});
+}
+
 async function check(link: Link): Promise<Result> {
 	/**
-	 * Redirects are followed by hand rather than by `redirect: 'follow'`, so
-	 * that every hop is checked rather than only the URL in the content file.
-	 * A public host that 302s to `127.0.0.1` is otherwise the whole bypass.
+	 * Redirects are followed by hand rather than by the client, so that every
+	 * hop goes through `validatingLookup` rather than only the URL in the
+	 * content file. A public host that 302s to `127.0.0.1` is otherwise the
+	 * whole bypass.
 	 */
 	const follow = async (method: 'HEAD' | 'GET') => {
 		let url = link.url;
 
 		for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
-			await assertPublic(url);
+			const response = await head(url, method);
 
-			const response = await fetch(url, {
-				method,
-				redirect: 'manual',
-				headers: { 'User-Agent': UA, Accept: '*/*' },
-				signal: AbortSignal.timeout(TIMEOUT_MS)
-			});
-
-			const location = response.headers.get('location');
-			if (response.status < 300 || response.status >= 400 || !location) {
+			if (response.status < 300 || response.status >= 400 || !response.location) {
 				return { status: response.status, url };
 			}
 
-			url = new URL(location, url).href;
+			url = new URL(response.location, url).href;
 		}
 
 		throw new Error(`more than ${MAX_REDIRECTS} redirects`);
