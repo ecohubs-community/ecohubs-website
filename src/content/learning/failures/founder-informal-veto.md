@@ -69,7 +69,7 @@ note: 'the specification this page puts into plain language'
 },
 {
 title: "Foundation for Intentional Community — Founder's Syndrome",
-url: 'https://www.ic.org/founders-syndrome/',
+url: 'https://www.ic.org/communiversity-library/article/founders-syndrome/',
 note: 'the same pattern under the name the wider nonprofit sector uses'
 },
 {

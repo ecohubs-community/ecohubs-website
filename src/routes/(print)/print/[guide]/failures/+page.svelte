@@ -27,6 +27,16 @@
 	// One running number across the groups, so a group can say "we ticked four
 	// things under 12" and be understood without naming the pattern out loud.
 	let counter = $state(0);
+
+	/**
+	 * The title after "From the …".
+	 *
+	 * One guide is called "The Ultimate Guide to Why Communities Fail" and the
+	 * other is not, so a literal "From the {title}" printed "From the The
+	 * Ultimate Guide" on one sheet and read correctly on the other. Dropping a
+	 * leading article and always supplying our own is right for both.
+	 */
+	const titleAfterThe = $derived(data.guide.title.replace(/^the\s+/i, ''));
 </script>
 
 <svelte:head>
@@ -130,7 +140,7 @@
 
 	<footer class="mt-9 border-t border-stone-300 pt-4 text-[8.5pt] leading-relaxed text-stone-500">
 		<p>
-			From the {data.guide.title}, as it stood on {printed}. Each pattern has its own page — what it
+			From the {titleAfterThe}, as it stood on {printed}. Each pattern has its own page — what it
 			looks like from inside, why it is hard to see, and what to change — free at
 			ecohubs.community/learn/guides/{data.guide.slug}.
 		</p>
