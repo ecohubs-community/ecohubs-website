@@ -128,9 +128,24 @@ export interface TermFrontmatter extends BaseFrontmatter {
 	related?: string[];
 }
 
+/**
+ * One stop on a path — either a guide lesson or a failure mode.
+ *
+ * Both shapes rather than lessons only, because a symptom-led path is mostly
+ * *modes*: somebody arriving with "nobody says what they think any more" wants
+ * the four specific patterns, threaded across whichever lessons they belong to,
+ * not two whole lessons to read first.
+ *
+ * Optional fields with a validator rather than a discriminated union, because
+ * this is hand-written YAML: a union produces an unhelpful parse-shaped failure,
+ * where `validate.ts` can say which step is wrong and how.
+ */
 export interface PathStep {
-	guide: string;
-	lesson: string;
+	/** A lesson — `guide` and `lesson` together. */
+	guide?: string;
+	lesson?: string;
+	/** Or a failure mode, on its own. */
+	failure?: string;
 }
 
 export interface PathFrontmatter extends BaseFrontmatter {

@@ -203,11 +203,32 @@ export function validateContent(entries: ContentEntry[]): ValidationIssue[] {
 				issues.push({ path, message: 'path has no steps' });
 			}
 			for (const [i, step] of (fm.steps ?? []).entries()) {
-				if (!has('guide', step.guide)) {
-					issues.push({ path, message: `step ${i + 1}: unknown guide "${step.guide}"` });
+				const where = `step ${i + 1}`;
+
+				// A step is a lesson (guide + lesson) or a failure mode, never both
+				// and never neither. Checked here rather than in the type, because
+				// this is hand-written YAML and a clear message beats a union.
+				if (step.failure && (step.guide || step.lesson)) {
+					issues.push({ path, message: `${where}: has both "failure" and a lesson reference` });
+					continue;
 				}
-				if (!has('lesson', step.lesson)) {
-					issues.push({ path, message: `step ${i + 1}: unknown lesson "${step.lesson}"` });
+
+				if (step.failure) {
+					if (!has('failure', step.failure)) {
+						issues.push({ path, message: `${where}: unknown failure mode "${step.failure}"` });
+					}
+					continue;
+				}
+
+				if (!step.guide && !step.lesson) {
+					issues.push({ path, message: `${where}: needs either "guide" + "lesson", or "failure"` });
+					continue;
+				}
+				if (!has('guide', step.guide ?? '')) {
+					issues.push({ path, message: `${where}: unknown guide "${step.guide}"` });
+				}
+				if (!has('lesson', step.lesson ?? '')) {
+					issues.push({ path, message: `${where}: unknown lesson "${step.lesson}"` });
 				}
 			}
 		}
@@ -274,16 +295,21 @@ export function validateContent(entries: ContentEntry[]): ValidationIssue[] {
 
 	// A published path whose steps are all drafts would render as an empty
 	// sequence — worth catching, since it looks fine in the source.
-	const publishedLessons = new Set(
+	const publishedStep = new Set(
 		entries
-			.filter((e) => e.frontmatter.type === 'lesson' && e.frontmatter.status === 'published')
+			.filter(
+				(e) =>
+					(e.frontmatter.type === 'lesson' || e.frontmatter.type === 'failure') &&
+					e.frontmatter.status === 'published'
+			)
 			.map((e) => e.frontmatter.slug)
 	);
 	for (const entry of entries) {
 		if (entry.frontmatter.type !== 'path' || entry.frontmatter.status !== 'published') continue;
 		const fm = entry.frontmatter as PathFrontmatter;
-		if ((fm.steps ?? []).length && !fm.steps.some((s) => publishedLessons.has(s.lesson))) {
-			issues.push({ path: entry.path, message: 'published path has no published lessons' });
+		const walkable = fm.steps?.some((s) => publishedStep.has(s.failure ?? s.lesson ?? ''));
+		if ((fm.steps ?? []).length && !walkable) {
+			issues.push({ path: entry.path, message: 'published path has no published steps' });
 		}
 	}
 

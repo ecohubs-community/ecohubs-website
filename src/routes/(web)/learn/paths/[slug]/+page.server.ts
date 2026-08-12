@@ -1,6 +1,12 @@
 import { error } from '@sveltejs/kit';
 import type { EntryGenerator, PageServerLoad } from './$types';
-import { lessonBySlug, pathBySlug, publishedPaths, readingMinutes } from '$lib/learning';
+import {
+	failureBySlug,
+	lessonBySlug,
+	pathBySlug,
+	publishedPaths,
+	readingMinutes
+} from '$lib/learning';
 
 export const prerender = true;
 
@@ -18,31 +24,42 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	// Unpublished steps are dropped rather than rendered as dead links, so a
 	// path stays walkable while its lessons are still being written.
+	//
+	// A step is a lesson or a failure mode. Both resolve to the same shape, so
+	// the chain component and the read-tracking need no idea which is which —
+	// a symptom-led path threads modes from several lessons and reads as one
+	// sequence.
 	const steps = fm.steps
 		.map((step) => {
-			const lesson = lessonBySlug.get(step.lesson);
-			if (!lesson || lesson.frontmatter.status !== 'published') return null;
+			const entry = step.failure
+				? failureBySlug.get(step.failure)
+				: lessonBySlug.get(step.lesson ?? '');
+			if (!entry || entry.frontmatter.status !== 'published') return null;
+
 			return {
-				slug: lesson.frontmatter.slug,
-				title: lesson.frontmatter.title,
-				// The step's description is the lesson's own summary rather than a
+				slug: entry.frontmatter.slug,
+				title: entry.frontmatter.title,
+				// The step's description is the page's own summary rather than a
 				// second copy in the path file — one place to change it.
-				summary: lesson.frontmatter.summary,
-				minutes: readingMinutes(lesson),
-				href: `/learn/guides/${step.guide}/${lesson.frontmatter.slug}`
+				summary: entry.frontmatter.summary,
+				minutes: readingMinutes(entry),
+				href: step.failure
+					? `/learn/failures/${entry.frontmatter.slug}`
+					: `/learn/guides/${step.guide}/${entry.frontmatter.slug}`
 			};
 		})
 		.filter((s): s is NonNullable<typeof s> => s !== null);
 
-	if (steps.length === 0) throw error(404, 'This path has no published lessons yet');
+	if (steps.length === 0) throw error(404, 'This path has no published steps yet');
 
 	// Sibling paths, for the rail and the tail of the page.
 	const others = publishedPaths
 		.filter((p) => p.frontmatter.slug !== fm.slug)
 		.map((p) => {
-			const count = p.frontmatter.steps.filter(
-				(s) => lessonBySlug.get(s.lesson)?.frontmatter.status === 'published'
-			).length;
+			const count = p.frontmatter.steps.filter((s) => {
+				const e = s.failure ? failureBySlug.get(s.failure) : lessonBySlug.get(s.lesson ?? '');
+				return e?.frontmatter.status === 'published';
+			}).length;
 			return {
 				slug: p.frontmatter.slug,
 				title: p.frontmatter.title,
