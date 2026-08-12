@@ -50,6 +50,8 @@ And the third, which is why it is so hard to raise: **saying it out loud is a se
 
 A **single stated primary purpose** that is hard to change, plus an admissions process that shows it to applicants and asks them to agree to it explicitly rather than absorb it. Drift is not prevented by conviction. It is prevented by the purpose being a document that a decision has to amend.
 
+That is also why the purpose has to be separated from the plan. Where one founding statement carries the enduring reason, the picture of the future and the current three-year priorities together, revising the priorities means editing the purpose — a little at a time, reasonably, until it has moved. [Vision, purpose and mission](/learn/compare/vision-vs-purpose-vs-mission) sets out the three and which tier may change each.
+
 <Rcos
 layer={0}
 section="§2.1 Purpose Definition"

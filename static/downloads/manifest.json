@@ -1,13 +1,13 @@
 {
 	"why-communities-fail": {
-		"generatedAt": "2026-08-12T22:10:04.376Z",
+		"generatedAt": "2026-08-12T22:16:29.119Z",
 		"entries": [
 			{
 				"kind": "pdf",
 				"label": "The whole guide as one PDF",
 				"detail": "PDF · 115 pages · printable",
 				"file": "/downloads/why-communities-fail/why-communities-fail-guide.pdf",
-				"bytes": 2347159,
+				"bytes": 2349398,
 				"pages": 115
 			},
 			{
@@ -21,7 +21,7 @@
 		]
 	},
 	"intentional-communities": {
-		"generatedAt": "2026-08-12T22:10:04.376Z",
+		"generatedAt": "2026-08-12T22:16:29.119Z",
 		"entries": [
 			{
 				"kind": "pdf",
@@ -44,7 +44,7 @@
 				"label": "Cost model worksheet",
 				"detail": "XLSX · entry / monthly / exit",
 				"file": "/downloads/intentional-communities/intentional-communities-cost-model.xlsx",
-				"bytes": 9577
+				"bytes": 9578
 			}
 		]
 	}

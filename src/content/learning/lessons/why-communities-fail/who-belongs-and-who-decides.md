@@ -65,6 +65,8 @@ Being unable to leave and being unwilling to leave look identical from outside, 
 
 Three documents most communities have none of: a **scope statement** saying what is governed and what is not, **identity constraints** stated so they could actually be tested, and an **exit and separation protocol** covering both directions — voluntary and forced.
 
+A fourth thing is worth separating while you are in there. Most communities hold one founding statement that is simultaneously why they exist, what they hope to become, and what they are doing about it this decade — which means the plan cannot be revised without reopening the purpose, or the purpose moves whenever the plan is updated. [Vision, purpose and mission](/learn/compare/vision-vs-purpose-vs-mission) are three different documents with three different change rules, and pulling them apart is a morning's work.
+
 <Rcos
 layer={0}
 section="§2.2 Scope Declaration, §2.4 Identity Constraints"
