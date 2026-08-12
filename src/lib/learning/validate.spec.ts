@@ -185,6 +185,21 @@ describe('validateContent — targetQuery collisions', () => {
 		expect(issues.some((i) => i.message.includes('already claimed by'))).toBe(true);
 	});
 
+	/**
+	 * mdsvex's YAML preserves internal runs — `targetQuery: a  b` arrives with
+	 * both spaces — so without collapsing them a typo would evade the check
+	 * while looking identical to a reader.
+	 */
+	it('ignores repeated whitespace inside the term', () => {
+		const issues = validateContent([
+			targeting('a', 'intentional community membership'),
+			targeting('b', 'intentional  community   membership'),
+			targeting('c', 'intentional\tcommunity membership')
+		]);
+		const clashes = issues.filter((i) => i.message.includes('already claimed by'));
+		expect(clashes).toHaveLength(2);
+	});
+
 	it('allows distinct terms', () => {
 		const issues = validateContent([
 			targeting('a', 'intentional community'),

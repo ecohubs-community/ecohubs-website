@@ -200,7 +200,11 @@ export function validateContent(entries: ContentEntry[]): ValidationIssue[] {
 	 */
 	const byQuery = new Map<string, string>();
 	for (const entry of entries) {
-		const query = entry.frontmatter.targetQuery?.trim().toLowerCase();
+		// Internal runs collapse as well as trimming, because mdsvex's YAML keeps
+		// them: `targetQuery: intentional  community` reaches us with both spaces
+		// intact, and a check that treats that as a different term from the
+		// single-spaced one is a check a typo walks straight through.
+		const query = entry.frontmatter.targetQuery?.trim().toLowerCase().replace(/\s+/g, ' ');
 		if (!query || !isIndexable(entry)) continue;
 
 		const previous = byQuery.get(query);
