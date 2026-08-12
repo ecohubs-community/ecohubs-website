@@ -7,7 +7,7 @@ order: 9
 summary: The five conflicts that actually recur, the power nobody voted for, and what a repair process has to contain.
 targetQuery: conflict in intentional communities
 status: published
-updated: 2026-08-06
+updated: 2026-08-11
 terms: [facilitation, agreements, consent]
 related: [how-communities-decide, membership-getting-in-and-out]
 ---
@@ -39,6 +39,27 @@ Every community will tell you it takes conflict seriously. The way to find out i
 **Romance and its ending.** People who live near each other form relationships, and some of those relationships end. When they do, both parties still have a vote, still eat in the same room, and still sit on the same circle. Communities are often mortified to discuss this in advance and then find that a single break-up has reorganised the entire social map.
 
 Notice what is not on the list: ideology, vision, the founding values. Those produce arguments in the first year. What produces conflict in year eight is the ordinary friction of living close to people.
+
+### The one that is not what it looks like
+
+Those five are subjects. There is a second question worth asking of any dispute, and it is the one communities most often skip: **is this actually between these two people?**
+
+Some conflicts are not. They are produced by a rule, an incentive or an allocation, and the two people having the argument are simply the two standing where the rule pinches. The rota that counts hours nobody can do at that time of day. The parking that was never enough for the number of households. The levy that falls hardest on the members with least. Each of those arrives looking exactly like an interpersonal problem — two annoyed neighbours, one of whom is being unreasonable — and each of them survives mediation, because mediation produces a truce between people who were never the cause.
+
+The tell is repetition with different casts. If the same argument keeps happening between different pairs of people, it is not a people problem, and the community that keeps treating it as one will work steadily through its own members looking for the difficult one.
+
+<Rcos
+layer={4}
+section="§6.1 Conflict Classification"
+href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-4-conflict-repair-accountability#61-conflict-classification">
+
+The RCOS Standard requires a community to sort its conflicts before handling them, into four classes it names: **interpersonal**, **role-based** (a dispute about authority, responsibility or mandate), **structural** — the one above — and **breaches of a declared norm, scope or safety boundary**. Anything involving credible safety risk, coercion, abuse or threats is additionally **safety-critical**, and jumps to protective measures before the rest of the process runs.
+
+Each class has to state its own entry criteria, response timelines, permitted resolution routes and documentation rules, so classifying a dispute is what selects its route rather than a label applied afterwards.
+
+Then the clause that is easy to skim past and does most of the work: **misclassification or avoidance of classification is itself a process failure**, subject to review. A community that keeps every difficulty interpersonal never has to change anything — and under RCOS that habit is the thing on record, not the disputes.
+
+</Rcos>
 
 ## Power nobody voted for
 
@@ -124,6 +145,11 @@ note: 'the essay itself, free from the author; the seven principles for democrat
 title: 'Ostrom, E. — Governing the Commons (1990)',
 url: 'https://doi.org/10.1017/CBO9780511807763',
 note: 'graduated sanctions and accessible conflict resolution, among the eight design principles'
+},
+{
+title: 'RCOS Core — Layer 4: Conflict, Repair & Accountability',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-4-conflict-repair-accountability',
+note: 'conflict classes, the resolution ladder, and the safeguards that apply when the parties are unequal'
 },
 {
 title: 'RCOS Core — Layer 2: Governance & Decision Logic',

@@ -60,8 +60,17 @@ async function* walk(dir: string): AsyncGenerator<string> {
 	}
 }
 
-/** `url: 'https://…'` in a Sources block, and `](https://…)` in prose. */
-const PATTERNS = [/url:\s*'(https?:\/\/[^']+)'/g, /\]\((https?:\/\/[^)\s]+)\)/g];
+/**
+ * `url: 'https://…'` in a Sources block, `](https://…)` in prose, and
+ * `href="https://…"` on a component — which is how every `<Rcos>` card cites
+ * the clause it is paraphrasing, and therefore the one form of citation the
+ * first two patterns would have walked straight past.
+ */
+const PATTERNS = [
+	/url:\s*'(https?:\/\/[^']+)'/g,
+	/\]\((https?:\/\/[^)\s]+)\)/g,
+	/href="(https?:\/\/[^"]+)"/g
+];
 
 async function collect(): Promise<Link[]> {
 	const found = new Map<string, Set<string>>();
@@ -83,6 +92,25 @@ async function collect(): Promise<Link[]> {
 
 /* ── Checking them ───────────────────────────────────────────────────────── */
 
+/**
+ * A URL without its fragment or its trailing slash.
+ *
+ * `fetch` never puts the fragment in `response.url` — it is a client-side
+ * concern the server never sees — so a link to `…/layer-4…#63-safeguards`
+ * would otherwise be reported as redirecting to `…/layer-4…` on every run.
+ * Every `<Rcos>` citation is anchored, so without this the redirect list is all
+ * noise and stops being read, which is the only way it does any good.
+ */
+function comparable(url: string): string {
+	try {
+		const parsed = new URL(url);
+		parsed.hash = '';
+		return parsed.href.replace(/\/$/, '');
+	} catch {
+		return url;
+	}
+}
+
 async function check(link: Link): Promise<Result> {
 	const attempt = async (method: 'HEAD' | 'GET') =>
 		fetch(link.url, {
@@ -101,7 +129,7 @@ async function check(link: Link): Promise<Result> {
 		return {
 			...link,
 			status: response.status,
-			finalUrl: response.url !== link.url ? response.url : undefined
+			finalUrl: comparable(response.url) !== comparable(link.url) ? response.url : undefined
 		};
 	} catch (error) {
 		return { ...link, status: null, error: (error as Error).message };

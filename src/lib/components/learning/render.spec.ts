@@ -95,6 +95,29 @@ describe('indexability — every depth layer is in the server HTML', () => {
 		}
 	});
 
+	/**
+	 * `<Rcos>` is deep-only by editorial rule, not just by styling: anything an
+	 * article actually needs belongs in its body, and the card carries only the
+	 * specification's own framing. Dropping the gating would silently promote
+	 * normative RCOS text into the standard read, which is the one thing the
+	 * component exists to prevent.
+	 */
+	it('gates every RCOS card to the deep layer', () => {
+		const cards = [...html().matchAll(/<aside([^>]*)>(?:(?!<\/aside>)[\s\S])*?RCOS Core v0\.1/g)];
+		expect(cards.length, 'fixture lesson has no RCOS card').toBeGreaterThan(0);
+
+		for (const [, raw] of cards) {
+			// Svelte escapes the `&` of Tailwind's arbitrary-variant syntax.
+			const attrs = raw.replaceAll('&amp;', '&');
+			expect(attrs).toContain('data-depth-layer="deep"');
+			for (const depth of ['quick', 'standard']) {
+				expect(attrs, `an RCOS card is visible at ${depth} depth`).toContain(
+					`[html[data-depth=${depth}]_&]:hidden`
+				);
+			}
+		}
+	});
+
 	it('hides depth layers only via an html[data-depth] ancestor, never by default', () => {
 		const body = html();
 

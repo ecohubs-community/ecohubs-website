@@ -13,7 +13,7 @@ imageAlt: >-
   Two people sitting at opposite ends of a weathered bench above a grey sea, turned
   toward each other mid-conversation, neither smiling.
 status: published
-updated: 2026-08-07
+updated: 2026-08-11
 terms: [repair-process, informal-power, graduated-sanctions, facilitation]
 ---
 
@@ -85,6 +85,27 @@ This is the failure that gets misdiagnosed most often. The community concludes i
 
 </Callout>
 
+There is an answer to that, and it is not a better method. It is a process that **changes shape** when the parties are unequal.
+
+The moves are unremarkable once named: bring in a facilitator from outside the community rather than the person everyone trusts; give the two sides separate ways to raise things, so the quieter one is not filing a complaint through a friend of the other; stand down the more powerful party's role authority for the duration, so the person deciding the rota is not also a party to the dispute; and require more before a sanction lands, not less. Alongside them, a stated protection from consequences for raising something at all — because the reason most of these disputes never enter a process is a well-founded guess about what happens afterwards.
+
+So there is one question worth asking a community directly: **what changes about your conflict process when one of the two people is a founder?** "Nothing — it's the same for everyone" sounds like fairness and is the answer that produces the failure above.
+
+A separate floor sits underneath all of it, and belongs in any agreement you read. Where there is credible risk to physical, psychological or child safety, protection comes first and the process catches up afterwards. That is not a variation on repair; it is the point at which repair stops being the question.
+
+<Rcos
+layer={4}
+section="§6.3 Safeguards"
+href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-4-conflict-repair-accountability#63-safeguards">
+
+The RCOS Standard makes each of those a requirement rather than a good instinct, and specifies what triggers them: not a judgement that a dispute feels lopsided, but the presence of a **power differential, a dependency relationship or a safety risk**. Elevated safeguards follow from the condition, so nobody has to argue their way into being protected.
+
+Anti-retaliation is stated as its own clause, covering four acts by name — raising a concern, requesting mediation, giving testimony or evidence, and taking part in a review or appeal.
+
+And the safety floor is written as an ordering rather than an exception: safety safeguards **override participation rights, role continuity and operational convenience**. Every word in that list is something a community will be tempted to weigh against safety, which is presumably why they are enumerated.
+
+</Rcos>
+
 ## When to leave instead
 
 Repair is not always the right answer, and a topic that only counselled persistence would be doing you a disservice.
@@ -123,6 +144,11 @@ note: 'the essay itself, free from the author'
 title: 'Ostrom, E. — Governing the Commons (1990)',
 url: 'https://doi.org/10.1017/CBO9780511807763',
 note: 'graduated sanctions and accessible conflict resolution'
+},
+{
+title: 'RCOS Core — Layer 4: Conflict, Repair & Accountability',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-4-conflict-repair-accountability',
+note: 'conflict classes, the resolution ladder, safeguards against power asymmetry, and proportional sanctions'
 },
 {
 title: 'Seeds for Change',

@@ -13,7 +13,7 @@ imageAlt: >-
   A visitor carrying a large rucksack walking across a cobbled courtyard beside a
   resident who is talking and gesturing, with timber balconies above.
 status: published
-updated: 2026-08-07
+updated: 2026-08-11
 terms: [visitor-period, provisional-membership, membership-agreement, agreements]
 ---
 
@@ -81,6 +81,23 @@ Most people who join a community will eventually leave one, and the terms are de
 
 **Being asked to leave.** Every community has grounds; most have not written them down. What to look for is **stated grounds plus a graduated response** — grounds without a process is arbitrary, and a process without grounds means the group cannot actually act.
 
+**Being suspended.** The one almost nobody asks about, and the one that catches people. A member can be stood down from a role, a meeting or the rota "for now", while something is worked out — and stay there. Still paying the dues, no longer in the decisions, with nothing to appeal because nothing was concluded. It is rarely anybody's plan; it is what happens when a difficult situation has a pause button and no timer. Ask whether a suspension has a maximum length, and what ends it.
+
+Nobody, anywhere, writes a rule forbidding departure. What traps people is the combination above — an unpriced stake, an open-ended notice period, a queue with no position in it, a pause that does not expire — and each part of it was put there by someone being reasonable.
+
+<Rcos
+layer={1}
+section="§3.6 Exit and Separation, §3.7 Suspension and Temporary Status"
+href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-1-membership-system#36-exit-and-separation">
+
+The RCOS Standard treats both of those as compliance failures rather than misfortunes, which is a stronger claim than it looks.
+
+**Voluntary exit must be possible at all times and must not be punitive.** Not available in principle once a buyer is found — a standing right, on stated terms. **Suspension must be time-bounded and must never serve as an indefinite substitute for exit or removal**: it either runs out or turns into something that can be argued with. Forced exit runs through the due process of Layer 4 rather than through the membership rules alone.
+
+Read together they close the same loophole from both sides. A community cannot keep a member in a state it will not resolve, and cannot resolve it by making leaving expensive enough that nobody does.
+
+</Rcos>
+
 <Callout type="caveat">
 
 We have found no reliable data on how long membership processes take, how many applicants are accepted, or how many members leave in a typical year — and we have looked. Communities that publish their process are a self-selecting minority and nobody aggregates it.
@@ -121,9 +138,9 @@ url: 'https://newsociety.com/book/creating-a-life-together/',
 note: 'chapter 18 covers selecting people to join you'
 },
 {
-title: 'RCOS Core — Layer 1: Membership',
-url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/',
-note: 'stages, rights and obligations, specified'
+title: 'RCOS Core — Layer 1: Membership System',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-1-membership-system',
+note: 'the four membership states, symmetrical rights and obligations, and the rules on exit and suspension'
 }
 ]}
 />

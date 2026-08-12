@@ -7,7 +7,7 @@ order: 1
 summary: The definition that actually predicts daily life, and the three things people confuse it with.
 targetQuery: what is an intentional community
 status: published
-updated: 2026-08-06
+updated: 2026-08-11
 terms: [intentional-community, agreements, cohousing, ecovillage, commune]
 related: [forms-village-cohousing-commune]
 ---
@@ -45,15 +45,29 @@ The <Gloss term="agreements">agreements</Gloss> that matter in practice are ungl
 - How a decision is made, and by whom, and within what limits
 - What each member owes financially, and when
 - How somebody joins, and how somebody leaves
+- What the community decides, and what it explicitly leaves alone
 - What happens when an agreement is not kept
 
 That last one is the most commonly missing. A rule with no stated consequence is a preference, and every member works out which is which inside a year.
+
+The one before it is the most commonly _unasked_. People arrive at this subject with a worry they rarely say out loud — _will these people be too involved in my life?_ — and it has an answerable version: **what does this place claim authority over, and where does the claim stop?** A community that has written that down can tell you whether your working hours, your visitors, your diet or your car are anybody else's business. One that has not will decide each of them the first time it comes up, in a meeting, about a particular person.
 
 <Callout type="note" title="The test that works on any visit">
 
 Ask to read the agreements, and ask when they were last reviewed. A community that can hand you a current document has a working system. One that describes the feeling but cannot find the text has an intention — which is not worthless, but it is a different thing, and it will not help when two members disagree about what was decided in 2019.
 
 </Callout>
+
+<Rcos
+layer={0}
+section="§2.2 Scope Declaration"
+href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-0-identity-scope#22-scope-declaration">
+
+The RCOS Standard turns that question into a document. A community declares its **scope** — the assets it governs, the domains it decides in, the activities under collective control — and, in the same breath, states what is **out** of scope.
+
+Then it adds the rule that does the work: anything not declared in scope **is** out of scope, and the community may not exercise authority over it. Silence resolves in the member's favour rather than the group's, which is the opposite of how an unwritten arrangement drifts.
+
+</Rcos>
 
 ## What the label does not tell you
 
@@ -119,8 +133,8 @@ note: 'the academic literature, including the journal Communal Societies'
 },
 {
 title: 'RCOS Core — Layer 0: Identity & Scope',
-url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/',
-note: 'how a community states what it is, and what it is not'
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-0-identity-scope',
+note: 'how a community states what it is, what it is not, and what it does not govern'
 }
 ]}
 />

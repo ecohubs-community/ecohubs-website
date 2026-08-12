@@ -13,7 +13,7 @@ imageAlt: >-
   About a dozen adults in a circle of mismatched chairs in a village hall, one standing
   at a flipchart headed "Key challenges" mid-sentence while the others listen.
 status: published
-updated: 2026-08-07
+updated: 2026-08-11
 terms:
   [
     agreements,
@@ -124,13 +124,30 @@ That sorting into <Gloss term="decision-tiers">decision tiers</Gloss> is covered
 
 ## What breaks
 
-Three patterns, in rough order of frequency.
+Four patterns, in rough order of frequency.
 
 **Agreements stop being read.** Not broken — forgotten. New members never see them, the authors leave, and the document describes a community that no longer exists. A review date written into the agreements themselves is the cheapest defence anyone has found.
 
 **Founder authority never converts.** The people who started it keep deciding because they always have and because they know the history. Nothing is written, so nothing can be handed over, and the group discovers the problem at exactly the moment the founder wants to leave.
 
 **The structure is adopted in name only.** A group says "sociocracy" and forms circles with no spending authority, so every plan still goes to the general meeting. Or it publishes a decision matrix and then decides the interesting things in the kitchen. The written system and the working system drift apart quietly, and the gap is only visible to someone who arrived recently enough to still be surprised.
+
+**The emergency that never ended.** This one arrives disguised as competence. Something urgent happens — a burst pipe, a planning deadline, a member in crisis — and somebody sensible decides it, correctly, without the meeting. Everybody is relieved. The trouble is that nothing about the arrangement ends, because nothing about it ever began: no scope was set, no expiry, no review. The next urgent thing goes the same way, and eighteen months later the community has a decision-maker nobody appointed and cannot un-appoint.
+
+The defence is cheap and has to be built in advance: write the exception _before_ you need it, with a limit on what it covers and a date it stops. A group that only writes down its ordinary process has, in effect, decided that its emergencies will be governed by whoever moves first.
+
+<Rcos
+layer={2}
+section="§4.3 Authority Boundaries, §4.4 Decision Matrix"
+href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-2-governance-decision-logic#43-authority-boundaries">
+
+The RCOS Standard is unusually blunt here, in three clauses that each close one of the routes above.
+
+**Emergency or temporary authority must be explicitly defined, time-bounded and subject to review.** **Decisions made outside the Decision Matrix are invalid** — severe-sounding until you notice what it protects, which is that otherwise the fastest route to authority in any community is to keep acting outside the structure until acting outside the structure _is_ the structure. And, plainly: **authority must not derive from charisma, seniority, ownership or informal influence.**
+
+Note the last one is not phrased as advice. It is the line that separates a delegation from a habit, and it is the only clause in the layer that rules out something no community ever voted for.
+
+</Rcos>
 
 <Deep title="Deep · what the research actually supports">
 

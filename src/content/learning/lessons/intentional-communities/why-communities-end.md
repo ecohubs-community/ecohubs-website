@@ -7,7 +7,7 @@ order: 10
 summary: Where the two different "90% fail" figures come from, the six patterns that recur, and the endings that are not failures.
 targetQuery: why do intentional communities fail
 status: published
-updated: 2026-08-06
+updated: 2026-08-11
 terms: [agreements, blocking-concern, consensus]
 related: [conflict-power-and-repair, how-communities-decide]
 ---
@@ -158,6 +158,11 @@ note: 'a Communal Studies scholar questioning longevity as the measure; the 90% 
 title: 'Ostrom, E. — Governing the Commons (1990)',
 url: 'https://doi.org/10.1017/CBO9780511807763',
 note: 'the eight design principles, and what they imply about durability'
+},
+{
+title: 'RCOS Core — Layer 6: Evolution & Adaptation',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-6-evolution-adaptation',
+note: 'versioning and the learning log — the layer aimed squarely at drift'
 },
 {
 title: 'Communal Studies Association',

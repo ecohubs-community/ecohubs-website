@@ -7,7 +7,7 @@ order: 7
 summary: The stages, what a fair membership agreement contains, and why a good process protects you as much as them.
 targetQuery: how to join an intentional community
 status: published
-updated: 2026-08-06
+updated: 2026-08-11
 terms: [agreements, consent, blocking-concern]
 related: [owning-leasing-renting, how-communities-decide]
 ---
@@ -36,6 +36,21 @@ Communities describe their membership process in the language of welcome, and it
 
 The durations vary enormously and there is no standard. What is fairly consistent is the _shape_: a short look, a longer trial, a probationary stretch, and then commitment.
 
+There being no standard across the field is not the same as there being no standard inside a community, and it is worth not letting the first excuse the second. The useful question is never _how long is a provisional period usually?_ — nobody knows, and the answer would not help you anyway. It is **how long is yours, what am I being assessed on, and who decides when it ends?**
+
+A community that can answer all three has a stage. One that answers none has a waiting room — and the person kept in a waiting room longest is rarely the one with the most objections against them. It is usually the one nobody is quite comfortable enough to reject.
+
+<Rcos
+layer={1}
+section="§3.3 Trial and Evaluation"
+href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-1-membership-system#33-trial-and-evaluation">
+
+The RCOS Standard writes that into a structure. Four membership states, no more: applicant, trial or probationary, full, exited — and a member is in exactly one of them at a time, so "sort of a member" is not an available position.
+
+A trial stage must state its **duration**, the **criteria** it is assessed against and the **process by which it ends**. Each state's rights and obligations must be explicit and symmetrical: no obligation without the matching right, no right without the matching obligation. That symmetry rule is the one to hold up against a real agreement, because the stage that goes wrong is almost always the one where the obligations arrived early and the rights arrived late.
+
+</Rcos>
+
 ## A published process, in full
 
 Generalities are cheap here, so it is worth reading one real process that a community publishes rather than describes.
@@ -60,10 +75,11 @@ Three features of that are worth noticing, because they are what a well-designed
 4. **How the agreements change**, and whether your consent is needed for changes affecting your own stake.
 5. **How you leave voluntarily** — notice period, how your stake is valued, and how long payment takes.
 6. **How the community may ask you to leave** — the grounds, who decides, what warnings come first, and what you receive.
-7. **What happens if you cannot pay**, whether through illness, job loss or a change of circumstance.
-8. **Where disputes go** when the two of you disagree about any of the above.
+7. **What a suspension is, and how long it may last** — if you can be stood down from a role, a meeting or the rota while something is worked out, whether that has an end date.
+8. **What happens if you cannot pay**, whether through illness, job loss or a change of circumstance.
+9. **Where disputes go** when the two of you disagree about any of the above.
 
-A community that hands you a document covering all eight has done the work. Missing items are not necessarily a red flag — many are simply young — but each gap is a decision that will be made later, under pressure, by whoever is in the room.
+A community that hands you a document covering all nine has done the work. Missing items are not necessarily a red flag — many are simply young — but each gap is a decision that will be made later, under pressure, by whoever is in the room.
 
 </Callout>
 
@@ -137,6 +153,11 @@ note: 'the standard practical reference; chapter 18 covers selecting people to j
 title: 'Foundation for Intentional Community',
 url: 'https://www.ic.org/',
 note: 'directory listings, many of which set out a community’s membership process in full'
+},
+{
+title: 'RCOS Core — Layer 1: Membership System',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-1-membership-system',
+note: 'the four membership states, and the requirements on trial periods, exit and suspension'
 },
 {
 title: 'Owning, leasing, renting',

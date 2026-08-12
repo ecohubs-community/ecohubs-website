@@ -17,7 +17,8 @@ const AUTO_IMPORT = [
 	'CostEstimator',
 	'Figure',
 	'Video',
-	'Quiz'
+	'Quiz',
+	'Rcos'
 ];
 
 /**

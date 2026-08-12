@@ -13,7 +13,7 @@ imageAlt: >-
   A kitchen table with a household ledger, a calculator, mugs and a teapot, and two
   people going over a printed sheet headed "July budget".
 status: published
-updated: 2026-08-07
+updated: 2026-08-11
 terms: [common-purse, labour-credit, reserve-fund, special-levy, agreements]
 ---
 
@@ -42,6 +42,23 @@ The spread is wider than the word "community" suggests, and it is worth being pr
 **Income, fully pooled.** A <Gloss term="common-purse">common purse</Gloss>. Earnings go in, needs come out, and nobody holds an individual wage. A minority arrangement, and the one that most changes daily life.
 
 Nothing about the label on the gate tells you which of these you are looking at. Ask.
+
+And ask about it **thing by thing**, not in general. Choosing one of those four arrangements settles far less than groups expect, because the arguments that actually happen are never about the policy — they are two people discovering they had assumed different answers about one specific item. The workshop. The van. The polytunnel a member built with their own money on shared land. What a departing household leaves behind.
+
+The communities that have fewest of these arguments are not the ones with the most generous sharing arrangement. They are the ones with a **list**: what is held in common, what is somebody's own, who looks after each thing, and who may sell it. Writing the list does not settle what the answers should be. It settles the far more common problem of nobody having noticed there was a question.
+
+<Rcos
+layer={3}
+section="§5.1 Commons vs Private Resources"
+href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-3-economic-resource-system#51-commons-vs-private-resources">
+
+The RCOS Standard is indifferent to which of those four arrangements a community picks, and specific about the list. Every resource inside the governed scope is classified as **commons** or **private** in a versioned register, with its steward, its access rules and any constraint on sale or transfer.
+
+The clause worth knowing is what happens to the ones nobody got to. Anything unclassified stays **unclassified** — and the community may not allocate, encumber, monetise or transfer it until an authorised decision classifies it. Not a to-do item, a lock: the thing you forgot to write down is the thing you may not quietly sell.
+
+A second door closes alongside it. Economic mechanisms must not let a member convert money into decision authority the governance layer never granted — whoever paid in most does not thereby acquire a louder vote, an informal veto, or a say outside the decision matrix.
+
+</Rcos>
 
 ## The three numbers
 
@@ -129,9 +146,9 @@ url: 'https://www.twinoaks.org/faqs-all-on-one-page',
 note: 'the labour quota, the allowance and the asset rule, from the community itself'
 },
 {
-title: 'RCOS Core — Layer 3: Economic Logic',
-url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/',
-note: 'how a community states what it shares financially, and what it does not'
+title: 'RCOS Core — Layer 3: Economic & Resource System',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-3-economic-resource-system',
+note: 'the commons register, contribution recognition, treasury transparency and limits on accumulation'
 }
 ]}
 />

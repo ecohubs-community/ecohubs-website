@@ -30,6 +30,7 @@ export { default as ProgressRing } from './ProgressRing.svelte';
 export { default as Prose } from './Prose.svelte';
 export { default as Quick } from './Quick.svelte';
 export { default as Quiz } from './Quiz.svelte';
+export { default as Rcos } from './Rcos.svelte';
 export { default as ReadToggle } from './ReadToggle.svelte';
 export { default as ShareButton } from './ShareButton.svelte';
 export { default as Sources } from './Sources.svelte';

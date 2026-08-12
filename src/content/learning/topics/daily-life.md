@@ -13,7 +13,7 @@ imageAlt: >-
   A long outdoor table after a shared meal — stacked plates, used glasses, a jug of
   flowers — with four people still talking at the far end and empty chairs at the near one.
 status: published
-updated: 2026-08-07
+updated: 2026-08-11
 terms: [common-house, work-quota, privacy-gradient, invisible-work]
 ---
 
@@ -60,6 +60,23 @@ The one that people who leave say they miss most is not on either side of that t
 Every community has a rota, and every community has a second layer of work that never reaches it: remembering that the insurance renews, noticing that a new member has not been included in anything for a fortnight, absorbing the awkwardness after a difficult meeting, being the person who always makes the tea.
 
 <Gloss term="invisible-work">Invisible work</Gloss> is real, time-consuming, and distributes itself unevenly — very often along the same lines it does everywhere else. Communities that are honest about it name it and try to count it. Communities that are not describe it as somebody "just being good at that", which is how a person ends up doing it for eleven years.
+
+The fix is duller than the problem sounds, and it is not a fairness conversation. **Give the work a name and an end date.** A responsibility that has quietly become one person's is either written down as a role — with what it covers, how long the term runs, and who takes it next — or it is not really the community's work at all, whatever everyone would say if asked. The same applies to how much any one person is carrying: a community that has never written down a limit on roles per member, or on hours of meetings a month, has no moment at which anyone is entitled to say _this is too much_ without it sounding like a complaint about themselves.
+
+None of that describes the person doing the work. That is the point of writing it down. Overload stops being a character trait — hers for being willing, everyone else's for not noticing — and becomes a thing about the rota, which is a thing a group can actually change.
+
+<Rcos
+layer={5}
+section="§7.1 Roles and Responsibilities, §7.4 Workload and Capacity Boundaries"
+href="https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-5-operations-coordination#71-roles-and-responsibilities">
+
+The RCOS Standard states both halves as requirements, and the phrasing of the first is stronger than most communities would put it: **no ongoing responsibility may exist without an explicit role**, and **no person may be held accountable for a responsibility not formally assigned to one**. The second half is the protective one. Every role enters a Role Registry carrying its purpose, authority, boundaries, term and handover process, and a temporary responsibility may not become ongoing without being written up as a role first.
+
+Workload boundaries are likewise an artifact rather than a courtesy: explicit limits on meeting load and role load, stated expectations for response time and availability, and a named mechanism for relief, substitution or redistribution. Persistent overload, burnout risk, or dependence on an over-functioning individual is listed as a trigger for the repair processes in Layer 4.
+
+The economic layer closes the same gap from the other side — a community may not structurally depend on unpaid, invisible or informal labour for its survival without defining the corresponding recognition, obligation or compensation. Between them, "she's just good at that" stops being an available answer.
+
+</Rcos>
 
 ## Noise, doors and privacy
 
@@ -111,6 +128,11 @@ note: 'childcare, schooling, teenagers, growing old and dying'
 title: 'Riazi et al. — Correlates of Children’s Independent Mobility in Canada (2019)',
 url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6727085/',
 note: 'the study behind the deep section'
+},
+{
+title: 'RCOS Core — Layer 5: Operations & Coordination',
+url: 'https://rcos.ecohubs.community/articles/rcos-core/v0-1/layer-5-operations-coordination',
+note: 'the role registry, meeting types, documentation rules and workload boundaries'
 },
 {
 title: 'National CoHousing Alliance',
