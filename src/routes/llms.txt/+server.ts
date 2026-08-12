@@ -79,6 +79,7 @@ const GROUPS: { heading: string; types: Frontmatter['type'][] }[] = [
 	{ heading: 'Topics', types: ['topic'] },
 	{ heading: 'Compared', types: ['compare'] },
 	{ heading: 'Learning paths', types: ['path'] },
+	{ heading: 'Failure modes', types: ['failure'] },
 	{ heading: 'Case studies', types: ['case'] },
 	{ heading: 'Glossary', types: ['term'] }
 ];
@@ -109,6 +110,8 @@ const SECTION_BLURBS: Record<string, string> = {
 	'/learn/topics':
 		'The subjects that decide whether a community lasts, each explained from the ground up.',
 	'/learn/compare': 'The pairs of terms this field most often confuses, told apart.',
+	'/learn/failures':
+		'The documented ways communities break — each pattern with its warning signs, why it is hard to see from inside, and the structure that prevents it.',
 	'/learn/paths': 'Ordered sequences through the lessons, for a particular question.',
 	'/learn/glossary':
 		'Plain definitions of the words this field uses, each with an example and what it is often confused with.',

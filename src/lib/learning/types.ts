@@ -20,7 +20,8 @@ export const CONTENT_TYPES = [
 	'compare',
 	'term',
 	'path',
-	'case'
+	'case',
+	'failure'
 ] as const;
 export type ContentType = (typeof CONTENT_TYPES)[number];
 
@@ -152,6 +153,39 @@ export interface CaseFrontmatter extends BaseFrontmatter {
 	terms?: string[];
 }
 
+/**
+ * One documented way a community breaks.
+ *
+ * A catalogue entry rather than a lesson: short, diagnostic, and written to be
+ * arrived at from a search or a link rather than read in sequence. Twenty-four
+ * of them would swamp the ten topics and make the knowledge map's clusters
+ * meaningless, which is why they are their own type and their own section.
+ *
+ * Distinct from `case`, which is reserved for a real named community. These
+ * describe a *pattern*; a case describes a *place*.
+ */
+export interface FailureFrontmatter extends BaseFrontmatter {
+	type: 'failure';
+	/** The guide lesson that introduces it — orders the printed appendix. */
+	lesson: string;
+	/** RCOS Core layer the pattern maps to. */
+	layer: number;
+	/**
+	 * Path to the RCOS stress test this paraphrases, as
+	 * `<category>/<slug>` under `/articles/rcos-stress-tests/`.
+	 *
+	 * Required, and validated: a page claiming to describe a documented
+	 * failure mode that cannot point at the documentation is an opinion.
+	 * `none` is allowed, and means the pattern is deliberately not in RCOS —
+	 * see `missing-subsidiarity`, a v0.2 candidate.
+	 */
+	rcos: string;
+	/** Three to five recognisable symptoms. Drives the listing and the appendix. */
+	signs: string[];
+	terms?: string[];
+	related?: string[];
+}
+
 export type Frontmatter =
 	| GuideFrontmatter
 	| LessonFrontmatter
@@ -159,7 +193,8 @@ export type Frontmatter =
 	| CompareFrontmatter
 	| TermFrontmatter
 	| PathFrontmatter
-	| CaseFrontmatter;
+	| CaseFrontmatter
+	| FailureFrontmatter;
 
 /** A loaded file: its frontmatter, its compiled component, and derived facts. */
 export interface ContentEntry<F extends Frontmatter = Frontmatter> {

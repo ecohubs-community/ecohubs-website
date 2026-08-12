@@ -11,6 +11,7 @@
 import { building, dev } from '$app/environment';
 import type {
 	CaseFrontmatter,
+	FailureFrontmatter,
 	CompareFrontmatter,
 	ContentEntry,
 	Frontmatter,
@@ -118,6 +119,7 @@ export const comparisons = ofType<CompareFrontmatter>('compare');
 export const terms = ofType<TermFrontmatter>('term');
 export const paths = ofType<PathFrontmatter>('path');
 export const cases = ofType<CaseFrontmatter>('case');
+export const failures = ofType<FailureFrontmatter>('failure');
 
 const publishedOf = <F extends Frontmatter>(list: Typed<F>[]) =>
 	list.filter((e) => e.frontmatter.status === 'published');
@@ -129,6 +131,7 @@ export const publishedComparisons = publishedOf(comparisons);
 export const publishedTerms = publishedOf(terms);
 export const publishedPaths = publishedOf(paths);
 export const publishedCases = publishedOf(cases);
+export const publishedFailures = publishedOf(failures);
 
 /**
  * Every published entry, of every type.
@@ -152,6 +155,7 @@ export const compareBySlug = bySlug(comparisons);
 export const termBySlug = bySlug(terms);
 export const pathBySlug = bySlug(paths);
 export const caseBySlug = bySlug(cases);
+export const failureBySlug = bySlug(failures);
 
 /** Lessons of a guide, in author-defined order. */
 export function lessonsOfGuide(
@@ -245,6 +249,8 @@ export function urlFor(entry: ContentEntry): string {
 			return `/learn/paths/${fm.slug}`;
 		case 'case':
 			return `/learn/cases/${fm.slug}`;
+		case 'failure':
+			return `/learn/failures/${fm.slug}`;
 	}
 }
 

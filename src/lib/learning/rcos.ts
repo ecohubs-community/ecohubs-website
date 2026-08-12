@@ -10,6 +10,16 @@
  */
 export const RCOS_BASE = 'https://rcos.ecohubs.community/articles/rcos-core/v0-1';
 
+/**
+ * The stress tests — RCOS's catalogue of documented failure modes, and the
+ * source every `failure` page cites.
+ *
+ * Not pinned to a version, unlike the Core spec above: the stress tests are
+ * published as a living set rather than a numbered release, so there is no
+ * v0.1 to pin to.
+ */
+export const RCOS_STRESS_TESTS = 'https://rcos.ecohubs.community/articles/rcos-stress-tests';
+
 export const RCOS_LAYERS: Record<number, { title: string; slug: string }> = {
 	0: { title: 'Identity & Scope', slug: 'layer-0-identity-scope' },
 	1: { title: 'Membership System', slug: 'layer-1-membership-system' },

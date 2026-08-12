@@ -5,9 +5,9 @@ slug: why-communities-end
 guide: intentional-communities
 order: 10
 summary: Where the two different "90% fail" figures come from, the six patterns that recur, and the endings that are not failures.
-targetQuery: why do intentional communities fail
+targetQuery: intentional community failure rate
 status: published
-updated: 2026-08-11
+updated: 2026-08-12
 terms: [agreements, blocking-concern, consensus]
 related: [conflict-power-and-repair, how-communities-decide]
 ---

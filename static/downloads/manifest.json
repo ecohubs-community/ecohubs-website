@@ -1,6 +1,6 @@
 {
 	"intentional-communities": {
-		"generatedAt": "2026-08-12T13:13:27.637Z",
+		"generatedAt": "2026-08-12T16:20:03.864Z",
 		"entries": [
 			{
 				"kind": "pdf",
@@ -23,7 +23,7 @@
 				"label": "Cost model worksheet",
 				"detail": "XLSX · entry / monthly / exit",
 				"file": "/downloads/intentional-communities/intentional-communities-cost-model.xlsx",
-				"bytes": 9579
+				"bytes": 9577
 			}
 		]
 	}

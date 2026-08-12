@@ -21,6 +21,8 @@ import { CLUSTER_KEYS } from './clusters';
 
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+/** `<category>/<slug>` under `/articles/rcos-stress-tests/`. */
+const RCOS_TEST_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 /** Minimum body length before a piece may be indexed — see `isIndexable`. */
 export const MIN_WORDS = {
@@ -30,6 +32,10 @@ export const MIN_WORDS = {
 	compare: 800,
 	case: 800,
 	guide: 200, // a guide is mostly its lessons
+	// Deliberately the shortest prose type. A failure page is a catalogue entry
+	// meant to be read mid-crisis, and padding one to lesson length would make
+	// it worse at its job — but under this it is a stub, not an entry.
+	failure: 400,
 	path: 0 // curation only, no prose
 } as const;
 
@@ -60,6 +66,54 @@ function checkBase(fm: Frontmatter, path: string, issues: ValidationIssue[]) {
 			issues.push({
 				path,
 				message: `unknown cluster "${fm.cluster}" — expected one of ${CLUSTER_KEYS.join(', ')}`
+			});
+		}
+	}
+
+	/**
+	 * A failure page has to be able to point at its evidence.
+	 *
+	 * The whole claim of the catalogue is that these are *documented* patterns
+	 * rather than a list of things that sound plausible, and the difference
+	 * between those two is a citation. So `rcos` is required, and shaped:
+	 * `<category>/<slug>` under `/articles/rcos-stress-tests/`.
+	 *
+	 * `none` is the deliberate exception — a pattern RCOS does not catalogue.
+	 * Spelling it out is the point: it makes "RCOS has no test for this" a
+	 * statement an author had to write, rather than a field they left blank.
+	 */
+	if (fm.type === 'failure') {
+		const failure = fm as unknown as {
+			rcos?: string;
+			lesson?: string;
+			layer?: number;
+			signs?: string[];
+		};
+
+		if (!failure.rcos) {
+			issues.push({ path, message: 'failure is missing "rcos" (use "none" if RCOS has no test)' });
+		} else if (failure.rcos !== 'none' && !RCOS_TEST_RE.test(failure.rcos)) {
+			issues.push({
+				path,
+				message: `rcos "${failure.rcos}" must be "<category>/<slug>" or "none"`
+			});
+		}
+
+		if (!failure.lesson) issues.push({ path, message: 'failure is missing "lesson"' });
+		if (typeof failure.layer !== 'number') {
+			issues.push({ path, message: 'failure is missing "layer" (RCOS Core layer, 0–6)' });
+		} else if (failure.layer < 0 || failure.layer > 6) {
+			issues.push({ path, message: `layer ${failure.layer} is outside RCOS Core's 0–6` });
+		}
+
+		// The listing and the printed appendix both render these; one sign is a
+		// heading, not a diagnostic.
+		if (!failure.signs?.length) {
+			issues.push({ path, message: 'failure is missing "signs"' });
+		} else if (failure.signs.length < 3) {
+			issues.push({
+				path,
+				message: `failure has ${failure.signs.length} sign(s) — at least 3 make it diagnosable`
 			});
 		}
 	}
