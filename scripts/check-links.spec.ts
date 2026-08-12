@@ -6,8 +6,37 @@
  * enough to make a maintainer's own machine probe its own network. The guard is
  * small enough to be deleted by accident, so these pin it.
  */
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { lookup } from 'node:dns/promises';
 import { assertRequestable, isPublicAddress, validatingLookup } from './check-links.ts';
+
+/**
+ * DNS is stubbed rather than exercised. These tests are about what
+ * `validatingLookup` does with an answer, and running them against the real
+ * resolver made the suite depend on a network and on whatever the machine
+ * thinks `localhost` is — flaky in CI, and untestable for the case that
+ * matters most: a name answering with a public *and* a private address, which
+ * is the shape of a rebinding attack and which no real hostname will produce
+ * on demand.
+ */
+vi.mock('node:dns/promises', () => ({ lookup: vi.fn() }));
+
+const PUBLIC = [{ address: '93.184.216.34', family: 4 }];
+
+function answers(...entries: { address: string; family: number }[]) {
+	vi.mocked(lookup).mockResolvedValue(entries as never);
+}
+
+/**
+ * Braces, not a concise body. `mockReset()` returns the mock, and a hook that
+ * returns a function has handed vitest a teardown callback — so the concise
+ * form made vitest *call the mock* after each test. With a rejecting
+ * implementation that produced an unhandled rejection and failed the test that
+ * had just passed, blaming a line three tests away.
+ */
+beforeEach(() => {
+	vi.mocked(lookup).mockReset();
+});
 
 /** Promise wrapper, because the lookup has to keep Node's callback shape. */
 function resolveVia(hostname: string, options: Record<string, unknown> = {}): Promise<unknown> {
@@ -107,39 +136,61 @@ describe('isPublicAddress', () => {
 });
 
 describe('validatingLookup', () => {
-	it('refuses a literal private address', async () => {
-		await expect(resolveVia('169.254.169.254')).rejects.toThrow(/non-public/);
-		await expect(resolveVia('127.0.0.1')).rejects.toThrow(/non-public/);
-		await expect(resolveVia('::1')).rejects.toThrow(/non-public/);
+	it('passes a public answer through', async () => {
+		answers(...PUBLIC);
+		await expect(resolveVia('example.com')).resolves.toBe('93.184.216.34');
 	});
 
-	/** `localhost` is the case a hostname-string blocklist would miss. */
+	/** What `localhost` does, without depending on the machine agreeing. */
 	it('refuses a name that resolves into private space', async () => {
-		await expect(resolveVia('localhost')).rejects.toThrow(/non-public/);
+		answers({ address: '127.0.0.1', family: 4 });
+		await expect(resolveVia('internal.example.com')).rejects.toThrow(/non-public/);
 	});
 
-	it('resolves an ordinary public name', async () => {
-		await expect(resolveVia('example.com')).resolves.toMatch(/\d|:/);
+	/**
+	 * The case worth having a stub for: no real hostname will answer with one
+	 * public and one private address on demand, and it is precisely the shape a
+	 * rebinding attack takes. `every`, not `some`.
+	 */
+	it('refuses a mixed answer, not just an all-private one', async () => {
+		answers({ address: '93.184.216.34', family: 4 }, { address: '10.0.0.5', family: 4 });
+		await expect(resolveVia('split.example.com')).rejects.toThrow(/non-public/);
+	});
+
+	it('names the addresses it refused, so the report can be acted on', async () => {
+		answers({ address: '::1', family: 6 }, { address: '127.0.0.1', family: 4 });
+		await expect(resolveVia('internal.example.com')).rejects.toThrow(
+			/internal\.example\.com → ::1, 127\.0\.0\.1/
+		);
 	});
 
 	/**
 	 * The reason this is a `lookup` and not a check before the request: it is the
 	 * resolution the socket uses, so there is no second answer to disagree with
 	 * it. Node calls this at connect time and connects to what it returns —
-	 * meaning a rebinding name server gets one answer, not two.
+	 * which only works if it keeps Node's exact callback contract.
 	 */
 	it('keeps Node’s callback contract, so http.request can use it directly', async () => {
-		const single = await resolveVia('example.com');
-		expect(typeof single).toBe('string');
+		answers(...PUBLIC);
+		expect(await resolveVia('example.com')).toBe('93.184.216.34');
 
-		const all = (await resolveVia('example.com', { all: true })) as { address: string }[];
-		expect(Array.isArray(all)).toBe(true);
-		expect(all[0]).toHaveProperty('address');
-		expect(all[0]).toHaveProperty('family');
+		answers(...PUBLIC);
+		expect(await resolveVia('example.com', { all: true })).toEqual(PUBLIC);
+	});
+
+	/** `all: true` regardless of the caller, or a second address goes unchecked. */
+	it('always asks for every address, whatever it was asked for', async () => {
+		answers(...PUBLIC);
+		await resolveVia('example.com', { family: 4 });
+		expect(vi.mocked(lookup)).toHaveBeenCalledWith('example.com', { family: 4, all: true });
 	});
 
 	it('reports a resolution failure rather than swallowing it', async () => {
-		await expect(resolveVia('nonexistent.invalid')).rejects.toThrow();
+		// `mockRejectedValue` builds its rejected promise up front, which vitest
+		// then reports as unhandled whether or not the mock is ever called.
+		// Rejecting from the implementation keeps it to one, on the call.
+		vi.mocked(lookup).mockImplementation(() => Promise.reject(new Error('ENOTFOUND')));
+		await expect(resolveVia('nonexistent.invalid')).rejects.toThrow(/ENOTFOUND/);
 	});
 });
 
