@@ -7,6 +7,7 @@ level: intermediate
 summary: Twenty-four documented patterns, what each looks like from inside, and the structure that prevents it — for people who can still change the rules.
 targetQuery: why do intentional communities fail
 prerequisites: Written for people already inside a community — founding one, stewarding one, or watching something go wrong in one.
+motif: strata
 status: draft
 updated: 2026-08-12
 outcomes:

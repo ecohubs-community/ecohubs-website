@@ -4,8 +4,11 @@ import type { IconifyIcon } from '@iconify/types';
 
 const DEFAULTS = { width: 24, height: 24 };
 
-/** The 31 icons this site uses, inlined so nothing is fetched at runtime. */
+/** The 32 icons this site uses, inlined so nothing is fetched at runtime. */
 export const ICONS: Record<string, IconifyIcon> = {
+	'tabler:alert-triangle': {
+		body: '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v4m-1.637-9.409L2.257 17.125a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636-2.87L13.637 3.59a1.914 1.914 0 0 0-3.274 0M12 16h.01"/>'
+	},
 	'tabler:arrow-narrow-left': {
 		body: '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4 4m-4-4l4-4"/>'
 	},
