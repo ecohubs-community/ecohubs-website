@@ -671,20 +671,37 @@
 			</div>
 			<div class="mt-14">
 				<div class="mb-5 kicker text-emerald-800">Partners</div>
-				<a
-					href="https://www.heartofecovillages.org/"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="inline-flex flex-col items-center gap-2.5 group"
-				>
-					<img
-						src="/partners/heart-of-ecovillages.webp"
-						alt="Heart of Ecovillages logo"
-						loading="lazy"
-						class="h-14 w-auto transition-transform group-hover:scale-[1.03]"
-					/>
-					<span class="text-[14px] font-medium text-ecohubs-deep">Heart of Ecovillages</span>
-				</a>
+				<div class="inline-flex gap-6 items-center text-center">
+					<a
+						href="https://www.heartofecovillages.org"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex flex-col items-center gap-2.5 group"
+					>
+						<img
+							src="/partners/heart-of-ecovillages.webp"
+							alt="Heart of Ecovillages logo"
+							loading="lazy"
+							class="h-14 w-auto transition-transform group-hover:scale-[1.03]"
+						/>
+						<span class="text-[14px] font-medium text-ecohubs-deep">Heart of Ecovillages</span>
+					</a>
+
+					<a
+						href="https://regenera.community"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex flex-col items-center gap-2.5 group"
+					>
+						<img
+							src="/partners/regenera.webp"
+							alt="Regenera logo"
+							loading="lazy"
+							class="h-14 w-auto transition-transform group-hover:scale-[1.03]"
+						/>
+						<span class="text-[14px] font-medium text-ecohubs-deep">Regenera</span>
+					</a>
+				</div>
 			</div>
 
 			<div class="mt-10">

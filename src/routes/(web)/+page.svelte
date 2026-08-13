@@ -35,6 +35,15 @@
 	let showAllWounds = $state(false);
 	const WOUNDS_PREVIEW_COUNT = 4;
 
+	let partners = [
+		{
+			name: 'Heart of Ecovillages',
+			href: 'https://www.heartofecovillages.org/',
+			logo: '/partners/heart-of-ecovillages.webp'
+		},
+		{ name: 'Regenera', href: 'https://regenera.community/', logo: '/partners/regenera.webp' }
+	];
+
 	// ─── ANIMATIONS ─────────────────────────────────────────────────────────────
 	// The hero cascade is pure CSS (`hero-rise` in layout.css, delayed per step
 	// by the inline `--hero-delay`). It deliberately does not run from here:
@@ -1182,7 +1191,7 @@
 		</div>
 
 		<div data-scroll-animate="fade-up" class="mt-10 flex flex-wrap gap-5">
-			{#each [{ name: 'Heart of Ecovillages', href: 'https://www.heartofecovillages.org/', logo: '/partners/heart-of-ecovillages.webp' }] as partner}
+			{#each partners as partner}
 				<a
 					href={partner.href}
 					target="_blank"
