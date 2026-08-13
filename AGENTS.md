@@ -102,7 +102,9 @@ Three attribute-driven animation patterns:
 - `data-scroll-animate[="fade-up|fade-down|fade-left|fade-right|fade|scale|rotate"]` — fires once when in view
 - `data-scroll-stagger` — staggers direct children when the parent enters
 
-Each page calls `initScrollAnimations()` and `initStaggeredScrollAnimations()` in `onMount` after a `prefersReducedMotion()` short-circuit. Reuse this pattern; don't import `motion` directly in pages.
+Marketing pages call `initScrollAnimations()` and `initStaggeredScrollAnimations()` in `onMount` after a `prefersReducedMotion()` short-circuit. Reuse this pattern; don't import `motion` directly in pages.
+
+**The Learning Hub is the exception: pages under `src/routes/(web)/learn/` do not animate on scroll, and a new one should not start.** All 18 of them are plain; 11 of the 17 pages outside the hub animate. The two surfaces are doing different jobs — a landing page is being read once, in order, and the reveal is part of the argument, while a hub page is reference material somebody arrives at mid-problem, often from search, and frequently scrolls straight past the top of. Content that fades in as you hunt for it is an obstacle. Changing this is a hub-wide design decision, not something to fix one page at a time.
 
 ## SEO
 
