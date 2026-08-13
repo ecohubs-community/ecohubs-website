@@ -33,9 +33,9 @@ export const wouldThatActuallyHelp: QuizDefinition = {
 				},
 				{
 					id: 'works',
-					label: 'It would change something — there is a named holder and a date',
+					label: 'It would change something',
 					explanation:
-						'There is neither. "Everyone" is not a holder, and "more" is not a date. This is the single most common response to overload and it has no mechanism in it at all.'
+						'Nothing here would. "Everyone" is not a holder and "more" is not a quantity, so there is no version of next week in which anybody has done this or failed to. It is the single most common response to overload and it has no mechanism in it at all.'
 				},
 				{
 					id: 'one-more',
@@ -59,7 +59,7 @@ export const wouldThatActuallyHelp: QuizDefinition = {
 				},
 				{
 					id: 'works',
-					label: 'It would change something — there is a named holder and a date',
+					label: 'It would change something',
 					explanation:
 						'The list is the right artefact and this is the wrong author. Everything that follows depends on a document only the busiest person can write, which means it does not get written.'
 				},
@@ -79,7 +79,7 @@ export const wouldThatActuallyHelp: QuizDefinition = {
 			options: [
 				{
 					id: 'works',
-					label: 'It would change something — there is a named holder and a date',
+					label: 'It would change something',
 					correct: true,
 					explanation:
 						'Right — and note that nothing has been handed over yet. This is the step that gets skipped, done by the only kind of person who can do it: somebody with capacity. Eleven named items can each find a holder. "The admin" cannot. The list is also usually shorter than the group feared and more alarming in what it reveals about single points of failure.'
@@ -113,7 +113,7 @@ export const wouldThatActuallyHelp: QuizDefinition = {
 				},
 				{
 					id: 'works',
-					label: 'It would change something — there is a named holder and a date',
+					label: 'It would change something',
 					explanation:
 						'A working group is not a holder — it is a set of people who may each reasonably assume another of them is doing it. "In due course" is not a date.'
 				},
@@ -132,7 +132,7 @@ export const wouldThatActuallyHelp: QuizDefinition = {
 			options: [
 				{
 					id: 'works',
-					label: 'It would change something — there is a named holder and a date',
+					label: 'It would change something',
 					correct: true,
 					explanation:
 						'Right, though what it changes is subtler than a handover. Without a stated limit there is no moment at which anybody is entitled to say this is too much without it sounding like a complaint about their own capacity — which is exactly why the overloaded person never says it. A ceiling makes overload a fact about the structure that anyone may point at.'

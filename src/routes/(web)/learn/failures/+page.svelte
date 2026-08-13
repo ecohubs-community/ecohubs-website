@@ -16,6 +16,7 @@
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { LearnRail } from '$lib/components/learning';
 	import { LEARN_SHELL } from '$lib/components/learning/shell';
+	import { META } from '$lib/components/learning/card';
 	import { learningBreadcrumbs } from '$lib/learning/schema';
 	import { RCOS_STRESS_TESTS } from '$lib/learning/rcos';
 	import type { PageData } from './$types';
@@ -109,9 +110,7 @@
 									{/each}
 								</ul>
 
-								<div
-									class="mt-5 flex items-center gap-4 font-mono text-[10.5px] tracking-[0.06em] text-[#8a8a80]"
-								>
+								<div class="{META} mt-5 flex items-center gap-4">
 									<span>Layer {mode.layer}</span>
 									<span aria-hidden="true">·</span>
 									<span>{mode.minutes} min</span>
@@ -148,9 +147,7 @@
 					How to contribute a stress test
 					<Icon icon="tabler:external-link" class="h-4 w-4" />
 				</a>
-				<p class="mt-3 font-mono text-[10.5px] tracking-[0.06em] text-[#8a8a80]">
-					On the RCOS standard, which maintains the catalogue
-				</p>
+				<p class="{META} mt-3">On the RCOS standard, which maintains the catalogue</p>
 			</aside>
 		</div>
 

@@ -48,16 +48,34 @@ type Manifest = Record<string, { generatedAt: string; entries: Entry[] }>;
 /**
  * The manifest as it stands, so a partial rebuild can merge rather than replace.
  *
- * A missing or unreadable file is not an error — the first ever run has none,
- * and a corrupted one should be rebuilt rather than crash the build. Either way
- * the guides being rebuilt this run will overwrite their own keys.
+ * Only a *missing* file is treated as empty — that is the first ever run, and
+ * there is nothing to preserve. Everything else throws.
+ *
+ * The earlier version swallowed every failure and returned `{}`, which is the
+ * same bug this function was written to fix, one level down: a partial rebuild
+ * writes keys for the guides it did rebuild, so an unreadable or malformed
+ * manifest silently deletes every other guide's downloads section while their
+ * files sit untouched on disk. Failing here is recoverable — `pnpm downloads`
+ * with no arguments rebuilds the lot — and a silently truncated manifest is
+ * not, because nothing about the site looks wrong afterwards.
  */
 export async function readManifest(): Promise<Manifest> {
+	let raw: string;
 	try {
-		return JSON.parse(await readFile(join(OUT, 'manifest.json'), 'utf8')) as Manifest;
-	} catch {
-		return {};
+		raw = await readFile(join(OUT, 'manifest.json'), 'utf8');
+	} catch (cause) {
+		if ((cause as NodeJS.ErrnoException).code === 'ENOENT') return {};
+		throw cause;
 	}
+
+	const parsed: unknown = JSON.parse(raw);
+	if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+		throw new Error(
+			`${join(OUT, 'manifest.json')} is not a JSON object. ` +
+				'Delete it and run `pnpm downloads` to rebuild every guide.'
+		);
+	}
+	return parsed as Manifest;
 }
 
 /* ── Reading the content directory ───────────────────────────────────────── */

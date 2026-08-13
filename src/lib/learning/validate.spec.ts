@@ -191,6 +191,67 @@ describe('validateContent — structural rules', () => {
 		expect(issues.some((i) => i.message.includes('needs either'))).toBe(true);
 	});
 
+	/**
+	 * A failure names its lesson, and a typo used to publish silently: the page
+	 * built and rendered, while `failuresOfGuide()` — which matches on the
+	 * lesson slug — dropped it from the guide's appendix and its checklist.
+	 */
+	it('reports a failure whose lesson does not exist', () => {
+		const issues = validateContent([
+			topic('t'),
+			entry({ type: 'guide', slug: 'g', topic: 't' }),
+			entry({ type: 'lesson', slug: 'l1', guide: 'g', order: 1 }),
+			entry({
+				type: 'failure',
+				slug: 'f1',
+				lesson: 'l-typo',
+				layer: 2,
+				rcos: 'governance-power/x',
+				signs: ['a', 'b', 'c']
+			} as never)
+		]);
+		expect(issues.some((i) => i.message.includes('lesson "l-typo" does not exist'))).toBe(true);
+	});
+
+	/**
+	 * `signs: warning` is a string, and a string has a truthy `.length` of 7 —
+	 * so a count check passed it and `failureArticle()` then mapped over the
+	 * characters. The shape has to be established before the size means
+	 * anything.
+	 */
+	it('reports signs written as a scalar rather than a list', () => {
+		const issues = validateContent([
+			topic('t'),
+			entry({ type: 'guide', slug: 'g', topic: 't' }),
+			entry({ type: 'lesson', slug: 'l1', guide: 'g', order: 1 }),
+			entry({
+				type: 'failure',
+				slug: 'f1',
+				lesson: 'l1',
+				layer: 2,
+				rcos: 'governance-power/x',
+				signs: 'warning'
+			} as never)
+		]);
+		expect(issues.some((i) => i.message.includes('"signs" must be a list'))).toBe(true);
+	});
+
+	/**
+	 * Steps are keyed by type as well as slug. With bare slugs a published
+	 * lesson vouched for a draft failure that happened to share its name, so a
+	 * path with one unwalkable step looked fine.
+	 */
+	it('does not let a published lesson vouch for a draft failure of the same slug', () => {
+		const issues = validateContent([
+			topic('t'),
+			entry({ type: 'guide', slug: 'g', topic: 't' }),
+			entry({ type: 'lesson', slug: 'same', guide: 'g', order: 1 }),
+			failurePage('same', 'draft'),
+			entry({ type: 'path', slug: 'p', steps: [{ failure: 'same' }] })
+		]);
+		expect(issues.some((i) => i.message.includes('no published steps'))).toBe(true);
+	});
+
 	it('reports a step that is both at once', () => {
 		const issues = validateContent([
 			topic('t'),

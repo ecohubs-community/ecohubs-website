@@ -100,7 +100,12 @@ items={[
 {
 title: 'RCOS stress tests — Governance & Power',
 url: 'https://rcos.ecohubs.community/articles/rcos-stress-tests/governance-power',
-note: 'the four documented patterns this lesson covers, in specification form'
+note: 'four of the five patterns this lesson covers, in specification form'
+},
+{
+title: 'RCOS stress tests — Culture & Influence',
+url: 'https://rcos.ecohubs.community/articles/rcos-stress-tests/culture-influence',
+note: 'the fifth — authority from charisma, which the standard files under culture rather than governance'
 },
 {
 title: 'Freeman, J. — The Tyranny of Structurelessness (1970/1972)',

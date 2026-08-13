@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Component } from 'svelte';
 	import { LEARN_SHELL } from '$lib/components/learning/shell';
+	import { META } from '$lib/components/learning/card';
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import {
@@ -56,9 +57,7 @@
 				{failure.summary}
 			</p>
 
-			<div
-				class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-[11px] tracking-[0.06em] text-[#8a8a80]"
-			>
+			<div class="{META} mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
 				<span>{data.readingMinutes} min read</span>
 				<span aria-hidden="true">·</span>
 				<a

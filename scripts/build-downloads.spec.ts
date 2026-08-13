@@ -1,5 +1,11 @@
-import { describe, expect, it } from 'vitest';
-import { guidesToRebuild } from './build-downloads';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { readFile } from 'node:fs/promises';
+import { guidesToRebuild, readManifest } from './build-downloads';
+
+vi.mock('node:fs/promises', async (importOriginal) => ({
+	...(await importOriginal<typeof import('node:fs/promises')>()),
+	readFile: vi.fn()
+}));
 
 const ALL = ['intentional-communities', 'community-governance'];
 
@@ -63,5 +69,51 @@ describe('guidesToRebuild', () => {
 	it('ignores a guide that is not published, because it is not in the list', () => {
 		const changed = ['src/content/learning/lessons/starting-an-ecovillage/one.md'];
 		expect(guidesToRebuild(changed, ALL)).toEqual([]);
+	});
+});
+
+/**
+ * The manifest is merged rather than replaced, because most runs rebuild only
+ * the guides whose sources changed. That makes an empty return value dangerous
+ * in a specific way: the run then writes keys for the guides it did rebuild,
+ * and every other guide's downloads section disappears from the site while its
+ * files sit untouched on disk.
+ *
+ * So only a missing file may be treated as empty. These pin the difference.
+ */
+describe('readManifest', () => {
+	beforeEach(() => {
+		vi.mocked(readFile).mockReset();
+	});
+
+	it('starts empty when the manifest does not exist yet', async () => {
+		const enoent = Object.assign(new Error('no such file'), { code: 'ENOENT' });
+		vi.mocked(readFile).mockRejectedValue(enoent);
+		await expect(readManifest()).resolves.toEqual({});
+	});
+
+	it('returns what is on disk so a partial rebuild merges', async () => {
+		vi.mocked(readFile).mockResolvedValue(
+			JSON.stringify({ 'a-guide': { generatedAt: '2026-08-12', entries: [] } })
+		);
+		await expect(readManifest()).resolves.toHaveProperty('a-guide');
+	});
+
+	it('refuses to start empty when the manifest is unreadable', async () => {
+		const denied = Object.assign(new Error('permission denied'), { code: 'EACCES' });
+		vi.mocked(readFile).mockRejectedValue(denied);
+		await expect(readManifest()).rejects.toThrow('permission denied');
+	});
+
+	it('refuses to start empty when the manifest is not valid JSON', async () => {
+		vi.mocked(readFile).mockResolvedValue('{ this is not json');
+		await expect(readManifest()).rejects.toThrow();
+	});
+
+	it('refuses a JSON value that is not an object of guides', async () => {
+		// `[]` parses, and would then merge into nothing and silently drop
+		// every guide — the exact failure this guard exists to prevent.
+		vi.mocked(readFile).mockResolvedValue('[]');
+		await expect(readManifest()).rejects.toThrow('not a JSON object');
 	});
 });

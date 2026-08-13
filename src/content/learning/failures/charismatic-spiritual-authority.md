@@ -30,7 +30,11 @@ In a healthy version, disagreeing with the compelling person is ordinary. You mi
 
 The second reason it is hard to see: **it is usually most visible to people who have just left**, and least visible to people in the middle of it. That asymmetry is not a coincidence — it is the mechanism working.
 
-⚠️ This page is about a structural condition, not about diagnosing an individual. A community can produce this pattern around somebody who neither sought it nor enjoys it, and the fix is the same either way: make the authority testable.
+<Callout type="caveat">
+
+This page is about a structural condition, not about diagnosing an individual. A community can produce this pattern around somebody who neither sought it nor enjoys it, and the fix is the same either way: make the authority testable.
+
+</Callout>
 
 ## What to check
 

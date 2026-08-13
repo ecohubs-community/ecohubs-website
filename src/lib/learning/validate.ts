@@ -108,8 +108,18 @@ function checkBase(fm: Frontmatter, path: string, issues: ValidationIssue[]) {
 
 		// The listing and the printed appendix both render these; one sign is a
 		// heading, not a diagnostic.
-		if (!failure.signs?.length) {
-			issues.push({ path, message: 'failure is missing "signs"' });
+		//
+		// `Array.isArray` before the length, because a scalar `signs: warning`
+		// has a truthy `.length` of 7 and would sail through a count check — and
+		// then `failureArticle()` calls `.map()` on a string's characters, or
+		// throws. The shape has to be established before the size means anything.
+		if (!Array.isArray(failure.signs)) {
+			issues.push({
+				path,
+				message: failure.signs
+					? '"signs" must be a list — indent each one under `signs:` with "- "'
+					: 'failure is missing "signs"'
+			});
 		} else if (failure.signs.length < 3) {
 			issues.push({
 				path,
@@ -293,8 +303,35 @@ export function validateContent(entries: ContentEntry[]): ValidationIssue[] {
 		}
 	}
 
+	/**
+	 * A failure names its lesson, and nothing until now checked that the lesson
+	 * exists.
+	 *
+	 * A typo does not fail loudly: the page still builds and still publishes,
+	 * but `failuresOfGuide()` matches on the lesson slug, so the mode silently
+	 * drops out of the guide's appendix and its printed checklist. An orphan
+	 * that renders is worse than one that does not.
+	 */
+	const lessonSlugs = new Set(
+		entries.filter((e) => e.frontmatter.type === 'lesson').map((e) => e.frontmatter.slug)
+	);
+	for (const entry of entries) {
+		if (entry.frontmatter.type !== 'failure') continue;
+		const lesson = (entry.frontmatter as { lesson?: string }).lesson;
+		if (lesson && !lessonSlugs.has(lesson)) {
+			issues.push({
+				path: entry.path,
+				message: `lesson "${lesson}" does not exist — the mode would vanish from the appendix`
+			});
+		}
+	}
+
 	// A published path whose steps are all drafts would render as an empty
 	// sequence — worth catching, since it looks fine in the source.
+	//
+	// Keyed by type as well as slug: a step says `lesson:` or `failure:`, and
+	// with bare slugs a published lesson would vouch for a draft failure that
+	// happened to share its name.
 	const publishedStep = new Set(
 		entries
 			.filter(
@@ -302,12 +339,14 @@ export function validateContent(entries: ContentEntry[]): ValidationIssue[] {
 					(e.frontmatter.type === 'lesson' || e.frontmatter.type === 'failure') &&
 					e.frontmatter.status === 'published'
 			)
-			.map((e) => e.frontmatter.slug)
+			.map((e) => `${e.frontmatter.type}:${e.frontmatter.slug}`)
 	);
 	for (const entry of entries) {
 		if (entry.frontmatter.type !== 'path' || entry.frontmatter.status !== 'published') continue;
 		const fm = entry.frontmatter as PathFrontmatter;
-		const walkable = fm.steps?.some((s) => publishedStep.has(s.failure ?? s.lesson ?? ''));
+		const walkable = fm.steps?.some((s) =>
+			publishedStep.has(s.failure ? `failure:${s.failure}` : `lesson:${s.lesson ?? ''}`)
+		);
 		if ((fm.steps ?? []).length && !walkable) {
 			issues.push({ path: entry.path, message: 'published path has no published steps' });
 		}

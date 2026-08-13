@@ -11,6 +11,7 @@ import {
 	isIndexable,
 	publishedCases,
 	publishedComparisons,
+	publishedFailures,
 	publishedGuides,
 	publishedPaths,
 	publishedTerms,
@@ -79,7 +80,8 @@ function discoverable(): ContentEntry[] {
 		...publishedComparisons,
 		...publishedTerms,
 		...publishedPaths,
-		...publishedCases
+		...publishedCases,
+		...publishedFailures
 	].filter(isIndexable);
 }
 

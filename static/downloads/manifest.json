@@ -1,13 +1,13 @@
 {
 	"why-communities-fail": {
-		"generatedAt": "2026-08-12T22:44:22.111Z",
+		"generatedAt": "2026-08-13T00:30:14.395Z",
 		"entries": [
 			{
 				"kind": "pdf",
 				"label": "The whole guide as one PDF",
 				"detail": "PDF · 115 pages · printable",
 				"file": "/downloads/why-communities-fail/why-communities-fail-guide.pdf",
-				"bytes": 2349429,
+				"bytes": 2349283,
 				"pages": 115
 			},
 			{
@@ -15,20 +15,20 @@
 				"label": "The failure modes as a checklist",
 				"detail": "PDF · 5 pages · 25 patterns, 102 things to check",
 				"file": "/downloads/why-communities-fail/why-communities-fail-failure-modes-checklist.pdf",
-				"bytes": 191657,
+				"bytes": 192462,
 				"pages": 5
 			}
 		]
 	},
 	"intentional-communities": {
-		"generatedAt": "2026-08-12T22:44:22.111Z",
+		"generatedAt": "2026-08-13T00:30:14.395Z",
 		"entries": [
 			{
 				"kind": "pdf",
 				"label": "The whole guide as one PDF",
 				"detail": "PDF · 69 pages · printable",
 				"file": "/downloads/intentional-communities/intentional-communities-guide.pdf",
-				"bytes": 2284719,
+				"bytes": 2285966,
 				"pages": 69
 			},
 			{
@@ -36,7 +36,7 @@
 				"label": "Questions to ask on a visit",
 				"detail": "PDF · 4 pages · 42 questions",
 				"file": "/downloads/intentional-communities/intentional-communities-visit-questions.pdf",
-				"bytes": 130479,
+				"bytes": 131316,
 				"pages": 4
 			},
 			{

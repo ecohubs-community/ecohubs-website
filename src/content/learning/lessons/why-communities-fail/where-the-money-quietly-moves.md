@@ -82,7 +82,7 @@ So part of the commons was **rehomed into other community bodies** rather than p
 
 **Work out the run rate, once.** Not the budget — the gap. How much of last year's costs were covered by something that will not recur: a sale, a legacy, a grant, a reserve draw. That single number is the diagnosis, and most communities have never calculated it.
 
-**Then ask how many of those you have left.** A community funding a €40,000 annual shortfall from asset sales, with three saleable assets, has three years. Said aloud, that changes a conversation which has been circling for a decade.
+**Then ask what those have left to give.** A community funding a €40,000 annual shortfall from asset sales, holding perhaps €120,000 of saleable land, has three years — and it is the value that matters, not the number of parcels, which are rarely worth the same. Said aloud, that changes a conversation which has been circling for a decade.
 
 **Separate the two decisions.** _Can we afford this model?_ and _what should we sell?_ get answered together and should not be. Answering the second first is how thirty years happens.
 
