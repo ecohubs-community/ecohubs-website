@@ -32,7 +32,7 @@ The pattern is the failure, and a pattern is not something that appears on an ag
 
 **Calculate the run rate once.** Of last year's costs, how much was covered by something that will not recur — a sale, a legacy, a grant, a draw on reserves? That single figure is the diagnosis, and most communities have never produced it.
 
-**Then count what is left, and price it.** A community closing a €40,000 annual gap by selling assets, holding perhaps €120,000 of saleable land, has three years — and the count of parcels is not the number, because they are rarely worth the same. Stated as a figure in a meeting, that ends a conversation which has circled for a decade.
+**Then count what is left, and price it.** A community closing a €40,000 annual gap by selling assets, holding perhaps €120,000 of saleable land, has at most three years — fewer once the cost of selling comes out, and fewer again if any of it is restricted. The count of parcels is not the number, because they are rarely worth the same. Stated as a figure in a meeting, that ends a conversation which has circled for a decade.
 
 **Ask what "non-core" means.** It is the phrase that does the work in every one of these decisions, and it is almost never defined. If nobody can say which assets are core, the category is doing no filtering at all.
 
