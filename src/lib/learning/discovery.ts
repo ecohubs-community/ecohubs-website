@@ -11,6 +11,7 @@ import {
 	isIndexable,
 	publishedCases,
 	publishedComparisons,
+	publishedFailures,
 	publishedGuides,
 	publishedPaths,
 	publishedTerms,
@@ -27,7 +28,8 @@ const KIND: Record<string, string> = {
 	compare: 'Compared',
 	term: 'Glossary',
 	path: 'Learning path',
-	case: 'Case study'
+	case: 'Case study',
+	failure: 'Failure mode'
 };
 
 export interface DiscoveryItem {
@@ -78,7 +80,8 @@ function discoverable(): ContentEntry[] {
 		...publishedComparisons,
 		...publishedTerms,
 		...publishedPaths,
-		...publishedCases
+		...publishedCases,
+		...publishedFailures
 	].filter(isIndexable);
 }
 

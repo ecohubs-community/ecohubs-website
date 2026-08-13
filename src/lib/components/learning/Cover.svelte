@@ -44,18 +44,41 @@
 	const src = $derived(typeof image === 'string' ? image : undefined);
 </script>
 
+<!--
+	Both image branches put `className` on a wrapper rather than on the image.
+
+	`<enhanced:img>` compiles to `<picture><source…><img…></picture>`, so a class
+	written on it lands on the inner `<img>` while the *flex child* is the
+	unstyled `<picture>`. In the compact card that meant `w-32 shrink-0` applied
+	to something that was not the flex item: the picture shrank to 39px and the
+	cover rendered as a thumbnail wedged in the corner.
+
+	The wrapper also gives the image something definite to fill. Its height comes
+	from flex stretch, which `height: 100%` cannot reliably resolve against, so
+	the image is positioned rather than sized — and `relative`/`overflow-hidden`
+	match what `.motif` already sets, keeping all three branches the same shape.
+-->
 {#if picture}
 	<!-- A real cover is content, so it carries its alt text. `imageAlt` is
 	     required alongside `image` by the validator. -->
-	<enhanced:img
-		src={picture}
-		alt={imageAlt ?? ''}
-		{sizes}
-		class="object-cover {className}"
-		loading="lazy"
-	/>
+	<div class="relative overflow-hidden {className}">
+		<enhanced:img
+			src={picture}
+			alt={imageAlt ?? ''}
+			{sizes}
+			class="absolute inset-0 h-full w-full object-cover"
+			loading="lazy"
+		/>
+	</div>
 {:else if src}
-	<img {src} alt={imageAlt ?? ''} class="object-cover {className}" loading="lazy" />
+	<div class="relative overflow-hidden {className}">
+		<img
+			{src}
+			alt={imageAlt ?? ''}
+			class="absolute inset-0 h-full w-full object-cover"
+			loading="lazy"
+		/>
+	</div>
 {:else}
 	<!-- Decorative: it carries no information the title does not already give. -->
 	<div class="motif {className}" data-motif={motifFor(slug, motif)} aria-hidden="true">

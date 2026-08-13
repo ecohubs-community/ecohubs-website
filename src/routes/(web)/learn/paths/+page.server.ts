@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { lessonBySlug, publishedPaths, readingMinutes } from '$lib/learning';
+import { failureBySlug, lessonBySlug, publishedPaths, readingMinutes } from '$lib/learning';
 
 export const prerender = true;
 
@@ -10,7 +10,9 @@ export const load: PageServerLoad = async () => {
 			// Unpublished steps are dropped rather than rendered as dead links, so
 			// a path stays walkable while its lessons are still being written.
 			const steps = fm.steps
-				.map((step) => lessonBySlug.get(step.lesson))
+				.map((step) =>
+					step.failure ? failureBySlug.get(step.failure) : lessonBySlug.get(step.lesson ?? '')
+				)
 				.filter((l) => l?.frontmatter.status === 'published');
 
 			return {

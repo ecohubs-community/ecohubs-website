@@ -10,6 +10,30 @@
  */
 export const RCOS_BASE = 'https://rcos.ecohubs.community/articles/rcos-core/v0-1';
 
+/**
+ * The stress tests — RCOS's catalogue of documented failure modes, and the
+ * source every `failure` page cites.
+ *
+ * Not pinned to a version, unlike the Core spec above: the stress tests are
+ * published as a living set rather than a numbered release, so there is no
+ * v0.1 to pin to.
+ */
+export const RCOS_STRESS_TESTS = 'https://rcos.ecohubs.community/articles/rcos-stress-tests';
+
+/**
+ * The two things on RCOS a reader can *do* rather than read.
+ *
+ * Linked rather than reproduced. The self-assessment is an interactive ranking
+ * that only works as software, and the facilitation guide is a process RCOS
+ * maintains — a copy here would be a fork that goes stale the first time they
+ * revise a step. What this hub adds is the paper: the checklist download is the
+ * sheet step 2 of that session asks everyone to mark privately.
+ */
+export const RCOS_TOOLS = {
+	facilitation: `${RCOS_STRESS_TESTS}/facilitation-worksheet`,
+	selfAssessment: `${RCOS_STRESS_TESTS}/self-assessment`
+} as const;
+
 export const RCOS_LAYERS: Record<number, { title: string; slug: string }> = {
 	0: { title: 'Identity & Scope', slug: 'layer-0-identity-scope' },
 	1: { title: 'Membership System', slug: 'layer-1-membership-system' },

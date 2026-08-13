@@ -11,17 +11,7 @@
  * written there. Drafts are excluded here as everywhere else — the fourth place
  * that matters, after the route, the listings and the sitemap.
  */
-import {
-	isIndexable,
-	publishedCases,
-	publishedComparisons,
-	publishedGuides,
-	publishedLessons,
-	publishedPaths,
-	publishedTerms,
-	publishedTopics,
-	urlFor
-} from './index';
+import { isIndexable, publishedContent, urlFor } from './index';
 import { bodyText, normalise, tokenise } from './text';
 import type { ContentEntry } from './types';
 
@@ -35,7 +25,15 @@ const sources = import.meta.glob<string>('/src/content/learning/**/*.md', {
 });
 
 /** Display labels and the order the design groups results in. */
-export const KIND_ORDER = ['Topic', 'Guide', 'Lesson', 'Compared', 'Learning path', 'Glossary'];
+export const KIND_ORDER = [
+	'Topic',
+	'Guide',
+	'Lesson',
+	'Failure mode',
+	'Compared',
+	'Learning path',
+	'Glossary'
+];
 
 const KIND: Record<string, string> = {
 	topic: 'Topic',
@@ -44,7 +42,8 @@ const KIND: Record<string, string> = {
 	compare: 'Compared',
 	path: 'Learning path',
 	term: 'Glossary',
-	case: 'Case study'
+	case: 'Case study',
+	failure: 'Failure mode'
 };
 
 export interface SearchDoc {
@@ -90,15 +89,16 @@ function toDoc(entry: ContentEntry): SearchDoc {
 /** Everything worth finding. Thin pages are excluded for the same reason they
  *  are kept out of the sitemap: a stub is not a useful result. */
 export function buildSearchIndex(): SearchDoc[] {
-	return [
-		...publishedGuides,
-		...publishedLessons,
-		...publishedTopics,
-		...publishedComparisons,
-		...publishedTerms,
-		...publishedPaths,
-		...publishedCases
-	]
+	/**
+	 * `publishedContent`, not a hand-listed set of collections.
+	 *
+	 * This function used to spread the seven collections by name, which meant a
+	 * new content type was silently absent from search until somebody noticed —
+	 * and nobody would, because a search that returns fewer results looks like
+	 * a search. `llms.txt` had already been caught by exactly this and was
+	 * converted for the same reason; adding the `failure` type caught it here.
+	 */
+	return publishedContent
 		.filter(isIndexable)
 		.map(toDoc)
 		.sort((a, b) => a.title.localeCompare(b.title));

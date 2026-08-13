@@ -3,6 +3,7 @@ import { downloadsFor } from '$lib/learning/downloads';
 import type { EntryGenerator, PageServerLoad } from './$types';
 import {
 	contentOfTopic,
+	failuresOfGuide,
 	guideBySlug,
 	isIndexable,
 	lessonsOfGuide,
@@ -92,6 +93,15 @@ export const load: PageServerLoad = async ({ params }) => {
 	return {
 		// Only present once `pnpm downloads` has generated them.
 		downloads: downloadsFor(params.guide),
+		/**
+		 * Whether to offer the RCOS session tools.
+		 *
+		 * Gated on this guide actually having failure modes rather than shown on
+		 * every guide: the self-assessment ranks stress tests and the facilitation
+		 * guide runs one, so on a guide about what joining costs they would be a
+		 * non-sequitur pointing off-site.
+		 */
+		hasFailureModes: failuresOfGuide(params.guide).length > 0,
 		guide: fm,
 		lessons,
 		otherGuides,

@@ -20,6 +20,15 @@
 	// One running number across the groups, so a reader can say "question 19"
 	// and be understood.
 	let counter = $state(0);
+
+	/**
+	 * The title after "From the …".
+	 *
+	 * This guide's title happens not to start with an article, so the literal
+	 * version read correctly here and printed "From the The Ultimate Guide" on
+	 * the other sheet. Fixed in both rather than in the one that showed it.
+	 */
+	const titleAfterThe = $derived(data.guide.title.replace(/^the\s+/i, ''));
 </script>
 
 <svelte:head>
@@ -68,8 +77,8 @@
 
 	<footer class="mt-9 border-t border-stone-300 pt-4 text-[8.5pt] leading-relaxed text-stone-500">
 		<p>
-			From the {data.guide.title}, as it stood on {printed}. The full guide, with the reasoning
-			behind each question, is free at ecohubs.community/learn/guides/{data.guide.slug}.
+			From the {titleAfterThe}, as it stood on {printed}. The full guide, with the reasoning behind
+			each question, is free at ecohubs.community/learn/guides/{data.guide.slug}.
 		</p>
 		<p class="mt-1">
 			Print it, copy it, translate it. If a question here turns out to be the wrong one to ask, we

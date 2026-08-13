@@ -14,11 +14,16 @@
 
 	// Chosen to match the design's shapes: two panes, a lined document, four
 	// tiles, opposing arrows, joined nodes, a closed book, a compass.
+	//
+	// `failures` is the one alarming glyph in the set, deliberately: it is the
+	// section a reader looks for when something is wrong, and it carries the
+	// same amber as the "what it looks like" panel on every page inside it.
 	const ICONS: Record<string, string> = {
 		hub: 'tabler:layout-columns',
 		guides: 'tabler:file-text',
 		topics: 'tabler:layout-grid',
 		compare: 'tabler:arrows-left-right',
+		failures: 'tabler:alert-triangle',
 		paths: 'tabler:route',
 		glossary: 'tabler:book-2',
 		map: 'tabler:compass',

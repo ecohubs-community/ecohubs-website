@@ -1,6 +1,6 @@
 /**
  * Generates the guide downloads: the full-guide PDF, the visit-questions PDF,
- * and the cost model worksheet.
+ * the failure-modes checklist, and the cost model worksheet.
  *
  *     pnpm downloads                 # every published guide
  *     pnpm downloads intentional-communities
@@ -41,6 +41,41 @@ interface Entry {
 	file: string;
 	bytes: number;
 	pages?: number;
+}
+
+type Manifest = Record<string, { generatedAt: string; entries: Entry[] }>;
+
+/**
+ * The manifest as it stands, so a partial rebuild can merge rather than replace.
+ *
+ * Only a *missing* file is treated as empty — that is the first ever run, and
+ * there is nothing to preserve. Everything else throws.
+ *
+ * The earlier version swallowed every failure and returned `{}`, which is the
+ * same bug this function was written to fix, one level down: a partial rebuild
+ * writes keys for the guides it did rebuild, so an unreadable or malformed
+ * manifest silently deletes every other guide's downloads section while their
+ * files sit untouched on disk. Failing here is recoverable — `pnpm downloads`
+ * with no arguments rebuilds the lot — and a silently truncated manifest is
+ * not, because nothing about the site looks wrong afterwards.
+ */
+export async function readManifest(): Promise<Manifest> {
+	let raw: string;
+	try {
+		raw = await readFile(join(OUT, 'manifest.json'), 'utf8');
+	} catch (cause) {
+		if ((cause as NodeJS.ErrnoException).code === 'ENOENT') return {};
+		throw cause;
+	}
+
+	const parsed: unknown = JSON.parse(raw);
+	if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+		throw new Error(
+			`${join(OUT, 'manifest.json')} is not a JSON object. ` +
+				'Delete it and run `pnpm downloads` to rebuild every guide.'
+		);
+	}
+	return parsed as Manifest;
 }
 
 /* ── Reading the content directory ───────────────────────────────────────── */
@@ -199,6 +234,13 @@ export function guidesToRebuild(changed: string[], all: string[]): string[] {
 		'src/routes/(print)/',
 		'src/content/learning/quizzes/',
 		'src/content/learning/terms/',
+		// A failure page prints in the appendix of whichever guide owns its
+		// lesson — and unlike a lesson, its path does not say which guide that
+		// is: the link runs through `lesson:` in its frontmatter. Reading
+		// frontmatter here would make this function impure for one file type, so
+		// it counts as shared. With a handful of guides that costs a minute and
+		// cannot be wrong.
+		'src/content/learning/failures/',
 		'src/lib/learning/cost.ts',
 		'src/lib/learning/questions.ts',
 		'scripts/worksheet.ts',
@@ -266,7 +308,20 @@ async function main() {
 	const generatedAt = new Date();
 	const browser = await chromium.launch();
 	const page = await browser.newPage();
-	const manifest: Record<string, { generatedAt: string; entries: Entry[] }> = {};
+	/**
+	 * Seeded from the manifest on disk, not started empty.
+	 *
+	 * Most runs rebuild only the guides whose sources changed — that is the
+	 * whole point of `guidesToRebuild()` and the pre-commit hook. Writing a
+	 * fresh object then meant the manifest listed only the guides rebuilt this
+	 * time, and every other guide's downloads section silently disappeared from
+	 * the site while its files sat untouched on disk.
+	 *
+	 * That is exactly what happened when the second guide was added: one commit
+	 * rebuilt `why-communities-fail` and dropped three `intentional-communities`
+	 * entries. Merging keeps a partial run partial.
+	 */
+	const manifest = await readManifest();
 
 	for (const guide of guides) {
 		console.log(`\n${guide.title}`);
@@ -310,6 +365,34 @@ async function main() {
 			console.log('  no visit questions in this guide — skipped');
 		}
 
+		/**
+		 * The failure modes as a checklist, for guides that have any.
+		 *
+		 * Probed rather than configured, exactly as the visit questions are: the
+		 * route 404s when a guide has no failure modes, so adding modes to a
+		 * second guide is enough to give it the sheet too.
+		 */
+		const checklist = `${guide.slug}-failure-modes-checklist.pdf`;
+		const checklistUrl = `${base}/print/${guide.slug}/failures`;
+		const checklistHead = await fetch(checklistUrl);
+		if (checklistHead.ok) {
+			const body = await checklistHead.text();
+			const modes = body.match(/(\d+) patterns and (\d+) things to check/);
+			const result = await renderPdf(page, checklistUrl, join(dir, checklist), guide.title, {
+				cover: false
+			});
+			entries.push({
+				kind: 'pdf',
+				label: 'The failure modes as a checklist',
+				detail: `PDF · ${result.pages} ${result.pages === 1 ? 'page' : 'pages'}${modes ? ` · ${modes[1]} patterns, ${modes[2]} things to check` : ''}`,
+				file: `/downloads/${guide.slug}/${checklist}`,
+				...result
+			});
+			console.log(`  ${checklist} — ${result.pages} pages, ${modes?.[1] ?? '?'} patterns`);
+		} else {
+			console.log('  no failure modes in this guide — no checklist');
+		}
+
 		if (await usesEstimator(guide.slug)) {
 			const sheet = `${guide.slug}-cost-model.xlsx`;
 			const workbook = buildWorkbook(guide.title, generatedAt);
@@ -335,7 +418,7 @@ async function main() {
 	server?.kill();
 	await mkdir(OUT, { recursive: true });
 	await writeFile(join(OUT, 'manifest.json'), JSON.stringify(manifest, null, '\t') + '\n');
-	console.log(`\nWrote ${Object.keys(manifest).length} guide(s) to static/downloads.`);
+	console.log(`\nWrote ${guides.length} guide(s); manifest lists ${Object.keys(manifest).length}.`);
 }
 
 // Guarded so a spec can import `guidesToRebuild` without generating anything —

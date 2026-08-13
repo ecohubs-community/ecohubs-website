@@ -140,14 +140,135 @@ describe('validateContent — structural rules', () => {
 		expect(issues).toEqual([]);
 	});
 
-	it('catches a published path whose lessons are all drafts', () => {
+	it('catches a published path whose steps are all drafts', () => {
 		const issues = validateContent([
 			topic('t'),
 			entry({ type: 'guide', slug: 'g', topic: 't' }),
 			entry({ type: 'lesson', slug: 'l1', guide: 'g', order: 1, status: 'draft' }),
 			entry({ type: 'path', slug: 'p', steps: [{ guide: 'g', lesson: 'l1' }] })
 		]);
-		expect(issues.some((i) => i.message.includes('no published lessons'))).toBe(true);
+		expect(issues.some((i) => i.message.includes('no published steps'))).toBe(true);
+	});
+
+	/**
+	 * A symptom-led path is mostly failure modes rather than lessons, so a step
+	 * may reference one directly. These pin the two shapes and the ways of
+	 * getting a step wrong — the reason the schema uses optional fields plus a
+	 * validator rather than a union.
+	 */
+	const failurePage = (slug: string, status = 'published') =>
+		entry({
+			type: 'failure',
+			slug,
+			lesson: 'l1',
+			layer: 2,
+			rcos: 'governance-power/x',
+			signs: ['a', 'b', 'c'],
+			status
+		} as never);
+
+	it('accepts a step that references a failure mode', () => {
+		const issues = validateContent([
+			topic('t'),
+			entry({ type: 'guide', slug: 'g', topic: 't' }),
+			entry({ type: 'lesson', slug: 'l1', guide: 'g', order: 1 }),
+			failurePage('f1'),
+			entry({ type: 'path', slug: 'p', steps: [{ failure: 'f1' }] })
+		]);
+		expect(issues).toEqual([]);
+	});
+
+	it('reports a step referencing a failure mode that does not exist', () => {
+		const issues = validateContent([
+			topic('t'),
+			entry({ type: 'path', slug: 'p', steps: [{ failure: 'nope' }] })
+		]);
+		expect(issues.some((i) => i.message.includes('unknown failure mode "nope"'))).toBe(true);
+	});
+
+	it('reports a step that is neither a lesson nor a failure mode', () => {
+		const issues = validateContent([topic('t'), entry({ type: 'path', slug: 'p', steps: [{}] })]);
+		expect(issues.some((i) => i.message.includes('needs either'))).toBe(true);
+	});
+
+	/**
+	 * A failure names its lesson, and a typo used to publish silently: the page
+	 * built and rendered, while `failuresOfGuide()` — which matches on the
+	 * lesson slug — dropped it from the guide's appendix and its checklist.
+	 */
+	it('reports a failure whose lesson does not exist', () => {
+		const issues = validateContent([
+			topic('t'),
+			entry({ type: 'guide', slug: 'g', topic: 't' }),
+			entry({ type: 'lesson', slug: 'l1', guide: 'g', order: 1 }),
+			entry({
+				type: 'failure',
+				slug: 'f1',
+				lesson: 'l-typo',
+				layer: 2,
+				rcos: 'governance-power/x',
+				signs: ['a', 'b', 'c']
+			} as never)
+		]);
+		expect(issues.some((i) => i.message.includes('lesson "l-typo" does not exist'))).toBe(true);
+	});
+
+	/**
+	 * `signs: warning` is a string, and a string has a truthy `.length` of 7 —
+	 * so a count check passed it and `failureArticle()` then mapped over the
+	 * characters. The shape has to be established before the size means
+	 * anything.
+	 */
+	it('reports signs written as a scalar rather than a list', () => {
+		const issues = validateContent([
+			topic('t'),
+			entry({ type: 'guide', slug: 'g', topic: 't' }),
+			entry({ type: 'lesson', slug: 'l1', guide: 'g', order: 1 }),
+			entry({
+				type: 'failure',
+				slug: 'f1',
+				lesson: 'l1',
+				layer: 2,
+				rcos: 'governance-power/x',
+				signs: 'warning'
+			} as never)
+		]);
+		expect(issues.some((i) => i.message.includes('"signs" must be a list'))).toBe(true);
+	});
+
+	/**
+	 * Steps are keyed by type as well as slug. With bare slugs a published
+	 * lesson vouched for a draft failure that happened to share its name, so a
+	 * path with one unwalkable step looked fine.
+	 */
+	it('does not let a published lesson vouch for a draft failure of the same slug', () => {
+		const issues = validateContent([
+			topic('t'),
+			entry({ type: 'guide', slug: 'g', topic: 't' }),
+			entry({ type: 'lesson', slug: 'same', guide: 'g', order: 1 }),
+			failurePage('same', 'draft'),
+			entry({ type: 'path', slug: 'p', steps: [{ failure: 'same' }] })
+		]);
+		expect(issues.some((i) => i.message.includes('no published steps'))).toBe(true);
+	});
+
+	it('reports a step that is both at once', () => {
+		const issues = validateContent([
+			topic('t'),
+			entry({ type: 'path', slug: 'p', steps: [{ guide: 'g', lesson: 'l1', failure: 'f1' }] })
+		]);
+		expect(issues.some((i) => i.message.includes('has both'))).toBe(true);
+	});
+
+	it('counts a published failure mode as a walkable step', () => {
+		const issues = validateContent([
+			topic('t'),
+			entry({ type: 'guide', slug: 'g', topic: 't' }),
+			entry({ type: 'lesson', slug: 'l1', guide: 'g', order: 1, status: 'draft' }),
+			failurePage('f1'),
+			entry({ type: 'path', slug: 'p', steps: [{ guide: 'g', lesson: 'l1' }, { failure: 'f1' }] })
+		]);
+		expect(issues.some((i) => i.message.includes('no published steps'))).toBe(false);
 	});
 });
 

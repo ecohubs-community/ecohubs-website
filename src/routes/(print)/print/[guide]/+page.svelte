@@ -142,3 +142,72 @@
 		</div>
 	</article>
 {/each}
+
+<!-- ── Appendix: the failure modes ─────────────────────────────────────────
+     Only for guides that have them. A catalogue is worth far more on paper
+     than on screen — it is the thing a group brings to a meeting and works
+     through — so it is bound in rather than left as twenty-five web pages.
+──────────────────────────────────────────────────────────────────────── -->
+{#if data.appendix.length}
+	<section id="appendix" class="page-break sheet pt-[6mm]">
+		<div class="font-mono text-[9pt] tracking-[0.16em] text-emerald-800 uppercase">Appendix</div>
+		<h2 class="mt-2 font-serif text-[24pt] leading-[1.14] text-ecohubs-deep">
+			The failure modes, in full
+		</h2>
+		<p class="mt-3 text-[12pt] leading-relaxed text-stone-600">
+			{data.appendix.length} patterns, in the order the lessons introduce them. Each one gives what it
+			looks like from inside, why it is hard to see, what to check, and what to change.
+		</p>
+
+		<ol class="mt-6 space-y-1.5 border-t border-stone-300 pt-6">
+			{#each data.appendix as mode (mode.slug)}
+				<li class="border-b border-stone-200 pb-1.5">
+					<a href="#mode-{mode.slug}" class="flex gap-4 no-underline">
+						<span class="font-mono text-[9.5pt] whitespace-nowrap text-stone-400">
+							L{mode.layer}
+						</span>
+						<span class="min-w-0 flex-1">
+							<span class="block font-serif text-[11.5pt] text-ecohubs-deep">{mode.title}</span>
+							<span class="block text-[9pt] leading-snug text-stone-600">{mode.summary}</span>
+						</span>
+					</a>
+				</li>
+			{/each}
+		</ol>
+	</section>
+
+	{#each data.appendix as mode (mode.slug)}
+		<article id="mode-{mode.slug}" class="page-break sheet pt-[6mm]">
+			<div class="flex items-baseline justify-between gap-4">
+				<div class="font-mono text-[9pt] tracking-[0.16em] text-emerald-800 uppercase">
+					{mode.lessonTitle}
+				</div>
+				<a href="#appendix" class="font-mono text-[8pt] text-stone-400 no-underline">Appendix</a>
+			</div>
+			<h3 class="mt-2 font-serif text-[19pt] leading-[1.16] text-ecohubs-deep">{mode.title}</h3>
+			<p class="mt-2 text-[11pt] leading-relaxed text-stone-600">{mode.summary}</p>
+
+			<!-- The signs come first here as they do on the web page: the reader is
+			     checking whether this is them before they read the argument. -->
+			<div class="mt-4 rounded-xl border border-amber-300 bg-amber-50 p-4">
+				<p class="font-mono text-[8.5pt] tracking-[0.14em] text-amber-800 uppercase">
+					What it looks like
+				</p>
+				<ul class="mt-2 space-y-1 text-[9.5pt] leading-relaxed text-stone-700">
+					{#each mode.signs as sign (sign)}
+						<li>· {sign}</li>
+					{/each}
+				</ul>
+			</div>
+
+			<div class="mt-5 border-t border-stone-300 pt-5">
+				<Prose>
+					{#if mode.component}
+						{@const Mode = mode.component as Component}
+						<Mode />
+					{/if}
+				</Prose>
+			</div>
+		</article>
+	{/each}
+{/if}

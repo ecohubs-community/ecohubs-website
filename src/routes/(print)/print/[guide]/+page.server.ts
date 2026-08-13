@@ -1,6 +1,12 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import { guideBySlug, lessonsOfGuide, publishedTerms, readingMinutes } from '$lib/learning';
+import {
+	failuresOfGuide,
+	guideBySlug,
+	lessonsOfGuide,
+	publishedTerms,
+	readingMinutes
+} from '$lib/learning';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const guide = guideBySlug.get(params.guide);
@@ -12,6 +18,9 @@ export const load: PageServerLoad = async ({ params }) => {
 	if (lessons.length === 0) throw error(404, 'This guide has no published lessons yet');
 
 	return {
+		// The same catalogue the standalone checklist prints, in the same order,
+		// because they are bound to be compared side by side.
+		appendix: failuresOfGuide(params.guide),
 		guide: guide.frontmatter,
 		// Glossary references inside the lessons read these from context, exactly
 		// as they do under the /learn layout.

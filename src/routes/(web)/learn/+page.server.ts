@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import {
 	contentOfTopic,
+	failureBySlug,
 	isIndexable,
 	lessonBySlug,
 	lessonsOfGuide,
@@ -52,7 +53,7 @@ export const load: PageServerLoad = async () => {
 	const paths = publishedPaths
 		.map((p) => {
 			const steps = p.frontmatter.steps
-				.map((s) => lessonBySlug.get(s.lesson))
+				.map((s) => (s.failure ? failureBySlug.get(s.failure) : lessonBySlug.get(s.lesson ?? '')))
 				.filter((l) => l?.frontmatter.status === 'published');
 			return {
 				slug: p.frontmatter.slug,

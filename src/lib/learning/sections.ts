@@ -24,6 +24,7 @@ export const LEARN_SECTIONS: LearnSection[] = [
 	{ key: 'guides', label: 'Guides', href: '/learn/guides' },
 	{ key: 'topics', label: 'Topics', href: '/learn/topics' },
 	{ key: 'compare', label: 'Compared', href: '/learn/compare' },
+	{ key: 'failures', label: 'Failure Modes', href: '/learn/failures' },
 	{ key: 'paths', label: 'Learning Paths', href: '/learn/paths' },
 	{ key: 'glossary', label: 'Glossary', href: '/learn/glossary' },
 	{ key: 'map', label: 'Knowledge Map', href: '/learn/map' }

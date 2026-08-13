@@ -11,6 +11,7 @@
 import { building, dev } from '$app/environment';
 import type {
 	CaseFrontmatter,
+	FailureFrontmatter,
 	CompareFrontmatter,
 	ContentEntry,
 	Frontmatter,
@@ -118,6 +119,7 @@ export const comparisons = ofType<CompareFrontmatter>('compare');
 export const terms = ofType<TermFrontmatter>('term');
 export const paths = ofType<PathFrontmatter>('path');
 export const cases = ofType<CaseFrontmatter>('case');
+export const failures = ofType<FailureFrontmatter>('failure');
 
 const publishedOf = <F extends Frontmatter>(list: Typed<F>[]) =>
 	list.filter((e) => e.frontmatter.status === 'published');
@@ -129,6 +131,7 @@ export const publishedComparisons = publishedOf(comparisons);
 export const publishedTerms = publishedOf(terms);
 export const publishedPaths = publishedOf(paths);
 export const publishedCases = publishedOf(cases);
+export const publishedFailures = publishedOf(failures);
 
 /**
  * Every published entry, of every type.
@@ -152,6 +155,7 @@ export const compareBySlug = bySlug(comparisons);
 export const termBySlug = bySlug(terms);
 export const pathBySlug = bySlug(paths);
 export const caseBySlug = bySlug(cases);
+export const failureBySlug = bySlug(failures);
 
 /** Lessons of a guide, in author-defined order. */
 export function lessonsOfGuide(
@@ -161,6 +165,42 @@ export function lessonsOfGuide(
 	return (includeDrafts ? lessons : publishedLessons)
 		.filter((l) => l.frontmatter.guide === guideSlug)
 		.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
+}
+
+/**
+ * The failure modes a guide covers, in the order its lessons introduce them.
+ *
+ * A failure page names its lesson rather than its guide, so the guide has to be
+ * resolved through the lesson — which also means a mode belonging to an
+ * unpublished lesson drops out on its own.
+ *
+ * Ordered by lesson rather than alphabetically because both the printed
+ * appendix and the checklist have to read in the same sequence as the guide: a
+ * reader working through lesson 3 should find its modes together, not scattered
+ * between A and W. Guides with no failure modes get an empty array, and their
+ * callers skip the section rather than printing an empty heading.
+ */
+export function failuresOfGuide(guideSlug: string) {
+	const ownLessons = lessonsOfGuide(guideSlug);
+	const order = new Map(ownLessons.map((lesson, index) => [lesson.frontmatter.slug, index]));
+
+	return publishedFailures
+		.filter((entry) => order.has(entry.frontmatter.lesson))
+		.sort(
+			(a, b) =>
+				order.get(a.frontmatter.lesson)! - order.get(b.frontmatter.lesson)! ||
+				a.frontmatter.title.localeCompare(b.frontmatter.title)
+		)
+		.map((entry) => ({
+			slug: entry.frontmatter.slug,
+			title: entry.frontmatter.title,
+			summary: entry.frontmatter.summary,
+			signs: entry.frontmatter.signs,
+			layer: entry.frontmatter.layer,
+			lesson: entry.frontmatter.lesson,
+			lessonTitle: ownLessons.find((l) => l.frontmatter.slug === entry.frontmatter.lesson)!
+				.frontmatter.title
+		}));
 }
 
 /** Previous/next within a guide, skipping drafts so readers never hit a gap. */
@@ -245,6 +285,8 @@ export function urlFor(entry: ContentEntry): string {
 			return `/learn/paths/${fm.slug}`;
 		case 'case':
 			return `/learn/cases/${fm.slug}`;
+		case 'failure':
+			return `/learn/failures/${fm.slug}`;
 	}
 }
 

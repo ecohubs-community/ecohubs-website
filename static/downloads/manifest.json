@@ -1,13 +1,34 @@
 {
+	"why-communities-fail": {
+		"generatedAt": "2026-08-13T00:35:29.600Z",
+		"entries": [
+			{
+				"kind": "pdf",
+				"label": "The whole guide as one PDF",
+				"detail": "PDF · 115 pages · printable",
+				"file": "/downloads/why-communities-fail/why-communities-fail-guide.pdf",
+				"bytes": 2349721,
+				"pages": 115
+			},
+			{
+				"kind": "pdf",
+				"label": "The failure modes as a checklist",
+				"detail": "PDF · 5 pages · 25 patterns, 102 things to check",
+				"file": "/downloads/why-communities-fail/why-communities-fail-failure-modes-checklist.pdf",
+				"bytes": 192462,
+				"pages": 5
+			}
+		]
+	},
 	"intentional-communities": {
-		"generatedAt": "2026-08-12T13:13:27.637Z",
+		"generatedAt": "2026-08-13T00:35:29.600Z",
 		"entries": [
 			{
 				"kind": "pdf",
 				"label": "The whole guide as one PDF",
 				"detail": "PDF · 69 pages · printable",
 				"file": "/downloads/intentional-communities/intentional-communities-guide.pdf",
-				"bytes": 2284790,
+				"bytes": 2285966,
 				"pages": 69
 			},
 			{
@@ -15,7 +36,7 @@
 				"label": "Questions to ask on a visit",
 				"detail": "PDF · 4 pages · 42 questions",
 				"file": "/downloads/intentional-communities/intentional-communities-visit-questions.pdf",
-				"bytes": 130479,
+				"bytes": 131316,
 				"pages": 4
 			},
 			{
@@ -23,7 +44,7 @@
 				"label": "Cost model worksheet",
 				"detail": "XLSX · entry / monthly / exit",
 				"file": "/downloads/intentional-communities/intentional-communities-cost-model.xlsx",
-				"bytes": 9579
+				"bytes": 9578
 			}
 		]
 	}

@@ -10,6 +10,7 @@
  */
 import type {
 	CompareFrontmatter,
+	FailureFrontmatter,
 	GuideFrontmatter,
 	LessonFrontmatter,
 	PathFrontmatter,
@@ -84,6 +85,44 @@ export function comparisonArticle(compare: CompareFrontmatter) {
 		description: compare.summary,
 		url,
 		dateModified: compare.updated,
+		isPartOf: {
+			'@type': 'WebSite',
+			name: 'EcoHubs.community',
+			url: SITE
+		},
+		publisher: PUBLISHER,
+		mainEntityOfPage: { '@type': 'WebPage', '@id': url }
+	};
+}
+
+/**
+ * One failure mode.
+ *
+ * `Article` rather than `HowTo`, for the same reason a comparison is: this
+ * describes a pattern and what prevents it, not a procedure that produces a
+ * result. The `signs` go in as an `ItemList` because they are the part a
+ * reader is actually matching themselves against.
+ */
+export function failureArticle(failure: FailureFrontmatter) {
+	const url = `${SITE}/learn/failures/${failure.slug}`;
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		'@id': url,
+		headline: failure.title,
+		description: failure.summary,
+		url,
+		dateModified: failure.updated,
+		about: { '@type': 'Thing', name: 'Community governance failure modes' },
+		mentions: {
+			'@type': 'ItemList',
+			name: 'Warning signs',
+			itemListElement: failure.signs.map((sign, index) => ({
+				'@type': 'ListItem',
+				position: index + 1,
+				name: sign
+			}))
+		},
 		isPartOf: {
 			'@type': 'WebSite',
 			name: 'EcoHubs.community',

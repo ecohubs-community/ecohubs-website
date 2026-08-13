@@ -16,9 +16,32 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import { guideArticle, learningBreadcrumbs } from '$lib/learning/schema';
 	import { getProgress, setRead } from '$lib/learning/storage';
+	import { RCOS_TOOLS } from '$lib/learning/rcos';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
+
+	/**
+	 * The two group exercises, shown on guides that catalogue failure modes.
+	 *
+	 * Assessment first, session second, because that is the order they are used
+	 * in: the facilitation guide's own first instruction is to pick one test, and
+	 * to run the self-assessment if you are not sure which.
+	 */
+	const GROUP_TOOLS = [
+		{
+			href: RCOS_TOOLS.selfAssessment,
+			icon: 'tabler:checkbox',
+			title: 'Which patterns are closest to you',
+			body: 'Tick the warning signs you actually recognise, and the patterns you are nearest to rise to the top, ranked. Nothing is saved or sent — it stays in your browser.'
+		},
+		{
+			href: RCOS_TOOLS.facilitation,
+			icon: 'tabler:users-group',
+			title: 'Run one as a session',
+			body: 'A 60–90 minute format for taking a single pattern to the whole group: recognise it, locate where you honestly are, pick one step up, and leave with a named owner and a date.'
+		}
+	];
 
 	const generated = $derived(
 		data.downloads
@@ -309,6 +332,45 @@
 					</section>
 				{/if}
 			</div>
+
+			{#if data.hasFailureModes}
+				<!-- ═══════════════════════════════════════════════════════
+						4b. DOING SOMETHING WITH IT
+						Reading a catalogue of failures alone is how a person
+						arrives at a meeting certain and outnumbered. These two
+						are the group versions, and they live on RCOS because
+						one is software and the other is a process somebody else
+						maintains — a copy here would be a fork that goes stale.
+				═══════════════════════════════════════════════════════ -->
+				<section class="mt-16">
+					<div class="kicker mb-5 text-emerald-700">Work through it with your group</div>
+					<div class="grid gap-4 sm:grid-cols-2">
+						{#each GROUP_TOOLS as tool (tool.href)}
+							<a
+								href={tool.href}
+								rel="noopener"
+								class="{CARD} flex flex-col bg-ecohubs-ivory/70 p-6"
+							>
+								<span class="flex items-center gap-3">
+									<span
+										class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-ecohubs-deep"
+									>
+										<Icon icon={tool.icon} class="h-4 w-4" />
+									</span>
+									<span class="font-serif text-lg text-ecohubs-deep">{tool.title}</span>
+								</span>
+								<span class="mt-3 flex-1 text-[0.95rem] leading-relaxed text-stone-700">
+									{tool.body}
+								</span>
+								<span class="{META} mt-4 flex items-center gap-2">
+									On the RCOS standard
+									<Icon icon="tabler:external-link" class="h-3.5 w-3.5" />
+								</span>
+							</a>
+						{/each}
+					</div>
+				</section>
+			{/if}
 
 			<!-- ═══════════════════════════════════════════════════════
 					5. AFTER THIS GUIDE
