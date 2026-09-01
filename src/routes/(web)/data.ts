@@ -207,8 +207,8 @@ export const stories: Story[] = [
 				number: '02',
 				title: 'When something returned',
 				content: [
-					`A ringing in my ear suddenly appeared, and over time I came to understand it as a reminder to listen more deeply — to my own needs and the boundaries between effort and rest. Around the same time, I found myself grieving an old tree I had climbed as a child after it was cut down.`,
-					`Both moments stayed with me. What unsettled me most wasn't simply the loss, but the depth of feeling they revealed — and how differently these experiences seemed to be held by those around me. They led me to wonder about the relationship between our inner worlds and the living systems we are part of — what shapes our perception, and why we so often lose connection with both.`
+					`A ringing in my ear suddenly appeared, and over time I came to understand it as a reminder to listen more deeply — to my own needs and the balance between activity and rest. Around the same time, I found myself grieving an old tree I had climbed as a child after it was cut down.`,
+					`That loss stayed with me. What unsettled me most wasn't simply the tree being gone, but the depth of feeling it revealed within me — and how little it seemed to affect those around me. It led me to wonder about the relationship between our inner worlds and the living systems we are part of — what shapes our perception, and why we so often seem to lose connection with both.`
 				]
 			},
 			{
@@ -226,7 +226,7 @@ export const stories: Story[] = [
 				title: 'What I came to see',
 				pullQuote: `Modern culture often drains human potential instead of nurturing it — keeping us so deep in stress and competition that imagining another way becomes hard. And without imagination, <span class="underline decoration-ecohubs-primary/40 decoration-2 underline-offset-4">how do we build better futures?</span>`,
 				content: [
-					`Better ways already exist. More connected ways of living can be lived out loud and embodied by those who can picture them, giving others a glimpse of a different future and waking up their imagination to build it.`
+					`Better ways already exist. When those who can imagine different, more connected ways of living also embody them, they make these futures visible — giving those who cannot yet imagine them something they can see and feel. In a sense, they create fertile ground for imagination to awaken and take root.`
 				]
 			},
 			{
