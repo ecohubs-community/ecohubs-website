@@ -44,15 +44,20 @@ export const bases: { purpose: string; basis: string }[] = [
 		basis: 'your consent, given when you submit the application.'
 	},
 	{
-		purpose: 'Sending the newsletter, waitlist updates or your resilience report',
+		purpose: 'Sending the newsletter or waitlist updates',
 		basis: 'your consent, confirmed through the link in the first email we send you.'
 	},
 	{
-		purpose: 'Google Analytics and campaign tracking on two landing pages',
+		purpose: 'Sending your resilience report',
+		basis: 'your consent, given when you submit the assessment form.'
+	},
+	{
+		purpose: 'Google Analytics cookies and campaign tracking on two landing pages',
 		basis: 'your consent through the cookie banner. Declining changes nothing else on the site.'
 	},
 	{
-		purpose: 'Visitor counts, spam protection and logs',
+		purpose:
+			"Visitor counts (ours, and Google's cookieless measurement before you choose), spam protection and logs",
 		basis:
 			'our legitimate interest in keeping the site working, safe and useful, limited to what that needs. You can object at any time.'
 	},
@@ -90,7 +95,7 @@ export const processors: { name: string; role: string; where: string }[] = [
 	},
 	{
 		name: 'Google',
-		role: 'Google Analytics, only if you accepted it. Video previews come from YouTube; a video itself loads only when you press play.',
+		role: 'Google Analytics: cookieless measurement until you choose, cookies only if you accept. Video previews come from YouTube; a video itself loads only when you press play.',
 		where: 'United States'
 	},
 	{
@@ -127,12 +132,12 @@ export const retention: { what: string; howLong: string }[] = [
 	{
 		what: 'Campaign tracking on the two landing pages (Mautic)',
 		howLong:
-			'Visits that never led to a sign-up: 12 months. Visits linked to a sign-up: as long as the subscription.'
+			'Visits linked to a sign-up: as long as the subscription. Visits that never led to one: until our yearly clean-up deletes them.'
 	},
 	{
-		what: 'Google Analytics (only if you accepted)',
+		what: 'Google Analytics',
 		howLong:
-			"Detailed, user-level data: 2 months (Google's default). Google's summary reports keep only aggregated numbers."
+			"Detailed, user-level data: at most 14 months, the longest Google allows. Google's summary reports keep only aggregated numbers."
 	},
 	{
 		what: 'Vercel Web Analytics',
@@ -146,7 +151,7 @@ export const retention: { what: string; howLong: string }[] = [
 	},
 	{
 		what: 'Error alerts',
-		howLong: 'Deleted once we have dealt with the problem, and at most 30 days.'
+		howLong: 'Deleted by hand once we have dealt with the problem.'
 	},
 	{
 		what: 'Data kept in your own browser',

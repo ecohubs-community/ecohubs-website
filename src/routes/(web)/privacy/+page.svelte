@@ -78,8 +78,8 @@
 						<li>People read everything you send us. Nothing about you is decided by a machine.</li>
 						<li>We don't sell or rent your data, and we don't advertise.</li>
 						<li>
-							Google Analytics runs only if you accept it. Our own visitor counts use no cookies and
-							can't identify you.
+							Tracking cookies are set only if you accept them. Our own visitor counts use no
+							cookies and can't identify you.
 						</li>
 						<li>
 							You can ask what we hold, correct it, or have it deleted at any time: write to <a
@@ -170,7 +170,8 @@
 						from sending dozens of form submissions. It is not stored.
 					</li>
 					<li>
-						<strong>Google Analytics</strong>, only if you accepted it in the cookie banner.
+						<strong>Google Analytics</strong>: cookieless measurement until you choose, and cookies
+						only if you accept them in the cookie banner; see <a href="#cookies">section 05</a>.
 					</li>
 				</ul>
 
@@ -219,13 +220,18 @@
 					Counts page views without cookies. It recognises a visit only by a code derived from the
 					request, which changes every 24 hours, so it can't follow you across days or identify you.
 				</p>
-				<h3>Google Analytics 4 (only with your consent)</h3>
+				<h3>Google Analytics 4 (cookies only with your consent)</h3>
 				<p>
-					Until you accept in the cookie banner, Google Analytics sets no cookies and stores
-					nothing. If you accept, it sets its cookies (<code>_ga</code>, <code>_ga_*</code>) to show
-					us which pages people read and how they found us. IP anonymisation is on, and accepting
-					grants analytics only: Google's advertising signals stay switched off. Everything works
-					the same if you decline.
+					The Google tag loads on every page, but until you accept in the cookie banner it sets no
+					cookies and stores nothing on your device. It does send Google cookieless signals, such as
+					that a page was viewed, which carry no identifier of yours and which Google uses to
+					estimate overall numbers. As with any request, Google sees your IP address; anonymisation
+					is on.
+				</p>
+				<p>
+					If you accept, it also sets its cookies (<code>_ga</code>, <code>_ga_*</code>) to show us
+					which pages people read and how they found us. Accepting grants analytics only: Google's
+					advertising signals stay switched off. Everything works the same if you decline.
 				</p>
 				<h3>Campaign tracking on two landing pages (Mautic, only with your consent)</h3>
 				<p>

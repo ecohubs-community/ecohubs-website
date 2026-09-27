@@ -61,7 +61,7 @@ Internal record under Ecuador's LOPDP. Keep in step with the public page `src/ro
 |               |                                                                                                  |
 | ------------- | ------------------------------------------------------------------------------------------------ |
 | Purpose       | Send a gap report on a community's agreements                                                    |
-| Legal basis   | Consent                                                                                          |
+| Legal basis   | Consent, given by submitting the form (no double opt-in)                                         |
 | Data subjects | Community representatives                                                                        |
 | Data          | Email, community name, website, location, size, quiz summary; agreements documents sent by email |
 | Storage       | Mautic (form 1); documents in the mailbox                                                        |
@@ -69,23 +69,23 @@ Internal record under Ecuador's LOPDP. Keep in step with the public page `src/ro
 
 ### 5. Campaign tracking (Mautic `mtc.js`)
 
-|               |                                                                                                                 |
-| ------------- | --------------------------------------------------------------------------------------------------------------- |
-| Purpose       | See which campaigns lead to sign-ups                                                                            |
-| Legal basis   | Consent (cookie banner); `initMauticTracking()` loads nothing until `cookie_consent` is `accepted`              |
-| Data subjects | Visitors to `/community-resilience-assessment` and `/join-the-waitlist`                                         |
-| Data          | Cookies `mtc_id`, `mautic_device_id`; page views, IP address; linked to the email address on sign-up            |
-| Retention     | Anonymous visitors 12 months; identified contacts as long as the subscription (**needs a Mautic cleanup cron**) |
+|               |                                                                                                                                               |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Purpose       | See which campaigns lead to sign-ups                                                                                                          |
+| Legal basis   | Consent (cookie banner); `initMauticTracking()` loads nothing until `cookie_consent` is `accepted`                                            |
+| Data subjects | Visitors to `/community-resilience-assessment` and `/join-the-waitlist`                                                                       |
+| Data          | Cookies `mtc_id`, `mautic_device_id`; page views, IP address; linked to the email address on sign-up                                          |
+| Retention     | Identified contacts as long as the subscription; anonymous visitors until the yearly clean-up (**manual until a Mautic cleanup cron exists**) |
 
 ### 6. Web analytics
 
-|             |                                                                                                                                                                             |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Purpose     | See which pages help people                                                                                                                                                 |
-| Legal basis | GA4: consent (Consent Mode v2, denied by default; accepting grants `analytics_storage` only, ad signals stay denied). Vercel Web Analytics: legitimate interest, cookieless |
-| Data        | GA4 cookies and usage data; Vercel: page, referrer, country, device, daily-rotating hash                                                                                    |
-| Recipients  | Google (USA), Vercel (USA)                                                                                                                                                  |
-| Retention   | GA4: 2 months user/event-level (**verify in GA Admin › Data retention**); Vercel: aggregated only                                                                           |
+|             |                                                                                                                                                                                                                          |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Purpose     | See which pages help people                                                                                                                                                                                              |
+| Legal basis | GA4 cookies: consent (Consent Mode v2 advanced, denied by default; accepting grants `analytics_storage` only, ad signals stay denied). GA4 cookieless pings before consent and Vercel Web Analytics: legitimate interest |
+| Data        | GA4 cookieless pings (always) and cookies + usage data (after consent); Vercel: page, referrer, country, device, daily-rotating hash                                                                                     |
+| Recipients  | Google (USA), Vercel (USA)                                                                                                                                                                                               |
+| Retention   | GA4: at most 14 months user/event-level, the GA4 maximum (the page states this upper bound); Vercel: aggregated only                                                                                                     |
 
 ### 7. Member map (homepage)
 
@@ -98,12 +98,12 @@ Internal record under Ecuador's LOPDP. Keep in step with the public page `src/ro
 
 ### 8. Security, logs and error alerts
 
-|             |                                                                                                                                                                 |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Purpose     | Keep the site and forms safe, fix failures                                                                                                                      |
-| Legal basis | Legitimate interest                                                                                                                                             |
-| Data        | Request logs (IP, time, path); IP in memory for rate limiting (not stored); Turnstile signals; Discord alerts with name/email/IP of a failed submission         |
-| Retention   | Vercel logs: days at most; IONOS server logs: Plesk default, monthly rotation × 10 (≈10 months); Discord alerts: deleted once handled, max 30 days (**manual**) |
+|             |                                                                                                                                                            |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Purpose     | Keep the site and forms safe, fix failures                                                                                                                 |
+| Legal basis | Legitimate interest                                                                                                                                        |
+| Data        | Request logs (IP, time, path); IP in memory for rate limiting (not stored); Turnstile signals; Discord alerts with name/email/IP of a failed submission    |
+| Retention   | Vercel logs: days at most; IONOS server logs: Plesk default, monthly rotation × 10 (≈10 months); Discord alerts: deleted by hand once handled (**manual**) |
 
 ### 9. Data kept in the visitor's own browser
 
@@ -111,7 +111,8 @@ Internal record under Ecuador's LOPDP. Keep in step with the public page `src/ro
 
 ## Open points for the owner
 
-- **Retention promises that need a routine:** the contact/application mailbox clean-up, the Mautic cleanup cron (`mautic:maintenance:cleanup --days-old=365`), the Discord alert clean-up, and verifying the GA4 retention setting.
+- **Retention promises that rely on a manual routine:** the contact/application mailbox clean-up, the yearly Mautic clean-up of anonymous visitors (automate with `mautic:maintenance:cleanup --days-old=365` in cron, then the page can state 12 months), and deleting Discord alerts once handled. Nothing enforces these yet; keep the page's wording no stronger than what actually runs.
+- **GA4 cookieless pings:** the Google tag loads before consent (advanced Consent Mode, deliberately, so Tag Assistant finds it), so Google receives cookieless pings from visitors who haven't accepted. The page discloses this. Switching to basic mode (load `gtag.js` only after Accept) would remove it and let the page say GA runs only with consent.
 - **Member map:** confirm that `/api/public/members` returns only members who chose a public profile.
 - **Data processing agreements:** have the IONOS, Vercel and Cloudflare DPAs on file, and note the Mediakular arrangement in writing.
 - **DPO (Ecuador):** under Resolution SPDP-SPD-2025-0028-R a private entity must designate one only in listed sectors or under the general LOPDP criteria (large-scale special categories, or permanent systematic control). EcoHubs is not public sector and processes no special categories at scale. The listed sector closest to us is "advertising, commercial prospecting or market research … based on preferences, interests or behaviours, or involving profiling" — Mautic campaign tracking is near enough to that line to get a one-off legal confirmation.
