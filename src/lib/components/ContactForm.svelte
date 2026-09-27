@@ -214,4 +214,15 @@
 			<span>Send Message</span>
 		{/if}
 	</button>
+
+	<p class="text-xs text-stone-500 text-center">
+		We use your details only to reply.
+		<a
+			href="/privacy"
+			target="_blank"
+			rel="noopener"
+			class="text-ecohubs-dark underline underline-offset-2 hover:text-ecohubs-deep"
+			>How we handle your data</a
+		>
+	</p>
 </form>

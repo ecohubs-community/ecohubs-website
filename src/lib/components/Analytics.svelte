@@ -40,18 +40,20 @@
 	}
 
 	/**
-	 * Updates Google Consent Mode based on user choice
+	 * Updates Google Consent Mode based on user choice.
+	 *
+	 * Accepting grants analytics only. The ad signals stay denied either way:
+	 * /privacy promises GA is not used for advertising, and this keeps that true
+	 * regardless of how the GA property is configured.
 	 */
 	function updateConsent(accepted: boolean) {
 		if (!browser || !window.gtag || !GA_MEASUREMENT_ID) return;
 
-		const status = accepted ? 'granted' : 'denied';
-
 		window.gtag('consent', 'update', {
-			ad_storage: status,
-			analytics_storage: status,
-			ad_user_data: status,
-			ad_personalization: status
+			analytics_storage: accepted ? 'granted' : 'denied',
+			ad_storage: 'denied',
+			ad_user_data: 'denied',
+			ad_personalization: 'denied'
 		});
 	}
 

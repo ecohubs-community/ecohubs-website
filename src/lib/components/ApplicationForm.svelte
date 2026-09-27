@@ -615,6 +615,19 @@
 					{/if}
 				</div>
 
+				{#if isLastPage}
+					<p class="mt-5 text-xs text-stone-500 sm:text-right">
+						Your answers go to our membership team and nowhere else.
+						<a
+							href="/privacy"
+							target="_blank"
+							rel="noopener"
+							class="text-ecohubs-dark underline underline-offset-2 hover:text-ecohubs-deep"
+							>How we handle your data</a
+						>
+					</p>
+				{/if}
+
 				{#if submitError}
 					<div
 						class="mt-5 bg-red-50 border border-red-200 rounded-2xl p-4"

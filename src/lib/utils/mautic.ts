@@ -1,14 +1,15 @@
 /**
  * Client-side Mautic tracking helpers, shared across landing pages.
  *
- * `initMauticTracking()` boots the `mtc.js` pixel (anonymous visitor tracking
- * + pageview). Once it resolves, Mautic exposes the tracked contact id on
- * `window.mtcId`; `getMauticContactId()` reads it so a server-side form
+ * `initMauticTracking()` boots the `mtc.js` pixel (visitor tracking cookies
+ * + pageview), but only once the visitor has accepted cookies in the banner —
+ * /privacy promises it. Once it resolves, Mautic exposes the tracked contact
+ * id on `window.mtcId`; `getMauticContactId()` reads it so a server-side form
  * submission can be stitched onto that visitor's session.
  *
- * Note: `window.mtcId` only populates in production where Mautic's CORS event
- * endpoint is reachable and the visitor has a tracking session. On localhost
- * it stays empty, and submissions simply create an unlinked contact.
+ * Without consent the pixel never loads, `window.mtcId` stays empty, and
+ * submissions simply create an unlinked contact — the same as on localhost,
+ * where Mautic's CORS event endpoint is unreachable.
  */
 
 import { MAUTIC_BASE_URL } from '$lib/config/mautic';
@@ -19,9 +20,40 @@ interface MauticWindow {
 	mtcId?: string | number | null;
 }
 
-/** Load mtc.js (once) and send a pageview. Safe to call on every landing page. */
-export function initMauticTracking(): void {
-	if (typeof window === 'undefined') return;
+function hasAcceptedCookies(): boolean {
+	try {
+		return localStorage.getItem('cookie_consent') === 'accepted';
+	} catch {
+		// Storage blocked — no recorded consent.
+		return false;
+	}
+}
+
+/**
+ * Start Mautic tracking if the visitor has accepted cookies, or as soon as
+ * they accept in the banner. Call from `onMount` and return the result: it
+ * removes the consent listener when the page unmounts.
+ */
+export function initMauticTracking(): () => void {
+	if (typeof window === 'undefined') return () => {};
+
+	if (hasAcceptedCookies()) {
+		loadMauticTracking();
+		return () => {};
+	}
+
+	// `cookie-consent-change` is dispatched by CookieConsent.svelte.
+	const onConsent = (event: Event) => {
+		if ((event as CustomEvent<{ accepted: boolean }>).detail?.accepted !== true) return;
+		window.removeEventListener('cookie-consent-change', onConsent);
+		loadMauticTracking();
+	};
+	window.addEventListener('cookie-consent-change', onConsent);
+	return () => window.removeEventListener('cookie-consent-change', onConsent);
+}
+
+/** Load mtc.js (once) and send a pageview. */
+function loadMauticTracking(): void {
 	const w = window as unknown as MauticWindow;
 
 	if (w.MauticTrackingObject) {

@@ -163,13 +163,13 @@
 	}
 
 	onMount(() => {
-		initMauticTracking();
+		const stopTracking = initMauticTracking();
 		initScrollAnimations();
 		initStaggeredScrollAnimations('[data-scroll-stagger]');
 
 		// Reveal the sticky mobile CTA once the hero scrolls out of view.
 		const hero = document.getElementById('hero');
-		if (!hero) return;
+		if (!hero) return stopTracking;
 		const io = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) stickyVisible = !entry.isIntersecting;
@@ -177,7 +177,10 @@
 			{ threshold: 0.05 }
 		);
 		io.observe(hero);
-		return () => io.disconnect();
+		return () => {
+			stopTracking();
+			io.disconnect();
+		};
 	});
 </script>
 

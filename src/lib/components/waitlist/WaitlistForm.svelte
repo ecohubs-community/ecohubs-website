@@ -158,7 +158,16 @@
 				? 'text-[12px] text-emerald-100/55 font-light'
 				: 'text-[12px] font-light text-stone-500'}
 		>
-			We'll never share your email · about 2 emails a month · unsubscribe anytime.
+			We'll never share your email · about 2 emails a month · unsubscribe anytime ·
+			<a
+				href="/privacy"
+				target="_blank"
+				rel="noopener"
+				class={dark
+					? 'text-emerald-100/80 underline underline-offset-2 hover:text-white'
+					: 'text-ecohubs-dark underline underline-offset-2 hover:text-ecohubs-deep'}
+				>How we handle your data</a
+			>
 		</p>
 	</form>
 {/if}
