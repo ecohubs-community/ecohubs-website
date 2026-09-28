@@ -158,6 +158,16 @@
 				{:else if submitStatus === 'error' && errorMessage}
 					<p class="mt-3 text-xs text-red-400" role="alert">{errorMessage}</p>
 				{/if}
+				<p class="mt-3 text-xs text-stone-400">
+					We never pass your address on.
+					<a
+						href="/privacy"
+						target="_blank"
+						rel="noopener"
+						class="text-emerald-300/90 underline underline-offset-2 hover:text-ecohubs-ivory"
+						>How we handle your data</a
+					>
+				</p>
 				<a
 					href="/feed.xml"
 					class="mt-4 inline-flex items-center gap-1 text-xs text-stone-400 hover:text-ecohubs-ivory transition-colors"

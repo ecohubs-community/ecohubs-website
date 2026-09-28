@@ -236,6 +236,13 @@
 						<p class="mt-5 font-story italic text-[13px] leading-relaxed text-stone-500">
 							One email a month, nothing else. Leave whenever you like — we won't chase you, and we
 							never pass your address on.
+							<a
+								href="/privacy"
+								target="_blank"
+								rel="noopener"
+								class="not-italic font-sans text-ecohubs-dark underline underline-offset-2 hover:text-ecohubs-deep"
+								>How we handle your data</a
+							>
 						</p>
 					{:else}
 						<div class="kicker text-emerald-700 flex items-center gap-2.5 mb-5">

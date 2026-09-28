@@ -2,25 +2,9 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { SEO_CONFIG, generateBreadcrumbs } from '$lib/config/seo';
+	import { POLICY, sections, bases, processors, retention, rights } from './data';
 
 	const breadcrumbs = generateBreadcrumbs('privacy');
-
-	const sections = [
-		{ id: 'controller', num: '01', title: 'Data controller' },
-		{ id: 'legal-basis', num: '02', title: 'Legal basis for processing' },
-		{ id: 'data-collected', num: '03', title: 'Personal data we collect' },
-		{ id: 'purpose', num: '04', title: 'Purpose of processing' },
-		{ id: 'cookies', num: '05', title: 'Cookies and analytics' },
-		{ id: 'third-parties', num: '06', title: 'Third-party services' },
-		{ id: 'rights', num: '07', title: 'Your rights under LOPDP' },
-		{ id: 'retention', num: '08', title: 'Data retention' },
-		{ id: 'transfers', num: '09', title: 'International data transfers' },
-		{ id: 'security', num: '10', title: 'Security measures' },
-		{ id: 'children', num: '11', title: "Children's privacy" },
-		{ id: 'updates', num: '12', title: 'Updates to this policy' },
-		{ id: 'contact', num: '13', title: 'Contact information' },
-		{ id: 'authority', num: '14', title: 'Supervisory authority' }
-	];
 </script>
 
 <SEO
@@ -52,10 +36,10 @@
 		</h1>
 		<p class="mt-6 text-lg text-stone-700 leading-relaxed max-w-2xl font-light">
 			Privacy isn't a footer link to us — it's a posture. This page describes what we collect, why,
-			and what you can do about it. In line with Ecuador's Organic Law on Personal Data Protection
-			(LOPDP) and international data-protection standards.
+			who else sees it, how long we keep it, and what you can do about it, in line with Ecuador's
+			Organic Law on Personal Data Protection (LOPDP).
 		</p>
-		<p class="mt-5 text-sm text-stone-500 font-story italic">Last updated · January 2025</p>
+		<p class="mt-5 text-sm text-stone-500 font-story italic">Last updated · {POLICY.updated}</p>
 	</div>
 </section>
 
@@ -70,7 +54,7 @@
 		<aside class="hidden lg:block lg:col-span-4 lg:sticky lg:top-28 self-start">
 			<div class="kicker text-emerald-700 mb-4">On this page</div>
 			<ol class="space-y-2.5 text-sm">
-				{#each sections as s}
+				{#each sections as s (s.id)}
 					<li class="flex gap-3">
 						<span class="font-story italic text-ecohubs-dark shrink-0 w-6">{s.num}</span>
 						<a href="#{s.id}" class="text-stone-600 hover:text-ecohubs-deep transition-colors"
@@ -84,196 +68,286 @@
 		<!-- Body -->
 		<div class="lg:col-span-8">
 			<div class="prose-legal max-w-none">
-				<p class="lead">
-					EcoHubs.community ("we," "us," or "our") is committed to protecting your personal data in
-					accordance with Ecuador's Organic Law on Personal Data Protection (LOPDP) and
-					international data-protection standards.
+				<div class="short-version">
+					<div class="kicker text-emerald-700 mb-3">The short version</div>
+					<ul>
+						<li>
+							We only ask for what we need to answer you, consider your application, or write to
+							you.
+						</li>
+						<li>People read everything you send us. Nothing about you is decided by a machine.</li>
+						<li>We don't sell or rent your data, and we don't advertise.</li>
+						<li>
+							Tracking cookies are set only if you accept them. Our own visitor counts use no
+							cookies and can't identify you.
+						</li>
+						<li>
+							You can ask what we hold, correct it, or have it deleted at any time: write to <a
+								href="mailto:{POLICY.contact}">{POLICY.contact}</a
+							>.
+						</li>
+					</ul>
+				</div>
+
+				<h2 id="controller"><span class="kicker-num">01</span> Who is responsible</h2>
+				<p>
+					The data controller is {POLICY.controller}. Questions, requests and complaints about your
+					data go to <a href="mailto:{POLICY.contact}">{POLICY.contact}</a>, or through our
+					<a href="/contact">contact form</a>.
+				</p>
+				<p>
+					We have not designated a Data Protection Officer. Everything about your data goes to the
+					address above, and a person answers.
+				</p>
+				<p>
+					Membership records, governance and voting live in <strong>ecohubsOS</strong>
+					(os.ecohubs.community), our own membership system, run by the same team. This page covers what
+					reaches it from this website.
 				</p>
 
-				<h2 id="controller"><span class="kicker-num">01</span> Data controller</h2>
-				<p>The data controller responsible for your personal data is:</p>
+				<h2 id="data-collected"><span class="kicker-num">02</span> What we collect</h2>
+				<h3>If you write to us</h3>
 				<ul>
-					<li><strong>Entity:</strong> EcoHubs.community</li>
-					<li><strong>Location:</strong> Ecuador</li>
+					<li>Your name, email address and message.</li>
+					<li>We email the message to our team and send you a confirmation.</li>
+				</ul>
+
+				<h3>If you apply for membership</h3>
+				<ul>
+					<li>Your name, email address, location, languages and time availability.</li>
 					<li>
-						<strong>Contact:</strong>
-						<a href="mailto:privacy@ecohubs.community">privacy@ecohubs.community</a>
+						Your answers about your values, motivation, experience, how you work with others and
+						what you hope to give and receive.
+					</li>
+					<li>
+						The application goes to ecohubsOS, and a copy is emailed to our team so a person reads
+						it. You get a confirmation email.
+					</li>
+					<li>
+						While you fill it in, a draft is saved in your own browser so you don't lose your work.
+						We don't receive it until you submit, and it is cleared when you do.
 					</li>
 				</ul>
 
-				<h2 id="legal-basis"><span class="kicker-num">02</span> Legal basis for processing</h2>
-				<p>
-					In accordance with Article 10 of the LOPDP, we process your personal data on the following
-					grounds:
-				</p>
+				<h3>If you subscribe to the newsletter or join the EcoHub One waitlist</h3>
 				<ul>
+					<li>Your email address, and the list you joined.</li>
 					<li>
-						<strong>Consent</strong> — when you voluntarily provide information through our contact or
-						application forms.
+						For the waitlist, anything you choose to add in the optional second step: first name,
+						location, skills or profession, and why you want to join.
 					</li>
 					<li>
-						<strong>Legitimate interest</strong> — for website analytics to improve our services (with
-						anonymised data).
+						Whether you confirmed the subscription, and whether you unsubscribed. Our mailing tools
+						can also record whether an email was opened and which links were clicked.
 					</li>
-					<li><strong>Legal obligation</strong> — when required by applicable laws.</li>
 				</ul>
 
-				<h2 id="data-collected"><span class="kicker-num">03</span> Personal data we collect</h2>
-				<h3>Contact form data</h3>
-				<ul>
-					<li>Name</li>
-					<li>Email address</li>
-					<li>Message content</li>
-				</ul>
-				<h3>Application form data</h3>
-				<ul>
-					<li>Full name</li>
-					<li>Email address</li>
-					<li>Location / country</li>
-					<li>Skills and experience</li>
-					<li>Motivation and interests</li>
-				</ul>
-				<h3>Automatically collected data</h3>
-				<ul>
-					<li>IP address (anonymised)</li>
-					<li>Browser type and version</li>
-					<li>Pages visited and time spent</li>
-					<li>Referring website</li>
-				</ul>
-
-				<h2 id="purpose"><span class="kicker-num">04</span> Purpose of processing</h2>
-				<p>In keeping with the LOPDP's transparency principle, we use your personal data to:</p>
-				<ul>
-					<li>Respond to your inquiries and messages.</li>
-					<li>Process community-membership applications.</li>
-					<li>Send relevant updates about EcoHubs.community (with your consent).</li>
-					<li>Improve our website and services through anonymised analytics.</li>
-					<li>Comply with legal obligations.</li>
-				</ul>
-
-				<h2 id="cookies"><span class="kicker-num">05</span> Cookies and analytics</h2>
-				<p>We use cookies and similar technologies to enhance your experience.</p>
-				<h3>Essential cookies</h3>
-				<p>
-					Necessary for the website to function and not disable-able. They include cookies that
-					remember your cookie-consent preferences.
-				</p>
-				<h3>Analytics cookies (Google Analytics 4)</h3>
-				<p>
-					With your consent, we use Google Analytics 4 to understand how visitors interact with our
-					website. We have configured GA4 with privacy-enhancing settings:
-				</p>
-				<ul>
-					<li>IP anonymisation enabled.</li>
-					<li>Secure cookie flags (SameSite=Strict).</li>
-					<li>No data sharing with Google for advertising purposes.</li>
-				</ul>
-				<p>
-					You can withdraw your consent at any time by clearing your browser cookies and declining
-					when the consent banner appears again.
-				</p>
-
-				<h2 id="third-parties"><span class="kicker-num">06</span> Third-party services</h2>
-				<p>We use the following third-party services that may process your data:</p>
-				<ul>
-					<li><strong>Ghost CMS</strong> — for blog content delivery.</li>
-					<li><strong>Google Analytics</strong> — for website analytics (consent-based).</li>
-				</ul>
-				<p>
-					Each third-party service has its own privacy policy governing its data-processing
-					activities.
-				</p>
-
-				<h2 id="rights"><span class="kicker-num">07</span> Your rights under LOPDP</h2>
-				<p>Under Ecuador's LOPDP, you have the following rights regarding your personal data:</p>
+				<h3>If you take the Community Resilience Assessment</h3>
 				<ul>
 					<li>
-						<strong>Right of access</strong> — request information about what personal data we hold about
-						you.
+						Your email address, your community's name, website, location and size, and a summary of
+						your quiz answers.
 					</li>
 					<li>
-						<strong>Right to rectification</strong> — request correction of inaccurate or incomplete
-						data.
-					</li>
-					<li><strong>Right to erasure</strong> — request deletion of your personal data.</li>
-					<li>
-						<strong>Right to data portability</strong> — receive your data in a structured, commonly
-						used format.
-					</li>
-					<li>
-						<strong>Right to withdraw consent</strong> — withdraw consent at any time without affecting
-						prior processing.
-					</li>
-					<li>
-						<strong>Right to object</strong> — object to processing based on legitimate interests.
+						If you then send us your community's agreements for a report, we read them, write the
+						report, and delete the documents.
 					</li>
 				</ul>
-				<p>
-					To exercise any of these rights, write to <a href="mailto:privacy@ecohubs.community"
-						>privacy@ecohubs.community</a
-					>. We respond within 15 business days as required by the LOPDP.
-				</p>
 
-				<h2 id="retention"><span class="kicker-num">08</span> Data retention</h2>
-				<p>We retain your personal data only for as long as necessary:</p>
-				<ul>
-					<li><strong>Contact form data</strong> — 2 years from last interaction.</li>
-					<li>
-						<strong>Application data</strong> — duration of membership consideration plus 1 year.
-					</li>
-					<li><strong>Analytics data</strong> — 14 months (Google Analytics default).</li>
-				</ul>
-
-				<h2 id="transfers"><span class="kicker-num">09</span> International data transfers</h2>
-				<p>
-					Some of our third-party providers may process data outside Ecuador. When that happens, we
-					ensure appropriate safeguards are in place as required by the LOPDP, including:
-				</p>
-				<ul>
-					<li>Use of services with adequate data-protection certifications.</li>
-					<li>Standard contractual clauses where applicable.</li>
-				</ul>
-
-				<h2 id="security"><span class="kicker-num">10</span> Security measures</h2>
-				<p>
-					We implement appropriate technical and organisational measures to protect your personal
-					data, including:
-				</p>
-				<ul>
-					<li>HTTPS encryption for all data transmission.</li>
-					<li>Secure server infrastructure.</li>
-					<li>Access controls and authentication.</li>
-					<li>Regular security assessments.</li>
-				</ul>
-
-				<h2 id="children"><span class="kicker-num">11</span> Children's privacy</h2>
-				<p>
-					Our services are not directed to individuals under 18 years of age. We do not knowingly
-					collect personal data from children.
-				</p>
-
-				<h2 id="updates"><span class="kicker-num">12</span> Updates to this policy</h2>
-				<p>
-					We may update this privacy policy from time to time. We will notify you of any material
-					changes by posting the new policy on this page with an updated revision date.
-				</p>
-
-				<h2 id="contact"><span class="kicker-num">13</span> Contact information</h2>
-				<p>
-					If you have any questions about this privacy policy or our data practices, write to us:
-				</p>
+				<h3>Everyone who visits</h3>
 				<ul>
 					<li>
-						<strong>Email</strong> —
-						<a href="mailto:privacy@ecohubs.community">privacy@ecohubs.community</a>
+						<strong>Request logs</strong>: your IP address, the time and the page requested, kept
+						for security and to fix problems.
 					</li>
-					<li><strong>Contact form</strong> — <a href="/contact">ecohubs.community/contact</a></li>
+					<li>
+						<strong>Anonymous visitor counts</strong> (Vercel Web Analytics): pages viewed,
+						referrer, country, device and browser type. No cookies; see
+						<a href="#cookies">section 05</a>.
+					</li>
+					<li>
+						<strong>Your IP address, briefly and in memory only</strong>, to stop the same address
+						from sending dozens of form submissions. It is not stored.
+					</li>
+					<li>
+						<strong>Google Analytics</strong>: cookieless measurement until you choose, and cookies
+						only if you accept them in the cookie banner; see <a href="#cookies">section 05</a>.
+					</li>
 				</ul>
 
-				<h2 id="authority"><span class="kicker-num">14</span> Supervisory authority</h2>
+				<h3>If you are an EcoHubs member</h3>
 				<p>
-					If you believe your data-protection rights have been violated, you have the right to lodge
-					a complaint with the Superintendencia de Protección de Datos Personales (SPDP) of Ecuador.
+					If your ecohubsOS profile is public, the member map on our homepage shows your display
+					name, location, profile photo and contribution points. We fetch it from ecohubsOS and keep
+					a copy for up to 12 hours. To be taken off the map, write to us.
+				</p>
+
+				<h3>In your own browser</h3>
+				<p>
+					Some things are saved only on your device and never sent to us: your cookie choice, your
+					application draft, whether you have dismissed the newsletter pop-up, your colour theme,
+					and in the Learning Hub your reading depth, progress, bookmarks and quiz answers.
+				</p>
+
+				<h2 id="sensitive"><span class="kicker-num">03</span> Sensitive information</h2>
+				<p>
+					Our application asks how you want to live and work with others, so your answers may touch
+					on things like your beliefs, health or family situation. We don't ask for these directly.
+					Share only what you are comfortable with. Whatever you write is used only to consider your
+					application, is read only by the people who do that, and is never published.
+				</p>
+
+				<h2 id="legal-basis">
+					<span class="kicker-num">04</span> Why we use it, and on what basis
+				</h2>
+				<p>
+					Every use has its own basis under Article 7 of the LOPDP. We ask for consent separately
+					for each purpose and never bundle them:
+				</p>
+				<ul>
+					{#each bases as b (b.purpose)}
+						<li><strong>{b.purpose}</strong>: {b.basis}</li>
+					{/each}
+				</ul>
+				<p>
+					You can withdraw any consent at any time: unsubscribe from an email, change your cookie
+					choice, or write to us. Withdrawing doesn't affect what happened before.
+				</p>
+
+				<h2 id="cookies"><span class="kicker-num">05</span> Cookies, analytics and tracking</h2>
+				<h3>Vercel Web Analytics (always on, no cookies)</h3>
+				<p>
+					Counts page views without cookies. It recognises a visit only by a code derived from the
+					request, which changes every 24 hours, so it can't follow you across days or identify you.
+				</p>
+				<h3>Google Analytics 4 (cookies only with your consent)</h3>
+				<p>
+					The Google tag loads on every page, but until you accept in the cookie banner it sets no
+					cookies and stores nothing on your device. It does send Google cookieless signals, such as
+					that a page was viewed, which carry no identifier of yours and which Google uses to
+					estimate overall numbers. As with any request, Google sees your IP address; anonymisation
+					is on.
+				</p>
+				<p>
+					If you accept, it also sets its cookies (<code>_ga</code>, <code>_ga_*</code>) to show us
+					which pages people read and how they found us. Accepting grants analytics only: Google's
+					advertising signals stay switched off. Everything works the same if you decline.
+				</p>
+				<h3>Campaign tracking on two landing pages (Mautic, only with your consent)</h3>
+				<p>
+					On the <a href="/community-resilience-assessment">Community Resilience Assessment</a> and
+					the <a href="/join-the-waitlist">EcoHub One waitlist</a> pages, if you accept in the
+					cookie banner, we load the tracking script of our own Mautic installation. It sets cookies
+					(<code>mtc_id</code>, <code>mautic_device_id</code>) that recognise your browser on those
+					pages, and if you then sign up, it links those visits to your email address so we can see
+					how you found us. It runs on our own server, and nothing goes to an advertising network.
+					If you decline, it never loads, and the forms work exactly the same. No other page loads
+					it.
+				</p>
+				<h3>Spam protection and videos</h3>
+				<p>
+					Cloudflare Turnstile checks that a form is sent by a person; it sees your IP address and
+					browser signals. Video previews are images loaded from YouTube; the video player itself
+					(youtube-nocookie.com) loads only when you press play.
+				</p>
+				<h3>Changing your choice</h3>
+				<p>
+					Your cookie choice is stored in your browser. To change it, clear this site's data in your
+					browser and the banner appears again. Our fonts are hosted by us, so loading the site
+					doesn't contact Google Fonts.
+				</p>
+
+				<h2 id="third-parties"><span class="kicker-num">06</span> Who else handles your data</h2>
+				<p>
+					These providers process data on our behalf and only for the purpose described. We don't
+					sell, rent or trade personal data, and nobody else gets it.
+				</p>
+				<dl class="facts">
+					{#each processors as p (p.name)}
+						<div>
+							<dt>{p.name}</dt>
+							<dd>
+								{p.role}
+								<span class="where">{p.where}</span>
+							</dd>
+						</div>
+					{/each}
+				</dl>
+
+				<h2 id="transfers"><span class="kicker-num">07</span> International transfers</h2>
+				<p>
+					We are based in Ecuador, but most of our infrastructure is not. The server we rent from
+					IONOS, which also runs the mail server, is located in the United States, as are Vercel,
+					Cloudflare, Google and Discord. Using this site therefore means your data is transferred
+					to the United States.
+				</p>
+				<p>
+					We only use providers that protect data with the safeguards the LOPDP recognises for such
+					transfers, such as data processing agreements with standard contractual clauses, and we
+					send each of them only what their task needs.
+				</p>
+
+				<h2 id="retention"><span class="kicker-num">08</span> How long we keep it</h2>
+				<dl class="facts">
+					{#each retention as r (r.what)}
+						<div>
+							<dt>{r.what}</dt>
+							<dd>{r.howLong}</dd>
+						</div>
+					{/each}
+				</dl>
+
+				<h2 id="rights"><span class="kicker-num">09</span> Your rights</h2>
+				<p>Under the LOPDP you have the right to:</p>
+				<ul>
+					{#each rights as r (r.name)}
+						<li><strong>{r.name}</strong>: {r.detail}</li>
+					{/each}
+				</ul>
+				<p>
+					Write to <a href="mailto:{POLICY.contact}">{POLICY.contact}</a> from the address you gave us,
+					or tell us how we can confirm it's you. We answer within 15 business days, as the LOPDP requires,
+					and it costs nothing.
+				</p>
+
+				<h2 id="security"><span class="kicker-num">10</span> Security</h2>
+				<ul>
+					<li>The site and every service behind it are served only over HTTPS.</li>
+					<li>
+						Forms are protected by Cloudflare Turnstile, a hidden spam trap and rate limits. The
+						website talks to ecohubsOS only with secret keys.
+					</li>
+					<li>Access to applications, messages and subscriber lists is limited to our team.</li>
+					<li>
+						We keep an internal record of what we process and why, collect as little as we can, and
+						delete what we no longer need.
+					</li>
+					<li>
+						If a breach puts your data at risk, we tell the supervisory authority and you, within
+						the deadlines the LOPDP sets.
+					</li>
+				</ul>
+
+				<h2 id="children"><span class="kicker-num">11</span> Children</h2>
+				<p>
+					EcoHubs is for adults. Our forms are not meant for anyone under 18, and we don't knowingly
+					collect their data. If you believe a child has sent us something, write to us and we
+					delete it.
+				</p>
+
+				<h2 id="updates"><span class="kicker-num">12</span> Changes to this policy</h2>
+				<p>
+					When we change something that matters, we update this page and the date at the top. If a
+					change affects what we do with data you have already given us, we ask you again.
+				</p>
+
+				<h2 id="authority"><span class="kicker-num">13</span> Complaints</h2>
+				<p>
+					If you think we have handled your data wrongly, please tell us first. We'd like to put it
+					right. You can also complain to Ecuador's
+					<a href={POLICY.authority.url} target="_blank" rel="noopener noreferrer"
+						>{POLICY.authority.name}</a
+					>.
 				</p>
 			</div>
 		</div>
@@ -300,23 +374,6 @@
 </section>
 
 <style>
-	:global(.font-story) {
-		font-family: var(--font-story, 'Fraunces', serif);
-		font-optical-sizing: auto;
-	}
-
-	:global(.kicker) {
-		font-size: 0.72rem;
-		letter-spacing: 0.2em;
-		text-transform: uppercase;
-		font-weight: 600;
-	}
-
-	.hairline {
-		height: 1px;
-		background: linear-gradient(90deg, transparent, rgba(6, 78, 59, 0.25), transparent);
-	}
-
 	/* ────────────────────────────────────────────────────────────────────
 	   Long-form legal styles — Pridi headings, Inter body, generous
 	   leading, and emerald accents that match the v2 design.
@@ -434,5 +491,66 @@
 
 	:global(.prose-legal h2[id]) {
 		scroll-margin-top: 6rem;
+	}
+
+	/* Page-only pieces: the short-version box and the two fact tables. */
+
+	.short-version {
+		margin: 0 0 3em 0;
+		padding: 1.5em 1.75em 1em;
+		border: 1px solid rgba(231, 229, 228, 0.8);
+		border-radius: 1.5rem;
+		background: var(--color-ecohubs-ivory, #f5f2ea);
+	}
+
+	.short-version ul {
+		margin-top: 0;
+	}
+
+	.prose-legal code {
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+		font-size: 0.85em;
+		padding: 0.1em 0.35em;
+		border-radius: 0.3em;
+		background: rgba(6, 78, 59, 0.07);
+		color: #064e3b;
+	}
+
+	.facts {
+		margin: 1.5em 0;
+		border-top: 1px solid rgba(6, 78, 59, 0.15);
+	}
+
+	.facts > div {
+		display: grid;
+		grid-template-columns: 1fr 1.4fr;
+		gap: 1rem;
+		padding: 1rem 0;
+		border-bottom: 1px solid rgba(6, 78, 59, 0.15);
+	}
+
+	.facts dt {
+		font-weight: 600;
+		color: #0b2e24;
+		line-height: 1.45;
+	}
+
+	.facts dd {
+		margin: 0;
+		line-height: 1.55;
+	}
+
+	.facts .where {
+		display: block;
+		margin-top: 0.3em;
+		font-size: 0.85em;
+		color: #6b7265;
+	}
+
+	@media (max-width: 640px) {
+		.facts > div {
+			grid-template-columns: 1fr;
+			gap: 0.25rem;
+		}
 	}
 </style>

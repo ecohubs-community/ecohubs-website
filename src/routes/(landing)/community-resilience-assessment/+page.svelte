@@ -245,10 +245,8 @@
 		});
 	});
 
-	/* ─── Mautic tracking pixel ──────────────────────────────────── */
-	onMount(() => {
-		initMauticTracking();
-	});
+	/* ─── Mautic tracking pixel (only after cookie consent) ──────── */
+	onMount(() => initMauticTracking());
 </script>
 
 <SEO
@@ -643,6 +641,13 @@
 										Free. No payment. No upsell. We read your agreements, write your report, then
 										delete the documents.
 										<em class="font-story text-stone-700 italic">Your rules stay yours.</em>
+										<a
+											href="/privacy"
+											target="_blank"
+											rel="noopener"
+											class="text-ecohubs-dark hover:text-ecohubs-deep underline underline-offset-2"
+											>How we handle your data</a
+										>
 									</p>
 								</form>
 							{:else}
@@ -1044,6 +1049,13 @@
 						Free. No payment. No upsell. We read your agreements, write your report, then delete the
 						documents.
 						<em class="font-story text-stone-300 italic">Your rules stay yours.</em>
+						<a
+							href="/privacy"
+							target="_blank"
+							rel="noopener"
+							class="text-emerald-300/90 underline underline-offset-2 hover:text-[#f5f2ea]"
+							>How we handle your data</a
+						>
 					</p>
 				</form>
 			{:else}
