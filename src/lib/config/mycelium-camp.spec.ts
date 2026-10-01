@@ -21,9 +21,17 @@ describe('campPhase', () => {
 });
 
 describe('daysUntilCamp', () => {
-	it('rounds up, so the eve still reads one day to go', () => {
-		expect(daysUntilCamp(new Date('2026-10-22T20:00:00-06:00'))).toBe(1);
+	it('counts calendar days in Yucatán, not 24-hour blocks', () => {
 		expect(daysUntilCamp(new Date('2026-10-01T18:00:00-06:00'))).toBe(22);
+		// 25 hours before the fire is still "tomorrow".
+		expect(daysUntilCamp(new Date('2026-10-22T17:00:00-06:00'))).toBe(1);
+		expect(daysUntilCamp(new Date('2026-10-22T23:59:00-06:00'))).toBe(1);
+	});
+
+	it('is zero on the opening day, before the evening starts', () => {
+		expect(daysUntilCamp(new Date('2026-10-23T00:00:00-06:00'))).toBe(0);
+		// 09:00 on the 23rd: nine hours left, but it is tonight, not tomorrow.
+		expect(daysUntilCamp(new Date('2026-10-23T09:00:00-06:00'))).toBe(0);
 	});
 
 	it('never goes negative', () => {

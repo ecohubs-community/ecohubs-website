@@ -38,10 +38,18 @@ export function campPhase(now: Date = new Date()): CampPhase {
 	return 'upcoming';
 }
 
-/** Whole days until the first evening, rounded up — "1 day to go" on the eve. */
+/** Days since the epoch on a Yucatán wall calendar (fixed UTC−6, see `TZ`). */
+function yucatanDay(date: Date): number {
+	return Math.floor((date.getTime() - 6 * 3_600_000) / 86_400_000);
+}
+
+/**
+ * Calendar days until the first evening, counted in Yucatán: 1 on the 22nd,
+ * 0 on the 23rd itself. Counting 24-hour blocks instead would call the
+ * morning of the 23rd "tomorrow", because the camp opens at 18:00.
+ */
 export function daysUntilCamp(now: Date = new Date()): number {
-	const ms = myceliumCamp.startsAt.getTime() - now.getTime();
-	return Math.max(0, Math.ceil(ms / 86_400_000));
+	return Math.max(0, yucatanDay(myceliumCamp.startsAt) - yucatanDay(now));
 }
 
 /**

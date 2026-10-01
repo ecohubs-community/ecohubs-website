@@ -292,6 +292,8 @@
 					>
 						{#if camp === 'happening'}
 							Happening this week
+						{:else if daysLeft === 0}
+							Starts tonight
 						{:else if daysLeft === 1}
 							Starts tomorrow
 						{:else}
