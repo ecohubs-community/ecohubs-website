@@ -41,7 +41,11 @@ EcoHubs is a working project, not a think tank: the standard is tested against a
 - [VoteCast](https://ecohubs.community/votecast): a tool for community decisions — proposals, deliberation, and six voting methods from a simple poll through to consent, with a durable record of what was decided. App at https://votecast.ecohubs.community.
 - [CSI — Community Suitability Index](https://ecohubs.community/csi): an open map of where a regenerative, sovereign community has room to begin, read against law, land, water and local welcome. App at https://csi.ecohubs.community.
 - [Community Resilience Assessment](https://ecohubs.community/community-resilience-assessment): a free ten-question assessment of how a community holds up under conflict, returned as a human-written report.
-- [Ecohub One](https://ecohubs.community/join-the-waitlist): First land-based project to join the waitlist for.`;
+- [Ecohub One](https://ecohubs.community/join-the-waitlist): First land-based project to join the waitlist for.
+
+## Events
+
+- [Community Mycelium](https://ecohubs.community/community-mycelium): EcoHubs' five-day camp at The Gathering México, 23–27 October 2026 in Yaxunah, Yucatán — around 25 people found a temporary village together, from vision and land to decisions, conflict and culture.`;
 
 const TAIL = `## Writing
 

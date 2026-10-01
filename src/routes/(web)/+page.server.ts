@@ -128,14 +128,18 @@ export async function load({ fetch, setHeaders }) {
 	});
 
 	const now = Date.now();
+	// The Community Mycelium teaser counts down from this. The page is cached
+	// for hours, so the component starts from the render time (to hydrate the
+	// same markup) and moves to the reader's clock on mount.
+	const renderedAt = now;
 	if (cache && cache.expires > now) {
-		return { members: cache.data, membersStale: false };
+		return { members: cache.data, membersStale: false, renderedAt };
 	}
 
 	try {
 		const members = await fetchMembers(fetch);
 		cache = { data: members, expires: now + CACHE_TTL_MS };
-		return { members, membersStale: false };
+		return { members, membersStale: false, renderedAt };
 	} catch (err) {
 		console.warn(
 			'[v2] failed to fetch members from ecohubsOS:',
@@ -144,7 +148,8 @@ export async function load({ fetch, setHeaders }) {
 		// Serve last known good cache even if expired, otherwise empty list.
 		return {
 			members: cache?.data ?? [],
-			membersStale: true
+			membersStale: true,
+			renderedAt
 		};
 	}
 }

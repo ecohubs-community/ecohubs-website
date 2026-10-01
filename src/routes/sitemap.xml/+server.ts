@@ -58,7 +58,7 @@ function learnSectionRoutes(): SitemapRoute[] {
  * Blog posts and tag pages get theirs from Ghost automatically, below.
  */
 const routes: SitemapRoute[] = [
-	{ path: '', priority: '1.0', changefreq: 'weekly', lastmod: '2026-08-04' },
+	{ path: '', priority: '1.0', changefreq: 'weekly', lastmod: '2026-10-01' },
 	{ path: '/vision', priority: '0.9', changefreq: 'monthly', lastmod: '2026-06-23' },
 	{ path: '/rcos', priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-04' },
 	{ path: '/csi', priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-04' },
@@ -86,7 +86,8 @@ const routes: SitemapRoute[] = [
 		lastmod: '2026-06-16'
 	},
 	{ path: '/join-the-waitlist', priority: '0.9', changefreq: 'weekly', lastmod: '2026-07-24' },
-	{ path: '/links', priority: '0.6', changefreq: 'weekly', lastmod: '2026-06-23' }
+	{ path: '/links', priority: '0.6', changefreq: 'weekly', lastmod: '2026-06-23' },
+	{ path: '/community-mycelium', priority: '0.8', changefreq: 'weekly', lastmod: '2026-10-01' }
 	// Note: /welcome is intentionally omitted — it's a noindex interstitial.
 ];
 
