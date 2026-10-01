@@ -1,9 +1,9 @@
 // Community Mycelium — EcoHubs' camp at The Gathering México 2026.
 //
 // Lives here rather than in the landing page's `data.ts` because two pages
-// read it: `/community-mycelium` itself and the teaser on `/`. Both switch
-// their copy on `campPhase()`, so the dates that decide "is it over yet?"
-// must exist exactly once.
+// read it: `/events/community-mycelium-gathering` itself and the teaser on
+// `/`. Both switch their copy on `campPhase()`, so the dates that decide
+// "is it over yet?" must exist exactly once.
 //
 // The pages are rendered ahead of time (the landing page is cached at the
 // edge, the homepage for 12h), so the phase computed on the server can be
@@ -15,7 +15,7 @@ const TZ = '-06:00';
 
 export const myceliumCamp = {
 	name: 'Community Mycelium',
-	path: '/community-mycelium',
+	path: '/events/community-mycelium-gathering',
 	festival: 'The Gathering México 2026',
 	festivalUrl: 'https://the-gathering.earth/mexico',
 	ticketUrl: 'https://luma.com/thegatheringmx2026',

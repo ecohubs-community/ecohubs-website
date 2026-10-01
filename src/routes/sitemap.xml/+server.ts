@@ -87,7 +87,12 @@ const routes: SitemapRoute[] = [
 	},
 	{ path: '/join-the-waitlist', priority: '0.9', changefreq: 'weekly', lastmod: '2026-07-24' },
 	{ path: '/links', priority: '0.6', changefreq: 'weekly', lastmod: '2026-06-23' },
-	{ path: '/community-mycelium', priority: '0.8', changefreq: 'weekly', lastmod: '2026-10-01' }
+	{
+		path: '/events/community-mycelium-gathering',
+		priority: '0.8',
+		changefreq: 'weekly',
+		lastmod: '2026-10-01'
+	}
 	// Note: /welcome is intentionally omitted — it's a noindex interstitial.
 ];
 

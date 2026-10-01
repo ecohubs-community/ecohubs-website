@@ -1,6 +1,7 @@
-// Copy for /community-mycelium, the landing page for EcoHubs' camp at
-// The Gathering México 2026. Event facts shared with the homepage teaser
-// (dates, price, ticket link, phase) live in $lib/config/mycelium-camp.ts.
+// Copy for /events/community-mycelium-gathering, the landing page for
+// EcoHubs' camp at The Gathering México 2026. Event facts shared with the
+// homepage teaser (dates, price, ticket link, phase) live in
+// $lib/config/mycelium-camp.ts.
 
 export const topics = [
 	'Bio Regionalism',
