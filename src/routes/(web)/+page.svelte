@@ -11,7 +11,7 @@
 	import jungleNature from '$lib/assets/jungle-nature.webp?enhanced';
 	import CommunityFamily from '$lib/assets/community-family.avif?enhanced';
 	import CommunityGroup from '$lib/assets/community-group.avif?enhanced';
-	import MyceliumCenote from '$lib/assets/mycelium/cenote-overhang.jpg?enhanced';
+	import MyceliumHero from '$lib/assets/mycelium/hero-forest.webp?enhanced';
 
 	import SEO from '$lib/components/SEO.svelte';
 	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
@@ -278,8 +278,8 @@
 			>
 				<div class="relative min-h-[240px] lg:col-span-5 lg:min-h-full">
 					<enhanced:img
-						src={MyceliumCenote}
-						alt="Deep blue cenote under a limestone overhang in Yaxunah, Yucatán"
+						src={MyceliumHero}
+						alt="Jungle with glowing mycelium threads, with the EcoHubs and The Gathering México logos"
 						sizes="(min-width: 1024px) 520px, 100vw"
 						loading="lazy"
 						class="absolute inset-0 h-full w-full object-cover object-[center_60%]"
@@ -315,10 +315,9 @@
 						>
 					</h2>
 					<p class="mt-5 text-lg text-ecohubs-ivory/80 leading-relaxed max-w-2xl">
-						Our camp at The Gathering México. Five days in the Mayan jungle with around 25 people:
-						choose a vision and a piece of land, lay out the village, write down how you decide and
-						how you repair — then see the network it belongs to. No land, no capital, no plan
-						needed.
+						Our camp at The Gathering México. Five days in the Mayan jungle: choose a vision and a
+						piece of land, lay out the village, write down how you decide and how you repair — then
+						see the network it belongs to. No land, no capital, no plan needed.
 					</p>
 
 					<dl class="mt-8 grid grid-cols-3 gap-4 border-y border-ecohubs-ivory/10 py-5 max-w-xl">
@@ -330,9 +329,9 @@
 						</div>
 						<div>
 							<dt class="font-mono text-[11px] uppercase tracking-[0.1em] text-ecohubs-light/70">
-								Places
+								Country
 							</dt>
-							<dd class="mt-1 font-serif text-xl">~25</dd>
+							<dd class="mt-1 font-serif text-xl">Mexico</dd>
 						</div>
 						<div>
 							<dt class="font-mono text-[11px] uppercase tracking-[0.1em] text-ecohubs-light/70">
@@ -348,7 +347,7 @@
 							class="px-7 py-3.5 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full
                      hover:bg-white transition-colors inline-flex items-center justify-center gap-2 group"
 						>
-							See the five days
+							Learn more
 							<span class="transition-transform group-hover:translate-x-0.5">→</span>
 						</a>
 						<a

@@ -320,7 +320,7 @@ export const lifeInCamp = [
 	},
 	{
 		label: 'Group size',
-		body: 'Around 25 people — big enough to form more than one village, small enough to know everyone’s name.'
+		body: 'Around 10-20 people — big enough to form more than one village, small enough to know everyone’s name.'
 	}
 ];
 

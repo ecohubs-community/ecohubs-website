@@ -69,6 +69,7 @@ const routes: SitemapRoute[] = [
 	{ path: '/join', priority: '0.7', changefreq: 'monthly', lastmod: '2026-06-28' },
 	{ path: '/contact', priority: '0.7', changefreq: 'yearly', lastmod: '2026-08-04' },
 	{ path: '/blog', priority: '0.8', changefreq: 'weekly', lastmod: '2026-08-04' },
+	{ path: '/events', priority: '0.7', changefreq: 'weekly', lastmod: '2026-10-01' },
 	{
 		path: '/learn/how-this-is-written',
 		priority: '0.5',

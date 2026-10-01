@@ -1,4 +1,5 @@
-import { campPhase, parsePhase } from '$lib/config/mycelium-camp';
+import { parsePhase } from '$lib/config/events';
+import { campPhase } from '$lib/config/mycelium-camp';
 
 // Not prerendered: the page flips to its "after the event" copy on 28 Oct and
 // a prerendered file would keep promising tickets until the next deploy. An

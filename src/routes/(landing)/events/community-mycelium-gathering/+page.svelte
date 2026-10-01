@@ -12,12 +12,14 @@
 
 	import logo from '$lib/assets/Logo.svg';
 	import gatheringLogo from '$lib/assets/mycelium/the-gathering.svg';
-	import heroForest from '$lib/assets/mycelium/hero-forest.jpg?enhanced';
-	import cenoteFromAbove from '$lib/assets/mycelium/cenote-from-above.jpg?enhanced';
+	// `imgSizes` makes these full-width images ship at every width up to the
+	// original (see src/enhanced-img.d.ts) — the hero was blurry without it.
+	import heroForest from '$lib/assets/mycelium/hero-forest.jpg?imgSizes=100vw&enhanced';
+	import cenoteFromAbove from '$lib/assets/mycelium/cenote-from-above.jpg?imgSizes=100vw&enhanced';
 	import cenoteOverhang from '$lib/assets/mycelium/cenote-overhang.jpg?enhanced';
 	import shadedPath from '$lib/assets/mycelium/shaded-garden-path.jpg?enhanced';
 	import agavePath from '$lib/assets/mycelium/agave-garden-path.jpg?enhanced';
-	import forestCanopy from '$lib/assets/mycelium/forest-canopy.jpg?enhanced';
+	import forestCanopy from '$lib/assets/mycelium/forest-canopy.jpg?imgSizes=880px&enhanced';
 	import stefan from '$lib/assets/mycelium/stefan-portrait.webp?enhanced';
 
 	import {
@@ -157,6 +159,7 @@
 	jsonLd={eventSchema}
 	breadcrumbs={[
 		{ name: 'Home', url: 'https://ecohubs.community/' },
+		{ name: 'Events', url: 'https://ecohubs.community/events' },
 		{ name: 'Community Mycelium', url: `https://ecohubs.community${camp.path}` }
 	]}
 />

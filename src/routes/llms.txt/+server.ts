@@ -45,7 +45,8 @@ EcoHubs is a working project, not a think tank: the standard is tested against a
 
 ## Events
 
-- [Community Mycelium](https://ecohubs.community/events/community-mycelium-gathering): EcoHubs' five-day camp at The Gathering México, 23–27 October 2026 in Yaxunah, Yucatán — around 25 people found a temporary village together, from vision and land to decisions, conflict and culture.`;
+- [Events](https://ecohubs.community/events): where EcoHubs meets in person — upcoming camps and gatherings, and past ones.
+- [Community Mycelium](https://ecohubs.community/events/community-mycelium-gathering): EcoHubs' five-day camp at The Gathering México, 23–27 October 2026 in Yaxunah, Yucatán — around 10-20 people found a temporary village together, from vision and land to decisions, conflict and culture.`;
 
 const TAIL = `## Writing
 

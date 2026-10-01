@@ -8,6 +8,7 @@
 		{ href: '/rcos', label: 'RCOS Standard' },
 		{ href: '/vision', label: 'Vision' },
 		{ href: '/blog', label: 'Blog' },
+		{ href: '/events', label: 'Events' },
 		{ href: '/membership', label: 'Membership' },
 		{ href: '/learn', label: 'Learning Hub' },
 		{ href: '/faq', label: 'FAQ' },

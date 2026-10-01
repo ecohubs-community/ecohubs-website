@@ -16,6 +16,30 @@
 # SKIP_DOWNLOADS=1 skips step 2 only; formatting is cheap and always worth it.
 set -e
 
+# Git GUIs (the desktop app, VS Code, Tower, Fork) run hooks without loading
+# the shell profile, so a node installed through nvm is not on PATH and the
+# hook died with "xargs: npx: No such file or directory". Find one before
+# giving up: nvm's default first, then the newest nvm install, then the usual
+# Homebrew and Volta locations.
+if ! command -v node >/dev/null 2>&1; then
+	NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+	if [ -s "$NVM_DIR/nvm.sh" ]; then
+		# nvm.sh is not written for `set -e`; a non-zero return in there is not ours.
+		set +e
+		. "$NVM_DIR/nvm.sh" >/dev/null 2>&1
+		set -e
+	fi
+fi
+if ! command -v node >/dev/null 2>&1; then
+	newest=$(ls -d "${NVM_DIR:-$HOME/.nvm}"/versions/node/*/bin 2>/dev/null | sort -V | tail -n 1)
+	PATH="${newest:+$newest:}/opt/homebrew/bin:/usr/local/bin:$HOME/.volta/bin:$PATH"
+	export PATH
+fi
+if ! command -v node >/dev/null 2>&1; then
+	echo "pre-commit: cannot find node. Install it, or put it on the PATH your Git client uses."
+	exit 1
+fi
+
 # NUL-separated and `xargs -0`: filenames can contain spaces, and the `-r` flag
 # that would otherwise guard the empty case is GNU-only and absent on macOS.
 staged() { git diff --cached --name-only --diff-filter=ACMR -z; }
