@@ -389,7 +389,6 @@ export const safety = [
 ];
 
 export const contact = {
-	whatsappNumber: '+49 176 70913111',
 	whatsappHref: 'https://wa.me/4917670913111',
 	email: 'hello@ecohubs.community',
 	festivalEmail: 'mexico@the-gathering.earth'

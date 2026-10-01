@@ -873,18 +873,20 @@
 					</div>
 				</div>
 				<div class="flex flex-col gap-3">
-					<a
-						href={contact.whatsappHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="no-external-decoration flex items-center justify-between gap-3 rounded-[18px] bg-ecohubs-dark px-6 py-5 text-ecohubs-ivory transition-colors hover:bg-ecohubs-deep"
-					>
-						<span>
-							<span class="{mono} block text-ecohubs-light">WhatsApp · Stefan</span>
-							<span class="text-lg font-medium">{contact.whatsappNumber}</span>
-						</span>
-						<span aria-hidden="true" class="text-[22px]">→</span>
-					</a>
+					{#if !over}
+						<a
+							href={contact.whatsappHref}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="no-external-decoration flex items-center justify-between gap-3 rounded-[18px] bg-ecohubs-dark px-6 py-5 text-ecohubs-ivory transition-colors hover:bg-ecohubs-deep"
+						>
+							<span>
+								<span class="{mono} block text-ecohubs-light">WhatsApp · Stefan</span>
+								<span class="text-lg font-medium">Text me on WhatsApp</span>
+							</span>
+							<span aria-hidden="true" class="text-[22px]">→</span>
+						</a>
+					{/if}
 					<a
 						href="mailto:{contact.email}?subject=Community%20Mycelium"
 						class="flex items-center justify-between gap-3 rounded-[18px] border border-stone-300 bg-ecohubs-base px-6 py-5 text-ecohubs-text transition-colors hover:border-ecohubs-primary"
