@@ -11,6 +11,7 @@
 	import jungleNature from '$lib/assets/jungle-nature.webp?enhanced';
 	import CommunityFamily from '$lib/assets/community-family.avif?enhanced';
 	import CommunityGroup from '$lib/assets/community-group.avif?enhanced';
+	import MyceliumCenote from '$lib/assets/mycelium/cenote-overhang.jpg?enhanced';
 
 	import SEO from '$lib/components/SEO.svelte';
 	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
@@ -20,6 +21,7 @@
 		initStaggeredScrollAnimations
 	} from '$lib/utils/scroll-animations';
 	import { prefersReducedMotion } from '$lib/utils/animations';
+	import { myceliumCamp, campPhase, daysUntilCamp } from '$lib/config/mycelium-camp';
 
 	import { stories, wounds, answers, techCards, personas, faqItems } from './data';
 
@@ -41,8 +43,20 @@
 			href: 'https://www.heartofecovillages.org/',
 			logo: '/partners/heart-of-ecovillages.webp'
 		},
-		{ name: 'Regenera', href: 'https://regenera.community/', logo: '/partners/regenera.webp' }
+		{ name: 'Regenera', href: 'https://regenera.community/', logo: '/partners/regenera.webp' },
+		{
+			name: 'The Gathering',
+			href: 'https://the-gathering.earth/',
+			logo: '/partners/the-gathering.svg'
+		}
 	];
+
+	// ─── COMMUNITY MYCELIUM TEASER ──────────────────────────────────────────────
+	// Starts from the server's render time so hydration matches the cached HTML,
+	// then moves to the reader's clock. Once the camp is over the teaser goes.
+	let now = $state(new Date(data.renderedAt));
+	const camp = $derived(campPhase(now));
+	const daysLeft = $derived(daysUntilCamp(now));
 
 	// ─── ANIMATIONS ─────────────────────────────────────────────────────────────
 	// The hero cascade is pure CSS (`hero-rise` in layout.css, delayed per step
@@ -55,6 +69,7 @@
 	// reader has to scroll to reach it. When `prefers-reduced-motion: reduce`
 	// is set, the CSS reveals everything immediately and JS just bails.
 	onMount(() => {
+		now = new Date();
 		if (prefersReducedMotion()) return;
 
 		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
@@ -90,6 +105,23 @@
 		<div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 			<!-- Left: copy -->
 			<div class="lg:col-span-7">
+				{#if camp !== 'over'}
+					<a
+						href={myceliumCamp.path}
+						data-hero-step="0.0"
+						style="--hero-delay: 0s"
+						class="group mb-7 inline-flex max-w-full items-center gap-2.5 rounded-full border border-amber-300/70
+                   bg-amber-50/80 py-1.5 pl-1.5 pr-4 text-sm text-stone-800 transition-colors hover:border-ecohubs-accent"
+					>
+						<span
+							class="shrink-0 rounded-full bg-ecohubs-accent px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-[0.1em] text-ecohubs-deep"
+						>
+							{camp === 'happening' ? 'Live now' : 'Oct 23–27'}
+						</span>
+						<span class="truncate">Community Mycelium · a 5-day village camp in Yucatán</span>
+						<span class="shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
+					</a>
+				{/if}
 				<div
 					data-hero-step="0.05"
 					style="--hero-delay: 0.05s"
@@ -232,6 +264,108 @@
 		</div>
 	</div>
 </section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     1b. COMMUNITY MYCELIUM — our camp at The Gathering México. Hidden once
+         the camp is over; facts and dates live in $lib/config/mycelium-camp.
+═══════════════════════════════════════════════════════════════════ -->
+{#if camp !== 'over'}
+	<section id="mycelium" class="relative pb-20 md:pb-28 bg-ecohubs-base">
+		<div class="max-w-7xl mx-auto px-6 lg:px-8">
+			<div
+				data-scroll-animate="fade-up"
+				class="grid overflow-hidden rounded-3xl bg-ecohubs-deep text-ecohubs-ivory soft-shadow lg:grid-cols-12"
+			>
+				<div class="relative min-h-[240px] lg:col-span-5 lg:min-h-full">
+					<enhanced:img
+						src={MyceliumCenote}
+						alt="Deep blue cenote under a limestone overhang in Yaxunah, Yucatán"
+						sizes="(min-width: 1024px) 520px, 100vw"
+						loading="lazy"
+						class="absolute inset-0 h-full w-full object-cover object-[center_60%]"
+					/>
+					<div
+						class="absolute inset-0 bg-gradient-to-t from-ecohubs-deep/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-ecohubs-deep/40"
+					></div>
+					<div
+						class="absolute bottom-5 left-5 rounded-full bg-ecohubs-accent px-4 py-1.5 font-mono text-xs uppercase tracking-[0.1em] text-ecohubs-deep"
+					>
+						{#if camp === 'happening'}
+							Happening this week
+						{:else if daysLeft === 0}
+							Starts tonight
+						{:else if daysLeft === 1}
+							Starts tomorrow
+						{:else}
+							{daysLeft} days to go
+						{/if}
+					</div>
+				</div>
+
+				<div class="p-8 md:p-12 lg:col-span-7">
+					<div class="kicker text-ecohubs-light mb-5 flex items-center gap-3">
+						<span class="relative inline-block w-2 h-2 rounded-full bg-ecohubs-light pulse-dot"
+						></span>
+						{myceliumCamp.dates} · Yaxunah, Yucatán · México
+					</div>
+					<h2 class="font-serif text-4xl md:text-5xl leading-[1.05]">
+						Community Mycelium —
+						<em class="font-story italic font-light text-ecohubs-light"
+							>found a village in five days.</em
+						>
+					</h2>
+					<p class="mt-5 text-lg text-ecohubs-ivory/80 leading-relaxed max-w-2xl">
+						Our camp at The Gathering México. Five days in the Mayan jungle with around 25 people:
+						choose a vision and a piece of land, lay out the village, write down how you decide and
+						how you repair — then see the network it belongs to. No land, no capital, no plan
+						needed.
+					</p>
+
+					<dl class="mt-8 grid grid-cols-3 gap-4 border-y border-ecohubs-ivory/10 py-5 max-w-xl">
+						<div>
+							<dt class="font-mono text-[11px] uppercase tracking-[0.1em] text-ecohubs-light/70">
+								Length
+							</dt>
+							<dd class="mt-1 font-serif text-xl">5 days</dd>
+						</div>
+						<div>
+							<dt class="font-mono text-[11px] uppercase tracking-[0.1em] text-ecohubs-light/70">
+								Places
+							</dt>
+							<dd class="mt-1 font-serif text-xl">~25</dd>
+						</div>
+						<div>
+							<dt class="font-mono text-[11px] uppercase tracking-[0.1em] text-ecohubs-light/70">
+								Ticket
+							</dt>
+							<dd class="mt-1 font-serif text-xl whitespace-nowrap">{myceliumCamp.price}</dd>
+						</div>
+					</dl>
+
+					<div class="mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
+						<a
+							href={myceliumCamp.path}
+							class="px-7 py-3.5 bg-ecohubs-ivory text-ecohubs-deep font-medium rounded-full
+                     hover:bg-white transition-colors inline-flex items-center justify-center gap-2 group"
+						>
+							See the five days
+							<span class="transition-transform group-hover:translate-x-0.5">→</span>
+						</a>
+						<a
+							href={myceliumCamp.ticketUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="no-external-decoration px-7 py-3.5 bg-ecohubs-accent text-ecohubs-deep font-semibold rounded-full
+                     hover:bg-amber-400 transition-colors inline-flex items-center justify-center"
+						>
+							Get your ticket
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{/if}
 
 <div class="hairline max-w-4xl mx-auto px-6"></div>
 

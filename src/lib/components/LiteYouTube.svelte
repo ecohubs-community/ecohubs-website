@@ -15,18 +15,34 @@
 		/** Set false to suppress VideoObject schema — e.g. when the same video is
 		 *  embedded twice on one page and only one copy should describe it. */
 		schema?: boolean;
+		/** `portrait` for YouTube Shorts: a 9:16 frame and the portrait poster. */
+		aspect?: 'video' | 'portrait';
+		/** Replaces the default frame styling (rounding, border, shadow). */
+		frameClass?: string;
 	}
 
-	let { videoId, title, posterUrl, highRes = true, schema = true }: Props = $props();
+	let {
+		videoId,
+		title,
+		posterUrl,
+		highRes = true,
+		schema = true,
+		aspect = 'video',
+		frameClass = 'rounded-2xl soft-shadow border-4 border-stone-200'
+	}: Props = $props();
 
 	let activated = $state(false);
 	let warmed = false;
 
+	// Shorts publish a 720×1280 `oardefault` poster; the landscape ones are the
+	// same frame letterboxed into 16:9, which looks broken in a 9:16 box.
 	const poster =
 		posterUrl ??
-		(highRes
-			? `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`
-			: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`);
+		(aspect === 'portrait'
+			? `https://i.ytimg.com/vi/${videoId}/oardefault.jpg`
+			: highRes
+				? `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`
+				: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`);
 
 	const embedSrc = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
 
@@ -81,8 +97,8 @@
 					contentUrl: `https://www.youtube.com/watch?v=${videoId}`,
 					publisher: {
 						'@type': 'Organization',
-						name: 'EcoHubs.community',
-						url: 'https://ecohubs.community'
+						name: meta.publisher?.name ?? 'EcoHubs.community',
+						url: meta.publisher?.url ?? 'https://ecohubs.community'
 					}
 				}
 			: null
@@ -101,7 +117,9 @@
 </svelte:head>
 
 <div
-	class="relative aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 soft-shadow border-4 border-stone-200"
+	class="relative w-full overflow-hidden bg-stone-900 {aspect === 'portrait'
+		? 'aspect-[9/16]'
+		: 'aspect-video'} {frameClass}"
 >
 	{#if activated}
 		<iframe

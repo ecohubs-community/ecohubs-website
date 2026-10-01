@@ -19,6 +19,8 @@ export interface VideoMeta {
 	uploadDate: string;
 	/** Runtime in seconds, from YouTube. */
 	durationSeconds: number;
+	/** The channel that published it, when that isn't EcoHubs. */
+	publisher?: { name: string; url: string };
 }
 
 export const VIDEO_METADATA: Record<string, VideoMeta> = {
@@ -42,6 +44,14 @@ export const VIDEO_METADATA: Record<string, VideoMeta> = {
 			'How EcoHubs and the Regenerative Community Operating System work — an open-source blueprint designed to help human-scale communities govern themselves and last.',
 		uploadDate: '2026-03-12T16:18:16-07:00',
 		durationSeconds: 430
+	},
+	UxLXggp1MD4: {
+		name: 'Invitación: Camp Community Mycelium - The Gathering MX 2026',
+		description:
+			"Most of us can describe what's broken — the loneliness, the work that serves no one you know, the decisions made somewhere far away. This camp is not only about regenerative community. For five days it is one.",
+		uploadDate: '2026-09-07T20:15:21-07:00',
+		durationSeconds: 162,
+		publisher: { name: 'The Gathering México', url: 'https://www.youtube.com/@TheGatheringMexico' }
 	}
 };
 
