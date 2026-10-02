@@ -104,6 +104,12 @@
 					(os.ecohubs.community), our own membership system, run by the same team. This page covers what
 					reaches it from this website.
 				</p>
+				<p>
+					This policy also covers <strong>rcos.ecohubs.community</strong>, the website of the RCOS
+					standard, run by the same team. It has no forms and uses fewer services: Vercel hosts it,
+					Google Analytics works there exactly as described below, and its video and podcast players
+					load only when you press play. Your cookie choice applies to both sites.
+				</p>
 
 				<h2 id="data-collected"><span class="kicker-num">02</span> What we collect</h2>
 				<h3>If you write to us</h3>
@@ -248,13 +254,15 @@
 				<p>
 					Cloudflare Turnstile checks that a form is sent by a person; it sees your IP address and
 					browser signals. Video previews are images loaded from YouTube; the video player itself
-					(youtube-nocookie.com) loads only when you press play.
+					(youtube-nocookie.com) loads only when you press play. On rcos.ecohubs.community, the
+					podcast player (RSS.com) also loads only when you press play.
 				</p>
 				<h3>Changing your choice</h3>
 				<p>
-					Your cookie choice is stored in your browser. To change it, clear this site's data in your
-					browser and the banner appears again. Our fonts are hosted by us, so loading the site
-					doesn't contact Google Fonts.
+					Your choice is stored in a cookie (<code>ecohubs_consent</code>) that ecohubs.community
+					and rcos.ecohubs.community share, so you choose once for both. It expires after six
+					months, and then we ask again. To change it sooner, use <em>Cookie settings</em> at the bottom
+					of any page. Our fonts are hosted by us, so loading the site doesn't contact Google Fonts.
 				</p>
 
 				<h2 id="third-parties"><span class="kicker-num">06</span> Who else handles your data</h2>

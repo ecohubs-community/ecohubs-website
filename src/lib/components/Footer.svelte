@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { ArrowRight, Check, Loader2 } from 'lucide-svelte';
 	import Logo from '$lib/components/Logo.svelte';
+	import { CONSENT_REOPEN_EVENT } from '$lib/utils/consent';
 
 	const currentYear = new Date().getFullYear();
 
@@ -239,6 +240,15 @@
 				</li>
 				<li>
 					<a href="/terms" class="hover:text-ecohubs-ivory transition-colors">Terms of Service</a>
+				</li>
+				<li>
+					<button
+						type="button"
+						onclick={() => window.dispatchEvent(new Event(CONSENT_REOPEN_EVENT))}
+						class="hover:text-ecohubs-ivory transition-colors"
+					>
+						Cookie settings
+					</button>
 				</li>
 			</ul>
 		</div>

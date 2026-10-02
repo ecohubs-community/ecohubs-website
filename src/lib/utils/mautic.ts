@@ -13,6 +13,7 @@
  */
 
 import { MAUTIC_BASE_URL } from '$lib/config/mautic';
+import { CONSENT_CHANGE_EVENT, readConsent } from '$lib/utils/consent';
 
 interface MauticWindow {
 	MauticTrackingObject?: string;
@@ -21,12 +22,7 @@ interface MauticWindow {
 }
 
 function hasAcceptedCookies(): boolean {
-	try {
-		return localStorage.getItem('cookie_consent') === 'accepted';
-	} catch {
-		// Storage blocked — no recorded consent.
-		return false;
-	}
+	return readConsent() === 'accepted';
 }
 
 /**
@@ -42,14 +38,14 @@ export function initMauticTracking(): () => void {
 		return () => {};
 	}
 
-	// `cookie-consent-change` is dispatched by CookieConsent.svelte.
+	// Dispatched by CookieConsent.svelte.
 	const onConsent = (event: Event) => {
 		if ((event as CustomEvent<{ accepted: boolean }>).detail?.accepted !== true) return;
-		window.removeEventListener('cookie-consent-change', onConsent);
+		window.removeEventListener(CONSENT_CHANGE_EVENT, onConsent);
 		loadMauticTracking();
 	};
-	window.addEventListener('cookie-consent-change', onConsent);
-	return () => window.removeEventListener('cookie-consent-change', onConsent);
+	window.addEventListener(CONSENT_CHANGE_EVENT, onConsent);
+	return () => window.removeEventListener(CONSENT_CHANGE_EVENT, onConsent);
 }
 
 /** Load mtc.js (once) and send a pageview. */

@@ -5,18 +5,21 @@ Internal record under Ecuador's LOPDP. Keep in step with the public page `src/ro
 - **Controller:** EcoHubs.community, based in Ecuador
 - **Contact:** privacy@ecohubs.community
 - **DPO:** none designated (see open points)
-- **Last reviewed:** 2026-09-27
+- **Last reviewed:** 2026-10-02
 
 ## Infrastructure
 
-| Component                                        | Provider                                | Location             |
-| ------------------------------------------------ | --------------------------------------- | -------------------- |
-| Website (SvelteKit), request logs, Web Analytics | Vercel                                  | USA (`iad1`)         |
-| ecohubsOS, Ghost, Listmonk, Mautic               | Own server rented from IONOS (ionos.de) | USA (74.208.179.123) |
-| Outgoing mail (`mail.mediakular.com`)            | Mediakular, same IONOS server           | USA                  |
-| Form spam check                                  | Cloudflare Turnstile                    | USA                  |
-| Analytics (consent), video previews              | Google (GA4, YouTube)                   | USA                  |
-| Error alerts                                     | Discord webhook                         | USA                  |
+| Component                                               | Provider                                | Location             |
+| ------------------------------------------------------- | --------------------------------------- | -------------------- |
+| Websites (SvelteKit), request logs, Web Analytics       | Vercel                                  | USA (`iad1`)         |
+| ecohubsOS, Ghost, Listmonk, Mautic                      | Own server rented from IONOS (ionos.de) | USA (74.208.179.123) |
+| Outgoing mail (`mail.mediakular.com`)                   | Mediakular, same IONOS server           | USA                  |
+| Form spam check                                         | Cloudflare Turnstile                    | USA                  |
+| Analytics (consent), video previews                     | Google (GA4, YouTube)                   | USA                  |
+| Error alerts                                            | Discord webhook                         | USA                  |
+| Podcast player on rcos.ecohubs.community, loads on play | RSS.com                                 | **to confirm**       |
+
+The websites are ecohubs.community and rcos.ecohubs.community (the RCOS standard). The RCOS site has no forms and uses Vercel hosting, GA4 (same property and consent) and click-to-load YouTube/RSS.com players only; no Web Analytics, Turnstile, Mautic or Discord.
 
 ## Processing activities
 
@@ -72,7 +75,7 @@ Internal record under Ecuador's LOPDP. Keep in step with the public page `src/ro
 |               |                                                                                                                                               |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | Purpose       | See which campaigns lead to sign-ups                                                                                                          |
-| Legal basis   | Consent (cookie banner); `initMauticTracking()` loads nothing until `cookie_consent` is `accepted`                                            |
+| Legal basis   | Consent (cookie banner); `initMauticTracking()` loads nothing until the `ecohubs_consent` cookie is `accepted`                                |
 | Data subjects | Visitors to `/community-resilience-assessment` and `/join-the-waitlist`                                                                       |
 | Data          | Cookies `mtc_id`, `mautic_device_id`; page views, IP address; linked to the email address on sign-up                                          |
 | Retention     | Identified contacts as long as the subscription; anonymous visitors until the yearly clean-up (**manual until a Mautic cleanup cron exists**) |
@@ -81,7 +84,7 @@ Internal record under Ecuador's LOPDP. Keep in step with the public page `src/ro
 
 |             |                                                                                                                                                                                                                          |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Purpose     | See which pages help people                                                                                                                                                                                              |
+| Purpose     | See which pages help people on ecohubs.community and rcos.ecohubs.community (one GA4 property, split by hostname)                                                                                                        |
 | Legal basis | GA4 cookies: consent (Consent Mode v2 advanced, denied by default; accepting grants `analytics_storage` only, ad signals stay denied). GA4 cookieless pings before consent and Vercel Web Analytics: legitimate interest |
 | Data        | GA4 cookieless pings (always) and cookies + usage data (after consent); Vercel: page, referrer, country, device, daily-rotating hash                                                                                     |
 | Recipients  | Google (USA), Vercel (USA)                                                                                                                                                                                               |
@@ -107,12 +110,15 @@ Internal record under Ecuador's LOPDP. Keep in step with the public page `src/ro
 
 ### 9. Data kept in the visitor's own browser
 
-`cookie_consent`, `ecohubs-application-draft`, the newsletter-modal state, the colour theme, and the Learning Hub keys in `src/lib/learning/storage.ts` (depth, progress, bookmarks, paths, quizzes) stay in localStorage on the visitor's device. We never receive them.
+`ecohubs-application-draft`, the newsletter-modal state, the colour theme, and the Learning Hub keys in `src/lib/learning/storage.ts` (depth, progress, bookmarks, paths, quizzes) stay in localStorage on the visitor's device. We never receive them.
+
+The cookie choice is a first-party cookie, `ecohubs_consent` (`accepted`/`declined`), on `.ecohubs.community`, shared by both websites, `SameSite=Lax`, six months. It is read only in the browser. An older `cookie_consent` value in localStorage is copied into it once and then left in place.
 
 ## Open points for the owner
 
 - **Retention promises that rely on a manual routine:** the contact/application mailbox clean-up, the yearly Mautic clean-up of anonymous visitors (automate with `mautic:maintenance:cleanup --days-old=365` in cron, then the page can state 12 months), and deleting Discord alerts once handled. Nothing enforces these yet; keep the page's wording no stronger than what actually runs.
 - **GA4 cookieless pings:** the Google tag loads before consent (advanced Consent Mode, deliberately, so Tag Assistant finds it), so Google receives cookieless pings from visitors who haven't accepted. The page discloses this. Switching to basic mode (load `gtag.js` only after Accept) would remove it and let the page say GA runs only with consent.
+- **RSS.com:** confirm where the podcast player is hosted and whether a DPA is needed; it loads only after the visitor presses play.
 - **Member map:** confirm that `/api/public/members` returns only members who chose a public profile.
 - **Data processing agreements:** have the IONOS, Vercel and Cloudflare DPAs on file, and note the Mediakular arrangement in writing.
 - **DPO (Ecuador):** under Resolution SPDP-SPD-2025-0028-R a private entity must designate one only in listed sectors or under the general LOPDP criteria (large-scale special categories, or permanent systematic control). EcoHubs is not public sector and processes no special categories at scale. The listed sector closest to us is "advertising, commercial prospecting or market research … based on preferences, interests or behaviours, or involving profiling" — Mautic campaign tracking is near enough to that line to get a one-off legal confirmation.

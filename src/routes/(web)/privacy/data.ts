@@ -8,7 +8,7 @@
  * policy changes in substance.
  */
 export const POLICY = {
-	updated: '27 September 2026',
+	updated: '2 October 2026',
 	controller: 'EcoHubs.community, based in Ecuador',
 	contact: 'privacy@ecohubs.community',
 	authority: {

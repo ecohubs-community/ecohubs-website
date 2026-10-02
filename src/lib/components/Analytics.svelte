@@ -2,6 +2,7 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
+	import { CONSENT_CHANGE_EVENT, readConsent } from '$lib/utils/consent';
 
 	/**
 	 * GA4 Measurement ID from environment variable
@@ -75,9 +76,8 @@
 			return;
 		}
 
-		// Check initial consent from localStorage
-		const consent = localStorage.getItem('cookie_consent');
-		if (consent === 'accepted') {
+		// Initial consent (cookie shared with rcos.ecohubs.community)
+		if (readConsent() === 'accepted') {
 			updateConsent(true);
 		}
 
@@ -86,10 +86,10 @@
 			updateConsent(event.detail.accepted);
 		};
 
-		window.addEventListener('cookie-consent-change', handleConsentChange as EventListener);
+		window.addEventListener(CONSENT_CHANGE_EVENT, handleConsentChange as EventListener);
 
 		return () => {
-			window.removeEventListener('cookie-consent-change', handleConsentChange as EventListener);
+			window.removeEventListener(CONSENT_CHANGE_EVENT, handleConsentChange as EventListener);
 		};
 	});
 </script>

@@ -76,7 +76,7 @@ const routes: SitemapRoute[] = [
 		changefreq: 'yearly',
 		lastmod: '2026-08-06'
 	},
-	{ path: '/privacy', priority: '0.3', changefreq: 'yearly', lastmod: '2026-09-27' },
+	{ path: '/privacy', priority: '0.3', changefreq: 'yearly', lastmod: '2026-10-02' },
 	{ path: '/terms', priority: '0.3', changefreq: 'yearly', lastmod: '2026-08-04' },
 
 	// Landing pages
