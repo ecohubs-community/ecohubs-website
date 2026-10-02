@@ -2,6 +2,7 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
+	import { CONSENT_CHANGE_EVENT, readConsent } from '$lib/utils/consent';
 
 	/**
 	 * GA4 Measurement ID from environment variable
@@ -75,21 +76,37 @@
 			return;
 		}
 
-		// Check initial consent from localStorage
-		const consent = localStorage.getItem('cookie_consent');
-		if (consent === 'accepted') {
+		// Initial consent (cookie shared with rcos.ecohubs.community)
+		let known = readConsent();
+		if (known === 'accepted') {
 			updateConsent(true);
 		}
 
 		// Listen for consent changes from CookieConsent component
 		const handleConsentChange = (event: CustomEvent) => {
+			known = event.detail.accepted ? 'accepted' : 'declined';
 			updateConsent(event.detail.accepted);
 		};
 
-		window.addEventListener('cookie-consent-change', handleConsentChange as EventListener);
+		// The choice can also change on rcos.ecohubs.community, in another tab.
+		// Its events don't reach this page, so re-read the shared cookie whenever
+		// this page comes back into view, and pass any change on to Google.
+		const recheck = () => {
+			if (document.visibilityState !== 'visible') return;
+			const now = readConsent();
+			if (now === known) return;
+			known = now;
+			updateConsent(now === 'accepted');
+		};
+
+		window.addEventListener(CONSENT_CHANGE_EVENT, handleConsentChange as EventListener);
+		document.addEventListener('visibilitychange', recheck);
+		window.addEventListener('focus', recheck);
 
 		return () => {
-			window.removeEventListener('cookie-consent-change', handleConsentChange as EventListener);
+			window.removeEventListener(CONSENT_CHANGE_EVENT, handleConsentChange as EventListener);
+			document.removeEventListener('visibilitychange', recheck);
+			window.removeEventListener('focus', recheck);
 		};
 	});
 </script>

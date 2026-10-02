@@ -1,6 +1,12 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
+	import {
+		CONSENT_CHANGE_EVENT,
+		CONSENT_REOPEN_EVENT,
+		readConsent,
+		writeConsent
+	} from '$lib/utils/consent';
 
 	/**
 	 * The banner is rendered on the server, not gated behind `onMount`.
@@ -17,31 +23,26 @@
 	 */
 	let dismissed = $state(false);
 
-	function storedConsent(): string | null {
-		try {
-			return localStorage.getItem('cookie_consent');
-		} catch {
-			// Storage blocked — treat as undecided and show the banner.
-			return null;
-		}
-	}
-
 	onMount(() => {
-		if (storedConsent() !== null) dismissed = true;
+		if (readConsent() !== null) dismissed = true;
+
+		// "Cookie settings" in the footer shows the banner again.
+		const reopen = () => {
+			document.documentElement.classList.remove('cookie-consent-known');
+			dismissed = false;
+		};
+		window.addEventListener(CONSENT_REOPEN_EVENT, reopen);
+		return () => window.removeEventListener(CONSENT_REOPEN_EVENT, reopen);
 	});
 
 	function choose(accepted: boolean) {
 		if (!browser) return;
-		try {
-			localStorage.setItem('cookie_consent', accepted ? 'accepted' : 'declined');
-		} catch {
-			// Nothing to persist; the choice still applies for this page view.
-		}
+		writeConsent(accepted ? 'accepted' : 'declined');
 		document.documentElement.classList.add('cookie-consent-known');
 		dismissed = true;
 
 		// Tell the Analytics component to update Google Consent Mode.
-		window.dispatchEvent(new CustomEvent('cookie-consent-change', { detail: { accepted } }));
+		window.dispatchEvent(new CustomEvent(CONSENT_CHANGE_EVENT, { detail: { accepted } }));
 	}
 </script>
 

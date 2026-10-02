@@ -8,7 +8,7 @@
  * policy changes in substance.
  */
 export const POLICY = {
-	updated: '27 September 2026',
+	updated: '2 October 2026',
 	controller: 'EcoHubs.community, based in Ecuador',
 	contact: 'privacy@ecohubs.community',
 	authority: {
@@ -92,6 +92,11 @@ export const processors: { name: string; role: string; where: string }[] = [
 		name: 'Cloudflare',
 		role: 'Turnstile, the spam check on the contact and application forms. It sees your IP address and browser signals, not what you write.',
 		where: 'United States'
+	},
+	{
+		name: 'RSS.com',
+		role: 'The podcast player on rcos.ecohubs.community. It loads only when you press play; from then on RSS.com sees your IP address and browser details, like any website you visit.',
+		where: 'Not yet confirmed'
 	},
 	{
 		name: 'Google',

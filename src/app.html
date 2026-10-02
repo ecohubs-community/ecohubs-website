@@ -14,13 +14,18 @@
 		</style>
 		<script>
 			document.documentElement.classList.replace('no-js', 'js');
-			try {
-				if (localStorage.getItem('cookie_consent') !== null) {
-					document.documentElement.classList.add('cookie-consent-known');
+			// The choice is a cookie shared with rcos.ecohubs.community (see
+			// src/lib/utils/consent.ts); older visitors may still have it in localStorage.
+			var chosen = /(?:^|; )ecohubs_consent=(accepted|declined)/.test(document.cookie);
+			if (!chosen) {
+				try {
+					var legacy = localStorage.getItem('cookie_consent');
+					chosen = legacy === 'accepted' || legacy === 'declined';
+				} catch (e) {
+					// localStorage throws when storage is blocked; showing the banner is the safe default.
 				}
-			} catch (e) {
-				// localStorage throws when storage is blocked; showing the banner is the safe default.
 			}
+			if (chosen) document.documentElement.classList.add('cookie-consent-known');
 			// Learning Hub reading depth, applied before first paint so a returning
 			// reader sees no flash and never has to re-pick.
 			//
