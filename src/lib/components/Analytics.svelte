@@ -77,19 +77,36 @@
 		}
 
 		// Initial consent (cookie shared with rcos.ecohubs.community)
-		if (readConsent() === 'accepted') {
+		let known = readConsent();
+		if (known === 'accepted') {
 			updateConsent(true);
 		}
 
 		// Listen for consent changes from CookieConsent component
 		const handleConsentChange = (event: CustomEvent) => {
+			known = event.detail.accepted ? 'accepted' : 'declined';
 			updateConsent(event.detail.accepted);
 		};
 
+		// The choice can also change on rcos.ecohubs.community, in another tab.
+		// Its events don't reach this page, so re-read the shared cookie whenever
+		// this page comes back into view, and pass any change on to Google.
+		const recheck = () => {
+			if (document.visibilityState !== 'visible') return;
+			const now = readConsent();
+			if (now === known) return;
+			known = now;
+			updateConsent(now === 'accepted');
+		};
+
 		window.addEventListener(CONSENT_CHANGE_EVENT, handleConsentChange as EventListener);
+		document.addEventListener('visibilitychange', recheck);
+		window.addEventListener('focus', recheck);
 
 		return () => {
 			window.removeEventListener(CONSENT_CHANGE_EVENT, handleConsentChange as EventListener);
+			document.removeEventListener('visibilitychange', recheck);
+			window.removeEventListener('focus', recheck);
 		};
 	});
 </script>

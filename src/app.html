@@ -19,7 +19,8 @@
 			var chosen = /(?:^|; )ecohubs_consent=(accepted|declined)/.test(document.cookie);
 			if (!chosen) {
 				try {
-					chosen = localStorage.getItem('cookie_consent') !== null;
+					var legacy = localStorage.getItem('cookie_consent');
+					chosen = legacy === 'accepted' || legacy === 'declined';
 				} catch (e) {
 					// localStorage throws when storage is blocked; showing the banner is the safe default.
 				}

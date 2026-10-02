@@ -32,19 +32,38 @@ export function writeConsent(value: Consent): void {
 			: '';
 	const secure = location.protocol === 'https:' ? '; Secure' : '';
 	document.cookie = `${CONSENT_COOKIE}=${value}; Path=/; Max-Age=${MAX_AGE_SECONDS}; SameSite=Lax${domain}${secure}`;
+	// A choice made now replaces any older one, so a stale legacy value can never
+	// come back once this cookie expires.
+	removeLegacy();
+}
+
+function removeLegacy(): void {
+	if (!readCookie()) return; // keep the old choice if the cookie could not be written
+	try {
+		localStorage.removeItem(LEGACY_KEY);
+	} catch {
+		// Storage blocked: nothing stored there either.
+	}
+}
+
+function readCookie(): Consent | null {
+	const match = document.cookie.match(new RegExp(`(?:^|; )${CONSENT_COOKIE}=(accepted|declined)`));
+	return (match?.[1] as Consent | undefined) ?? null;
 }
 
 export function readConsent(): Consent | null {
-	const match = document.cookie.match(new RegExp(`(?:^|; )${CONSENT_COOKIE}=(accepted|declined)`));
-	if (match) return match[1] as Consent;
+	const stored = readCookie();
+	if (stored) return stored;
+	let legacy: string | null = null;
 	try {
-		const legacy = localStorage.getItem(LEGACY_KEY);
-		if (legacy === 'accepted' || legacy === 'declined') {
-			writeConsent(legacy);
-			return legacy;
-		}
+		legacy = localStorage.getItem(LEGACY_KEY);
 	} catch {
 		// Storage blocked: no recorded choice.
 	}
-	return null;
+	if (legacy !== 'accepted' && legacy !== 'declined') return null;
+	// Migrate once. writeConsent removes the legacy value, but only after the
+	// cookie is really there (cookies can be blocked); otherwise keep it and
+	// still honour it for this page.
+	writeConsent(legacy);
+	return readCookie() ?? legacy;
 }

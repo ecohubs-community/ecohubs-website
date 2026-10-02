@@ -94,6 +94,11 @@ export const processors: { name: string; role: string; where: string }[] = [
 		where: 'United States'
 	},
 	{
+		name: 'RSS.com',
+		role: 'The podcast player on rcos.ecohubs.community. It loads only when you press play; from then on RSS.com sees your IP address and browser details, like any website you visit.',
+		where: 'Not yet confirmed'
+	},
+	{
 		name: 'Google',
 		role: 'Google Analytics: cookieless measurement until you choose, cookies only if you accept. Video previews come from YouTube; a video itself loads only when you press play.',
 		where: 'United States'

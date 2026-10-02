@@ -112,7 +112,7 @@ The websites are ecohubs.community and rcos.ecohubs.community (the RCOS standard
 
 `ecohubs-application-draft`, the newsletter-modal state, the colour theme, and the Learning Hub keys in `src/lib/learning/storage.ts` (depth, progress, bookmarks, paths, quizzes) stay in localStorage on the visitor's device. We never receive them.
 
-The cookie choice is a first-party cookie, `ecohubs_consent` (`accepted`/`declined`), on `.ecohubs.community`, shared by both websites, `SameSite=Lax`, six months. It is read only in the browser. An older `cookie_consent` value in localStorage is copied into it once and then left in place.
+The cookie choice is a first-party cookie, `ecohubs_consent` (`accepted`/`declined`), on `.ecohubs.community`, shared by both websites, `SameSite=Lax`, six months. Being a cookie, the browser sends it with every request to ecohubs.community and its subdomains; the servers neither log nor use it, and only browser code reads it. An older `cookie_consent` value in localStorage is copied into it once and then removed, once the cookie is confirmed written.
 
 ## Open points for the owner
 

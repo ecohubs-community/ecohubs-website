@@ -190,9 +190,11 @@
 
 				<h3>In your own browser</h3>
 				<p>
-					Some things are saved only on your device and never sent to us: your cookie choice, your
-					application draft, whether you have dismissed the newsletter pop-up, your colour theme,
-					and in the Learning Hub your reading depth, progress, bookmarks and quiz answers.
+					Some things are saved only on your device and never sent to us: your application draft,
+					whether you have dismissed the newsletter pop-up, your colour theme, and in the Learning
+					Hub your reading depth, progress, bookmarks and quiz answers. Your cookie choice is
+					different: it is a cookie, so your browser sends it along with requests to our sites, as
+					it does with every cookie. We don't record or use it on the server.
 				</p>
 
 				<h2 id="sensitive"><span class="kicker-num">03</span> Sensitive information</h2>
