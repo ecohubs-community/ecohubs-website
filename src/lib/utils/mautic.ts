@@ -38,14 +38,29 @@ export function initMauticTracking(): () => void {
 		return () => {};
 	}
 
-	// Dispatched by CookieConsent.svelte.
-	const onConsent = (event: Event) => {
-		if ((event as CustomEvent<{ accepted: boolean }>).detail?.accepted !== true) return;
+	const stop = () => {
 		window.removeEventListener(CONSENT_CHANGE_EVENT, onConsent);
+		document.removeEventListener('visibilitychange', recheck);
+		window.removeEventListener('focus', recheck);
+	};
+	const start = () => {
+		stop();
 		loadMauticTracking();
 	};
+	// Dispatched by CookieConsent.svelte.
+	const onConsent = (event: Event) => {
+		if ((event as CustomEvent<{ accepted: boolean }>).detail?.accepted === true) start();
+	};
+	// The visitor may accept on rcos.ecohubs.community in another tab; that
+	// site's event never reaches this page, so re-read the shared cookie when
+	// this page comes back into view.
+	const recheck = () => {
+		if (document.visibilityState === 'visible' && hasAcceptedCookies()) start();
+	};
 	window.addEventListener(CONSENT_CHANGE_EVENT, onConsent);
-	return () => window.removeEventListener(CONSENT_CHANGE_EVENT, onConsent);
+	document.addEventListener('visibilitychange', recheck);
+	window.addEventListener('focus', recheck);
+	return stop;
 }
 
 /** Load mtc.js (once) and send a pageview. */
