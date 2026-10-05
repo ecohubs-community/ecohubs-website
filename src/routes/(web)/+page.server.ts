@@ -43,9 +43,10 @@ function formatLevel(level: ApiMember['level']): string | undefined {
 	return /^\d+$/.test(trimmed) ? `Level ${trimmed}` : trimmed;
 }
 
-const CACHE_TTL_MS = 12 * 60 * 60 * 1000; // 12 hours
-
-let cache: { data: ConstellationMember[]; expires: number } | null = null;
+// Last successful fetch, served only when ecohubsOS is unreachable. Freshness
+// is the CDN's job (see `cache-control` in `load`): a TTL cache here would
+// stack on top of it, since a warm instance can outlive the CDN entry.
+let lastGood: ConstellationMember[] | null = null;
 
 function parseDisplayName(displayName: string): { name: string; handle: string } {
 	if (displayName.includes(' / ')) {
@@ -122,9 +123,12 @@ async function fetchMembers(fetchFn: typeof fetch): Promise<ConstellationMember[
 }
 
 export async function load({ fetch, setHeaders }) {
-	// Cache 12h on the browser; allow stale-while-revalidate for one more day.
+	// Vercel's edge keeps the page for an hour, so members are at most ~1h old.
+	// Browsers must not cache it themselves: Vercel strips `s-maxage` before
+	// the response leaves the edge, so a browser `max-age` would add its own
+	// window on top, and a deploy can't purge it.
 	setHeaders({
-		'cache-control': 'public, max-age=43200, s-maxage=43200, stale-while-revalidate=86400'
+		'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=600'
 	});
 
 	const now = Date.now();
@@ -132,22 +136,19 @@ export async function load({ fetch, setHeaders }) {
 	// for hours, so the component starts from the render time (to hydrate the
 	// same markup) and moves to the reader's clock on mount.
 	const renderedAt = now;
-	if (cache && cache.expires > now) {
-		return { members: cache.data, membersStale: false, renderedAt };
-	}
 
 	try {
 		const members = await fetchMembers(fetch);
-		cache = { data: members, expires: now + CACHE_TTL_MS };
+		lastGood = members;
 		return { members, membersStale: false, renderedAt };
 	} catch (err) {
 		console.warn(
 			'[v2] failed to fetch members from ecohubsOS:',
 			err instanceof Error ? err.message : err
 		);
-		// Serve last known good cache even if expired, otherwise empty list.
+		// Serve the last known good list, otherwise empty list.
 		return {
-			members: cache?.data ?? [],
+			members: lastGood ?? [],
 			membersStale: true,
 			renderedAt
 		};
