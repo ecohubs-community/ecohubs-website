@@ -87,9 +87,9 @@
 					data-hero-step="0.30"
 					class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light"
 				>
-					EcoHubs is a network of small, human-scale ecovillages: intentional communities designed
-					to regenerate the land they sit on. Underneath it is our patient attempt to answer a
-					question many of us already carry:
+					EcoHubs is building a network of small, human-scale ecovillages: intentional communities
+					designed to regenerate the land they sit on. Underneath it is our patient attempt to
+					answer a question many of us already carry:
 					<em class="font-story italic">what would a life worth being inside actually look like?</em
 					>
 				</p>

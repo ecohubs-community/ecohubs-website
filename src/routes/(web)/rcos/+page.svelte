@@ -975,7 +975,7 @@
 				<a
 					href={path.href}
 					target={path.external ? '_blank' : undefined}
-					rel={path.external ? 'noopener' : undefined}
+					rel={path.external ? 'noopener noreferrer' : undefined}
 					class="group bg-white rounded-3xl p-7 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors block"
 				>
 					<div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">

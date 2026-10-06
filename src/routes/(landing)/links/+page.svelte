@@ -466,7 +466,7 @@
 	<a
 		href={item.href}
 		target={isExternal(item.href) ? '_blank' : undefined}
-		rel={isExternal(item.href) ? 'noopener' : undefined}
+		rel={isExternal(item.href) ? 'noopener noreferrer' : undefined}
 		onclick={() => track(item.title, item.href)}
 		class="group no-external-decoration relative flex items-center gap-4 rounded-2xl border border-transparent p-4 shadow-[0_14px_30px_-22px_rgba(0,0,0,0.5)] transition hover:-translate-y-0.5 {item.feature
 			? 'bg-gradient-to-br from-ecohubs-dark to-ecohubs-deep hover:border-ecohubs-light/30'

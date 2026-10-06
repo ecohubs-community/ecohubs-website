@@ -240,7 +240,7 @@
 														<a
 															href={p.href}
 															target={p.external ? '_blank' : undefined}
-															rel={p.external ? 'noopener' : undefined}
+															rel={p.external ? 'noopener noreferrer' : undefined}
 															data-sveltekit-preload-data={p.external ? undefined : 'hover'}
 															onmouseenter={() => (activeProj = p.key)}
 															onfocus={() => (activeProj = p.key)}
@@ -308,7 +308,7 @@
 																<a
 																	href={p.readMore.href}
 																	target={p.readMore.external ? '_blank' : undefined}
-																	rel={p.readMore.external ? 'noopener' : undefined}
+																	rel={p.readMore.external ? 'noopener noreferrer' : undefined}
 																	data-sveltekit-preload-data={p.readMore.external
 																		? undefined
 																		: 'hover'}
@@ -324,7 +324,7 @@
 															<a
 																href={p.primary.href}
 																target={p.primary.external ? '_blank' : undefined}
-																rel={p.primary.external ? 'noopener' : undefined}
+																rel={p.primary.external ? 'noopener noreferrer' : undefined}
 																data-sveltekit-preload-data={p.primary.external
 																	? undefined
 																	: 'hover'}
@@ -343,7 +343,7 @@
 																	<a
 																		href={s.href}
 																		target={s.external ? '_blank' : undefined}
-																		rel={s.external ? 'noopener' : undefined}
+																		rel={s.external ? 'noopener noreferrer' : undefined}
 																		data-sveltekit-preload-data={s.external ? undefined : 'hover'}
 																		class="no-external-decoration text-stone-600 hover:text-ecohubs-dark"
 																	>
@@ -428,7 +428,7 @@
 									<a
 										href={p.href}
 										target={p.external ? '_blank' : undefined}
-										rel={p.external ? 'noopener' : undefined}
+										rel={p.external ? 'noopener noreferrer' : undefined}
 										class="flex items-center gap-3 rounded-2xl px-2 py-2.5 hover:bg-white/50 transition-colors"
 										onclick={() => (mobileMenuOpen = false)}
 										data-sveltekit-preload-data={p.external ? undefined : 'hover'}
