@@ -165,7 +165,7 @@
 					<a
 						href="/privacy"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 						class="text-emerald-300/90 underline underline-offset-2 hover:text-ecohubs-ivory"
 						>How we handle your data</a
 					>

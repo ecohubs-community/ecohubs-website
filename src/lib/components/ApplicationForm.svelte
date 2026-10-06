@@ -621,7 +621,7 @@
 						<a
 							href="/privacy"
 							target="_blank"
-							rel="noopener"
+							rel="noopener noreferrer"
 							class="text-ecohubs-dark underline underline-offset-2 hover:text-ecohubs-deep"
 							>How we handle your data</a
 						>

@@ -143,7 +143,7 @@
 					<a
 						href={s.href}
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 						aria-label={s.label}
 						title={s.label}
 						onclick={() => track(`Social: ${s.label}`, s.href)}
@@ -225,7 +225,7 @@
 					class="text-ecohubs-light/80"
 					href="https://ecohubs.community"
 					target="_blank"
-					rel="noopener">ecohubs.community</a
+					rel="noopener noreferrer">ecohubs.community</a
 				>
 			</p>
 		</footer>

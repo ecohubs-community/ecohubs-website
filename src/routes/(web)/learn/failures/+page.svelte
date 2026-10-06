@@ -142,7 +142,7 @@
 					class="mt-5 inline-flex items-center gap-2 text-[0.95rem] text-ecohubs-primary
 					       underline decoration-emerald-300 underline-offset-4 transition-colors
 					       hover:text-ecohubs-deep"
-					rel="noopener"
+					rel="noopener noreferrer"
 				>
 					How to contribute a stress test
 					<Icon icon="tabler:external-link" class="h-4 w-4" />

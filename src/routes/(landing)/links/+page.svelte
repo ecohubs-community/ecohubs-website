@@ -566,7 +566,7 @@
 					<a
 						href={s.href}
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 						aria-label={s.label}
 						title={s.label}
 						onclick={() => track(`Social: ${s.label}`, s.href)}
@@ -649,7 +649,7 @@
 			<a
 				href={MEETING.discord}
 				target="_blank"
-				rel="noopener"
+				rel="noopener noreferrer"
 				onclick={() => track('Meeting: Join', MEETING.discord)}
 				class="no-external-decoration mt-4 flex items-center justify-center gap-2 rounded-xl bg-ecohubs-primary px-4 py-3 text-[14px] font-semibold text-white transition hover:bg-ecohubs-light hover:text-ecohubs-deep"
 			>
@@ -659,7 +659,7 @@
 				<a
 					href={gcalHref}
 					target="_blank"
-					rel="noopener"
+					rel="noopener noreferrer"
 					onclick={() => track('Meeting: Google Calendar', gcalHref)}
 					class="no-external-decoration flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.07] px-3 py-2.5 text-[12.5px] font-semibold text-ecohubs-base transition hover:border-ecohubs-light/40 hover:bg-white/[0.16]"
 				>
@@ -702,7 +702,7 @@
 				<a
 					href={ch.href}
 					target="_blank"
-					rel="noopener"
+					rel="noopener noreferrer"
 					title={ch.label}
 					onclick={() => track(`Podcast: ${ch.label}`, ch.href)}
 					class="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.07] px-2.5 py-2.5 transition hover:-translate-y-0.5 hover:border-ecohubs-light/50 hover:bg-white/[0.16]"
@@ -796,7 +796,7 @@
 					<a
 						href="https://www.youtube.com/@ecohubs"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 						onclick={() => track('YouTube channel', 'https://www.youtube.com/@ecohubs')}
 						class="no-external-decoration mt-1 inline-block text-[12.5px] text-ecohubs-primary hover:underline"
 					>
@@ -882,7 +882,7 @@
 				<a
 					href={s.href}
 					target="_blank"
-					rel="noopener"
+					rel="noopener noreferrer"
 					aria-label="Share on {s.label}"
 					title="Share on {s.label}"
 					onclick={() => track(`Share: ${s.label}`, shareUrl)}
@@ -934,7 +934,7 @@
 					class="text-ecohubs-light/80"
 					href="https://ecohubs.community"
 					target="_blank"
-					rel="noopener">ecohubs.community</a
+					rel="noopener noreferrer">ecohubs.community</a
 				>
 			</p>
 		</footer>
