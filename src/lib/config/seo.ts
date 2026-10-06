@@ -121,13 +121,13 @@ export const SEO_CONFIG = {
 		communityResilienceAssessment: {
 			title: 'Community Resilience Assessment — Free 5-Min Quiz | EcoHubs',
 			description:
-				'A free 5-minute community resilience assessment for intentional communities. Ten honest questions, then a human-written report mapping your gaps.',
+				'A free 5-minute community resilience assessment for intentional communities: ten questions, then a human-written report mapping your gaps.',
 			ogImage: '/og-resilience-assessment.jpg'
 		},
 		waitlist: {
 			title: 'Join the Waitlist — Co-found EcoHub One | EcoHubs',
 			description:
-				'Join the founding circle of EcoHub One, a regenerative community designed so people thrive together and the land does too. Free, and no commitment.',
+				'Join the founding circle of EcoHub One, a regenerative community designed so the people and the land both thrive. Free, with no commitment.',
 			ogImage: '/og-waitlist-ecohub-1.jpg'
 		}
 	}

@@ -32,7 +32,7 @@ export const QUESTIONS: Question[] = [
 	{
 		key: 'decisions',
 		label: 'Decision-making',
-		prompt: 'How does your community make important decisions — and is that process written down?'
+		prompt: 'Is the way your community makes important decisions written down?'
 	},
 	{
 		key: 'conflict',
@@ -50,25 +50,25 @@ export const QUESTIONS: Question[] = [
 		key: 'leaving',
 		label: 'Leaving the community',
 		prompt:
-			'If a member wants to leave — or needs to be asked to leave — is the process (including what happens to their contributions, belongings, or share) clearly defined?'
+			'If a member wants to leave, or needs to be asked to leave, is the process clearly defined, including what happens to their contributions, belongings, or share?'
 	},
 	{
 		key: 'money',
 		label: 'Money and shared finances',
 		prompt:
-			'Is it clearly defined how shared money is collected, spent, and accounted for — and who has authority over it?'
+			'Is it clearly defined how shared money is collected, spent, and accounted for, and who has authority over it?'
 	},
 	{
 		key: 'land',
 		label: 'Land and shared resources',
 		prompt:
-			'Is it clearly defined who can use which spaces, tools, and resources — and under what conditions?'
+			'Is it clearly defined who can use which spaces, tools, and resources, and under what conditions?'
 	},
 	{
 		key: 'roles',
 		label: 'Roles and responsibilities',
 		prompt:
-			'Are the roles people hold in the community — and the authority each role carries — written down and agreed?'
+			'Are the roles people hold in the community, and the authority each role carries, written down and agreed?'
 	},
 	{
 		key: 'accountability',
@@ -86,7 +86,7 @@ export const QUESTIONS: Question[] = [
 		key: 'power',
 		label: 'Power limits',
 		prompt:
-			'Are there clear limits on how much influence any single person — including founders or long-time members — can hold over community decisions?'
+			'Are there clear limits on how much influence any single person, including founders or long-time members, can hold over community decisions?'
 	}
 ];
 
@@ -139,13 +139,13 @@ export function tierFor(score: number): TierInfo {
 	if (score <= 3) {
 		return {
 			name: 'Significant undefined areas',
-			body: "Your community has significant undefined areas. This is more common than people realize — and it's exactly where the manual report will be most useful."
+			body: "Your community has significant undefined areas. This is more common than people realize, and it's where the full report will be most useful."
 		};
 	}
 	if (score <= 6.5) {
 		return {
 			name: 'Partially defined, with gaps',
-			body: 'Your community sits in the range most communities sit in — partially defined, with meaningful gaps. The full report will show you which gaps matter most.'
+			body: 'Like most communities, yours is partially defined, with real gaps. The full report will show you which gaps matter most.'
 		};
 	}
 	return {

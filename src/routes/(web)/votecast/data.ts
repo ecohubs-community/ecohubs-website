@@ -558,27 +558,27 @@ const link = (slug: string, text: string) =>
 export const faq: FaqEntry[] = [
 	{
 		q: 'Does this replace our meetings?',
-		a: `No — and it should not. Communities decide in conversation: around a table, in a circle, on a call. VoteCast is the step after that. It takes what the group worked out and makes it a decision on the record, with the rules it was made under attached, so that in six months nobody has to reconstruct it from memory. Plenty of groups use it purely to confirm what a circle already reached, which is a perfectly good use of it. If it ever replaced a conversation you needed to have, it was used wrongly.`
+		a: `No, and it should not. Communities decide in conversation: around a table, in a circle, on a call. VoteCast is the step after that. It takes what the group worked out and makes it a decision on the record, with the rules it was made under attached, so that in six months nobody has to reconstruct it from memory. Plenty of groups use it only to confirm what a circle already reached, which is a perfectly good use of it. If it ever replaced a conversation you needed to have, it was used wrongly.`
 	},
 	{
 		q: 'Do we need to be technical to use this?',
-		a: `No, and that is close to the whole design brief. You start a community, invite people with a link, write what is being decided, and set when voting opens and closes. There are no wallets to install and no tokens to hold — signing up takes an email address and a password. Where the platform does use a precise word, such as ${link('quorum', 'quorum')} or ${link('objection-window', 'objection window')}, it defines it on the spot and again in a public <a href="${votecastStats.glossaryUrl}" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">glossary</a> you can read before signing up for anything.`
+		a: `No, and that is close to the whole design brief. You start a community, invite people with a link, write what is being decided, and set when voting opens and closes. There are no wallets to install and no tokens to hold; signing up takes an email address and a password. Where the platform does use a precise word, such as ${link('quorum', 'quorum')} or ${link('objection-window', 'objection window')}, it defines it on the spot and again in a public <a href="${votecastStats.glossaryUrl}" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">glossary</a> you can read before signing up for anything.`
 	},
 	{
 		q: 'Is it free?',
-		a: `Yes for small groups. A community that has not been ${link('verified-community', 'verified')} yet can hold up to ${votecastStats.freeMemberCap} members and ${votecastStats.freeProposalCap} proposals, which is enough to run real decisions for a while and work out whether the tool suits you. Verification is a manual review that lifts both caps — it exists to stop the platform being used as free spam infrastructure, not as a paywall in disguise.`
+		a: `Yes for small groups. A community that has not been ${link('verified-community', 'verified')} yet can hold up to ${votecastStats.freeMemberCap} members and ${votecastStats.freeProposalCap} proposals, which is enough to run real decisions for a while and work out whether the tool suits you. Verification is a manual review that lifts both caps. It exists to stop the platform being used as free spam infrastructure, not as a paywall in disguise.`
 	},
 	{
 		q: 'Which method should we use?',
-		a: `Start with the simplest one that fits the question. A ${link('poll', 'Poll')} for choices with no pass or fail. ${link('ranked', 'Ranked')} when you are picking one thing from several. ${link('approval', 'Approval')} for ordinary motions, at a majority or at two-thirds for agreements that should be harder to change than to make. ${link('consensus', 'Consensus')} or ${link('consent', 'Consent')} for the decisions the whole group has to carry. The honest advice is to pick a default for each kind of decision now, while nothing is at stake, rather than during the argument.`
+		a: `Start with the simplest one that fits the question. A ${link('poll', 'Poll')} for choices with no pass or fail. ${link('ranked', 'Ranked')} when you are picking one thing from several. ${link('approval', 'Approval')} for ordinary motions, at a majority or at two-thirds for agreements that should be harder to change than to make. ${link('consensus', 'Consensus')} or ${link('consent', 'Consent')} for the decisions the whole group has to carry. Pick a default for each kind of decision now, while nothing is at stake, rather than during the argument.`
 	},
 	{
 		q: 'Can results be hidden until voting closes? Can votes be secret?',
-		a: `Both, and they are separate settings. ${link('tally-reveal', 'When the tally becomes visible')} — live, on close, or only to facilitators — is one choice; whether other members can see how a particular person voted is ${link('secret-ballot', 'another')}. You can run open votes with hidden totals, or a secret ballot with a live count. Hiding the running tally is the usual guard against people voting with the trend rather than with their judgement.`
+		a: `Both, and they are separate settings. ${link('tally-reveal', 'When the tally becomes visible')} (live, on close, or only to facilitators) is one choice; whether other members can see how a particular person voted is ${link('secret-ballot', 'another')}. You can run open votes with hidden totals, or a secret ballot with a live count. Hiding the running tally is the usual guard against people voting with the trend rather than with their judgement.`
 	},
 	{
 		q: 'What actually happens if someone objects?',
-		a: `It depends on the method, which is why the method is chosen per decision. Under ${link('consensus', 'Consensus')}, a reasoned objection blocks the proposal and a ${link('stand-aside', 'stand-aside')} does not. Under ${link('consent', 'Consent')}, an objection has to be upheld by a ${link('facilitator', 'facilitator')} to stand. Either way the objection is recorded with its reason, and the outcome reads ${link('outcome-blocked', 'blocked')} rather than failed — a distinction that matters, because a blocked proposal usually comes back rewritten and a failed one usually does not come back at all.`
+		a: `It depends on the method, which is why the method is chosen per decision. Under ${link('consensus', 'Consensus')}, a reasoned objection blocks the proposal and a ${link('stand-aside', 'stand-aside')} does not. Under ${link('consent', 'Consent')}, an objection has to be upheld by a ${link('facilitator', 'facilitator')} to stand. Either way the objection is recorded with its reason, and the outcome reads ${link('outcome-blocked', 'blocked')} rather than failed, because a blocked proposal usually comes back rewritten and a failed one usually does not come back at all.`
 	},
 	{
 		q: 'Is this a DAO tool? Do we need tokens or a wallet?',
@@ -590,6 +590,6 @@ export const faq: FaqEntry[] = [
 	},
 	{
 		q: 'How does VoteCast relate to the RCOS Standard?',
-		a: 'They are the two halves of one thing. The <a href="/rcos" class="text-ecohubs-primary hover:underline font-medium">RCOS Standard</a> is where a community writes down what its rules are — which decisions need which method, who is eligible, how conflict gets repaired. VoteCast is where those rules actually run. A rule nobody runs is a document; a vote with no rule behind it is a headcount. You want both.'
+		a: 'They are the two halves of one thing. The <a href="/rcos" class="text-ecohubs-primary hover:underline font-medium">RCOS Standard</a> is where a community writes down what its rules are: which decisions need which method, who is eligible, how conflict gets repaired. VoteCast is where those rules actually run. A rule nobody runs is a document; a vote with no rule behind it is a headcount. You want both.'
 	}
 ];

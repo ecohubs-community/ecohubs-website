@@ -29,7 +29,7 @@
 			hoverTextColor: 'text-blue-600',
 			title: 'Application Form',
 			description:
-				'Selective membership process. We welcome aligned contributors who share our vision for regenerative communities.',
+				'Apply to join. The community reads each application and votes on it in ecohubsOS.',
 			link: { href: 'https://ecohubs.community/membership', target: '_self' },
 			category: 'onboarding'
 		},
@@ -42,7 +42,7 @@
 			hoverTextColor: 'text-emerald-600',
 			title: 'EcoHubsOS',
 			description:
-				'The central hub connecting all tools. Member dashboard, onboarding flow, and unified access to our ecosystem.',
+				'The home base that links the other tools, with the member dashboard and the onboarding flow.',
 			category: 'onboarding',
 			highlight: true
 		},
@@ -68,7 +68,7 @@
 			hoverTextColor: 'text-orange-600',
 			title: 'Puckstack',
 			description:
-				'Gas-free bounty board. Organize work with tasks & quests, reward effort with XP & tokens, govern with earned authority.',
+				'Bounty board. Organize work as tasks and quests, reward effort with XP, and govern with earned authority.',
 			link: { href: 'https://puckstack.xyz', target: '_self' },
 			category: 'action'
 		},
@@ -94,7 +94,7 @@
 			hoverTextColor: 'text-amber-600',
 			title: 'Internal Voting',
 			description:
-				'Built into ecohubsOS — member applications, content publication, and governance decisions are decided together through transparent, internal voting. Free, accessible, no external accounts.',
+				'Built into ecohubsOS. Members vote together, in the open, on applications, what gets published, and governance decisions. It is free and needs no external accounts.',
 			link: { href: 'https://os.ecohubs.community', target: '_self' },
 			category: 'governance'
 		},
@@ -151,9 +151,9 @@
 				for regenerative action.
 			</h3>
 			<p class="text-stone-700 text-base md:text-lg leading-relaxed">
-				Explore the tools that power our community. <span class="hidden md:inline"
-					>Click on the apps in the dock below to learn how we collaborate and govern.</span
-				><span class="md:hidden">Tap on any tool to learn more.</span>
+				These are the tools the community runs on. <span class="hidden md:inline"
+					>Click an app in the dock below to see how we collaborate and govern.</span
+				><span class="md:hidden">Tap any tool to learn more.</span>
 			</p>
 		</div>
 

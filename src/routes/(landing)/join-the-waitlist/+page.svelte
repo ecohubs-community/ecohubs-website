@@ -34,7 +34,7 @@
 		},
 		{ n: '02', title: 'People before infrastructure.', body: 'Settle the human system first.' },
 		{ n: '03', title: 'Belonging by design.', body: 'Clear roles, fair repair, real voice.' },
-		{ n: '04', title: 'Replicable, not precious.', body: 'Built so the next hub is easier.' }
+		{ n: '04', title: 'Made to be copied.', body: 'So the next hub is easier to build.' }
 	];
 
 	const pillars = [
@@ -42,26 +42,26 @@
 			icon: Users,
 			title: 'Human structure',
 			note: '(RCOS)',
-			body: "Explicit, agreed rules for decisions, roles and repair — so communities don't fail on conflict.",
+			body: "Explicit, agreed rules for decisions, roles and repair, so conflict doesn't break the community.",
 			href: 'https://rcos.ecohubs.community',
 			cta: 'Explore RCOS →'
 		},
 		{
 			icon: MapPin,
 			title: 'The right place',
-			body: 'A map weighing 29+ data sources — water, climate, soil, community — to find where an EcoHub will actually thrive. Sites shortlisted across 3 continents.',
+			body: 'A map that weighs 29+ data sources, from water and climate to soil and community, to find where an EcoHub will thrive. Sites are shortlisted across 3 continents.',
 			href: 'https://csi.ecohubs.community',
 			cta: 'Open the map →'
 		},
 		{
 			icon: Coins,
 			title: 'A real business',
-			body: 'Every EcoHub is also a regenerative enterprise — so it pays for itself instead of running on goodwill and grants.',
-			footnote: 'income, not subsidy'
+			body: 'Every EcoHub is also a regenerative enterprise, so it pays for itself instead of running on goodwill and grants.',
+			footnote: 'self-funding'
 		},
 		{
 			icon: Network,
-			title: 'A network, not an island',
+			title: 'Part of a network',
 			body: 'Hubs connect and share. A regenerative finance model lets one healthy hub help fund the next.',
 			footnote: 'one funds the next'
 		}
@@ -82,7 +82,7 @@
 		{
 			n: 3,
 			title: 'Selection',
-			body: 'Deliberately strict — for the health of the community and your own fit.'
+			body: 'Deliberately strict, for the health of the community and for your own fit.'
 		},
 		{
 			n: 4,
@@ -114,24 +114,24 @@
 	const faqItems: { q: string; a: string; link?: { href: string; label: string } }[] = [
 		{
 			q: 'Is joining a commitment?',
-			a: 'No. The waitlist is free and completely non-binding. You\'re saying "tell me more, keep me posted" — nothing else. You can leave any time, and joining never obligates you to move, pay, or decide anything.'
+			a: 'No. The waitlist is free and completely non-binding. You\'re saying "tell me more, keep me posted", and nothing else. You can leave any time, and joining never obligates you to move, pay, or decide anything.'
 		},
 		{
 			q: 'Will it cost money later?',
-			a: "We'll be transparent: nothing is owed by joining. Much later, pioneers who move forward contribute a fixed amount to a foundation that buys the land — which they then co-steward. It's shared regenerative assets you have a stake in, not a payment to us. No tiers, no subscription, no surprise fees."
+			a: 'Joining costs nothing. Much later, pioneers who move forward contribute a fixed amount to a foundation that buys the land, which they then co-steward. The money goes into shared regenerative assets you have a stake in, not to us. No tiers, no subscription, no surprise fees.'
 		},
 		{
 			q: 'Do I need to be an expert, or move now?',
-			a: "No to both. The path is gradual and there's training built in. What matters far more than existing skills is curiosity, care, and a willingness to learn alongside others. Plenty of people on the list are simply paying attention for now."
+			a: "No to both. The path is gradual and there's training built in. Curiosity, care and a willingness to learn alongside others matter far more than existing skills. Plenty of people on the list are simply paying attention for now."
 		},
 		{
 			q: "Can I help even if I don't move in?",
-			a: "Yes. Most of the people shaping EcoHubs aren't moving in — they're advising, designing, testing the RCOS Standard, or simply cheering it on. Belonging here isn't only about residence; it's about contribution, in whatever form fits your life."
+			a: "Yes. Most of the people shaping EcoHubs aren't moving in. They advise, design, test the RCOS Standard, or cheer it on, and you can contribute in whatever form fits your life."
 		},
 		{
 			q: 'Do I have to live in a geodesic dome like the ones above, or are other homes possible?',
-			a: "Not at all. Building with Javier's dome system is just one option we're considering today — not a requirement. We're actively exploring a wider range of low-impact building approaches, so pioneers can choose what best fits their climate, needs and budget. And if you know a builder or system we should look into, we'd genuinely love an introduction —",
-			link: { href: '/contact', label: 'get in touch via our contact form →' }
+			a: "Not at all. Javier's dome system is one option we're considering today, not a requirement. We're exploring a wider range of low-impact building approaches, so pioneers can choose what fits their climate, needs and budget. If you know a builder or system we should look into, we'd love an introduction.",
+			link: { href: '/contact', label: 'Get in touch via our contact form →' }
 		}
 	];
 
@@ -278,9 +278,9 @@
 				</h1>
 
 				<p class="max-w-xl mt-6 text-lg font-light leading-relaxed text-stone-600 sm:text-xl">
-					We're building EcoHub One — a regenerative community designed so people thrive together,
-					and the land does too. It starts with a small founding circle. The first step is just
-					saying you're in.
+					We're building EcoHub One, a regenerative community designed so the people and the land
+					both thrive. It starts with a small founding circle, and the first step is saying you're
+					in.
 				</p>
 
 				<div class="mt-8">
@@ -333,21 +333,20 @@
 		<div class="relative max-w-4xl px-5 mx-auto lg:px-8" data-scroll-animate="fade-up">
 			<div class="mb-5 kicker text-emerald-800">The why</div>
 			<h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ecohubs-deep leading-[1.12]">
-				Most of us feel a little disconnected —
+				Most of us feel a little disconnected
 				<em class="italic font-normal font-story text-stone-500"
 					>from nature, from each other, from work that matters.</em
 				>
 			</h2>
 			<div class="grid gap-8 mt-8 md:grid-cols-2 md:gap-12">
 				<p class="text-[17px] leading-[1.75] text-stone-700">
-					We're not the first to dream of living differently. People have tried for decades. And
-					most intentional communities don't fail on solar panels or vegetable beds — they fail on
-					the hard, human part: conflict, unclear decisions, burnout, who-does-what.
+					We're not the first to dream of living differently. People have tried for decades, and
+					when intentional communities fail, it's rarely over solar panels or vegetable beds. They
+					fail on the hard, human part: conflict, unclear decisions, burnout, who-does-what.
 				</p>
 				<p class="text-[17px] leading-[1.75] text-stone-700">
 					<strong class="font-medium text-ecohubs-deep">EcoHubs starts with that hard part.</strong>
-					Clear human structure first, then the land, the buildings, the business. So belonging isn't
-					a hope — it's something the community is actually built to hold.
+					Clear human structure comes first, then the land, the buildings and the business.
 				</p>
 			</div>
 		</div>
@@ -362,7 +361,7 @@
 					<h2
 						class="font-serif text-3xl sm:text-4xl md:text-[44px] text-ecohubs-deep leading-[1.12]"
 					>
-						A small community that lives well together —
+						A small community that lives well together
 						<em class="italic font-normal font-story text-ecohubs-primary"
 							>and gives more to the land than it takes.</em
 						>
@@ -370,8 +369,8 @@
 					<p class="mt-6 text-[17px] leading-[1.75] text-stone-700 max-w-xl">
 						Picture a handful of households on regenerating land: shared gardens and kitchens,
 						low-impact homes, real work and real income, and a way of making decisions together that
-						actually holds. Not a commune, not an eco-resort — a living place designed to be
-						repeated.
+						actually holds. It is neither a commune nor an eco-resort. People live and work there,
+						and the design is meant to be copied by the next hub.
 					</p>
 
 					<div class="grid gap-3 mt-9 sm:grid-cols-2">
@@ -396,7 +395,7 @@
 						<LiteYouTube videoId="7tby1xZzMMk" title="A Day in an EcoHub" />
 					</div>
 					<p class="mt-3 text-[13px] text-stone-500 font-story italic">
-						Six minutes inside the vision — morning to evening in a working hub.
+						Six minutes inside the vision, from morning to evening in a working hub.
 					</p>
 				</div>
 			</div>
@@ -413,11 +412,13 @@
 			<div class="max-w-2xl mb-12 md:mb-16" data-scroll-animate="fade-up">
 				<div class="mb-5 kicker text-emerald-300/80">The system</div>
 				<h2 class="font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.12] text-emerald-50">
-					Four pillars hold an EcoHub up.
-					<em class="italic font-normal font-story text-emerald-200/80">Miss one and it tilts.</em>
+					An EcoHub stands on four pillars
+					<em class="italic font-normal font-story text-emerald-200/80"
+						>and needs every one of them.</em
+					>
 				</h2>
 				<p class="mt-5 text-[17px] leading-relaxed text-emerald-100/80">
-					This is the part that's usually skipped — so it's the part we built first.
+					Most community projects skip this part, so we built it first.
 				</p>
 			</div>
 
@@ -449,7 +450,7 @@
 						<a
 							href={p.href}
 							target="_blank"
-							rel="noopener"
+							rel="noopener noreferrer"
 							class="no-external-decoration group bg-emerald-50/[0.04] border border-emerald-100/15 rounded-3xl p-7 flex flex-col hover:bg-emerald-50/[0.07] hover:border-emerald-100/30 transition-colors"
 						>
 							{@render pillarContent(p)}
@@ -472,7 +473,7 @@
 			<h2 class="font-serif text-2xl leading-snug sm:text-3xl text-ecohubs-deep">
 				Like the way this is being built?
 				<em class="italic font-normal font-story text-stone-500"
-					>Stand near the door while it's open.</em
+					>The founding circle is forming now.</em
 				>
 			</h2>
 			<div class="flex flex-col items-center justify-center gap-3 mt-7">
@@ -483,9 +484,7 @@
 					<span>Join the founding community</span>
 					<span class="transition-transform group-hover:translate-x-0.5">→</span>
 				</a>
-				<div class="text-[13.5px] text-stone-500">
-					Free to join. No commitment — just the first step.
-				</div>
+				<div class="text-[13.5px] text-stone-500">Free to join. No commitment.</div>
 			</div>
 		</div>
 	</section>
@@ -502,17 +501,16 @@
 					<h2
 						class="font-serif text-3xl sm:text-4xl md:text-[44px] text-ecohubs-deep leading-[1.12]"
 					>
-						The homes already exist —
+						The homes already exist,
 						<em class="italic font-normal font-story text-stone-500"
-							>and they're buildable almost anywhere.</em
+							>and you can build them almost anywhere.</em
 						>
 					</h2>
 					<p class="mt-6 text-[17px] leading-[1.75] text-stone-700">
-						This isn't a render. Natural builder Javier Yanez has developed an affordable,
-						replicable geodesic dome system: CNC-cut frames assembled with local, natural materials.
-						A 7-metre dome runs roughly
-						<strong class="font-medium text-ecohubs-deep">$10k–$20k</strong> — strong, beautiful, and
-						within reach.
+						Natural builder Javier Yanez has developed an affordable, replicable geodesic dome
+						system: CNC-cut frames assembled with local, natural materials. A 7-metre dome costs
+						roughly
+						<strong class="font-medium text-ecohubs-deep">$10k–$20k</strong>.
 					</p>
 
 					<div class="flex items-center gap-4 mt-8">
@@ -587,7 +585,7 @@
 			<div class="max-w-2xl mb-12 md:mb-16" data-scroll-animate="fade-up">
 				<div class="mb-5 kicker text-emerald-700">The journey</div>
 				<h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ecohubs-deep leading-[1.12]">
-					A long, intentional process —
+					A long, intentional process
 					<em class="italic font-normal font-story text-ecohubs-primary"
 						>that starts with one no-pressure step.</em
 					>
@@ -642,14 +640,12 @@
 			<h2
 				class="font-serif text-2xl sm:text-3xl md:text-4xl text-ecohubs-deep leading-[1.15] max-w-3xl mx-auto"
 			>
-				Not one founder with a dream —
-				<em class="italic font-normal font-story text-stone-500"
-					>a working network of people who've done the parts before.</em
-				>
+				A working network of people
+				<em class="italic font-normal font-story text-stone-500">who've done the parts before.</em>
 			</h2>
 			<p class="mt-5 text-[16px] text-stone-700 leading-relaxed max-w-2xl mx-auto">
-				Permaculturists, economists, software developers and ecological builders, designing this
-				together in the open — 15+ contributors across 10 countries.
+				15+ contributors across 10 countries: permaculturists, economists, software developers and
+				ecological builders, designing this together in the open.
 			</p>
 			<div
 				class="grid grid-cols-2 gap-x-6 gap-y-9 mt-12 sm:grid-cols-4 sm:gap-x-4 max-w-3xl mx-auto"
@@ -790,14 +786,13 @@
 				The first cohort is forming
 			</div>
 			<h2 class="font-serif text-3xl sm:text-5xl md:text-[56px] leading-[1.08] text-emerald-50">
-				A new way of living is being built.
+				We're building a new way of living.
 				<em class="italic font-normal font-story text-emerald-200/85"
 					>Belong to it from the start.</em
 				>
 			</h2>
 			<p class="max-w-xl mx-auto mt-6 text-lg font-light leading-relaxed text-emerald-100/80">
-				One email puts you in the room while EcoHub One takes shape — no commitment, no cost, just
-				the first step.
+				One email puts you in the room while EcoHub One takes shape. No cost, no commitment.
 			</p>
 
 			<div class="mt-9">
@@ -805,8 +800,8 @@
 			</div>
 
 			<p class="mt-7 font-story italic text-[15px] text-emerald-200/70">
-				First cohort: ~20 pioneers, forming 2026 — kept small so the people in it can truly know
-				each other.
+				First cohort: ~20 pioneers, forming 2026, kept small so the people in it can know each other
+				well.
 			</p>
 		</div>
 	</section>
@@ -855,9 +850,7 @@
 >
 	<div class="flex-1 min-w-0">
 		<p class="text-[13px] font-medium text-ecohubs-deep leading-tight">Be part of EcoHub One</p>
-		<p class="text-[11px] text-stone-500 leading-tight truncate">
-			Free to join. No commitment — just the first step.
-		</p>
+		<p class="text-[11px] text-stone-500 leading-tight truncate">Free to join. No commitment.</p>
 	</div>
 	<a
 		href="#join"

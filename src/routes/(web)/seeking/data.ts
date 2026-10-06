@@ -306,15 +306,15 @@ export interface FaqEntry {
 export const faq: FaqEntry[] = [
 	{
 		q: 'Is it really free?',
-		a: `Yes — always, for the person seeking. There is no fee, no account to pay for, and nothing waiting to be upsold at the end. EcoHubs funds it because a person who lands well in a community is the whole point of the project; charging the people least able to pay would defeat it.`
+		a: `Yes, always, for the person seeking. There is no fee, no account to pay for, and nothing waiting to be upsold at the end. EcoHubs funds it because a person who lands well in a community is the whole point of the project; charging the people least able to pay would defeat it.`
 	},
 	{
 		q: 'Who actually reads what I send?',
-		a: `A person, not a matching engine. Someone who knows this world reads every intake by hand and then searches for communities that fit what you actually wrote — not whatever ranks highest or pays most. You hear back personally, normally within ${seekingStats.turnaround}.`
+		a: `A person, not a matching engine. Someone who knows this world reads every intake by hand and then searches for communities that fit what you actually wrote, not whatever ranks highest or pays most. You hear back personally, normally within ${seekingStats.turnaround}.`
 	},
 	{
 		q: 'Do you only point me toward EcoHubs communities?',
-		a: 'No, and that matters more than it might sound. The great majority of places people are pointed toward have no connection to EcoHubs at all. The service works for the person seeking — if the best fit for you is a fifty-year-old community on the other side of the world that has never heard of us, that is the one you should hear about.'
+		a: 'No. The great majority of places people are pointed toward have no connection to EcoHubs at all. The service works for the person seeking. If the best fit for you is a fifty-year-old community on the other side of the world that has never heard of us, that is the one you should hear about.'
 	},
 	{
 		q: 'What if you are not sure about a place?',
@@ -322,18 +322,18 @@ export const faq: FaqEntry[] = [
 	},
 	{
 		q: 'How long does the intake take, and what is it like?',
-		a: `${seekingStats.questionCount.charAt(0).toUpperCase() + seekingStats.questionCount.slice(1)} questions, answered in prose rather than checkboxes — the land, an ordinary day, money, conflict, what is non-negotiable, and what worries you. Most people take twenty minutes or so. Your answers are kept in your browser as you write, so you can stop halfway and come back.`
+		a: `${seekingStats.questionCount.charAt(0).toUpperCase() + seekingStats.questionCount.slice(1)} questions, answered in prose rather than checkboxes: the land, an ordinary day, money, conflict, what is non-negotiable, and what worries you. Most people take twenty minutes or so. Your answers are kept in your browser as you write, so you can stop halfway and come back.`
 	},
 	{
 		q: 'I do not really know what I want yet. Should I still write?',
-		a: 'Yes — that is the normal case, not the exception. Very few people arrive with a clear specification; most arrive with a feeling and a lot of uncertainty. The questions are built to help you find the words, and "I do not know yet" is a perfectly good answer to several of them.'
+		a: 'Yes. That is the normal case. Very few people arrive with a clear specification; most arrive with a feeling and a lot of uncertainty. The questions are built to help you find the words, and "I do not know yet" is a perfectly good answer to several of them.'
 	},
 	{
 		q: 'Is this only for ecovillages?',
-		a: 'No. Ecovillages are one shape among many — cooperative housing, land projects, co-living, spiritual communities, farms with a shared table. What the matches have in common is that people live there together on purpose, and that the place is real and open.'
+		a: 'No. Ecovillages are one shape among many: cooperative housing, land projects, co-living, spiritual communities, farms with a shared table. What the matches have in common is that people live there together on purpose, and that the place is real and open.'
 	},
 	{
 		q: 'How does this fit with the rest of EcoHubs?',
-		a: 'It is the one part built for people who want to <em>arrive</em> rather than build. <a href="/csi" class="text-ecohubs-primary hover:underline font-medium">CSI</a> maps where a new community could begin, the <a href="/rcos" class="text-ecohubs-primary hover:underline font-medium">RCOS Standard</a> describes what holds one together, and <a href="/votecast" class="text-ecohubs-primary hover:underline font-medium">VoteCast</a> runs its decisions. Seeking.Community is for the much larger number of people who do not want to start anything — they want to find somewhere that already works.'
+		a: 'It is the one part built for people who want to <em>arrive</em> rather than build. <a href="/csi" class="text-ecohubs-primary hover:underline font-medium">CSI</a> maps where a new community could begin, the <a href="/rcos" class="text-ecohubs-primary hover:underline font-medium">RCOS Standard</a> describes what holds one together, and <a href="/votecast" class="text-ecohubs-primary hover:underline font-medium">VoteCast</a> runs its decisions. Seeking.Community is for the much larger number of people who do not want to start anything; they want to find somewhere that already works.'
 	}
 ];

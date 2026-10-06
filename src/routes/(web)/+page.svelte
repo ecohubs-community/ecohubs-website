@@ -82,7 +82,7 @@
 
 <SEO
 	title="EcoHubs — A Regenerative Future Designed Together"
-	description="A growing network of people building a different way to live together — rooted in nature, honest about conflict, and designed so belonging is built in."
+	description="A growing network of people building regenerative communities: rooted in nature, open about conflict, and designed so belonging doesn't depend on luck."
 	ogImage="/og-home.jpg"
 	breadcrumbs={[{ name: 'Home', url: 'https://ecohubs.community/' }]}
 />
@@ -150,10 +150,9 @@
 					style="--hero-delay: 0.30s"
 					class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light"
 				>
-					EcoHubs is a growing network of people building regenerative intentional communities — a
-					different way to live together, rooted in nature, honest about conflict, and designed so
-					that belonging is built in, not left to chance. That is what we mean by regenerative
-					living: giving back more than we take.
+					EcoHubs is a growing network of people building regenerative intentional communities:
+					places that give back more than they take, stay rooted in nature, deal with conflict
+					openly, and are designed so belonging doesn't depend on luck.
 				</p>
 
 				<div
@@ -194,7 +193,7 @@
 					<PersonaIcons>
 						{#snippet caption()}
 							Permaculturists, community builders, systems thinkers and
-							<em class="font-story italic">seekers of a different kind of life</em> — co-creating this,
+							<em class="font-story italic">seekers of a different kind of life</em>, building this
 							one pilot at a time.
 						{/snippet}
 					</PersonaIcons>
@@ -382,8 +381,8 @@
 				<em class="font-story italic font-normal text-stone-500">This one is carried by many.</em>
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
-				EcoHubs didn't come from a single person with a plan — it came from many people, in
-				different corners of the world, who quietly felt the similar things. Read their stories.
+				EcoHubs grew out of many people, in different corners of the world, who quietly felt the
+				same things. Read their stories.
 			</p>
 		</div>
 
@@ -465,9 +464,9 @@
 						sense that something is missing — we want to hear it.
 					</p>
 					<p class="text-stone-500 leading-relaxed mb-10">
-						Stories like Stefan's don't start as stories. They start as feelings most people never
-						say out loud. Sharing yours helps others realise they're not alone — and helps us build
-						something that fits the people who need it.
+						Stories like Stefan's start as feelings most people never say out loud. Sharing yours
+						helps others realise they're not alone, and helps us build something that fits the
+						people who need it.
 					</p>
 					<a
 						href="/contact"
@@ -638,8 +637,8 @@
 				It's the system we all grew up inside.
 			</h2>
 			<p class="mt-6 text-lg md:text-xl text-stone-200/80 leading-relaxed max-w-2xl">
-				What most of us live with wasn't designed for humans. It was designed for output, for
-				growth, for scale. These are some of the wounds it leaves.
+				Most of what we live with was designed for output, growth and scale rather than for people.
+				These are some of the wounds it leaves.
 			</p>
 		</div>
 
@@ -673,8 +672,7 @@
 		<div class="mt-10 max-w-2xl mx-auto text-center">
 			{#if !showAllWounds}
 				<p class="font-story italic text-stone-300/70 text-base md:text-lg leading-relaxed">
-					There are {wounds.length - WOUNDS_PREVIEW_COUNT} more wounds — we didn't list every one. The
-					pattern is what matters.
+					{wounds.length - WOUNDS_PREVIEW_COUNT} more below, and even those aren't all of them.
 				</p>
 				<button
 					type="button"
@@ -748,9 +746,9 @@
 				when the scale gets small again.
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
-				Not because community is a cure, but because most of our pain comes from living at a scale
-				humans were never built for. Bring the scale back down — to a place, to people you know by
-				name — and the knots start to loosen on their own.
+				Community isn't a cure. But most of our pain comes from living at a scale humans were never
+				built for. Bring the scale back down to one place and people you know by name, and the knots
+				start to loosen.
 			</p>
 		</div>
 
@@ -796,8 +794,7 @@
 		<div class="mt-10 max-w-2xl mx-auto text-center">
 			{#if !showAllAnswers}
 				<p class="font-story italic text-stone-500 text-base md:text-lg leading-relaxed">
-					There are {answers.length - ANSWERS_PREVIEW_COUNT} more shifts — we didn't list every one.
-					The pattern is what matters.
+					{answers.length - ANSWERS_PREVIEW_COUNT} more shifts below.
 				</p>
 				<button
 					type="button"
@@ -867,23 +864,21 @@
 		</div>
 
 		<div data-scroll-animate="fade-up" class="lg:col-span-7">
-			<div class="kicker text-emerald-700 mb-4">A network, not an escape</div>
+			<div class="kicker text-emerald-700 mb-4">The network</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight mb-6">
 				One community is a refuge.<br />
 				<em class="font-story italic font-normal">A network of them</em> is an answer.
 			</h2>
 			<p class="text-lg text-stone-700 leading-relaxed mb-5">
-				An EcoHub on its own is a beautiful project. But the vision is bigger: an <strong
-					>interconnected network</strong
-				> of small, locally rooted communities that share what they learn and strengthen each other.
+				A single EcoHub shelters the people who live there. We are building a network of small,
+				locally rooted communities that share what they learn and back each other up.
 			</p>
 			<p class="text-lg text-stone-700 leading-relaxed mb-8">
-				We are not trying to replace the system with a revolution. We are quietly reducing our
-				dependency on it — community by community — until a different way of life becomes normal,
-				accessible, and replicable.
+				We don't plan a revolution. Community by community, we are reducing how much we depend on
+				the system, until a different way of life becomes normal, accessible, and replicable.
 			</p>
 			<div data-scroll-stagger class="grid sm:grid-cols-3 gap-4">
-				{#each [{ label: 'Local', desc: 'Rooted in a place, adapted to its culture and climate.' }, { label: 'Connected', desc: 'Sharing patterns, failures, and tools through the RCOS Standard.' }, { label: 'Replicable', desc: 'Forkable. Not franchised. Every hub stays its own place.' }] as item}
+				{#each [{ label: 'Local', desc: 'Rooted in a place, adapted to its culture and climate.' }, { label: 'Connected', desc: 'Sharing patterns, failures, and tools through the RCOS Standard.' }, { label: 'Replicable', desc: 'Each hub forks the model and adapts it, so every hub stays its own place.' }] as item}
 					<div class="p-4 rounded-xl bg-white border border-stone-200/70">
 						<div class="font-story italic text-2xl text-ecohubs-primary">{item.label}</div>
 						<p class="text-sm text-stone-600 mt-1">{item.desc}</p>
@@ -937,8 +932,8 @@
 				<em class="font-story italic font-normal text-emerald-200/85">Join the waitlist.</em>
 			</h2>
 			<p class="mt-5 text-lg text-emerald-100/80 leading-relaxed max-w-xl font-light">
-				EcoHub One is a regenerative community designed so people thrive together, and the land does
-				too. It starts with a small founding circle — and the first step is just saying you're in.
+				EcoHub One will be a regenerative community designed so the people and the land both thrive.
+				It starts with a small founding circle, and the first step is saying you're in.
 			</p>
 		</div>
 		<div class="shrink-0 flex flex-col items-start lg:items-end gap-3">
@@ -967,18 +962,16 @@
 				Not waiting · already underway
 			</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
-				What we are <em class="font-story italic font-normal text-stone-500">already doing</em><br
-				/>
-				— quietly, in the open.
+				What we are <em class="font-story italic font-normal text-stone-500">already doing</em>.
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
-				EcoHubs is not a future plan waiting for funding. Five strands of work are underway right
-				now. Each one feeds the others, and each one is documented as we go.
+				Five strands of work are underway now, without waiting for funding. Each one feeds the
+				others, and we document each one as we go.
 			</p>
 		</div>
 
 		<div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-			{#each [{ num: '01', tag: 'Practice', title: 'Applying the RCOS Standard to our own community.', body: 'We are the first test of the Standard. Membership, governance, conflict, and decision pathways are written down and used by us, on us — refined as the community grows.', cta: 'Read our RCOS specs ↗', href: 'https://specs.ecohubs.community', external: true, accent: 'emerald' }, { num: '02', tag: 'Pilot', title: 'FruitHaven Community RCOS pilot.', body: 'In Ecuador, an existing community has been applying the RCOS Standard since March 2026 — under real ecological, social and economic constraints. Lessons feed straight back into the standard.', cta: 'See the pilot →', href: '/rcos#pilot', accent: 'amber' }, { num: '03', tag: 'Research', title: 'Studying what works (and what breaks) in intentional communities.', body: 'We read the literature, talk to elders of past projects, and document the failure patterns that keep coming back. The RCOS Standard earns its place by surviving those patterns — not by ignoring them.', cta: 'Open the research →', href: '/rcos', accent: 'emerald' }, { num: '04', tag: 'Design', title: 'New ways to make community more accessible & replicable.', body: 'Lower the bar to entry. Make adoption modular. Make resilience the default. We are designing the patterns, tools, and onboarding paths that turn intentional community from rare into normal.', cta: 'See where we need help →', href: '/membership', accent: 'emerald' }, { num: '05', tag: 'Community', title: 'Growing the online community — members, events, partnerships.', body: 'Weekly calls, member onboarding, partner conversations, public events. The network gets stronger every time someone shows up — and every relationship made here is a thread that holds.', cta: 'Become a member →', href: '/membership', accent: 'amber' }] as item}
+			{#each [{ num: '01', tag: 'Practice', title: 'Applying the RCOS Standard to our own community.', body: 'We are the first test of the Standard. Our own membership, governance, conflict and decision pathways are written down, we live by them, and we revise them as the community grows.', cta: 'Read our RCOS specs ↗', href: 'https://specs.ecohubs.community', external: true, accent: 'emerald' }, { num: '02', tag: 'Pilot', title: 'FruitHaven Community RCOS pilot.', body: 'In Ecuador, an existing community has been applying the RCOS Standard since March 2026, under real ecological, social and economic constraints. What they learn goes straight back into the Standard.', cta: 'See the pilot →', href: '/rcos#pilot', accent: 'amber' }, { num: '03', tag: 'Research', title: 'Studying what works (and what breaks) in intentional communities.', body: 'We read the literature, talk to elders of past projects, and document the failure patterns that keep coming back. The RCOS Standard has to hold up against every one of them.', cta: 'Open the research →', href: '/rcos', accent: 'emerald' }, { num: '04', tag: 'Design', title: 'New ways to make community more accessible & replicable.', body: 'We are designing patterns, tools and onboarding paths that lower the bar to entry, let a community adopt one piece at a time, and make resilience the default, so intentional community stops being rare.', cta: 'See where we need help →', href: '/membership', accent: 'emerald' }, { num: '05', tag: 'Community', title: 'Growing the online community — members, events, partnerships.', body: 'Weekly calls, member onboarding, partner conversations, public events. The network gets stronger every time someone shows up.', cta: 'Become a member →', href: '/membership', accent: 'amber' }] as item}
 				<article
 					class="group bg-white rounded-3xl p-7 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors flex flex-col"
 				>
@@ -1015,8 +1008,7 @@
 					</div>
 					<h3 class="font-serif text-xl mb-3 leading-snug">Pick a strand. Bring a hand.</h3>
 					<p class="text-sm text-stone-200/85 leading-relaxed mb-6">
-						All five strands are open. Pick the one that matches your craft — the work moves faster
-						when more people show up.
+						All five strands are open. Pick the one that matches your craft.
 					</p>
 				</div>
 				<span
@@ -1068,15 +1060,15 @@
 			</h2>
 			<p class="text-lg text-stone-700 leading-relaxed mb-5">
 				An EcoHub is a small, place-based community where people live, work, and learn together
-				while regenerating the land they depend on. Human-scale. Locally rooted. Connected to a
-				wider network of others doing the same.
+				while regenerating the land they depend on, and it connects to a wider network of hubs doing
+				the same.
 			</p>
 			<p class="text-lg text-stone-700 leading-relaxed mb-8">
-				Not a utopia. Not an escape. A working model for belonging, tested in real conditions and
-				shared openly so others don't have to start from zero.
+				It is meant as a working model for belonging, tested in real conditions and shared openly so
+				others don't have to start from zero.
 			</p>
 			<ul class="space-y-3 mb-10">
-				{#each ["Work that means something because it shows up in your neighbors' lives", 'Decisions made in the open, by the people they affect', 'Land and resources held in care, not in competition', 'Conflict treated as information, not as failure'] as item}
+				{#each ["Work that means something because it shows up in your neighbors' lives", 'Decisions made in the open, by the people they affect', 'Land and resources held in shared care', 'Conflict treated as information, not as failure'] as item}
 					<li class="flex items-start gap-3 text-stone-800">
 						<span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
 						{item}
@@ -1128,14 +1120,15 @@
 				had existed.
 			</h2>
 			<p class="text-lg text-stone-700 leading-relaxed mb-5">
-				The Standard — formally <strong class="text-ecohubs-deep">RCOS</strong> (Regenerative
-				Community Operating System) — is an open standard for designing and operating regenerative
-				communities. Not software. Not an ideology. A shared way to make community structure
+				The <strong class="text-ecohubs-deep">RCOS</strong> Standard (Regenerative Community
+				Operating System) is an open standard for designing and operating regenerative communities.
+				Despite the name, it is a written document rather than software. It gives communities a
+				shared way to make their structure
 				<em class="font-story italic">explicit, testable, and improvable.</em>
 			</p>
 			<p class="text-lg text-stone-700 leading-relaxed mb-8">
-				It's the first tangible outcome of EcoHubs — and the bridge between the vision and the
-				ground. Anyone can pick it up, read it, fork it, and put it to work today.
+				It's the first tangible outcome of EcoHubs, the part of the vision you can already use.
+				Anyone can read it, fork it, and put it to work today.
 			</p>
 
 			<div class="flex flex-col sm:flex-row gap-3">
@@ -1260,8 +1253,7 @@
 					Prefer to <em class="font-story italic font-normal text-stone-500">watch</em> rather than read?
 				</h3>
 				<p class="mt-4 text-stone-700 leading-relaxed">
-					A walk-through of what RCOS is, why it exists, and how the layers fit together. The whole
-					picture in one sitting.
+					A walk-through of what RCOS is, why it exists, and how the layers fit together.
 				</p>
 				<a
 					href="/rcos#intro-video"
@@ -1291,13 +1283,12 @@
 			<div data-scroll-animate="fade-up" class="max-w-2xl mb-14">
 				<div class="kicker text-emerald-300/80 mb-4">The people behind this</div>
 				<h2 class="font-serif text-4xl md:text-5xl leading-tight text-ecohubs-ivory">
-					EcoHubs is not a product.<br />
-					<em class="font-story italic font-normal text-emerald-300">It's the people showing up.</em
-					>
+					EcoHubs is<br />
+					<em class="font-story italic font-normal text-emerald-300">the people who show up.</em>
 				</h2>
 				<p class="mt-5 text-lg text-stone-200/75 leading-relaxed">
-					Each circle is a real member — contributing their craft, their voice, their time. The
-					larger ones carry the most weight right now.
+					Each circle is a real member giving their craft, their voice, their time. The bigger the
+					circle, the more they have contributed so far.
 					<em class="font-story italic">Click any one</em> to read their story.
 				</p>
 			</div>
@@ -1314,12 +1305,11 @@
 		<div data-scroll-animate="fade-up" class="max-w-2xl">
 			<div class="kicker text-emerald-800 mb-4">Partners</div>
 			<h2 class="font-serif text-3xl md:text-4xl text-ecohubs-deep leading-tight">
-				We don't build this alone.<br />
-				<em class="font-story italic font-normal text-stone-500">Good work travels in company.</em>
+				We don't build this <em class="font-story italic font-normal text-stone-500">alone.</em>
 			</h2>
 			<p class="mt-5 text-lg text-stone-700 leading-relaxed">
-				Organisations and networks working in adjacent terrain — sharing what they've learned so
-				nobody has to start from zero.
+				Organisations and networks doing related work, who share what they've learned with us and
+				with each other.
 			</p>
 		</div>
 
@@ -1349,7 +1339,7 @@
                   border-stone-300 px-6 py-5 font-medium text-stone-500 transition-colors
                   hover:border-stone-400 hover:text-stone-700"
 			>
-				Become EcoHubs partner
+				Become an EcoHubs partner
 				<span class="transition-transform group-hover:translate-x-0.5">→</span>
 			</a>
 		</div>
@@ -1371,8 +1361,8 @@
 				<p class="mt-6 text-lg text-stone-700 leading-relaxed">
 					People sometimes ask: <em class="font-story italic"
 						>how can you use AI and digital platforms while building something regenerative?</em
-					> It's a fair question. Our answer is honest — we use technology where it lets one person do
-					the work of ten, where it bridges distance, where it lets a community remember what it said.
+					> It's a fair question. We use technology where it lets one person do the work of ten, where
+					it bridges distance, and where it lets a community remember what it said.
 				</p>
 				<p class="mt-5 text-lg text-stone-700 leading-relaxed">
 					We don't use it to manufacture engagement, replace relationships, or grow at any cost.
@@ -1444,7 +1434,7 @@
 		<!-- Inviting CTA — recognises that "this" might be something the visitor's been looking for -->
 		<div class="mt-16 max-w-2xl mx-auto text-center">
 			<p class="font-story italic text-lg md:text-xl text-stone-600 leading-relaxed mb-7">
-				If even one of those felt like it could be your voice — we'd love to meet you.
+				If one of those sounds like you, we'd love to meet you.
 			</p>
 			<a
 				href="/membership"
@@ -1469,9 +1459,7 @@
 		<div data-scroll-animate="fade-up" class="max-w-2xl mb-14">
 			<div class="kicker text-emerald-700 mb-4">Questions we hear a lot</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
-				Honest answers <em class="font-story italic font-normal text-stone-500"
-					>to the honest questions.</em
-				>
+				What people <em class="font-story italic font-normal text-stone-500">ask us first.</em>
 			</h2>
 		</div>
 
@@ -1500,7 +1488,7 @@
 			</h2>
 		</div>
 		<div data-scroll-stagger class="space-y-6">
-			{#each [{ n: '01', color: 'bg-ecohubs-deep', title: 'Gather the people', body: 'First 150 aligned members. Shared values. Foundation of the RCOS standard co-created, not dictated.' }, { n: '02', color: 'bg-ecohubs-primary', title: 'Grow the RCOS standard', body: 'Open-source, evolving — shaped by practice across ecology, governance, economy, culture, and care.' }, { n: '03', color: 'bg-amber-600', title: 'Pilot, learn, share', body: 'Apply the RCOS standard in real communities. Ecuador is the first. Document every scar, every win, openly.' }] as step}
+			{#each [{ n: '01', color: 'bg-ecohubs-deep', title: 'Gather the people', body: 'The first 150 aligned members, who shape the foundation of the RCOS Standard with us.' }, { n: '02', color: 'bg-ecohubs-primary', title: 'Grow the RCOS standard', body: 'Open-source and revised as practice teaches us more, across ecology, governance, economy, culture, and care.' }, { n: '03', color: 'bg-amber-600', title: 'Pilot, learn, share', body: 'Apply the RCOS Standard in real communities, starting in Ecuador, and publish every scar and every win.' }] as step}
 				<div class="grid md:grid-cols-[auto_1fr] gap-6 items-start">
 					<div
 						class="w-14 h-14 rounded-full {step.color} text-white font-serif text-xl flex items-center justify-center shrink-0"
@@ -1542,20 +1530,19 @@
 	<div class="absolute inset-0 grain pointer-events-none opacity-50"></div>
 	<div class="max-w-5xl mx-auto px-6 lg:px-8 relative">
 		<div data-scroll-animate="fade-up" class="max-w-2xl mb-12">
-			<div class="kicker text-emerald-800 mb-4">Before you join — a different invitation</div>
+			<div class="kicker text-emerald-800 mb-4">Before you join · a different invitation</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
 				We are not finished.<br />
-				<em class="font-story italic font-normal text-stone-500">That is the point.</em>
+				<em class="font-story italic font-normal text-stone-500">Help us with the rest.</em>
 			</h2>
 			<p class="mt-5 text-lg text-stone-700 leading-relaxed">
-				EcoHubs is not a product you sign up to. RCOS is a standard that gets better with every
-				person who reads it carefully, disagrees with a chapter, runs an experiment, comes back with
-				what they learned. There are many ways in.
+				RCOS gets better with every person who reads it carefully, disagrees with a chapter, runs an
+				experiment, or comes back with what they learned. There are several ways in.
 			</p>
 		</div>
 
 		<div data-scroll-stagger class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-			{#each [{ tag: 'On the ground', title: 'Apply RCOS in your community.', body: 'Already part of (or starting) a local community? Try a RCOS standard chapter on the ground. We help you adapt it, you bring back what you learn.', cta: 'Tell us about it →', href: '/contact' }, { tag: 'Bring a skill', title: 'Contribute what you already do well.', body: 'Permaculture, governance, facilitation, code, listening, storytelling. We need every one of these.', cta: 'See where we need help →', href: '/membership' }, { tag: 'Partner with us', title: 'Become an EcoHubs partner.', body: 'Organisations, foundations, communities and projects working in adjacent terrain — we co-design, fund pilots, and share what we learn.', cta: 'Start a conversation →', href: '/contact' }] as card}
+			{#each [{ tag: 'On the ground', title: 'Apply RCOS in your community.', body: 'Already part of (or starting) a local community? Try an RCOS chapter on the ground. We help you adapt it; you bring back what you learn.', cta: 'Tell us about it →', href: '/contact' }, { tag: 'Bring a skill', title: 'Contribute what you already do well.', body: 'Permaculture, governance, facilitation, code, listening, storytelling. We need every one of these.', cta: 'See where we need help →', href: '/membership' }, { tag: 'Partner with us', title: 'Become an EcoHubs partner.', body: 'For organisations, foundations, communities and projects doing related work. We co-design, fund pilots, and share what we learn.', cta: 'Start a conversation →', href: '/contact' }] as card}
 				<a
 					href={card.href}
 					class="group bg-white rounded-3xl p-7 border border-stone-200/80
@@ -1574,8 +1561,8 @@
 		</div>
 
 		<p class="mt-10 text-center text-sm text-stone-500 max-w-xl mx-auto font-story italic">
-			None of these are tiers. None of these cost. They are the doorways we have noticed people walk
-			through.
+			None of these are tiers, and none of them cost anything. They are the doorways we have seen
+			people walk through.
 		</p>
 	</div>
 </section>
@@ -1600,8 +1587,8 @@
 			come build it with us.
 		</h2>
 		<p class="text-lg text-stone-200/85 leading-relaxed mb-10 max-w-xl mx-auto">
-			We're not looking for believers. We're looking for people who are ready to make the invisible
-			things explicit — in their own lives, and with others.
+			We're looking for people ready to make the invisible things explicit, in their own lives and
+			with others.
 		</p>
 		<div class="flex flex-col sm:flex-row justify-center gap-3">
 			<a

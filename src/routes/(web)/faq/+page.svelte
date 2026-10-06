@@ -39,7 +39,7 @@
 			tag: 'VISION',
 			title: "What we're trying to do,",
 			titleEm: "and what we're not.",
-			lead: 'The why under the work — and the limits of what we claim.',
+			lead: 'The why under the work, and the limits of what we claim.',
 			items: visionFaq
 		},
 		{
@@ -57,7 +57,7 @@
 			tag: 'ECOSYSTEM',
 			title: 'The tools we build,',
 			titleEm: 'and how they fit.',
-			lead: 'The shared apps behind EcoHubs — RCOS, CSI, VoteCast, and the resilience assessment.',
+			lead: 'The shared apps behind EcoHubs: RCOS, CSI, VoteCast, Seeking.Community and the resilience assessment.',
 			items: ecosystemItems
 		},
 		{
@@ -179,7 +179,7 @@
 
 <SEO
 	title="Questions & Answers — EcoHubs"
-	description="The questions we hear most about EcoHubs — the project, the Vision, the RCOS Standard, the ecosystem tools, and Membership — answered plainly, in one place."
+	description="The questions we hear most about EcoHubs, answered plainly in one place: the project, the Vision, the RCOS Standard, the ecosystem tools and Membership."
 	ogImage="/og-faq.jpg"
 	{breadcrumbs}
 	faq={seoFaq}
@@ -254,7 +254,7 @@
 			class="mt-7 text-lg md:text-xl text-stone-700 leading-relaxed max-w-2xl font-light"
 		>
 			Five sections, written plainly. If your question isn't here, it probably belongs in the RCOS
-			Standard — and we'd like to hear it.
+			Standard, and we'd like to hear it.
 		</p>
 
 		<!-- Search -->
@@ -416,8 +416,8 @@
 			The good ones <em class="font-story italic font-normal text-stone-500">become chapters.</em>
 		</h2>
 		<p class="text-lg text-stone-700 leading-relaxed mb-9 max-w-xl mx-auto">
-			Send it to us. We read everything. If your question reveals a gap, you'll see it answered here
-			in the next revision.
+			Send it to us. We read everything, and if your question shows a gap, you'll see it answered
+			here in the next revision.
 		</p>
 		<div class="flex flex-col sm:flex-row justify-center gap-3">
 			<a

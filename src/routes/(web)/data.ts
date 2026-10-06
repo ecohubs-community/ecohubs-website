@@ -254,12 +254,12 @@ export const wounds = [
 	{
 		cat: 'Belonging',
 		title: 'The loneliness no one names',
-		body: "We've never been so connected and so alone. Neighbors we never meet. Hours of scrolling instead of one shared meal."
+		body: 'We live next to neighbors we never meet and spend hours scrolling instead of sharing one meal.'
 	},
 	{
 		cat: 'Earth',
 		title: 'We are taking more than the land can give',
-		body: 'Extractive agriculture strips the soil. Short-term profit costs the biosphere its long-term life. The math stopped working a while ago.'
+		body: "Extractive agriculture strips the soil for this year's profit and leaves less for every year after. The math stopped working a while ago."
 	},
 	{
 		cat: 'Economy',
@@ -284,12 +284,12 @@ export const wounds = [
 	{
 		cat: 'Nature',
 		title: 'We forgot we are nature',
-		body: 'We built walls between us and the living world, then wondered why we felt empty. We are not visitors to the ecosystem. We are part of it.'
+		body: 'We built walls between us and the living world, then wondered why we felt empty. We are part of the ecosystem we walled off.'
 	},
 	{
 		cat: 'Change',
 		title: 'The system is too rigid to heal itself',
-		body: "Better ways exist for every one of these problems. They just can't be installed into a structure this rigid. Band-aids, not healing."
+		body: "Better ways exist for every one of these problems, but a structure this rigid can't take them in, so it reaches for band-aids instead."
 	}
 ];
 
@@ -299,52 +299,52 @@ export const answers = [
 	{
 		cat: 'Belonging',
 		title: 'Neighbors who know your name',
-		body: "In a small place, you are seen. You are missed when you are gone. Belonging isn't an achievement — it's the air you breathe."
+		body: 'In a small place, you are seen. You are missed when you are gone.'
 	},
 	{
 		cat: 'Work',
 		title: "Work that lands in someone's hands",
-		body: 'When the person you serve is across the table, not across the planet, work stops being a shift you survive and starts being something that means something.'
+		body: 'When the person you serve is across the table instead of across the planet, work stops being a shift you survive. You see who it was for.'
 	},
 	{
 		cat: 'Earth',
 		title: 'Land cared for by the people who live on it',
-		body: "Permaculture, regenerative agriculture, local food. Soil is built, not mined. Water is read, not piped. Nature isn't a backdrop — it's the other half of the community."
+		body: 'Permaculture, regenerative agriculture, local food. Soil gets built up instead of mined, and water is managed by reading how it moves across the land.'
 	},
 	{
 		cat: 'Economy',
 		title: 'Local first, resilient by design',
-		body: "Small businesses serving the people around them. Less dependency on fragile global chains. Less waste shipped. More value staying where it's made."
+		body: "Small businesses serve the people around them, so less depends on fragile global supply chains, less gets shipped, and more value stays where it's made."
 	},
 	{
 		cat: 'Power',
 		title: 'Decisions made by the people they touch',
-		body: 'Local governance gives power back to you — where it can actually change your street, your water, your school. Not a party. Not a capital. You.'
+		body: 'Decisions about your street, your water and your school get made by you and your neighbors.'
 	},
 	{
 		cat: 'Education',
 		title: 'Children who learn life, not just labor',
-		body: "Mixed-age, curiosity-led, rooted in the real world. From books, from AI, from the adults around them, from nature itself. School is no longer a building — it's the community."
+		body: 'Mixed-age, curiosity-led, rooted in the real world. Children learn from books, from AI, from the adults around them and from nature, and the whole community becomes the school.'
 	},
 	{
 		cat: 'Nature',
 		title: 'Surrounded by the living world, again',
-		body: 'Small villages sit inside ecosystems, not on top of them. You see, feel, and respond to the seasons. Remembering we are nature stops being a slogan and becomes a daily fact.'
+		body: 'A small village sits inside its ecosystem. You see, feel and respond to the seasons every day.'
 	},
 	{
 		cat: 'Change',
 		title: 'Small enough to actually change',
-		body: "The big system can't adopt permaculture, alternative education, or new decision-making — it's too rigid. A community of a hundred people can try all three this year."
+		body: 'The big system is too rigid to adopt permaculture, alternative education or new decision-making. A community of a hundred people can try all three this year.'
 	},
 	{
 		cat: 'Waste',
 		title: 'Closed loops, not long lines',
-		body: 'When nothing is shipped across the world, there is less to throw away. Wastewater is treated on the land, by the land. Leftovers feed the soil that feeds you.'
+		body: 'When less is shipped across the world, there is less to throw away. Wastewater is treated on the land, by the land. Leftovers feed the soil that feeds you.'
 	},
 	{
 		cat: 'Culture',
 		title: 'Plural, not monoculture',
-		body: "Each hub can hold its own values, rituals, and beliefs. The network doesn't demand sameness — it shares what works and lets each place stay itself."
+		body: 'Each hub can hold its own values, rituals, and beliefs. The network shares what works and lets each place stay itself.'
 	}
 ];
 
@@ -382,22 +382,22 @@ export const comparisons = [
 export const techCards = [
 	{
 		title: "Don't cede the tools",
-		body: 'AI is being shaped, right now, by people who use it to extract — to concentrate attention, capital, and decisions in fewer and fewer hands. If those of us building something different sit this out, the future gets written without us. We pick up the same tools, deliberately, while there is still time to point them somewhere else.',
+		body: 'AI is being shaped, right now, by people who use it to concentrate attention, capital, and decisions in fewer and fewer hands. If those of us building something different sit this out, the future gets written without us. We pick up the same tools, deliberately, while there is still time to point them somewhere else.',
 		accent: 'emerald'
 	},
 	{
 		title: 'Spend now, save more later',
-		body: "Yes, AI costs energy and water — we don't pretend otherwise. We treat it as an upfront investment, the way you build soil. Compute spent now to design regenerative systems returns many times over: in trips not taken, in food grown closer to home, in mistakes a hundred communities don't have to make twice.",
+		body: "Yes, AI costs energy and water, and we don't pretend otherwise. We treat it as an upfront investment, the way you build soil. Compute spent now to design regenerative systems returns many times over: in trips not taken, in food grown closer to home, in mistakes a hundred communities don't have to make twice.",
 		accent: 'amber'
 	},
 	{
 		title: 'Change what the tools optimise for',
-		body: "A tool isn't good or bad — its metric is. Extractive AI is tuned for profit per resource: more clicks, more attention, more dollars wrung from the same earth. We use the same engines, pointed at a different target — life per resource. Same code, opposite direction.",
+		body: 'A tool is as good or bad as the metric it is tuned for. Extractive AI is tuned for profit per resource: more clicks, more attention, more dollars wrung from the same earth. We point the same engines at life per resource.',
 		accent: 'emerald'
 	},
 	{
 		title: 'Move at the speed of the crisis',
-		body: 'Extraction is digital, fast, and well-funded. Regeneration is too often analog and slow — and it has been losing ground for decades. To rebuild on the same scale we have been losing on, we have to work at that pace. Patience in the soil, yes. Patience in the response, no.',
+		body: 'Extraction is digital, fast, and well-funded. Regeneration is too often analog and slow, and it has been losing ground for decades. To rebuild on the same scale we have been losing on, we have to work at that pace.',
 		accent: 'amber'
 	}
 ];
@@ -407,7 +407,7 @@ export const techCards = [
 export const personas = [
 	{
 		quote: '"I felt alien too."',
-		body: "People who knew early that the default life wasn't the only life — and who have been searching since."
+		body: "People who knew early that the default life wasn't the only life, and have been searching since."
 	},
 	{
 		quote: '"I\'ve tried to build a community and it broke."',
@@ -415,7 +415,7 @@ export const personas = [
 	},
 	{
 		quote: '"I work with land."',
-		body: 'Permaculturists, farmers, stewards — who know the soil is ready, and the humans are the harder part.'
+		body: 'Permaculturists, farmers and stewards who know the soil is ready and the humans are the harder part.'
 	},
 	{
 		quote: '"I build tools for people."',
@@ -437,23 +437,23 @@ export const faqItems = [
 	// Foundational / factual (migrated from the previous homepage)
 	{
 		q: 'What is EcoHubs?',
-		a: 'EcoHubs is a growing network of people building an open-source standard for regenerative communities — a way of life that puts belonging, ecology, and shared decision-making back at the centre. It is online today and place-based tomorrow — the RCOS Standard is already being piloted with the <a href="https://fruithaven.land/" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">Fruit Haven</a> community in Ecuador, and the first EcoHub is now being formed.'
+		a: 'EcoHubs is a growing network of people building an open-source standard for regenerative communities — built around belonging, ecology, and shared decision-making. Today the network meets online. The RCOS Standard is already being piloted with the <a href="https://fruithaven.land/" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">Fruit Haven</a> community in Ecuador, and the first EcoHub is now being formed.'
 	},
 	{
 		q: 'What is the RCOS Standard?',
-		a: 'RCOS — Regenerative Community Operating System — is the open standard at the heart of EcoHubs. It writes down the things communities usually leave unsaid: how decisions get made, how people join and leave, how resources are managed, how conflict is repaired. Not an ideology. A shared language.'
+		a: 'RCOS — Regenerative Community Operating System — is the open standard at the heart of EcoHubs. It writes down the things communities usually leave unsaid: how decisions get made, how people join and leave, how resources are managed, how conflict is repaired.'
 	},
 	{
 		q: 'Is EcoHubs a real project, or just a vision?',
-		a: 'Real. The standard is being developed, the community is active, and RCOS is already being piloted with the <a href="https://fruithaven.land/" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">Fruit Haven</a> community in Ecuador. The project is structured in phases — community formation → standard development → pilot hubs — with the first two well underway and the first EcoHub now taking shape.'
+		a: 'Real. The standard is being developed, the community is active, and RCOS is already being piloted with the <a href="https://fruithaven.land/" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">Fruit Haven</a> community in Ecuador. The project runs in three phases (community formation → standard development → pilot hubs). The first two are well underway, and the first EcoHub is taking shape.'
 	},
 	{
 		q: 'How is this different from existing ecovillages or intentional communities?',
-		a: 'Three things. First, the standard is open-source — most communities run on undocumented systems; we write ours down so it can be replicated and improved. Second, it integrates ecology, governance, economy and culture as one design, not separate departments. Third, there is a digital coordination layer — shared tools like the RCOS Standard, the Community Suitability Index (CSI), and VoteCast — so dozens of communities can learn from each other instead of each starting from zero.'
+		a: 'Three things. First, the standard is open-source. Most communities run on undocumented systems; we write ours down so it can be replicated and improved. Second, it integrates ecology, governance, economy and culture as one design, not separate departments. Third, there is a digital coordination layer (shared tools like the RCOS Standard, the Community Suitability Index (CSI), and VoteCast) so dozens of communities can learn from each other instead of each starting from zero.'
 	},
 	{
 		q: 'Is the goal to replace existing society, or to build an alternative within it?',
-		a: "An alternative within it. We're not building a wall against the world. We're building small, working examples of a different way to live — and connecting them, so anyone who wants in has a real path."
+		a: "An alternative within it. We're building small, working examples of a different way to live and connecting them, so anyone who wants in has a real path."
 	},
 	{
 		q: 'How do people earn a living in an EcoHubs community?',
@@ -461,45 +461,45 @@ export const faqItems = [
 	},
 	{
 		q: 'Is this only for idealistic people, or is it practical and grounded?',
-		a: 'Both, in that order. The vision is ambitious, but the methods are tested: permaculture, water and energy systems, structured governance, conflict-repair patterns. Most past communities failed for lack of structure, not lack of vision. The standard is here to fix that.'
+		a: 'Both, in that order. The vision is ambitious, but the methods are tested: permaculture, water and energy systems, structured governance, conflict-repair patterns. Most past communities had the vision and failed for lack of structure, which is the gap the standard is built to fill.'
 	},
 	{
 		q: 'How is EcoHubs funded?',
-		a: 'Through a hybrid model: grants from foundations and impact ecosystems, private funding (currently covering hosting and core costs), member contributions of time and skill, partnerships, and — over time — small revenue streams from onboarding support, tools, and education. No extractive investors. No tokens for sale.'
+		a: 'Through a hybrid model: grants from foundations and impact ecosystems, private funding (currently covering hosting and core costs), member contributions of time and skill, partnerships, and, over time, small revenue streams from onboarding support, tools, and education. There are no extractive investors and no tokens for sale.'
 	},
 	{
 		q: 'Can I donate to EcoHubs?',
-		a: "Yes. Donations help fund the open-source platform, RCOS standard development, pilot hubs, and day-to-day operations. As the project grows we're setting up clearer donation channels and public tracking. If money isn't an option, time and skills are equally welcome — the community runs on both."
+		a: `Yes. Donations help fund the open-source platform, RCOS standard development, pilot hubs, and day-to-day operations. There is no donation page yet, so <a href="/contact" class="text-ecohubs-primary hover:underline font-medium">get in touch</a> and we will work out the details with you. If money isn't an option, time and skills are just as welcome, and the community runs on both.`
 	},
 
 	// Voice / posture
 	{
 		q: 'Do I have to move somewhere to join?',
-		a: 'No. Most members are online, in their current home base. The community meets, contributes, and co-creates the RCOS Standard together — from anywhere. Physical hubs come next, when communities are ready — the RCOS Standard is already being piloted with the <a href="https://fruithaven.land/" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">Fruit Haven</a> community in Ecuador, and the first EcoHub is now being formed.'
+		a: 'No. Most members take part online, from wherever they live now. The community meets, contributes, and co-creates the RCOS Standard together from anywhere. Physical hubs come next, when communities are ready. The RCOS Standard is already being piloted with the <a href="https://fruithaven.land/" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">Fruit Haven</a> community in Ecuador, and the first EcoHub is now being formed.'
 	},
 	{
 		q: 'How do I get involved in the first physical EcoHub?',
-		a: 'The first hub — EcoHub One — is being formed now, and the waitlist is open. Joining is free and non-binding: you are saying "keep me posted," nothing more. From there it is a gradual path — conversations and community calls, a deliberately careful selection, then pioneer training — before anyone moves in. <a href="/join-the-waitlist" class="text-ecohubs-primary hover:underline font-medium">Join the waitlist →</a>'
+		a: 'Start with the waitlist, which is open now. The first hub, EcoHub One, is being formed, and joining the waitlist is free and non-binding; you are saying "keep me posted," nothing more. From there the path is gradual: conversations and community calls, a deliberately careful selection, then pioneer training, all before anyone moves in. <a href="/join-the-waitlist" class="text-ecohubs-primary hover:underline font-medium">Join the waitlist →</a>'
 	},
 	{
 		q: 'What does "regenerative" mean here?',
-		a: 'That a community gives back more than it takes — to the land, to its people, and to the wider world. Regeneration is about building soil, trust, skill, and resilience over time. Not sustainability in the sense of "do less damage," but a way of life that actively leaves things healthier than it found them.'
+		a: 'That a community gives back more than it takes: to the land, to its people, and to the wider world. Regeneration is about building soil, trust, skill, and resilience over time. Sustainability usually means "do less damage"; regeneration means a way of life that leaves things healthier than it found them.'
 	},
 	{
 		q: 'Is this a crypto project? What is ECO?',
-		a: 'No. ECO is not a cryptocurrency or a tradable coin — there is nothing to buy, sell, or speculate on. It is purely an internal unit we use to make contribution visible, measurable and transparent: a shared ledger for the labour and care people put in. It is never traded, never promoted as an investment, and never the reason to join. The reason to join is the people and the work.'
+		a: 'No. ECO is not a cryptocurrency or a tradable coin, and there is nothing to buy, sell, or speculate on. It is an internal unit, a shared ledger for the labour and care people put in, and we use it to make contribution visible, measurable and transparent. It is never traded, never promoted as an investment, and never the reason to join.'
 	},
 	{
 		q: "I don't have skills in permaculture or governance. Am I still welcome?",
-		a: "Very. Every community needs cooks, listeners, writers, organizers, carers, translators, builders, teachers. The question isn't what you already know — it's what you want to show up for."
+		a: 'Very. Every community needs cooks, listeners, writers, organizers, carers, translators, builders, teachers. What you want to show up for matters more than what you already know.'
 	},
 	{
 		q: 'What does joining cost, and what do I get?',
-		a: "Application is free and based on alignment, not payment. Members get access to the community platform, the full RCOS Standard, the voice to shape it, and — when you're ready — a path into the physical pilot hubs."
+		a: "Application is free and based on alignment, not payment. Members get access to the community platform, the full RCOS Standard, the voice to shape it, and, when you're ready, a path into the physical pilot hubs."
 	},
 	{
 		q: 'I want to get involved — where do I start?',
-		a: 'It depends on where you are. Drawn to the first physical hub, or just want to follow along? <a href="/join-the-waitlist" class="text-ecohubs-primary hover:underline font-medium">Join the waitlist</a> — free and non-binding. Ready to contribute to the community and help shape the RCOS Standard? <a href="/membership" class="text-ecohubs-primary hover:underline font-medium">Apply for membership</a>. Already part of an existing community? Start with the free <a href="/community-resilience-assessment" class="text-ecohubs-primary hover:underline font-medium">Community Resilience Assessment</a>. And if you are still just reading — that is a perfectly good place to be, too.'
+		a: 'It depends on where you are. If you are drawn to the first physical hub, or just want to follow along, <a href="/join-the-waitlist" class="text-ecohubs-primary hover:underline font-medium">join the waitlist</a>; it is free and non-binding. If you are ready to contribute to the community and help shape the RCOS Standard, <a href="/membership" class="text-ecohubs-primary hover:underline font-medium">apply for membership</a>. If you are already part of an existing community, start with the free <a href="/community-resilience-assessment" class="text-ecohubs-primary hover:underline font-medium">Community Resilience Assessment</a>. And if you are still just reading, that is a perfectly good place to be, too.'
 	}
 ];
 
@@ -509,47 +509,31 @@ export const faqItems = [
 
 export const ecosystemFaq = [
 	{
-		q: 'What tools make up the EcoHubs ecosystem?',
-		a: 'Four, for now — and they are all open to explore. The <a href="https://rcos.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">RCOS Standard</a> is the shared document at the centre: the patterns a community runs on. The <a href="https://csi.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">Community Suitability Index (CSI)</a> maps where a regenerative community has room to begin. <a href="https://votecast.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">VoteCast</a> handles transparent, consent-based decisions. And the <a href="/community-resilience-assessment" class="text-ecohubs-primary hover:underline font-medium">Community Resilience Assessment</a> is a free self-check for any community. You will find them all in the Ecosystem menu.'
+		q: `What is the EcoHubs ecosystem?`,
+		a: `Five tools, each serving the wider EcoHubs purpose of making regenerative communities more accessible, resilient, replicable, and normal. The <a href="https://rcos.ecohubs.community" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">RCOS Standard</a> is an open standard for the human structures inside a community: how decisions get made, how people join and leave, how conflict is repaired. <a href="https://seeking.community" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">Seeking.Community</a> helps people find aligned communities that already exist. The <a href="https://csi.ecohubs.community" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">Community Suitability Index (CSI)</a> helps founders find where a new one has room to begin. <a href="https://votecast.ecohubs.community" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">VoteCast</a> handles transparent, consent-based decisions. And the <a href="/community-resilience-assessment" class="text-ecohubs-primary hover:underline font-medium">Community Resilience Assessment</a> is a free self-check for any intentional community. They don’t depend on one another, and you will find them all in the Ecosystem menu.`
 	},
 	{
-		q: 'What are CSI and VoteCast?',
-		a: '<strong class="text-ecohubs-deep">CSI</strong>, the Community Suitability Index, is a working map of where a regenerative, sovereign community has room to begin — read against the law, the land, the water and the welcome of a place, and honest about what we don\'t yet know (<a href="https://csi.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">csi.ecohubs.community</a>). <strong class="text-ecohubs-deep">VoteCast</strong> is our transparent, consent-based decision-making platform: proposals, deliberation and votes everyone can see and trust (<a href="https://votecast.ecohubs.community" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">votecast.ecohubs.community</a>).'
+		q: `What is CSI (the Community Suitability Index)?`,
+		a: `CSI is a working map of where a regenerative, sovereign community has room to begin, read against the law, the land, the water and the welcome of each place. It is honest about what we don’t yet know. Explore it at <a href="https://csi.ecohubs.community" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">csi.ecohubs.community</a>.`
 	},
 	{
-		q: 'We already have a community — is there anything here for us?',
-		a: 'Yes. The <strong class="text-ecohubs-deep">Community Resilience Assessment</strong> is a free, five-minute self-check for any intentional community, new or long-established. It maps how clearly your key agreements are written down — how decisions get made, how people join and leave, how conflict is repaired. There is no score and no pass/fail, just an honest picture of what is explicit and what is still unsaid, followed by a human-written gap report. <a href="/community-resilience-assessment" class="text-ecohubs-primary hover:underline font-medium">Take the assessment →</a>'
+		q: `What is VoteCast?`,
+		a: `VoteCast is our decision-making platform for transparent, consent-based governance, with proposals, deliberation and votes that everyone can see and trust. It puts the governance patterns in RCOS into practice. Try it at <a href="https://votecast.ecohubs.community" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">votecast.ecohubs.community</a>.`
 	},
 	{
-		q: 'What is the EcoHubs ecosystem?',
-		a: 'A set of distinct tools that each serve the wider EcoHubs purpose: making regenerative communities more accessible, resilient, replicable, and normal. They don’t depend on one another — each fulfils its own job. Seeking.Community helps people find aligned, existing communities; CSI (https://csi.ecohubs.community) helps founders find the best place in the world to start a new one; VoteCast (https://votecast.ecohubs.community) aims to make community governance easier; and RCOS is a standard for the human structures inside a community. The Community Resilience Assessment complements them as a way for a group to see where it’s strong and where it’s fragile.'
+		q: `What is Seeking.Community?`,
+		a: `Seeking.Community is a soft landing for people stepping off the track. Tell it what you’re leaving and what you’re seeking, and a real person hand-picks a few genuinely active, aligned communities, honest notes and all, within 24 hours. It is free, needs no account, and lives at <a href="https://seeking.community" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">seeking.community</a>.`
 	},
 	{
-		q: 'What is RCOS?',
-		a: 'RCOS — the Regenerative Community Operating System — is an open standard for the human structures inside a community: a living set of patterns that makes the invisible explicit, from how decisions get made to how conflict gets repaired and how care is shared. It’s our best outcome so far, though it stands on its own rather than driving the other tools. You can read it at https://rcos.ecohubs.community.'
+		q: `What is the Community Resilience Assessment?`,
+		a: `A free, five-minute self-check for any intentional community, new or long-established, and the natural place to start if you already have one. Ten questions map how clearly your key agreements are written down: how decisions get made, how people join and leave, how money, land and roles are shared, how conflict is repaired. There is no score and no pass/fail. You get a picture of what is explicit and what is still unsaid, followed by a human-written gap report. <a href="/community-resilience-assessment" class="text-ecohubs-primary hover:underline font-medium">Take the assessment →</a>`
 	},
 	{
-		q: 'What is CSI (the Community Suitability Index)?',
-		a: 'CSI is a working map of where a regenerative, sovereign community has room to begin — read against the law, the land, the water and the welcome of each place. It is honest about what we don’t yet know, and lives at https://csi.ecohubs.community.'
+		q: `Do I need to use all of these tools?`,
+		a: `No. Each tool stands on its own: you can read RCOS, take the resilience assessment, or use Seeking.Community without touching the rest. They share a common language, so they work well together.`
 	},
 	{
-		q: 'What is VoteCast?',
-		a: 'VoteCast is the decision-making tool: transparent, consent-based governance with proposals, deliberation and votes that everyone can see and trust. It puts the governance patterns in RCOS into practice, and lives at https://votecast.ecohubs.community.'
-	},
-	{
-		q: 'What is Seeking.Community?',
-		a: 'Seeking.Community is a soft landing for people stepping off the track. Tell it what you’re leaving and what you’re seeking, and a real person hand-picks a few genuinely active, aligned communities — honest notes and all — within 24 hours. Free, no account, at https://seeking.community.'
-	},
-	{
-		q: 'What is the Community Resilience Assessment?',
-		a: 'A short, self-guided assessment that helps a group see where it is strong and where it is fragile across the dimensions RCOS cares about — governance, ecology, economy, and culture. It’s a starting point for a conversation, not a score to chase. You can take it at https://ecohubs.community/community-resilience-assessment.'
-	},
-	{
-		q: 'Do I need to use all of these tools?',
-		a: 'No. Each tool stands on its own — you can read RCOS, take the resilience assessment, or use Seeking.Community without touching the rest. They share a common language so they work well together, but there’s no all-or-nothing requirement.'
-	},
-	{
-		q: 'Are the ecosystem tools open-source and free?',
-		a: 'The RCOS Standard is open-source by design, and the public tools above are free to use. The goal is shared infrastructure that any community can adopt, fork, and improve — not a walled product.'
+		q: `Are the ecosystem tools open-source and free?`,
+		a: `The RCOS Standard is open-source by design, and the public tools above are free to use. The goal is shared infrastructure that any community can adopt, fork, and improve.`
 	}
 ];

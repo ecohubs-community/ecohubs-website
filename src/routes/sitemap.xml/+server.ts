@@ -58,14 +58,14 @@ function learnSectionRoutes(): SitemapRoute[] {
  * Blog posts and tag pages get theirs from Ghost automatically, below.
  */
 const routes: SitemapRoute[] = [
-	{ path: '', priority: '1.0', changefreq: 'weekly', lastmod: '2026-10-01' },
-	{ path: '/vision', priority: '0.9', changefreq: 'monthly', lastmod: '2026-06-23' },
-	{ path: '/rcos', priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-04' },
+	{ path: '', priority: '1.0', changefreq: 'weekly', lastmod: '2026-10-06' },
+	{ path: '/vision', priority: '0.9', changefreq: 'monthly', lastmod: '2026-10-06' },
+	{ path: '/rcos', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-06' },
 	{ path: '/csi', priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-04' },
 	{ path: '/votecast', priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-04' },
 	{ path: '/seeking', priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-04' },
-	{ path: '/membership', priority: '0.9', changefreq: 'monthly', lastmod: '2026-08-04' },
-	{ path: '/faq', priority: '0.7', changefreq: 'monthly', lastmod: '2026-08-04' },
+	{ path: '/membership', priority: '0.9', changefreq: 'monthly', lastmod: '2026-10-06' },
+	{ path: '/faq', priority: '0.7', changefreq: 'monthly', lastmod: '2026-10-06' },
 	{ path: '/join', priority: '0.7', changefreq: 'monthly', lastmod: '2026-06-28' },
 	{ path: '/contact', priority: '0.7', changefreq: 'yearly', lastmod: '2026-08-04' },
 	{ path: '/blog', priority: '0.8', changefreq: 'weekly', lastmod: '2026-08-04' },
@@ -84,9 +84,9 @@ const routes: SitemapRoute[] = [
 		path: '/community-resilience-assessment',
 		priority: '0.8',
 		changefreq: 'monthly',
-		lastmod: '2026-06-16'
+		lastmod: '2026-10-06'
 	},
-	{ path: '/join-the-waitlist', priority: '0.9', changefreq: 'weekly', lastmod: '2026-07-24' },
+	{ path: '/join-the-waitlist', priority: '0.9', changefreq: 'weekly', lastmod: '2026-10-06' },
 	{ path: '/links', priority: '0.6', changefreq: 'weekly', lastmod: '2026-06-23' },
 	{
 		path: '/events/community-mycelium-gathering',
