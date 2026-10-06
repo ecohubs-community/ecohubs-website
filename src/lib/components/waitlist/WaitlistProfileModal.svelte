@@ -229,7 +229,7 @@
 							>
 						</h2>
 						<p class="mt-4 text-[15px] leading-[1.6] text-stone-700 font-light">
-							Your profile is saved. Keep an eye on your inbox — the next step comes to you.
+							Your profile is saved. Watch your inbox for the next step.
 						</p>
 						<p class="mt-4 text-[13px] leading-[1.6] text-stone-500">
 							Something is not working as it should?

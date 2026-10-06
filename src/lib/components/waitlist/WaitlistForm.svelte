@@ -37,7 +37,7 @@
 		event.preventDefault();
 		const value = email.trim();
 		if (!EMAIL_RE.test(value)) {
-			error = "Hmm — that doesn't look like an email. Mind checking it?";
+			error = "Hmm, that doesn't look like an email. Mind checking it?";
 			return;
 		}
 		if (submitting) return;
@@ -84,7 +84,7 @@
 		>
 		<div>
 			<p class={dark ? 'font-medium text-[15px] text-emerald-50' : 'font-medium text-[15px]'}>
-				You're on the list — check your inbox.
+				You're on the list. Check your inbox.
 			</p>
 			<p
 				class={dark
@@ -151,7 +151,7 @@
 				? 'text-[13.5px] text-emerald-100/70 font-light'
 				: 'h-soft text-[13.5px] font-light text-stone-600'}
 		>
-			Free to join. No commitment — just the first step.
+			Free to join. No commitment.
 		</p>
 		<p
 			class={dark
@@ -162,7 +162,7 @@
 			<a
 				href="/privacy"
 				target="_blank"
-				rel="noopener"
+				rel="noopener noreferrer"
 				class={dark
 					? 'text-emerald-100/80 underline underline-offset-2 hover:text-white'
 					: 'text-ecohubs-dark underline underline-offset-2 hover:text-ecohubs-deep'}

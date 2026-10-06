@@ -348,7 +348,7 @@
 						{#each GROUP_TOOLS as tool (tool.href)}
 							<a
 								href={tool.href}
-								rel="noopener"
+								rel="noopener noreferrer"
 								class="{CARD} flex flex-col bg-ecohubs-ivory/70 p-6"
 							>
 								<span class="flex items-center gap-3">

@@ -19,17 +19,17 @@
 		{
 			question: 'Our community is small or informal — is this assessment for us?',
 			answer:
-				'If you have more than five people sharing a space, this is for you. Smaller and informal communities often have the most implicit rules — and the most to gain from making them explicit.'
+				'Yes. It is for any intentional community, new or long-established. It is most useful once about five people share a space, but one person preparing a future community can take it too. Small and informal communities often have the most implicit rules, and the most to gain from making them explicit.'
 		},
 		{
 			question: "We've been around for years — are we past this?",
 			answer:
-				'Established communities often discover the deepest gaps. Time conceals what conflict eventually reveals. The longer something has worked informally, the more painful it tends to be when the informal version breaks.'
+				'Established communities often discover the deepest gaps. The longer something has worked informally, the more painful it tends to be when the informal version breaks.'
 		},
 		{
 			question: "We don't want to be judged — what does the report actually do?",
 			answer:
-				"We don't judge. There's no score, no grade, no pass/fail. We support communities — we don't audit them. The report is just a clear map of what's defined and what isn't, so you can decide what to do next."
+				"We don't judge. There's no score, no grade, no pass/fail. The report is a clear map of what's defined and what isn't, so you can decide what to do next."
 		}
 	];
 
@@ -298,7 +298,7 @@
 				</h1>
 				<p class="mt-7 max-w-2xl text-xl leading-relaxed font-light text-stone-700 md:text-[22px]">
 					A short, honest assessment of where your community's agreements are
-					<em class="font-story text-ecohubs-deep italic">strongest</em> — and where they'll
+					<em class="font-story text-ecohubs-deep italic">strongest</em> and where they'll
 					<em class="font-story text-ecohubs-deep italic">break first</em>.
 				</p>
 				<div class="mt-10 flex flex-wrap gap-3">
@@ -354,17 +354,16 @@
 		═══════════════════════════════════════════════════════════════ -->
 	<section class="py-24 md:py-32">
 		<div class="mx-auto max-w-3xl px-6 lg:px-8">
-			<div class="kicker mb-6 text-emerald-700">The thing nobody warns you about</div>
+			<div class="kicker mb-6 text-emerald-700">Why communities fracture</div>
 			<p class="text-ecohubs-deep font-serif text-[28px] leading-[1.25] md:text-[36px]">
 				Most intentional communities don't fracture because their values were wrong. They fracture
 				because the rules everyone assumed were shared
-				<em class="font-story text-ecohubs-primary font-normal italic">turned out not to be</em> — and
-				the discovery happens during the conflict, not before it.
+				<em class="font-story text-ecohubs-primary font-normal italic">turned out not to be</em>,
+				and they find out in the middle of a conflict.
 			</p>
 			<p class="mt-8 text-lg leading-relaxed font-light text-stone-700">
-				This isn't about blame, or about communities being naive. It's about how rarely we slow down
-				to write things down — and how cleanly the gaps reveal themselves the first time something
-				hard happens.
+				Nobody is to blame here, and nobody was naive. We rarely slow down to write things down, and
+				the gaps show up the first time something hard happens.
 			</p>
 		</div>
 	</section>
@@ -380,7 +379,7 @@
 				<h2 class="text-ecohubs-deep font-serif text-4xl leading-tight md:text-5xl">
 					Answer 10 questions.<br />
 					<em class="font-story font-normal text-stone-500 italic">
-						Get an honest, personalized map of where your community is solid and where it's exposed.
+						Get a personalized map of where your community is solid and where it's exposed.
 					</em>
 				</h2>
 				<p class="mx-auto mt-5 max-w-xl text-[17px] leading-relaxed font-light text-stone-700">
@@ -558,7 +557,7 @@
 									class="text-ecohubs-deep font-serif text-[22px] leading-snug mb-3 md:text-[26px]"
 								>
 									Our team will read your community's actual agreements and send back a complete map
-									of your gaps — with prioritized recommendations.
+									of your gaps, with prioritized recommendations.
 								</h4>
 								<p class="mb-6 text-[14.5px] leading-relaxed text-stone-600">
 									Free. In your inbox within five business days.
@@ -638,13 +637,13 @@
 										<p class="mt-3 text-[13px] text-red-700">{quizError}</p>
 									{/if}
 									<p class="mt-5 max-w-xl text-[13px] leading-relaxed font-light text-stone-600">
-										Free. No payment. No upsell. We read your agreements, write your report, then
-										delete the documents.
+										Free, with no upsell. We read your agreements, write your report, then delete
+										the documents.
 										<em class="font-story text-stone-700 italic">Your rules stay yours.</em>
 										<a
 											href="/privacy"
 											target="_blank"
-											rel="noopener"
+											rel="noopener noreferrer"
 											class="text-ecohubs-dark hover:text-ecohubs-deep underline underline-offset-2"
 											>How we handle your data</a
 										>
@@ -699,7 +698,7 @@
 			</div>
 
 			<p class="font-story mt-6 text-center text-[13px] text-stone-500 italic">
-				No grades, no pass/fail — just a clear picture of what's defined and what isn't.
+				No grades, no pass/fail. You get a clear picture of what's defined and what isn't.
 			</p>
 		</div>
 	</section>
@@ -718,7 +717,7 @@
 					>
 				</h2>
 				<p class="mt-5 text-lg leading-relaxed font-light text-stone-700">
-					After your quiz, we ask you to share your community's actual agreements — your
+					After your quiz, we ask you to share your community's actual agreements: your
 					constitution, rules, governance docs, however they're written. Our team reads them and
 					sends back a complete map.
 				</p>
@@ -731,8 +730,8 @@
 						A clear pie chart of your gaps.
 					</h3>
 					<p class="mb-6 text-[14.5px] leading-relaxed text-stone-700">
-						What percentage of your community's rules are explicit, what's partially defined, what's
-						missing entirely. One image, the whole landscape.
+						What percentage of your community's rules are explicit, partially defined, or missing
+						entirely, in one chart.
 					</p>
 					<div class="mt-auto flex items-center gap-4 pt-4">
 						<svg viewBox="0 0 42 42" class="h-20 w-20 -rotate-90">
@@ -787,8 +786,8 @@
 						A table of every category we checked.
 					</h3>
 					<p class="mb-6 text-[14.5px] leading-relaxed text-stone-700">
-						For each area — decision-making, membership, money, conflict, accountability — exactly
-						what's defined, what's vague, and what's missing in your specific documents.
+						For each area (decision-making, membership, money, conflict, accountability), what's
+						defined, what's vague, and what's missing in your documents.
 					</p>
 					<div
 						class="mt-auto rounded-2xl border border-stone-200/80 bg-white p-4 pt-4 font-mono text-[11.5px] leading-[2] text-stone-600"
@@ -817,8 +816,9 @@
 						Three things to define, in order.
 					</h3>
 					<p class="mb-6 text-[14.5px] leading-relaxed text-stone-700">
-						A prioritized action list — the gaps that, in our experience, tend to cause the most
-						damage if they remain undefined. What to write down first, second, third.
+						A prioritized action list of the gaps that, in our experience, tend to cause the most
+						damage if they remain undefined. It tells you what to write down first, second, and
+						third.
 					</p>
 					<div class="mt-auto space-y-2.5 pt-4">
 						<div class="flex items-start gap-3 text-[13px] text-stone-700">
@@ -850,7 +850,7 @@
 					No AI grading you in the background. Our team reads your actual documents, thinks about
 					your specific context, and writes the report.
 					<em class="font-story text-stone-100 italic"
-						>That's why it takes five days, not five seconds.</em
+						>That's why it takes up to five business days.</em
 					>
 				</p>
 			</div>
@@ -902,9 +902,9 @@
 					</em>
 				</h2>
 				<p class="mb-8 max-w-xl text-lg leading-relaxed font-light text-stone-700">
-					Real people, real history, real conflict. The first community to let us read everything
-					they had written down — and everything they hadn't — and tell them, honestly, where the
-					gaps were.
+					FruitHaven has its own history and its own conflicts. They were the first community to let
+					us read everything they had written down, notice what they hadn't, and tell them honestly
+					where the gaps were.
 				</p>
 				<blockquote class="max-w-xl border-l-2 border-emerald-700/40 pl-6">
 					<p class="font-story text-ecohubs-deep text-xl leading-snug italic md:text-[22px]">
@@ -945,9 +945,10 @@
 						>
 					</summary>
 					<p class="mt-5 max-w-2xl text-[15.5px] leading-relaxed text-stone-700">
-						If you have more than five people sharing a space, this is for you. Smaller and informal
-						communities often have the most implicit rules — and the most to gain from making them
-						explicit.
+						Yes. It is for any intentional community, new or long-established. It is most useful
+						once about five people share a space, but one person preparing a future community can
+						take it too. Small and informal communities often have the most implicit rules, and the
+						most to gain from making them explicit.
 					</p>
 				</details>
 
@@ -965,9 +966,8 @@
 						>
 					</summary>
 					<p class="mt-5 max-w-2xl text-[15.5px] leading-relaxed text-stone-700">
-						Established communities often discover the deepest gaps. Time conceals what conflict
-						eventually reveals. The longer something has worked informally, the more painful it
-						tends to be when the informal version breaks.
+						Established communities often discover the deepest gaps. The longer something has worked
+						informally, the more painful it tends to be when the informal version breaks.
 					</p>
 				</details>
 
@@ -985,9 +985,8 @@
 						>
 					</summary>
 					<p class="mt-5 max-w-2xl text-[15.5px] leading-relaxed text-stone-700">
-						We don't judge. There's no score, no grade, no pass/fail. We support communities — we
-						don't audit them. The report is just a clear map of what's defined and what isn't, so
-						you can decide what to do next.
+						We don't judge. There's no score, no grade, no pass/fail. The report is a clear map of
+						what's defined and what isn't, so you can decide what to do next.
 					</p>
 				</details>
 			</div>
@@ -1046,13 +1045,13 @@
 						<p class="mt-3 text-[13px] text-red-300">{form2Error}</p>
 					{/if}
 					<p class="mt-5 text-[13px] leading-relaxed font-light text-stone-400/90">
-						Free. No payment. No upsell. We read your agreements, write your report, then delete the
+						Free, with no upsell. We read your agreements, write your report, then delete the
 						documents.
 						<em class="font-story text-stone-300 italic">Your rules stay yours.</em>
 						<a
 							href="/privacy"
 							target="_blank"
-							rel="noopener"
+							rel="noopener noreferrer"
 							class="text-emerald-300/90 underline underline-offset-2 hover:text-[#f5f2ea]"
 							>How we handle your data</a
 						>

@@ -84,16 +84,16 @@
 					data-scroll-animate
 					class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light"
 				>
-					The Standard — formally
-					<strong class="text-ecohubs-deep">RCOS</strong> (Regenerative Community Operating System)
-					— is an open standard for designing and operating regenerative communities. Not software,
-					not an ideology — a shared way to make community governance and structure
-					<em class="font-story italic">explicit, testable, and improvable.</em>
+					The Standard, formally
+					<strong class="text-ecohubs-deep">RCOS</strong> (Regenerative Community Operating System),
+					is an open standard for designing and operating regenerative communities. Despite the
+					name, it is written text rather than software: a shared way to make community governance
+					and structure <em class="font-story italic">explicit, testable, and improvable.</em>
 				</p>
 
 				<p data-scroll-animate class="mt-5 text-lg text-stone-600 leading-relaxed max-w-xl">
-					It is the place where the EcoHubs vision meets the ground. The first tangible thing that
-					any community — including yours — can pick up, read, fork, and put to work today.
+					It is where the EcoHubs vision meets the ground, and the first thing any community,
+					including yours, can pick up, read, fork, and put to work today.
 				</p>
 
 				<div data-scroll-animate class="mt-10 flex flex-col sm:flex-row gap-3">
@@ -244,7 +244,7 @@
 			</h2>
 			<p class="mt-5 text-lg text-stone-700 leading-relaxed">
 				A walk-through of what RCOS is, why it exists, and how the layers fit together. Best watched
-				with a coffee — it covers the ground that the rest of this page only sketches.
+				with a coffee. It covers the ground that the rest of this page only sketches.
 			</p>
 		</div>
 		<div data-scroll-animate>
@@ -266,11 +266,11 @@
 				They fail on the things <em class="font-story italic font-normal">no one wrote down.</em>
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
-				It's estimated that <strong class="text-ecohubs-deep"
-					>80–90% of intentional communities collapse</strong
-				> — not because the vision was wrong, but because the same handful of invisible things were never
-				made explicit. The Standard is built around those failure points, so a community can name them
-				before they break.
+				Diana Leafe Christian estimates that <strong class="text-ecohubs-deep"
+					>80–90% of aspiring intentional communities fail</strong
+				>. Again and again, they fail over the same handful of things nobody made explicit. The
+				Standard is built around those failure points, so a community can name them before they
+				break.
 			</p>
 		</div>
 
@@ -288,7 +288,7 @@
 			data-scroll-animate
 			class="mt-12 max-w-2xl text-stone-600 leading-relaxed font-story italic text-lg"
 		>
-			The Standard doesn't promise harmony. It just refuses to leave these things unsaid.
+			The Standard doesn't promise harmony, but it won't leave these things unsaid.
 		</p>
 	</div>
 </section>
@@ -298,11 +298,11 @@
 ═══════════════════════════════════════════════════════════════════ -->
 <StanceColumns
 	kicker="What the Standard is, and isn't"
-	lead="The Standard can be misread as a lot of things it isn't. Before going further, here is the line we hold — carefully, on purpose."
+	lead="The Standard is easy to mistake for things it isn't, so here is where we draw the line."
 	isItems={whatItIs}
 	isNote="A formal, open standard."
 	isNotItems={whatItIsNot}
-	isNotNote="And never quietly will be."
+	isNotNote="Now or in later versions."
 >
 	{#snippet headline()}
 		Clarity, <em class="font-story italic font-normal text-emerald-300">not persuasion.</em>
@@ -322,7 +322,7 @@
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
 				RCOS is structured into layers with clear responsibility boundaries. Communities adapt the
-				implementation details — the boundaries themselves are what keep assumptions from going
+				implementation details, while the boundaries stay put and keep assumptions from going
 				implicit.
 			</p>
 		</div>
@@ -359,7 +359,7 @@
 				</div>
 				<h3 class="font-serif text-xl text-ecohubs-deep mb-2 leading-snug">Real-world domains.</h3>
 				<p class="text-sm text-stone-600 leading-relaxed">
-					Permaculture, education, housing, culture — applied, not theoretical.
+					Optional extensions that apply the core to permaculture, education, housing, culture.
 				</p>
 			</article>
 
@@ -377,7 +377,7 @@
 					</div>
 					<h3 class="font-serif text-xl mb-2 leading-snug">Open the full RCOS Standard</h3>
 					<p class="text-sm text-stone-300 leading-relaxed">
-						It's freely readable. Editable by members. Evolving with every pilot.
+						Anyone can read it, members can edit it, and every pilot changes it.
 					</p>
 				</div>
 				<span
@@ -564,13 +564,13 @@
 			<p class="text-lg text-stone-700 leading-relaxed mb-5">
 				Modules are
 				<strong class="text-ecohubs-deep">optional extensions</strong> that apply RCOS to specific domains
-				— food systems, education, housing, land — without changing the core layers or overriding governance.
-				Adopt the ones that fit your land, your people, your stage. Skip the rest.
+				such as food systems, education, housing, and land, without changing the core layers or overriding
+				governance. Adopt the ones that fit your land, your people, your stage. Skip the rest.
 			</p>
 			<p class="text-lg text-stone-700 leading-relaxed mb-8">
 				Modules describe <em class="font-story italic">structure</em>, not "the right way" to live.
-				A community can run the Permaculture module or the Minimal one — both sit cleanly on the
-				same core.
+				A community can run the Permaculture module or the Minimal one; both sit cleanly on the same
+				core.
 			</p>
 
 			<div class="grid sm:grid-cols-2 gap-3">
@@ -611,9 +611,9 @@
 				>
 			</h2>
 			<p class="mt-6 text-lg md:text-xl text-stone-200/85 leading-relaxed max-w-2xl">
-				We are not the first to try this — and that is the point. Most intentional communities fail
-				in the same handful of ways. The RCOS Standard is built around those failure points, not
-				around anyone's ideology.
+				We are not the first to try this. Most intentional communities fail in the same handful of
+				ways, and the RCOS Standard is built around those failure points rather than anyone's
+				ideology.
 			</p>
 		</div>
 
@@ -685,7 +685,7 @@
 ═══════════════════════════════════════════════════════════════════ -->
 <PositionTriptych
 	kicker="Where the RCOS sits in the EcoHubs vision"
-	lead="EcoHubs is a long-horizon project — small, human-scale communities, woven into a global commons. The RCOS is the first concrete piece of that. The bridge between intention and ground."
+	lead="EcoHubs is a long-horizon project: small, human-scale communities woven into a global commons. The RCOS is the first concrete piece of it."
 	cards={[
 		{
 			kicker: '01 · Vision',
@@ -697,7 +697,7 @@
 		{
 			kicker: '02 · RCOS',
 			title: 'An open standard any hub can pick up.',
-			body: "RCOS makes the structure of community life explicit — so a hub doesn't have to invent membership, governance, or repair from scratch.",
+			body: "RCOS makes the structure of community life explicit, so a hub doesn't have to invent membership, governance, or repair from scratch.",
 			cta: 'Open the RCOS Standard ↗',
 			href: 'https://rcos.ecohubs.community',
 			external: true,
@@ -706,12 +706,12 @@
 		{
 			kicker: '03 · Pilots',
 			title: 'Real communities, applying it.',
-			body: 'A first community in Ecuador is already running the RCOS Standard under real ecological, social, and economic constraints — feeding what they learn back into the standard.',
+			body: 'A first community in Ecuador is already running the RCOS Standard under real ecological, social, and economic constraints, and feeding what it learns back into the standard.',
 			cta: 'See the Ecuador pilot →',
 			href: '#pilot'
 		}
 	]}
-	footnote="Every pilot teaches the standard. Every standard improvement helps the next pilot. That loop is the project."
+	footnote="Each pilot feeds lessons into the standard, and each improvement to the standard reaches the next pilot."
 >
 	{#snippet headline()}
 		The vision is the
@@ -731,12 +731,11 @@
 			<div class="kicker text-emerald-800 mb-4">From idea to ground, and back</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
 				How the RCOS Standard
-				<em class="font-story italic font-normal text-stone-500">actually gets applied.</em>
+				<em class="font-story italic font-normal text-stone-500">gets applied.</em>
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed max-w-2xl">
-				It is built as a loop, not a launch. Every community that runs it teaches the next one
-				something — and the RCOS Standard that comes after is a little truer than the one that came
-				before.
+				It is built as a loop. Every community that runs it teaches the next one something, and each
+				version of the RCOS Standard comes out a little truer than the one before.
 			</p>
 		</div>
 
@@ -766,7 +765,7 @@
 								>Pilot · Ecuador</span
 							>
 						</div>
-						<span class="text-[11px] text-stone-400 font-mono">running RCOS v0.4</span>
+						<span class="text-[11px] text-stone-400 font-mono">running RCOS v0.1</span>
 					</div>
 					<div class="p-6 font-mono text-[12.5px] leading-[2] text-stone-700">
 						<div>
@@ -814,7 +813,7 @@
 					</div>
 				</div>
 				<p class="mt-5 text-sm text-stone-500 leading-relaxed">
-					Every line above is a real choice the pilot is documenting in the open — the same way any
+					Every line above is a real choice the pilot is documenting in the open, the same way any
 					community that adopts the RCOS Standard can.
 				</p>
 			</div>
@@ -858,18 +857,18 @@
 		</div>
 
 		<div data-scroll-animate class="lg:col-span-7">
-			<div class="kicker text-emerald-700 mb-4">Already Living, Not Just Planned</div>
+			<div class="kicker text-emerald-700 mb-4">Already living</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight mb-8">
 				A pilot is already happening<br />
 				<em class="font-story italic font-normal text-stone-500">— and it's working.</em>
 			</h2>
 			<p class="text-lg text-stone-700 leading-relaxed mb-5">
 				In March 2026, we introduced the RCOS Standard to a community in Ecuador facing complex,
-				long-standing divisions. These were people deeply committed to healing, yet they needed a
-				new path forward to bridge the gaps that had persisted for so long.
+				long-standing divisions. These were people deeply committed to healing who still needed a
+				way through.
 			</p>
 			<p class="text-lg text-stone-700 leading-relaxed mb-8">
-				The RCOS Standard doesn't magic away the pain. It does something quieter: it
+				The RCOS Standard doesn't magic away the pain. It
 				<em class="font-story italic">names the thing that's hard</em>, and gives the community a
 				shared language to work on it together.
 			</p>
@@ -963,7 +962,7 @@
 			<div class="kicker text-emerald-800 mb-4">Contribute</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
 				We are not finished. <br />
-				<em class="font-story italic font-normal text-stone-500">That is the point.</em>
+				<em class="font-story italic font-normal text-stone-500">Help write the next version.</em>
 			</h2>
 			<p class="mt-5 text-lg text-stone-700 leading-relaxed">
 				The RCOS Standard gets better with every person who reads it carefully, disagrees with a
@@ -976,7 +975,7 @@
 				<a
 					href={path.href}
 					target={path.external ? '_blank' : undefined}
-					rel={path.external ? 'noopener' : undefined}
+					rel={path.external ? 'noopener noreferrer' : undefined}
 					class="group bg-white rounded-3xl p-7 border border-stone-200/80 hover:border-ecohubs-primary/50 transition-colors block"
 				>
 					<div class="text-[11px] tracking-widest uppercase text-emerald-700 mb-3">
@@ -993,8 +992,8 @@
 		</div>
 
 		<p class="mt-10 text-sm text-stone-500 font-story italic max-w-xl">
-			Contributions sit inside membership — not because we're gating, but because the standard stays
-			coherent when the people editing it are part of the wider community.
+			Contributions sit inside membership, because the standard stays coherent when the people
+			editing it are part of the wider community.
 		</p>
 	</div>
 </section>
@@ -1027,7 +1026,7 @@
 				href="/community-resilience-assessment"
 				class="inline-flex items-center gap-2 text-sm text-ecohubs-dark font-medium border-b border-ecohubs-dark/40 hover:border-ecohubs-dark pb-1"
 			>
-				See how your community measures up — free resilience assessment →
+				See how your community measures up with the free resilience assessment →
 			</a>
 		</div>
 	</div>
@@ -1046,7 +1045,7 @@
 		<em class="font-story italic font-normal text-emerald-300">Run it.</em>
 	{/snippet}
 	{#snippet lead()}
-		The standard is open. The pilots are live. The next version is shaped by whoever shows up and
+		The standard is open, the pilot is live, and the next version is shaped by whoever shows up and
 		edits it well.
 	{/snippet}
 	{#snippet actions()}

@@ -42,7 +42,7 @@
 
 <SEO
 	title="Vision — A future small enough to live inside | EcoHubs"
-	description="A growing network of small, human-scale communities — designed to regenerate land, culture, and livelihoods through cooperation and shared responsibility."
+	description="A growing network of small, human-scale communities designed to regenerate land, culture, and livelihoods through cooperation and shared responsibility."
 	ogImage="/og-vision.jpg"
 	{breadcrumbs}
 />
@@ -87,16 +87,16 @@
 					data-hero-step="0.30"
 					class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light"
 				>
-					Not a utopia. Not a retreat from the world. A network of small, human-scale ecovillages —
-					intentional communities designed to regenerate the land they sit on. And underneath it, a
-					patient, honest answer to a question many of us already carry —
+					EcoHubs is building a network of small, human-scale ecovillages: intentional communities
+					designed to regenerate the land they sit on. Underneath it is our patient attempt to
+					answer a question many of us already carry:
 					<em class="font-story italic">what would a life worth being inside actually look like?</em
 					>
 				</p>
 
 				<p data-hero-step="0.40" class="mt-5 text-lg text-stone-600 leading-relaxed max-w-xl">
 					Below is the picture as clearly as we can see it today: the principles, the values, the
-					horizon, and the way we plan to walk there — together, and in the open.
+					horizon, and the way we plan to walk there, together and in the open.
 				</p>
 
 				<div data-hero-step="0.52" class="mt-10 flex flex-col sm:flex-row gap-3">
@@ -326,12 +326,11 @@
 						<div class="flex items-center gap-2 mb-2">
 							<span class="w-2 h-2 rounded-full bg-amber-300"></span>
 							<span class="text-[10px] tracking-widest uppercase text-stone-500 font-semibold"
-								>A network, not a place</span
+								>From the manifesto</span
 							>
 						</div>
 						<p class="font-story italic text-[14px] leading-snug text-stone-800">
-							"We are not designing a perfect place. We are designing a place that can keep getting
-							truer."
+							"EcoHubs are not perfect communities. They are learning communities."
 						</p>
 					</div>
 				</div>
@@ -403,8 +402,8 @@
 						<div class="kicker text-amber-200/70 mb-3">Connected</div>
 						<p class="font-serif text-xl md:text-[22px] leading-[1.55] text-white/95">
 							And every hub stays connected to a
-							<em class="font-story italic">shared global commons</em> that accelerates learning, resilience,
-							and regeneration — so no one has to start from zero.
+							<em class="font-story italic">shared global commons</em>, where what one hub learns
+							reaches the others, so no one has to start from zero.
 						</p>
 					</div>
 				</div>
@@ -418,8 +417,8 @@
 				<span class="h-px w-16 bg-amber-200/30"></span>
 			</div>
 			<p class="font-story italic text-2xl md:text-3xl leading-[1.4] text-amber-100/95">
-				Local enough to feel like home.<br />
-				Connected enough to change everything.
+				Small enough to know everyone by name.<br />
+				Connected enough to learn from every other hub.
 			</p>
 
 			<div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
@@ -455,9 +454,9 @@
 				<em class="font-story italic font-normal text-stone-500">in its own way.</em>
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
-				Each hub is shaped by its land, its people, its history. None of them will look the same.
-				But underneath the difference, they share six commitments — the things that, if any are
-				missing, it is not really an EcoHub anymore.
+				Each hub is shaped by its land, its people, its history, so no two will look the same.
+				Underneath the difference they share six commitments, and a hub missing any one of them is
+				not really an EcoHub anymore.
 			</p>
 		</div>
 
@@ -509,9 +508,8 @@
 				and never will be.
 			</h2>
 			<p class="mt-6 text-lg md:text-xl text-stone-200/80 leading-relaxed max-w-2xl">
-				Every honest vision can be confused with three or four similar-looking things. So before we
-				go further — these are the things we have decided, carefully, that we are
-				<em class="font-story italic">not</em>.
+				A vision like this is easy to confuse with a few similar-looking things. These are the ones
+				we have decided, carefully, that we are <em class="font-story italic">not</em>.
 			</p>
 		</div>
 
@@ -539,9 +537,9 @@
 				<em class="font-story italic font-normal text-stone-500">A generation.</em>
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
-				The vision is not one size. It works at three. The smallest is a place you can walk across
-				in a morning. The largest is a quiet civilizational shift that takes longer than any of us.
-				They depend on each other.
+				The vision works at three scales. The smallest is a place you can walk across in a morning.
+				The largest is a slow civilizational shift that will outlast any of us. Each one depends on
+				the others.
 			</p>
 		</div>
 
@@ -642,7 +640,7 @@
 				<div class="kicker text-emerald-300/80 mb-3 relative">Horizon 03 · a generation</div>
 				<h3 class="font-serif text-3xl leading-tight mb-4 relative">A generation.</h3>
 				<p class="font-story italic text-lg text-stone-200/85 leading-snug mb-6 relative">
-					A way of life that is no longer alternative — it's just one of the ordinary, available
+					A way of life that has stopped being alternative and become one of the ordinary, available
 					answers to "how should we live?"
 				</p>
 				<ul class="space-y-2.5 text-[15px] text-stone-200/85 mb-8 relative">
@@ -704,8 +702,8 @@
 				<em class="font-story italic font-normal text-stone-500">underneath all the rest.</em>
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
-				Tools and patterns are surface. Values are what stays when the tools fail and the patterns
-				get edited. These are the five we keep coming back to.
+				Values are what stays when the tools fail and the patterns get edited. These are the five we
+				keep coming back to.
 			</p>
 		</div>
 
@@ -742,9 +740,9 @@
 				a place you can stand in.
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
-				Most beautiful visions never leave the page. We have built the work as a loop, not a launch
-				— so that every hub teaches the network something, and the next hub starts from a slightly
-				stronger RCOS Standard than the last.
+				Most beautiful visions never leave the page. We have built the work as a loop, so every hub
+				teaches the network something and the next hub starts from a slightly stronger RCOS Standard
+				than the last.
 			</p>
 		</div>
 
@@ -872,24 +870,15 @@
 			class="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.05] mb-10"
 			data-scroll-animate
 		>
-			The future is not <br class="hidden md:block" />
-			a place we are <em class="font-story italic font-normal text-emerald-300">going.</em>
+			We are building the future <br class="hidden md:block" />
+			<em class="font-story italic font-normal text-emerald-300">one hub at a time.</em>
 		</h2>
-
-		<p
-			class="font-serif text-2xl md:text-3xl leading-snug text-stone-200/90 max-w-3xl mx-auto mb-14"
-			data-scroll-animate
-		>
-			It is a place we are
-			<em class="font-story italic text-ecohubs-ivory font-normal">creating together</em>, one hub
-			at a time.
-		</p>
 
 		<div class="mx-auto w-16 h-px bg-emerald-500/40 mb-12"></div>
 
 		<p class="text-lg text-stone-200/80 leading-relaxed mb-10 max-w-xl mx-auto" data-scroll-animate>
-			If any of this felt familiar — like something you have already been quietly carrying — there's
-			a place for you in the work. There are many ways in. None of them require you to move
+			If any of this felt familiar, like something you have already been quietly carrying, there's a
+			place for you in the work. There are many ways in, and none of them require you to move
 			tomorrow.
 		</p>
 

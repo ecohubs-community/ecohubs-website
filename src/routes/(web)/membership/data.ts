@@ -51,7 +51,7 @@ export const rooms: Room[] = [
 		num: '02',
 		icon: Users,
 		title: 'Facilitate conversations & workshops',
-		body: 'Guide discussions, host workshops, support pilot communities applying RCOS. Create space for honest dialogue and shared sense-making.',
+		body: 'Guide discussions, host workshops, and support pilot communities applying RCOS.',
 		tags: 'Facilitation · Workshops · Sense-making',
 		iconColor: 'text-purple-600',
 		iconBg: 'bg-purple-50',
@@ -71,7 +71,7 @@ export const rooms: Room[] = [
 		num: '04',
 		icon: PenLine,
 		title: 'Tell the story',
-		body: 'Field notes, member portraits, articles, social posts. Capture what is happening so others can find their way in — and so we remember it ourselves.',
+		body: 'Field notes, member portraits, articles, social posts. Capture what is happening so others can find their way in, and so we remember it ourselves.',
 		tags: 'Writing · Editing · Social',
 		iconColor: 'text-amber-600',
 		iconBg: 'bg-amber-50',
@@ -81,7 +81,7 @@ export const rooms: Room[] = [
 		num: '05',
 		icon: Compass,
 		title: 'Shape the RCOS Standard',
-		body: 'Co-design the chapters of the Regenerative Community Operating System. Propose patterns. Disagree well. The RCOS Standard is the spine — and it is still being written.',
+		body: 'Co-design the chapters of the Regenerative Community Operating System, propose patterns, and disagree well. The RCOS Standard is still being written.',
 		tags: 'Writing · Research · Pattern design',
 		iconColor: 'text-emerald-600',
 		iconBg: 'bg-emerald-50',
@@ -91,7 +91,7 @@ export const rooms: Room[] = [
 		num: '06',
 		icon: CodeXml,
 		title: 'Build the platform',
-		body: 'ecohubsOS, integrations, governance tooling. Open-source, opinionated about what we do not build. Engagement loops are not invited.',
+		body: 'ecohubsOS, integrations, governance tooling. Open-source, and opinionated about what we do not build, starting with engagement loops.',
 		tags: 'Engineering · DevOps · Open source',
 		iconColor: 'text-indigo-600',
 		iconBg: 'bg-indigo-50',
@@ -101,7 +101,7 @@ export const rooms: Room[] = [
 		num: '07',
 		icon: Lightbulb,
 		title: 'Design strategy & initiatives',
-		body: 'Shape creative direction, plan initiatives, translate vision into structured next steps the community can actually run.',
+		body: 'Shape creative direction, plan initiatives, translate vision into structured next steps the community can run.',
 		tags: 'Strategy · Operations',
 		iconColor: 'text-rose-600',
 		iconBg: 'bg-rose-50',
@@ -111,7 +111,7 @@ export const rooms: Room[] = [
 		num: '08',
 		icon: BookOpen,
 		title: 'Research regenerative models',
-		body: 'Investigate practices, analyse existing communities, contribute evidence-based insights so the RCOS Standard stands on something real.',
+		body: 'Investigate practices, analyse existing communities, and gather the evidence the RCOS Standard stands on.',
 		tags: 'Research · Synthesis · Knowledge',
 		iconColor: 'text-orange-600',
 		iconBg: 'bg-orange-50',
@@ -121,7 +121,7 @@ export const rooms: Room[] = [
 		num: '09',
 		icon: Sprout,
 		title: 'Apply RCOS in your community',
-		body: 'Already part of (or starting) a local community? Try a RCOS Standard chapter on the ground. We help you adapt it, you bring back what you learn.',
+		body: 'Already part of (or starting) a local community? Try a RCOS Standard chapter on the ground. We help you adapt it; you bring back what you learn.',
 		tags: 'Pilot · Stewardship · Local practice',
 		iconColor: 'text-emerald-700',
 		iconBg: 'bg-emerald-50',
@@ -132,7 +132,7 @@ export const rooms: Room[] = [
 		num: '10',
 		icon: Palette,
 		title: 'Design the look',
-		body: 'Visual identity, web, print. Make the project look like itself — not like every other movement.',
+		body: 'Visual identity, web, print. Make the project look like itself rather than like every other movement.',
 		tags: 'Design · Typography · Brand',
 		iconColor: 'text-fuchsia-700',
 		iconBg: 'bg-fuchsia-50',
@@ -142,7 +142,7 @@ export const rooms: Room[] = [
 		num: '11',
 		icon: Coins,
 		title: 'Watch the money',
-		body: 'Local economies, contribution accounting, ECO design. How value moves without extraction — researched, not assumed.',
+		body: 'Local economies, contribution accounting, ECO design. Research how value can move without extraction, rather than assuming we already know.',
 		tags: 'Economy · Accounting · Tokenomics',
 		iconColor: 'text-yellow-700',
 		iconBg: 'bg-yellow-50',
@@ -162,7 +162,7 @@ export interface FaqItem {
 export const faqItems: FaqItem[] = [
 	{
 		q: 'What does membership actually involve?',
-		a: 'Membership is participation in an <strong>online community</strong> — contributing to the RCOS Standard, joining discussions, voting on proposals, and collaborating on shared tools. It is not a physical community membership, and not a place to move to.'
+		a: 'Membership means taking part in an <strong>online community</strong>: contributing to the RCOS Standard, joining discussions, voting on proposals, and working on shared tools. It is not membership of a physical community, and not a place to move to.'
 	},
 	{
 		q: 'Is there a fee?',
@@ -170,43 +170,43 @@ export const faqItems: FaqItem[] = [
 	},
 	{
 		q: 'Do I have to be technical, or understand Web3?',
-		a: 'No. We have permaculturists, parents, facilitators, designers, educators, builders, listeners. The technology is meant to support coordination, not gatekeep it. Participation is based on contribution, not technical fluency.'
+		a: 'No. Members include permaculturists, parents, facilitators, designers, educators, builders, listeners. The technology is there to support coordination, and participation depends on contribution, not technical fluency.'
 	},
 	{
 		q: 'Do I have to move somewhere to join?',
-		a: 'No. Most members are online, in their current home base. The community meets, contributes, and co-creates the RCOS Standard together — from anywhere.'
+		a: 'No. Most members take part online from wherever they already live. The community meets and writes the RCOS Standard together from anywhere.'
 	},
 	{
 		q: 'How long does the application take, and what happens after?',
-		a: 'About 20 minutes to fill in. After that, your application goes through a <strong>3-day community review and vote</strong> on ecohubsOS. You will hear back by email — yes, no, or with follow-up questions.'
+		a: 'About 20 minutes to fill in. After that, your application goes through a <strong>3-day community review and vote</strong> on ecohubsOS. You will hear back by email with a yes, a no, or follow-up questions.'
 	},
 	{
 		q: 'How do I find my way once I am inside?',
-		a: 'Honestly: today, the way in is to show up. Join the regular community calls, or message us directly. We are still growing the buddy system, so for now the path is human contact — calls, forum threads, and direct outreach to active members.'
+		a: 'Today, the way in is to show up. Join the regular community calls, or message us directly. We are still growing the buddy system, so for now the path is human contact: calls, forum threads, and direct outreach to active members.'
 	},
 	{
 		q: 'What kinds of contribution actually count?',
-		a: 'Research, writing, facilitation, coordination, design, development, translation, listening, hosting, stewardship of shared knowledge. There is no single expected skill set. The question is not <em>what you already know</em> — it is <em>what you want to show up for.</em>'
+		a: 'Research, writing, facilitation, coordination, design, development, translation, listening, hosting, stewardship of shared knowledge. There is no single expected skill set. We care more about <em>what you want to show up for</em> than <em>what you already know</em>.'
 	},
 	{
 		q: 'Is this a crypto project? Why ECO tokens?',
-		a: 'EcoHubs is not a speculative crypto project. ECO is an <strong>internal value unit</strong> used to recognize contribution — like a transparent ledger for labor and care. It is non-transferable, never traded, and never the reason to join.'
+		a: 'EcoHubs is not a speculative crypto project. ECO is an <strong>internal value unit</strong> used to recognize contribution, like a transparent ledger for labor and care. It is non-transferable, never traded, and never the reason to join.'
 	},
 	{
 		q: 'Is joining early risky? What do I gain as a pioneer?',
-		a: 'Yes — early carries uncertainty. Systems are still evolving. In return, you get to <strong>shape the RCOS Standard</strong>, hold real influence, form deeper relationships, and unlock access to roles before they are formally defined. This is a co-creation phase, not a finished product.'
+		a: 'Yes, joining early carries uncertainty, because the systems are still changing. In return, you get to <strong>shape the RCOS Standard</strong>, hold real influence, form deeper relationships, and take on roles before they are formally defined.'
 	},
 	{
 		q: 'Who controls this today, and how decentralized is it really?',
-		a: 'We are in an <strong>early founder-led phase</strong>, transitioning toward community governance. Full decentralization is a process, not a switch. Every step is being made in the open, written into the RCOS Standard, and reviewable.'
+		a: 'We are in an <strong>early founder-led phase</strong>, moving step by step toward community governance. Each step happens in the open, gets written into the RCOS Standard, and can be reviewed.'
 	},
 	{
 		q: 'Can I leave at any time?',
-		a: 'Yes. Membership is voluntary. Step back, exit, return — the RCOS Standard includes clear, dignified paths for all of those.'
+		a: 'Yes. Membership is voluntary, and the RCOS Standard includes clear, dignified paths to step back, exit, and return.'
 	},
 	{
 		q: 'What tools does the community use?',
-		a: '<a href="https://os.ecohubs.community" target="_blank" rel="noopener noreferrer">ecohubsOS</a> as the home base — including its internal voting system for applications and decisions. Discord and a forum for discussion. Collaborative documents for the RCOS Standard. The smallest set of tools that lets the community see itself.'
+		a: '<a href="https://os.ecohubs.community" target="_blank" rel="noopener noreferrer">ecohubsOS</a> as the home base — including its internal voting system for applications and decisions. Discord and a forum for discussion. Collaborative documents for the RCOS Standard. We keep the toolset as small as we can.'
 	}
 ];
 
@@ -236,7 +236,7 @@ export const doorways: Doorway[] = [
 		num: '02',
 		tag: 'Bring a skill',
 		title: 'Contribute what you already do well.',
-		body: 'Permaculture, governance, translation, code, listening, design, research. We need every one of these — not later, now.',
+		body: 'Permaculture, governance, translation, code, listening, design, research. We need every one of these now.',
 		meta: 'a few hours a week',
 		cta: 'See where we need help →',
 		href: '#rooms'
@@ -245,7 +245,7 @@ export const doorways: Doorway[] = [
 		num: '03',
 		tag: 'Host a circle',
 		title: 'Start something local where you live.',
-		body: 'A monthly meal. A weekly listening circle. Or — if you already hold a community — apply RCOS on the ground and we help you adapt it.',
+		body: 'A monthly meal or a weekly listening circle. If you already hold a community, apply RCOS on the ground and we help you adapt it.',
 		meta: 'an evening a month, ongoing',
 		cta: 'Tell us about it →',
 		href: '/contact'

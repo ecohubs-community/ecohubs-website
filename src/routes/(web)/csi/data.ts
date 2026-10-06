@@ -453,7 +453,7 @@ export interface FaqEntry {
 export const faq: FaqEntry[] = [
 	{
 		q: 'Does a high score mean I should move there?',
-		a: 'No. A high score means a region has fewer structural obstacles than most — nothing more. CSI reads public data from a desk; it cannot read the neighbours, the local mayor, the road in March, or how you feel on the third morning. Treat the map as a way to build a shortlist, then go and stand on the ground.'
+		a: 'No. A high score means a region has fewer structural obstacles than most, and nothing more. CSI reads public data from a desk; it cannot read the neighbours, the local mayor, the road in March, or how you feel on the third morning. Treat the map as a way to build a shortlist, then go and stand on the ground.'
 	},
 	{
 		q: 'Why does the legal layer gate everything else?',
@@ -461,15 +461,15 @@ export const faq: FaqEntry[] = [
 	},
 	{
 		q: 'Where does the data come from, and how current is it?',
-		a: `Every number traces back to a public dataset — SoilGrids for soil, WRI Aqueduct for water, World Bank WGI for governance, CHELSA and GAEZ for climate and growing conditions, ThinkHazard for hazard exposure, among others. Each source is cited on the map, and the full list is published at <a href="${csiStats.url}" target="_blank" rel="noopener" class="text-ecohubs-primary hover:underline font-medium">csi.ecohubs.community</a>. Update cadences differ by source; where we are working from an older release or a stand-in indicator, the value is marked as a proxy.`
+		a: `Every number traces back to a public dataset: SoilGrids for soil, WRI Aqueduct for water, World Bank WGI for governance, CHELSA and GAEZ for climate and growing conditions, ThinkHazard for hazard exposure, among others. Each source is cited on the map, and the full list is published at <a href="${csiStats.url}" target="_blank" rel="noopener noreferrer" class="text-ecohubs-primary hover:underline font-medium">csi.ecohubs.community</a>. Update cadences differ by source; where we are working from an older release or a stand-in indicator, the value is marked as a proxy.`
 	},
 	{
 		q: 'What do the confidence grades mean?',
-		a: 'Each signal carries A, B or C. <strong class="text-ecohubs-deep">A</strong> is measured — observed data for that region. <strong class="text-ecohubs-deep">B</strong> is modelled — derived or interpolated from nearby observations. <strong class="text-ecohubs-deep">C</strong> is a proxy — usually a national figure standing in for a region until something better exists. A region scoring well on mostly C-grade signals is a lead, not a finding, and the map says so rather than hiding it in the average.'
+		a: 'Each signal carries A, B or C. <strong class="text-ecohubs-deep">A</strong> is measured, observed data for that region. <strong class="text-ecohubs-deep">B</strong> is modelled, derived or interpolated from nearby observations. <strong class="text-ecohubs-deep">C</strong> is a proxy, usually a national figure standing in for a region until something better exists. A region scoring well on mostly C-grade signals is a lead, not a finding, and the map says so rather than hiding it in the average.'
 	},
 	{
 		q: 'How precise is a region? Can I look up a specific piece of land?',
-		a: 'Not yet. CSI works at administrative-region resolution, which is coarse enough that two valleys inside the same score can be genuinely different places. It is built to eliminate regions, not to choose parcels. Parcel-level questions — this slope, this well, this title — are exactly what the site visit and a local lawyer are for.'
+		a: 'Not yet. CSI works at administrative-region resolution, which is coarse enough that two valleys inside the same score can be genuinely different places. It is built to eliminate regions, not to choose parcels. Parcel-level questions (this slope, this well, this title) are what the site visit and a local lawyer are for.'
 	},
 	{
 		q: 'Is CSI trying to sell me land, or take a cut?',
@@ -477,7 +477,7 @@ export const faq: FaqEntry[] = [
 	},
 	{
 		q: 'How does CSI relate to the RCOS Standard?',
-		a: 'They answer different halves of the same question. CSI reads the ground: whether a place can lawfully and physically hold a community. The <a href="/rcos" class="text-ecohubs-primary hover:underline font-medium">RCOS Standard</a> reads the structure: how the people on that ground make decisions, share resources, and repair conflict. Communities rarely fracture over soil — they fracture over rules nobody wrote down. You want both.'
+		a: 'They answer different halves of the same question. CSI reads the ground: whether a place can lawfully and physically hold a community. The <a href="/rcos" class="text-ecohubs-primary hover:underline font-medium">RCOS Standard</a> reads the structure: how the people on that ground make decisions, share resources, and repair conflict. Communities fracture over rules nobody wrote down far more often than over soil. You want both.'
 	},
 	{
 		q: 'I think a signal is weighted wrong. Can I say so?',

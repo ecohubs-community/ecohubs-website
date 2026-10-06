@@ -34,7 +34,7 @@
 
 <SEO
 	title="Become a Member — EcoHubs.community"
-	description="Apply to join EcoHubs — a free, contribution-based online community co-creating the RCOS Standard for regenerative communities."
+	description="Apply to join EcoHubs, the free, contribution-based online community writing the RCOS Standard for regenerative communities."
 	ogImage="/og-membership.jpg"
 	{breadcrumbs}
 />
@@ -70,17 +70,14 @@
 				<h1
 					class="font-serif text-5xl md:text-6xl lg:text-[72px] leading-[1.04] tracking-tight text-ecohubs-deep"
 				>
-					You don't <em class="font-story italic font-normal text-stone-500">join</em> EcoHubs<span
-						class="font-story italic font-light text-stone-400">.</span
-					><br />
-					You start <em class="font-story italic font-normal text-ecohubs-primary">showing up</em> for
-					it.
+					Membership means<br />
+					<em class="font-story italic font-normal text-ecohubs-primary">showing up</em> for the work.
 				</h1>
 
 				<p class="mt-8 text-xl text-stone-700 leading-relaxed max-w-xl font-light">
-					Membership is not a tier you buy or a list you get on. It is a quiet decision to bring
-					your craft, your time, or your honest questions to a community that is writing the RCOS
-					Standard for a different way to live.
+					Membership has no fee and no tiers. It is a quiet decision to bring your craft, your time,
+					or your questions to a community that is writing the RCOS Standard for a different way to
+					live.
 				</p>
 
 				<div class="mt-10 flex flex-col sm:flex-row gap-3">
@@ -104,7 +101,8 @@
 					<PersonaIcons>
 						{#snippet caption()}
 							Permaculturists, governance writers, designers, parents and
-							<em class="font-story italic">people who got tired of doing this alone</em> — already inside.
+							<em class="font-story italic">people who got tired of doing this alone</em> are already
+							inside.
 						{/snippet}
 					</PersonaIcons>
 				</div>
@@ -112,7 +110,7 @@
 
 			<!-- Right: a "membership card" — a fillable dossier that you grow into.
            Echoes the RCOS Standard's structured aesthetic, but personal — reinforcing
-           "you don't join, you start showing up". -->
+           "membership means showing up". -->
 			<div class="lg:col-span-5 relative">
 				<!-- the card itself, slightly rotated for a paper-on-desk feel -->
 				<div class="relative" style="transform: rotate(-1.2deg);">
@@ -178,7 +176,7 @@
 											class="w-3.5 h-3.5 rounded-[3px] border border-stone-400 inline-flex items-center justify-center text-emerald-700 text-[10px] leading-none"
 											>✓</span
 										>
-										Time &amp; honest attention
+										Time &amp; attention
 									</li>
 									<li class="flex items-center gap-2.5">
 										<span
@@ -284,15 +282,14 @@
 <section id="what-it-is" class="relative py-24 md:py-32 bg-ecohubs-base">
 	<div class="max-w-7xl mx-auto px-6 lg:px-8">
 		<div class="max-w-3xl mb-16">
-			<div class="kicker text-emerald-700 mb-4">Before you apply — what this is, honestly</div>
+			<div class="kicker text-emerald-700 mb-4">Before you apply · what this is</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
 				We'd rather <em class="font-story italic font-normal text-stone-500">undersell it</em><br />
 				than have you arrive disappointed.
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
-				Plenty of community projects sell a finished thing. We can't — because we are not finished,
-				and that is intentional. Here is exactly what membership is, and what it isn't, in plain
-				language.
+				Plenty of community projects sell a finished thing. We can't, because we are not finished,
+				and that is intentional. Here is what membership is, and what it isn't.
 			</p>
 		</div>
 
@@ -303,7 +300,7 @@
 			>
 				<div class="kicker text-emerald-700 mb-6">What it is</div>
 				<ul class="space-y-5">
-					{#each [{ strong: 'An online community', rest: '— held together by tools, calls, and a shared document called the RCOS Standard.' }, { strong: 'Free to join.', rest: 'No fee, no tier, no premium. Application is based on alignment, not payment.' }, { strong: 'Contribution-based.', rest: 'Trust, access, and influence grow with what you bring — research, writing, listening, code, care.' }, { strong: 'A voice in the work.', rest: 'Members shape the RCOS Standard, vote on proposals, and decide together who joins next.' }, { strong: 'A starting point for RCOS.', rest: 'The first place where the Regenerative Community Operating System gets tried, refined, and improved together.' }] as item}
+					{#each [{ strong: 'An online community.', rest: 'It is held together by tools, calls, and a shared document called the RCOS Standard.' }, { strong: 'Free to join.', rest: 'No fee and no paid tier. Applications are judged on alignment, not payment.' }, { strong: 'Contribution-based.', rest: 'Trust, access, and influence grow with what you bring: research, writing, listening, code, care.' }, { strong: 'A voice in the work.', rest: 'Members shape the RCOS Standard, vote on proposals, and decide together who joins next.' }, { strong: 'A starting point for RCOS.', rest: 'The first place where the Regenerative Community Operating System gets tried and refined together.' }] as item}
 						<li class="flex items-start gap-4">
 							<span class="mt-2 w-1.5 h-1.5 rounded-full bg-ecohubs-primary shrink-0"></span>
 							<p class="text-stone-800 leading-relaxed">
@@ -321,7 +318,7 @@
 			>
 				<div class="kicker text-amber-700 mb-6">What it isn't</div>
 				<ul class="space-y-5">
-					{#each ['Not a place to <em class="font-story italic">move to</em> — yet. We are not currently placing members in physical communities.', 'Not a <em class="font-story italic">crypto investment</em>. ECO is an internal value unit, non-transferable, never traded.', 'Not a <em class="font-story italic">consumer product</em>. There is no feed to scroll, no engagement loop. Show up, or do not.', 'Not an <em class="font-story italic">ideology</em>. We have stances; we do not have a doctrine you must agree with.', 'Not a <em class="font-story italic">finished thing</em>. It will change while you are inside it. That is the offer.'] as html}
+					{#each ['Not yet a place to <em class="font-story italic">move to</em>. We are not currently placing members in physical communities.', 'Not a <em class="font-story italic">crypto investment</em>. ECO is an internal value unit, non-transferable, never traded.', 'Not a <em class="font-story italic">consumer product</em>. There is no feed to scroll and no engagement loop.', 'Not an <em class="font-story italic">ideology</em>. We have stances; we do not have a doctrine you must agree with.', 'Not a <em class="font-story italic">finished thing</em>. It will change while you are inside it.'] as html}
 						<li class="flex items-start gap-4">
 							<span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0"></span>
 							<p class="text-stone-700 leading-relaxed">{@html html}</p>
@@ -344,11 +341,11 @@
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
 				There's no <em class="font-story italic font-normal text-stone-500">one way</em> to begin.<br
 				/>
-				Pick the one that feels honest.
+				Pick the one that fits you.
 			</h2>
 			<p class="mt-5 text-lg text-stone-700 leading-relaxed">
-				These are not tiers. They are the doorways we have noticed people actually walk through. You
-				can start with one and end up doing all three. Most people do.
+				These are the doorways we have noticed people actually walk through. You can start with one
+				and end up doing all three. Most people do.
 			</p>
 		</div>
 
@@ -378,8 +375,7 @@
 		</div>
 
 		<p class="mt-12 text-center text-sm text-stone-500 max-w-xl mx-auto font-story italic">
-			None of these are tiers. None of these cost. They are the doorways we have noticed people walk
-			through.
+			None of them is a tier, and none of them costs anything.
 		</p>
 	</div>
 </section>
@@ -400,7 +396,7 @@
 				</h2>
 				<p class="text-stone-700 leading-relaxed mb-8">
 					We do not auto-approve. The community itself reads each application and decides together.
-					It is slower than clicking Sign Up — and that is why it works.
+					It is slower than clicking Sign Up.
 				</p>
 
 				<div class="space-y-4 text-sm">
@@ -460,7 +456,7 @@
 						<p class="text-stone-700 leading-relaxed mb-5">
 							The form takes about 20 minutes. We ask about your background, what you care about,
 							what brought you here, and how you'd like to contribute. We read all of it. Long
-							answers welcome — short ones too, if you mean them.
+							answers welcome; short ones too, if you mean them.
 						</p>
 						<div class="flex flex-wrap gap-2">
 							{#each ['Your background', 'What you care about', 'How you would contribute', 'A question you have'] as chip}
@@ -487,13 +483,13 @@
 					<div>
 						<div class="kicker text-stone-600 mb-2">Step two</div>
 						<h3 class="font-serif text-2xl md:text-[28px] text-ecohubs-deep leading-snug mb-3">
-							The community reads it. The community decides.
+							The community reads it and decides.
 						</h3>
 						<p class="text-stone-700 leading-relaxed mb-5">
-							Parts of your application are made visible to current members for three days through
-							ecohubsOS. They review, ask questions, and vote with the platform's internal voting
-							system. We trust the people already inside to know who fits.
-							<em class="font-story italic">No founder veto. No private inbox.</em>
+							Current members see parts of your application in ecohubsOS for three days. They review
+							it, ask questions, and vote with the platform's internal voting system. We trust the
+							people already inside to know who fits.
+							<em class="font-story italic">There is no founder veto and no private inbox.</em>
 						</p>
 						<div class="grid sm:grid-cols-3 gap-3 mt-2">
 							<div class="p-4 rounded-xl bg-ecohubs-ivory border border-stone-200/60">
@@ -532,7 +528,7 @@
 					<div>
 						<div class="kicker text-stone-600 mb-2">Step three</div>
 						<h3 class="font-serif text-2xl md:text-[28px] text-ecohubs-deep leading-snug mb-3">
-							You walk in. The way to find your path is to show up.
+							You walk in, and find your path by showing up.
 						</h3>
 						<p class="text-stone-700 leading-relaxed mb-5">
 							On approval, you log in to
@@ -575,8 +571,8 @@
 						<span class="transition-transform group-hover:translate-x-0.5">→</span>
 					</a>
 					<p class="mt-4 text-sm text-stone-500 max-w-md font-story italic">
-						Completing the form is not a guarantee — it is an honest conversation. Most applications
-						take a single sitting.
+						Sending the form starts a conversation with the community. Most applications take a
+						single sitting.
 					</p>
 				</div>
 			</div>
@@ -601,8 +597,8 @@
 				>
 			</h2>
 			<p class="mt-6 text-lg text-stone-700 leading-relaxed">
-				Browse the rooms. Most members move between several. Your path will shape itself once you
-				are inside, but here is what people are working on right now.
+				Browse the rooms. Most members move between several. You will find your own path once you
+				are inside; here is what people are working on right now.
 			</p>
 		</div>
 
@@ -655,8 +651,8 @@
 						Something we haven't named yet
 					</h3>
 					<p class="text-sm text-stone-200/80 leading-relaxed flex-1">
-						Every member opens a room we did not know we needed. If you do not see your craft above,
-						that probably means there is a doorway with your name on it.
+						Members keep opening rooms we did not know we needed. If you do not see your craft
+						above, there is probably room for it anyway.
 					</p>
 					<div class="mt-5 text-[11px] tracking-widest uppercase text-emerald-300/70">
 						Bring your own
@@ -666,9 +662,8 @@
 		</div>
 
 		<p class="mt-10 text-sm text-stone-500 max-w-2xl font-story italic">
-			Rooms are not roles. Most members move between several. Inside, the way to find others working
-			on the same thing is to join the calls and reach out — we are still small enough that direct
-			contact is the fastest path.
+			Inside, the way to find others working on the same thing is to join the calls and reach out.
+			We are still small enough that direct contact is the fastest path.
 		</p>
 
 		<div class="mt-10 flex flex-col sm:flex-row gap-3">
@@ -700,21 +695,20 @@
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight mb-6">
 				We make the <em class="font-story italic font-normal text-stone-500">invisible</em>
 				things<br />
-				explicit — on purpose.
+				explicit.
 			</h2>
 			<p class="text-lg text-stone-700 leading-relaxed mb-5">
 				Most communities die from the things no one wrote down: how decisions get made, how power
 				moves, how someone leaves. We write them down on day one.
 			</p>
 			<p class="text-lg text-stone-700 leading-relaxed">
-				Trust here is not built on charisma or vibes. It is built on
-				<em class="font-story italic">visibility</em> — of effort, of votes, of process — and the freedom
-				to disagree out loud.
+				Trust here comes from <em class="font-story italic">visibility</em> rather than charisma or vibes:
+				everyone can see the effort, the votes and the process, and anyone can disagree out loud.
 			</p>
 		</div>
 
 		<div class="lg:col-span-7 space-y-5">
-			{#each [{ kicker: 'Decisions', title: 'Member-guided, in the open', body: "New members, published content, shared direction — decided by transparent votes through ecohubsOS' internal voting system. Voting is the last step, after deliberation. Not the only step." }, { kicker: 'Authority', title: 'Earned, not assigned', body: 'Permissions and influence grow with contribution. Not financial stake. Not seniority. The people doing the work hold the room — and step back when they need to.' }, { kicker: 'Conversation', title: 'Sense-making before voting', body: 'Proposals are discussed in forums and circles before any vote. Disagreement is welcome. Refining a proposal counts as much as proposing one.' }, { kicker: 'Technology', title: 'On-chain where useful, off-chain where human', body: 'EcoHubs is not "fully on-chain" — by choice. Blockchain where transparency and auditability genuinely help; everywhere else, human judgment and care.' }] as item}
+			{#each [{ kicker: 'Decisions', title: 'Member-guided, in the open', body: "Members decide on new members, published content and shared direction through transparent votes in ecohubsOS' internal voting system. Voting comes last, after deliberation." }, { kicker: 'Authority', title: 'Earned, not assigned', body: 'Permissions and influence grow with contribution, not with financial stake or seniority. The people doing the work hold the room, and step back when they need to.' }, { kicker: 'Conversation', title: 'Sense-making before voting', body: 'Proposals are discussed in forums and circles before any vote. Disagreement is welcome. Refining a proposal counts as much as proposing one.' }, { kicker: 'Technology', title: 'No blockchain, for now', body: 'Nothing in EcoHubs runs on a blockchain today. Votes, XP and ECO are recorded in ecohubsOS, where members can see them.' }] as item}
 				<div class="flex gap-5 p-6 md:p-7 rounded-2xl bg-ecohubs-ivory border border-stone-200/70">
 					<div
 						class="w-10 h-10 shrink-0 rounded-full bg-ecohubs-deep text-emerald-200 flex items-center justify-center font-serif"
@@ -738,12 +732,12 @@
 					→
 				</div>
 				<div>
-					<div class="kicker text-emerald-300/90 mb-1">ECO &amp; XP — the honest version</div>
+					<div class="kicker text-emerald-300/90 mb-1">ECO &amp; XP · what they are</div>
 					<h3 class="font-serif text-xl text-ecohubs-ivory mb-2">Recognition, not speculation</h3>
 					<p class="text-stone-200/85 leading-relaxed text-[15px]">
 						ECO and XP are non-transferable, non-tradeable internal units that mark contribution.
 						They unlock access and responsibility inside the community. They are not an investment,
-						not a coin to flip, and never the reason to be here.
+						and never the reason to be here.
 					</p>
 				</div>
 			</div>
@@ -815,14 +809,13 @@
 		<div class="max-w-2xl mb-14">
 			<div class="kicker text-emerald-300/80 mb-4">What you get when you're inside</div>
 			<h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-ecohubs-ivory">
-				No swag. <em class="font-story italic font-light text-stone-400">No premium tier.</em><br />
-				Just
+				What you get is<br />
 				<em class="font-story italic text-emerald-300 font-normal">a real seat at a real table.</em>
 			</h2>
 		</div>
 
 		<div class="grid md:grid-cols-2 gap-x-12 gap-y-8">
-			{#each [{ k: 'A voice', body: 'Vote on proposals, shape the RCOS Standard, decide who joins next. Your weight is your contribution, not your wallet.' }, { k: 'A platform', body: "Full access to ecohubsOS, the forum, the calls, the working docs. The community's memory, openly held." }, { k: 'A circle', body: 'People who treat your work seriously and your time as finite. Calls, threads, real people on the other end.' }, { k: 'A practice ground', body: 'A place to try the RCOS Standard where it counts least and learns most — online first, with the people who are writing it. The pilot work happens elsewhere, in RCOS-led communities.' }, { k: 'Recognition', body: 'XP and ECO mark your contribution visibly. Care and craft do not go unseen. They are not a paycheck — they are a record.' }, { k: 'An exit, with dignity', body: 'Membership is voluntary. The RCOS Standard includes how people step back, leave, and return — without drama.' }] as item}
+			{#each [{ k: 'A voice', body: 'Vote on proposals, shape the RCOS Standard, decide who joins next. Your weight is your contribution, not your wallet.' }, { k: 'A platform', body: "Full access to ecohubsOS, the forum, the calls, and the working docs that hold the community's memory." }, { k: 'A circle', body: 'People who treat your work seriously and your time as finite. Calls, threads, real people on the other end.' }, { k: 'A practice ground', body: 'A place to try the RCOS Standard online first, where the stakes are low, with the people who are writing it. The pilot work happens elsewhere, in RCOS-led communities.' }, { k: 'Recognition', body: 'XP and ECO make your contribution visible, so care and craft do not go unseen. They are a record, not a paycheck.' }, { k: 'An exit, with dignity', body: 'Membership is voluntary. The RCOS Standard describes how people step back, leave, and return without drama.' }] as item}
 				<div>
 					<div class="kicker text-emerald-300/80 mb-3">{item.k}</div>
 					<p class="text-stone-200/85 leading-relaxed">{item.body}</p>
@@ -857,8 +850,8 @@
 		<div class="max-w-2xl mb-14">
 			<div class="kicker text-emerald-700 mb-4">Questions we hear a lot</div>
 			<h2 class="font-serif text-4xl md:text-5xl text-ecohubs-deep leading-tight">
-				Honest answers <em class="font-story italic font-normal text-stone-500"
-					>to the honest questions.</em
+				What people ask <em class="font-story italic font-normal text-stone-500"
+					>before they apply.</em
 				>
 			</h2>
 		</div>
@@ -880,7 +873,7 @@
 		11. FINAL CTA
 ═══════════════════════════════════════════════════════════════════ -->
 <ClosingCta
-	kicker="An invitation, not a funnel"
+	kicker="An invitation"
 	leadStyle="body"
 	width="narrow"
 	footnote="Free · Contribution-based · Community-decided"
@@ -890,8 +883,8 @@
 		<em class="font-story italic font-normal text-emerald-300">we'd like to read you, too.</em>
 	{/snippet}
 	{#snippet lead()}
-		We are not looking for believers. We are looking for people who are ready to make the invisible
-		things explicit — in their own lives, and with others.
+		We are looking for people who are ready to make the invisible things explicit, in their own
+		lives and with others.
 	{/snippet}
 	{#snippet actions()}
 		<a
