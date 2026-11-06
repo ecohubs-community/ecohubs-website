@@ -133,34 +133,38 @@
 			onclick={close}
 		></button>
 
-		<!-- Modal -->
+		<!-- Modal. Capped to the viewport; the inner wrapper scrolls, not this
+		     box, so the close button below stays pinned and reachable on phones. -->
 		<div
-			class="relative w-full max-w-[680px] bg-ecohubs-base rounded-[26px] overflow-hidden shadow-[0_40px_90px_-30px_rgba(11,46,36,0.55)]"
+			class="relative w-full max-w-[680px] max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-2.5rem)] flex flex-col bg-ecohubs-base rounded-[26px] overflow-hidden shadow-[0_40px_90px_-30px_rgba(11,46,36,0.55)]"
 		>
-			<!-- Close -->
+			<!-- Close — when stacked, content of both colours scrolls beneath it,
+			     so it carries its own solid disc; from md up it sits on the light
+			     panel and can stay quiet. -->
 			<button
 				type="button"
 				aria-label="Close"
 				onclick={close}
-				class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full flex items-center justify-center text-emerald-50/80 hover:text-white hover:bg-white/10 transition-colors"
+				class="absolute top-3 right-3 md:top-4 md:right-4 z-20 w-10 h-10 rounded-full flex items-center justify-center text-white bg-ecohubs-deep/85 ring-1 ring-white/20 hover:bg-ecohubs-deep md:ring-0 md:bg-transparent md:text-stone-500 md:hover:text-ecohubs-deep md:hover:bg-stone-200/60 transition-colors"
 			>
 				<svg
 					viewBox="0 0 24 24"
 					width="18"
 					height="18"
 					fill="none"
-					stroke="black"
+					stroke="currentColor"
 					stroke-width="1.6"
 					stroke-linecap="round"
+					aria-hidden="true"
 				>
 					<path d="M6 6l12 12M18 6L6 18" />
 				</svg>
 			</button>
 
-			<div class="grid md:grid-cols-[0.82fr_1fr]">
+			<div class="grid md:grid-cols-[0.82fr_1fr] overflow-y-auto overscroll-contain">
 				<!-- LEFT · brand panel -->
 				<div
-					class="grain relative bg-ecohubs-deep px-8 py-9 flex flex-col justify-between min-h-[260px]"
+					class="grain relative bg-ecohubs-deep px-6 py-7 sm:px-8 sm:py-9 flex flex-col justify-between md:min-h-[260px]"
 				>
 					<div class="relative z-10 flex items-center gap-2.5">
 						<img src={LogoSrc} alt="" class="w-8 h-8 brightness-[1.7]" />
@@ -180,7 +184,7 @@
 				</div>
 
 				<!-- RIGHT · the ask -->
-				<div class="px-8 py-9 md:px-9">
+				<div class="px-6 py-7 sm:px-8 sm:py-9 md:px-9">
 					{#if submitStatus !== 'success'}
 						<div class="kicker text-emerald-700 flex items-center gap-2.5 mb-5">
 							<span
