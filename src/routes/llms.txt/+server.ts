@@ -45,8 +45,9 @@ EcoHubs is a working project, not a think tank: the standard is tested against a
 
 ## Events
 
-- [Events](https://ecohubs.community/events): where EcoHubs meets in person — upcoming camps and gatherings, and past ones.
-- [Community Mycelium](https://ecohubs.community/events/community-mycelium-gathering): EcoHubs' five-day camp at The Gathering México, 23–27 October 2026 in Yaxunah, Yucatán — around 10-20 people found a temporary village together, from vision and land to decisions, conflict and culture.`;
+- [Events](https://ecohubs.community/events): where EcoHubs meets — camps and gatherings on real land, and online workshop series — upcoming and past.
+- [Community Mycelium](https://ecohubs.community/events/community-mycelium-gathering): EcoHubs' five-day camp at The Gathering México, 23–27 October 2026 in Yaxunah, Yucatán — around 10-20 people found a temporary village together, from vision and land to decisions, conflict and culture.
+- [RCOS, step by step](https://ecohubs.community/events/rcos-step-by-step): a free eight-part online workshop series from November 2026 that applies RCOS to a community one layer at a time, going through each layer's template with worked examples. Each session is recorded and posted on the page.`;
 
 const TAIL = `## Writing
 

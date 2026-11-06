@@ -58,7 +58,7 @@ function learnSectionRoutes(): SitemapRoute[] {
  * Blog posts and tag pages get theirs from Ghost automatically, below.
  */
 const routes: SitemapRoute[] = [
-	{ path: '', priority: '1.0', changefreq: 'weekly', lastmod: '2026-10-06' },
+	{ path: '', priority: '1.0', changefreq: 'weekly', lastmod: '2026-11-05' },
 	{ path: '/vision', priority: '0.9', changefreq: 'monthly', lastmod: '2026-10-06' },
 	{ path: '/rcos', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-06' },
 	{ path: '/csi', priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-04' },
@@ -69,7 +69,7 @@ const routes: SitemapRoute[] = [
 	{ path: '/join', priority: '0.7', changefreq: 'monthly', lastmod: '2026-06-28' },
 	{ path: '/contact', priority: '0.7', changefreq: 'yearly', lastmod: '2026-08-04' },
 	{ path: '/blog', priority: '0.8', changefreq: 'weekly', lastmod: '2026-08-04' },
-	{ path: '/events', priority: '0.7', changefreq: 'weekly', lastmod: '2026-10-01' },
+	{ path: '/events', priority: '0.7', changefreq: 'weekly', lastmod: '2026-11-05' },
 	{
 		path: '/learn/how-this-is-written',
 		priority: '0.5',
@@ -93,6 +93,12 @@ const routes: SitemapRoute[] = [
 		priority: '0.8',
 		changefreq: 'weekly',
 		lastmod: '2026-10-01'
+	},
+	{
+		path: '/events/rcos-step-by-step',
+		priority: '0.8',
+		changefreq: 'weekly',
+		lastmod: '2026-11-05'
 	}
 	// Note: /welcome is intentionally omitted — it's a noindex interstitial.
 ];
