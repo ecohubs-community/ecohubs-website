@@ -6,12 +6,16 @@ export type EventPhase = 'upcoming' | 'happening' | 'over';
 
 export interface EventDates {
 	startsAt: Date;
-	/** The first moment the event is over — midnight after its last day. */
-	endsAt: Date;
+	/**
+	 * The first moment the event is over — midnight after its last day. `null`
+	 * for a series whose last date is not fixed yet: it cannot be over before
+	 * anyone knows when it ends.
+	 */
+	endsAt: Date | null;
 }
 
 export function eventPhase(event: EventDates, now: Date = new Date()): EventPhase {
-	if (now >= event.endsAt) return 'over';
+	if (event.endsAt && now >= event.endsAt) return 'over';
 	if (now >= event.startsAt) return 'happening';
 	return 'upcoming';
 }

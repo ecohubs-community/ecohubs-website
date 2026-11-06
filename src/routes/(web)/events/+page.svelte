@@ -47,7 +47,7 @@
 
 <SEO
 	title="Events — EcoHubs"
-	description="Where EcoHubs meets in person: camps and gatherings on real land, where we practise the community design we write about. Dates, places and how to join."
+	description="Where EcoHubs meets: camps on real land and online workshops, where we practise the community design we write about. Dates, places and how to join."
 	ogImage="/og-default.jpg"
 	breadcrumbs={[
 		{ name: 'Home', url: 'https://ecohubs.community/' },
@@ -58,6 +58,7 @@
 {#snippet eventCard(event: EventEntry)}
 	{@const phase = phaseOf(event)}
 	{@const over = phase === 'over'}
+	{@const ticket = over ? null : (event.ticket?.(now) ?? null)}
 	<article
 		class="grid overflow-hidden rounded-3xl border border-stone-200/80 bg-white soft-shadow transition-colors hover:border-ecohubs-primary/50 lg:grid-cols-12"
 	>
@@ -90,14 +91,15 @@
 				<a href={event.href} class="hover:text-ecohubs-dark">{event.title}</a>
 			</h3>
 			<p class="mt-2 text-sm text-stone-500">
-				{event.format} · at
-				<a
-					href={event.host.url}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="no-external-decoration border-b border-stone-300 hover:border-ecohubs-dark"
-					>{event.host.name}</a
-				>
+				{event.format}{#if event.host}
+					· at
+					<a
+						href={event.host.url}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="no-external-decoration border-b border-stone-300 hover:border-ecohubs-dark"
+						>{event.host.name}</a
+					>{/if}
 			</p>
 			<p class="mt-5 max-w-2xl leading-relaxed text-stone-700">
 				{over ? event.recap : event.invitation}
@@ -124,7 +126,7 @@
 						href={event.href}
 						class="self-start border-b border-ecohubs-dark/40 pb-1 text-ecohubs-dark hover:border-ecohubs-dark"
 					>
-						See what happened →
+						{event.overLabel ?? 'See what happened →'}
 					</a>
 				{:else}
 					<a
@@ -134,14 +136,14 @@
 						See the programme
 						<span class="transition-transform group-hover:translate-x-0.5">→</span>
 					</a>
-					{#if event.ticketUrl}
+					{#if ticket}
 						<a
-							href={event.ticketUrl}
+							href={ticket.href}
 							target="_blank"
 							rel="noopener noreferrer"
 							class="no-external-decoration inline-flex items-center justify-center rounded-full border border-stone-300 bg-transparent px-4 py-1.5 font-medium text-stone-800 transition-colors hover:border-ecohubs-dark"
 						>
-							Get your ticket
+							{ticket.label}
 						</a>
 					{/if}
 				{/if}
@@ -173,17 +175,17 @@
 			style="--hero-delay: 0.15s"
 			class="font-serif text-5xl leading-[1.05] tracking-tight text-ecohubs-deep md:text-6xl lg:text-[68px]"
 		>
-			Where we meet
-			<em class="font-story font-normal italic text-stone-500">in person.</em>
+			Where we meet,
+			<em class="font-story font-normal italic text-stone-500">on land and online.</em>
 		</h1>
 		<p
 			data-hero-step="0.3"
 			style="--hero-delay: 0.3s"
 			class="mt-7 max-w-2xl text-lg font-light leading-relaxed text-stone-700"
 		>
-			Most of EcoHubs happens online — calls, writing, the standard. A few times a year we gather on
-			real land to practise what we write: founding a village for a few days, deciding together, and
-			finding out what holds.
+			Some of it happens on real land: founding a village for a few days, deciding together, and
+			finding out what holds. Some of it happens on a call, working through the standard with anyone
+			who wants to apply it to their own community.
 		</p>
 	</div>
 </section>

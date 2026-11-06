@@ -12,6 +12,7 @@
 	import CommunityFamily from '$lib/assets/community-family.avif?enhanced';
 	import CommunityGroup from '$lib/assets/community-group.avif?enhanced';
 	import MyceliumHero from '$lib/assets/mycelium/hero-forest.webp?enhanced';
+	import WorkshopImage from '$lib/assets/rcos-workshop/writing-the-rules.webp?enhanced';
 
 	import SEO from '$lib/components/SEO.svelte';
 	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
@@ -22,6 +23,16 @@
 	} from '$lib/utils/scroll-animations';
 	import { prefersReducedMotion } from '$lib/utils/animations';
 	import { myceliumCamp, campPhase, daysUntilCamp } from '$lib/config/mycelium-camp';
+	import {
+		rcosWorkshop,
+		seriesPhase,
+		nextSession,
+		sessionState,
+		recordedCount,
+		formatSessionTime,
+		formatShortDate,
+		sessions as workshopSessions
+	} from '$lib/config/rcos-workshop';
 
 	import { stories, wounds, answers, techCards, personas, faqItems } from './data';
 
@@ -57,6 +68,32 @@
 	let now = $state(new Date(data.renderedAt));
 	const camp = $derived(campPhase(now));
 	const daysLeft = $derived(daysUntilCamp(now));
+
+	// ─── RCOS, STEP BY STEP TEASER ──────────────────────────────────────────────
+	// Same clock as above. Shown until the last of the eight sessions is over,
+	// which cannot happen before every session has a date.
+	const series = $derived(seriesPhase(now));
+	const nextPart = $derived(nextSession(now));
+	const nextPartLive = $derived(nextPart ? sessionState(nextPart, now) === 'live' : false);
+	const partsRecorded = recordedCount();
+	const lastRecorded = workshopSessions.filter((s) => s.videoId).at(-1);
+	const stripChip = $derived.by(() => {
+		if (nextPartLive) return 'Live now';
+		if (!nextPart?.startsAt) return `${partsRecorded} of 8 recorded`;
+		const when = formatSessionTime(nextPart.startsAt);
+		return partsRecorded ? `Part ${nextPart.part} · ${when.split(' · ')[0]}` : when;
+	});
+	const stripLine = $derived(
+		!lastRecorded
+			? 'one RCOS layer per session, every session recorded'
+			: nextPart
+				? `Part ${lastRecorded.part} is up to watch; Part ${nextPart.part} is next`
+				: `Part ${lastRecorded.part} is up to watch; the next date is coming soon`
+	);
+	const stripCta = lastRecorded ? `Watch Part ${lastRecorded.part} →` : 'See the eight sessions →';
+	const stripHref = lastRecorded
+		? `${rcosWorkshop.path}#part-${lastRecorded.part}`
+		: rcosWorkshop.path;
 
 	// ─── ANIMATIONS ─────────────────────────────────────────────────────────────
 	// The hero cascade is pure CSS (`hero-rise` in layout.css, delayed per step
@@ -103,8 +140,8 @@
 
 	<div class="max-w-7xl mx-auto px-6 lg:px-8">
 		<div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-			<!-- Left: copy -->
-			<div class="lg:col-span-7">
+			<!-- Left: copy. `min-w-0` lets the event chip truncate instead of widening the column on a phone. -->
+			<div class="min-w-0 lg:col-span-7">
 				{#if camp !== 'over'}
 					<a
 						href={myceliumCamp.path}
@@ -119,6 +156,28 @@
 							{camp === 'happening' ? 'Live now' : 'Oct 23–27'}
 						</span>
 						<span class="truncate">Community Mycelium · a 5-day village camp in Yucatán</span>
+						<span class="shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
+					</a>
+				{:else if series !== 'over'}
+					<a
+						href={rcosWorkshop.path}
+						data-hero-step="0.0"
+						style="--hero-delay: 0s"
+						class="group mb-7 inline-flex max-w-full items-center gap-2.5 rounded-full border border-amber-300/70
+                   bg-amber-50/80 py-1.5 pl-1.5 pr-4 text-sm text-stone-800 transition-colors hover:border-ecohubs-accent"
+					>
+						<span
+							class="shrink-0 rounded-full bg-ecohubs-accent px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-[0.1em] text-ecohubs-deep"
+						>
+							{#if nextPartLive}
+								Live now
+							{:else if nextPart?.startsAt}
+								{formatShortDate(nextPart.startsAt)}
+							{:else}
+								Online
+							{/if}
+						</span>
+						<span class="truncate">RCOS, step by step · a free 8-part online workshop</span>
 						<span class="shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
 					</a>
 				{/if}
@@ -361,6 +420,66 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</section>
+{/if}
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     1c. RCOS, STEP BY STEP — the online workshop series, as one quiet strip
+         under the hero: it runs for two months, so it should not crowd the
+         page. Shown until the last session is over; sessions and dates live
+         in $lib/config/rcos-workshop.
+═══════════════════════════════════════════════════════════════════ -->
+{#if series !== 'over'}
+	<section id="rcos-step-by-step" class="relative pb-20 md:pb-28 bg-ecohubs-base">
+		<div class="max-w-7xl mx-auto px-6 lg:px-8">
+			<a
+				href={stripHref}
+				data-scroll-animate="fade-up"
+				class="group grid items-center gap-5 rounded-3xl border border-stone-200/80 bg-ecohubs-ivory p-4 pr-6
+               transition-colors hover:border-ecohubs-primary/50 md:grid-cols-[132px_minmax(0,1fr)_auto] md:gap-7"
+			>
+				<enhanced:img
+					src={WorkshopImage}
+					alt=""
+					sizes="132px"
+					loading="lazy"
+					class="hidden h-[99px] w-[132px] rounded-2xl object-cover md:block"
+				/>
+				<div class="min-w-0 px-2 md:px-0">
+					<div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+						<span
+							class="rounded-full bg-ecohubs-accent px-3 py-1 font-mono text-[11px] uppercase tracking-[0.1em] text-ecohubs-deep"
+						>
+							{stripChip}
+						</span>
+						<span class="font-mono text-[11px] uppercase tracking-[0.1em] text-emerald-700">
+							Free online workshop · 8 parts
+						</span>
+					</div>
+					<p class="mt-2.5 font-serif text-2xl md:text-[28px] leading-tight text-ecohubs-deep">
+						RCOS, <em class="font-story italic font-light text-ecohubs-primary">step by step</em>
+						<span class="font-sans text-base text-stone-600">· {stripLine}</span>
+					</p>
+					<div class="mt-3 grid w-max grid-cols-8 gap-1" aria-hidden="true">
+						{#each workshopSessions as s (s.part)}
+							<span
+								class="h-1 w-7 rounded-full {s.videoId
+									? 'bg-ecohubs-primary'
+									: s === nextPart
+										? 'bg-ecohubs-accent'
+										: 'bg-stone-300'}"
+							></span>
+						{/each}
+					</div>
+				</div>
+				<span
+					class="justify-self-start whitespace-nowrap rounded-full bg-ecohubs-dark px-6 py-3 font-medium text-white
+                 transition-colors group-hover:bg-ecohubs-deep md:justify-self-end"
+				>
+					{stripCta}
+				</span>
+			</a>
 		</div>
 	</section>
 {/if}
