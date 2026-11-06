@@ -617,8 +617,10 @@
 								<h3 class="font-serif text-2xl leading-tight">{series.coHost}</h3>
 								<p class="mt-0.5 text-sm text-ecohubs-muted">Co-host</p>
 								<p class="mt-3 text-[15px] leading-relaxed text-stone-700">
-									Prepares the worked examples for each layer, so every session has something
-									concrete on the table.
+									A founding member of Golden World. A builder by hand and heart, he stewards
+									Sushumna, an eco-living sanctuary in the jungle of Mexico near the ocean. His work
+									is devoted to living Vedic principles of simplicity, ahimsa and divine love in
+									community.
 								</p>
 							</div>
 						</div>
