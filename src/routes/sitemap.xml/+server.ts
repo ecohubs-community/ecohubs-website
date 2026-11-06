@@ -58,7 +58,7 @@ function learnSectionRoutes(): SitemapRoute[] {
  * Blog posts and tag pages get theirs from Ghost automatically, below.
  */
 const routes: SitemapRoute[] = [
-	{ path: '', priority: '1.0', changefreq: 'weekly', lastmod: '2026-10-06' },
+	{ path: '', priority: '1.0', changefreq: 'weekly', lastmod: '2026-11-05' },
 	{ path: '/vision', priority: '0.9', changefreq: 'monthly', lastmod: '2026-10-06' },
 	{ path: '/rcos', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-06' },
 	{ path: '/csi', priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-04' },

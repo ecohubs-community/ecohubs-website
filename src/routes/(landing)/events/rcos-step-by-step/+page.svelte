@@ -3,7 +3,6 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
 	import { SEO_CONFIG } from '$lib/config/seo';
-	import type { EventPhase } from '$lib/config/events';
 	import {
 		rcosWorkshop as series,
 		sessions,
@@ -31,19 +30,32 @@
 
 	import { howItWorks, forWho, selfGuide, practical } from './data';
 
-	let { data } = $props();
+	let { data, form } = $props();
 
-	// Server values first so hydration matches the cached HTML; the reader's
-	// clock once the page is running. A `?phase=` preview is left alone.
+	// The server's clock first, so hydration matches the cached HTML; then the
+	// reader's, ticking each minute so a page left open moves from "register"
+	// to "live" to "recording soon" on its own. A `?phase=` preview is fixed.
 	let now = $state(new Date(data.renderedAt));
-	let phase = $state<EventPhase>(data.phase);
+	const phase = $derived(data.preview ? data.phase : seriesPhase(now));
 	const over = $derived(phase === 'over');
 	const next = $derived(over ? null : nextSession(now));
 	const nextLive = $derived(next ? sessionState(next, now) === 'live' : false);
+	// Claims about recordings count the videos that are actually up: the last
+	// session can be over before its recording is.
 	const recorded = recordedCount();
 
-	/** The reader's own clock for the next session — only after mount, so SSR stays stable. */
-	let localTime = $state<string | null>(null);
+	/** The next session in the reader's own time zone — only after mount, so SSR stays stable. */
+	let mounted = $state(false);
+	const localTime = $derived.by(() => {
+		if (!mounted || !next?.startsAt) return null;
+		if (-next.startsAt.getTimezoneOffset() === -5 * 60) return null;
+		return new Intl.DateTimeFormat(undefined, {
+			weekday: 'short',
+			hour: '2-digit',
+			minute: '2-digit',
+			timeZoneName: 'short'
+		}).format(next.startsAt);
+	});
 
 	function trackRegister(location: string, session: WorkshopSession) {
 		window.gtag?.('event', 'link_click', {
@@ -55,13 +67,19 @@
 
 	// "Tell me when" — the same /api/newsletter the site footer posts to.
 	let email = $state('');
-	let status = $state<'idle' | 'sending' | 'done' | 'error'>('idle');
-	let errorMessage = $state('');
+	let sent = $state<'idle' | 'sending' | 'done' | 'error'>('idle');
+	let sentError = $state('');
+	// Without JavaScript the form posts to this page's action instead; its
+	// result arrives as `form`.
+	const status = $derived(
+		sent !== 'idle' ? sent : form?.subscribed ? 'done' : form?.message ? 'error' : 'idle'
+	);
+	const errorMessage = $derived(sentError || form?.message || '');
 
 	async function subscribe(event: SubmitEvent) {
 		event.preventDefault();
-		status = 'sending';
-		errorMessage = '';
+		sent = 'sending';
+		sentError = '';
 		try {
 			const res = await fetch('/api/newsletter', {
 				method: 'POST',
@@ -70,38 +88,28 @@
 			});
 			const body = (await res.json().catch(() => ({}))) as { message?: string };
 			if (!res.ok) throw new Error(body.message || 'Could not subscribe. Please try again.');
-			status = 'done';
+			sent = 'done';
 			window.gtag?.('event', 'newsletter_signup', { location: 'rcos_step_by_step' });
 		} catch (err) {
-			status = 'error';
-			errorMessage = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+			sent = 'error';
+			sentError = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
 		}
 	}
 
 	onMount(() => {
 		now = new Date();
-		if (!data.preview) phase = seriesPhase(now);
+		mounted = true;
+		const tick = setInterval(() => (now = new Date()), 60_000);
 
-		const upcoming = nextSession(now);
-		if (upcoming?.startsAt) {
-			const host = -5 * 60;
-			const reader = -upcoming.startsAt.getTimezoneOffset();
-			if (reader !== host) {
-				localTime = new Intl.DateTimeFormat(undefined, {
-					weekday: 'short',
-					hour: '2-digit',
-					minute: '2-digit',
-					timeZoneName: 'short'
-				}).format(upcoming.startsAt);
-			}
+		if (!prefersReducedMotion()) {
+			initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
+			initStaggeredScrollAnimations('[data-scroll-stagger]', {
+				threshold: 0.15,
+				staggerDelay: 0.08
+			});
 		}
 
-		if (prefersReducedMotion()) return;
-		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
-		initStaggeredScrollAnimations('[data-scroll-stagger]', {
-			threshold: 0.15,
-			staggerDelay: 0.08
-		});
+		return () => clearInterval(tick);
 	});
 
 	const code = (s: WorkshopSession) => (s.layer === undefined ? 'Intro' : `L${s.layer}`);
@@ -291,7 +299,7 @@
 							{#if next?.startsAt}
 								{formatSessionTime(next.startsAt)} · Zoom
 							{:else if over}
-								8 recordings · free
+								{recorded === 8 ? '8 recordings' : `${recorded} of 8 recorded`} · free
 							{:else}
 								Next date coming soon
 							{/if}
@@ -316,7 +324,7 @@
 					<div class="mb-4 flex items-baseline justify-between gap-4">
 						<h2 class="{mono} text-stone-600">The eight sessions</h2>
 						<span class="font-mono text-xs text-stone-600">
-							{over
+							{recorded === 8
 								? 'All 8 recorded'
 								: recorded
 									? `${recorded} of 8 recorded`
@@ -418,9 +426,8 @@
 						</h2>
 					</div>
 					<p class="text-pretty text-[17px] leading-relaxed text-stone-600">
-						The layers build on each other, so the order matters. Only Part 1 has a date so far —
-						the rest are announced here and on Luma as they are set. Each recording goes up on this
-						page after the session.
+						The layers build on each other, so the order matters. Each session gets its date here
+						and on Luma once it is set, and its recording goes up on this page afterwards.
 					</p>
 				</div>
 

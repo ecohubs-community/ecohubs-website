@@ -12,7 +12,8 @@
 	let { data } = $props();
 
 	// Sorted against the server's clock first so hydration matches the cached
-	// HTML, then against the reader's. A `?phase=` preview overrides both.
+	// HTML, then against the reader's, re-read each minute so a page left open
+	// moves an event along. A `?phase=` preview overrides both.
 	let now = $state(new Date(data.renderedAt));
 	const phaseOf = (event: EventEntry): EventPhase => data.preview ?? eventPhase(event, now);
 
@@ -29,13 +30,17 @@
 
 	onMount(() => {
 		now = new Date();
-		if (prefersReducedMotion()) return;
+		const tick = setInterval(() => (now = new Date()), 60_000);
 
-		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
-		initStaggeredScrollAnimations('[data-scroll-stagger]', {
-			threshold: 0.15,
-			staggerDelay: 0.08
-		});
+		if (!prefersReducedMotion()) {
+			initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
+			initStaggeredScrollAnimations('[data-scroll-stagger]', {
+				threshold: 0.15,
+				staggerDelay: 0.08
+			});
+		}
+
+		return () => clearInterval(tick);
 	});
 
 	const badge: Record<EventPhase, string> = {

@@ -107,13 +107,19 @@
 	// is set, the CSS reveals everything immediately and JS just bails.
 	onMount(() => {
 		now = new Date();
-		if (prefersReducedMotion()) return;
+		// Ticks each minute so the teasers follow a session from "tomorrow" to
+		// "live now" to gone without a reload.
+		const tick = setInterval(() => (now = new Date()), 60_000);
 
-		initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
-		initStaggeredScrollAnimations('[data-scroll-stagger]', {
-			threshold: 0.15,
-			staggerDelay: 0.08
-		});
+		if (!prefersReducedMotion()) {
+			initScrollAnimations('[data-scroll-animate]', { threshold: 0.15 });
+			initStaggeredScrollAnimations('[data-scroll-stagger]', {
+				threshold: 0.15,
+				staggerDelay: 0.08
+			});
+		}
+
+		return () => clearInterval(tick);
 	});
 </script>
 

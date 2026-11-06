@@ -126,16 +126,34 @@ export function seriesPhase(now: Date = new Date()): EventPhase {
 	return eventPhase(seriesDates(), now);
 }
 
-/** The session a reader can still join: live now, or the next one with a date. */
+/**
+ * The session a reader can still join: one that is live now, else the
+ * earliest one still ahead. Sorted by date rather than taken in list order,
+ * so a part moved to after the next one cannot jump the queue.
+ */
 export function nextSession(
 	now: Date = new Date(),
 	list: WorkshopSession[] = sessions
 ): WorkshopSession | null {
-	return (
-		list.find((s) => {
-			const state = sessionState(s, now);
-			return state === 'live' || state === 'scheduled';
-		}) ?? null
+	const live = list.find((s) => sessionState(s, now) === 'live');
+	if (live) return live;
+	const ahead = list
+		.filter((s) => sessionState(s, now) === 'scheduled')
+		.sort((a, b) => a.startsAt!.getTime() - b.startsAt!.getTime());
+	return ahead[0] ?? null;
+}
+
+/**
+ * The next session someone can register for: like `nextSession`, but
+ * skipping a dated session whose Luma page is not up yet.
+ */
+export function nextRegistration(
+	now: Date = new Date(),
+	list: WorkshopSession[] = sessions
+): WorkshopSession | null {
+	return nextSession(
+		now,
+		list.filter((s) => s.lumaUrl)
 	);
 }
 
@@ -161,6 +179,12 @@ export function formatSessionTime(date: Date): string {
 export function formatShortDate(date: Date): string {
 	const d = new Date(date.getTime() + TZ_OFFSET_HOURS * 3_600_000);
 	return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`;
+}
+
+/** "6 Nov 2026" — the year on the same Ecuador calendar as the day. */
+export function formatDateWithYear(date: Date): string {
+	const d = new Date(date.getTime() + TZ_OFFSET_HOURS * 3_600_000);
+	return `${formatShortDate(date)} ${d.getUTCFullYear()}`;
 }
 
 /** Days until `date` on an Ecuador wall calendar: 1 the day before, 0 on the day. */

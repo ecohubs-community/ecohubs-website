@@ -6,7 +6,12 @@
 import type { Picture } from '@sveltejs/enhanced-img';
 import type { EventDates } from '$lib/config/events';
 import { myceliumCamp } from '$lib/config/mycelium-camp';
-import { rcosWorkshop, seriesDates, nextSession, formatShortDate } from '$lib/config/rcos-workshop';
+import {
+	rcosWorkshop,
+	seriesDates,
+	nextRegistration,
+	formatDateWithYear
+} from '$lib/config/rcos-workshop';
 import heroForest from '$lib/assets/mycelium/hero-forest.webp?enhanced';
 import writingTheRules from '$lib/assets/rcos-workshop/writing-the-rules.webp?enhanced';
 
@@ -66,11 +71,11 @@ export const events: EventEntry[] = [
 		slug: 'rcos-step-by-step',
 		title: rcosWorkshop.name,
 		format: '8-part online workshop series',
-		dates: `From ${formatShortDate(seriesDates().startsAt)} 2026`,
+		dates: `From ${formatDateWithYear(seriesDates().startsAt)}`,
 		place: rcosWorkshop.place,
 		href: rcosWorkshop.path,
 		ticket: (now) => {
-			const next = nextSession(now);
+			const next = nextRegistration(now);
 			return next?.lumaUrl ? { href: next.lumaUrl, label: `Register for Part ${next.part}` } : null;
 		},
 		overLabel: 'Watch the recordings →',
