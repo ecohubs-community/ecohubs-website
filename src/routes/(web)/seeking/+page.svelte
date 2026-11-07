@@ -42,8 +42,8 @@
 </script>
 
 <SEO
-	title="Seeking.Community — a free, human way to find a community that fits | EcoHubs"
-	description="You don't have to start a community to live in one. Write where you want to land, a real person reads it by hand, and honest matches come back within 24 hours. Free."
+	title="Seeking.Community — a free way to find a community that fits | EcoHubs"
+	description="You don't have to start a community to live in one. Write where you want to land, and honest matches, each checked by a person, come back within 24 hours. Free."
 	ogImage="/og-seeking.jpg"
 	ogImageAlt="Seeking.Community — a soft landing for people stepping off the track"
 	{breadcrumbs}
@@ -91,13 +91,12 @@
 					<strong class="text-ecohubs-deep">Seeking.Community</strong> is a free matchmaker for
 					people who want to join an existing intentional community — an ecovillage, a cohousing
 					group, a land project — rather than start one. You write, in your own words, where you
-					want to land.
-					<em class="font-story italic">A real person reads it</em> and points you toward places that
-					are real, open, and an actual fit.
+					want to land. We point you toward places that are real, open, and an actual fit,
+					<em class="font-story italic">and a person checks every one.</em>
 				</p>
 
 				<p data-scroll-animate class="mt-5 max-w-xl text-lg leading-relaxed text-stone-600">
-					No account. No listings to trawl. No algorithm quietly ranking whoever paid. A few honest
+					No account. No listings to trawl. Nobody pays to be ranked higher. A few honest
 					suggestions instead — each one carrying what we could not confirm about it, written down
 					beside what we could.
 				</p>
@@ -128,8 +127,8 @@
 						<span class="bg-ecohubs-primary h-1.5 w-1.5 rounded-full"></span> Always free
 					</span>
 					<span class="flex items-center gap-2">
-						<span class="bg-ecohubs-primary h-1.5 w-1.5 rounded-full"></span> A real person reads every
-						one
+						<span class="bg-ecohubs-primary h-1.5 w-1.5 rounded-full"></span> Every match checked by
+						a person
 					</span>
 					<span class="flex items-center gap-2">
 						<span class="bg-ecohubs-primary h-1.5 w-1.5 rounded-full"></span>
@@ -314,13 +313,13 @@
 	kicker="What Seeking.Community is, and isn't"
 	lead="A free service that helps you find something is usually making its money somewhere you cannot see. So it is worth being precise about what this one is, and what it is not."
 	isItems={whatItIs}
-	isNote="A human search, and an honest answer."
+	isNote="A careful search, and an honest answer."
 	isNotItems={whatItIsNot}
 	isNotNote="And we would rather say so."
 >
 	{#snippet headline()}
-		A person doing the looking, <em class="font-story font-normal text-emerald-300 italic"
-			>not a database.</em
+		A search that starts <em class="font-story font-normal text-emerald-300 italic"
+			>from your own words.</em
 		>
 	{/snippet}
 </StanceColumns>
@@ -389,8 +388,8 @@
 				>
 			</h2>
 			<p class="mt-6 text-lg leading-relaxed text-stone-700">
-				This is what a person reads before they go looking. It takes about twenty minutes, and it is
-				the reason the matches are not generic — nobody can be matched on something they were never
+				This is what we read before we go looking. It takes about twenty minutes, and it is the
+				reason the matches are not generic — nobody can be matched on something they were never
 				asked about.
 			</p>
 		</div>
@@ -484,7 +483,7 @@
 		{
 			kicker: '02 · Seeking',
 			title: 'Where an existing one already is.',
-			body: 'A person reads what you wrote and points you toward communities that are real, open and a genuine fit — free, and usually within a day.',
+			body: 'Points you toward communities that are real, open and a genuine fit, each one checked by a person — free, and usually within a day.',
 			cta: 'Open Seeking.Community ↗',
 			href: seekingStats.url,
 			external: true,
@@ -546,18 +545,18 @@
      11. CLOSING CTA
 ═══════════════════════════════════════════════════════════════════ -->
 <ClosingCta
-	kicker="Free, and human"
+	kicker="Free, and honest"
 	divider
-	footnote="Always free · A real person reads every one · Matches within {seekingStats.turnaround}"
+	footnote="Always free · Every match checked by a person · Matches within {seekingStats.turnaround}"
 >
 	{#snippet headline()}
 		You don't have to know where you're going. <br class="hidden md:block" />
 		<em class="font-story font-normal text-emerald-300 italic">You only have to begin.</em>
 	{/snippet}
 	{#snippet lead()}
-		Write where you want to land. A real person will read it, search by hand, and point you toward
-		communities that fit — within {seekingStats.turnaround}, at no cost. The first step off the
-		track is the only one you have to take alone.
+		Write where you want to land. We will search, a person will check every match, and we will point
+		you toward communities that fit — within {seekingStats.turnaround}, at no cost. The first step
+		off the track is the only one you have to take alone.
 	{/snippet}
 	{#snippet actions()}
 		<a
