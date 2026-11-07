@@ -185,10 +185,13 @@
 				<Logo />
 			</a>
 
-			<!-- Desktop Navigation -->
-			<div class="hidden md:block">
+			<!-- Desktop Navigation
+			     Seven links + logo + CTA need ~1140px at full spacing, so the bar only
+			     appears from `lg` (gaps tightened) and relaxes at `xl`. Below `lg` the
+			     hamburger takes over — anything narrower wrapped labels onto 2–3 lines. -->
+			<div class="hidden lg:block">
 				<div
-					class="ml-10 flex items-baseline space-x-8 font-sans font-medium text-sm text-stone-600"
+					class="ml-6 xl:ml-10 flex items-center gap-2 xl:gap-5 whitespace-nowrap font-sans font-medium text-sm text-stone-600"
 				>
 					{#each navLinks as link (link.href)}
 						{#if link.href === '__ecosystem__'}
@@ -388,18 +391,18 @@
 			<div class="flex items-center gap-4">
 				<a
 					href="/membership"
-					class="hidden md:flex items-center gap-2 bg-ecohubs-dark text-white px-6 py-2.5 rounded-full font-sans text-sm font-medium transition-colors duration-300 hover:bg-ecohubs-deep focus-visible:ring-2 focus-visible:ring-green-400"
+					class="hidden lg:flex items-center gap-2 whitespace-nowrap bg-ecohubs-dark text-white px-5 xl:px-6 py-2.5 rounded-full font-sans text-sm font-medium transition-colors duration-300 hover:bg-ecohubs-deep focus-visible:ring-2 focus-visible:ring-green-400"
 					aria-label="Become a Member"
 					data-sveltekit-preload-data="hover"
 				>
-					<span class="hidden lg:block">Become a Member</span>
-					<span class="block lg:hidden">Join</span>
+					<span class="hidden xl:block">Become a Member</span>
+					<span class="block xl:hidden">Join</span>
 					<ArrowRight class="h-4 w-4" aria-hidden="true" />
 				</a>
 
 				<!-- Mobile menu button -->
 				<button
-					class="md:hidden text-ecohubs-dark hover:text-ecohubs-primary focus-visible:ring-2 focus-visible:ring-green-400 rounded p-1"
+					class="lg:hidden text-ecohubs-dark hover:text-ecohubs-primary focus-visible:ring-2 focus-visible:ring-green-400 rounded p-1"
 					aria-label={mobileMenuOpen ? 'Close mobile menu' : 'Open mobile menu'}
 					aria-expanded={mobileMenuOpen}
 					onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
@@ -416,7 +419,7 @@
 
 	<!-- Mobile Menu -->
 	{#if mobileMenuOpen}
-		<div class="md:hidden glass-panel border-t border-ecohubs-primary/10">
+		<div class="lg:hidden glass-panel border-t border-ecohubs-primary/10">
 			<div class="px-4 pt-4 pb-6 space-y-3">
 				{#each navLinks as link (link.href)}
 					{#if link.href === '__ecosystem__'}
