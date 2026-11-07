@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 	import { CONSENT_CHANGE_EVENT, readConsent } from '$lib/utils/consent';
+	import { initMauticTracking, sendMauticPageview } from '$lib/utils/mautic';
 
 	/**
 	 * GA4 Measurement ID from environment variable
@@ -59,6 +60,7 @@
 	}
 
 	// Track page views on route change
+	let firstPage = true;
 	$effect(() => {
 		const url = page.url.pathname;
 		if (browser && window.gtag && GA_MEASUREMENT_ID) {
@@ -66,14 +68,21 @@
 				page_path: url
 			});
 		}
+		// Mautic: the first page is reported by initMauticTracking() in onMount;
+		// later client-side navigations are reported here (consent-gated).
+		if (browser && !firstPage) sendMauticPageview();
+		firstPage = false;
 	});
 
 	onMount(() => {
+		// Mautic campaign tracking, site-wide; loads nothing until cookies are accepted.
+		const stopMautic = initMauticTracking();
+
 		if (!GA_MEASUREMENT_ID) {
 			console.warn(
 				'Google Analytics ID (VITE_GA_MEASUREMENT_ID) is missing in environment variables.'
 			);
-			return;
+			return stopMautic;
 		}
 
 		// Initial consent (cookie shared with rcos.ecohubs.community)
@@ -104,6 +113,7 @@
 		window.addEventListener('focus', recheck);
 
 		return () => {
+			stopMautic();
 			window.removeEventListener(CONSENT_CHANGE_EVENT, handleConsentChange as EventListener);
 			document.removeEventListener('visibilitychange', recheck);
 			window.removeEventListener('focus', recheck);

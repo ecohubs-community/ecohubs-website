@@ -49,15 +49,15 @@ The websites are ecohubs.community and rcos.ecohubs.community (the RCOS standard
 
 ### 3. Newsletter and EcoHub One waitlist
 
-|               |                                                                                                                                                              |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Purpose       | Send the newsletter / waitlist updates                                                                                                                       |
-| Legal basis   | Consent, double opt-in (Listmonk `preconfirm_subscriptions: false`)                                                                                          |
-| Data subjects | Subscribers                                                                                                                                                  |
-| Data          | Email, list; waitlist step 2 (optional): first name, location, skills/profession, why they want to join; subscription status; open/click tracking if enabled |
-| Storage       | Listmonk and Mautic on the IONOS server (`/api/newsletter`, `/api/waitlist`)                                                                                 |
-| Recipients    | Our team; IONOS; Mediakular mail server; Discord (email, only on failure)                                                                                    |
-| Retention     | Until unsubscribed or deletion requested; afterwards the address stays marked unsubscribed                                                                   |
+|               |                                                                                                                                                                                        |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Purpose       | Send the newsletter / waitlist updates                                                                                                                                                 |
+| Legal basis   | Consent, double opt-in (Listmonk `preconfirm_subscriptions: false`)                                                                                                                    |
+| Data subjects | Subscribers                                                                                                                                                                            |
+| Data          | Email, list; waitlist step 2 (optional): name (stored as first and last name), location, skills/profession, why they want to join; subscription status; open/click tracking if enabled |
+| Storage       | Listmonk and Mautic on the IONOS server (`/api/newsletter`, `/api/waitlist`)                                                                                                           |
+| Recipients    | Our team; IONOS; Mediakular mail server; Discord (email, only on failure)                                                                                                              |
+| Retention     | Until unsubscribed or deletion requested; afterwards the address stays marked unsubscribed                                                                                             |
 
 ### 4. Community Resilience Assessment
 
@@ -72,13 +72,13 @@ The websites are ecohubs.community and rcos.ecohubs.community (the RCOS standard
 
 ### 5. Campaign tracking (Mautic `mtc.js`)
 
-|               |                                                                                                                                               |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Purpose       | See which campaigns lead to sign-ups                                                                                                          |
-| Legal basis   | Consent (cookie banner); `initMauticTracking()` loads nothing until the `ecohubs_consent` cookie is `accepted`                                |
-| Data subjects | Visitors to `/community-resilience-assessment` and `/join-the-waitlist`                                                                       |
-| Data          | Cookies `mtc_id`, `mautic_device_id`; page views, IP address; linked to the email address on sign-up                                          |
-| Retention     | Identified contacts as long as the subscription; anonymous visitors until the yearly clean-up (**manual until a Mautic cleanup cron exists**) |
+|               |                                                                                                                                                 |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Purpose       | See which campaigns lead to sign-ups; tailor follow-up emails to the pages a subscriber reads                                                   |
+| Legal basis   | Consent (cookie banner); `initMauticTracking()` (started site-wide from `Analytics.svelte`) loads nothing until `ecohubs_consent` is `accepted` |
+| Data subjects | Visitors to any page of ecohubs.community who accepted cookies                                                                                  |
+| Data          | Cookies `mtc_id`, `mautic_device_id`; page views, IP address; linked to the email address on sign-up or email click                             |
+| Retention     | Identified contacts as long as the subscription; anonymous visitors 90 days (daily `mautic:maintenance:cleanup --days-old=90`, Plesk cron)      |
 
 ### 6. Web analytics
 
@@ -116,7 +116,7 @@ The cookie choice is a first-party cookie, `ecohubs_consent` (`accepted`/`declin
 
 ## Open points for the owner
 
-- **Retention promises that rely on a manual routine:** the contact/application mailbox clean-up, the yearly Mautic clean-up of anonymous visitors (automate with `mautic:maintenance:cleanup --days-old=365` in cron, then the page can state 12 months), and deleting Discord alerts once handled. Nothing enforces these yet; keep the page's wording no stronger than what actually runs.
+- **Retention promises that rely on a manual routine:** the contact/application mailbox clean-up, and deleting Discord alerts once handled. Nothing enforces these yet; keep the page's wording no stronger than what actually runs.
 - **GA4 cookieless pings:** the Google tag loads before consent (advanced Consent Mode, deliberately, so Tag Assistant finds it), so Google receives cookieless pings from visitors who haven't accepted. The page discloses this. Switching to basic mode (load `gtag.js` only after Accept) would remove it and let the page say GA runs only with consent.
 - **RSS.com:** confirm where the podcast player is hosted and whether a DPA is needed; it loads only after the visitor presses play.
 - **Member map:** confirm that `/api/public/members` returns only members who chose a public profile.

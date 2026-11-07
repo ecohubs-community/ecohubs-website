@@ -5,7 +5,7 @@
 	import Logo from '$lib/assets/Logo.svg';
 	import { QUESTIONS, OPTIONS, tierFor, type AnswerKey } from './data';
 	import { MAUTIC_RESILIENCE_ASSESSMENT } from '$lib/config/mautic';
-	import { initMauticTracking, getMauticContactId } from '$lib/utils/mautic';
+	import { getMauticContactId } from '$lib/utils/mautic';
 	import { SEO_CONFIG } from '$lib/config/seo';
 
 	const SEO_PAGE = SEO_CONFIG.pages.communityResilienceAssessment;
@@ -244,9 +244,6 @@
 			return out;
 		});
 	});
-
-	/* ─── Mautic tracking pixel (only after cookie consent) ──────── */
-	onMount(() => initMauticTracking());
 </script>
 
 <SEO
