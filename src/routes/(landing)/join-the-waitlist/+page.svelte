@@ -5,7 +5,6 @@
 	import LiteYouTube from '$lib/components/LiteYouTube.svelte';
 	import WaitlistForm from '$lib/components/waitlist/WaitlistForm.svelte';
 	import WaitlistProfileModal from '$lib/components/waitlist/WaitlistProfileModal.svelte';
-	import { initMauticTracking } from '$lib/utils/mautic';
 	import {
 		initScrollAnimations,
 		initStaggeredScrollAnimations
@@ -163,13 +162,12 @@
 	}
 
 	onMount(() => {
-		const stopTracking = initMauticTracking();
 		initScrollAnimations();
 		initStaggeredScrollAnimations('[data-scroll-stagger]');
 
 		// Reveal the sticky mobile CTA once the hero scrolls out of view.
 		const hero = document.getElementById('hero');
-		if (!hero) return stopTracking;
+		if (!hero) return;
 		const io = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) stickyVisible = !entry.isIntersecting;
@@ -177,10 +175,7 @@
 			{ threshold: 0.05 }
 		);
 		io.observe(hero);
-		return () => {
-			stopTracking();
-			io.disconnect();
-		};
+		return () => io.disconnect();
 	});
 </script>
 

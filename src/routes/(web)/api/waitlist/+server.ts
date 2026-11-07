@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { MAUTIC_FORMS } from '$lib/config/mautic';
+import { MAUTIC_FORMS, splitWaitlistName } from '$lib/config/mautic';
 import { submitRegistryForm } from '$lib/server/mautic';
 import { subscribeToListmonk } from '$lib/server/listmonk';
 import { notifyDiscordError, isConfigGap } from '$lib/server/discord';
@@ -90,7 +90,10 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		if (step === 'update') {
 			// Step 2 — progressive profiling. Mautic only here (the contact and
 			// Listmonk subscription were created in step 1).
-			const result = await submitRegistryForm('waitlist', fields, { mtcId, clientIp });
+			const result = await submitRegistryForm('waitlist', splitWaitlistName(fields), {
+				mtcId,
+				clientIp
+			});
 			if (!result.ok) {
 				console.error('Waitlist profile update failed:', result);
 				await notifyDiscordError({

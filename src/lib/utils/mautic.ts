@@ -1,9 +1,12 @@
 /**
- * Client-side Mautic tracking helpers, shared across landing pages.
+ * Client-side Mautic tracking helpers. Started site-wide from Analytics.svelte,
+ * which both the (web) and (landing) layouts render — don't call
+ * `initMauticTracking()` from a page as well, or that page counts twice.
  *
  * `initMauticTracking()` boots the `mtc.js` pixel (visitor tracking cookies
  * + pageview), but only once the visitor has accepted cookies in the banner —
- * /privacy promises it. Once it resolves, Mautic exposes the tracked contact
+ * /privacy promises it. `sendMauticPageview()` reports each client-side
+ * navigation after that. Once it resolves, Mautic exposes the tracked contact
  * id on `window.mtcId`; `getMauticContactId()` reads it so a server-side form
  * submission can be stitched onto that visitor's session.
  *
@@ -48,12 +51,22 @@ export function initMauticTracking(): () => void {
 	return () => window.removeEventListener(CONSENT_CHANGE_EVENT, onConsent);
 }
 
+/**
+ * Report a client-side navigation. SvelteKit swaps pages without a reload, so
+ * mtc.js only sees the first page unless each route change is sent explicitly.
+ * Does nothing without consent.
+ */
+export function sendMauticPageview(): void {
+	if (typeof window === 'undefined' || !hasAcceptedCookies()) return;
+	loadMauticTracking();
+}
+
 /** Load mtc.js (once) and send a pageview. */
 function loadMauticTracking(): void {
 	const w = window as unknown as MauticWindow;
 
 	if (w.MauticTrackingObject) {
-		w.mt?.('send', 'pageview');
+		w.mt?.('send', 'pageview', { page_url: location.href, page_title: document.title });
 		return;
 	}
 

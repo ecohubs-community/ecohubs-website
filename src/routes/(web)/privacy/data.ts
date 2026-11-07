@@ -8,7 +8,7 @@
  * policy changes in substance.
  */
 export const POLICY = {
-	updated: '2 October 2026',
+	updated: '7 November 2026',
 	controller: 'EcoHubs.community, based in Ecuador',
 	contact: 'privacy@ecohubs.community',
 	authority: {
@@ -52,7 +52,7 @@ export const bases: { purpose: string; basis: string }[] = [
 		basis: 'your consent, given when you submit the assessment form.'
 	},
 	{
-		purpose: 'Google Analytics cookies and campaign tracking on two landing pages',
+		purpose: 'Google Analytics cookies and Mautic campaign tracking',
 		basis: 'your consent through the cookie banner. Declining changes nothing else on the site.'
 	},
 	{
@@ -135,9 +135,9 @@ export const retention: { what: string; howLong: string }[] = [
 		howLong: 'Deleted once we have sent you the report.'
 	},
 	{
-		what: 'Campaign tracking on the two landing pages (Mautic)',
+		what: 'Campaign tracking (Mautic)',
 		howLong:
-			'Visits linked to a sign-up: as long as the subscription. Visits that never led to one: until our yearly clean-up deletes them.'
+			'Visits linked to a sign-up: as long as the subscription. Visits that never led to one: deleted after 90 days.'
 	},
 	{
 		what: 'Google Analytics',

@@ -139,7 +139,7 @@
 				<ul>
 					<li>Your email address, and the list you joined.</li>
 					<li>
-						For the waitlist, anything you choose to add in the optional second step: first name,
+						For the waitlist, anything you choose to add in the optional second step: name,
 						location, skills or profession, and why you want to join.
 					</li>
 					<li>
@@ -241,16 +241,16 @@
 					which pages people read and how they found us. Accepting grants analytics only: Google's
 					advertising signals stay switched off. Everything works the same if you decline.
 				</p>
-				<h3>Campaign tracking on two landing pages (Mautic, only with your consent)</h3>
+				<h3>Campaign tracking (Mautic, only with your consent)</h3>
 				<p>
-					On the <a href="/community-resilience-assessment">Community Resilience Assessment</a> and
-					the <a href="/join-the-waitlist">EcoHub One waitlist</a> pages, if you accept in the
-					cookie banner, we load the tracking script of our own Mautic installation. It sets cookies
-					(<code>mtc_id</code>, <code>mautic_device_id</code>) that recognise your browser on those
-					pages, and if you then sign up, it links those visits to your email address so we can see
-					how you found us. It runs on our own server, and nothing goes to an advertising network.
-					If you decline, it never loads, and the forms work exactly the same. No other page loads
-					it.
+					If you accept in the cookie banner, every page of ecohubs.community loads the tracking
+					script of our own Mautic installation. It sets cookies (<code>mtc_id</code>,
+					<code>mautic_device_id</code>) that recognise your browser and record which pages you
+					visit. If you sign up, or arrive from a link in one of our emails, it links those visits
+					to your email address, so we can see how you found us and send you what is relevant to you
+					rather than everything. It runs on our own server, and nothing goes to an advertising
+					network. If you decline, it never loads, and the site and its forms work exactly the same.
+					Visits that never become linked to a sign-up are deleted after 90 days.
 				</p>
 				<h3>Spam protection and videos</h3>
 				<p>
