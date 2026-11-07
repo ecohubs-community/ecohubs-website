@@ -90,3 +90,16 @@ export const MAUTIC_FORMS = {
 } as const satisfies Record<string, MauticFormDef>;
 
 export type MauticFormKey = keyof typeof MAUTIC_FORMS;
+
+/**
+ * The waitlist asks for one "Name" box, but Mautic greets people by
+ * `{contactfield=firstname}`. Split the entry so "Hi Maria" doesn't become
+ * "Hi Maria Lopez": first word → `f_name` (First Name), the rest → `l_name`,
+ * a hidden field on the Mautic form mapped to Last Name. Server-side only, so
+ * `l_name` is deliberately not in `allowedFields`.
+ */
+export function splitWaitlistName(fields: Record<string, string>): Record<string, string> {
+	const [first, ...rest] = (fields.f_name ?? '').trim().split(/\s+/);
+	if (!first || rest.length === 0) return fields;
+	return { ...fields, f_name: first, l_name: rest.join(' ') };
+}
