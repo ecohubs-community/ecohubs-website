@@ -22,6 +22,13 @@ export const seekingStats = {
 	turnaround: '24 hours'
 } as const;
 
+/** The three promises repeated in the hero and the closing CTA. */
+export const promises = [
+	'Always free',
+	'Every match checked by a person',
+	`Matches within ${seekingStats.turnaround}`
+] as const;
+
 /* ── Hero: an example match ──────────────────────────────────────────
    The card a seeker actually receives, drawn from seeking.community's own
    worked example. The community is fictional and every surface says the
@@ -94,8 +101,8 @@ export const whatItIs: Stance[] = [
 		body: 'No fee, no account to pay for, nothing waiting to be upsold. That is deliberate: the people who most need to land well are rarely the ones with money spare for help finding it.'
 	},
 	{
-		title: 'Read by a person, not matched by a filter.',
-		body: 'Someone who knows this world reads every intake by hand and then goes looking — through directories, through networks, and through places that appear in neither. A search, not a query.'
+		title: 'Matched to what you wrote, checked by a person.',
+		body: 'We look for communities that fit your actual answers — in directories, in networks, and in places that appear in neither. Someone who knows this world reads your intake and checks every match before it reaches you.'
 	},
 	{
 		title: 'Pointed anywhere that fits.',
@@ -142,8 +149,8 @@ export const steps: Step[] = [
 	},
 	{
 		number: '02',
-		title: 'A real person reads it, by hand',
-		body: 'Someone who knows this world reads what you wrote and goes looking — through the directories, through networks, and through communities that never appear in either — for places that are real, open, and actually fit.'
+		title: 'We search, and a person checks',
+		body: 'We match what you wrote against communities in the directories, in networks, and in places that never appear in either, looking for ones that are real, open, and actually fit. Someone who knows this world reads your answers and checks each match before it goes out.'
 	},
 	{
 		number: '03',
@@ -232,7 +239,7 @@ export const anatomy: Anatomy[] = [
 	{
 		kicker: 'The badge',
 		title: 'A fit score, out of ten.',
-		body: 'One number, and it is a human judgement rather than a calculation. It is there to order the shortlist — the sentence underneath is the part that actually tells you something.'
+		body: 'One number, there to put the shortlist in order. The sentence underneath is the part that actually tells you something.'
 	},
 	{
 		kicker: 'The middle',
@@ -310,7 +317,7 @@ export const faq: FaqEntry[] = [
 	},
 	{
 		q: 'Who actually reads what I send?',
-		a: `A person, not a matching engine. Someone who knows this world reads every intake by hand and then searches for communities that fit what you actually wrote, not whatever ranks highest or pays most. You hear back personally, normally within ${seekingStats.turnaround}.`
+		a: `Someone who knows this world. We match your answers against communities that fit what you actually wrote, not whatever ranks highest or pays most, and a person reads your intake and checks every match before it reaches you. You normally hear back within ${seekingStats.turnaround}.`
 	},
 	{
 		q: 'Do you only point me toward EcoHubs communities?',

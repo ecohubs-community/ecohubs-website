@@ -74,7 +74,7 @@ export const SEO_CONFIG = {
 		seeking: {
 			title: 'Seeking.Community — find a community that fits | EcoHubs',
 			description:
-				"You don't have to start a community to live in one. Write where you want to land, a real person reads it by hand, and honest matches come back within 24 hours.",
+				"You don't have to start a community to live in one. Write where you want to land, and honest matches, each checked by a person, come back within 24 hours.",
 			ogImage: '/og-seeking.jpg'
 		},
 		membership: {
