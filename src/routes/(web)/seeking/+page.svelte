@@ -19,6 +19,7 @@
 
 	import {
 		seekingStats,
+		promises,
 		demoMatch,
 		recognitions,
 		blockers,
@@ -123,17 +124,12 @@
 					data-scroll-animate
 					class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-stone-600"
 				>
-					<span class="flex items-center gap-2">
-						<span class="bg-ecohubs-primary h-1.5 w-1.5 rounded-full"></span> Always free
-					</span>
-					<span class="flex items-center gap-2">
-						<span class="bg-ecohubs-primary h-1.5 w-1.5 rounded-full"></span> Every match checked by
-						a person
-					</span>
-					<span class="flex items-center gap-2">
-						<span class="bg-ecohubs-primary h-1.5 w-1.5 rounded-full"></span>
-						Matches within {seekingStats.turnaround}
-					</span>
+					{#each promises as promise (promise)}
+						<span class="flex items-center gap-2">
+							<span class="bg-ecohubs-primary h-1.5 w-1.5 rounded-full"></span>
+							{promise}
+						</span>
+					{/each}
 				</div>
 			</div>
 
@@ -483,7 +479,7 @@
 		{
 			kicker: '02 · Seeking',
 			title: 'Where an existing one already is.',
-			body: 'Points you toward communities that are real, open and a genuine fit, each one checked by a person — free, and usually within a day.',
+			body: 'Points you toward real communities that fit what you wrote, each one checked by a person and listing anything we could not confirm — free, and usually within a day.',
 			cta: 'Open Seeking.Community ↗',
 			href: seekingStats.url,
 			external: true,
@@ -544,11 +540,7 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      11. CLOSING CTA
 ═══════════════════════════════════════════════════════════════════ -->
-<ClosingCta
-	kicker="Free, and honest"
-	divider
-	footnote="Always free · Every match checked by a person · Matches within {seekingStats.turnaround}"
->
+<ClosingCta kicker="Free, and honest" divider footnote={promises.join(' · ')}>
 	{#snippet headline()}
 		You don't have to know where you're going. <br class="hidden md:block" />
 		<em class="font-story font-normal text-emerald-300 italic">You only have to begin.</em>

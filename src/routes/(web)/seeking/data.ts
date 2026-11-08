@@ -22,6 +22,13 @@ export const seekingStats = {
 	turnaround: '24 hours'
 } as const;
 
+/** The three promises repeated in the hero and the closing CTA. */
+export const promises = [
+	'Always free',
+	'Every match checked by a person',
+	`Matches within ${seekingStats.turnaround}`
+] as const;
+
 /* ── Hero: an example match ──────────────────────────────────────────
    The card a seeker actually receives, drawn from seeking.community's own
    worked example. The community is fictional and every surface says the
