@@ -152,8 +152,8 @@
 <SEO
 	title="RCOS, step by step — a free 8-part online workshop · EcoHubs"
 	description="Apply the Regenerative Community Operating System to your community, one layer per session. Free, online, eight parts, with every session recorded."
-	ogImage="/og-rcos.jpg"
-	ogImageAlt="RCOS — the Regenerative Community Operating System"
+	ogImage="/og-rcos-step-by-step.jpg"
+	ogImageAlt="RCOS, step by step: a free eight-part online workshop. An illustration of a group planning their community outdoors, above the list of the eight sessions."
 	canonical={series.path}
 	jsonLd={seriesSchema}
 	breadcrumbs={[
