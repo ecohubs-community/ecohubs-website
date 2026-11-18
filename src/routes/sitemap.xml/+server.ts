@@ -98,7 +98,7 @@ const routes: SitemapRoute[] = [
 		path: '/events/rcos-step-by-step',
 		priority: '0.8',
 		changefreq: 'weekly',
-		lastmod: '2026-11-05'
+		lastmod: '2026-11-17'
 	}
 	// Note: /welcome is intentionally omitted — it's a noindex interstitial.
 ];

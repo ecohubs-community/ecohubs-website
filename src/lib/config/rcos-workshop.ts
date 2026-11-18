@@ -63,7 +63,8 @@ export const sessions: WorkshopSession[] = [
 		question: 'What RCOS is, why communities need it, and how the next seven sessions work.',
 		startsAt: new Date(`2026-11-06T18:00:00${TZ}`),
 		minutes: 60,
-		lumaUrl: 'https://luma.com/f4y1l170'
+		lumaUrl: 'https://luma.com/f4y1l170',
+		videoId: '5QyY8sRY9uU'
 	},
 	layer(0, 'Identity & Scope', 'Why does this community exist, and what does it govern?'),
 	layer(1, 'Membership', 'How do people join, stay, and leave?'),
